@@ -1,0 +1,160 @@
+[
+    {
+        "inAssets": true,
+        "name": "*****",
+        "sessions": [
+        ],
+        "trackId": 0
+    },
+    {
+        "inAssets": true,
+        "name": "0 to 1",
+        "sessions": [
+            "1165",
+            "1305",
+            "1158",
+            "1323",
+            "1296"
+        ],
+        "trackId": 1
+    },
+    {
+        "inAssets": true,
+        "name": "Advanced",
+        "sessions": [
+            "1159",
+            "1157",
+            "1184",
+            "1169"
+        ],
+        "trackId": 4
+    },
+    {
+        "inAssets": true,
+        "name": "Built with Qt",
+        "sessions": [
+            "1314",
+            "1418",
+            "1176",
+            "1187",
+            "1164",
+            "1180",
+            "1382",
+            "1185"
+        ],
+        "trackId": 5
+    },
+    {
+        "inAssets": true,
+        "name": "Future Proof",
+        "sessions": [
+            "1528",
+            "1156",
+            "1378",
+            "1191",
+            "1189",
+            "1561"
+        ],
+        "trackId": 3
+    },
+    {
+        "inAssets": true,
+        "name": "Keynote",
+        "sessions": [
+            "1353",
+            "1530",
+            "1694",
+            "1529",
+            "1550",
+            "1495",
+            "1364",
+            "1703",
+            "1685",
+            "1579"
+        ],
+        "trackId": 2
+    },
+    {
+        "inAssets": true,
+        "name": "Performance Optimizations",
+        "sessions": [
+            "1188",
+            "1160",
+            "1152",
+            "1175",
+            "1177",
+            "1469"
+        ],
+        "trackId": 9
+    },
+    {
+        "inAssets": true,
+        "name": "Qt Roadmap Today",
+        "sessions": [
+            "1168",
+            "1151",
+            "1686",
+            "1167",
+            "1186",
+            "1476",
+            "1471"
+        ],
+        "trackId": 8
+    },
+    {
+        "inAssets": true,
+        "name": "Qt Roadmap Tomorrow",
+        "sessions": [
+            "1182",
+            "1704",
+            "1479",
+            "1183",
+            "1477",
+            "1173",
+            "1423",
+            "1532",
+            "1482",
+            "1581"
+        ],
+        "trackId": 11
+    },
+    {
+        "inAssets": true,
+        "name": "Qt Tips &amp; Tricks",
+        "sessions": [
+            "1179",
+            "1166",
+            "1163",
+            "1162"
+        ],
+        "trackId": 10
+    },
+    {
+        "inAssets": true,
+        "name": "Qt in Automotive",
+        "sessions": [
+            "1363",
+            "1170",
+            "1320",
+            "1569",
+            "1190",
+            "1578",
+            "1383"
+        ],
+        "trackId": 6
+    },
+    {
+        "inAssets": true,
+        "name": "Success",
+        "sessions": [
+            "1181",
+            "1147",
+            "1161",
+            "1172",
+            "1171",
+            "1155",
+            "1174"
+        ],
+        "trackId": 7
+    }
+]

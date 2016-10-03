@@ -1,0 +1,1731 @@
+{
+  "version": "1.1",
+  "conference": {
+    "title": "Qt World Summit 2016",
+    "start": "2016-10-18",
+    "end": "2016-10-20",
+    "days": {
+      "2016-10-19": {
+        "index": 0,
+        "date": "2016-10-19",
+        "rooms": {
+          "Qt World Summit 2016": [
+            {
+              "id": 1156,
+              "start": "12:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-the-internet-of-things-iot-do-they-fit-together",
+              "title": "Qt & the Internet of Things (IoT) - Do they fit together?",
+              "subtitle": "",
+              "track": "Future Proof",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Internet of Things (IoT) is a very broad term and depending on the industry type demands a variety of requirements to be fulfilled. To provide the necessary overview, industry cases in the IoT domain are presented and their unique features and communication details examined. This catalogization shall then be used to define the IoT term in the context of Qt. It includes a matching of Qt's current and future capabilities within the domain. Technical examples are presented to underline these capabilities. The target audience is architects and business people.",
+              "persons": [
+                {
+                  "id": 1039,
+                  "full_public_name": "Alex Blasche",
+                  "first_name": "Alex",
+                  "last_name": "Blasche"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1157,
+              "start": "13:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-serial-bus-using-modbus-and-can-bus-with-qt",
+              "title": "Qt Serial Bus: Using Modbus and CAN bus with Qt",
+              "subtitle": "",
+              "track": "Advanced",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "QtSerialBus is a new Qt module, introduced as a technical preview in Qt 5.6.0. It supports two serial interface protocols that are commonly used on embedded systems: CAN bus and Modbus. This talk will introduce QtSerialBus, starting with background on the CAN bus and Modbus interface protocols, and the currently supported platforms, drivers, and hardware. The Qt Serial Bus C++ APIs will be presented and some code examples shown, as well as a demonstration of some sample applications running. Areas of possible future work will be discussed as well as references to more information.",
+              "persons": [
+                {
+                  "id": 1066,
+                  "full_public_name": "Jeff Tranter",
+                  "first_name": "Jeff",
+                  "last_name": "Tranter"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1158,
+              "start": "14:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "another-brick-in-the-wall-developing-large-scale-user-interfaces-with-qt",
+              "title": "Another Brick In The Wall: developing large-scale user interfaces with Qt",
+              "subtitle": "",
+              "track": "0 to 1",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "The ever-increasing size and affordability of flat screen panels combined with advances in display and touch technology has opened up a new class of user experience: large-scale, multi-touch, multi-user, natural-feel user interfaces blurring the boundary between physical and digital worlds. One example is Bluescape's visual collaboration Wall: a finger-and-pen touch surface, scalable from a single 30\" display to configurations reaching 400\" of visual space, and using a groundbreaking user interface powered by Qt. Thanks to its rich API and powerful platform integration capabilities, Qt offers a great development framework that scales beyond desktop, embedded and mobile to this new class of user experience. This session will offer insights into the architecture and challenges associated with large-scale systems, as well as Qt usage examples: graphics and input stacks, cross-client support, A/V conferencing, etc.",
+              "persons": [
+                {
+                  "id": 1068,
+                  "full_public_name": "Romain Pokrzywka",
+                  "first_name": "Romain",
+                  "last_name": "Pokrzywka"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1159,
+              "start": "12:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "integrating-opengl-with-qt-quick-2-applications",
+              "title": "Integrating OpenGL with Qt Quick 2 applications",
+              "subtitle": "",
+              "track": "Advanced",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "One of the foundation pillars of Qt Quick 2 is its OpenGL-based rendering pipeline. By leveraging the GPU capabilities, we get 60 frames-per-second animated scenes, real time eye candy and special effects, particles, and so on. Moreover, the main programming language is QML, which is extremely popular amongst developers and designers -- it allows them to quickly prototype and build user interfaces. For these reasons, Qt Quick is becoming the de-facto choice on mobile and embedded platforms. However, can we integrate Qt Quick 2 with an existing OpenGL codebase? Would it be possible to reuse old, working, tested OpenGL code and give it a new look and feel by building a Qt Quick interface that uses it? How far can we go with that integration? In this talk, I will show the technologies available in Qt 5.6 that allow deep integration of Qt Quick 2 scenes with custom drawn OpenGL content. We will discuss the possibility of simply providing a Qt Quick overlay for an OpenGL scene. The discussion will then proceed to the creation of custom Qt Quick Items drawn using raw OpenGL commands, which can then be used from QML. Finally, I will illustrate how to manually drive Qt Quick's own rendering if we need to be in complete control of how and when the rendering happens. The audience is expected to have familiarity with basic QtQuick and OpenGL concepts, but no in-depth knowledge of them is required.",
+              "persons": [
+                {
+                  "id": 1070,
+                  "full_public_name": "Jim Albamont",
+                  "first_name": "Jim",
+                  "last_name": "Albamont"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1164,
+              "start": "14:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "radical-changes-in-the-aircraft-design-process-through-software-technology",
+              "title": "Radical Changes in the Aircraft Design Process Through Software",
+              "subtitle": "",
+              "track": "Built with Qt",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "The aircraft design process is a complex task, where experts from many different engineering disciplines cooperate on a single objective. Considering each discipline is responsible for only a small part of the entire aircraft - e.g. for the engine, the aerodynamics, or for the loads put to the aircraft structure - the design of a complete aircraft traditionally requires extensive communication between the experts and is therefore a very long and iterative process. In this talk we want to address, how recent software framework and tool developments are changing this situation radically. The large project Digital-X of the German Aerospace Center (DLR) aims at a fully computer-based design of the aircraft and offers a complete virtual flight testing system. This includes an automated analysis and optimization of the entire aircraft. The main idea of the project is a fully automated process, which does not only decrease the time for the aircraft design but also enables the analysis of futuristic non-conventional aircraft appearances. One of our major software developments is the integration framework RCE (Remote Component Environment), which allows coupling many different simulation programs to an automated workflow and steers the data flow between these tools - even across networks to connect different locations of our company. A typical aircraft design workflow includes tools for - design parameterization, - geometry and mesh generation, - the analysis of the aircraft structure, aerodynamics, flight dynamics, - and optimization algorithms. A growing number of these tools are now developed as Open Source Software. Qt plays a constantly increasing role for our software development: One example is DLR’s TiGL library for the generation of aircraft geometries, which is hosted on Github. Its user interface uses Qt to render a 3D visualization of the aircraft geometries. This C++ based software runs on all major desktop systems and additionally on Android, currently with a hybrid Java/C++ implementation. Another Open Source Software is DataFinder, which allows storing and retrieving all the generated simulation data in a convenient and secure way. In this case, PyQt is used for the generation of the user interface. With the automated design and analysis process, DLR is now able to provide a rapid evaluation of novel innovative aircraft design concepts, such as the Blended Wing Body. In an additional presentation in the Qt Application Development &amp; Device Creation session we address some of the Qt specific practices in DLR’s software GTlab for turbomachinery design.",
+              "persons": [
+                {
+                  "id": 1078,
+                  "full_public_name": "Martin Siggel",
+                  "first_name": "Martin",
+                  "last_name": "Siggel"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1165,
+              "start": "13:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "performance-boost-trough-gaze-controlled-user-interfaces",
+              "title": "Enabling Devices to Act Automatically and Intelligently through Eye Interaction",
+              "subtitle": "",
+              "track": "0 to 1",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "4tiitoo is a leading company in natural interaction for workstations, VR &amp; AR headsets, control panels, HUDs, CAVEs, Powerwalls, and IoT devices.\r\n\r\n4tiitoo’s software platform NUIA controls everyday devices and applications in a consistent and natural way based on inputs like gaze, gestures and speech. It predicts users' intentions to enable devices to act automatically and intelligently.\r\n\r\nThe NUIA Software and SDK is created using C++/Qt and QML. It connects and processes sensor-based data from eye trackers, 3D cameras, gesture wearables, microphones, mobile devices, AR/VR headsets, IoT devices, and measuring sensors. NUIA enables any Windows 7/8/10 application or website to be controlled via these next generation sensors, with currently more than 100 applications and websites supported.\r\n\r\nA special use case for developers is the NUIA IDE Booster for the Qt Creator. This NUIA Extension enables users to control the Qt Creator with their eye tracking equipped computers (e.g. with the Tobii EyeX peripheral or built-in in the MSI GT72S notebook). NUIA uses the eye tracking data to provide more efficient and convenient ways to control the IDE - resulting in a performance boost. Features of the NUIA IDE Booster for the Qt Creator include:\r\n\r\n● Fluid resizing: Enlarge the panel you look at with one keypress to see the debug output or source code maximized\r\n\r\n● Mouse teleporter: Sends your mouse cursor automatically to buttons and areas you want to trigger and back to the last point of action when you look back\r\n\r\n● Automatic scrolling: Just read a web page and NUIA will know when to scroll. Scrolling speed is adjusted to your reading pace.\r\n\r\n● Quick app switching: Switch between all open apps in the blink of an eye\r\n\r\n● List selection: Directly access even small list items. Small lists can trigger helper menu for quick selection\r\n\r\n● Gaze buttons: Trigger buttons without touching the mouse. Frequently used buttons can be configured for automatic gaze clicking\r\n\r\n● Directed search: Directly search the content you work on. Crtl + f triggers the search in the panel you look at\r\n\r\n● Workflow automation: Trigger custom workflows by gaze. Buttons in NUIA Menu can be configured by you\r\n\r\n● More information on the IDE Booster at https://store.nuia.com/categories/installer/extensions/nuia-ide-edition or http://www.4tiitoo.com\r\n\r\nThe talk introduces the possibilities of gaze control in general and the Qt Creator in detail and highlights advantages and best practices of eye interaction.",
+              "persons": [
+                {
+                  "id": 1701,
+                  "full_public_name": "Tore Meyer",
+                  "first_name": "Tore",
+                  "last_name": "Meyer"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1169,
+              "start": "16:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "all-about-qt-on-android-part-1-say-hello-to-qt-on-android",
+              "title": "All about Qt on Android: Say hello to Qt on Android",
+              "subtitle": "",
+              "track": "Advanced",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "This session will introduce you to beautiful Qt on Android world. We'll start with setting up the development environment, we'll check the tools, then we'll see how and what to setup on you Qt application to make it a real Android application and finally how to sign your application to prepare it for publishing on Google's Play Market (or any other Android market's out there).",
+              "persons": [
+                {
+                  "id": 1086,
+                  "full_public_name": "BogDan Vatra",
+                  "first_name": "BogDan",
+                  "last_name": "Vatra"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1170,
+              "start": "12:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "revolutionizing-automotive-with-qt-automotive-suite",
+              "title": "Revolutionizing Automotive with Qt Automotive Suite",
+              "subtitle": "",
+              "track": "Qt in Automotive",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "The Qt Automotive Suite has now reached the main Qt repositories and is available as open source, just as the rest of Qt. This is a wirlwind tour of the components offered and how they fit into the automotive space - how they work with GENIVI, what problems they address and what parts of the industry that they actually disrupt. We also look at Qt in automotive from an industry trends perspective - what is happening in the upcoming product cycles and why is Qt important.",
+              "persons": [
+                {
+                  "id": 1088,
+                  "full_public_name": "Johan Thelin",
+                  "first_name": "Johan",
+                  "last_name": "Thelin"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1176,
+              "start": "12:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "ultrasound-innovators-mobile-health-units",
+              "title": "Replacing the Stethoscope with Ultrasound",
+              "subtitle": "",
+              "track": "Built with Qt",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Medical technology is quickly advancing into the mobile realm where rather than patients being prescribed medicines, they are prescribed apps to help provide additional data and track various health related measurements. Along with these apps, small electronic devices are rapidly being developed to provide additional sensor-acquired information that can be affordably obtained by either the physician or the patient. Clarius Mobile Health is developing a revolutionary new ultrasound device which wirelessly connects to custom mobile apps developed for smartphones and tablets. Where traditional ultrasound devices are cart based or at minimum, the size of a laptop, we’ve scaled down the architecture to a device that weighs less than 600 grams, but still provides the high-end image quality that is expected from traditional and costly ultrasound units. The Clarius ultrasound device connects through both Bluetooth Low Energy and WiFi to provide connection information and transmit ultrasound images at over 30 frames per second. To dramatically simplify the development and deployment of the software, Clarius is relying on the Qt toolkit to provide everything from a QML based GUI, internal core components, as well the new Qt Bluetooth framework which encapsulates the very specific mobile APIs. By not having to rely on native Swift and Java development, the development timeline has been rapidly shortened. To help with testing the core functionality, GUI, and even Bluetooth, the software is easily compiled for a Linux desktop environment to provide an elegant mechanism to develop and test prior to deployment on the mobile architectures. By creating a device which is much smaller than traditional ultrasounds, and employing Qt as a base framework for the mobile app development, Clarius is on track to put ultrasound devices in the hands of physicians and patients that would have never previously been able to use or afford such an important tool in the health sector. It has been said many years ago that ultrasound will become the stethoscope of the future, and Clarius is now leading the way to achieve that goal.",
+              "persons": [
+                {
+                  "id": 1061,
+                  "full_public_name": "Kris Dickie",
+                  "first_name": "Kris",
+                  "last_name": "Dickie"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1180,
+              "start": "14:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "making-the-devialet-phantom-with-qt",
+              "title": "Making the Devialet Phantom with Qt",
+              "subtitle": "",
+              "track": "Built with Qt",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Devialet released Phantom in 2015, a revolutionary audio product which set a new standard for high-end connected speakers. In this talk, we will cover how Qt was instrumental in developing this product. We will describe the best practices that allowed a small Software Engineering team to leverage code across multiple platforms from embedded Linux to desktop, iOS and Android while delivering a product on time and budget.",
+              "persons": [
+                {
+                  "id": 1102,
+                  "full_public_name": "Romuald Cari",
+                  "first_name": "Romuald",
+                  "last_name": "Cari"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1184,
+              "start": "14:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "ipv6-for-beginners",
+              "title": "IPv6 for Beginners",
+              "subtitle": "",
+              "track": "Advanced",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "IPv6 is the evolution of the Internet Protocol and was created in the late 1990s when it was clear that the then-current version (IPv4) would run out of available addresses soon. Soon after, software was converted to handle IPv6 and the all service providers began offering IPv6 connectivity. Right? Not really. While a lot of applications did add support for IPv6, that conversion was by far not widespread enough. That created a chicken-and-the-egg problem with the service providers not deploying IPv6: no applications supported it, so connectivity wasn't necessary, so developers didn't add support in their applications, ... The Internet of Things, however, will change that scenario. With a predicted 40 billion devices connected in a couple of years' time, IPv4 will clearly not be enough. As a point of fact, all but one of the Regional Internet Registries, the organisations that administer the IP address space, have run out of blocks they can delegate to new clients. Moreover, new mesh-connectivity technology is being designed, first and foremost, for IPv6, especially 6LoWPAN, Thread, and 6lo-over-Bluetooth LE. That means application support is required now, more than ever. New protocols should be designed, from the drawing board, to take advantage of IPv6. In specific for IoT, since most of the domain is green field right now, designing for IPv6 is possible and should be encouraged. This session will go over the basics of IPv6, how it differs from IPv4 and what application developers should be aware of. It will go over the basic C socket API and then move on to how IPv6 is accessible in the Qt API, thus explaining how to write software capable of both IPv4 and v6, seamlessly. It will then discuss how application protocols can benefit of the expanded address space, multicasting abilities, header compression in mesh networks and other technology not available in IPv4. The presenter is a system architect for Internet of Things in Intel's Open Source Technology Center. In addition to being QtCore and QtDBus's maintainer, he's a regular contributor to QtNetwork and recently added classes like QNetworkDatagram to that module.",
+              "persons": [
+                {
+                  "id": 1106,
+                  "full_public_name": "Thiago Macieira",
+                  "first_name": "Thiago",
+                  "last_name": "Macieira"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1185,
+              "start": "16:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "reaqt-native-building-performant-web-uis-with-qt",
+              "title": "ReaQt Native - building performant web UIs with Qt",
+              "subtitle": "",
+              "track": "Built with Qt",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Hybrid apps traditionally meant bloated web UIs which linked to native code that contained the business logic or heavy calculations. No more. React.js is a JavaScript UI library powering Facebook and Instagram. ReaQt Native is a Qt bridge to this fast-growing JS library that exposes QtQuick and scene-graph performance to React.js (like React Native does for Android and iOS). This way we can have 60fps pixel-perfect web UIs, while avoiding the bloat and sluggishness of WebViews in embedded and resource constrained hardware. While QML has an elegant syntax, the advantage of ReaQt is the general compatibility with the React.js ecosystem. This way not only can the same technology be used on all of web, desktop, mobile and embedded worlds, but web developers and designers traditionally not using Qt can also help building the next generation of performant applications on Qt-supported embedded hardware.",
+              "persons": [
+                {
+                  "id": 924,
+                  "full_public_name": "Attila Csipa",
+                  "first_name": "Attila",
+                  "last_name": "Csipa"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1187,
+              "start": "12:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "creating-the-ultimate-blended-reality-kiosks-info-points-and-registration-desks-with-qt-and-sprout-by-hp",
+              "title": "Creating the ultimate, blended reality kiosks, info-points and registration desks with Qt and Sprout by HP",
+              "subtitle": "",
+              "track": "Built with Qt",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Automated registration desks and info-points are often relegated to a glorified tablet app, with convoluted menus, a lot of (hard) tapping, and with very limited data entry capabilities. Sprout by HP is a Qt powered PC platform, extended with several camera systems, a touch mat and a number of machine vision features that allow creating the next generation kiosk experience - where you don't spend minutes typing in your name or navigating menus, can use equally well digital or paper-based content and even ask for blended reality remote assistance. Real world implementations will be demonstrated that are currently used by automotive, retailers and financial institutions to improve user experience and scaling points of presence. Finally, Qt's role in creating versatile environments as both a UI layer and middleware glue is highlighted.",
+              "persons": [
+                {
+                  "id": 924,
+                  "full_public_name": "Attila Csipa",
+                  "first_name": "Attila",
+                  "last_name": "Csipa"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1189,
+              "start": "16:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-powered-application-development-framework-for-dolby-conference-phone",
+              "title": "Qt Powered Application Development Framework for the Dolby Conference Phone",
+              "subtitle": "",
+              "track": "Future Proof",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "This talk is about the success story on how the Dolby Conference Phone (DCP) project accomplished building its own partner ecosystem by developing Conference Service Application Framework (CSAF) around Qt. This enables Dolby to work with multiple conferencing service providers effectively and efficiently.\r\n\r\nBackground about DCP:\r\n\r\nDolby designed the Dolby Conference Phone (DCP) to deliver the Dolby Voice experience, not as just another conference phone. It is an integral component of the Dolby Voice solution, offering stunning audio quality and easy meeting join and management, features that promote productive conferencing. The DCP is a dual mode device – an endpoint for Dolby Voice enabled services and a SIP phone for IP telephony environments. Dolby Voice enabled conferencing service on DCP is provided by partner Conferencing Service Providers (CSPs) like BT, PGI, etc.\r\n\r\nWhy CSAF, what it does?\r\n\r\nThe project had challenges working with multiple CSP partners to integrate their services on DCP software. Traditional approaches needs bigger team and longer release cycles. Any changes, improvements, new features that partner requires, Dolby will have to spend resources to work on, and they have to wait for 3-6 months release cycle for the feature to be ready. Their customers will have to wait even longer. To solve this problem we build CSAF on the DCP to expose core services and component libraries in a framework which enabled our partners to develop conferencing apps using QML. We went extra miles by serving QML/JS conferencing apps over network from HTTP application servers. Cloud deployment model provides rapid development, quick release cycles and modern software management experience.\r\n\r\nQt everywhere!\r\n\r\nCSAF is powered by Qt 4.8. The CSAF exposes QML/JS APIs using QML plugins for UI component library, core services library and network connectivity library. The CSAF app manager uses QML engine as its core with some customizations to securely download the app. SDK for CSAF is built upon Qt creator and we use QDoc to generate complete documentation for APIs and SDK. We also use Qt Quick Test for writing auto tests to validate the framework. CSAF network connectivity APIs are based on QML XMLHttprequest and QWebSockets. Basically we use Qt almost everywhere.\r\n\r\nIn Nutshell: We would like to demonstrate how to pull together the Qt powered application development framework which loads QML apps from cloud and build SDK using Qt tools to complete the offering. Of course, all of this will be backed by a live demo!",
+              "persons": [
+                {
+                  "id": 1110,
+                  "full_public_name": "Kushal Dalal",
+                  "first_name": "Kushal",
+                  "last_name": "Dalal"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1190,
+              "start": "16:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "optimize-qtqml-for-digitial-instrument-clusters",
+              "title": "Optimize Qt/QML for Digitial Instrument Clusters",
+              "subtitle": "",
+              "track": "Qt in Automotive",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "We provide Digitial Instrument Cluster for local automakers in China. The system is based on Linux and QT/QML(Qt 5.5 or later) technology, which need 60fps in 1920x720 resolution. The hardware platform is freescale(NXP) i.Mx6 Dual Lite. We will talk about some tips or experience on how to optimize software as follow, 1.Partial update with Qt for instrument cluster animations. 2.3D Car model rendering performance tradeoff in Qt. 3.QML fast loading policy and key points in instrument cluster development. 4.Integrate mobile navigation into instrument cluster with Qt. 5.A novel method for fast boot Linux and QML will be involved. A full function instrument cluster UI will work within 1.2 seconds(cold boot). The comparative data before and after optimization will be provided based on our hardware platform.",
+              "persons": [
+                {
+                  "id": 1111,
+                  "full_public_name": "Liu Miao",
+                  "first_name": "Liu",
+                  "last_name": "Miao"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1191,
+              "start": "14:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "creating-immersive-virtual-reality-experience-with-qt3d",
+              "title": "Creating Immersive Virtual Reality Experience with Qt3D",
+              "subtitle": "",
+              "track": "Future Proof",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "We tried to make our set­top application a VR ready application, so we have tested 3d headsets to find out how can we integrate our set­top box android application on it or create a hybrid application that can be run on embedded boards and VR headsets.\r\n\r\n3D engines like Unity 3D were the first we studied but we faced many problems:\r\n\r\n \tWe have to use C# which can be very slow in big application due to garbage collector and .NET heavy dlls.\r\n \tIt’s relatively complicated to add controls on top of the UI.\r\n \tGraphical loop, rendering 60fps even if there is no change in the interface.\r\n\r\nWe tested some feature of Qt3D which allow us to use all OpenGL power (with or without graphical loop) and we found many advantages of using Qt such as:\r\n\r\n \tOpenGL power\r\n \tVery easy to add UI elements on top (and multiple of technology’s choices)\r\n \tComplementary modules of Qt for networks and databases...\r\n\r\nTherefore, the main functionality we need to do is the ability to load realistic 3d scenes with materials, textures and lights. We can find all those graphical elements in Fbx files. Fbx file format is the main 3D output of Autodesk 3ds max. The advantage of Fbx format is that it embeds textures, lights and animations.\r\n\r\nIn this presentation, I’ll explain how we can use Qt3D to make realistic OpenGL rendering and use it to create a good virtual reality experience.\r\n\r\nThe first step we made was to develop a Fbx file loader for Qt Quick application using QQuickFramebufferObject. The Fbx file contains a complex 3D scene with all the needed elements to make the scene real (lights, textures, animations...).\r\n\r\nThe loader can handle a big 3D scene and places other objects (other fbx files) in the scene.\r\n\r\nThe second step was to render the scene for right and left eye to use tracked headsets. We used OpenVR to render those images and stream tracking data.\r\n\r\nThe last step was to add some interactions between the user and the scene. We generally use symbol tracking for that to put a virtual mobile application in the scene. we can, for example, change tv content or the whole scene instantly.",
+              "persons": [
+                {
+                  "id": 1112,
+                  "full_public_name": "Mounir Boudrifa",
+                  "first_name": "Mounir",
+                  "last_name": "Boudrifa"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1305,
+              "start": "14:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "building-secure-and-maintainable-iot-solutions-with-qt-and-ubuntu-core",
+              "title": "Building Secure and Maintainable IoT Solutions with Qt and Ubuntu Core",
+              "subtitle": "",
+              "track": "0 to 1",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "This session will describe how to build Qt based IoT solution for digital signage or kiosk applications using Qt on Ubuntu Core. ",
+              "persons": [
+                {
+                  "id": 1341,
+                  "full_public_name": "Pedro Coca",
+                  "first_name": "Pedro",
+                  "last_name": "Coca"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1314,
+              "start": "11:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "smooth-sailing-with-opengl-es-and-qml",
+              "title": "Smooth sailing with OpenGL ES and QML",
+              "subtitle": "",
+              "track": "Built with Qt",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "BEP Marine manufactures a range of high quality electrical solutions designed for marine and recreational vehicles. CZone, their market leading digital switching technology, utilizes the industry standard NMEA2000 network to control all electrical systems on the vessel or vehicle. Dedicated touch screens and compatible Garmin, Furuno or Navico multifunction displays offer single touch control over hundreds of individual circuits. CZone brings the convenience of home automation to boats and recreational vehicles designed for the harsh marine and outdoor environments.\r\n\r\nOne of the biggest challenges for the Auckland based engineering team is developing and maintaining software for the many different platforms. Software for micro controllers, embedded Linux, mobile and desktop platforms all need to be synchronized and kept to a high standard. This is where Qt is able to provide the team with the advantage. Embedded, mobile and desktop platforms are able to share the same source code drastically reducing the amount of work (and mistakes!).\r\n\r\nCurrently the team is updating the user interface across the three platforms using Qt to provide a consistent experience for consumers. This presentation will explore the user interface development process from artwork to implementation for a few key user interface elements. Take a look at a cross platform build and deploy process. How QML enables rapid feedback from the stakeholders, and custom components rendered with OpenGL give full control over the graphics hardware. Various rendering methods are demonstrated and compared.\r\n\r\nWith 6 battery banks, 172 DC circuits, 35 AC circuits, two generators, two shore power connections, four battery chargers and an inverter, managing the on board systems on the flagship Riviera 77 motor yacht is a complex task! This talk aims to give you a glimpse into how CZone uses Qt to make it easy.",
+              "persons": [
+                {
+                  "id": 1315,
+                  "full_public_name": "Jeremy Stott",
+                  "first_name": "Jeremy",
+                  "last_name": "Stott"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1320,
+              "start": "14:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "taking-control-of-and-owning-your-hmi-design-build-and-innovate",
+              "title": "Taking Control of and Owning Your HMI - Design, Build and Innovate",
+              "subtitle": "",
+              "track": "Qt in Automotive",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Today manufacturers are struggling to innovate and keep up with Consumer Electronics innovation cycles. The question is why can CE devices run faster cycles than cars? Well, the car is a more complex system that requires more integration, that is one part of the challenge however. The current models of engagement most automotive OEMs have when it comes to HMI can be summarised into two types are the main culprit:\r\n\r\n1. A traditional Tier 1 HW and SW solution, which means that the OEM in effect has to start from scratch every 3 years when delivering their IVI system, each time having to retest functionality like Tuner and Media Player as it’s from a new supplier.\r\n\r\n2. Owning their own HMI platform and framework, which requires massive investment and has a high cost of ownership due to having to build and manage the framework in addition to actually the HMI and UX.\r\n\r\nBoth models make innovation either difficult or too expensive to sustain continuous innovation as we see in the CE market vertical.\r\n\r\nThis talk will introduce a new way to HMI ownership, including a pre-cooked platform that allows the automotive OEMs to build the HMI once (for media, BT, tuner etc) test it, and then innovate into new areas - instead of constantly having to re-integrate the same features onto new HW / SW platforms every new product cycle.",
+              "persons": [
+                {
+                  "id": 1321,
+                  "full_public_name": "Stefan Balkowiec",
+                  "first_name": "Stefan",
+                  "last_name": "Balkowiec"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1323,
+              "start": "16:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "using-qt-to-build-interfaces-in-virtual-reality",
+              "title": "Using Qt to Build Interfaces in Virtual Reality",
+              "subtitle": "",
+              "track": "0 to 1",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "High Fidelity is building an open source platform for virtual reality. QT has played an integral part in the rapid development of this platform.\r\n\r\nThis talk with review how choices for UI and interfaces differ between 3D and 2D (screen) environments and how the company has iterated rapidly to discover what works for users.",
+              "persons": [
+                {
+                  "id": 1322,
+                  "full_public_name": "Philip Rosedale",
+                  "first_name": "Philip",
+                  "last_name": "Rosedale"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1353,
+              "start": "09:15",
+              "duration": "00:30",
+              "room": "Qt World Summit 2016",
+              "slug": "the-inevitable-digital-futures",
+              "title": "The Inevitable Digital Futures",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Much of what will happen in the next 30 years is inevitable, driven by technological trends that are already in motion. Some of what is coming may seem scary, like ubiquitous tracking, screens everywhere, virtual reality in your bedroom, or robots replacing humans. Kevin Kelly outlines what is inevitable and argues that we should embrace these changes, rather than outlaw, or slow them down, because by embracing with vigilance we gain their maximum benefits and least harms.",
+              "persons": [
+                {
+                  "id": 1114,
+                  "full_public_name": "Kevin Kelly",
+                  "first_name": "Kevin",
+                  "last_name": "Kelly"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1363,
+              "start": "11:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-inside-the-worlds-first-fully-electric-supercar",
+              "title": "Qt Inside the World’s First Fully Electric Supercar",
+              "subtitle": "",
+              "track": "Qt in Automotive",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Rimac Automobili Ltd. is a technology company which focuses on the development and production of high-performance electric vehicles, powertrains and battery systems.\r\n\r\nAfter several years of development, the company has unveiled the world’s first fully electric supercar – the Concept_One, at the 2011 Frankfurt Auto Show.\r\n\r\nWith more than a 1000 HP and four electric motors, the Concept_One is an exceptional car, combining the revolutionary approach to vehicle dynamics – All Wheel Torque Vectoring (AWTV) with advanced battery technology and many other creative features.\r\n\r\nThe technology inside the Concept_One has been developed in-house as the goal of Rimac team was to raise the bar in every aspect of the vehicle. Therefore they needed to start with a clean sheet of paper and design all components with the ultimate goal in mind.\r\n\r\nFor the purpose of Concept_One, the team has developed one of the worlds most advanced in-vehicle infotainment systems. At its hart, infotainment is powered by Qt. The talk will give an insight into the process how this system was developed and how Qt made it possible.",
+              "persons": [
+                {
+                  "id": 1362,
+                  "full_public_name": "Goran Hacek",
+                  "first_name": "Goran",
+                  "last_name": "Hacek"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1364,
+              "start": "17:30",
+              "duration": "01:00",
+              "room": "Qt World Summit 2016",
+              "slug": "magical-ux-and-the-internet-of-things",
+              "title": "Magical UX and the Internet of Things",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "\"What if this thing was magic?\" Designing for the internet of things means blessing everyday objects, places, even people with extraordinary abilities—requiring designers, too, to break with the ordinary. Designing for this new medium is less a challenge of technology than imagination. Sharing a rich set of examples, designer and author Josh Clark explores the new experiences that are possible when ANYTHING can be an interface. The digital manipulation of physical objects (and vice versa) effectively turns all of us into wizards. Sling content between devices, bring objects to life from a distance, weave \"spells\" by combining speech and gesture. But magic doesn't have to be otherworldly; the UX of connected devices should build on the natural physical interactions we have everyday with the world around us. The new UX must bend technology to the way we live our lives, not the reverse.",
+              "persons": [
+                {
+                  "id": 1119,
+                  "full_public_name": "Josh Clark",
+                  "first_name": "Josh",
+                  "last_name": "Clark"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1378,
+              "start": "13:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "introducing-predictive-maintenance",
+              "title": "Introducing Predictive Maintenance",
+              "subtitle": "",
+              "track": "Future Proof",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Now that the IoT is a reality, the next step is to leverage this connectivity and transform pieces of information into real problem solvers. One example is the ability to predict failures before they happen; failure prevention allows for reduced maintenance costs, flexibility on intervention time, and fewer emergencies to deal with. Furthermore, it is easy to picture how gathered data, when managed properly, can improve the way devices are used by reducing power consumption, thus becoming more environment-friendly and extending the product life overall. This is made possible by two elements: monitoring how objects are being used (sensors, user actions, failures, etc.) and modeling how and when these objects and components fail (machine learning, AI). This session will focus on how to achieve so-called predictive maintenance, describing various technologies and tools involved, as well as how Qt fits and helps in this space.",
+              "persons": [
+                {
+                  "id": 1379,
+                  "full_public_name": "﻿Adrien Leravat",
+                  "first_name": "﻿Adrien",
+                  "last_name": "Leravat"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1382,
+              "start": "16:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "shoehorning-qobjects-into-modern-c",
+              "title": "Shoehorning QObjects into Modern C++",
+              "subtitle": "",
+              "track": "Built with Qt",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Qt is a constantly evolving API that has embraced many of the new C++ concepts introduced in C++11 and C++14, but the core QObject class still has some surprising limitations. If you want to use Qt's tried and true signal/slot mechanism, you must derive your classes from QObject, but there are a few subtle snags that you'll have to avoid, including: classes cannot have multiple QObjects in their ancestry, you cannot use virtual inheritance with QObject-based classes, and the Q_OBJECT macro cannot be used in templated classes.\r\n\r\nThe bad news is that these limitations can trip up modern C++ developers who want to use advanced techniques like templates and multiple inheritance. The good news is that Qt is evolving quickly to suit modern needs, and that there are workarounds that can be used today. This talk will focus on techniques that can work around QObject’s current limitations while Qt is still evolving. We will discuss different patterns that programmers can use to write QObject classes that use advanced templating, while still maintaining the myriad of conveniences provided by the QObject system. We will cover how Qt 5’s new connection syntax can solve some modern problems, and present more intricate solutions for the problems left standing. We’ll also go over some tips and tricks using pure virtual functions that can get around QObject’s multiple inheritance issues, while still steering clear of the “dreaded diamond” problem. Finally, we will cover recent discussions on the Qt development mailing list about how Qt contributors can help evolve Qt to better work with templates out-of-the-box, while noting a few key complications that must be solved.",
+              "persons": [
+                {
+                  "id": 1381,
+                  "full_public_name": "Alexander Montgomery",
+                  "first_name": "Alexander",
+                  "last_name": "Montgomery"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1383,
+              "start": "16:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qtcreator-as-bmw-car-it-automotive-ide",
+              "title": "Qt Creator as BMW Car IT Automotive IDE",
+              "subtitle": "",
+              "track": "Qt in Automotive",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "As from QtCreator 3.2, BMW Car IT adapted the IDE to function as main integration of the coding and debugging process. Required changes on the plugin API as lack of future requirements. The current system needed to be tied to a specific Linux version and a customized version of the IDE need to be released each time, This process was time consuming and did every release dependent of been generated in-house.\r\n\r\nWith the advent of Qt LTS and changes of plugin system on most recent Qt Creator versions, was time to start to foresee the possibility to use a plugin only that can be used by any deployed Qt Creator version in any Linux distribution.\r\n\r\nWith final developer as the main target user, simplicity on the install and usage process are main priority raising the current technical limitations on our current deployment side, such as:\r\n\r\n \tUsage of a specific Linux  platform against allow the developer use their own distribution\r\n \tAdapt the plugin to be used on current available qt-creator releases instead of custom one\r\n \tEasy install process on the toolchain and plugin\r\n \tControl of external debuggin\r\n \tIntroduce non regular functions the the visual plugin part, like sdk / toolchain package manipulation\r\n \tAllow a code completion for the toolchain software\r\n\r\nIn a solving pattern, some of current Qt solutions are available to use, like qt framework installer to the easy deployment or the new parser system based on clang, but still limited like the necessity of compile the plugins inside a built code of qt-creator, or lack of proper plugin visual interface customization.\r\n\r\nThe talk will show the current status of the project and how we're planning to address this unanswered issues.",
+              "persons": [
+                {
+                  "id": 1384,
+                  "full_public_name": "Helio Chissini de Castro",
+                  "first_name": "Helio Chissini de",
+                  "last_name": "Castro"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1418,
+              "start": "12:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "how-to-transition-your-existing-native-mobile-applications-to-using-a-common-qt-based-core",
+              "title": "How to transition your existing, native mobile applications to using a common, Qt-based core",
+              "subtitle": "",
+              "track": "Built with Qt",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Qt provides a fantastic set of tools for building apps that can run on multiple platforms, but it's much harder to start using it if you already have pre-existing, native mobile apps for each major platform that you don't want to rewrite.  In this presentation we'll explain how the OneDrive team transitioned its existing, modern applications on iOS, Android, and Windows to using a common, Qt-based cross-platform core with minimal work.  We'll review the reasons you should consider making a similar change, the key technical challenges you'll encounter and how to overcome them, and benefits you can expect as a result of the change.",
+              "persons": [
+                {
+                  "id": 1325,
+                  "full_public_name": "Martin Beechen",
+                  "first_name": "Martin",
+                  "last_name": "Beechen"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1495,
+              "start": "17:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "the-paradox-of-automation-finding-the-right-combination-of-humans-and-technology",
+              "title": "The Paradox of Automation: Finding The Right Combination of Humans and Technology",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Automation promises to free us from routine tasks - to leave the low-level details of whatever it is we’re doing to the computers while we humans pop up a level and focus on the ‘big picture.’  Using examples from the airline cockpit, semiautonomous cars, and other applications, NASA scientist Steve Casner discusses why dividing work between humans and computers can be far more challenging than it seems.",
+              "persons": [
+                {
+                  "id": 1124,
+                  "full_public_name": "Stephen Casner",
+                  "first_name": "Stephen",
+                  "last_name": "Casner"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1528,
+              "start": "09:45",
+              "duration": "01:05",
+              "room": "Qt World Summit 2016",
+              "slug": "the-future-of-ui",
+              "title": "The Future of UI",
+              "subtitle": "",
+              "track": "Future Proof",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "UI has been with us from the beginning of the computer and will be with us far into the future. It is what we interact with in our daily lives and it will continue to change our lives for the better. Andrej discusses UI with a brief history, moving right into the future of what VR and AR has in store and the exciting challenges we will face as developers.",
+              "persons": [
+                {
+                  "id": 1527,
+                  "full_public_name": "Andrej Zdravkovic",
+                  "first_name": "Andrej",
+                  "last_name": "Zdravkovic"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1529,
+              "start": "12:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "amd-and-qt",
+              "title": "AMD and Qt",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Built with Qt, AMD introduced a brand new user experience and interface for their graphics control panel that has been around for over 10 years. Andrej discusses the process and the results of AMD using Qt to create this new experience.",
+              "persons": [
+                {
+                  "id": 1527,
+                  "full_public_name": "Andrej Zdravkovic",
+                  "first_name": "Andrej",
+                  "last_name": "Zdravkovic"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1530,
+              "start": "09:45",
+              "duration": "00:50",
+              "room": "Qt World Summit 2016",
+              "slug": "how-the-onedrive-mobile-team-uses-qt",
+              "title": "How the OneDrive Mobile Team uses Qt",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "",
+              "persons": [
+                {
+                  "id": 1326,
+                  "full_public_name": "Alexander Mazukabzov",
+                  "first_name": "Alexander",
+                  "last_name": "Mazukabzov"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1550,
+              "start": "16:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "operating-at-scale-with-qt-at-tableau",
+              "title": "Operating at Scale with Qt at Tableau",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Tableau is one of the foremost data visualization companies and one of the largest Qt projects with over 3 million lines of code committed to the codebase. Operating at this scale requires sociotechnical processes to manage and facilitate developer productivity.  This talk will outline what Tableau has done to maintain quality and feature velocity at the enterprise-level. The target audience is development management.",
+              "persons": [
+                {
+                  "id": 1548,
+                  "full_public_name": "Adam Christian",
+                  "first_name": "Adam",
+                  "last_name": "Christian"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1561,
+              "start": "16:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "operating-systems-for-operating-rooms",
+              "title": "Operating systems for Operating Rooms",
+              "subtitle": "",
+              "track": "Future Proof",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Medical device manufacturers have two choices when it comes to selecting an operating system for their devices: open source or commercial. The perception with open source is that it a free option but when the total cost of ownership of an operating system is closely examined, a very different picture is painted.\r\n\r\nThe total cost of ownership for a project consists of many factors that may not be immediately apparent.  A simple decision based on a limited analysis of the cost of obtaining and licensing the source code is insufficient, especially when considering large cost items such as development, maintenance, certification, and the overall software team size and dynamic.\r\n\r\nSteven Dean, global healthcare segment manager at QNX Software Systems, will examine the operating system choice for medical device manufacturers and explain how the inherent benefits of faster time to market, easier pre-market approval, and lower total cost of ownership can make a commercial OS a much more attractive option than a “free” OS option.",
+              "persons": [
+                {
+                  "id": 1562,
+                  "full_public_name": "Steven Dean",
+                  "first_name": "Steven",
+                  "last_name": "Dean"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1569,
+              "start": "15:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "automotive-media-management-in-future-ivi-systems",
+              "title": "Automotive Media Management in Future IVI Systems",
+              "subtitle": "",
+              "track": "Qt in Automotive",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "The challenge for automotive IVI implementations is that most people’s media -- their music, videos,  audiobooks, podcasts and television -- exist in a multitude of forms and originate from many disparate sources. In addition, as the nature of personal transportation is changing and ride-sharing is becoming more common, new requirements for infotainment emerge.\r\n\r\nIn this presentation we outline an architecture for automotive media management that addresses these challenges and we demonstrate a Qt based implementation.",
+              "persons": [
+                {
+                  "id": 1222,
+                  "full_public_name": "Roland Krause",
+                  "first_name": "Roland",
+                  "last_name": "Krause"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1578,
+              "start": "16:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-jaguar-landrover",
+              "title": "Bringing New Experiences to Automotive Consumers",
+              "subtitle": "",
+              "track": "Qt in Automotive",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Our aim is to bring new experiences to automotive customers. Having the ability to rapidly develop and iterate user interaction designs and experiences really provides a competitive advantage. Although the consumer electronics world currently arguably leads and drives the user interface experience, we will explain how the auto industry is quickly catching up to this pace of development. We will also provide insight into how rapid development is enabling the industry to validate designs with ‘real users’ in a real vehicle environment, replacing the need for surveys and clinics, and the benefits of using User Centric Design and a native cross platform application framework like Qt.",
+              "persons": [
+                {
+                  "id": 1577,
+                  "full_public_name": "Ben Ellis",
+                  "first_name": "Ben",
+                  "last_name": "Ellis"
+                }
+              ],
+              "links": []
+            }
+          ],
+          "": [
+            {
+              "id": 1296,
+              "start": "16:30",
+              "duration": "00:25",
+              "room": "",
+              "slug": "celos-revolutionizing-the-automation-industry",
+              "title": "CELOS: Revolutionizing the Automation Industry",
+              "subtitle": "",
+              "track": "0 to 1",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "CELOS is currently revolutionizing the automation industry. It brings a modern and consistent user interface to DMG MORI's machines providing an intuitive and easy machine operation. By having multiple APPs grouped in categories such as Production or Support each with a single concise scope, CELOS APPs break apart the former monolithic approach. That way the machine operator is guided efficiently and comfortably through a highly complex world, saving up to 30% machine idle time while getting his work done up to twice as fast. This talk will show how HEITEC has assisted its partner DMG MORI in ramping this enormous project up in a relatively short time. Qt has played a key role in this process. It is easy to use and to learn, so that HEITEC's practiced C/C++ programmers had no difficulty getting familiar with Qt and developed themselves into proficient Qt programmers quickly. Qt's clear API and terrific documentation further eases the integration of new colleagues into CELOS. This talk will also cover CELOS' strength and benefits in the area referred to as Industry 4.0. To illustrate, CELOS is horizontally integrated by splitting a job into the creation and information-providing phase (done by the APP JOB MANAGER), the planning phase (JOB SCHEDULER), and it's actual production phase (JOB ASSISTANT). Through it’s connectivity to enterprise resource planning tools, CELOS is integrated vertically into the workflow as well. At the talk's end you will see an exemplary work flow of CELOS showing it's beauty.\"",
+              "persons": [
+                {
+                  "id": 1297,
+                  "full_public_name": "Lorenz Haas",
+                  "first_name": "Lorenz",
+                  "last_name": "Haas"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1694,
+              "start": "9:45",
+              "duration": "01:05",
+              "room": "",
+              "slug": "qt-ubuntu",
+              "title": "Qt & Ubuntu",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "",
+              "persons": [
+                {
+                  "id": 1304,
+                  "full_public_name": "Thibaut Rouffineau",
+                  "first_name": "Thibaut",
+                  "last_name": "Rouffineau"
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "2016-10-20": {
+        "index": 1,
+        "date": "2016-10-20",
+        "rooms": {
+          "Qt World Summit 2016": [
+            {
+              "id": 1147,
+              "start": "12:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "creating-functional-safety-certified-systems-with-qt",
+              "title": "Creating Functional Safety Certified Systems with Qt",
+              "subtitle": "",
+              "track": "Success",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Qt is used in an extremely wide variety of use cases across multiple industries, sometimes also in safety critical systems. When a system, be it a medical device, railway control system, or an automobile, can potentially cause harm to humans, the concept of functional safety helps in assessing the risk and taking the necessary measures to steer the risk to an acceptable level. This presentation introduces the key concepts for functional safety and explains how to use Qt in a system certified for functional safety according to IEC 61508 and ISO 26262. ",
+              "persons": [
+                {
+                  "id": 1063,
+                  "full_public_name": "Tuukka Turunen",
+                  "first_name": "Tuukka",
+                  "last_name": "Turunen"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1151,
+              "start": "13:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-quick-scene-graph-advancements-in-qt-5-8-and-beyond",
+              "title": "Qt Quick Scene Graph Advancements in Qt 5.8 and Beyond",
+              "subtitle": "",
+              "track": "Qt Roadmap Today",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "As announced earlier this year, the Qt graphics stack - and first and foremost, Qt Quick - is undergoing the most significant changes since its introduction in Qt 5.0. The aim of the modularization process is to remove the strong OpenGL dependency, paving the way for other graphics APIs in the future, and to strengthen support for environments where accelerated graphics is not feasible. The previously standalone Qt Quick 2D Renderer is going to become a core part of Qt Quick, with the license changing to LGPLv3 to be in line with Qt's main modules. This makes the 2D Renderer available out of the box on every platform. In addition to a number of internal changes and enhancements, the introduction of partial updates will be visible to every user of this backend since the expensive full-screen updates plaguing earlier releases are now eliminated. To prove that the changed Qt Quick Scenegraph interfaces are suitable to handle graphics APIs different from OpenGL, an additional, proof-of-concept backend using Direct3D 12 is being developed in parallel with the rest of the changes. This also provides the foundations for potential future support for APIs like Vulkan or Metal. OpenGL is not left behind either. Modern techniques based on AZDO and OpenGL ES 3.2, potential vector graphics enhancements, as well as optimizations benefitting embedded and mobile environments, like pre-compiled shaders or compressed textures, are being researched for future Qt releases. While OpenGL remains the default, number one choice, and many Qt Quick applications are expected to be able to run on a different backend without changes, there are cases, typically involving custom QQuickItems or shader effects, that will need attention and potentially a few changes from the applications. The first set of the Qt Quick improvements are expected to get integrated into Qt 5.8, due H2/2016. It is now therefore time to take a look at what these changes mean in practice and which direction Qt Quick is heading in the future.",
+              "persons": [
+                {
+                  "id": 1033,
+                  "full_public_name": "Laszlo Agocs",
+                  "first_name": "Laszlo",
+                  "last_name": "Agocs"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1152,
+              "start": "14:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "automating-hmi-and-system-tests-for-qt-and-qml-frontends",
+              "title": "Automating HMI- and System-Tests for Qt and QML Frontends",
+              "subtitle": "",
+              "track": "Performance Optimizations",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "To test a Qt or QML application there are many different test types, such as unit tests, functional tests, non-functional tests, system tests, integration tests, etc., which can and should be done. Each of these test types focus on different aspects of the testing and are complementary to each other. Several of the mentioned test types can be partially of fully automated. In this talk you will learn about all challenges of automating the functional HMI testing and visual verifications of system tests of Qt and QML user interfaces on embedded, desktop and mobile platforms. The talk will explain differences, overlaps and specific requirements and challenges of these two test types. The presenter will concluded the session with a live demonstration.",
+              "persons": [
+                {
+                  "id": 1355,
+                  "full_public_name": "Harri Porten",
+                  "first_name": "Harri",
+                  "last_name": "Porten"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1155,
+              "start": "16:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "accelerating-time-to-market-for-embedded-device-qt-learnings",
+              "title": "Accelerating Time To Market for Embedded Device, Qt Learnings",
+              "subtitle": "",
+              "track": "Success",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "In this presentation Mr. Murali Mandayam will go through solutions for tackling the most common issues in the execution of a large-scale software program. The learning are based on the extensive experience our embedded customers over the years. However, these results are easy to generalize to cover any large-scale software project when creating innovative embedded devices based on Qt. Software projects in reality start earlier than the first lines of code are written. In this presentation, we will look go through our learning starting already from the technology selection and extending all the way to the final maturization of a device software. The biggest decisions contributing to a short time-to-market are done in the early days of the software program. Understanding the final user experience at least on a conceptual level helps any program to decide the requirements for hardware. It is fundamental that the hardware decision is done with software in mind. This may sound naïve but still today, we constantly face projects where cost of a piece of silicon is driving the decision with a mindset “software will be adjusted to work with this”. The right hardware with the right system architecture gives you a solid foundation for fast time-to-market. Other elements of the short time-to-market are in the hands of software units from design to actual implementation with good software practices. In the presentation, we will take a closer look on each of the phases we have recognized in the embedded device creation project and address the solutions for the top issues in each phase. The issues can be solved roughly in two different ways – using the right Qt tools / capabilities or changes in the way of working throughout the organization. We will illustrate with examples how to concretely shorten the time-to-market with the Qt tools available from us and/or our key partners. Furthermore, we will share the best practices from our customer cases in building the most capable software processes for embedded device creation.",
+              "persons": [
+                {
+                  "id": 1533,
+                  "full_public_name": "Murali Mandayam",
+                  "first_name": "Murali",
+                  "last_name": "Mandayam"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1160,
+              "start": "13:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "pointer-events-and-handlers-in-qt-quick",
+              "title": "Pointer Events and Handlers in Qt Quick",
+              "subtitle": "",
+              "track": "Performance Optimizations",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "A walkthrough of the new Handler classes which are planned as a Tech Preview release in Qt 5.8, and the use cases for them: taps, pinches, drags, flicks, and custom touchpoint handling. In previous versions of QtQuick, we had a few Items specialized for handling pointing device events, such as MouseArea, Flickable, PinchArea, and MultiPointTouchArea. Some of them are limited to handling mouse events, so when you use a touchscreen, they rely on receiving synthesized mouse events. This precludes touch interaction with multiple Items, because of the assumption that there is only one mouse - despite the fact that you are using a multi-touch screen. At the 2015 Qt Contributors' Summit, we discussed a potential solution to the problem, from which the present implementation has evolved. The solution is to have one type of event (a synthetic wrapper in Qt 5, and a common base class in Qt 6) for all pointing-device events, and a new larger set of lightweight Handler objects, focused purely on handling events. They can be device-agnostic, or can filter events from specific kinds of devices. They are not Items themselves, but pointer-handling aspects of Items. This talk will be an exploration of these Handlers and their use cases: how to achieve fluid, multiple-touch, multiple-user UIs in Qt Quick.",
+              "persons": [
+                {
+                  "id": 1072,
+                  "full_public_name": "Shawn Rutledge",
+                  "first_name": "Shawn",
+                  "last_name": "Rutledge"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1161,
+              "start": "13:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "user-experience-design-for-software-engineers",
+              "title": "User Experience Design for Software Engineers",
+              "subtitle": "",
+              "track": "Success",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "This talk provides an introduction to user experience design, specifically focusing on issues that software engineers encounter. While engineers tend to focus on the implementation details of getting pixels on the screen, less consideration is often given to what pixels go where, and who besides the engineer will be interacting with them. In this session we will present an overview of the UX process, highlighting several best practices. You will come away from the session with a better understanding of the thought process needed to create a high-quality user experience and a set of actionable guidelines to keep in mind during implementation.",
+              "persons": [
+                {
+                  "id": 1074,
+                  "full_public_name": "Jeff LeBlanc",
+                  "first_name": "Jeff",
+                  "last_name": "LeBlanc"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1162,
+              "start": "15:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "qobject-deep-dive",
+              "title": "QObject Deep Dive",
+              "subtitle": "",
+              "track": "Qt Tips &amp; Tricks",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "At the heart of Qt is the QObject and the technologies that drive this. As Qt developers we love to use signals and slots, the events, the introspection and all those other features. But how do those actually work? Surprisingly few Qt developers truly understand how the QObject systems work. And by not understanding, they fail to grasp the full potential of what this can help you with. In this talk, we will dive very deep into the belly of the beast and discuss how it actually works. You will see what moc does, how it's related to QObject and why it's necessary. You will learn all there is to learn about what QObject does for your objects. We will also look at the Qt event loop and see how this is related to QObject and the Qt signals. This is necessary to understand what happens to your Qt signals. And finally, we will have a discussion about how this should modify the architecture of your code, how you should modify the way you think code to best make use of Qt. The full use of Qt allows you to code self contained components - getting away from the dreaded spaghetti code. The aim of this talk is to give the developer the necessary background knowledge to make the right decisions about Qt based designs in the code.",
+              "persons": [
+                {
+                  "id": 940,
+                  "full_public_name": "Bo Thorsen",
+                  "first_name": "Bo",
+                  "last_name": "Thorsen"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1163,
+              "start": "14:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "how-to-develop-with-qt-for-multiple-screen-resolutions-and-multiple-platforms-and-best-practices-for-an-efficient-app-lifecycle-with-qt-technology-strategy-session",
+              "title": "How to Develop with Qt for Multiple Screen Resolutions and Multiple Platforms and Best Practices for an Efficient App Lifecycle with Qt (Technology Strategy Session)",
+              "subtitle": "",
+              "track": "Qt Tips &amp; Tricks",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "This session shows how to develop applications for multiple screen sizes, screen resolutions and form factors like phones, tablets and desktop PCs with Qt. We show how you can use the same code base, while having native-looking UIs &amp; UX across platforms. This involves tips for responsive design with Qt, how to best use the new Qt Quick Controls, and a comparison when to use Qt Quick and in which cases C++ is the better choice. We also explain how you can simulate multiple screen resolutions and platforms including iOS &amp; Android and their native UI from a single Desktop application. In the second part of this session, we will highlight how you can leverage the full app lifecycle with Qt: from design to development, testing, deployment to publishing. And how you can efficiently perform post-publishing tasks like analytics &amp; ongoing app improvements in the Qt ecosytem. This presentation gives you a non-technical overview of the possibilities with Qt for multi-screen and multi-platform development and shows best practices for an efficient app lifecycle with Qt. For an in-depth session with code examples see the technical second part of this presentation in the Qt Application Development &amp; Device Creation Track.",
+              "persons": [
+                {
+                  "id": 1076,
+                  "full_public_name": "Christian Feldbacher",
+                  "first_name": "Christian",
+                  "last_name": "Feldbacher"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1166,
+              "start": "12:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-for-ios-a-to-z",
+              "title": "Qt for iOS A to Z",
+              "subtitle": "",
+              "track": "Qt Tips &amp; Tricks",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Since version 5.2, Qt has been available on iOS. In this talk, we go through the process of building a simple QML application, run in the simulator, and deploy to a device. We first look at the creator project and settings that are specific to iOS such as targeted devices, SDKs, required capabilities, etc. We also look at Qt Creator tooling related to simulator and devices deployment. We will mention where Xcode still outperforms Creator, in particular when it comes to debugging and performance analysis. After looking at a simple QML app, we investigate the coverage Qt relative to the native capabilities. In particular we'll focus on text editing, keyboard customising, keyboard avoidance, accessing the sensors (location, orientation, camera), support of different screen sizes and DPI, etc. Then we look at how integrating with the native toolkits for accessing feature not covered by the QML layer. Using Objective C++ and Qt's iOS specific integration layer, we show how to access features from UIKit. Finally we will look at performance pitfalls that are common on iOS and how to detect and mitigate them using a variety of tools.",
+              "persons": [
+                {
+                  "id": 1082,
+                  "full_public_name": "Mike Krus",
+                  "first_name": "Mike",
+                  "last_name": "Krus"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1167,
+              "start": "14:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "the-qml-engine-future-plans-and-paths",
+              "title": "The QML Engine: Future Plans and Paths",
+              "subtitle": "",
+              "track": "Qt Roadmap Today",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Developing applications with QML can be a very pleasant experience: Quick development cycles, intuitive syntax and integrated tooling that get you up and running. But when your team's application grows with numerous QML components, new imports and countless properties, obstacles may appear. Often, the first symptom is slower application start-up or increased memory consumption. Thus, scalability is a key focus for us when developing the QML engine. In this presentation we are going to begin with a brief review of some of significant milestones from the past months. Then, we will discuss how your team can benefit from these improvements. For example, the new cache architecture that supercedes the Qt Quick compiler, reducing the overall memory consumption through on-demand paging and caching of generated code across application restarts. Perhaps this is your chance to provide feedback (both good and bad) and give input for our future plans.",
+              "persons": [
+                {
+                  "id": 1084,
+                  "full_public_name": "Simon Hausmann",
+                  "first_name": "Simon",
+                  "last_name": "Hausmann"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1168,
+              "start": "11:30",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "the-curse-of-choice-an-overview-of-gui-technologies-in-qt",
+              "title": "The Curse of Choice: An Overview of GUI technologies in Qt",
+              "subtitle": "",
+              "track": "Qt Roadmap Today",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "The Qt framework is over 25 years old, and in that time many different technologies have been developed to create graphical user interfaces. This talk aims to lay out what is current landscape of available GUI APIs, and give a better impression of which should be should be used and when, as well as which should be avoided and possible migration paths for existing code. The APIs that we will dive include: QWidgets QPainter QGraphicsView Qt Quick 1 Qt Quick 2 Qt Quick Controls 1 and 2 QWindow OpenGL, Vulkan, Direct3D For each API we will discuss what the API consists of, what features it offers, and what problem it was created to solve. In addition I can give examples of where each API makes sense to be used, as well as some reasons why it can be a bad idea to pick a particular API. The objective is to break the curse of choice that comes with such a flexible framework as Qt and give you a better idea of how to proceed making the best GUI for your application or device.",
+              "persons": [
+                {
+                  "id": 1035,
+                  "full_public_name": "Andy Nichols",
+                  "first_name": "Andy",
+                  "last_name": "Nichols"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1171,
+              "start": "15:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-3d-and-physics-based-rendering",
+              "title": "Qt 3D and Physics Based Rendering",
+              "subtitle": "",
+              "track": "Success",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Physics Based Rendering (PBR) is the latest and greatest trend in real-time rendering yielding much more visually believable images than the traditional Phong or ad-hoc lighting models. The underlying concept is that the shaders should use physical principles in the encoded models - chief of which are conservation of energy and the Fresnel effect. PBR is used in many AAA game titles but here we will show how to make use of it with Qt 3D as it is widely applicable to many other types of 3D content such as for use within engineering and visualization. In this talk we will cover how to go take your raw 3D meshes, look at how to prepare textures suitable for use with a PBR-based workflow and how to feed these into a Qt 3D application. Along the way, we will explain how Physics Based Rendering works and how its formulation helps convince the brain of its realism without destroying performance. We will also take a look at some techniques that are often used in conjunction with PBR such as ambient occlusion and parallax mapping. Time permitting we will look briefly at how to add some post-processing effects to your Qt 3D renderer setup. Physics Based Rendering is a family of techniques for simulating how light interacts with surfaces. It can be applied in both offline renderers such as path tracers used in the production of television and film VFX, and more importantly for us, in real time rendering systems such as Qt 3D. There are two main groups of PBR techniques that fall under the Metal-Roughness and Specular-Glossiness workflows. This talk will concentrate on the Metal-Roughness workflow. We will show all the tooling required to take simple 3D meshes, uv-unwrap and export them for use in specialized texturing tools that can then be used to generate the images needed to feed into PBR GLSL shaders. In addition to the material textures, we will also show how to process HDR environment maps to allow high quality specular reflections to be calculated in real time. The talk will explain how all of these assets work together to produce convincing results. We will also provide tips on reducing the overall memory usage by using modern GPU facilities for managing textures.",
+              "persons": [
+                {
+                  "id": 1090,
+                  "full_public_name": "Sean Harmer",
+                  "first_name": "Sean",
+                  "last_name": "Harmer"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1172,
+              "start": "15:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-scxml",
+              "title": "Qt SCXML: State Machines Made Easier",
+              "subtitle": "",
+              "track": "Success",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "State Chart XML (SCXML) is a common format to specify state machines. It has been standardized by the W3C and there are many applications that produce or process it. State charts provide a graphical way of modeling how a system reacts to stimuli. This is done by defining the possible states that the system can be in, and how the system can move from one state to another. State charts offer a very concise representation of business logic, and limit the potential for unexpected behavior. Qt 5.7 comes with a technical preview of Qt SCXML, a module to integrate state charts specified in SCXML into your application, and execute them in accordance to the W3C specification. This way a Qt application can be driven from a state chart, rather than from business logic expressed in C++ or QML. With Qt SCXML, SCXML documents can be compiled into C++, which can then be readily integrated into any Qt application. Alternately, SCXML documents can also be dynamically loaded and interpreted at run time. In both cases, states are exposed via Qt properties, so that QML properties can effortlessly be bound to them. It is thus very easy to attach a Qt Quick UI to an existing, or newly written, state machine. The talk will show the full workflow of creating a state machine in a visual design tool, integrating it into a project with Qt Creator, adding a custom data model, and attaching a user interface to it, using QML and Qt Quick.",
+              "persons": [
+                {
+                  "id": 1092,
+                  "full_public_name": "Ulf Hermann",
+                  "first_name": "Ulf",
+                  "last_name": "Hermann"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1173,
+              "start": "15:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "new-possibilities-with-qt-webengine",
+              "title": "New Possibilities with Qt WebEngine",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "QtWebEngine lets you access the features and raw power of a leading web browser platform (Chromium) through a convenient Qt API. First released with Qt 5.4, Qt WebEngine features both a Qt Widget and a Qt Quick integration to render regions of dynamic web content. With Qt 5.7 and the upcoming 5.8, Qt WebEngine offers new features and better integration. In this talk, we will give an overview of some of the newest features in Qt WebEngine and the possibilities they enable.",
+              "persons": [
+                {
+                  "id": 1094,
+                  "full_public_name": "Allan Sandfeld Jensen",
+                  "first_name": "Allan Sandfeld",
+                  "last_name": "Jensen"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1174,
+              "start": "16:30",
+              "duration": "00:30",
+              "room": "Qt World Summit 2016",
+              "slug": "building-location-analytics-and-mapping-into-your-mission-critical-solutions",
+              "title": "Building Location Analytics and Mapping into Your Mission-Critical Solutions.",
+              "subtitle": "",
+              "track": "Success",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Geolocation is a must-have element of any modern application design today. More and more applications are becoming location-aware, and the demand for geographic content, maps and functionality in mission-critical workflows is increasing all the time. Managers are challenged with injecting authoritative, reliable geospatial information into their applications for real-time decision support, while optimizing performance, stability and simplicity for the user. Developers need complete geolocation APIs and SDKs to build apps that can visualize and analyze maps and mapping data, and support the end user in making the most informative decisions in any situation. Outcomes must be productive, in that they are easy and intuitive to develop applications and solutions with. They must be able to build great user experiences, intuitive, easy to use, GUI and non GUI-based apps that are versatile enough to work with geo-enabled Web Services as well as data and maps that reside locally on a device, simultaneously. These are just some of the key elements that today’s app developers need in a developer toolset.\r\n\r\nEsri’s ArcGIS Runtime SDK for Qt is a developer kit that provides all of the crucial tools and APIs for building great location-aware apps. It extends the Qt framework to assist in creating highly functional apps that can have both rich mapping and analytical capabilities, optimized to run on multiple platforms and devices, from Android, Mac and iOS devices to Windows and Linux desktops and embedded systems. This presentation discusses and demonstrates Esri’s rich, geospatial Runtime Qt SDK. Demonstrated capabilities include Mapping and Visualization, as well as Collecting, editing and managing geographic business data, online or offline.",
+              "persons": [
+                {
+                  "id": 1096,
+                  "full_public_name": "Lucas Danzinger",
+                  "first_name": "Lucas",
+                  "last_name": "Danzinger"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1175,
+              "start": "15:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "untitled-2",
+              "title": "Integrating Universal Windows Platform to Qt",
+              "subtitle": "",
+              "track": "Performance Optimizations",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Since the initial version of Qt supporting Windows Runtime a lot has happened, both on the platform side as well as in Qt. Starting with an overview of the roadmap, new features, internals and stability changes will be discussed, applying to Windows 10, Windows 10 Mobile and Windows 10 IoT Core. In the second part different techniques to publish an application in the Windows Store will be presented. For instance, to increase the amount of applications in the store Microsoft provided means to push classic desktop applications. However, there are several pitfalls with this approach, which will be highlighted. While Qt provides a huge amount of features for all supported platforms, there are still items provided by the underlying platform a developer might want to integrate. There are multiple approaches to achieve integration of those features into a Qt application and some might not be available to C++ by default. In the last section, the speaker will present a couple of methods, highlighting benefits and potential downsides of each.",
+              "persons": [
+                {
+                  "id": 632,
+                  "full_public_name": "Maurice Kalinowski",
+                  "first_name": "Maurice",
+                  "last_name": "Kalinowski"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1177,
+              "start": "16:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "introducing-qt-visual-studio-tools",
+              "title": "Introducing Qt Visual Studio Tools",
+              "subtitle": "",
+              "track": "Performance Optimizations",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Many Qt users enjoyed the benefits of the Qt Visual Studio AddIn provided for various Visual Studio versions, starting with Visual Studio 2010. Unfortunately, Microsoft decided to deprecate the API to implement an AddIn a while ago and completely removed this functionality with Visual Studio 2015. This caused a significant break in developer experience for those users who have been relying on the Qt Visual Studio Addin. Hence, the Qt Company has been working on the Qt Visual Studio Tools, which will replace the previous Visual Studio AddIn. As the Qt Visual Studio Tools have been recently released (Note to committee: According to current roadmap), the Qt World Summit is the perfect moment to introduce it to the audience. The speaker will highlight the workflow of installing and getting started with the Qt Visual Studio Tools. Following to this, differences to the previous Visual Studio AddIn will be discussed as well as new features presented. In addition to this, a couple of features for developers on the Universal Windows platform have been introduced, helping to integrate Qt deeper into the platform and enhancing the developer experience on this platform. Lastly, the presentation will talk about future items on the Roadmap for the Qt Visual Studio Tools as well as open a discussion about missing features for the audience.",
+              "persons": [
+                {
+                  "id": 632,
+                  "full_public_name": "Maurice Kalinowski",
+                  "first_name": "Maurice",
+                  "last_name": "Kalinowski"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1179,
+              "start": "11:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "introduction-to-qt-creator",
+              "title": "Introduction to Qt Creator",
+              "subtitle": "",
+              "track": "Qt Tips &amp; Tricks",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Qt Creator is a cross-platform C++ integrated development environment (IDE), ideally suited for Qt development. This session will provide a introduction to using the IDE, demo some of its highlights and provide some tips along the way.",
+              "persons": [
+                {
+                  "id": 1092,
+                  "full_public_name": "Ulf Hermann",
+                  "first_name": "Ulf",
+                  "last_name": "Hermann"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1181,
+              "start": "11:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "gammaray-taking-a-deep-look-into-your-qt-application",
+              "title": "GammaRay - Taking a deep look into your Qt application",
+              "subtitle": "",
+              "track": "Success",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "GammaRay is a high-level introspection tool for Qt programs that enables you to visualize and manipulate application behavior at runtime. In this talk we will look at a number of real-world debugging and profiling problems and how the capabilities provided by GammaRay help you to analyze and solve those. When creating applications we strive to use higher-level frameworks in order to obtain results quickly and reduce development effort as well as long-term maintenance cost. This however provides a few challenges during debugging and profiling. With conventional instruction-level tools we need to have a reasonably deep understanding of the implementation of the frameworks, libraries and components we use, to interpret the results correctly. Tools with an understanding of the building blocks we use mitigate this problem. GammaRay is such a tool for Qt. After a brief introduction on how to use GammaRay for local and remote targets, we will look at a number of debugging and profiling examples covering a wide range of Qt features such as signals/slots, Qt Quick, widgets, state machines, model/view or Qt3D, and see how GammaRay can help in addressing these. All examples are based on real-world problems KDAB engineers encountered in their daily work, and aim at giving you an idea on how GammaRay can help with problems you might encounter in your own Qt application. If you have ever spent hours or even days wondering why one of your signal/slot connections seemed to have a mind of its own, why a Qt Quick button was accepting clicks only when it felt like it, or why your QML HMI was rendering a bit slowly on your embedded target device, this talk is for you.",
+              "persons": [
+                {
+                  "id": 937,
+                  "full_public_name": "Volker Krause",
+                  "first_name": "Volker",
+                  "last_name": "Krause"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1182,
+              "start": "11:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-lite-where-is-qt-going",
+              "title": "Qt Lite - Where is Qt going",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "In the Qt organization, we have a strong focus on where we want to be, not just now, but also a few years down the line. But the development needs to go into such solutions a year or two from now, must start today. As such, Qt Lite is the beginning of the future of Qt. In this talk, I will highlight some of the reasons we chose to focus on Qt Lite, cover what Qt Lite is and is supposed to be, and give some examples of business cases that Qt Lite will enable in the future. Qt Lite is also developed in close collaboration with our partners and customers, aiming at improving Qt as much as possible, and making it the technology of choice also in new products, markets and device types.",
+              "persons": [
+                {
+                  "id": 1037,
+                  "full_public_name": "Nils Christian-Nielson",
+                  "first_name": "Nils",
+                  "last_name": "Christian-Nielson"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1183,
+              "start": "12:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "porting-from-qt-webkit-to-qt-webengine-a-hands-on-guide",
+              "title": "Porting from Qt WebKit to Qt WebEngine - a hands-on guide.",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "The Qt WebEngine module integrates Chromium into Qt. It replaces the now deprecated Qt WebKit module. While the efforts to keep the changes between the two modules' APIs as small as possible were successful in most parts, Qt WebEngine is not a drop in replacement because some API could not simply be ported, and some users are facing difficulties when porting their applications. This is mainly due to the different process architectures: while the Qt WebKit C++ APIs are running the rendering engine in the same process as the application, this is not possible in Qt WebEngine, as Chromium uses a multi-process architecture for improving stability and security. This talk will give an overview of the most common differences that application developers need to adjust to when porting their application from Qt Webkit to Qt WebEngine. It also aims to provide hands-on solutions to these problems and give guidance on how to work around features that Qt WebEngine simply cannot offer in the same way as Qt WebKit. Where time allows, a deeper look into the reasons for some changes will be taken. Last but not least, it will show some of the many features that Qt WebEngine supports that were not available in Qt WebEngine.",
+              "persons": [
+                {
+                  "id": 1094,
+                  "full_public_name": "Allan Sandfeld Jensen",
+                  "first_name": "Allan Sandfeld",
+                  "last_name": "Jensen"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1186,
+              "start": "15:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "handling-time-in-a-timely-manner",
+              "title": "Handling time in a timely manner",
+              "subtitle": "",
+              "track": "Qt Roadmap Today",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "\"Ask me for anything but time,\" said Napoleon. Time is something that all projects and all applications need to deal with: to make application UIs look fluid, there's a time budget for every frame, handling data must be done in a deadline, and so forth. It's also one of the two sources of events in an event-loop-based application (the other being socket/file descriptor notifications), so it's used very often. Qt offers a number of classes for dealing with time, ranging from obtaining the system time and dealing with timezones, to measuring time intervals, calculating deadlines, to scheduling futere events. It's a very powerful API and very extensive, grown over time, which means there are often doubts about how to do things right. In order not to waste time to measure time, it's important to know how to use the right tool for the right job. This session will go over all the classes related to timekeeping offered by Qt. It will explain what each one is meant to be used for and how to use them efficiently. It will spend time talking about the event loop in Qt, the dos and don'ts of timing in a GUI application and how threading can help. It will also give a preview of new API coming in Qt 5.8, which should include compatibility with C++11's std::chrono functionality. The presenter is QtCore and QtDBus's maintainer and is an IoT system architect for the Open Source Technology Center at Intel. He's been working on the internals of QtCore and trying to optimise it to make things as small and as efficient as possible, such as the upcoming \"Short Datetime Optimisation\".",
+              "persons": [
+                {
+                  "id": 1106,
+                  "full_public_name": "Thiago Macieira",
+                  "first_name": "Thiago",
+                  "last_name": "Macieira"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1188,
+              "start": "11:00",
+              "duration": "00:55",
+              "room": "Qt World Summit 2016",
+              "slug": "boot-time-optimization-for-linux-based-qt-powered-embedded-devices",
+              "title": "Fast-Booting Qt Applications on Embedded Linux",
+              "subtitle": "",
+              "track": "Performance Optimizations",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Boot time is an important characteristic for some systems, such as those which must immediately provide a functioning user interface to its users when powered on. Commonly this capability is achieved using a minimal operating system. However, we will discuss how a full-featured Linux-based Qt-powered device can be optimized to reduce boot time by an order of magnitude. The first half of this presentation will uncover the application and Qt level optimizations and the second half of the session will cover the boot loader/kernal strategies with Qt. We will begin to analyze some of the important hardware attributes that influence a system's boot time.\r\n\r\nA Toradex System-on-Module (SoM) will serve as an example platform requiring exploitation to shed precious milliseconds from boot-up. We will take a look at the boot sequence, digging into the boot ROM, U-boot bootloader, Linux kernel &amp; Qt application. Boot time optimization strategies will be shared for each of these links in the boot chain ultimately allowing the typical boot time for a general purpose embedded Linux system to be reduced from 10-20 seconds to 1-2 seconds for a specialized application.",
+              "persons": [
+                {
+                  "id": 1098,
+                  "full_public_name": "Risto Avila",
+                  "first_name": "Risto",
+                  "last_name": "Avila"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1423,
+              "start": "15:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "developing-user-interfaces-with-qt-quick-controls-2",
+              "title": "Developing user interfaces with Qt Quick Controls 2",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Qt Quick is a UI framework that enables development of user interfaces using a declarative language. It is built on a dedicated scene graph based on OpenGL that fully utilises the GPU. Using primitive building blocks, you can create custom, animated user interfaces with full control over every pixel.\r\n\r\nQt Quick Controls 2 complements Qt Quick by providing higher level templates for common UI elements such as buttons and sliders. The template system was designed for visualising controls with a minimal amount of effort, which leads to excellent performance on any platform. It comes with ready-made styles that fill in the templates. Examples of these styles are Google's Material and Microsoft's Universal designs.\r\n\r\nThis talk will take a look behind the scenes and explain the implementation and how we achieved good performance on low-end devices, as well as how to style an application.",
+              "persons": [
+                {
+                  "id": 1072,
+                  "full_public_name": "Shawn Rutledge",
+                  "first_name": "Shawn",
+                  "last_name": "Rutledge"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1469,
+              "start": "16:30",
+              "duration": "00:30",
+              "room": "Qt World Summit 2016",
+              "slug": "the-future-of-qt-in-automotive-and-the-automotive-suite",
+              "title": "The future of Qt in Automotive and the Automotive Suite",
+              "subtitle": "",
+              "track": "Performance Optimizations",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Qt is the leading UI toolkit used by the Automotive industry. This session will talk about the status of Qt in the automotive industry and what we are planning for the future.",
+              "persons": [
+                {
+                  "id": 1468,
+                  "full_public_name": "Alistair Adams",
+                  "first_name": "Alistair",
+                  "last_name": "Adams"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1471,
+              "start": "16:30",
+              "duration": "00:30",
+              "room": "Qt World Summit 2016",
+              "slug": "lets-talk-lawpolicy-for-devices-from-a-software-perspective",
+              "title": "Let's Talk Law/policy for Devices from a Software Perspective",
+              "subtitle": "",
+              "track": "Qt Roadmap Today",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Stay Tuned",
+              "persons": [
+                {
+                  "id": 1473,
+                  "full_public_name": "Miriam Schuh",
+                  "first_name": "Miriam",
+                  "last_name": "Schuh"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1476,
+              "start": "16:30",
+              "duration": "00:30",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-world-summit-conference-app-behind-the-scenes",
+              "title": "Qt World Summit Conference App: Behind The Scenes",
+              "subtitle": "",
+              "track": "Qt Roadmap Today",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Mobile Qt World Summit 2016 Conference App is developed by ekke using new Qt Quick Controls 2. This session will give you some insights:\r\n\r\n- Qt Quick Controls 2\r\n- Customizing Controls\r\n- UX and Navigation\r\n- High DPI Support\r\n- Icons / Image Management\r\n- Databinding\r\n- Caching\r\n- Accessing HTTP REST Services\r\n- Internationalization\r\n- Qt Creator 4 to develop, build and release on Android, iOS and Windows 10\r\n\r\nEkke will talk about his experiences, explain patterns used and give you some tips and tricks. You'll also learn about issues, open questions and workarounds. The Conference app is Open Source at GitHub so you can use it as a starting point to develop your own mobile apps with Qt 5.7+. Ekke will take a look at the source code to go into some details and you can try it out on your own devices running the conference app. If you're coming from Android or iOS development, Ekke will give you hints How To start - if you're coming from BlackBerry Cascades, Ekke will show you, which parts of your sources can be re-used. There's a Q&amp;A part at the end where you can give feedback about the app and discuss.",
+              "persons": [
+                {
+                  "id": 1475,
+                  "full_public_name": "Ekkehard Gentz",
+                  "first_name": "Ekkehard",
+                  "last_name": "Gentz"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1477,
+              "start": "14:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qtmacos-updates",
+              "title": "Qt on macOS Updates",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "In this talk we’ll take a look at the current state of Qt on macOS as well as ongoing work and future improvements.\r\n\r\nWe will take a look at how to combine Qt and native API usage from the same code base. This includes a brief Objective C++ introduction and a look at how to use type conversion functions to move data between Qt and native types.\r\n\r\nWe will look at several options for tool bar styling, both for Qt Widgets and QML based applications.\r\n\r\nFinally, we will look at how to work with the native window and view classes to mix Qt application content with visual effects views, HUD windows and popovers.",
+              "persons": [
+                {
+                  "id": 1478,
+                  "full_public_name": "Morten Sørvig",
+                  "first_name": "Morten",
+                  "last_name": "Sørvig"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1479,
+              "start": "12:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "how-to-select-a-service-partner",
+              "title": "How to select a service partner",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Stay tuned",
+              "persons": [
+                {
+                  "id": 1533,
+                  "full_public_name": "Murali Mandayam",
+                  "first_name": "Murali",
+                  "last_name": "Mandayam"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1482,
+              "start": "16:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qbs-the-next-generation-of-build-automation",
+              "title": "Qbs - the Next Generation of Build Automation",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "One of the most important aspects of a streamlined software development pipeline is the build system. As a tool that developers use throughout the day, every day, a good build system should be lightning fast, easy to use, and produce instantaneous and correct incremental builds. Build systems that are slow, hard to maintain, or incorrectly specify dependencies (leading to broken or malfunctioning builds) significantly impact your team’s workflow and waste countless hours of time. Qbs aims to be the perfect high level cross platform build system -- and hopeful replacement for qmake within Qt. It started as a research project at Nokia in 2010 and has been ongoing since. It aims to support any toolkit, any language, and any OS, with excellent support for cross compilation, IDE integration, device deployment &amp; packaging, speed, flexibility, expressiveness, and ease of use. This talk provides an introduction to Qbs and how it compares to other build systems like CMake and qmake. It will cover the general design of Qbs, illustrate the power of its dependency management system, and show off some of its unique features like ABI-based linking optimization, building for multiple platforms in parallel, and library-based design. It will also show off some of the powerful new features coming in future versions, such as first-class support for code-signing on all platforms, and integration with popular IDEs like Xcode and Visual Studio.",
+              "persons": [
+                {
+                  "id": 1481,
+                  "full_public_name": "Jake Petroules",
+                  "first_name": "Jake",
+                  "last_name": "Petroules"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1532,
+              "start": "16:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "how-to-choose-a-service-partner",
+              "title": "How to Choose a Service Partner",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "For a product as versatile and customizable as Qt, it is quite common for customers to look for professional help when integrating and implementing their software stack. Whether it is a board level integration of Qt library or user experience design, or application development there is no \"one-size fits all” as every customer’s needs are unique. Getting professional help also gives customers an opportunity to differentiate their product and accelerate their time to market. We have 4 distinguished panelists here to talk about how they can help you (customer) to be successful with Qt. This interactive session will be open for Q&amp;A.\r\n\r\n&nbsp;",
+              "persons": [
+                {
+                  "id": 1533,
+                  "full_public_name": "Murali Mandayam",
+                  "first_name": "Murali",
+                  "last_name": "Mandayam"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1579,
+              "start": "10:15",
+              "duration": "00:10",
+              "room": "Qt World Summit 2016",
+              "slug": "driving-the-consumer-electronics-world",
+              "title": "Driving the Consumer Electronics World",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Bringing the Automotive In-Vehicle Infotainment (IVI) user experience \"kicking and screaming\" into today's fast paced Consumer Electronics-led world.",
+              "persons": [
+                {
+                  "id": 1577,
+                  "full_public_name": "Ben Ellis",
+                  "first_name": "Ben",
+                  "last_name": "Ellis"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1581,
+              "start": "16:30",
+              "duration": "00:30",
+              "room": "Qt World Summit 2016",
+              "slug": "qbs-the-next-generation-of-build-automation-2",
+              "title": "Qbs - the Next Generation of Build Automation",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "One of the most important aspects of a streamlined software development pipeline is the build system. As a tool that developers use throughout the day, every day, a good build system should be lightning fast, easy to use, and produce instantaneous and correct incremental builds. Build systems that are slow, hard to maintain, or incorrectly specify dependencies (leading to broken or malfunctioning builds) significantly impact your team’s workflow and waste countless hours of time.    Qbs aims to be the perfect high level cross platform build system -- and hopeful replacement for qmake within Qt. It started as a research project at Nokia in 2010 and has been ongoing since. It aims to support any toolkit, any language, and any OS, with excellent support for cross compilation, IDE integration, device deployment &amp; packaging, speed, flexibility, expressiveness, and ease of use.    This talk provides an introduction to Qbs and how it compares to other build systems like CMake and qmake. It will cover the general design of Qbs, illustrate the power of its dependency management system, and show off some of its unique features like ABI-based linking optimization, building for multiple platforms in parallel, and library-based design. It will also show off some of the powerful new features coming in future versions, such as first-class support for code-signing on all platforms, and integration with popular IDEs like Xcode and Visual Studio.",
+              "persons": [
+                {
+                  "id": 1481,
+                  "full_public_name": "Jake Petroules",
+                  "first_name": "Jake",
+                  "last_name": "Petroules"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1685,
+              "start": "09:50",
+              "duration": "00:10",
+              "room": "Qt World Summit 2016",
+              "slug": "heterogeneous-multicore-processing-whatwhy-how",
+              "title": "Heterogeneous Multicore Processing – What/Why & How",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "The use of embedded application processors is exploding as they become the basis of design in markets as diverse as automotive, wearables and industrial IoT. These varied usage models require application processors with a flexible architecture that enable different performance and power profiles within the same system on chip (SoC.) Rob Cosaro has been one of the industry’s leading system architects in designing processors to meet the needs of fast evolving markets by implementing different cores within the same SoC; to create heterogeneous multicore processors. In this presentation Rob will highlight not only the and what &amp; why, but how designers can utilize these parts to create products that meet and scale with fast evolving market needs.",
+              "persons": [
+                {
+                  "id": 1682,
+                  "full_public_name": "Rob Cosaro",
+                  "first_name": "Rob",
+                  "last_name": "Cosaro"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1686,
+              "start": "14:00",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "nxp-i-mx7-how-to-utilize-heterogeneous-multicore-processing-in-your-next-design",
+              "title": "NXP i.MX7 – How to utilize Heterogeneous Multicore Processing in your next design",
+              "subtitle": "",
+              "track": "Qt Roadmap Today",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "The use of embedded application processors is exploding as they become the basis of design in markets as diverse as automotive, wearables and industrial IoT. These varied usage models require application processors with a flexible architecture that enable different performance and power profiles within the same system on chip (SoC.) In this session we will focus on the NXP i.MX7 as an example of an application processor that with both an ARM A and M core that enables radically different product designs and software implementations. The details of the SoC architecture and boards designed around the part for different usage models will be discussed so designers can understand not only what, but how to utilize the i.MX7 for their next product.",
+              "persons": [
+                {
+                  "id": 1684,
+                  "full_public_name": "Robert Thompson",
+                  "first_name": "Robert",
+                  "last_name": "Thompson"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1703,
+              "start": "9:00",
+              "duration": "00:50",
+              "room": "Qt World Summit 2016",
+              "slug": "the-future-is-written-with-qtv",
+              "title": "The future is written with Qtv",
+              "subtitle": "",
+              "track": "Keynote",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "Lars Knoll, the CTO of The Qt Company and the Chief Maintainer of the Qt Project, will provide a deep dive in the future of Qt technology. What does this mean for example in the upcoming Qt 5.8 release? What does the future hold for Qt technology? In his presentation, Lars will focus on the technical intricacies of where Qt is heading next, as well as explain the vision and foundation of the Qt technology. Lars will also highlight what Qt R&amp;D is focusing on and what to expect in future releases.",
+              "persons": [
+                {
+                  "id": 935,
+                  "full_public_name": "Lars Knoll",
+                  "first_name": "Lars",
+                  "last_name": "Knoll"
+                }
+              ],
+              "links": []
+            },
+            {
+              "id": 1704,
+              "start": "11:30",
+              "duration": "00:25",
+              "room": "Qt World Summit 2016",
+              "slug": "qt-lites-configuration-system-explained",
+              "title": "Qt Lite’s configuration system explained",
+              "subtitle": "",
+              "track": "Qt Roadmap Tomorrow",
+              "type": "",
+              "language": "",
+              "abstract": "",
+              "description": "This breakout session is meant for developers to give insights into the workings of the configuration system that is at the heart of Qt Lite.",
+              "persons": [
+                {
+                  "id": 935,
+                  "full_public_name": "Lars Knoll",
+                  "first_name": "Lars",
+                  "last_name": "Knoll"
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      }
+    },
+    "timeslot_duration": ""
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "accentColor": 15,
+    "darkTheme": false,
+    "hasPublicCache": false,
+    "id": 1,
+    "isProductionEnvironment": true,
+    "primaryColor": 9,
+    "useCompactJsonFormat": true,
+    "version": 1,
+    "apiVersion":"1.0",
+    "publicRoot4Dev":"/data/ekkescorner/c2gQtWS_x"
+}

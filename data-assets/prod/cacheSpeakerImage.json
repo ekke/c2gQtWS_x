@@ -1,0 +1,772 @@
+[
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Collier-Moody.jpg",
+        "speakerId": 1690,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Robert-Thompson.jpg",
+        "speakerId": 1684,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Cosaro-Rob.jpg",
+        "speakerId": 1682,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Pate-Jeremiah.jpg",
+        "speakerId": 1678,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/BenEllis.jpg",
+        "speakerId": 1577,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Steve.jpg",
+        "speakerId": 1562,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Adam-Christian.jpg",
+        "speakerId": 1548,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Andrej-blackwhite.jpg",
+        "speakerId": 1527,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Jake-Petroules.jpg",
+        "speakerId": 1481,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Morten.jpg",
+        "speakerId": 1478,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/speaker_ekke.jpg",
+        "speakerId": 1475,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Miriam.jpg",
+        "speakerId": 1473,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Alistair-Adams.jpg",
+        "speakerId": 1468,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Harry-Porten.jpg",
+        "speakerId": 1355,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Helio-Castro.jpg",
+        "speakerId": 1384,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/alexander_montgomery.jpg",
+        "speakerId": 1381,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Adrien-Leravat.jpg",
+        "speakerId": 1379,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Goran.jpg",
+        "speakerId": 1362,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Penk-Chen-BW-.jpg",
+        "speakerId": 1345,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Pedro-Coca-BW.jpg",
+        "speakerId": 1341,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Alexander-BW.jpg",
+        "speakerId": 1326,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Martin-Beechen-BW.jpg",
+        "speakerId": 1325,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Rosedale-Philip.jpg",
+        "speakerId": 1322,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/StefanB_BW-2.jpg",
+        "speakerId": 1321,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/JeremyStott-BW.jpg",
+        "speakerId": 1315,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Thibaut-BW.jpg",
+        "speakerId": 1304,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Haas-BW.jpg",
+        "speakerId": 1297,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Chris-Probst-BW.jpg",
+        "speakerId": 1225,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Justin-Noel-BW.jpg",
+        "speakerId": 1223,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Roland-Kraus-BW.jpg",
+        "speakerId": 1222,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Kris-Dickie-BW-.jpeg",
+        "speakerId": 1061,
+        "suffix": "jpeg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Laszlo-BW.jpg",
+        "speakerId": 1033,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Andy-Nichols-BW.jpg",
+        "speakerId": 1035,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Nils-Christian-Roscher-Nielsen-BW.jpg",
+        "speakerId": 1037,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/ablasche-BW.jpg",
+        "speakerId": 1039,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Jouko-Luukas-BW.jpg",
+        "speakerId": 1065,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Jeff-Tranter-BW-new.jpeg",
+        "speakerId": 1066,
+        "suffix": "jpeg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Romain-P-BW.jpg",
+        "speakerId": 1068,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/jim-Albamont.jpeg",
+        "speakerId": 1070,
+        "suffix": "jpeg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Rutledge-Shawn.jpg",
+        "speakerId": 1072,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/JeffLeBlanc-BW.jpg",
+        "speakerId": 1074,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Kristian-Feld-BW.jpg",
+        "speakerId": 1076,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Siggel-Martin.jpg",
+        "speakerId": 1078,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Mike-Krus-BW.jpg",
+        "speakerId": 1082,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Simon-Hausman-v1.jpg",
+        "speakerId": 1084,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/bogdan.vatra-BW.jpg",
+        "speakerId": 1086,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Johan-Thelin-square.png",
+        "speakerId": 1088,
+        "suffix": "png"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 3,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/sean-harmer.jpg",
+        "speakerId": 1090,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Ulf-Herman-BW-.jpeg",
+        "speakerId": 1092,
+        "suffix": "jpeg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Allan-Sanfeld-Jensen-BW.jpg",
+        "speakerId": 1094,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Lucas-Dagzinger-BW.jpg",
+        "speakerId": 1096,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Risto-Avila-BW.jpg",
+        "speakerId": 1098,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Cari-Romuald.jpg",
+        "speakerId": 1102,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Thiago-BW-new.jpeg",
+        "speakerId": 1106,
+        "suffix": "jpeg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Brandon-Shibley-BW.jpg",
+        "speakerId": 1108,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Dalal-Kushal.jpg",
+        "speakerId": 1110,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Miao-Liu-BW.jpg",
+        "speakerId": 1111,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/08/Mounir-B-BW-new.jpeg",
+        "speakerId": 1112,
+        "suffix": "jpeg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/tuuka-turunen.jpg",
+        "speakerId": 1063,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/stephen-casner-bW.jpg",
+        "speakerId": 1124,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Josh-Clark-BW.jpg",
+        "speakerId": 1119,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/Kevin-Kelly-BW.jpg",
+        "speakerId": 1114,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/PETTERI-HOLLÄNDER_bw.jpg",
+        "speakerId": 927,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/Juha-Varelius-Keynote_bw.jpg",
+        "speakerId": 923,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/TILL-ADAM-bw.jpg",
+        "speakerId": 933,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/Keynote-Speaker-Jeff-Payne_bw.jpg",
+        "speakerId": 917,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/Keynote-speaker-Torsten-Rahn_bw.jpg",
+        "speakerId": 914,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/LarsKnoll.jpg",
+        "speakerId": 935,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/KCukier-Photo_bw.jpg",
+        "speakerId": 936,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 3,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/Speaker-Bo-Thorsen_bw.png",
+        "speakerId": 940,
+        "suffix": "png"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/Speaker-Volker-Krause_bw.jpg",
+        "speakerId": 937,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/Speaker-Attila-Ksipa_bw.jpg",
+        "speakerId": 924,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/Thomas-McGuire_bw.jpg",
+        "speakerId": 920,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/frank-meerkoetter-basyskom_bw.jpg",
+        "speakerId": 916,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/04/speaker_massimiliano_pippi_262x262.jpg",
+        "speakerId": 635,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/04/speaker_maurice_kalinowski_262x262.jpg",
+        "speakerId": 632,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/05/Andreas-Schmid-Kenote-Speaker_bw.jpg",
+        "speakerId": 40,
+        "suffix": "jpg"
+    }
+]

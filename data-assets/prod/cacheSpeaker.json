@@ -1,0 +1,1044 @@
+[
+    {
+        "bio": "Till is a veteran of Qt consulting and training and a contributor to various software projects. He is currently responsible for Sales, Marketing and Business Development at KDAB and lives in Berlin.",
+        "isDeprecated": false,
+        "name": "Till Adam",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "A",
+        "sortKey": "ADAM",
+        "speakerId": 933,
+        "speakerImage": 933
+    },
+    {
+        "bio": "Alistair Adams has been connected with the Infotainment sector since 2008 when as a Product Manager for Trolltech he identified automotive as a potential segment for the Qt toolkit. With Nokia's takeover of Trolltech he took Nokia into the GENIVI alliance and was an evangelist for the use of Qt in automotive. When Nokia's smartphone strategy failed he continued in the HERE division of Nokia prior to coming back to Qt and The Qt Company in November 2015.\r\n\r\n&nbsp;",
+        "isDeprecated": false,
+        "name": "Alistair Adams",
+        "publicName": "",
+        "sessions": [
+            "1469"
+        ],
+        "sortGroup": "A",
+        "sortKey": "ADAMS",
+        "speakerId": 1468,
+        "speakerImage": 1468
+    },
+    {
+        "bio": "Laszlo is a senior software engineer at The Qt Company in Oslo, Norway. After working on UI frameworks on various Nokia mobile platforms and developing mobile GPUs at ARM, he is now working full time on Qt. His focus is on graphics and windowing system integrations, in particular on devices running Embedded Linux. However, in a true cross-platform Qt spirit, he is not afraid of other platforms either. He is a major contributor to QtGui and QtQuick, and is the maintainer of the embedded-focused linuxfb and eglfs platform plugins.",
+        "isDeprecated": false,
+        "name": "Laszlo Agocs",
+        "publicName": "",
+        "sessions": [
+            "1151"
+        ],
+        "sortGroup": "A",
+        "sortKey": "AGOCS",
+        "speakerId": 1033,
+        "speakerImage": 1033
+    },
+    {
+        "bio": "Jim Albamont is a software developer at KDAB LLC where he gets to work\r\non a variety of challenging projects from embedded automotive HMIs to 3D\r\ndesktop applications. He also teaches week-long training classes in Qt\r\nand QML. Prior to joining KDAB he was the Director of Technology for\r\nAqumin LLC, a startup in Houston specializing in applying the power of\r\nOpenGL and 3D visualization to options trading, real-time risk\r\nmanagement, and other areas in finance. He's been developing with Qt and\r\nC++ for over 15 years.",
+        "isDeprecated": false,
+        "name": "Jim Albamont",
+        "publicName": "",
+        "sessions": [
+            "1159"
+        ],
+        "sortGroup": "A",
+        "sortKey": "ALBAM",
+        "speakerId": 1070,
+        "speakerImage": 1070
+    },
+    {
+        "bio": "Risto Avila, Senior Software Engineer/Principal Consultant @ The Qt Company. He is specialized for embedded software development and system integration. Latest achomplisments can be read from blog.qt.io where he talks about Fast-Booting Qt Devices.",
+        "isDeprecated": false,
+        "name": "Risto Avila",
+        "publicName": "",
+        "sessions": [
+            "1188"
+        ],
+        "sortGroup": "A",
+        "sortKey": "AVILA",
+        "speakerId": 1098,
+        "speakerImage": 1098
+    },
+    {
+        "bio": "Stefan Balkowiec is the Director of Automotive Solutions for Harman Connected Services responsible for European solution development and product management for; HCAT HMI Solution &amp; Echo Cancelations and Noise Reduction software. He is a widely respected consultant and public speaker on connected infotainment strategy and transformation. Stefan has over 20 years’ experience in consumer and automotive product development and management. Prior to his current position Stefan worked at NAVTEQ (Nokia) as Director Product Management Automotive Services with global business responsibility for automotive products and solutions for location based automotive service APIs and applications like; TPEG traffic, Local Search, Parking Payment and HTML5 applications. His creative, technical and business experience provides a unique perspective on the multi dimensional problems the connected car encounters. Before joining NAVTEQ Stefan was the Program Manager for OnStar Europe and B2C web platform. During which he had responsibility to deliver the end-to-end enterprise solution for Opel’s next generation online telematics and navigation systems, delivering a multi channel user experience. He also had European responsibility to consolidate onto a single platform the fragmented Opel and SAAB B2C web presence, across 36 different business units. Prior to joining OnStar Europe Stefan was the Project Manager for the award winning Psion ‘Revo’ PDA as well as the ‘Siena’ and sub-netbook ‘Series7’ which was in production for 8 years! Stefan Hold a first class honours Bachelor of Science Degree in Industrial Product Design from Coventry University, UK.",
+        "isDeprecated": false,
+        "name": "Stefan Balkowiec",
+        "publicName": "",
+        "sessions": [
+            "1320"
+        ],
+        "sortGroup": "B",
+        "sortKey": "BALKO",
+        "speakerId": 1321,
+        "speakerImage": 1321
+    },
+    {
+        "bio": "Martin has worked at Microsoft since 2010 and is currently an engineer on the OneDrive Mobile team where he works on the Android, Windows, and iOS OneDrive and SharePoint apps.  He has a degree in Computer Science from Cal-State Polytechnic University Pomona and has been actively developing commercial software since 1999.  His recent experiences have been focused primarily on mobile and desktop client development.",
+        "isDeprecated": false,
+        "name": "Martin Beechen",
+        "publicName": "",
+        "sessions": [
+            "1418"
+        ],
+        "sortGroup": "B",
+        "sortKey": "BEECH",
+        "speakerId": 1325,
+        "speakerImage": 1325
+    },
+    {
+        "bio": "Alex Blasche holds a degree in Computer Science (BCS) and a Master in Information Technologies (M.I.T.). He has been part of the Qt development for over ten years. When he joined Trolltech, he started as embedded software developer using Qt 2. Later he contributed to Qtopia/Qt Extended and in 2008 became technical lead for the design and development of those APIs. Following the announcement of Qt 5 he continued the Mobile effort by porting the API’s to Qt 5 and is the maintainer for some of them. His focus of work for the last year has been on Qt Connectivity &amp;IoT related technologies (e.g. Bluetooth &amp; NFC) and QtSerialBus, which he maintains in Qt.",
+        "isDeprecated": false,
+        "name": "Alex Blasche",
+        "publicName": "",
+        "sessions": [
+            "1156"
+        ],
+        "sortGroup": "B",
+        "sortKey": "BLASC",
+        "speakerId": 1039,
+        "speakerImage": 1039
+    },
+    {
+        "bio": "Mounir is a lead C++ engineer at iFeelSmart and Qt enthusiast, he has used many aspects of Qt in transportation and TV fields, Most of his work is on embedded platforms (set top box, mobile, tablet) on different systems like Android and iOS. He has been used Qt since 2007.\r\n\r\n ",
+        "isDeprecated": false,
+        "name": "Mounir Boudrifa",
+        "publicName": "",
+        "sessions": [
+            "1191"
+        ],
+        "sortGroup": "B",
+        "sortKey": "BOUDR",
+        "speakerId": 1112,
+        "speakerImage": 1112
+    },
+    {
+        "bio": "Romuald is a passionate Software Engineer in love with Qt ever since he first used the framework in version 4.2. He holds a double master degree from Ecole des Mines de Nantes and Georgia Tech. He has worked in different fields as a Software Engineer either tinkering with or evangelizing about Qt. He is now Senior Software Architect at Devialet where he leads the cross-platform application frameworks development, targeting embedded Linux, desktop, iOS and Android.",
+        "isDeprecated": false,
+        "name": "Romuald Cari",
+        "publicName": "",
+        "sessions": [
+            "1180"
+        ],
+        "sortGroup": "C",
+        "sortKey": "CARI",
+        "speakerId": 1102,
+        "speakerImage": 1102
+    },
+    {
+        "bio": "\r\n\r\n\r\n\r\nSteve Casner is a research psychologist at the U.S. National Aeronautics and Space Administration (NASA).  Steve studies the ways technology affects the way we work, our ability to pay attention, the skills we’ve worked hard to acquire, and our safety as technology assumes responsibility for tasks once solely performed by humans. Steve holds a Ph.D. degree in Intelligent Systems and an FAA Airline Transport Pilot certificate.\r\n\r\n\r\n\r\n",
+        "isDeprecated": false,
+        "name": "Stephen Casner",
+        "publicName": "",
+        "sessions": [
+            "1495"
+        ],
+        "sortGroup": "C",
+        "sortKey": "CASNE",
+        "speakerId": 1124,
+        "speakerImage": 1124
+    },
+    {
+        "bio": "Helio Chissini de Castro is Software Integrator Engineer from BMW CarIT software development and long time KDE contributor. BMW CarIT is working right now on the LSi team, Linux Software Integration, in the enablement of QtCreator as main IDE to drive the personalized SDK for future projects.",
+        "isDeprecated": false,
+        "name": "Helio Chissini de Castro",
+        "publicName": "",
+        "sessions": [
+            "1383"
+        ],
+        "sortGroup": "C",
+        "sortKey": "CASTR",
+        "speakerId": 1384,
+        "speakerImage": 1384
+    },
+    {
+        "bio": "Ping-Husn \"penk\" Chen, a full-stack engineer from Taiwan, enjoys in old-school rock 'n' roll and Sci-Fi novels, participates in open source related activities, writes in free software, translates documents and books, loves NightWish, Vonnegut and Perl. ",
+        "isDeprecated": false,
+        "name": "Ping-Hsun Chen",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "C",
+        "sortKey": "CHEN",
+        "speakerId": 1345,
+        "speakerImage": 1345
+    },
+    {
+        "bio": "Nils is a Qt Product Manager, with responsibility for developing Qt Lite. After many years as a technical sales engineers, he also serves as a Qt evangelist at tradeshows and conferences. In his role, Nils is responsible for evaluating The Qt Company's product offering, driving the long term roadmap creation, managing the technology evaluation stage and serves as a key technical adviser and product advocate for Qt. He has worked closely with Qt for the past eight years in Trolltech, Nokia, Digia and now The Qt Company. He holds a M.Sc. degree in Engineering Cybernetics from the Norwegian University of Technology and Science NTNU. Nils is based in Oslo, Norway.",
+        "isDeprecated": false,
+        "name": "Nils Christian-Nielson",
+        "publicName": "",
+        "sessions": [
+            "1182"
+        ],
+        "sortGroup": "C",
+        "sortKey": "CHRIS",
+        "speakerId": 1037,
+        "speakerImage": 1037
+    },
+    {
+        "bio": "­Adam Christian is a Senior Software Engineer at Tableau working on front-end development and currently re-architecting Tableau’s core Qt styling for Mac and Windows. He has a degree from the University of Virginia and has been creating software since 2004 - working at Microsoft, BITSystems, Bader Technologies and Habitat for Humanity of Greater Charlottesville. Adam’s interests lie in global styling architecture for large enterprise-scale applications and developer-designer interaction.",
+        "isDeprecated": false,
+        "name": "Adam Christian",
+        "publicName": "",
+        "sessions": [
+            "1550"
+        ],
+        "sortGroup": "C",
+        "sortKey": "CHRIS",
+        "speakerId": 1548,
+        "speakerImage": 1548
+    },
+    {
+        "bio": "\r\nJosh Clark is founder of Big Medium, a design studio specializing in emerging interaction for connected devices, mobile experiences, and responsive web design. His clients include some of the biggest industrial and media companies in the world. Josh is author of several books, including Designing for Touch and Tapworthy, and  he speaks around the world about what’s next for digital interfaces.\r\n\r\nBefore the internet swallowed him up, Josh was a producer of national PBS programs at Boston’s WGBH. He shared his three words of Russian with Mikhail Gorbachev, strolled the ranch with Nancy Reagan, hobnobbed with Rockefellers, and wrote trivia questions for a primetime game show. In 1996, he created the uberpopular “Couch-to-5K” (C25K) running program, which has helped millions of skeptical would-be exercisers take up jogging. (His motto is the same for fitness as it is for software user experience: no pain, no pain.)",
+        "isDeprecated": false,
+        "name": "Josh Clark",
+        "publicName": "",
+        "sessions": [
+            "1364"
+        ],
+        "sortGroup": "C",
+        "sortKey": "CLARK",
+        "speakerId": 1119,
+        "speakerImage": 1119
+    },
+    {
+        "bio": "Pedro Coca is a Computer Engineer and a Linux Enthusiast working for Canonical. He received his B.S from UPM (Madrid) and his M.S. from UC3M (Madrid) before becoming an IT auditor and a university researcher dealing always with one of his many passions: Open Source. In the last few years he has been very interested in the explosion of devices that we called IoT and its implications, applications and challenges. He currently resides in London with his family. He can be contacted at Pedro (dot) Coca (at) Canonical (dot) com.",
+        "isDeprecated": false,
+        "name": "Pedro Coca",
+        "publicName": "",
+        "sessions": [
+            "1305"
+        ],
+        "sortGroup": "C",
+        "sortKey": "COCA",
+        "speakerId": 1341,
+        "speakerImage": 1341
+    },
+    {
+        "bio": "Rob Cosaro has been one of the industry’s leading system architects in designing processors to meet the needs of fast evolving markets by implementing different cores within the same SoC; to create heterogeneous multicore processors.",
+        "isDeprecated": false,
+        "name": "Rob Cosaro",
+        "publicName": "",
+        "sessions": [
+            "1685"
+        ],
+        "sortGroup": "C",
+        "sortKey": "COSAR",
+        "speakerId": 1682,
+        "speakerImage": 1682
+    },
+    {
+        "bio": "Attila is the Technical Lead for EMEA Partner Solutions at Hewlett Packard's Immersive Computing Group, pushing the boundary on immersive, blended reality user experiences. Prior to that, for several years he was the team lead in Nokia’s Developer Experience Technical Consultancy unit where, as part of his duties he evangelized the use of Qt and helped developers develop and improve applications for Qt powered Nokia platforms. In total, he has over ten years of experience developing with Qt across Desktop, Mobile and Embedded device categories.",
+        "isDeprecated": false,
+        "name": "Attila Csipa",
+        "publicName": "",
+        "sessions": [
+            "1187",
+            "1185"
+        ],
+        "sortGroup": "C",
+        "sortKey": "CSIPA",
+        "speakerId": 924,
+        "speakerImage": 924
+    },
+    {
+        "bio": "Kenneth Cukier is the Data Editor of The Economist and co-author of “Big Data: A Revolution That Transforms How We Live, Work and Think,”\r\na NYT Bestseller translated into over 20 languages.\r\n\r\nKenn has covered business and technology for two decades from over 30 countries on four continents., He was previously the technology editor of The Wall Street Journal Asia in Hong Kong and a regular commentator on CNBC Asia. In 2002-04 he was a research fellow at Harvard's Kennedy School of Government looking at technology and public policy. He is a frequent commentator in the media, notably BBC and NPR.\r\n\r\nKenn was a member of the World Economic Forum's council on data-driven development. He serves on the board of directors of International Bridges to Justice, a Geneva-based NGO fostering legal rights in developing countries. He is currently writing a new book on artificial intelligence and business strategy.",
+        "isDeprecated": false,
+        "name": "Kenneth Cukier",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "C",
+        "sortKey": "CUKIE",
+        "speakerId": 936,
+        "speakerImage": 936
+    },
+    {
+        "bio": "Kushal is Staff Software Engineer at Dolby Labs where he is working on communication endpoint products. He has been working with Qt over 6 years. Prior to Dolby he worked at The Qt Company as Consulting Services Engineer. Kushal has extensive experience with embedded software and product development.",
+        "isDeprecated": false,
+        "name": "Kushal Dalal",
+        "publicName": "",
+        "sessions": [
+            "1189"
+        ],
+        "sortGroup": "D",
+        "sortKey": "DALAL",
+        "speakerId": 1110,
+        "speakerImage": 1110
+    },
+    {
+        "bio": "Lucas is a Geographer and Software Engineer working in product development at Esri. He primarily focuses his time on the ArcGIS Runtime SDK for Qt, which is a cross platform SDK designed to bring the geographic mapping capabilities of ArcGIS to the Qt framework. He holds a BA in Geography from University of Wisconsin, and a MS in GIS from Saint Mary's University. He is an Esri Certified ArcGIS Desktop Professional and is currently most interested in bringing offline maps, 3D maps, and advanced spatial analytics to the Qt framework.",
+        "isDeprecated": false,
+        "name": "Lucas Danzinger",
+        "publicName": "",
+        "sessions": [
+            "1174"
+        ],
+        "sortGroup": "D",
+        "sortKey": "DANZI",
+        "speakerId": 1096,
+        "speakerImage": 1096
+    },
+    {
+        "bio": "Steven Dean has over 15 years’ experience in the medical device field and is currently responsible for leading the medical initiative at QNX Software as their Global Healthcare Segment Manager. Prior Steven directed similar initiatives at Freescale and TI, leveraging his experience as Director of Business Development at Medtronic Corporation.\r\n\r\nSteven obtained his degree in Electrical Engineering from Purdue University, with postgraduate work in Business.\r\n\r\nSteven’s leisure pursuits include spending time with his wife Kathy of 30 years, his three children, sailing in the tropics, and home brewing.",
+        "isDeprecated": false,
+        "name": "Steven Dean",
+        "publicName": "",
+        "sessions": [
+            "1561"
+        ],
+        "sortGroup": "D",
+        "sortKey": "DEAN",
+        "speakerId": 1562,
+        "speakerImage": 1562
+    },
+    {
+        "bio": "Kris Dickie graduated from the British Columbia Institute of Technology with a B.Tech in Computer Systems. Currently he is the Director of Innovation at Clarius Mobile Health. Kris has over 15 years experience in the ultrasound industry as a software developer, engineering leader, as well as a business leader where he focused on the use of ultrasound in university research environments.",
+        "isDeprecated": false,
+        "name": "Kris Dickie",
+        "publicName": "",
+        "sessions": [
+            "1176"
+        ],
+        "sortGroup": "D",
+        "sortKey": "DICKI",
+        "speakerId": 1061,
+        "speakerImage": 1061
+    },
+    {
+        "bio": "Ben Ellis has over 6 years’ experience in developing Human Machine Interfaces (HMI) for embedded vehicle systems in the aerospace and automotive industries. He has led and created,  from  concept to production, visual front-end content for the \"InControl Touch Pro\" infotainment system featured in Jaguar Land Rover's  \"flagship\" products.\r\n\r\nIn Jaguar Land Rover's Portland Oregon facility, Ben is leading teams delivering  future Jaguar Land Rover HMI ,  creating assets, interactions and content that is rapidly developed, tested, and iterated to deliver the best user experiences for consumers.",
+        "isDeprecated": false,
+        "name": "Ben Ellis",
+        "publicName": "",
+        "sessions": [
+            "1578",
+            "1579"
+        ],
+        "sortGroup": "E",
+        "sortKey": "ELLIS",
+        "speakerId": 1577,
+        "speakerImage": 1577
+    },
+    {
+        "bio": "Christian Feldbacher is Co-Founder of V-Play GmbH. He has more than 10 years’ experience in software development with a strong focus on game and mobile app development for all kinds of platforms including native Symbian, Java ME, iOS, Android, MeeGo, and BlackBerry. After 10+ years C++ and 5+ years Qt C++ development, Christian was overwhelmed by Qt Quick and the combination of performance and code efficiency. His passion for games and experience in Qt, game, and mobile platform development led to the creation of V-Play Engine which was publicly launched in January 2013. Besides working on V-Play, Christian joins game jams and teaches university students how to develop with Qt. Previous Presentation Experience: Christian gave 3 talks at Qt World Summit 2015 about cross-platform app development with Qt, and a 1-hour session at Qt Developer Days Europe 2014. He presented a lightning talk at 2013’s Qt Developer Days in Berlin, where he won the “Most Innovative Talk” award. Christian has started to work as a tutor for programming and mathematics during his Bachelors and Master’s degree and presented complex topics on a weekly regular basis. After finishing the Mobile Computing Master program, he started to work as a lecturer on the University of Applied Sciences Hagenberg, teaching Bachelor and Master students cross-platform development with Qt. Besides presentations for students as a teacher, he often speaks on big public events. Examples are Global Game Jam Austria, Knowledge Night about Cross-Platform Development or Game Stage in Ars Electronica Center. As Co-Founder of V-Play, he also presents V-Play on conferences and Startup competitions on a regular basis, like at Game Developers Conference in Cologne or a talk at Microsoft Headquarter in Austria about cross-platform development with Qt.",
+        "isDeprecated": false,
+        "name": "Christian Feldbacher",
+        "publicName": "",
+        "sessions": [
+            "1163"
+        ],
+        "sortGroup": "F",
+        "sortKey": "FELDB",
+        "speakerId": 1076,
+        "speakerImage": 1076
+    },
+    {
+        "bio": "Ekke works as Independent Software architect in the domain of business applications (ERP). He has over 30 years of experience in the domain. He likes to develop high quality mobile apps for customers around the world. Ekke is a well-known speaker in national and international developer conferences, he writes articles and blogs at http://ekkes-corner.org. On Twitter he is @ekkescorner.\r\n\r\nFind more info on native mobile app development at http://appbus.org, which also has a special blog series about x-platform Qt development http://j.mp/qt-x.\r\n\r\nEkke lives in the south of Germany and in his spare time he likes to go backpacking to the Greek islands.",
+        "isDeprecated": false,
+        "name": "Ekkehard Gentz",
+        "publicName": "",
+        "sessions": [
+            "1476"
+        ],
+        "sortGroup": "G",
+        "sortKey": "GENTZ",
+        "speakerId": 1475,
+        "speakerImage": 1475
+    },
+    {
+        "bio": "Lorenz Haas is the Lead Software Architect at HEITEC's industrial IT sector. HEITEC is an international medium sized IT solution provider based in Erlangen, Bavaria, Germany with more than one thousand employees. HEITEC works closely together with his partners such as DMG MORI, SAP or Siemens, to provide innovative IT solutions in all areas of the automation industry.\r\n\r\nLorenz Haas joined HEITEC in 2013 shortly after CELOS was initially launched. Since then he has been supporting DMG MORI in developing and enhancing CELOS. Lorenz Haas possesses broad and deep Qt-expertise. He is one of the first certified Qt developers and specialists; has co-authored the book “Game Programming using Qt” published early this year; and plays a role in Qt Creator's development in his spare time where he has contributed amongst other things, the Beautifier plug-in.",
+        "isDeprecated": false,
+        "name": "Lorenz Haas",
+        "publicName": "",
+        "sessions": [
+            "1296"
+        ],
+        "sortGroup": "H",
+        "sortKey": "HAAS",
+        "speakerId": 1297,
+        "speakerImage": 1297
+    },
+    {
+        "bio": "Goran Hacek is leading In-Vehicle Infotainment and Machine-To-Machine interface development at Rimac Automobili d.o.o.",
+        "isDeprecated": false,
+        "name": "Goran Hacek",
+        "publicName": "",
+        "sessions": [
+            "1363"
+        ],
+        "sortGroup": "H",
+        "sortKey": "HACEK",
+        "speakerId": 1362,
+        "speakerImage": 1362
+    },
+    {
+        "bio": "Dr Sean Harmer holds a Ph.D. in Astrophysics and a Master of Science degree in Mathematics &amp; Astrophysics. Sean has been developing with C++ and Qt since 1998 and in a commercial setting since 2003. Sean has been involved in developing software in many areas including engineering, safety &amp; risk, oil &amp; gas, visualization and numerical simulations. Sean is the maintainer of Qt 3D and is currently heading up operations at KDAB UK where he is regularly involved in the development of Qt 5, the QNX port of Qt, OpenGL, and presenting professional Qt and OpenGL training courses. Sean is a keen swimmer, tea drinker and curry eater.",
+        "isDeprecated": false,
+        "name": "Sean Harmer",
+        "publicName": "",
+        "sessions": [
+            "1171"
+        ],
+        "sortGroup": "H",
+        "sortKey": "HARME",
+        "speakerId": 1090,
+        "speakerImage": 1090
+    },
+    {
+        "bio": "Simon Hausmann recently started a new chapter in Berlin, after a decade in Oslo. Nevertheless he is still the same: Working with Qt, advocating quality software development and loyalty to the German Beer Purity Law.",
+        "isDeprecated": false,
+        "name": "Simon Hausmann",
+        "publicName": "",
+        "sessions": [
+            "1167"
+        ],
+        "sortGroup": "H",
+        "sortKey": "HAUSM",
+        "speakerId": 1084,
+        "speakerImage": 1084
+    },
+    {
+        "bio": "Ulf Hermann has a degree in computer science from the Humboldt University in Berlin and has been working at Digia and the Qt Company since 2013. He has mostly focused on profiling and debugging tools around Qt Creator and QML. Lately he has contributed to Qt SCXML and made sure it integrates well with Qt Creator.",
+        "isDeprecated": false,
+        "name": "Ulf Hermann",
+        "publicName": "",
+        "sessions": [
+            "1179",
+            "1172"
+        ],
+        "sortGroup": "H",
+        "sortKey": "HERMA",
+        "speakerId": 1092,
+        "speakerImage": 1092
+    },
+    {
+        "bio": "Petteri is the Head of Product Management at The Qt Company. He has been with the software industry for 20 years, in different positions from Technology Consultant to CTO, from Product Group Manager to Head of Business Development.",
+        "isDeprecated": false,
+        "name": "Petteri Holländer",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "H",
+        "sortKey": "HOLLÄ",
+        "speakerId": 927,
+        "speakerImage": 927
+    },
+    {
+        "bio": "Allan is a senior software developer at The Qt Company and the maintainer of Qt WebEngine. He studied Computer Science at Copenhagen University, has been a contributor to KDE since 2001. Since joining Nokia in 2011 he has been working in the Qt Webkit/WebEngine team in Berlin.",
+        "isDeprecated": false,
+        "name": "Allan Sandfeld Jensen",
+        "publicName": "",
+        "sessions": [
+            "1183",
+            "1173"
+        ],
+        "sortGroup": "J",
+        "sortKey": "JENSE",
+        "speakerId": 1094,
+        "speakerImage": 1094
+    },
+    {
+        "bio": "Maurice Kalinowski works for the Qt Company as Principal Software Engineer. He started at Trolltech GmbH in Germany in 2006, working on the initial Windows CE 5 port. Following that he worked on multiple areas in regards to developer offering in Nokia: Qt Simulator, Qt Installer Framework, and (Nokia) Qt SDK and in R&amp;D management in Digia. Lately he became Maintainer for the Windows Runtime platform, including Universal Apps.",
+        "isDeprecated": false,
+        "name": "Maurice Kalinowski",
+        "publicName": "",
+        "sessions": [
+            "1175",
+            "1177"
+        ],
+        "sortGroup": "K",
+        "sortKey": "KALIN",
+        "speakerId": 632,
+        "speakerImage": 632
+    },
+    {
+        "bio": "Anupam heads Qt Engineering in LG’s Silicon Valley Labs (SVL) based in Santa Clara, CA. He leads and manages projects and teams in LG SVL that work on innovative products that enhance and leverage Qt’s core technologies for LG - like LG’s QML Wayland Compositor for webOS, Qt/QML Applications and Frameworks deployed in commercial products, QtWebEngine optimizations, Qt-Automotive, and various other Qt engagements for LG.\r\n\r\nAnupam has in the past successfully led and delivered many innovative and commercial products to market that are based off Qt. These include multi-generation releases of the iconic Palm Pre &amp; Palm Pixie webOS smartphones (2009, 2010 and 2011), the HP webOS Touchpad tablet (2012), and most recently, multiple releases of LG’s critically acclaimed webOS Smart TV (2014, 2015 and 2016). His interests today are in expanding Qt’s footprint within LG around various domains, including the Automotive IVI (In- Vehicle-Infotainment) industry.",
+        "isDeprecated": false,
+        "name": "Anupam Kaul",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "K",
+        "sortKey": "KAUL",
+        "speakerId": 1681
+    },
+    {
+        "bio": "Kevin Kelly has been a participant of, and reporter on, the information technology revolution for more than 30 years. Based in his studio in Pacifica, California, he immerses himself in the long-term trends of technology, tools and cultural behavior. He writes about the ripple effects and social consequences surrounding the culture of technology. His latest book, a New York Times bestseller, is called “The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future” (Viking, June 2016). It is about the deep trends in the next 20 years that will shape our lives. Kevin suggests we embrace these changes, including ubiquitous tracking, accessible artificial intelligence, constant sharing, getting paid to watch ads, VR in your home, etc. Kelly’s previous book, “What Technology Wants” (Viking, 2010), presents a refreshing view of technology as a nearly living force in the world that affects society in an overall positive way. His other recent works include the graphic novel  “The Silver Cord” (2015) and “Cool Tools: A Catalog of Possibilities“ (Cool Tools Lab, 2013), a large-format, highly curated guide to the best of technology, tools and resources for modern self-sufficient living, which has already been compared to “The Whole Earth Catalog” of a generation ago.\r\n\r\nKelly is currently Senior Maverick at WIRED magazine. He helped launch WIRED in 1993, and served as its executive editor until January 1999. During Kelly’s tenure as editor at WIRED, the magazine won two National Magazine Awards (the industry’s equivalent of two Oscars). He is also currently editor and publisher of the Cool Tools website, which gets 1 million visitors per month. From 1984-1990, Kelly was publisher and editor of the Whole Earth Review, a journal of unorthodox technical news. He co-founded the ongoing Hackers’ Conference and was involved with the launch of the WELL, a pioneering online service started in 1985. He authored the best-selling “New Rules for the New Economy” (Penguin Books, 1999) and the classic book on decentralized emergent systems, “Out of Control” (Basic Books, 1995), called “required reading for all executives” by Fortune. In addition, he writes for prominent publications including The New York Times, The Wall Street Journal, The Economist, Time, Harpers, Science, GQ, and Esquire. Earlier in life, Kelly was a photographer in remote parts of Asia (instead of going to college), publishing his photographs in national magazines and recently in the photo art book “Asia Grace” (Taschen, 2002).",
+        "isDeprecated": false,
+        "name": "Kevin Kelly",
+        "publicName": "",
+        "sessions": [
+            "1353"
+        ],
+        "sortGroup": "K",
+        "sortKey": "KELLY",
+        "speakerId": 1114,
+        "speakerImage": 1114
+    },
+    {
+        "bio": "Lars Knoll is The Qt Company CTO and Qt Project Chief Maintainer. He has been working on Qt for more than 13 years starting as a software engineer to later leading the global Qt engineering team in Nokia before the Digia acquisition in October 2012. Lars has been an active member of the KDE community and the architect behind KDE's HTML rendering library that formed the basis for the WebKit open source project. Lars holds a PhD in physics from the University of Heidelberg. He is German national and lives with his family in Oslo.",
+        "isDeprecated": false,
+        "name": "Lars Knoll",
+        "publicName": "",
+        "sessions": [
+            "1703",
+            "1704"
+        ],
+        "sortGroup": "K",
+        "sortKey": "KNOLL",
+        "speakerId": 935,
+        "speakerImage": 935
+    },
+    {
+        "bio": "Volker started working with Qt and contributing to KDE back in 2002. He maintained KDE's personal information management service Akonadi for a few years and in 2010 he started the GammaRay project, to address the need for (by then not yet existing) QML debugging tools. Volker is a Qt approver and works as software engineer, consultant and trainer at KDAB, and leads KDAB's contributions to the Qt Automotive Suite.",
+        "isDeprecated": false,
+        "name": "Volker Krause",
+        "publicName": "",
+        "sessions": [
+            "1181"
+        ],
+        "sortGroup": "K",
+        "sortKey": "KRAUS",
+        "speakerId": 937,
+        "speakerImage": 937
+    },
+    {
+        "bio": "Roland is the Engineering Director for Integrated Computer Solutions, Inc. (ICS). He has more than 15 years’ experience in architecture and design of large-scale software systems. He received a Master’s and Doctorate degree in engineering from the Universität Dortmund and is fluent in both German and English.",
+        "isDeprecated": false,
+        "name": "Roland Krause",
+        "publicName": "",
+        "sessions": [
+            "1569"
+        ],
+        "sortGroup": "K",
+        "sortKey": "KRAUS",
+        "speakerId": 1222,
+        "speakerImage": 1222
+    },
+    {
+        "bio": "Senior Software Engineer at KDAB UK, Mike has been developing with C++ since 1996 and Qt since 2004. He hold a PhD in Computer Science. With commercial experience since 1999, mainly in civil engineering and oil &amp; gas industries, Mike has a broad range of experience in scientific applications. Keen on MacOS development, he is also interested in building mobile applications with Qt, mainly on iOS. Languages: English, French.",
+        "isDeprecated": false,
+        "name": "Mike Krus",
+        "publicName": "",
+        "sessions": [
+            "1166"
+        ],
+        "sortGroup": "K",
+        "sortKey": "KRUS",
+        "speakerId": 1082,
+        "speakerImage": 1082
+    },
+    {
+        "bio": "Jeff is the Director of User Experience (UX) at Integrated Computer Solutions, Inc. (ICS), which specializes in developing world-class, implementable designs for touch-enabled devices. He has extensive experience developing custom software solutions with a strong focus on applying human factors principles to user-interface design. He earned both his BS and MS in Computer Science from Worcester Polytechnic Institute (WPI) where he is also an adjunct faculty member. In his free time Jeff enjoys kayaking, archery, and hiking the White Mountains of New Hampshire with his rescue dog, Alex.",
+        "isDeprecated": false,
+        "name": "Jeff LeBlanc",
+        "publicName": "",
+        "sessions": [
+            "1161"
+        ],
+        "sortGroup": "L",
+        "sortKey": "LEBLA",
+        "speakerId": 1074,
+        "speakerImage": 1074
+    },
+    {
+        "bio": "Adrien Leravat currently works for Witekio in the headquarters located in Lyon, France. He has several years of industry experience, guiding customers in needs of Qt expertise, whether it relates to UI development, architecture, or overall performance improvements.",
+        "isDeprecated": false,
+        "name": "﻿Adrien Leravat",
+        "publicName": "",
+        "sessions": [
+            "1378"
+        ],
+        "sortGroup": "L",
+        "sortKey": "LERAV",
+        "speakerId": 1379,
+        "speakerImage": 1379
+    },
+    {
+        "bio": "Jouko leads the consulting service business at the Qt Company. He has experience from many industries with different level of exposure to software making.",
+        "isDeprecated": false,
+        "name": "Jouko Luukas",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "L",
+        "sortKey": "LUUKA",
+        "speakerId": 1065,
+        "speakerImage": 1065
+    },
+    {
+        "bio": "Thiago Macieira holds a double degree in Engineering and an MBA. His first meaningful contribution to Open Source was actually about enabling IPv6 for KDE's browser in 2000 and he has been doing IPv6-related work, in one way or another, since then. He was one of the driving forces inside the Open Interconnect Consortium and its adoption of IPv6. He has been involved in several Open Source projects for over 15 years, is an experienced C++ developer, maintainer for QtCore and QtDBus and works for Intel’s Open Source Technology Center (OTC).",
+        "isDeprecated": false,
+        "name": "Thiago Macieira",
+        "publicName": "",
+        "sessions": [
+            "1184",
+            "1186"
+        ],
+        "sortGroup": "M",
+        "sortKey": "MACIE",
+        "speakerId": 1106,
+        "speakerImage": 1106
+    },
+    {
+        "bio": "Murali has led the Consulting Services for Qt since the Nokia days. When Digia acquired Qt, Murali was instrumental in setting up the Consulting Services group in Digia-Qt, building it from ground up. Prior to Qt, Murali was working for Intellisync Inc. that was acquired by Nokia. Murali has extensive experience leading and managing cross-functional consulting teams in US, Romania and Asia-Pacific.\r\n\r\n&nbsp;",
+        "isDeprecated": false,
+        "name": "Murali Mandayam",
+        "publicName": "",
+        "sessions": [
+            "1479",
+            "1532",
+            "1155"
+        ],
+        "sortGroup": "M",
+        "sortKey": "MANDA",
+        "speakerId": 1533
+    },
+    {
+        "bio": "Alex has worked at Microsoft since 2007 and is currently an engineering manager on the OneDrive Mobile team where he works on the Android, Windows, and iOS OneDrive and SharePoint apps.  He has a degree in Applied Mathematics from Southern Federal University (former Rostov State University) in Russia and has been working on the OneDrive Mobile apps since their inception. His recent experiences have been focused primarily on mobile and desktop client development.",
+        "isDeprecated": false,
+        "name": "Alexander Mazukabzov",
+        "publicName": "",
+        "sessions": [
+            "1530"
+        ],
+        "sortGroup": "M",
+        "sortKey": "MAZUK",
+        "speakerId": 1326,
+        "speakerImage": 1326
+    },
+    {
+        "bio": "Thomas is a professional Qt developer for several years and works at KDAB as a senior software engineer, consultant and trainer. As a software engineer, he works on different customer projects, both widget-based and, increasingly, QtQuick-based, with a focus on embedded. Thomas contributes to the Qt project and has approver status there. He started working with Qt in the free software KDE project, where he maintained the mail application KMail for a long time. Thomas has a master degree in computer science and studied at the University of Siegen and the University of Edinburgh. Despite his last name, he is German and currently lives in Berlin.",
+        "isDeprecated": false,
+        "name": "Thomas McGuire",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "M",
+        "sortKey": "MCGUI",
+        "speakerId": 920,
+        "speakerImage": 920
+    },
+    {
+        "bio": "Frank Meerkötter is the Development Lead at basysKom GmbH since 2013. He is responsible for the technical consulting in customer projects including software architecture and the high-level design. He has used Qt since Qt3 days in numerous projects, often in an embedded setting. He has a strong background in (Embedded) Linux and systems programming and holds a Master of Science in Computer Science from the University of Applied Sciences in Darmstadt/Germany.",
+        "isDeprecated": false,
+        "name": "Frank Meerkötter",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "M",
+        "sortKey": "MEERK",
+        "speakerId": 916,
+        "speakerImage": 916
+    },
+    {
+        "bio": "Stay Tuned!",
+        "isDeprecated": false,
+        "name": "Tore Meyer",
+        "publicName": "",
+        "sessions": [
+            "1165"
+        ],
+        "sortGroup": "M",
+        "sortKey": "MEYER",
+        "speakerId": 1701
+    },
+    {
+        "bio": "LIU Miao is Mechanical and electrical engineering Ph.D. He is the co-founder of Shanghai AutoI/O Technology Co.Ltd. And he is an adjunct professor at the Harbin Polytechnic University, Master Instructor. He uses QT over 10 years. He has 15 years of experience in embedded Linux development, author of \"Embedded System Interface Design and Linux driver development\", which is a very popular embedded linux book in China, 10 years ago.",
+        "isDeprecated": false,
+        "name": "Liu Miao",
+        "publicName": "",
+        "sessions": [
+            "1190"
+        ],
+        "sortGroup": "M",
+        "sortKey": "MIAO",
+        "speakerId": 1111,
+        "speakerImage": 1111
+    },
+    {
+        "bio": "Alex Montgomery is the Director of Tools Engineering at Telltale Games. He has been using Qt professionally to develop animation tools and editors for seven years, for such game series as \"The Walking Dead\", \"Game of Thrones\", and the unfolding story-based Batman adventure, \"Batman: The Telltale Series\". The Telltale tools team uses Qt to make a mix of intuitive and cutting-edge tools that game industry art professionals require to work creatively and efficiently.",
+        "isDeprecated": false,
+        "name": "Alexander Montgomery",
+        "publicName": "",
+        "sessions": [
+            "1382"
+        ],
+        "sortGroup": "M",
+        "sortKey": "MONTG",
+        "speakerId": 1381,
+        "speakerImage": 1381
+    },
+    {
+        "bio": "Collier Moody is the Vice President of Astronavigation and Software Development at Lunasonde. In this role he directs the creation of advanced algorithms and device development for the progression and advancement of space technologies. Before his work at Lunasonde, he   developed several patent pending designs, including a mathematical algorithm for engineering optimization in the avionics field. These advancements received international recognition.",
+        "isDeprecated": false,
+        "name": "Collier Moody",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "M",
+        "sortKey": "MOODY",
+        "speakerId": 1690,
+        "speakerImage": 1690
+    },
+    {
+        "bio": "Andy Nichols is a senior software engineer at The Qt Company in Oslo, Norway. He has worked with Qt for the last 10 years. Andy was a Qt support engineer at Nokia for 3 years who focused on customers using Qt for Embedded Linux. He later took a role as a software engineer at Nokia with the Qt graphics team where he worked on the Qt Platform Abstraction (QPA) in Qt 5 as well as the QtWayland module. Since joining The Qt Company he has been focused on Wayland, Multimedia, the Qt Quick 2D Renderer, and the Embedded Linux and iOS ports. Andy's current focus is on the Qt Quick graphics stack and Embedded Linux.",
+        "isDeprecated": false,
+        "name": "Andy Nichols",
+        "publicName": "",
+        "sessions": [
+            "1168"
+        ],
+        "sortGroup": "N",
+        "sortKey": "NICHO",
+        "speakerId": 1035,
+        "speakerImage": 1035
+    },
+    {
+        "bio": "Justin is a Senior Consulting Engineer and Qt Certified Instructor at Integrated Computer Solutions, Inc. (ICS). He has taught Qt and Qt Quick/QML material to both public and corporate audiences for many years. He has also written and conducted seminars on object-oriented GUI design techniques. Justin has a degree in computer engineering technology from Northeastern University and enjoys gadget tinkering, fixing cars and playing hockey in his spare time.",
+        "isDeprecated": false,
+        "name": "Justin Noel",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "N",
+        "sortKey": "NOEL",
+        "speakerId": 1223,
+        "speakerImage": 1223
+    },
+    {
+        "bio": "Jeremiah Pate is the founder and president of Lunasonde, a company that represents a new generation of aerospace technologies. Pate's expertise falls in the realm of biotechnology, photonics, and aerospace engineering. Prior to his work at Lunasonde, Pate developed a quantum communication device and a streamlined aircraft safety monitoring system. For his research, Pate was named Arizona's 2015 Future Innovator of the Year.",
+        "isDeprecated": false,
+        "name": "Jeremiah Pate",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "P",
+        "sortKey": "PATE",
+        "speakerId": 1678,
+        "speakerImage": 1678
+    },
+    {
+        "bio": "Tomasz started the adventure with Squish and GUI Testing in 2011, designing and implementing automated tests for a Flight Planning solution at Lufthansa Systems. In 2014 he joined froglogic and is conducting Squish trainings and consulting for many companies in Europe and the USA. Tomasz has a degree in computer science from Nicolaus Copernicus University in Poland.",
+        "isDeprecated": false,
+        "name": "Tomasz Pawłowski",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "P",
+        "sortKey": "PAWŁO",
+        "speakerId": 1356
+    },
+    {
+        "bio": "Jeff has directed the design and development of many notable connected software applications and platforms, including the best-selling PC software, Internet-in-a-Box; the global ISP, SpryNet; the first multimedia CDN, Real Broadcast Network; and the first field-programmable security appliance for carriers, the Bivio 5000. Jeff founded OpenCar in 2011 and serves as Chief Executive Officer.",
+        "isDeprecated": false,
+        "name": "Jeff Payne",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "P",
+        "sortKey": "PAYNE",
+        "speakerId": 917,
+        "speakerImage": 917
+    },
+    {
+        "bio": "Jake Petroules is a software engineer at The Qt Company in California. He has worked with Qt for over 6 years. Jake started contributing to Qt in 2012, focusing on the development of Qbs as well as the macOS and iOS ports. He later became an approver, and eventually joined The Qt Company as a consultant, helping customers to achieve success with Qt. Right now he is focused on developing exciting new features for Qbs and helping to port Qt to use Qbs as its build system, in addition to his consulting responsibilities.",
+        "isDeprecated": false,
+        "name": "Jake Petroules",
+        "publicName": "",
+        "sessions": [
+            "1482",
+            "1581"
+        ],
+        "sortGroup": "P",
+        "sortKey": "PETRO",
+        "speakerId": 1481,
+        "speakerImage": 1481
+    },
+    {
+        "bio": "Massimiliano Pippi has been a software developer for over 10 years, more than half of which he spent working with scientific visualization and backend software for a private company, using C++ and Qt technologies. He is also an open source advocate and active contributor, documentation fanatic, and speaker at conferences. Massimiliano writes about Python and other development-related topics at http://dev.pippi.im.",
+        "isDeprecated": false,
+        "name": "Massimiliano Pippi",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "P",
+        "sortKey": "PIPPI",
+        "speakerId": 635,
+        "speakerImage": 635
+    },
+    {
+        "bio": "Romain Pokrzywka is the software architect and lead engineer for the Wall UI at Bluescape. He has been developing with Qt for over 12 years on projects spanning desktop, embedded and mobile platforms, he was also a professional Qt trainer and has given several talks at past Qt conferences. He's also a long term contributor to the Qt Project. He has a passion for innovative user interfaces and elegant software architectures to create unique user experiences. A native from France and former swedish resident, he now lives in the Bay Area with his wife and two children.",
+        "isDeprecated": false,
+        "name": "Romain Pokrzywka",
+        "publicName": "",
+        "sessions": [
+            "1158"
+        ],
+        "sortGroup": "P",
+        "sortKey": "POKRZ",
+        "speakerId": 1068,
+        "speakerImage": 1068
+    },
+    {
+        "bio": "Harri is co-founder and co-CEO of froglogic - the maker of the GUI testing tool Squish and the code coverage tool Coco. Harri first got in contact with Qt through the Open Source KDE Community when maintaining an Internet dialer tool and authoring the JavaScript engine KJS. Later he worked as a Senior Software engineer for the original creators of Qt Trolltech.",
+        "isDeprecated": false,
+        "name": "Harri Porten",
+        "publicName": "",
+        "sessions": [
+            "1152"
+        ],
+        "sortGroup": "P",
+        "sortKey": "PORTE",
+        "speakerId": 1355,
+        "speakerImage": 1355
+    },
+    {
+        "bio": "Chris is a seasoned Qt software engineer at Integrated Computer Solutions, Inc. (ICS) with deep knowledge of C and C++. Chris earned a BSc and MSc in computer science from the Université de Sherbrooke in Quebec, and is fluent in English, French and German.",
+        "isDeprecated": false,
+        "name": "Chris Probst",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "P",
+        "sortKey": "PROBS",
+        "speakerId": 1225,
+        "speakerImage": 1225
+    },
+    {
+        "bio": "Torsten has been working as an architect and lead developer in the LG webOS team for more than 3 years. He has advocated the usage of Qt Quick at LG since he had developed the very first QML prototype for the parallelogram system UI. Since then Torsten and the webOS platform team have been working towards one goal: making smartTVs a better place in the living room.\r\n\r\nTorsten is employed as a Qt Specialist by basysKom. Beyond his work at LG he has spearheaded Qt in various projects across different industries already. In addition to that Torsten has been an active member of the KDE community and launched his own Qt-based Open Source Project \"Marble Virtual Globe\" in 2006. Torsten has a Diplom degree in physics and studied at the University of Kiel. He lives in Nuremberg, Germany.",
+        "isDeprecated": false,
+        "name": "Torsten Rahn",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "R",
+        "sortKey": "RAHN",
+        "speakerId": 914,
+        "speakerImage": 914
+    },
+    {
+        "bio": "Philip Rosedale is CEO and co-founder of High Fidelity, Inc., a company devoted to exploring the future of next-generation shared virtual reality.  Prior to High Fidelity, Rosedale created the virtual civilization Second Life, populated by one million active users generating US$700M in annual transaction volumes.  In addition to numerous technology inventions (including the video conferencing product called FreeVue, acquired by RealNetworks in 1996 where Rosedale later served as CTO), Rosedale has also worked on experiments in distributed work and computing.",
+        "isDeprecated": false,
+        "name": "Philip Rosedale",
+        "publicName": "",
+        "sessions": [
+            "1323"
+        ],
+        "sortGroup": "R",
+        "sortKey": "ROSED",
+        "speakerId": 1322,
+        "speakerImage": 1322
+    },
+    {
+        "bio": "Thibaut heads the devices marketing team at Canonical. He has been active in the mobile, telecom, software world for the past 15 years as an all-rounder from the research labs, to the telecom shelter, from core network to core OS, from photons to airwaves and from product management to community strategy. Thibaut has been heavily engaged in the migration of the telecom industry towards a more open, developer community and software approach to innovation. In his role as Canonical he continues on his mission with a strong focus on bringing a more open and fast moving Internet of Things and a new generation of mobile devices. As an entrepreneur he’s co-founded a marketing agency, an innovation management software platform, a nutritionist-in-your pocket app and built large developer event brands.",
+        "isDeprecated": false,
+        "name": "Thibaut Rouffineau",
+        "publicName": "",
+        "sessions": [
+            "1694"
+        ],
+        "sortGroup": "R",
+        "sortKey": "ROUFF",
+        "speakerId": 1304,
+        "speakerImage": 1304
+    },
+    {
+        "bio": "One of the Qt Quick maintainers, trying to focus on better support for pointing devices: tablets, touchscreens and mice.",
+        "isDeprecated": false,
+        "name": "Shawn Rutledge",
+        "publicName": "",
+        "sessions": [
+            "1160",
+            "1423"
+        ],
+        "sortGroup": "R",
+        "sortKey": "RUTLE",
+        "speakerId": 1072,
+        "speakerImage": 1072
+    },
+    {
+        "bio": "Andreas is an entrepreneur since 1983, being in the media market since 1998 and responsible for marketing, sales and strategy at HOLOPLOT, living in Berlin and Munich.",
+        "isDeprecated": false,
+        "name": "Andreas Schmid",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "S",
+        "sortKey": "SCHMI",
+        "speakerId": 40,
+        "speakerImage": 40
+    },
+    {
+        "bio": "\r\n\r\n\r\n\r\nMiriam Schuh is one of the salary partners at reuschlaw Legal Consultants and head of the medical device department.\r\n\r\nMiriam graduated from the University of Saarbrücken, Germany in 1999. Before joining reuschlaw she spent several years in Tokyo, working for the Ochanomizu Law Office and for the legal department of West LB Securi es Ltd., Tokyo Branch.\r\n\r\nMiriam is an expert in the areas of medical devices, medical law and cosmetics. She has extensive experience in countries selling manufacturers, distributors and retailers in questions concerning their operating business. This includes, in particular, the draft and negotiation of (international) contractual relationships, the communication with authorities as well as the counseling regarding product safety issues and regulatory compliance.\r\n\r\nHer European and international clients are medium and large-sized industrial enterprises, especially in the healthcare industry, research institutions and industrial associations.\r\n\r\nShe drafts and publishes articles on medical devices law for the German magazine ‘medizin &amp; technik’ (‚Medicine and Technology‘) and lectures as a guest tutor on medical devices law at Trier University of Applied Sciences.\r\n\r\nMiriam speaks German, Japanese and English.\r\n\r\n\r\n\r\n",
+        "isDeprecated": false,
+        "name": "Miriam Schuh",
+        "publicName": "",
+        "sessions": [
+            "1471"
+        ],
+        "sortGroup": "S",
+        "sortKey": "SCHUH",
+        "speakerId": 1473,
+        "speakerImage": 1473
+    },
+    {
+        "bio": "Brandon Shibley is a Field Application Engineer for Toradex where he provides technical consultation &amp; engineering support to Toradex customers employing ARM System-on-Modules. Brandon previously worked for the US Navy performing software &amp; systems engineering for embedded signal processing systems. He has extensive experience with Linux on ARM applications processors. Brandon holds an MS in Systems Engineering from Johns Hopkins University and a BS in Computational Physics from Washington State University.",
+        "isDeprecated": false,
+        "name": "Brandon Shibley",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "S",
+        "sortKey": "SHIBL",
+        "speakerId": 1108,
+        "speakerImage": 1108
+    },
+    {
+        "bio": "Martin Siggel studied Physics at the University of Heidelberg. In 2012, he obtained his PhD in Physics on the optimization of radiotherapy at the German Cancer Research Center (DKFZ). He currently works at the German Aerospace Center (DLR) on simulation software technology in the field of aircraft design and optimization, where his main interests are numerical algorithms and their efficient implementation. He is an early user of Qt and convinces his colleagues to use Qt for their new software projects. When he’s not on his mountain bike, he likes playing with new hardware and software technology or spends time with his young family.",
+        "isDeprecated": false,
+        "name": "Martin Siggel",
+        "publicName": "",
+        "sessions": [
+            "1164"
+        ],
+        "sortGroup": "S",
+        "sortKey": "SIGGE",
+        "speakerId": 1078,
+        "speakerImage": 1078
+    },
+    {
+        "bio": "Jeremy has spent the last six years developing software for some of New Zealand's leading technology companies. After graduating from the University of Auckland in Computer Systems Engineering he joined Fisher and Paykel Appliances to create embedded software for white ware. Subsequently joining Tru-Test to work on their electric fencing and agricultural products, and then helping to shape I Measure U, a wearable technology startup. Currently he works his magic at BEP Marine on their embedded Linux touch displays and digital switching controllers. There Jeremy is able to expand on his interests in embedded Linux, security, Python and public speaking. Around his local community he organises the Embedded Systems and Python meetups. Most of all Jeremy loves to learn from and inspire others",
+        "isDeprecated": false,
+        "name": "Jeremy Stott",
+        "publicName": "",
+        "sessions": [
+            "1314"
+        ],
+        "sortGroup": "S",
+        "sortKey": "STOTT",
+        "speakerId": 1315,
+        "speakerImage": 1315
+    },
+    {
+        "bio": "Morten Johan Sørvig works at the Qt Company Oslo and is the Qt for macOS maintainer. He has been working on Qt for more than 12 years after starting as a software engineer at Trolltech in 2004. In addition to his maintainer role Morten has also contributed to Qt’s high-DPI support.",
+        "isDeprecated": false,
+        "name": "Morten Sørvig",
+        "publicName": "",
+        "sessions": [
+            "1477"
+        ],
+        "sortGroup": "S",
+        "sortKey": "SØRVI",
+        "speakerId": 1478,
+        "speakerImage": 1478
+    },
+    {
+        "bio": "Johan Thelin is a Qt Champion and has worked with Qt for more than 10 years. He is the author of the Foundations of Qt Development, the Qt in Education training material, numerous articles on-line as well as in printed publications. He currently works at Pelagicore, building the next generation in-vehicle infotainment framework based on open source software.",
+        "isDeprecated": false,
+        "name": "Johan Thelin",
+        "publicName": "",
+        "sessions": [
+            "1170"
+        ],
+        "sortGroup": "T",
+        "sortKey": "THELI",
+        "speakerId": 1088,
+        "speakerImage": 1088
+    },
+    {
+        "bio": "Robert manages both the hardware and software ecosystem for NXP’s i.MX line of application processors. In this role he focuses on developing partnerships to enable customers to get to market as fast and competitively as possible in a wide variety of industries. Robert is an industry expert in the consumer electronics market with over 20 years of experience in diverse markets, including Europe, Brazil and the United States.",
+        "isDeprecated": false,
+        "name": "Robert Thompson",
+        "publicName": "",
+        "sessions": [
+            "1686"
+        ],
+        "sortGroup": "T",
+        "sortKey": "THOMP",
+        "speakerId": 1684,
+        "speakerImage": 1684
+    },
+    {
+        "bio": "Bo Thorsen has been a Qt developer for almost 20 years, with most of this time spent as a Qt consultant. He has been involved in over 100 different Qt based projects for as many companies or open source groups. He is one of the true experts in using Qt to write applications, with knowledge and experience about almost every part of Qt. With this knowledge comes the ability to make better choices when it comes to design, architecture or code efficiency. He currently runs Viking Software, a Qt based consulting company.",
+        "isDeprecated": false,
+        "name": "Bo Thorsen",
+        "publicName": "",
+        "sessions": [
+            "1162"
+        ],
+        "sortGroup": "T",
+        "sortKey": "THORS",
+        "speakerId": 940,
+        "speakerImage": 940
+    },
+    {
+        "bio": "Jeff Tranter is a Qt Consulting Manager at Integrated Computer Solutions (ICS). At ICS, Jeff is responsible for the management of customer software projects, including the architectural and high-level design of software systems. Prior to joining ICS, Jeff was one of the founding members of Xandros Corporation where he managed a team of developers responsible for the desktop components of Linux-based Xandros Desktop products. Jeff has written a number of books on Linux and Open Source programming as well as numerous magazine articles and has given presentations at conferences and user groups.",
+        "isDeprecated": false,
+        "name": "Jeff Tranter",
+        "publicName": "",
+        "sessions": [
+            "1157"
+        ],
+        "sortGroup": "T",
+        "sortKey": "TRANT",
+        "speakerId": 1066,
+        "speakerImage": 1066
+    },
+    {
+        "bio": "Tuukka Turunen is leading R&amp;D at The Qt Company. Tuukka holds M.Sc.(Eng) and Licentiate of Technology from the University of Oulu, Finland. He has over 20 years of experience from various positions in the software industry, especially around embedded systems.",
+        "isDeprecated": false,
+        "name": "Tuukka Turunen",
+        "publicName": "",
+        "sessions": [
+            "1147"
+        ],
+        "sortGroup": "T",
+        "sortKey": "TURUN",
+        "speakerId": 1063,
+        "speakerImage": 1063
+    },
+    {
+        "bio": "Digia's President and CEO as from the beginning of 2008. Reporting to the Board of Directors, Juha is responsible for the company's operative business. Previously, he has served as the President and CEO of the technology company Everypoint Inc of Boston (2006-2007). He has also held managerial positions at Yahoo! and Everypoint in London (2002-2006). Before this, he has served in various managerial positions at Sonera (1993-2002), acting as Managing Director of Sonera Zed and a member of the Sonera Management Team.",
+        "isDeprecated": false,
+        "name": "Juha Varelius",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "V",
+        "sortKey": "VAREL",
+        "speakerId": 923,
+        "speakerImage": 923
+    },
+    {
+        "bio": "BogDan Vatra is a Software Engineer at KDAB and has been using Qt since 2002 and is the original author of Qt for Android port and the maintainer of this platform.",
+        "isDeprecated": false,
+        "name": "BogDan Vatra",
+        "publicName": "",
+        "sessions": [
+            "1169"
+        ],
+        "sortGroup": "V",
+        "sortKey": "VATRA",
+        "speakerId": 1086,
+        "speakerImage": 1086
+    },
+    {
+        "bio": "Andrej Zdravkovic is AMD’s Corporate Vice President responsible for AMD and Radeon Technology Group Software. He has over 30 years hardware, software and business management experience in high technology product and software development.\r\n\r\nPrior to joining AMD in 2015, Andrej served as Senior Vice President with Giesecke&amp;Devrient Banknote Processing division, responsible for Software Solutions business worldwide. Andrej joined Giesecke&amp;Devrient in 2009 as Vice President R&amp;D and led the company’s software technology roadmap to create Banknote’s software business.\r\n\r\nAndrej spent the previous 11 years at AMD and ATI in various software engineering leadership positions, including Senior Director of Handheld Software, Platform and Customer Engineering, Director of Software Development and Director of Mobile Software.\r\n\r\nAndrej holds B.Sc. and M.Sc. degrees in Electrical Engineering. Andrej is Professional Engineer in the Province of Ontario, Canada and Senior IEEE Member. He published over 30 technical papers and has 5 granted patents.",
+        "isDeprecated": false,
+        "name": "Andrej Zdravkovic",
+        "publicName": "",
+        "sessions": [
+            "1528",
+            "1529"
+        ],
+        "sortGroup": "Z",
+        "sortKey": "ZDRAV",
+        "speakerId": 1527,
+        "speakerImage": 1527
+    }
+]
