@@ -163,7 +163,7 @@ ApplicationWindow {
     property bool initDone: false
 
     property var navigationTitles: [
-        qsTr("QtWS 2016 San Francisco"),
+        qsTr("Qt World Summit 2016"),
         "",
         qsTr("QtWS 2016 Schedule"),
         qsTr("QtWS 2016 Speakers"),

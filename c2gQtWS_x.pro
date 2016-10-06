@@ -76,6 +76,7 @@ OTHER_FILES += images/black/*.png \
     images/white/x36/*.png \
     images/white/x48/*.png \
     images/extra/*.png \
+    images/extra/*.jpg \
     translations/*.* \
     data-assets/*.json \
     data-assets/prod/*.json \

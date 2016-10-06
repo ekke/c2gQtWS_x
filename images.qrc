@@ -893,7 +893,7 @@
         <file>images/black/schedule_sametime@3x.png</file>
         <file>images/black/schedule_sametime@4x.png</file>
         <file>images/black/search.png</file>
-		<file>images/black/search@2x.png</file>
+        <file>images/black/search@2x.png</file>
         <file>images/black/search@3x.png</file>
         <file>images/black/search@4x.png</file>
         <file>images/black/send.png</file>
@@ -1885,7 +1885,7 @@
         <file>images/white/schedule_my@3x.png</file>
         <file>images/white/schedule_my@4x.png</file>
         <file>images/white/schedule_sametime.png</file>
-		<file>images/white/schedule_sametime@2x.png</file>
+        <file>images/white/schedule_sametime@2x.png</file>
         <file>images/white/schedule_sametime@3x.png</file>
         <file>images/white/schedule_sametime@4x.png</file>
         <file>images/white/search.png</file>
@@ -1961,5 +1961,8 @@
         <file>images/white/zoom_out@3x.png</file>
         <file>images/white/zoom_out@4x.png</file>
         <file>images/LICENSE</file>
+        <file>images/extra/sf_landscape.jpg</file>
+        <file>images/extra/qt_world_summit.png</file>
+        <file>images/extra/sf_portrait.jpg</file>
     </qresource>
 </RCC>

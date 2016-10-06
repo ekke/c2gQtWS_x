@@ -14,92 +14,34 @@ Pane {
     height: appWindow.height
     property string name: "HomePage"
     property Conference conference
-    topPadding: 12
+    //topPadding: 12
+    padding: 0
+
     Image {
         id: conferenceImage
-        x: 24
-        property real portraitScale: 1.0
-        property real landscapeScale: 1.0
-        scale: isLandscape? landscapeScale : portraitScale
-        anchors.top: parent.top
-        anchors.left: parent.left
-        width: sourceSize.width
-        height: sourceSize.height
-        fillMode: Image.PreserveAspectFit
-        source: isDarkTheme? "qrc:/images/extra/qt-con-logo-white.png":"qrc:/images/extra/qt-con-logo.png"
+        anchors.fill: parent
+        //width: appWindow.width
+        //height: appWindow.height
+        fillMode: Image.PreserveAspectCrop
+        source: isLandscape? "qrc:/images/extra/sf_landscape.jpg" : "qrc:/images/extra/sf_portrait.jpg"
         horizontalAlignment: Image.AlignLeft
         verticalAlignment: Image.AlignTop
         transformOrigin: Item.TopLeft
     } // image
 
-    ColumnLayout {
-        Layout.fillWidth: true
-        anchors.right: parent.right
-        anchors.left: parent.left
-        transform: Translate {
-            x: isLandscape ? conferenceImage.width*conferenceImage.scale:0
-            y: isLandscape? -22 : conferenceImage.height*conferenceImage.scale
-        } // translate
-
-        RowLayout {
-            LabelHeadline {
-                Layout.maximumWidth: isLandscape? appWindow.width-12-(conferenceImage.width*conferenceImage.scale) : appWindow.width-12
-                topPadding: 8
-                leftPadding: 16
-                rightPadding: 16
-                wrapMode: Text.WordWrap
-                text: qsTr("QtCon 2016, Berlin\n01. - 04. September")
-                color: primaryColor
-            }
-        }
-        RowLayout {
-            LabelHeadline {
-                Layout.maximumWidth: isLandscape? appWindow.width-12-(conferenceImage.width*conferenceImage.scale) : appWindow.width-12
-                topPadding: 12
-                leftPadding: 16
-                rightPadding: 16
-                wrapMode: Text.WordWrap
-                text: qsTr("Welcome to ekke's Conference2Go app")
-                color: accentColor
-            }
-        }
-        RowLayout {
-            LabelTitle {
-                Layout.maximumWidth: isLandscape? appWindow.width-12-(conferenceImage.width*conferenceImage.scale) : appWindow.width-12
-                topPadding: 16
-                leftPadding: 16
-                rightPadding: 16
-                wrapMode: Text.WordWrap
-                text: qsTr("Developed with Qt 5.7\nQt Quick Controls 2\n(Material Style)")
-                color: primaryColor
-            }
-        }
-        RowLayout {
-            LabelTitle {
-                id: hashtagLabel
-                Layout.maximumWidth: isLandscape? appWindow.width-12-(conferenceImage.width*conferenceImage.scale) : appWindow.width-12
-                topPadding: 10
-                leftPadding: 16
-                rightPadding: 16
-                wrapMode: Text.WordWrap
-                text: conference? "Twitter " + conference.hashTag : ""
-                color: accentColor
-            }
-        }
-    } // col layout
-
-    LabelBodySecondary {
-        anchors.leftMargin: 22
-        anchors.bottomMargin: isLandscape || appWindow.isClassicNavigationStyle? 48 : 100
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        text: dataUtil.apiInfo()
+    LabelDisplay1 {
+        anchors.centerIn: parent
+        text: qsTr("October, 18-20\nSan Francisco, USA\n\nWelcome")
+        color: "white"
+        opacity: 1.0
     }
+
+
     FloatingActionButton {
         property string imageName: "/refresh.png"
         z: 1
-        anchors.margins: 8
-        anchors.bottomMargin: isLandscape || appWindow.isClassicNavigationStyle? 60:112
+        anchors.margins: 20
+        anchors.bottomMargin: isLandscape? 60 : 112
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         imageSource: "qrc:/images/"+iconOnAccentFolder+imageName
@@ -170,22 +112,9 @@ Pane {
         cleanup()
     }
 
-    function fitIntoWindow() {
-        var portraitWidth = Math.min(appWindow.width,appWindow.height)
-        var portraitHeight = Math.max(appWindow.width,appWindow.height)-60
-        var portraitWidthScale = portraitWidth / conferenceImage.sourceSize.width
-        var portraitHeightScale = portraitHeight / conferenceImage.sourceSize.height
-        conferenceImage.portraitScale = Math.min(portraitWidthScale, portraitHeightScale) * 0.8
-        var landscapeWidth = Math.max(appWindow.width,appWindow.height)
-        var landscapeHeight = Math.min(appWindow.width,appWindow.height)-80
-        var landscapeWidthScale = landscapeWidth / conferenceImage.sourceSize.width
-        var landscapeHeightScale = landscapeHeight / conferenceImage.sourceSize.height
-        conferenceImage.landscapeScale = Math.min(landscapeWidthScale, landscapeHeightScale) * 0.5
-    }
 
     // called immediately after Loader.loaded
     function init() {
-        fitIntoWindow()
         conference = dataManager.conferencePropertyList[0]
         console.log("Init done from Home Page")
     }
