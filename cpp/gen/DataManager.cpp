@@ -1552,16 +1552,6 @@ void DataManager::resolveSessionReferences(Session* session)
     		session->markRoomAsInvalid();
     	}
     }
-    if (session->hasSessionTrack() && !session->isSessionTrackResolvedAsDataObject()) {
-    	SessionTrack* sessionTrack;
-   		sessionTrack = findSessionTrackByTrackId(session->sessionTrack());
-    	if (sessionTrack) {
-    		session->resolveSessionTrackAsDataObject(sessionTrack);
-    	} else {
-    		qDebug() << "markSessionTrackAsInvalid: " << session->sessionTrack();
-    		session->markSessionTrackAsInvalid();
-    	}
-    }
     if (session->hasScheduleItem() && !session->isScheduleItemResolvedAsDataObject()) {
     	ScheduleItem* scheduleItem;
    		scheduleItem = findScheduleItemBySessionId(session->scheduleItem());
@@ -1579,6 +1569,10 @@ void DataManager::resolveSessionReferences(Session* session)
     if (!session->areSessionLinksKeysResolved()) {
         session->resolveSessionLinksKeys(
                 listOfSessionLinkForKeys(session->sessionLinksKeys()));
+    }
+    if (!session->areSessionTracksKeysResolved()) {
+        session->resolveSessionTracksKeys(
+                listOfSessionTrackForKeys(session->sessionTracksKeys()));
     }
 }
 

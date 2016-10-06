@@ -86,13 +86,16 @@ public:
     QString letterForButton(Session* session);
 
     Q_INVOKABLE
-    QString textForSessionTrack(Session* session);
+    QString textForSessionTrack(SessionTrack *sessionTrack);
 
     Q_INVOKABLE
     QString textForSessionType(Session* session);
 
     Q_INVOKABLE
     QString trackColor(const int trackId);
+
+    Q_INVOKABLE
+    QString trackColorFirstTrack(Session* session);
 
 signals:
     void myScheduleRefreshed();
@@ -149,9 +152,10 @@ private:
     void updateSessions();
     Day *findDayForServerDate(const QString &dayDate);
     void adjustPersons(QVariantMap &sessionMap);
+    void adjustTracks(QVariantMap &sessionMap, Conference *conference, const bool isUpdate);
     bool checkIfIgnored(SessionAPI *sessionAPI);
     void setDuration(SessionAPI *sessionAPI, Session* session);
-    void setTrackAndType(SessionAPI *sessionAPI, Session *session, Conference *conference, const bool isUpdate);
+    void setType(Session *session);
     void createAndAdjustLinks(QVariantMap &sessionMap);
     void updateAndAdjustLinks(QVariantMap &sessionMap);
     void finishUpdate();

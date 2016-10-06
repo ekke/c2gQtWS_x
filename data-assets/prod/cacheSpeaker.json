@@ -82,6 +82,8 @@
         "name": "Martin Beechen",
         "publicName": "",
         "sessions": [
+            "1729",
+            "1530",
             "1418"
         ],
         "sortGroup": "B",
@@ -160,6 +162,7 @@
         "name": "Ping-Hsun Chen",
         "publicName": "",
         "sessions": [
+            "1305"
         ],
         "sortGroup": "C",
         "sortKey": "CHEN",
@@ -185,6 +188,7 @@
         "name": "Adam Christian",
         "publicName": "",
         "sessions": [
+            "1734",
             "1550"
         ],
         "sortGroup": "C",
@@ -224,7 +228,8 @@
         "name": "Rob Cosaro",
         "publicName": "",
         "sessions": [
-            "1685"
+            "1685",
+            "1686"
         ],
         "sortGroup": "C",
         "sortKey": "COSAR",
@@ -295,6 +300,18 @@
         "sortKey": "DEAN",
         "speakerId": 1562,
         "speakerImage": 1562
+    },
+    {
+        "bio": "Stay tuned",
+        "isDeprecated": false,
+        "name": "Shrikant Dhumal",
+        "publicName": "",
+        "sessions": [
+            "1155"
+        ],
+        "sortGroup": "D",
+        "sortKey": "DHUMA",
+        "speakerId": 1738
     },
     {
         "bio": "Kris Dickie graduated from the British Columbia Institute of Technology with a B.Tech in Computer Systems. Currently he is the Director of Innovation at Clarius Mobile Health. Kris has over 15 years experience in the ultrasound industry as a software developer, engineering leader, as well as a business leader where he focused on the use of ultrasound in university research environments.",
@@ -368,6 +385,7 @@
         "name": "Goran Hacek",
         "publicName": "",
         "sessions": [
+            "1733",
             "1363"
         ],
         "sortGroup": "H",
@@ -433,8 +451,8 @@
         "name": "Allan Sandfeld Jensen",
         "publicName": "",
         "sessions": [
-            "1183",
-            "1173"
+            "1173",
+            "1183"
         ],
         "sortGroup": "J",
         "sortKey": "JENSE",
@@ -447,8 +465,8 @@
         "name": "Maurice Kalinowski",
         "publicName": "",
         "sessions": [
-            "1175",
-            "1177"
+            "1177",
+            "1175"
         ],
         "sortGroup": "K",
         "sortKey": "KALIN",
@@ -461,6 +479,7 @@
         "name": "Anupam Kaul",
         "publicName": "",
         "sessions": [
+            "1729"
         ],
         "sortGroup": "K",
         "sortKey": "KAUL",
@@ -486,6 +505,7 @@
         "publicName": "",
         "sessions": [
             "1703",
+            "1182",
             "1704"
         ],
         "sortGroup": "K",
@@ -591,8 +611,8 @@
         "publicName": "",
         "sessions": [
             "1479",
-            "1532",
-            "1155"
+            "1155",
+            "1532"
         ],
         "sortGroup": "M",
         "sortKey": "MANDA",
@@ -604,7 +624,9 @@
         "name": "Alexander Mazukabzov",
         "publicName": "",
         "sessions": [
-            "1530"
+            "1729",
+            "1530",
+            "1418"
         ],
         "sortGroup": "M",
         "sortKey": "MAZUK",
@@ -636,16 +658,18 @@
         "speakerImage": 916
     },
     {
-        "bio": "Stay Tuned!",
+        "bio": "Tore Meyer is Co-Founder and CEO of 4tiitoo. Facilitating the access to technology and information is at the heart of 4tiitoo and their NUIA product lineup. IoT, AR/VR and omnipresence of IT devices require more an more communication between humans and machines. Eye Tracking, gesture and speech based interaction are both mandatory and a huge opportunity to create a more natural and efficient interaction.\r\nIt is the fusion of the technologically possible with the human acceptable that spurs Tore's interest. Together with his partner Stephan Odörfer he is responsible for the overall long-term direction and product management of NUIA.",
         "isDeprecated": false,
         "name": "Tore Meyer",
         "publicName": "",
         "sessions": [
-            "1165"
+            "1165",
+            "1728"
         ],
         "sortGroup": "M",
         "sortKey": "MEYER",
-        "speakerId": 1701
+        "speakerId": 1701,
+        "speakerImage": 1701
     },
     {
         "bio": "LIU Miao is Mechanical and electrical engineering Ph.D. He is the co-founder of Shanghai AutoI/O Technology Co.Ltd. And he is an adjunct professor at the Harbin Polytechnic University, Master Instructor. He uses QT over 10 years. He has 15 years of experience in embedded Linux development, author of \"Embedded System Interface Design and Linux driver development\", which is a very popular embedded linux book in China, 10 years ago.",
@@ -679,6 +703,8 @@
         "name": "Collier Moody",
         "publicName": "",
         "sessions": [
+            "1734",
+            "1735"
         ],
         "sortGroup": "M",
         "sortKey": "MOODY",
@@ -691,7 +717,8 @@
         "name": "Andy Nichols",
         "publicName": "",
         "sessions": [
-            "1168"
+            "1168",
+            "1151"
         ],
         "sortGroup": "N",
         "sortKey": "NICHO",
@@ -716,6 +743,7 @@
         "name": "Jeremiah Pate",
         "publicName": "",
         "sessions": [
+            "1735"
         ],
         "sortGroup": "P",
         "sortKey": "PATE",
@@ -751,7 +779,6 @@
         "name": "Jake Petroules",
         "publicName": "",
         "sessions": [
-            "1482",
             "1581"
         ],
         "sortGroup": "P",
@@ -827,6 +854,7 @@
         "name": "Philip Rosedale",
         "publicName": "",
         "sessions": [
+            "1733",
             "1323"
         ],
         "sortGroup": "R",
@@ -840,6 +868,7 @@
         "name": "Thibaut Rouffineau",
         "publicName": "",
         "sessions": [
+            "1729",
             "1694"
         ],
         "sortGroup": "R",
@@ -892,6 +921,7 @@
         "name": "Brandon Shibley",
         "publicName": "",
         "sessions": [
+            "1188"
         ],
         "sortGroup": "S",
         "sortKey": "SHIBL",
@@ -917,6 +947,7 @@
         "name": "Jeremy Stott",
         "publicName": "",
         "sessions": [
+            "1732",
             "1314"
         ],
         "sortGroup": "S",
@@ -1028,13 +1059,26 @@
         "speakerImage": 1086
     },
     {
+        "bio": "Becky grew up in rainy England. She left in 2004 to work in the Finnish technology business, and was introduced to Qt shortly after. Becky joined Digia as a Qt/Linux programmer at the start of 2011, just months before Digia started the Qt Commercial business which eventually became the Qt Company. She has been consulting with Qt customers since 2011, and based in the California office since 2015.",
+        "isDeprecated": false,
+        "name": "Rebecca Worledge",
+        "publicName": "",
+        "sessions": [
+        ],
+        "sortGroup": "W",
+        "sortKey": "WORLE",
+        "speakerId": 1736,
+        "speakerImage": 1736
+    },
+    {
         "bio": "Andrej Zdravkovic is AMD’s Corporate Vice President responsible for AMD and Radeon Technology Group Software. He has over 30 years hardware, software and business management experience in high technology product and software development.\r\n\r\nPrior to joining AMD in 2015, Andrej served as Senior Vice President with Giesecke&amp;Devrient Banknote Processing division, responsible for Software Solutions business worldwide. Andrej joined Giesecke&amp;Devrient in 2009 as Vice President R&amp;D and led the company’s software technology roadmap to create Banknote’s software business.\r\n\r\nAndrej spent the previous 11 years at AMD and ATI in various software engineering leadership positions, including Senior Director of Handheld Software, Platform and Customer Engineering, Director of Software Development and Director of Mobile Software.\r\n\r\nAndrej holds B.Sc. and M.Sc. degrees in Electrical Engineering. Andrej is Professional Engineer in the Province of Ontario, Canada and Senior IEEE Member. He published over 30 technical papers and has 5 granted patents.",
         "isDeprecated": false,
         "name": "Andrej Zdravkovic",
         "publicName": "",
         "sessions": [
-            "1528",
-            "1529"
+            "1733",
+            "1529",
+            "1528"
         ],
         "sortGroup": "Z",
         "sortKey": "ZDRAV",

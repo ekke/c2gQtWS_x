@@ -4,11 +4,11 @@
 // target also references to this
 #include "Speaker.hpp"
 // target also references to this
+#include "SessionTrack.hpp"
+// target also references to this
 #include "Day.hpp"
 // target also references to this
 #include "Room.hpp"
-// target also references to this
-#include "SessionTrack.hpp"
 // target also references to this
 #include "ScheduleItem.hpp"
 
@@ -35,9 +35,9 @@ static const QString isFavoriteKey = "isFavorite";
 static const QString isBookmarkedKey = "isBookmarked";
 static const QString presenterKey = "presenter";
 static const QString sessionLinksKey = "sessionLinks";
+static const QString sessionTracksKey = "sessionTracks";
 static const QString sessionDayKey = "sessionDay";
 static const QString roomKey = "room";
-static const QString sessionTrackKey = "sessionTrack";
 static const QString scheduleItemKey = "scheduleItem";
 
 // keys used from Server API etc
@@ -63,9 +63,9 @@ static const QString isFavoriteForeignKey = "isFavorite";
 static const QString isBookmarkedForeignKey = "isBookmarked";
 static const QString presenterForeignKey = "presenter";
 static const QString sessionLinksForeignKey = "sessionLinks";
+static const QString sessionTracksForeignKey = "sessionTracks";
 static const QString sessionDayForeignKey = "sessionDay";
 static const QString roomForeignKey = "room";
-static const QString sessionTrackForeignKey = "sessionTrack";
 static const QString scheduleItemForeignKey = "scheduleItem";
 
 /*
@@ -81,9 +81,6 @@ Session::Session(QObject *parent) :
 	mRoom = -1;
 	mRoomAsDataObject = 0;
 	mRoomInvalid = false;
-	mSessionTrack = -1;
-	mSessionTrackAsDataObject = 0;
-	mSessionTrackInvalid = false;
 	mScheduleItem = -1;
 	mScheduleItemAsDataObject = 0;
 	mScheduleItemInvalid = false;
@@ -96,6 +93,7 @@ Session::Session(QObject *parent) :
 		// lazy Arrays where only keys are persisted
 		mPresenterKeysResolved = false;
 		mSessionLinksKeysResolved = false;
+		mSessionTracksKeysResolved = false;
 }
 
 bool Session::isAllResolved()
@@ -106,9 +104,6 @@ bool Session::isAllResolved()
 	if (hasRoom() && !isRoomResolvedAsDataObject()) {
 		return false;
 	}
-	if (hasSessionTrack() && !isSessionTrackResolvedAsDataObject()) {
-		return false;
-	}
 	if (hasScheduleItem() && !isScheduleItemResolvedAsDataObject()) {
 		return false;
 	}
@@ -116,6 +111,9 @@ bool Session::isAllResolved()
         return false;
     }
     if(!areSessionLinksKeysResolved()) {
+        return false;
+    }
+    if(!areSessionTracksKeysResolved()) {
         return false;
     }
     return true;
@@ -186,13 +184,6 @@ void Session::fillFromMap(const QVariantMap& sessionMap)
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
-	// sessionTrack lazy pointing to SessionTrack* (domainKey: trackId)
-	if (sessionMap.contains(sessionTrackKey)) {
-		mSessionTrack = sessionMap.value(sessionTrackKey).toInt();
-		if (mSessionTrack != -1) {
-			// resolve the corresponding Data Object on demand from DataManager
-		}
-	}
 	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
 	if (sessionMap.contains(scheduleItemKey)) {
 		mScheduleItem = sessionMap.value(scheduleItemKey).toInt();
@@ -210,6 +201,11 @@ void Session::fillFromMap(const QVariantMap& sessionMap)
 	// mSessionLinks must be resolved later if there are keys
 	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
 	mSessionLinks.clear();
+	// mSessionTracks is (lazy loaded) Array of SessionTrack*
+	mSessionTracksKeys = sessionMap.value(sessionTracksKey).toStringList();
+	// mSessionTracks must be resolved later if there are keys
+	mSessionTracksKeysResolved = (mSessionTracksKeys.size() == 0);
+	mSessionTracks.clear();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -276,13 +272,6 @@ void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
-	// sessionTrack lazy pointing to SessionTrack* (domainKey: trackId)
-	if (sessionMap.contains(sessionTrackForeignKey)) {
-		mSessionTrack = sessionMap.value(sessionTrackForeignKey).toInt();
-		if (mSessionTrack != -1) {
-			// resolve the corresponding Data Object on demand from DataManager
-		}
-	}
 	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
 	if (sessionMap.contains(scheduleItemForeignKey)) {
 		mScheduleItem = sessionMap.value(scheduleItemForeignKey).toInt();
@@ -300,6 +289,11 @@ void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 	// mSessionLinks must be resolved later if there are keys
 	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
 	mSessionLinks.clear();
+	// mSessionTracks is (lazy loaded) Array of SessionTrack*
+	mSessionTracksKeys = sessionMap.value(sessionTracksForeignKey).toStringList();
+	// mSessionTracks must be resolved later if there are keys
+	mSessionTracksKeysResolved = (mSessionTracksKeys.size() == 0);
+	mSessionTracks.clear();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -360,13 +354,6 @@ void Session::fillFromCacheMap(const QVariantMap& sessionMap)
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
-	// sessionTrack lazy pointing to SessionTrack* (domainKey: trackId)
-	if (sessionMap.contains(sessionTrackKey)) {
-		mSessionTrack = sessionMap.value(sessionTrackKey).toInt();
-		if (mSessionTrack != -1) {
-			// resolve the corresponding Data Object on demand from DataManager
-		}
-	}
 	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
 	if (sessionMap.contains(scheduleItemKey)) {
 		mScheduleItem = sessionMap.value(scheduleItemKey).toInt();
@@ -384,6 +371,11 @@ void Session::fillFromCacheMap(const QVariantMap& sessionMap)
 	// mSessionLinks must be resolved later if there are keys
 	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
 	mSessionLinks.clear();
+	// mSessionTracks is (lazy loaded) Array of SessionTrack*
+	mSessionTracksKeys = sessionMap.value(sessionTracksKey).toStringList();
+	// mSessionTracks must be resolved later if there are keys
+	mSessionTracksKeysResolved = (mSessionTracksKeys.size() == 0);
+	mSessionTracks.clear();
 }
 
 void Session::prepareNew()
@@ -421,10 +413,6 @@ QVariantMap Session::toMap()
 	if (mRoom != -1) {
 		sessionMap.insert(roomKey, mRoom);
 	}
-	// sessionTrack lazy pointing to SessionTrack* (domainKey: trackId)
-	if (mSessionTrack != -1) {
-		sessionMap.insert(sessionTrackKey, mSessionTrack);
-	}
 	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
 	if (mScheduleItem != -1) {
 		sessionMap.insert(scheduleItemKey, mScheduleItem);
@@ -461,6 +449,22 @@ QVariantMap Session::toMap()
 		mSessionLinksKeys << sessionLink->uuid();
 	}
 	sessionMap.insert(sessionLinksKey, mSessionLinksKeys);
+	// mSessionTracks points to SessionTrack*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mSessionTracksKeysResolved) {
+		mSessionTracksKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+		SessionTrack* sessionTrack;
+		sessionTrack = mSessionTracks.at(i);
+		mSessionTracksKeys << QString::number(sessionTrack->trackId());
+	}
+	sessionMap.insert(sessionTracksKey, mSessionTracksKeys);
 	sessionMap.insert(sessionIdKey, mSessionId);
 	sessionMap.insert(isDeprecatedKey, mIsDeprecated);
 	sessionMap.insert(sortKeyKey, mSortKey);
@@ -504,10 +508,6 @@ QVariantMap Session::toForeignMap()
 	if (mRoom != -1) {
 		sessionMap.insert(roomForeignKey, mRoom);
 	}
-	// sessionTrack lazy pointing to SessionTrack* (domainKey: trackId)
-	if (mSessionTrack != -1) {
-		sessionMap.insert(sessionTrackForeignKey, mSessionTrack);
-	}
 	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
 	if (mScheduleItem != -1) {
 		sessionMap.insert(scheduleItemForeignKey, mScheduleItem);
@@ -544,6 +544,22 @@ QVariantMap Session::toForeignMap()
 		mSessionLinksKeys << sessionLink->uuid();
 	}
 	sessionMap.insert(sessionLinksKey, mSessionLinksKeys);
+	// mSessionTracks points to SessionTrack*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mSessionTracksKeysResolved) {
+		mSessionTracksKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+		SessionTrack* sessionTrack;
+		sessionTrack = mSessionTracks.at(i);
+		mSessionTracksKeys << QString::number(sessionTrack->trackId());
+	}
+	sessionMap.insert(sessionTracksKey, mSessionTracksKeys);
 	sessionMap.insert(sessionIdForeignKey, mSessionId);
 	sessionMap.insert(isDeprecatedForeignKey, mIsDeprecated);
 	sessionMap.insert(sortKeyForeignKey, mSortKey);
@@ -587,10 +603,6 @@ QVariantMap Session::toCacheMap()
 	if (mRoom != -1) {
 		sessionMap.insert(roomKey, mRoom);
 	}
-	// sessionTrack lazy pointing to SessionTrack* (domainKey: trackId)
-	if (mSessionTrack != -1) {
-		sessionMap.insert(sessionTrackKey, mSessionTrack);
-	}
 	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
 	if (mScheduleItem != -1) {
 		sessionMap.insert(scheduleItemKey, mScheduleItem);
@@ -627,6 +639,22 @@ QVariantMap Session::toCacheMap()
 		mSessionLinksKeys << sessionLink->uuid();
 	}
 	sessionMap.insert(sessionLinksKey, mSessionLinksKeys);
+	// mSessionTracks points to SessionTrack*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mSessionTracksKeysResolved) {
+		mSessionTracksKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+		SessionTrack* sessionTrack;
+		sessionTrack = mSessionTracks.at(i);
+		mSessionTracksKeys << QString::number(sessionTrack->trackId());
+	}
+	sessionMap.insert(sessionTracksKey, mSessionTracksKeys);
 	sessionMap.insert(sessionIdKey, mSessionId);
 	sessionMap.insert(isDeprecatedKey, mIsDeprecated);
 	sessionMap.insert(sortKeyKey, mSortKey);
@@ -786,73 +814,6 @@ void Session::resolveRoomAsDataObject(Room* room)
 void Session::markRoomAsInvalid()
 {
     mRoomInvalid = true;
-}
-// REF
-// Lazy: sessionTrack
-// Optional: sessionTrack
-// sessionTrack lazy pointing to SessionTrack* (domainKey: trackId)
-int Session::sessionTrack() const
-{
-	return mSessionTrack;
-}
-SessionTrack* Session::sessionTrackAsDataObject() const
-{
-	return mSessionTrackAsDataObject;
-}
-void Session::setSessionTrack(int sessionTrack)
-{
-	if (sessionTrack != mSessionTrack) {
-        // remove old Data Object if one was resolved
-        if (mSessionTrackAsDataObject) {
-            // reset pointer, don't delete the independent object !
-            mSessionTrackAsDataObject = 0;
-        }
-        // set the new lazy reference
-        mSessionTrack = sessionTrack;
-        mSessionTrackInvalid = false;
-        emit sessionTrackChanged(sessionTrack);
-        if (sessionTrack != -1) {
-            // resolve the corresponding Data Object on demand from DataManager
-        }
-    }
-}
-void Session::removeSessionTrack()
-{
-	if (mSessionTrack != -1) {
-		setSessionTrack(-1);
-	}
-}
-bool Session::hasSessionTrack()
-{
-    if (!mSessionTrackInvalid && mSessionTrack != -1) {
-        return true;
-    } else {
-        return false;
-    }
-}
-bool Session::isSessionTrackResolvedAsDataObject()
-{
-    if (!mSessionTrackInvalid && mSessionTrackAsDataObject) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-// lazy bound Data Object was resolved. overwrite trackId if different
-void Session::resolveSessionTrackAsDataObject(SessionTrack* sessionTrack)
-{
-    if (sessionTrack) {
-        if (sessionTrack->trackId() != mSessionTrack) {
-            setSessionTrack(sessionTrack->trackId());
-        }
-        mSessionTrackAsDataObject = sessionTrack;
-        mSessionTrackInvalid = false;
-    }
-}
-void Session::markSessionTrackAsInvalid()
-{
-    mSessionTrackInvalid = true;
 }
 // REF
 // Lazy: scheduleItem
@@ -1575,6 +1536,173 @@ void Session::clearSessionLinksProperty(QQmlListProperty<SessionLink> *sessionLi
         session->mSessionLinks.clear();
     } else {
         qWarning() << "cannot clear sessionLinks " << "Object is not of type Session*";
+    }
+}
+
+// ATT 
+// Optional: sessionTracks
+QVariantList Session::sessionTracksAsQVariantList()
+{
+	QVariantList sessionTracksList;
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+        sessionTracksList.append((mSessionTracks.at(i))->toMap());
+    }
+	return sessionTracksList;
+}
+QVariantList Session::sessionTracksAsForeignQVariantList()
+{
+	QVariantList sessionTracksList;
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+        sessionTracksList.append((mSessionTracks.at(i))->toForeignMap());
+    }
+	return sessionTracksList;
+}
+// no create() or undoCreate() because dto is root object
+// see methods in DataManager
+/**
+ * you can add sessionTracks without resolving existing keys before
+ * attention: before looping through the objects
+ * you must resolveSessionTracksKeys
+ */
+void Session::addToSessionTracks(SessionTrack* sessionTrack)
+{
+    mSessionTracks.append(sessionTrack);
+    emit addedToSessionTracks(sessionTrack);
+    emit sessionTracksPropertyListChanged();
+}
+
+bool Session::removeFromSessionTracks(SessionTrack* sessionTrack)
+{
+    bool ok = false;
+    ok = mSessionTracks.removeOne(sessionTrack);
+    if (!ok) {
+    	qDebug() << "SessionTrack* not found in sessionTracks";
+    	return false;
+    }
+    emit sessionTracksPropertyListChanged();
+    // sessionTracks are independent - DON'T delete them
+    return true;
+}
+void Session::clearSessionTracks()
+{
+    for (int i = mSessionTracks.size(); i > 0; --i) {
+        removeFromSessionTracks(mSessionTracks.last());
+    }
+    mSessionTracksKeys.clear();
+}
+
+/**
+ * lazy Array of independent Data Objects: only keys are persited
+ * so we get a list of keys (uuid or domain keys) from map
+ * and we persist only the keys toMap()
+ * after initializing the keys must be resolved:
+ * - get the list of keys: sessionTracksKeys()
+ * - resolve them from DataManager
+ * - then resolveSessionTracksKeys()
+ */
+bool Session::areSessionTracksKeysResolved()
+{
+    return mSessionTracksKeysResolved;
+}
+
+QStringList Session::sessionTracksKeys()
+{
+    return mSessionTracksKeys;
+}
+
+/**
+ * Objects from sessionTracksKeys will be added to existing sessionTracks
+ * This enables to use addToSessionTracks() without resolving before
+ * Hint: it's your responsibility to resolve before looping thru sessionTracks
+ */
+void Session::resolveSessionTracksKeys(QList<SessionTrack*> sessionTracks)
+{
+    if(mSessionTracksKeysResolved){
+        return;
+    }
+    // don't clear mSessionTracks (see above)
+    for (int i = 0; i < sessionTracks.size(); ++i) {
+        addToSessionTracks(sessionTracks.at(i));
+    }
+    mSessionTracksKeysResolved = true;
+}
+
+int Session::sessionTracksCount()
+{
+    return mSessionTracks.size();
+}
+QList<SessionTrack*> Session::sessionTracks()
+{
+	return mSessionTracks;
+}
+void Session::setSessionTracks(QList<SessionTrack*> sessionTracks) 
+{
+	if (sessionTracks != mSessionTracks) {
+		mSessionTracks = sessionTracks;
+		emit sessionTracksChanged(sessionTracks);
+		emit sessionTracksPropertyListChanged();
+	}
+}
+
+/**
+ * to access lists from QML we're using QQmlListProperty
+ * and implement methods to append, count and clear
+ * now from QML we can use
+ * session.sessionTracksPropertyList.length to get the size
+ * session.sessionTracksPropertyList[2] to get SessionTrack* at position 2
+ * session.sessionTracksPropertyList = [] to clear the list
+ * or get easy access to properties like
+ * session.sessionTracksPropertyList[2].myPropertyName
+ */
+QQmlListProperty<SessionTrack> Session::sessionTracksPropertyList()
+{
+    return QQmlListProperty<SessionTrack>(this, 0, &Session::appendToSessionTracksProperty,
+            &Session::sessionTracksPropertyCount, &Session::atSessionTracksProperty,
+            &Session::clearSessionTracksProperty);
+}
+void Session::appendToSessionTracksProperty(QQmlListProperty<SessionTrack> *sessionTracksList,
+        SessionTrack* sessionTrack)
+{
+    Session *sessionObject = qobject_cast<Session *>(sessionTracksList->object);
+    if (sessionObject) {
+        sessionObject->mSessionTracks.append(sessionTrack);
+        emit sessionObject->addedToSessionTracks(sessionTrack);
+    } else {
+        qWarning() << "cannot append SessionTrack* to sessionTracks " << "Object is not of type Session*";
+    }
+}
+int Session::sessionTracksPropertyCount(QQmlListProperty<SessionTrack> *sessionTracksList)
+{
+    Session *session = qobject_cast<Session *>(sessionTracksList->object);
+    if (session) {
+        return session->mSessionTracks.size();
+    } else {
+        qWarning() << "cannot get size sessionTracks " << "Object is not of type Session*";
+    }
+    return 0;
+}
+SessionTrack* Session::atSessionTracksProperty(QQmlListProperty<SessionTrack> *sessionTracksList, int pos)
+{
+    Session *session = qobject_cast<Session *>(sessionTracksList->object);
+    if (session) {
+        if (session->mSessionTracks.size() > pos) {
+            return session->mSessionTracks.at(pos);
+        }
+        qWarning() << "cannot get SessionTrack* at pos " << pos << " size is "
+                << session->mSessionTracks.size();
+    } else {
+        qWarning() << "cannot get SessionTrack* at pos " << pos << "Object is not of type Session*";
+    }
+    return 0;
+}
+void Session::clearSessionTracksProperty(QQmlListProperty<SessionTrack> *sessionTracksList)
+{
+    Session *session = qobject_cast<Session *>(sessionTracksList->object);
+    if (session) {
+        // sessionTracks are independent - DON'T delete them
+        session->mSessionTracks.clear();
+    } else {
+        qWarning() << "cannot clear sessionTracks " << "Object is not of type Session*";
     }
 }
 

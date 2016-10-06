@@ -148,22 +148,12 @@ QString DataUtil::letterForButton(Session *session)
     return "S";
 }
 
-QString DataUtil::textForSessionTrack(Session *session)
+QString DataUtil::textForSessionTrack(SessionTrack *sessionTrack)
 {
-    if(!session || !session->hasSessionTrack()) {
+    if(sessionTrack->name() == "*****") {
         return "";
     }
-    QString name = session->sessionTrackAsDataObject()->name();
-    //    if(name == "Community") {
-    //        return "";
-    //    }
-    if(name == "*****") {
-        return "";
-    }
-    if(name == "Unconference") {
-        return "";
-    }
-    return name;
+    return sessionTrack->name();
 }
 
 QString DataUtil::textForSessionType(Session *session)
@@ -208,10 +198,10 @@ QString DataUtil::textForSessionType(Session *session)
 QString DataUtil::trackColor(const int trackId)
 {
     switch (trackId) {
-    case 3:
+    case 0:
         // *****
         return "transparent";
-    case 25:
+    case 3:
         // 3D
         return "#FFCDD2";
     case 18:
@@ -287,6 +277,14 @@ QString DataUtil::trackColor(const int trackId)
         // transparent
         return "transparent";
     }
+}
+
+QString DataUtil::trackColorFirstTrack(Session *session)
+{
+    if(!session->sessionTracks().size()) {
+        return "transparent";
+    }
+    return trackColor(session->sessionTracksKeys().first().toInt());
 }
 
 // if update failed Data in memory is inconsistent
@@ -548,6 +546,36 @@ Day* DataUtil::findDayForServerDate(const QString& dayDate) {
     return 0;
 }
 
+void DataUtil::adjustTracks(QVariantMap& sessionMap, Conference* conference, const bool isUpdate) {
+    QStringList trackKeys;
+    QStringList trackNames;
+    trackNames = sessionMap.value("tracks").toStringList();
+    for (int tnl = 0; tnl < trackNames.size(); ++tnl) {
+        QString trackName;
+        trackName = trackNames.at(tnl);
+        bool found = false;
+        for (int i = 0; i < mDataManager->allSessionTrack().size(); ++i) {
+            SessionTrack* sessionTrack = (SessionTrack*) mDataManager->allSessionTrack().at(i);
+            if(sessionTrack->name() == trackName) {
+                found = true;
+                trackKeys.append(QString::number(sessionTrack->trackId()));
+                break;
+            }
+        } // for all tracks
+        if(!found) {
+            SessionTrack* sessionTrack = mDataManager->createSessionTrack();
+            conference->setLastSessionTrackId(conference->lastSessionTrackId()+1);
+            sessionTrack->setTrackId(conference->lastSessionTrackId());
+            sessionTrack->setName(trackName);
+            sessionTrack->setInAssets(isUpdate?false:true);
+            mDataManager->insertSessionTrack(sessionTrack);
+            trackKeys.append(QString::number(sessionTrack->trackId()));
+        }
+    }
+    sessionMap.insert("tracks", trackKeys);
+    qDebug() << "TRACK KEYS: " << trackKeys;
+}
+
 void DataUtil::adjustPersons(QVariantMap& sessionMap) {
     QStringList personKeys;
     QVariantList personsList;
@@ -621,97 +649,39 @@ void DataUtil::setDuration(SessionAPI* sessionAPI, Session* session) {
     session->setEndTime(session->startTime().addSecs(minutes * 60));
 }
 
-void DataUtil::setTrackAndType(SessionAPI* sessionAPI, Session* session, Conference* conference, const bool isUpdate) {
-    SessionTrack* sessionTrack = nullptr;
-    bool found = false;
-    QString trackName;
-    trackName = sessionAPI->track();
-    if(trackName.isEmpty()) {
-        trackName = EMPTY_TRACK;
-    }
-    for (int tr = 0; tr < mDataManager->mAllSessionTrack.size(); ++tr) {
-        sessionTrack = (SessionTrack*) mDataManager->mAllSessionTrack.at(tr);
-        if(sessionTrack->name() == trackName) {
-            found = true;
-            break;
-        }
-    }
-    if(!found) {
-        sessionTrack = mDataManager->createSessionTrack();
-        conference->setLastSessionTrackId(conference->lastSessionTrackId()+1);
-        sessionTrack->setTrackId(conference->lastSessionTrackId());
-        sessionTrack->setName(trackName);
-        sessionTrack->setInAssets(isUpdate?false:true);
-        mDataManager->insertSessionTrack(sessionTrack);
-    }
-    if (sessionTrack) {
-        session->setSessionTrack(sessionTrack->trackId());
-        session->resolveSessionTrackAsDataObject(sessionTrack);
-    }
+void DataUtil::setType(Session* session) {
+//    for (int i = 0; i < sessionAPI->tracksStringList().size(); ++i) {
+//        SessionTrack* sessionTrack = nullptr;
+//        bool found = false;
+//        QString trackName;
+//        trackName = sessionAPI->tracksStringList().at(i);
+//        if(trackName.isEmpty()) {
+//            trackName = EMPTY_TRACK;
+//        }
+//        for (int tr = 0; tr < mDataManager->mAllSessionTrack.size(); ++tr) {
+//            sessionTrack = (SessionTrack*) mDataManager->mAllSessionTrack.at(tr);
+//            if(sessionTrack->name() == trackName) {
+//                found = true;
+//                break;
+//            }
+//        }
+//        if(!found) {
+//            sessionTrack = mDataManager->createSessionTrack();
+//            conference->setLastSessionTrackId(conference->lastSessionTrackId()+1);
+//            sessionTrack->setTrackId(conference->lastSessionTrackId());
+//            sessionTrack->setName(trackName);
+//            sessionTrack->setInAssets(isUpdate?false:true);
+//            mDataManager->insertSessionTrack(sessionTrack);
+//        }
+//        if (sessionTrack) {
+//            session->sessionTracksKeys().append(QString::number(sessionTrack->trackId()));
+//        }
+//    }
+    //session->resolveSessionTracksKeys(mDataManager->listOfSessionTrackForKeys(session->sessionTracksKeys()));
     if(session->title().contains("Keynote")) {
         session->setIsKeynote(true);
     }
-    return;
-    // NO SCHEDULE for QTWS
-    // TODO why fails following code for QTWS
-    // SCHEDULE or what else
-    // setting some boolean here makes it easier to distinguish in UI
-    if (trackName == "Break" || (trackName == "Misc" && session->title().contains("Registration"))) {
-        ScheduleItem* scheduleItem;
-        if(isUpdate && session->hasScheduleItem()) {
-            scheduleItem = session->scheduleItemAsDataObject();
-        } else {
-            scheduleItem = mDataManager->createScheduleItem();
-            scheduleItem->setSessionId(session->sessionId());
-            session->setScheduleItem(scheduleItem->sessionId());
-            session->resolveScheduleItemAsDataObject(scheduleItem);
-            scheduleItem->setSession(session->sessionId());
-            mDataManager->insertScheduleItem(scheduleItem);
-        }
-        if(session->title().contains("Evening event") || session->title().contains("SHOW EUROPE")) {
-            scheduleItem->setIsEvent(true);
-        } else {
-            if(session->title().contains("Registration")) {
-                scheduleItem->setIsRegistration(true);
-            } else {
-                if(session->title().contains("Lunch")) {
-                    scheduleItem->setIsLunch(true);
-                } else {
-                    scheduleItem->setIsBreak(true);
-                }
-            }
-        }
-    } else {
-        if(isUpdate && session->hasScheduleItem()) {
-            // Session type changed, so remove any old schedule items
-            mDataManager->deleteScheduleItemBySessionId(session->sessionId());
-        }
-        if(session->title().contains("Lightning") || session->sessionType().contains("lightning_talk")) {
-            session->setIsLightning(true);
-        } else {
-            if(session->title().contains("Keynote")) {
-                session->setIsKeynote(true);
-            } else {
-                if(trackName == "Community") {
-                    session->setIsCommunity(true);
-                } else {
-                    if(session->sessionDayAsDataObject()->conferenceDay().toString(YYYY_MM_DD) == "2016-09-01" && session->title().contains("Training")) {
-                        session->setIsTraining(true);
-                    } else {
-                        if(session->sessionType() == "meeting") {
-                            session->setIsMeeting(true);
-                        } else {
-                            if(session->title().contains("Unconference")) {
-                                session->setIsUnconference(true);
-                            } else {
-                                session->setIsSession(true);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // for QtCon here we create ScheduleItems which are not part of QtWS data
 }
 
 void DataUtil::prepareSessions()
@@ -824,6 +794,9 @@ void DataUtil::prepareSessions()
                 // adjust persons
                 adjustPersons(sessionMap);
 
+                // adjust tracks
+                adjustTracks(sessionMap, conference, false);
+
                 // create and adjust links
                 createAndAdjustLinks(sessionMap);
 
@@ -841,8 +814,8 @@ void DataUtil::prepareSessions()
                 session->setSessionDay(day->id());
                 // ROOM
                 session->setRoom(room->roomId());
-                // TRACK TYPE SCHEDULE
-                setTrackAndType(sessionAPI, session, conference, false);
+                // TYPE SCHEDULE
+                setType(session);
                 // SORT
                 session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
                 mMultiSession.insert(session->sortKey(), session);
@@ -873,11 +846,14 @@ void DataUtil::sortedSessionsIntoRoomDayTrackSpeaker() {
         } else {
             qWarning() << "DAY is NULL for Session " << session->sessionId() << " #:" << session->sessionDay();
         }
-        SessionTrack* sessionTrack = mDataManager->findSessionTrackByTrackId(session->sessionTrack());
-        if(sessionTrack != NULL) {
-            sessionTrack->addToSessions(session);
-        } else {
-            qWarning() << "TRACK is NULL for Session " << session->sessionId() << " #:" << session->sessionTrack();
+        for (int i = 0; i < session->sessionTracksKeys().size(); ++i) {
+            int tKey = session->sessionTracksKeys().at(i).toInt();
+            SessionTrack* sessionTrack = (SessionTrack*) mDataManager->findSessionTrackByTrackId(tKey);
+            if(sessionTrack != NULL) {
+                sessionTrack->addToSessions(session);
+            } else {
+                qWarning() << "TRACK is NULL for Session " << session->sessionId() << " #:" << tKey;
+            }
         }
         for (int i = 0; i < session->presenterKeys().size(); ++i) {
             int pKey = session->presenterKeys().at(i).toInt();
@@ -1299,6 +1275,8 @@ void DataUtil::updateSessions() {
                 }
                 // adjust persons
                 adjustPersons(sessionMap);
+                // adjust tracks
+                adjustTracks(sessionMap, conference, true);
                 // update and adjust SessionLink
                 updateAndAdjustLinks(sessionMap);
 
@@ -1331,8 +1309,8 @@ void DataUtil::updateSessions() {
                 // ROOM
                 session->setRoom(room->roomId());
                 session->resolveRoomAsDataObject(room);
-                // TRACK TYPE SCHEDULE isUpdate=true
-                setTrackAndType(sessionAPI, session, conference, true);
+                // TYPE SCHEDULE
+                setType(session);
                 // SessionLinks
 
                 // SORT

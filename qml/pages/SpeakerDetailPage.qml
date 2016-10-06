@@ -105,8 +105,9 @@ Page {
                     id: sessionRepeater
                     model: speaker.sessionsPropertyList
                     property int sessionRepeaterIndex: index
-
                     Pane {
+                        id: speakerSessionPane
+                        property Session theSpeakerSession: model.modelData
                         topPadding: 4
                         leftPadding: 0
                         rightPadding: 0
@@ -242,26 +243,37 @@ Page {
                                         } // favoritesIcon
                                     } // repeater time and room besides favorite button
 
-                                    RowLayout {
-                                        // repeater track row
-                                        visible: trackLabel.text.length
-                                        IconActive{
-                                            imageSize: 18
-                                            imageName: "tag.png"
-                                        }
-                                        Rectangle {
-                                            width: 16
-                                            height: 16
-                                            color: dataUtil.trackColor(modelData.sessionTrack)
-                                            radius: width / 2
-                                        }
-                                        LabelBody {
-                                            id: trackLabel
-                                            text: modelData.sessionTrackAsDataObject.name != "*****" ? modelData.sessionTrackAsDataObject.name : ""
-                                            rightPadding: 16
-                                            wrapMode: Text.WordWrap
-                                        }
-                                    } // repeater track row
+                                    // INNER REPEATER for Tracks
+                                    Repeater {
+                                        id: innerTrackRepeater
+                                        model: speakerSessionPane.theSpeakerSession.sessionTracksPropertyList
+                                        RowLayout {
+                                            // repeater track row
+                                            //visible: trackLabel.text.length
+                                            IconActive{
+                                                visible: index == 0
+                                                imageSize: 18
+                                                imageName: "tag.png"
+                                            }
+                                            Item {
+                                                visible: index > 0
+                                                width: 18
+                                            }
+                                            Rectangle {
+                                                width: 16
+                                                height: 16
+                                                color: dataUtil.trackColor(modelData.trackId)
+                                                radius: width / 2
+                                            }
+                                            LabelBody {
+                                                id: trackLabel
+                                                text: dataUtil.textForSessionTrack(modelData)
+                                                rightPadding: 16
+                                                wrapMode: Text.WordWrap
+                                            }
+                                        } // repeater track row
+
+                                    } // innerTrackRepeater
 
                                     LabelSubheading {
                                         text: modelData.title

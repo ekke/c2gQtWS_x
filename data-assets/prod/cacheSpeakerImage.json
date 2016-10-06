@@ -5,6 +5,26 @@
         "inAssets": true,
         "inData": false,
         "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/10/Worledge-Rebecca.jpg",
+        "speakerId": 1736,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
+        "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Tore-Meyer.jpg",
+        "speakerId": 1701,
+        "suffix": "jpg"
+    },
+    {
+        "downloadFailed": false,
+        "downloadSuccess": true,
+        "inAssets": true,
+        "inData": false,
+        "maxScaleFactor": 4,
         "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Collier-Moody.jpg",
         "speakerId": 1690,
         "suffix": "jpg"

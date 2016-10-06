@@ -90,7 +90,7 @@ ListView {
                     anchors.top: theItem.top
                     height: sessionRow.height-2
                     width: 8
-                    color: model.modelData.isKeynote? "#B2DFDB" : dataUtil.trackColor(model.modelData.sessionTrack)
+                    color: model.modelData.isKeynote? "#B2DFDB" : dataUtil.trackColorFirstTrack(model.modelData)
                 }
 
                 ColumnLayout {

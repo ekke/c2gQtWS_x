@@ -98,28 +98,39 @@ Page {
                         }
                     } // favoritesIcon
                 }
-                RowLayout {
-                    visible: trackLabel.text.length > 0
-                    Layout.leftMargin: 16
-                    Layout.rightMargin: 16
-                    IconActive{
-                        imageSize: 24
-                        imageName: "tag.png"
-                    }
-                    Rectangle {
+
+                // T R A C K   REPEATER
+                Repeater {
+                    model: session.sessionTracksPropertyList
+                    RowLayout {
+                        visible: trackLabel.text.length > 0
                         Layout.leftMargin: 16
-                        width: 16
-                        height: 16
-                        color: dataUtil.trackColor(session.sessionTrack)
-                        radius: width / 2
-                    }
-                    LabelSubheading {
-                        id: trackLabel
-                        rightPadding: 16
-                        text: dataUtil.textForSessionTrack(session)
-                        wrapMode: Text.WordWrap
-                    }
-                }
+                        Layout.rightMargin: 16
+                        IconActive{
+                            visible: index == 0
+                            imageSize: 24
+                            imageName: "tag.png"
+                        }
+                        Item {
+                            visible: index > 0
+                            width: 24
+                        }
+                        Rectangle {
+                            Layout.leftMargin: 16
+                            width: 16
+                            height: 16
+                            color: dataUtil.trackColor(model.modelData.trackId)
+                            radius: width / 2
+                        }
+                        LabelSubheading {
+                            id: trackLabel
+                            rightPadding: 16
+                            text: dataUtil.textForSessionTrack(model.modelData)
+                            wrapMode: Text.WordWrap
+                        }
+                    } // track row
+                } // track repeater
+
                 RowLayout {
                     Layout.leftMargin: 16
                     Layout.rightMargin: 16

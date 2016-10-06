@@ -1,12 +1,21 @@
 {
     "accentColor": 15,
+    "apiVersion": "1.2",
+    "autoUpdate": false,
+    "autoUpdateEveryHours": 0,
+    "classicStackNavigation": false,
     "darkTheme": false,
+    "defaultMarkerColors": false,
     "hasPublicCache": false,
     "id": 1,
     "isProductionEnvironment": true,
+    "lastUsedNumber": 0,
+    "markerColors": "",
+    "navigationStyle": 0,
+    "oneMenuButton": true,
     "primaryColor": 9,
-    "useCompactJsonFormat": true,
-    "version": 1,
-    "apiVersion":"1.0",
-    "publicRoot4Dev":"/data/ekkescorner/c2gQtWS_x"
+    "publicRoot4Dev": "/data/ekkescorner/c2gQtWS_x",
+    "useCompactJsonFormat": false,
+    "useMarkerColors": false,
+    "version": 1
 }

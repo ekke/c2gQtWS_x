@@ -1,10 +1,24 @@
 [
   {
+    "id": 1738,
+    "first_name": "Shrikant",
+    "last_name": "Dhumal",
+    "abstract": "Stay tuned",
+    "avatar": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/man-silhouette-black-gray.jpg"
+  },
+  {
+    "id": 1736,
+    "first_name": "Rebecca",
+    "last_name": "Worledge",
+    "abstract": "Becky grew up in rainy England. She left in 2004 to work in the Finnish technology business, and was introduced to Qt shortly after. Becky joined Digia as a Qt/Linux programmer at the start of 2011, just months before Digia started the Qt Commercial business which eventually became the Qt Company. She has been consulting with Qt customers since 2011, and based in the California office since 2015.",
+    "avatar": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/10/Worledge-Rebecca.jpg"
+  },
+  {
     "id": 1701,
     "first_name": "Tore",
     "last_name": "Meyer",
-    "abstract": "Stay Tuned!",
-    "avatar": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/man-silhouette-black-gray.jpg"
+    "abstract": "Tore Meyer is Co-Founder and CEO of 4tiitoo. Facilitating the access to technology and information is at the heart of 4tiitoo and their NUIA product lineup. IoT, AR/VR and omnipresence of IT devices require more an more communication between humans and machines. Eye Tracking, gesture and speech based interaction are both mandatory and a huge opportunity to create a more natural and efficient interaction.\r\nIt is the fusion of the technologically possible with the human acceptable that spurs Tore's interest. Together with his partner Stephan Odörfer he is responsible for the overall long-term direction and product management of NUIA.",
+    "avatar": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/09/Tore-Meyer.jpg"
   },
   {
     "id": 1690,
@@ -32,7 +46,7 @@
     "first_name": "Anupam",
     "last_name": "Kaul",
     "abstract": "Anupam heads Qt Engineering in LG’s Silicon Valley Labs (SVL) based in Santa Clara, CA. He leads and manages projects and teams in LG SVL that work on innovative products that enhance and leverage Qt’s core technologies for LG - like LG’s QML Wayland Compositor for webOS, Qt/QML Applications and Frameworks deployed in commercial products, QtWebEngine optimizations, Qt-Automotive, and various other Qt engagements for LG.\r\n\r\nAnupam has in the past successfully led and delivered many innovative and commercial products to market that are based off Qt. These include multi-generation releases of the iconic Palm Pre &amp; Palm Pixie webOS smartphones (2009, 2010 and 2011), the HP webOS Touchpad tablet (2012), and most recently, multiple releases of LG’s critically acclaimed webOS Smart TV (2014, 2015 and 2016). His interests today are in expanding Qt’s footprint within LG around various domains, including the Automotive IVI (In- Vehicle-Infotainment) industry.",
-    "avatar": false
+    "avatar": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/man-silhouette-black-gray.jpg"
   },
   {
     "id": 1678,

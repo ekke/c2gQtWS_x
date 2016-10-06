@@ -25,12 +25,12 @@ class SessionAPI: public QObject
 	Q_PROPERTY(QString duration READ duration WRITE setDuration NOTIFY durationChanged FINAL)
 	Q_PROPERTY(QString abstractText READ abstractText WRITE setAbstractText NOTIFY abstractTextChanged FINAL)
 	Q_PROPERTY(QString room READ room WRITE setRoom NOTIFY roomChanged FINAL)
-	Q_PROPERTY(QString track READ track WRITE setTrack NOTIFY trackChanged FINAL)
 
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<PersonsAPI> presenterPropertyList READ presenterPropertyList NOTIFY presenterPropertyListChanged)
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<SessionLinkAPI> sessionLinksPropertyList READ sessionLinksPropertyList NOTIFY sessionLinksPropertyListChanged)
+	Q_PROPERTY(QStringList sessionTracksStringList READ sessionTracksStringList  WRITE setSessionTracksStringList NOTIFY sessionTracksStringListChanged FINAL)
 
 public:
 	SessionAPI(QObject *parent = 0);
@@ -75,9 +75,19 @@ public:
 	void setAbstractText(QString abstractText);
 	QString room() const;
 	void setRoom(QString room);
-	QString track() const;
-	void setTrack(QString track);
 
+	
+	Q_INVOKABLE
+	void addToSessionTracksStringList(const QString& stringValue);
+	
+	Q_INVOKABLE
+	bool removeFromSessionTracksStringList(const QString& stringValue);
+	
+	Q_INVOKABLE
+	int sessionTracksCount();
+	
+	QStringList sessionTracksStringList();
+	void setSessionTracksStringList(const QStringList& sessionTracks);
 	
 	Q_INVOKABLE
 	QVariantList presenterAsQVariantList();
@@ -163,7 +173,9 @@ public:
 	void durationChanged(QString duration);
 	void abstractTextChanged(QString abstractText);
 	void roomChanged(QString room);
-	void trackChanged(QString track);
+	void sessionTracksStringListChanged(QStringList sessionTracks);
+	void addedToSessionTracksStringList(QString stringValue);
+	void removedFromSessionTracksStringList(QString stringValue);
 	void presenterChanged(QList<PersonsAPI*> presenter);
 	void addedToPresenter(PersonsAPI* personsAPI);
 	void presenterPropertyListChanged();
@@ -185,7 +197,7 @@ private:
 	QString mDuration;
 	QString mAbstractText;
 	QString mRoom;
-	QString mTrack;
+	QStringList mSessionTracksStringList;
 	// lazy Array of independent Data Objects: only keys are persisted
 	QStringList mPresenterKeys;
 	bool mPresenterKeysResolved;

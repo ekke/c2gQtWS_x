@@ -12,7 +12,7 @@ static const QString startTimeKey = "startTime";
 static const QString durationKey = "duration";
 static const QString abstractTextKey = "abstractText";
 static const QString roomKey = "room";
-static const QString trackKey = "track";
+static const QString sessionTracksKey = "sessionTracks";
 static const QString presenterKey = "presenter";
 static const QString sessionLinksKey = "sessionLinks";
 
@@ -26,7 +26,7 @@ static const QString startTimeForeignKey = "start";
 static const QString durationForeignKey = "duration";
 static const QString abstractTextForeignKey = "abstract";
 static const QString roomForeignKey = "room";
-static const QString trackForeignKey = "track";
+static const QString sessionTracksForeignKey = "tracks";
 static const QString presenterForeignKey = "persons";
 static const QString sessionLinksForeignKey = "links";
 
@@ -34,7 +34,7 @@ static const QString sessionLinksForeignKey = "links";
  * Default Constructor if SessionAPI not initialized from QVariantMap
  */
 SessionAPI::SessionAPI(QObject *parent) :
-        QObject(parent), mSessionId(-1), mTitle(""), mSubtitle(""), mDescription(""), mSessionType(""), mDuration(""), mAbstractText(""), mRoom(""), mTrack("")
+        QObject(parent), mSessionId(-1), mTitle(""), mSubtitle(""), mDescription(""), mSessionType(""), mDuration(""), mAbstractText(""), mRoom("")
 {
 	// Date, Time or Timestamp ? construct null value
 	mStartTime = QTime();
@@ -80,7 +80,6 @@ void SessionAPI::fillFromMap(const QVariantMap& sessionAPIMap)
 	mDuration = sessionAPIMap.value(durationKey).toString();
 	mAbstractText = sessionAPIMap.value(abstractTextKey).toString();
 	mRoom = sessionAPIMap.value(roomKey).toString();
-	mTrack = sessionAPIMap.value(trackKey).toString();
 	// mPresenter is (lazy loaded) Array of PersonsAPI*
 	mPresenterKeys = sessionAPIMap.value(presenterKey).toStringList();
 	// mPresenter must be resolved later if there are keys
@@ -91,6 +90,7 @@ void SessionAPI::fillFromMap(const QVariantMap& sessionAPIMap)
 	// mSessionLinks must be resolved later if there are keys
 	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
 	mSessionLinks.clear();
+	mSessionTracksStringList = sessionAPIMap.value(sessionTracksKey).toStringList();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -118,7 +118,6 @@ void SessionAPI::fillFromForeignMap(const QVariantMap& sessionAPIMap)
 	mDuration = sessionAPIMap.value(durationForeignKey).toString();
 	mAbstractText = sessionAPIMap.value(abstractTextForeignKey).toString();
 	mRoom = sessionAPIMap.value(roomForeignKey).toString();
-	mTrack = sessionAPIMap.value(trackForeignKey).toString();
 	// mPresenter is (lazy loaded) Array of PersonsAPI*
 	mPresenterKeys = sessionAPIMap.value(presenterForeignKey).toStringList();
 	// mPresenter must be resolved later if there are keys
@@ -129,6 +128,7 @@ void SessionAPI::fillFromForeignMap(const QVariantMap& sessionAPIMap)
 	// mSessionLinks must be resolved later if there are keys
 	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
 	mSessionLinks.clear();
+	mSessionTracksStringList = sessionAPIMap.value(sessionTracksForeignKey).toStringList();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -156,7 +156,6 @@ void SessionAPI::fillFromCacheMap(const QVariantMap& sessionAPIMap)
 	mDuration = sessionAPIMap.value(durationKey).toString();
 	mAbstractText = sessionAPIMap.value(abstractTextKey).toString();
 	mRoom = sessionAPIMap.value(roomKey).toString();
-	mTrack = sessionAPIMap.value(trackKey).toString();
 	// mPresenter is (lazy loaded) Array of PersonsAPI*
 	mPresenterKeys = sessionAPIMap.value(presenterKey).toStringList();
 	// mPresenter must be resolved later if there are keys
@@ -167,6 +166,7 @@ void SessionAPI::fillFromCacheMap(const QVariantMap& sessionAPIMap)
 	// mSessionLinks must be resolved later if there are keys
 	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
 	mSessionLinks.clear();
+	mSessionTracksStringList = sessionAPIMap.value(sessionTracksKey).toStringList();
 }
 
 void SessionAPI::prepareNew()
@@ -235,7 +235,8 @@ QVariantMap SessionAPI::toMap()
 	sessionAPIMap.insert(durationKey, mDuration);
 	sessionAPIMap.insert(abstractTextKey, mAbstractText);
 	sessionAPIMap.insert(roomKey, mRoom);
-	sessionAPIMap.insert(trackKey, mTrack);
+	// Array of QString
+	sessionAPIMap.insert(sessionTracksKey, mSessionTracksStringList);
 	return sessionAPIMap;
 }
 
@@ -290,7 +291,8 @@ QVariantMap SessionAPI::toForeignMap()
 	sessionAPIMap.insert(durationForeignKey, mDuration);
 	sessionAPIMap.insert(abstractTextForeignKey, mAbstractText);
 	sessionAPIMap.insert(roomForeignKey, mRoom);
-	sessionAPIMap.insert(trackForeignKey, mTrack);
+	// Array of QString
+	sessionAPIMap.insert(sessionTracksForeignKey, mSessionTracksStringList);
 	return sessionAPIMap;
 }
 
@@ -455,17 +457,37 @@ void SessionAPI::setRoom(QString room)
 	}
 }
 // ATT 
-// Optional: track
-QString SessionAPI::track() const
+// Optional: sessionTracks
+void SessionAPI::addToSessionTracksStringList(const QString& stringValue)
 {
-	return mTrack;
+    mSessionTracksStringList.append(stringValue);
+    emit addedToSessionTracksStringList(stringValue);
 }
 
-void SessionAPI::setTrack(QString track)
+bool SessionAPI::removeFromSessionTracksStringList(const QString& stringValue)
 {
-	if (track != mTrack) {
-		mTrack = track;
-		emit trackChanged(track);
+    bool ok = false;
+    ok = mSessionTracksStringList.removeOne(stringValue);
+    if (!ok) {
+    	qDebug() << "QString& not found in mSessionTracksStringList: " << stringValue;
+    	return false;
+    }
+    emit removedFromSessionTracksStringList(stringValue);
+    return true;
+}
+int SessionAPI::sessionTracksCount()
+{
+    return mSessionTracksStringList.size();
+}
+QStringList SessionAPI::sessionTracksStringList()
+{
+	return mSessionTracksStringList;
+}
+void SessionAPI::setSessionTracksStringList(const QStringList& sessionTracks) 
+{
+	if (sessionTracks != mSessionTracksStringList) {
+		mSessionTracksStringList = sessionTracks;
+		emit sessionTracksStringListChanged(sessionTracks);
 	}
 }
 // ATT 
