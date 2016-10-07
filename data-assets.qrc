@@ -334,5 +334,10 @@
         <file>data-assets/prod/cacheSpeaker.json</file>
         <file>data-assets/prod/cacheSpeakerImage.json</file>
         <file>data-assets/cacheSettingsData.json</file>
+        <file>data-assets/conference/floorplan/room_6.png</file>
+        <file>data-assets/conference/floorplan/room_5.png</file>
+        <file>data-assets/conference/floorplan/room_4.png</file>
+        <file>data-assets/conference/floorplan/room_3.png</file>
+        <file>data-assets/conference/floorplan/room_2.png</file>
     </qresource>
 </RCC>
