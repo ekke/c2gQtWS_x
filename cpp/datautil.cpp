@@ -677,9 +677,13 @@ void DataUtil::setType(Session* session) {
 //            session->sessionTracksKeys().append(QString::number(sessionTrack->trackId()));
 //        }
 //    }
-    //session->resolveSessionTracksKeys(mDataManager->listOfSessionTrackForKeys(session->sessionTracksKeys()));
-    if(session->title().contains("Keynote")) {
-        session->setIsKeynote(true);
+    session->resolveSessionTracksKeys(mDataManager->listOfSessionTrackForKeys(session->sessionTracksKeys()));
+    for (int i = 0; i < session->sessionTracks().size(); ++i) {
+        SessionTrack* sessionTrack = session->sessionTracks().at(i);
+        if (sessionTrack->name() == "Keynote") {
+            session->setIsKeynote(true);
+            return;
+        }
     }
     // for QtCon here we create ScheduleItems which are not part of QtWS data
 }
