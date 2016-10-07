@@ -15,7 +15,7 @@
         "presenter": [
             "1114"
         ],
-        "room": 1,
+        "room": 4,
         "sessionDay": 1,
         "sessionId": 1353,
         "sessionLinks": [
@@ -157,8 +157,8 @@
     },
     {
         "abstractText": "",
-        "description": "",
-        "endTime": "10:35",
+        "description": "Much of what will happen in the next 30 years is inevitable, driven by technological trends that are already in motion. Some of what is coming may seem scary, like ubiquitous tracking, screens everywhere, virtual reality in your bedroom, or robots replacing humans. Kevin Kelly outlines what is inevitable and argues that we should embrace these changes, rather than outlaw, or slow them down, because by embracing with vigilance we gain their maximum benefits and least harms.",
+        "endTime": "11:15",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -167,54 +167,23 @@
         "isSession": false,
         "isTraining": false,
         "isUnconference": false,
-        "minutes": 50,
+        "minutes": 20,
         "presenter": [
-            "1326",
-            "1325"
+            "1114"
         ],
-        "room": 1,
+        "room": 4,
         "sessionDay": 1,
-        "sessionId": 1530,
+        "sessionId": 1768,
         "sessionLinks": [
         ],
         "sessionTracks": [
             "2"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1909:45",
-        "startTime": "09:45",
+        "sortKey": "2016-10-1910:55",
+        "startTime": "10:55",
         "subtitle": "",
-        "title": "How the OneDrive Mobile Team uses Qt"
-    },
-    {
-        "abstractText": "",
-        "description": "",
-        "endTime": "10:50",
-        "isCommunity": false,
-        "isDeprecated": false,
-        "isKeynote": false,
-        "isLightning": false,
-        "isMeeting": false,
-        "isSession": false,
-        "isTraining": false,
-        "isUnconference": false,
-        "minutes": 65,
-        "presenter": [
-            "1304"
-        ],
-        "room": 1,
-        "sessionDay": 1,
-        "sessionId": 1694,
-        "sessionLinks": [
-        ],
-        "sessionTracks": [
-            "2"
-        ],
-        "sessionType": "",
-        "sortKey": "2016-10-1909:45",
-        "startTime": "09:45",
-        "subtitle": "",
-        "title": "Qt & Ubuntu"
+        "title": "The Inevitable Digital Futures - Part 2"
     },
     {
         "abstractText": "",
@@ -232,7 +201,7 @@
         "presenter": [
             "1124"
         ],
-        "room": 1,
+        "room": 4,
         "sessionDay": 1,
         "sessionId": 1495,
         "sessionLinks": [
@@ -248,37 +217,7 @@
     },
     {
         "abstractText": "",
-        "description": "Built with Qt, AMD introduced a brand new user experience and interface for their graphics control panel that has been around for over 10 years. Andrej discusses the process and the results of AMD using Qt to create this new experience.",
-        "endTime": "12:25",
-        "isCommunity": false,
-        "isDeprecated": false,
-        "isKeynote": false,
-        "isLightning": false,
-        "isMeeting": false,
-        "isSession": false,
-        "isTraining": false,
-        "isUnconference": false,
-        "minutes": 25,
-        "presenter": [
-            "1527"
-        ],
-        "room": 1,
-        "sessionDay": 1,
-        "sessionId": 1529,
-        "sessionLinks": [
-        ],
-        "sessionTracks": [
-            "2"
-        ],
-        "sessionType": "",
-        "sortKey": "2016-10-1912:00",
-        "startTime": "12:00",
-        "subtitle": "",
-        "title": "AMD and Qt"
-    },
-    {
-        "abstractText": "",
-        "description": "Internet of Things (IoT) is a very broad term and depending on the industry type demands a variety of requirements to be fulfilled. To provide the necessary overview, industry cases in the IoT domain are presented and their unique features and communication details examined. This catalogization shall then be used to define the IoT term in the context of Qt. It includes a matching of Qt's current and future capabilities within the domain. Technical examples are presented to underline these capabilities. The target audience is architects and business people.",
+        "description": "BEP Marine manufactures a range of high quality electrical solutions designed for marine and recreational vehicles. CZone, their market leading digital switching technology, utilizes the industry standard NMEA2000 network to control all electrical systems on the vessel or vehicle. Dedicated touch screens and compatible Garmin, Furuno or Navico multifunction displays offer single touch control over hundreds of individual circuits. CZone brings the convenience of home automation to boats and recreational vehicles designed for the harsh marine and outdoor environments.\r\n\r\nOne of the biggest challenges for the Auckland based engineering team is developing and maintaining software for the many different platforms. Software for micro controllers, embedded Linux, mobile and desktop platforms all need to be synchronized and kept to a high standard. This is where Qt is able to provide the team with the advantage. Embedded, mobile and desktop platforms are able to share the same source code drastically reducing the amount of work (and mistakes!).\r\n\r\nCurrently the team is updating the user interface across the three platforms using Qt to provide a consistent experience for consumers. This presentation will explore the user interface development process from artwork to implementation for a few key user interface elements. Take a look at a cross platform build and deploy process. How QML enables rapid feedback from the stakeholders, and custom components rendered with OpenGL give full control over the graphics hardware. Various rendering methods are demonstrated and compared.\r\n\r\nWith 6 battery banks, 172 DC circuits, 35 AC circuits, two generators, two shore power connections, four battery chargers and an inverter, managing the on board systems on the flagship Riviera 77 motor yacht is a complex task! This talk aims to give you a glimpse into how CZone uses Qt to make it easy.",
         "endTime": "13:10",
         "isCommunity": false,
         "isDeprecated": false,
@@ -290,23 +229,23 @@
         "isUnconference": false,
         "minutes": 25,
         "presenter": [
-            "1039"
+            "1315"
         ],
         "room": 6,
         "sessionDay": 1,
-        "sessionId": 1156,
+        "sessionId": 1314,
         "sessionLinks": [
         ],
         "sessionTracks": [
-            "3",
-            "12",
-            "8"
+            "5",
+            "16",
+            "19"
         ],
         "sessionType": "",
         "sortKey": "2016-10-1912:45",
         "startTime": "12:45",
         "subtitle": "",
-        "title": "Qt & the Internet of Things (IoT) - Do they fit together?"
+        "title": "Smooth sailing with OpenGL ES and QML"
     },
     {
         "abstractText": "",
@@ -402,7 +341,7 @@
     },
     {
         "abstractText": "",
-        "description": "BEP Marine manufactures a range of high quality electrical solutions designed for marine and recreational vehicles. CZone, their market leading digital switching technology, utilizes the industry standard NMEA2000 network to control all electrical systems on the vessel or vehicle. Dedicated touch screens and compatible Garmin, Furuno or Navico multifunction displays offer single touch control over hundreds of individual circuits. CZone brings the convenience of home automation to boats and recreational vehicles designed for the harsh marine and outdoor environments.\r\n\r\nOne of the biggest challenges for the Auckland based engineering team is developing and maintaining software for the many different platforms. Software for micro controllers, embedded Linux, mobile and desktop platforms all need to be synchronized and kept to a high standard. This is where Qt is able to provide the team with the advantage. Embedded, mobile and desktop platforms are able to share the same source code drastically reducing the amount of work (and mistakes!).\r\n\r\nCurrently the team is updating the user interface across the three platforms using Qt to provide a consistent experience for consumers. This presentation will explore the user interface development process from artwork to implementation for a few key user interface elements. Take a look at a cross platform build and deploy process. How QML enables rapid feedback from the stakeholders, and custom components rendered with OpenGL give full control over the graphics hardware. Various rendering methods are demonstrated and compared.\r\n\r\nWith 6 battery banks, 172 DC circuits, 35 AC circuits, two generators, two shore power connections, four battery chargers and an inverter, managing the on board systems on the flagship Riviera 77 motor yacht is a complex task! This talk aims to give you a glimpse into how CZone uses Qt to make it easy.",
+        "description": "Internet of Things (IoT) is a very broad term and depending on the industry type demands a variety of requirements to be fulfilled. To provide the necessary overview, industry cases in the IoT domain are presented and their unique features and communication details examined. This catalogization shall then be used to define the IoT term in the context of Qt. It includes a matching of Qt's current and future capabilities within the domain. Technical examples are presented to underline these capabilities. The target audience is architects and business people.",
         "endTime": "13:40",
         "isCommunity": false,
         "isDeprecated": false,
@@ -414,23 +353,23 @@
         "isUnconference": false,
         "minutes": 25,
         "presenter": [
-            "1315"
+            "1039"
         ],
         "room": 6,
         "sessionDay": 1,
-        "sessionId": 1314,
+        "sessionId": 1156,
         "sessionLinks": [
         ],
         "sessionTracks": [
-            "5",
-            "16",
-            "19"
+            "3",
+            "12",
+            "8"
         ],
         "sessionType": "",
         "sortKey": "2016-10-1913:15",
         "startTime": "13:15",
         "subtitle": "",
-        "title": "Smooth sailing with OpenGL ES and QML"
+        "title": "Qt & the Internet of Things (IoT) - Do they fit together?"
     },
     {
         "abstractText": "",
@@ -528,36 +467,6 @@
         "startTime": "13:15",
         "subtitle": "",
         "title": "Replacing the Stethoscope with Ultrasound"
-    },
-    {
-        "abstractText": "",
-        "description": "4tiitoo is a leading company in natural interaction for workstations, VR &amp; AR headsets, control panels, HUDs, CAVEs, Powerwalls, and IoT devices.\r\n\r\n4tiitoo’s software platform NUIA controls everyday devices and applications in a consistent and natural way based on inputs like gaze, gestures and speech. It predicts users' intentions to enable devices to act automatically and intelligently.\r\n\r\nThe NUIA Software and SDK is created using C++/Qt and QML. It connects and processes sensor-based data from eye trackers, 3D cameras, gesture wearables, microphones, mobile devices, AR/VR headsets, IoT devices, and measuring sensors. NUIA enables any Windows 7/8/10 application or website to be controlled via these next generation sensors, with currently more than 100 applications and websites supported.\r\n\r\nA special use case for developers is the NUIA IDE Booster for the Qt Creator. This NUIA Extension enables users to control the Qt Creator with their eye tracking equipped computers (e.g. with the Tobii EyeX peripheral or built-in in the MSI GT72S notebook). NUIA uses the eye tracking data to provide more efficient and convenient ways to control the IDE - resulting in a performance boost. Features of the NUIA IDE Booster for the Qt Creator include:\r\n\r\n● Fluid resizing: Enlarge the panel you look at with one keypress to see the debug output or source code maximized\r\n\r\n● Mouse teleporter: Sends your mouse cursor automatically to buttons and areas you want to trigger and back to the last point of action when you look back\r\n\r\n● Automatic scrolling: Just read a web page and NUIA will know when to scroll. Scrolling speed is adjusted to your reading pace.\r\n\r\n● Quick app switching: Switch between all open apps in the blink of an eye\r\n\r\n● List selection: Directly access even small list items. Small lists can trigger helper menu for quick selection\r\n\r\n● Gaze buttons: Trigger buttons without touching the mouse. Frequently used buttons can be configured for automatic gaze clicking\r\n\r\n● Directed search: Directly search the content you work on. Crtl + f triggers the search in the panel you look at\r\n\r\n● Workflow automation: Trigger custom workflows by gaze. Buttons in NUIA Menu can be configured by you\r\n\r\n● More information on the IDE Booster at https://store.nuia.com/categories/installer/extensions/nuia-ide-edition or http://www.4tiitoo.com\r\n\r\nThe talk introduces the possibilities of gaze control in general and the Qt Creator in detail and highlights advantages and best practices of eye interaction.",
-        "endTime": "13:55",
-        "isCommunity": false,
-        "isDeprecated": false,
-        "isKeynote": false,
-        "isLightning": false,
-        "isMeeting": false,
-        "isSession": false,
-        "isTraining": false,
-        "isUnconference": false,
-        "minutes": 25,
-        "presenter": [
-            "1701"
-        ],
-        "room": 1,
-        "sessionDay": 1,
-        "sessionId": 1165,
-        "sessionLinks": [
-        ],
-        "sessionTracks": [
-            "1"
-        ],
-        "sessionType": "",
-        "sortKey": "2016-10-1913:30",
-        "startTime": "13:30",
-        "subtitle": "",
-        "title": "Enabling Devices to Act Automatically and Intelligently through Eye Interaction"
     },
     {
         "abstractText": "",
@@ -1070,7 +979,7 @@
     {
         "abstractText": "",
         "description": "This session will introduce you to beautiful Qt on Android world. We'll start with setting up the development environment, we'll check the tools, then we'll see how and what to setup on you Qt application to make it a real Android application and finally how to sign your application to prepare it for publishing on Google's Play Market (or any other Android market's out there).",
-        "endTime": "16:55",
+        "endTime": "17:15",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -1094,15 +1003,15 @@
             "21"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1916:00",
-        "startTime": "16:00",
+        "sortKey": "2016-10-1916:20",
+        "startTime": "16:20",
         "subtitle": "",
         "title": "All about Qt on Android: Say hello to Qt on Android"
     },
     {
         "abstractText": "",
-        "description": "This talk is about the success story on how the Dolby Conference Phone (DCP) project accomplished building its own partner ecosystem by developing Conference Service Application Framework (CSAF) around Qt. This enables Dolby to work with multiple conferencing service providers effectively and efficiently.\r\n\r\nBackground about DCP:\r\n\r\nDolby designed the Dolby Conference Phone (DCP) to deliver the Dolby Voice experience, not as just another conference phone. It is an integral component of the Dolby Voice solution, offering stunning audio quality and easy meeting join and management, features that promote productive conferencing. The DCP is a dual mode device – an endpoint for Dolby Voice enabled services and a SIP phone for IP telephony environments. Dolby Voice enabled conferencing service on DCP is provided by partner Conferencing Service Providers (CSPs) like BT, PGI, etc.\r\n\r\nWhy CSAF, what it does?\r\n\r\nThe project had challenges working with multiple CSP partners to integrate their services on DCP software. Traditional approaches needs bigger team and longer release cycles. Any changes, improvements, new features that partner requires, Dolby will have to spend resources to work on, and they have to wait for 3-6 months release cycle for the feature to be ready. Their customers will have to wait even longer. To solve this problem we build CSAF on the DCP to expose core services and component libraries in a framework which enabled our partners to develop conferencing apps using QML. We went extra miles by serving QML/JS conferencing apps over network from HTTP application servers. Cloud deployment model provides rapid development, quick release cycles and modern software management experience.\r\n\r\nQt everywhere!\r\n\r\nCSAF is powered by Qt 4.8. The CSAF exposes QML/JS APIs using QML plugins for UI component library, core services library and network connectivity library. The CSAF app manager uses QML engine as its core with some customizations to securely download the app. SDK for CSAF is built upon Qt creator and we use QDoc to generate complete documentation for APIs and SDK. We also use Qt Quick Test for writing auto tests to validate the framework. CSAF network connectivity APIs are based on QML XMLHttprequest and QWebSockets. Basically we use Qt almost everywhere.\r\n\r\nIn Nutshell: We would like to demonstrate how to pull together the Qt powered application development framework which loads QML apps from cloud and build SDK using Qt tools to complete the offering. Of course, all of this will be backed by a live demo!",
-        "endTime": "16:25",
+        "description": "Tableau is one of the foremost data visualization companies and one of the largest Qt projects with over 3 million lines of code committed to the codebase. Operating at this scale requires sociotechnical processes to manage and facilitate developer productivity.  This talk will outline what Tableau has done to maintain quality and feature velocity at the enterprise-level. The target audience is development management.",
+        "endTime": "16:45",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -1113,27 +1022,28 @@
         "isUnconference": false,
         "minutes": 25,
         "presenter": [
-            "1110"
+            "1548"
         ],
         "room": 4,
         "sessionDay": 1,
-        "sessionId": 1189,
+        "sessionId": 1550,
         "sessionLinks": [
         ],
         "sessionTracks": [
             "5",
-            "3"
+            "22",
+            "17"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1916:00",
-        "startTime": "16:00",
+        "sortKey": "2016-10-1916:20",
+        "startTime": "16:20",
         "subtitle": "",
-        "title": "Qt Powered Application Development Framework for the Dolby Conference Phone"
+        "title": "Operating at Scale with Qt at Tableau"
     },
     {
         "abstractText": "",
         "description": "Qt is the leading UI toolkit used by the Automotive industry. This session will talk about the status of Qt in the automotive industry and what we are planning for the future.",
-        "endTime": "16:25",
+        "endTime": "16:45",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -1158,15 +1068,15 @@
             "11"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1916:00",
-        "startTime": "16:00",
+        "sortKey": "2016-10-1916:20",
+        "startTime": "16:20",
         "subtitle": "",
         "title": "The future of Qt in Automotive and the Automotive Suite"
     },
     {
         "abstractText": "",
         "description": "Qt is a constantly evolving API that has embraced many of the new C++ concepts introduced in C++11 and C++14, but the core QObject class still has some surprising limitations. If you want to use Qt's tried and true signal/slot mechanism, you must derive your classes from QObject, but there are a few subtle snags that you'll have to avoid, including: classes cannot have multiple QObjects in their ancestry, you cannot use virtual inheritance with QObject-based classes, and the Q_OBJECT macro cannot be used in templated classes.\r\n\r\nThe bad news is that these limitations can trip up modern C++ developers who want to use advanced techniques like templates and multiple inheritance. The good news is that Qt is evolving quickly to suit modern needs, and that there are workarounds that can be used today. This talk will focus on techniques that can work around QObject’s current limitations while Qt is still evolving. We will discuss different patterns that programmers can use to write QObject classes that use advanced templating, while still maintaining the myriad of conveniences provided by the QObject system. We will cover how Qt 5’s new connection syntax can solve some modern problems, and present more intricate solutions for the problems left standing. We’ll also go over some tips and tricks using pure virtual functions that can get around QObject’s multiple inheritance issues, while still steering clear of the “dreaded diamond” problem. Finally, we will cover recent discussions on the Qt development mailing list about how Qt contributors can help evolve Qt to better work with templates out-of-the-box, while noting a few key complications that must be solved.",
-        "endTime": "16:25",
+        "endTime": "16:45",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -1189,15 +1099,15 @@
             "16"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1916:00",
-        "startTime": "16:00",
+        "sortKey": "2016-10-1916:20",
+        "startTime": "16:20",
         "subtitle": "",
         "title": "Shoehorning QObjects into Modern C++"
     },
     {
         "abstractText": "",
         "description": "Hybrid apps traditionally meant bloated web UIs which linked to native code that contained the business logic or heavy calculations. No more. React.js is a JavaScript UI library powering Facebook and Instagram. ReaQt Native is a Qt bridge to this fast-growing JS library that exposes QtQuick and scene-graph performance to React.js (like React Native does for Android and iOS). This way we can have 60fps pixel-perfect web UIs, while avoiding the bloat and sluggishness of WebViews in embedded and resource constrained hardware. While QML has an elegant syntax, the advantage of ReaQt is the general compatibility with the React.js ecosystem. This way not only can the same technology be used on all of web, desktop, mobile and embedded worlds, but web developers and designers traditionally not using Qt can also help building the next generation of performant applications on Qt-supported embedded hardware.",
-        "endTime": "16:55",
+        "endTime": "17:15",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -1221,15 +1131,15 @@
             "23"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1916:30",
-        "startTime": "16:30",
+        "sortKey": "2016-10-1916:50",
+        "startTime": "16:50",
         "subtitle": "",
         "title": "ReaQt Native - building performant web UIs with Qt"
     },
     {
         "abstractText": "",
-        "description": "Tableau is one of the foremost data visualization companies and one of the largest Qt projects with over 3 million lines of code committed to the codebase. Operating at this scale requires sociotechnical processes to manage and facilitate developer productivity.  This talk will outline what Tableau has done to maintain quality and feature velocity at the enterprise-level. The target audience is development management.",
-        "endTime": "16:55",
+        "description": "This talk is about the success story on how the Dolby Conference Phone (DCP) project accomplished building its own partner ecosystem by developing Conference Service Application Framework (CSAF) around Qt. This enables Dolby to work with multiple conferencing service providers effectively and efficiently.\r\n\r\nBackground about DCP:\r\n\r\nDolby designed the Dolby Conference Phone (DCP) to deliver the Dolby Voice experience, not as just another conference phone. It is an integral component of the Dolby Voice solution, offering stunning audio quality and easy meeting join and management, features that promote productive conferencing. The DCP is a dual mode device – an endpoint for Dolby Voice enabled services and a SIP phone for IP telephony environments. Dolby Voice enabled conferencing service on DCP is provided by partner Conferencing Service Providers (CSPs) like BT, PGI, etc.\r\n\r\nWhy CSAF, what it does?\r\n\r\nThe project had challenges working with multiple CSP partners to integrate their services on DCP software. Traditional approaches needs bigger team and longer release cycles. Any changes, improvements, new features that partner requires, Dolby will have to spend resources to work on, and they have to wait for 3-6 months release cycle for the feature to be ready. Their customers will have to wait even longer. To solve this problem we build CSAF on the DCP to expose core services and component libraries in a framework which enabled our partners to develop conferencing apps using QML. We went extra miles by serving QML/JS conferencing apps over network from HTTP application servers. Cloud deployment model provides rapid development, quick release cycles and modern software management experience.\r\n\r\nQt everywhere!\r\n\r\nCSAF is powered by Qt 4.8. The CSAF exposes QML/JS APIs using QML plugins for UI component library, core services library and network connectivity library. The CSAF app manager uses QML engine as its core with some customizations to securely download the app. SDK for CSAF is built upon Qt creator and we use QDoc to generate complete documentation for APIs and SDK. We also use Qt Quick Test for writing auto tests to validate the framework. CSAF network connectivity APIs are based on QML XMLHttprequest and QWebSockets. Basically we use Qt almost everywhere.\r\n\r\nIn Nutshell: We would like to demonstrate how to pull together the Qt powered application development framework which loads QML apps from cloud and build SDK using Qt tools to complete the offering. Of course, all of this will be backed by a live demo!",
+        "endTime": "17:15",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -1240,28 +1150,27 @@
         "isUnconference": false,
         "minutes": 25,
         "presenter": [
-            "1548"
+            "1110"
         ],
         "room": 4,
         "sessionDay": 1,
-        "sessionId": 1550,
+        "sessionId": 1189,
         "sessionLinks": [
         ],
         "sessionTracks": [
             "5",
-            "22",
-            "17"
+            "3"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1916:30",
-        "startTime": "16:30",
+        "sortKey": "2016-10-1916:50",
+        "startTime": "16:50",
         "subtitle": "",
-        "title": "Operating at Scale with Qt at Tableau"
+        "title": "Qt Powered Application Development Framework for the Dolby Conference Phone"
     },
     {
         "abstractText": "",
         "description": "Our aim is to bring new experiences to automotive customers. Having the ability to rapidly develop and iterate user interaction designs and experiences really provides a competitive advantage. Although the consumer electronics world currently arguably leads and drives the user interface experience, we will explain how the auto industry is quickly catching up to this pace of development. We will also provide insight into how rapid development is enabling the industry to validate designs with ‘real users’ in a real vehicle environment, replacing the need for surveys and clinics, and the benefits of using User Centric Design and a native cross platform application framework like Qt.",
-        "endTime": "16:55",
+        "endTime": "17:15",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -1285,15 +1194,15 @@
             "17"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1916:30",
-        "startTime": "16:30",
+        "sortKey": "2016-10-1916:50",
+        "startTime": "16:50",
         "subtitle": "",
         "title": "Bringing New Experiences to Automotive Consumers"
     },
     {
         "abstractText": "",
         "description": "Medical device manufacturers have two choices when it comes to selecting an operating system for their devices: open source or commercial. The perception with open source is that it a free option but when the total cost of ownership of an operating system is closely examined, a very different picture is painted.\r\n\r\nThe total cost of ownership for a project consists of many factors that may not be immediately apparent.  A simple decision based on a limited analysis of the cost of obtaining and licensing the source code is insufficient, especially when considering large cost items such as development, maintenance, certification, and the overall software team size and dynamic.\r\n\r\nSteven Dean, global healthcare segment manager at QNX Software Systems, will examine the operating system choice for medical device manufacturers and explain how the inherent benefits of faster time to market, easier pre-market approval, and lower total cost of ownership can make a commercial OS a much more attractive option than a “free” OS option.",
-        "endTime": "16:55",
+        "endTime": "17:15",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -1317,15 +1226,15 @@
             "17"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1916:30",
-        "startTime": "16:30",
+        "sortKey": "2016-10-1916:50",
+        "startTime": "16:50",
         "subtitle": "",
-        "title": "Operating systems for Operating Rooms"
+        "title": "Total Cost of Ownership - Operating systems for Operating Rooms"
     },
     {
         "abstractText": "",
         "description": "\"What if this thing was magic?\" Designing for the internet of things means blessing everyday objects, places, even people with extraordinary abilities—requiring designers, too, to break with the ordinary. Designing for this new medium is less a challenge of technology than imagination. Sharing a rich set of examples, designer and author Josh Clark explores the new experiences that are possible when ANYTHING can be an interface. The digital manipulation of physical objects (and vice versa) effectively turns all of us into wizards. Sling content between devices, bring objects to life from a distance, weave \"spells\" by combining speech and gesture. But magic doesn't have to be otherworldly; the UX of connected devices should build on the natural physical interactions we have everyday with the world around us. The new UX must bend technology to the way we live our lives, not the reverse.",
-        "endTime": "17:55",
+        "endTime": "18:10",
         "isCommunity": false,
         "isDeprecated": false,
         "isKeynote": false,
@@ -1347,8 +1256,8 @@
             "2"
         ],
         "sessionType": "",
-        "sortKey": "2016-10-1917:05",
-        "startTime": "17:05",
+        "sortKey": "2016-10-1917:20",
+        "startTime": "17:20",
         "subtitle": "",
         "title": "Magical UX and the Internet of Things"
     },
@@ -1476,7 +1385,7 @@
     },
     {
         "abstractText": "",
-        "description": "Boot time is an important characteristic for some systems, such as those which must immediately provide a functioning user interface to its users when powered on. Commonly this capability is achieved using a minimal operating system. However, we will discuss how a full-featured Linux-based Qt-powered device can be optimized to reduce boot time by an order of magnitude. The first half of this presentation will uncover the application and Qt level optimizations and the second half of the session will cover the boot loader/kernal strategies with Qt. We will begin to analyze some of the important hardware attributes that influence a system's boot time.\r\n\r\nA Toradex System-on-Module (SoM) will serve as an example platform requiring exploitation to shed precious milliseconds from boot-up. We will take a look at the boot sequence, digging into the boot ROM, U-boot bootloader, Linux kernel &amp; Qt application. Boot time optimization strategies will be shared for each of these links in the boot chain ultimately allowing the typical boot time for a general purpose embedded Linux system to be reduced from 10-20 seconds to 1-2 seconds for a specialized application.",
+        "description": "Physics Based Rendering (PBR) is the latest and greatest trend in real-time rendering yielding much more visually believable images than the traditional Phong or ad-hoc lighting models. The underlying concept is that the shaders should use physical principles in the encoded models - chief of which are conservation of energy and the Fresnel effect. PBR is used in many AAA game titles but here we will show how to make use of it with Qt 3D as it is widely applicable to many other types of 3D content such as for use within engineering and visualization. In this talk we will cover how to go take your raw 3D meshes, look at how to prepare textures suitable for use with a PBR-based workflow and how to feed these into a Qt 3D application. Along the way, we will explain how Physics Based Rendering works and how its formulation helps convince the brain of its realism without destroying performance. We will also take a look at some techniques that are often used in conjunction with PBR such as ambient occlusion and parallax mapping. Time permitting we will look briefly at how to add some post-processing effects to your Qt 3D renderer setup. Physics Based Rendering is a family of techniques for simulating how light interacts with surfaces. It can be applied in both offline renderers such as path tracers used in the production of television and film VFX, and more importantly for us, in real time rendering systems such as Qt 3D. There are two main groups of PBR techniques that fall under the Metal-Roughness and Specular-Glossiness workflows. This talk will concentrate on the Metal-Roughness workflow. We will show all the tooling required to take simple 3D meshes, uv-unwrap and export them for use in specialized texturing tools that can then be used to generate the images needed to feed into PBR GLSL shaders. In addition to the material textures, we will also show how to process HDR environment maps to allow high quality specular reflections to be calculated in real time. The talk will explain how all of these assets work together to produce convincing results. We will also provide tips on reducing the overall memory usage by using modern GPU facilities for managing textures.",
         "endTime": "11:55",
         "isCommunity": false,
         "isDeprecated": false,
@@ -1488,23 +1397,25 @@
         "isUnconference": false,
         "minutes": 55,
         "presenter": [
-            "1098",
-            "1108"
+            "1090"
         ],
         "room": 5,
         "sessionDay": 2,
-        "sessionId": 1188,
+        "sessionId": 1171,
         "sessionLinks": [
         ],
         "sessionTracks": [
+            "15",
             "16",
-            "9"
+            "8",
+            "11",
+            "7"
         ],
         "sessionType": "",
         "sortKey": "2016-10-2011:00",
         "startTime": "11:00",
         "subtitle": "",
-        "title": "Fast-Booting Qt Applications on Embedded Linux"
+        "title": "Qt 3D and Physics Based Rendering"
     },
     {
         "abstractText": "",
@@ -1536,7 +1447,7 @@
         "sortKey": "2016-10-2011:00",
         "startTime": "11:00",
         "subtitle": "",
-        "title": "Where Qt is going - Qt Lite"
+        "title": "Where Qt is going - Qt Lite Overview"
     },
     {
         "abstractText": "",
@@ -1616,7 +1527,7 @@
         "presenter": [
             "935"
         ],
-        "room": 1,
+        "room": 4,
         "sessionDay": 2,
         "sessionId": 1704,
         "sessionLinks": [
@@ -1698,38 +1609,6 @@
     },
     {
         "abstractText": "",
-        "description": "Stay tuned",
-        "endTime": "12:25",
-        "isCommunity": false,
-        "isDeprecated": false,
-        "isKeynote": false,
-        "isLightning": false,
-        "isMeeting": false,
-        "isSession": false,
-        "isTraining": false,
-        "isUnconference": false,
-        "minutes": 25,
-        "presenter": [
-            "1533"
-        ],
-        "room": 2,
-        "sessionDay": 2,
-        "sessionId": 1479,
-        "sessionLinks": [
-        ],
-        "sessionTracks": [
-            "11",
-            "17",
-            "7"
-        ],
-        "sessionType": "",
-        "sortKey": "2016-10-2012:00",
-        "startTime": "12:00",
-        "subtitle": "",
-        "title": "How to select a service partner"
-    },
-    {
-        "abstractText": "",
         "description": "Developing applications with QML can be a very pleasant experience: Quick development cycles, intuitive syntax and integrated tooling that get you up and running. But when your team's application grows with numerous QML components, new imports and countless properties, obstacles may appear. Often, the first symptom is slower application start-up or increased memory consumption. Thus, scalability is a key focus for us when developing the QML engine. In this presentation we are going to begin with a brief review of some of significant milestones from the past months. Then, we will discuss how your team can benefit from these improvements. For example, the new cache architecture that supercedes the Qt Quick compiler, reducing the overall memory consumption through on-demand paging and caching of generated code across application restarts. Perhaps this is your chance to provide feedback (both good and bad) and give input for our future plans.",
         "endTime": "13:55",
         "isCommunity": false,
@@ -1761,7 +1640,7 @@
     },
     {
         "abstractText": "",
-        "description": "Physics Based Rendering (PBR) is the latest and greatest trend in real-time rendering yielding much more visually believable images than the traditional Phong or ad-hoc lighting models. The underlying concept is that the shaders should use physical principles in the encoded models - chief of which are conservation of energy and the Fresnel effect. PBR is used in many AAA game titles but here we will show how to make use of it with Qt 3D as it is widely applicable to many other types of 3D content such as for use within engineering and visualization. In this talk we will cover how to go take your raw 3D meshes, look at how to prepare textures suitable for use with a PBR-based workflow and how to feed these into a Qt 3D application. Along the way, we will explain how Physics Based Rendering works and how its formulation helps convince the brain of its realism without destroying performance. We will also take a look at some techniques that are often used in conjunction with PBR such as ambient occlusion and parallax mapping. Time permitting we will look briefly at how to add some post-processing effects to your Qt 3D renderer setup. Physics Based Rendering is a family of techniques for simulating how light interacts with surfaces. It can be applied in both offline renderers such as path tracers used in the production of television and film VFX, and more importantly for us, in real time rendering systems such as Qt 3D. There are two main groups of PBR techniques that fall under the Metal-Roughness and Specular-Glossiness workflows. This talk will concentrate on the Metal-Roughness workflow. We will show all the tooling required to take simple 3D meshes, uv-unwrap and export them for use in specialized texturing tools that can then be used to generate the images needed to feed into PBR GLSL shaders. In addition to the material textures, we will also show how to process HDR environment maps to allow high quality specular reflections to be calculated in real time. The talk will explain how all of these assets work together to produce convincing results. We will also provide tips on reducing the overall memory usage by using modern GPU facilities for managing textures.",
+        "description": "Boot time is an important characteristic for some systems, such as those which must immediately provide a functioning user interface to its users when powered on. Commonly this capability is achieved using a minimal operating system. However, we will discuss how a full-featured Linux-based Qt-powered device can be optimized to reduce boot time by an order of magnitude. The first half of this presentation will uncover the application and Qt level optimizations and the second half of the session will cover the boot loader/kernal strategies with Qt. We will begin to analyze some of the important hardware attributes that influence a system's boot time.\r\n\r\nA Toradex System-on-Module (SoM) will serve as an example platform requiring exploitation to shed precious milliseconds from boot-up. We will take a look at the boot sequence, digging into the boot ROM, U-boot bootloader, Linux kernel &amp; Qt application. Boot time optimization strategies will be shared for each of these links in the boot chain ultimately allowing the typical boot time for a general purpose embedded Linux system to be reduced from 10-20 seconds to 1-2 seconds for a specialized application.",
         "endTime": "14:25",
         "isCommunity": false,
         "isDeprecated": false,
@@ -1773,25 +1652,23 @@
         "isUnconference": false,
         "minutes": 55,
         "presenter": [
-            "1090"
+            "1098",
+            "1108"
         ],
         "room": 5,
         "sessionDay": 2,
-        "sessionId": 1171,
+        "sessionId": 1188,
         "sessionLinks": [
         ],
         "sessionTracks": [
-            "15",
             "16",
-            "8",
-            "11",
-            "7"
+            "9"
         ],
         "sessionType": "",
         "sortKey": "2016-10-2013:30",
         "startTime": "13:30",
         "subtitle": "",
-        "title": "Qt 3D and Physics Based Rendering"
+        "title": "Boot Time Optimization for Linux-based Qt-powered Embedded Devices"
     },
     {
         "abstractText": "",
@@ -1946,7 +1823,8 @@
         ],
         "sessionTracks": [
             "9",
-            "20"
+            "20",
+            "10"
         ],
         "sessionType": "",
         "sortKey": "2016-10-2014:00",
@@ -2018,36 +1896,6 @@
         "startTime": "15:00",
         "subtitle": "",
         "title": "Integrating Universal Windows Platform to Qt"
-    },
-    {
-        "abstractText": "",
-        "description": "At the heart of Qt is the QObject and the technologies that drive this. As Qt developers we love to use signals and slots, the events, the introspection and all those other features. But how do those actually work? Surprisingly few Qt developers truly understand how the QObject systems work. And by not understanding, they fail to grasp the full potential of what this can help you with. In this talk, we will dive very deep into the belly of the beast and discuss how it actually works. You will see what moc does, how it's related to QObject and why it's necessary. You will learn all there is to learn about what QObject does for your objects. We will also look at the Qt event loop and see how this is related to QObject and the Qt signals. This is necessary to understand what happens to your Qt signals. And finally, we will have a discussion about how this should modify the architecture of your code, how you should modify the way you think code to best make use of Qt. The full use of Qt allows you to code self contained components - getting away from the dreaded spaghetti code. The aim of this talk is to give the developer the necessary background knowledge to make the right decisions about Qt based designs in the code.",
-        "endTime": "15:55",
-        "isCommunity": false,
-        "isDeprecated": false,
-        "isKeynote": false,
-        "isLightning": false,
-        "isMeeting": false,
-        "isSession": false,
-        "isTraining": false,
-        "isUnconference": false,
-        "minutes": 55,
-        "presenter": [
-            "940"
-        ],
-        "room": 1,
-        "sessionDay": 2,
-        "sessionId": 1162,
-        "sessionLinks": [
-        ],
-        "sessionTracks": [
-            "10"
-        ],
-        "sessionType": "",
-        "sortKey": "2016-10-2015:00",
-        "startTime": "15:00",
-        "subtitle": "",
-        "title": "QObject Deep Dive"
     },
     {
         "abstractText": "",
@@ -2144,6 +1992,38 @@
     },
     {
         "abstractText": "",
+        "description": "For a product as versatile and customizable as Qt, it is quite common for customers to look for professional help when integrating and implementing their software stack. Whether it is a board level integration of Qt library or user experience design, or application development there is no \"one-size fits all” as every customer’s needs are unique. Getting professional help also gives customers an opportunity to differentiate their product and accelerate their time to market. We have 4 distinguished panelists here to talk about how they can help you (customer) to be successful with Qt. This interactive session will be open for Q&amp;A.",
+        "endTime": "15:55",
+        "isCommunity": false,
+        "isDeprecated": false,
+        "isKeynote": false,
+        "isLightning": false,
+        "isMeeting": false,
+        "isSession": false,
+        "isTraining": false,
+        "isUnconference": false,
+        "minutes": 25,
+        "presenter": [
+            "1533"
+        ],
+        "room": 3,
+        "sessionDay": 2,
+        "sessionId": 1479,
+        "sessionLinks": [
+        ],
+        "sessionTracks": [
+            "11",
+            "17",
+            "7"
+        ],
+        "sessionType": "",
+        "sortKey": "2016-10-2015:30",
+        "startTime": "15:30",
+        "subtitle": "",
+        "title": "How to select a service partner"
+    },
+    {
+        "abstractText": "",
         "description": "In this presentation Mr. Murali Mandayam will go through solutions for tackling the most common issues in the execution of a large-scale software program. The learning are based on the extensive experience our embedded customers over the years. However, these results are easy to generalize to cover any large-scale software project when creating innovative embedded devices based on Qt. Software projects in reality start earlier than the first lines of code are written. In this presentation, we will look go through our learning starting already from the technology selection and extending all the way to the final maturization of a device software. The biggest decisions contributing to a short time-to-market are done in the early days of the software program. Understanding the final user experience at least on a conceptual level helps any program to decide the requirements for hardware. It is fundamental that the hardware decision is done with software in mind. This may sound naïve but still today, we constantly face projects where cost of a piece of silicon is driving the decision with a mindset “software will be adjusted to work with this”. The right hardware with the right system architecture gives you a solid foundation for fast time-to-market. Other elements of the short time-to-market are in the hands of software units from design to actual implementation with good software practices. In the presentation, we will take a closer look on each of the phases we have recognized in the embedded device creation project and address the solutions for the top issues in each phase. The issues can be solved roughly in two different ways – using the right Qt tools / capabilities or changes in the way of working throughout the organization. We will illustrate with examples how to concretely shorten the time-to-market with the Qt tools available from us and/or our key partners. Furthermore, we will share the best practices from our customer cases in building the most capable software processes for embedded device creation.",
         "endTime": "15:55",
         "isCommunity": false,
@@ -2205,36 +2085,6 @@
         "startTime": "16:00",
         "subtitle": "",
         "title": "Developing user interfaces with Qt Quick Controls 2"
-    },
-    {
-        "abstractText": "",
-        "description": "For a product as versatile and customizable as Qt, it is quite common for customers to look for professional help when integrating and implementing their software stack. Whether it is a board level integration of Qt library or user experience design, or application development there is no \"one-size fits all” as every customer’s needs are unique. Getting professional help also gives customers an opportunity to differentiate their product and accelerate their time to market. We have 4 distinguished panelists here to talk about how they can help you (customer) to be successful with Qt. This interactive session will be open for Q&amp;A.\r\n\r\n&nbsp;",
-        "endTime": "16:25",
-        "isCommunity": false,
-        "isDeprecated": false,
-        "isKeynote": false,
-        "isLightning": false,
-        "isMeeting": false,
-        "isSession": false,
-        "isTraining": false,
-        "isUnconference": false,
-        "minutes": 25,
-        "presenter": [
-            "1533"
-        ],
-        "room": 1,
-        "sessionDay": 2,
-        "sessionId": 1532,
-        "sessionLinks": [
-        ],
-        "sessionTracks": [
-            "11"
-        ],
-        "sessionType": "",
-        "sortKey": "2016-10-2016:00",
-        "startTime": "16:00",
-        "subtitle": "",
-        "title": "How to Choose a Service Partner"
     },
     {
         "abstractText": "",
@@ -2396,36 +2246,6 @@
     },
     {
         "abstractText": "",
-        "description": "Stay Tuned",
-        "endTime": "17:00",
-        "isCommunity": false,
-        "isDeprecated": false,
-        "isKeynote": false,
-        "isLightning": false,
-        "isMeeting": false,
-        "isSession": false,
-        "isTraining": false,
-        "isUnconference": false,
-        "minutes": 30,
-        "presenter": [
-            "1473"
-        ],
-        "room": 1,
-        "sessionDay": 2,
-        "sessionId": 1471,
-        "sessionLinks": [
-        ],
-        "sessionTracks": [
-            "8"
-        ],
-        "sessionType": "",
-        "sortKey": "2016-10-2016:30",
-        "startTime": "16:30",
-        "subtitle": "",
-        "title": "Let's Talk Law/policy for Devices from a Software Perspective"
-    },
-    {
-        "abstractText": "",
         "description": "One of the most important aspects of a streamlined software development pipeline is the build system. As a tool that developers use throughout the day, every day, a good build system should be lightning fast, easy to use, and produce instantaneous and correct incremental builds. Build systems that are slow, hard to maintain, or incorrectly specify dependencies (leading to broken or malfunctioning builds) significantly impact your team’s workflow and waste countless hours of time.    Qbs aims to be the perfect high level cross platform build system -- and hopeful replacement for qmake within Qt. It started as a research project at Nokia in 2010 and has been ongoing since. It aims to support any toolkit, any language, and any OS, with excellent support for cross compilation, IDE integration, device deployment &amp; packaging, speed, flexibility, expressiveness, and ease of use.    This talk provides an introduction to Qbs and how it compares to other build systems like CMake and qmake. It will cover the general design of Qbs, illustrate the power of its dependency management system, and show off some of its unique features like ABI-based linking optimization, building for multiple platforms in parallel, and library-based design. It will also show off some of the powerful new features coming in future versions, such as first-class support for code-signing on all platforms, and integration with popular IDEs like Xcode and Visual Studio.",
         "endTime": "16:55",
         "isCommunity": false,
@@ -2488,5 +2308,35 @@
         "startTime": "16:30",
         "subtitle": "",
         "title": "How to Develop with Qt for Multiple Screen Resolutions and Multiple Platforms and Best Practices for an Efficient App Lifecycle with Qt (Technology Strategy Session)"
+    },
+    {
+        "abstractText": "",
+        "description": "Stay Tuned",
+        "endTime": "17:15",
+        "isCommunity": false,
+        "isDeprecated": false,
+        "isKeynote": false,
+        "isLightning": false,
+        "isMeeting": false,
+        "isSession": false,
+        "isTraining": false,
+        "isUnconference": false,
+        "minutes": 25,
+        "presenter": [
+            "1473"
+        ],
+        "room": 1,
+        "sessionDay": 2,
+        "sessionId": 1471,
+        "sessionLinks": [
+        ],
+        "sessionTracks": [
+            "8"
+        ],
+        "sessionType": "",
+        "sortKey": "2016-10-2016:50",
+        "startTime": "16:50",
+        "subtitle": "",
+        "title": "Let's Talk Law/policy for Devices from a Software Perspective"
     }
 ]

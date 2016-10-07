@@ -83,7 +83,6 @@
         "publicName": "",
         "sessions": [
             "1729",
-            "1530",
             "1418"
         ],
         "sortGroup": "B",
@@ -491,7 +490,8 @@
         "name": "Kevin Kelly",
         "publicName": "",
         "sessions": [
-            "1353"
+            "1353",
+            "1768"
         ],
         "sortGroup": "K",
         "sortKey": "KELLY",
@@ -611,8 +611,7 @@
         "publicName": "",
         "sessions": [
             "1479",
-            "1155",
-            "1532"
+            "1155"
         ],
         "sortGroup": "M",
         "sortKey": "MANDA",
@@ -625,7 +624,6 @@
         "publicName": "",
         "sessions": [
             "1729",
-            "1530",
             "1418"
         ],
         "sortGroup": "M",
@@ -663,7 +661,6 @@
         "name": "Tore Meyer",
         "publicName": "",
         "sessions": [
-            "1165",
             "1728"
         ],
         "sortGroup": "M",
@@ -868,8 +865,7 @@
         "name": "Thibaut Rouffineau",
         "publicName": "",
         "sessions": [
-            "1729",
-            "1694"
+            "1729"
         ],
         "sortGroup": "R",
         "sortKey": "ROUFF",
@@ -1000,7 +996,6 @@
         "name": "Bo Thorsen",
         "publicName": "",
         "sessions": [
-            "1162"
         ],
         "sortGroup": "T",
         "sortKey": "THORS",
@@ -1077,7 +1072,6 @@
         "publicName": "",
         "sessions": [
             "1733",
-            "1529",
             "1528"
         ],
         "sortGroup": "Z",
