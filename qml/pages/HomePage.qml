@@ -14,6 +14,7 @@ Pane {
     height: appWindow.height
     property string name: "HomePage"
     property Conference conference
+    property bool isSilentMode: false
     //topPadding: 12
     padding: 0
 
@@ -52,47 +53,67 @@ Pane {
                 appWindow.showToast(qsTr("Sorry - the Conference is closed.\nNo more Updates available"))
                 return
             }
-
-            // open modal dialog and wait if update required
-            updatePopup.text = qsTr("Checking QtCon Server\nfor new Schedule Data ...")
-            updatePopup.buttonsVisible = false
-            updatePopup.isUpdate = false
-            updatePopup.open()
+            checkVersionExplicitely()
         }
     } // FAB
 
+    // open modal dialog and wait if update required
+    function checkVersionExplicitely() {
+        isSilentMode = false
+        checkVersionPopup.text = qsTr("Checking QtWS Server\nfor new Schedule Data ...")
+        checkVersionPopup.buttonsVisible = false
+        checkVersionPopup.isUpdate = false
+        checkVersionPopup.open()
+    }
+    function checkVersionSilently() {
+        isSilentMode = true
+        dataUtil.checkVersion()
+    }
+
     PopupUpdate {
-        id: updatePopup
+        id: checkVersionPopup
         modal: true
         closePolicy: Popup.NoAutoClose
         onOpened: {
             dataUtil.checkVersion()
         }
         onClosed: {
-            if(updatePopup.isUpdate) {
+            if(checkVersionPopup.isUpdate) {
                 rootPane.startUpdate()
             }
         }
-    } // updatePopup
+    } // checkVersionPopup
 
     function updateAvailable(apiVersion) {
         console.log("QML updateAvailable " + apiVersion)
-        updatePopup.text = qsTr("Update available.\nAPI Version: ")+apiVersion
-        updatePopup.showUpdateButton = true
-        updatePopup.buttonsVisible = true
+        checkVersionPopup.text = qsTr("Update available.\nAPI Version: ")+apiVersion
+        checkVersionPopup.showUpdateButton = true
+        checkVersionPopup.buttonsVisible = true
+        if(isSilentMode) {
+            checkVersionPopup.isUpdate = false
+            checkVersionPopup.open()
+        }
 
     }
     function noUpdateRequired() {
         console.log("QML noUpdateRequired")
-        updatePopup.text = qsTr("No Update required.")
-        updatePopup.showUpdateButton = false
-        updatePopup.buttonsVisible = true
+        if(isSilentMode) {
+            // TODO start autocheck timer again
+            return
+        }
+        checkVersionPopup.text = qsTr("No Update required.")
+        checkVersionPopup.showUpdateButton = false
+        checkVersionPopup.buttonsVisible = true
     }
     function checkFailed(message) {
         console.log("QML checkFailed "+message)
-        updatePopup.text = qsTr("Version Check failed:\n")+message
-        updatePopup.showUpdateButton = false
-        updatePopup.buttonsVisible = true
+        if(isSilentMode) {
+            // TODO start autocheck timer again
+            return
+        }
+        checkVersionPopup.text = qsTr("Version Check failed:\n")+message
+        checkVersionPopup.showUpdateButton = false
+        checkVersionPopup.buttonsVisible = true
     }
     Connections {
         target: dataUtil
@@ -105,6 +126,10 @@ Pane {
     Connections {
         target: dataUtil
         onCheckForUpdateFailed: checkFailed(message)
+    }
+    Connections {
+        target: appWindow
+        onDoSilentVersionCheck: checkVersionSilently()
     }
 
     // emitting a Signal could be another option

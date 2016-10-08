@@ -27,6 +27,7 @@ ApplicationWindow {
     height: 680
     // visibile must set to true - default is false
     visible: true
+    signal doSilentVersionCheck()
     //
     property bool isLandscape: width > height
     property bool myScheduleActive: false
@@ -451,7 +452,20 @@ ApplicationWindow {
                 // show first destination (should always be IMMEDIATELY)
                 rootPane.activateDestination(firstActiveDestination)
                 console.log("startupDelayedTimer DONE")
+                console.log("now doing first Version Check from startup")
+                appWindow.doSilentVersionCheck()
             }
+        }
+        Timer {
+            id: silentVersionCheckTimer
+            interval: 1*60*1000
+            repeat: false
+            onTriggered: {
+                appWindow.doSilentVersionCheck()
+            }
+        }
+        function startSilentVersionCheckTimer() {
+            silentVersionCheckTimer.start()
         }
 
         // ASYNC STARTUP: Destinations will be loaded from Timer
