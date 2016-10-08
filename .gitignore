@@ -38,3 +38,5 @@ Makefile*
 android/gradle.properties
 android/local.properties
 
+ios_signature.pri
+

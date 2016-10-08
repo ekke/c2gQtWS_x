@@ -157,6 +157,17 @@ ios {
     QMAKE_BUNDLE_DATA += app_launch_screen
 
     QMAKE_IOS_DEPLOYMENT_TARGET = 8.2
+
+    # see https://bugreports.qt.io/browse/QTCREATORBUG-16968
+    # ios_signature.pri not part of project repo because of private signature details
+    # contains:
+    # QMAKE_XCODE_CODE_SIGN_IDENTITY = "iPhone Developer"
+    # MY_DEVELOPMENT_TEAM.name = DEVELOPMENT_TEAM
+    # MY_DEVELOPMENT_TEAM.value = your team Id from Apple Developer Account
+    # QMAKE_MAC_XCODE_SETTINGS += MY_DEVELOPMENT_TEAM
+
+    include(ios_signature.pri)
+
     # Note for devices: 1=iPhone, 2=iPad, 1,2=Universal.
     QMAKE_IOS_TARGETED_DEVICE_FAMILY = 1,2
 }
