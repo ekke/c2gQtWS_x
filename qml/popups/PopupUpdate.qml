@@ -13,6 +13,8 @@ Popup {
     property bool isUpdate: false
     property bool buttonsVisible: false
     property bool showUpdateButton: false
+    property bool isSilentMode: false
+    property bool doItManually: false
     Material.elevation: 8
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
@@ -38,15 +40,29 @@ Popup {
             visible: updatePopup.buttonsVisible
             spacing: 20
             Item {
+                visible: !manuallyButton.visible
                 Layout.preferredWidth: 1
                 Layout.fillWidth: true
             }
             ButtonFlat {
                 Layout.preferredWidth: 1
-                text: updatePopup.showUpdateButton? qsTr("Cancel") : qsTr("OK")
+                text: updatePopup.showUpdateButton? isSilentMode? qsTr("Later") : qsTr("Cancel") : qsTr("OK")
                 textColor: accentColor
                 onClicked: {
                     updatePopup.isUpdate = false
+                    updatePopup.doItManually = false
+                    updatePopup.close()
+                }
+            }
+            ButtonFlat {
+                id: manuallyButton
+                visible: updatePopup.isSilentMode && updatePopup.showUpdateButton
+                Layout.preferredWidth: 1
+                text: qsTr("Manually")
+                textColor: accentColor
+                onClicked: {
+                    updatePopup.isUpdate = false
+                    updatePopup.doItManually = true
                     updatePopup.close()
                 }
             }
@@ -57,6 +73,7 @@ Popup {
                 textColor: primaryColor
                 onClicked: {
                     updatePopup.isUpdate = true
+                    updatePopup.doItManually = false
                     updatePopup.close()
                 }
             }

@@ -14,7 +14,11 @@ Pane {
     height: appWindow.height
     property string name: "HomePage"
     property Conference conference
-    property bool isSilentMode: false
+    property bool isSilentMode: true
+    onIsSilentModeChanged: {
+        checkVersionPopup.isSilentMode = homePage.isSilentMode
+    }
+
     //topPadding: 12
     padding: 0
 
@@ -39,6 +43,7 @@ Pane {
 
 
     FloatingActionButton {
+        visible: !homePage.isSilentMode
         property string imageName: "/refresh.png"
         z: 1
         anchors.margins: 20
@@ -59,14 +64,14 @@ Pane {
 
     // open modal dialog and wait if update required
     function checkVersionExplicitely() {
-        isSilentMode = false
+        homePage.isSilentMode = false
         checkVersionPopup.text = qsTr("Checking QtWS Server\nfor new Schedule Data ...")
         checkVersionPopup.buttonsVisible = false
         checkVersionPopup.isUpdate = false
         checkVersionPopup.open()
     }
     function checkVersionSilently() {
-        isSilentMode = true
+        homePage.isSilentMode = true
         dataUtil.checkVersion()
     }
 
@@ -80,7 +85,16 @@ Pane {
         onClosed: {
             if(checkVersionPopup.isUpdate) {
                 rootPane.startUpdate()
+                return
             }
+            // TODO if cancel: restart timer now or later or do it manually
+            if(checkVersionPopup.doItManually) {
+                isSilentMode = false
+                return
+            }
+            // has canceled - try it later
+            isSilentMode = true
+            rootPane.startSilentVersionCheckTimer()
         }
     } // checkVersionPopup
 
@@ -90,7 +104,7 @@ Pane {
         checkVersionPopup.showUpdateButton = true
         checkVersionPopup.buttonsVisible = true
         if(isSilentMode) {
-            checkVersionPopup.isUpdate = false
+            rootPane.gotoFirstDestination()
             checkVersionPopup.open()
         }
 
@@ -98,7 +112,7 @@ Pane {
     function noUpdateRequired() {
         console.log("QML noUpdateRequired")
         if(isSilentMode) {
-            // TODO start autocheck timer again
+            rootPane.startSilentVersionCheckTimer()
             return
         }
         checkVersionPopup.text = qsTr("No Update required.")
@@ -108,7 +122,7 @@ Pane {
     function checkFailed(message) {
         console.log("QML checkFailed "+message)
         if(isSilentMode) {
-            // TODO start autocheck timer again
+            rootPane.startSilentVersionCheckTimer()
             return
         }
         checkVersionPopup.text = qsTr("Version Check failed:\n")+message

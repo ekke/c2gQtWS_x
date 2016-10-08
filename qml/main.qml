@@ -452,8 +452,13 @@ ApplicationWindow {
                 // show first destination (should always be IMMEDIATELY)
                 rootPane.activateDestination(firstActiveDestination)
                 console.log("startupDelayedTimer DONE")
+                if(dataUtil.isDateTooLate()) {
+                    // no version checks anymore - conference closed
+                    return
+                }
                 console.log("now doing first Version Check from startup")
-                appWindow.doSilentVersionCheck()
+                //appWindow.doSilentVersionCheck()
+                rootPane.startSilentVersionCheckTimer()
             }
         }
         Timer {
@@ -466,6 +471,9 @@ ApplicationWindow {
         }
         function startSilentVersionCheckTimer() {
             silentVersionCheckTimer.start()
+        }
+        function gotoFirstDestination() {
+            navigationIndex = firstActiveDestination
         }
 
         // ASYNC STARTUP: Destinations will be loaded from Timer
