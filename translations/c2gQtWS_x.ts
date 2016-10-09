@@ -732,7 +732,7 @@ http://appbus.org and http://ekkes-corner.org</source>
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="34"/>
+        <location filename="../qml/pages/HomePage.qml" line="38"/>
         <source>October, 18-20
 San Francisco, USA
 
@@ -740,30 +740,30 @@ Welcome</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="52"/>
+        <location filename="../qml/pages/HomePage.qml" line="57"/>
         <source>Sorry - the Conference is closed.
 No more Updates available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="57"/>
-        <source>Checking QtCon Server
+        <location filename="../qml/pages/HomePage.qml" line="67"/>
+        <source>Checking QtWS Server
 for new Schedule Data ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="80"/>
+        <location filename="../qml/pages/HomePage.qml" line="107"/>
         <source>Update available.
 API Version: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="87"/>
+        <location filename="../qml/pages/HomePage.qml" line="122"/>
         <source>No Update required.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="93"/>
+        <location filename="../qml/pages/HomePage.qml" line="132"/>
         <source>Version Check failed:
 </source>
         <translation type="unfinished"></translation>
@@ -828,17 +828,27 @@ Do you want to exit and leave the App ?
 <context>
     <name>PopupUpdate</name>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="46"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="46"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="56"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
+        <source>Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/popups/PopupUpdate.qml" line="60"/>
+        <source>Manually</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/popups/PopupUpdate.qml" line="71"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1008,7 +1018,7 @@ Do you want to exit and leave the App ?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionDetailPage.qml" line="277"/>
+        <location filename="../qml/pages/SessionDetailPage.qml" line="275"/>
         <source>Unnamed Speaker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1016,17 +1026,17 @@ Do you want to exit and leave the App ?
 <context>
     <name>SessionListView</name>
     <message>
-        <location filename="../qml/pages/SessionListView.qml" line="144"/>
+        <location filename="../qml/pages/SessionListView.qml" line="147"/>
         <source>Room </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionListView.qml" line="177"/>
+        <location filename="../qml/pages/SessionListView.qml" line="175"/>
         <source>Added to Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionListView.qml" line="179"/>
+        <location filename="../qml/pages/SessionListView.qml" line="177"/>
         <source>Removed from Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1343,100 +1353,100 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="37"/>
-        <location filename="../qml/main.qml" line="39"/>
+        <location filename="../qml/main.qml" line="55"/>
+        <location filename="../qml/main.qml" line="57"/>
         <source>My Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="43"/>
-        <location filename="../qml/main.qml" line="45"/>
-        <location filename="../qml/main.qml" line="150"/>
+        <location filename="../qml/main.qml" line="61"/>
+        <location filename="../qml/main.qml" line="63"/>
+        <location filename="../qml/main.qml" line="168"/>
         <source>Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="156"/>
+        <location filename="../qml/main.qml" line="174"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="157"/>
+        <location filename="../qml/main.qml" line="175"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="158"/>
+        <location filename="../qml/main.qml" line="176"/>
         <source>About this App</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="166"/>
+        <location filename="../qml/main.qml" line="184"/>
         <source>Qt World Summit 2016</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="168"/>
+        <location filename="../qml/main.qml" line="186"/>
         <source>QtWS 2016 Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="169"/>
+        <location filename="../qml/main.qml" line="187"/>
         <source>QtWS 2016 Speakers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="170"/>
+        <location filename="../qml/main.qml" line="188"/>
         <source>QtWS 2016 Tracks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="171"/>
+        <location filename="../qml/main.qml" line="189"/>
         <source>QtWS 2016 Venue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="172"/>
+        <location filename="../qml/main.qml" line="190"/>
         <source>QtWS 2016 Rooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="174"/>
+        <location filename="../qml/main.qml" line="192"/>
         <source>QtWS 2016 Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="175"/>
+        <location filename="../qml/main.qml" line="193"/>
         <source>QtWS 2016 Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="176"/>
+        <location filename="../qml/main.qml" line="194"/>
         <source>QtWS 2016 About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="177"/>
+        <location filename="../qml/main.qml" line="195"/>
         <source>QtWS 2016 D E V E L O P E R Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="322"/>
+        <location filename="../qml/main.qml" line="340"/>
         <source>No more Pages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="151"/>
+        <location filename="../qml/main.qml" line="169"/>
         <source>Speakers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="154"/>
+        <location filename="../qml/main.qml" line="172"/>
         <source>Rooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="614"/>
+        <location filename="../qml/main.qml" line="665"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>

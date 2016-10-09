@@ -35,47 +35,55 @@ Page {
     // LIST ROW DELEGTE
     Component {
         id: speakerRowComponent
-        ColumnLayout {
-            id: speakerRow
-            // without this divider not over total width
+        ItemDelegate {
+            id: theItem
+            height: speakerRow.height
             implicitWidth: appWindow.width
-            RowLayout {
-                spacing: 20
-                Layout.leftMargin: 16+12
-                Layout.rightMargin: 6
-                Layout.topMargin: 6
-                SpeakerImageItem {
-                    speaker: model.modelData
-                }
-                ColumnLayout {
-                    Layout.fillWidth: true
-                    // without setting a maximum width, word wrap not working
-                    Layout.maximumWidth: appWindow.width-120
-                    spacing: 0
-                    LabelSubheading {
-                        rightPadding: 12
-                        text: model.modelData.name.length? model.modelData.name : qsTr("Unnamed Speaker")
-                        font.bold: true
-                        wrapMode: Label.WordWrap
-                    } // label
+            onClicked: {
+                navPane.pushSpeakerDetail(model.modelData.speakerId)
+            }
+            ColumnLayout {
+                id: speakerRow
+                // without this divider not over total width
+                implicitWidth: appWindow.width
+                RowLayout {
+                    spacing: 20
+                    Layout.leftMargin: 16+12
+                    Layout.rightMargin: 6
+                    Layout.topMargin: 6
+                    SpeakerImageItem {
+                        speaker: model.modelData
+                    }
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        // without setting a maximum width, word wrap not working
+                        Layout.maximumWidth: appWindow.width-120
+                        spacing: 0
+                        LabelSubheading {
+                            rightPadding: 12
+                            text: model.modelData.name.length? model.modelData.name : qsTr("Unnamed Speaker")
+                            font.bold: true
+                            wrapMode: Label.WordWrap
+                        } // label
 
-                    LabelBody {
-                        rightPadding: 12
-                        text: dataUtil.sessionInfoForSpeaker(model.modelData)
-                        wrapMode: Label.WordWrap
-                        maximumLineCount: 3
-                        elide: Label.ElideRight
+                        LabelBody {
+                            rightPadding: 12
+                            text: dataUtil.sessionInfoForSpeaker(model.modelData)
+                            wrapMode: Label.WordWrap
+                            maximumLineCount: 3
+                            elide: Label.ElideRight
+                        }
                     }
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        navPane.pushSpeakerDetail(model.modelData.speakerId)
-                    }
-                } // mouse
-            } // end Row Layout
-            HorizontalListDivider{}
-        } // end Col Layout speaker row
+                    //                MouseArea {
+                    //                    anchors.fill: parent
+                    //                    onClicked: {
+                    //                        navPane.pushSpeakerDetail(model.modelData.speakerId)
+                    //                    }
+                    //                } // mouse
+                } // end Row Layout
+                HorizontalListDivider{}
+            } // end Col Layout speaker row
+        } // item delegate
     } // speakerRowComponent
 
     // LIST VIEW
