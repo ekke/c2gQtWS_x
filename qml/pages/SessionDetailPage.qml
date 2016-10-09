@@ -251,9 +251,7 @@ Page {
                     model: session.presenterPropertyList
 
                     Pane {
-                        topPadding: 4
-                        leftPadding: 0
-                        rightPadding: 0
+                        padding: 0
                         Layout.fillWidth: true
 
                         ColumnLayout {
@@ -298,8 +296,7 @@ Page {
 
                     }// presenter Pane
                 } // speaker repeater
-
-            }
+            } // main col layout
 
         }// root pane
         ScrollIndicator.vertical: ScrollIndicator { }
