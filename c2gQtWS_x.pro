@@ -172,12 +172,12 @@ ios {
     QMAKE_IOS_TARGETED_DEVICE_FAMILY = 1,2
 }
 
+# winrt work in progress
 winrt {
     WINRT_MANIFEST.name = Qt World Summit 2016
     WINRT_MANIFEST.background = white
     WINRT_MANIFEST.default_language = en
     WINRT_MANIFEST.description = QtWS 2016 Conference App
-    # getting manifest error: WINRT_MANIFEST.identity = org.ekkescorner.c2g.qtws
     WINRT_MANIFEST.version = 1.0.0.0
 	
     WINRT_MANIFEST = winrt/myPackage.appxmanifest
