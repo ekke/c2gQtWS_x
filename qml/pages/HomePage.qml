@@ -87,11 +87,11 @@ Pane {
                 return
             }
             if(checkVersionPopup.doItManually) {
-                isAutoVersionCheckMode = false
+                homePage.isAutoVersionCheckMode = false
                 return
             }
-            // has canceled - try it later
-            isAutoVersionCheckMode = true
+            // try it later
+            homePage.isAutoVersionCheckMode = true
             rootPane.startAutoVersionCheckTimer()
         }
     } // checkVersionPopup
@@ -107,6 +107,7 @@ Pane {
         checkVersionPopup.text = qsTr("Update available.\nAPI Version: ")+apiVersion
         checkVersionPopup.showUpdateButton = true
         checkVersionPopup.buttonsVisible = true
+        checkVersionPopup.isAutoVersionCheckMode = homePage.isAutoVersionCheckMode
         if(isAutoVersionCheckMode) {
             rootPane.gotoFirstDestination()
             checkVersionPopup.open()

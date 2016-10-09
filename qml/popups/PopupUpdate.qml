@@ -50,7 +50,6 @@ Popup {
                 textColor: accentColor
                 onClicked: {
                     updatePopup.isUpdate = false
-                    updatePopup.doItManually = false
                     updatePopup.close()
                 }
             }
