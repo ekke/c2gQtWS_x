@@ -82,7 +82,7 @@ ListView {
 
         Component {
             id: sessionRowComponent
-            Item {
+            ItemDelegate {
                 id: theItem
                 height: sessionRow.height
                 implicitWidth: appWindow.width
@@ -91,6 +91,9 @@ ListView {
                     height: sessionRow.height-2
                     width: 8
                     color: model.modelData.isKeynote? "#B2DFDB" : dataUtil.trackColorFirstTrack(model.modelData)
+                }
+                onClicked: {
+                    navPane.pushSessionDetail(model.modelData.sessionId)
                 }
 
                 ColumnLayout {
@@ -158,15 +161,10 @@ ListView {
                                 }
                             }
                         } // middle column
-                        ListRowButton {
-                            onClicked: {
-                                navPane.pushSessionDetail(model.modelData.sessionId)
-                            }
-                        }
                         ColumnLayout {
                             Layout.rightMargin: 16
                             IconActive {
-                                transform: Translate { x: -46 }
+                                transform: Translate { x: -6 }
                                 imageSize: 36
                                 imageName: "stars.png"
                                 opacity: model.modelData.isFavorite? opacityToggleActive : opacityToggleInactive
