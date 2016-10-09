@@ -30,6 +30,22 @@ ApplicationWindow {
     signal doAutoVersionCheck()
     property bool autoVersionCheck: true
     //
+    property bool appIsActive: Qt.application.state == Qt.ApplicationActive
+    onAppIsActiveChanged: {
+        if(appIsActive) {
+            if(autoVersionCheck && initDone) {
+                console.log("App becomes active - we check again the version")
+                appWindow.doAutoVersionCheck()
+            }
+        } else {
+            if(autoVersionCheck) {
+                console.log("App becomes inactive again - stop the version check timer")
+                autoVersionCheckTimer.stop()
+            }
+        }
+    }
+
+    //
     property bool isLandscape: width > height
     property bool myScheduleActive: false
     onMyScheduleActiveChanged: {
@@ -449,7 +465,7 @@ ApplicationWindow {
                 if(myApp.isDebugBuild() && !initialPlaceholder.isUpdate) {
                     console.log("DEBUG BUILD added as destination")
                     // special mode for ekke testing the app
-                    navigationModel.push(developerModel)
+                    // navigationModel.push(developerModel)
                 }
                 // inject model into Destinations Repeater
                 destinations.model = navigationModel
@@ -466,16 +482,17 @@ ApplicationWindow {
                 }
                 if(appWindow.autoVersionCheck) {
                     console.log("now doing first Version Check from startup")
-                    //appWindow.doAutoVersionCheck()
-                    rootPane.startAutoVersionCheckTimer()
+                    appWindow.doAutoVersionCheck()
                 } else {
                     console.log("running in manual version check mode")
                 }
             }
         }
+        // will check for new versions every hour
+        // as long as conference is ended
         Timer {
             id: autoVersionCheckTimer
-            interval: 1*60*1000
+            interval: 60*60*1000
             repeat: false
             onTriggered: {
                 appWindow.doAutoVersionCheck()
@@ -649,6 +666,8 @@ ApplicationWindow {
         popupInfo.open()
     }
     // end APP WINDOW FUNCTIONS
+
+
 
     // APP WINDOW POPUPS
     PopupExit {
