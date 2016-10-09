@@ -27,7 +27,8 @@ ApplicationWindow {
     height: 680
     // visibile must set to true - default is false
     visible: true
-    signal doSilentVersionCheck()
+    signal doAutoVersionCheck()
+    property bool autoVersionCheck: true
     //
     property bool isLandscape: width > height
     property bool myScheduleActive: false
@@ -380,6 +381,10 @@ ApplicationWindow {
                 startupDelayedTimer.start()
             }
         } // updatePopup
+
+        // update failed
+        // auto version check remains same (manual or automatically)
+        // if auto version check was done again after init
         function updateFailed(message) {
             dataUtil.reloadData()
             // info and reload prev stuff
@@ -398,6 +403,8 @@ ApplicationWindow {
             }
         } // updateTimer
         function updateDone() {
+            // reset from manual check to auto check if update was success
+            autoVersionCheck = true
             // read all data
             updateDoneTimer.start()
         }
@@ -408,6 +415,7 @@ ApplicationWindow {
             target: dataUtil
             onProgressInfo: rootPane.showUpdateProgress(progressInfo)
         }
+        // also catched from HomePage
         Connections {
             target: dataUtil
             onUpdateDone: rootPane.updateDone()
@@ -456,21 +464,25 @@ ApplicationWindow {
                     // no version checks anymore - conference closed
                     return
                 }
-                console.log("now doing first Version Check from startup")
-                //appWindow.doSilentVersionCheck()
-                rootPane.startSilentVersionCheckTimer()
+                if(appWindow.autoVersionCheck) {
+                    console.log("now doing first Version Check from startup")
+                    //appWindow.doAutoVersionCheck()
+                    rootPane.startAutoVersionCheckTimer()
+                } else {
+                    console.log("running in manual version check mode")
+                }
             }
         }
         Timer {
-            id: silentVersionCheckTimer
+            id: autoVersionCheckTimer
             interval: 1*60*1000
             repeat: false
             onTriggered: {
-                appWindow.doSilentVersionCheck()
+                appWindow.doAutoVersionCheck()
             }
         }
-        function startSilentVersionCheckTimer() {
-            silentVersionCheckTimer.start()
+        function startAutoVersionCheckTimer() {
+            autoVersionCheckTimer.start()
         }
         function gotoFirstDestination() {
             navigationIndex = firstActiveDestination

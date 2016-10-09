@@ -14,9 +14,10 @@ Pane {
     height: appWindow.height
     property string name: "HomePage"
     property Conference conference
-    property bool isSilentMode: true
-    onIsSilentModeChanged: {
-        checkVersionPopup.isSilentMode = homePage.isSilentMode
+    property bool isAutoVersionCheckMode: true
+    onIsAutoVersionCheckModeChanged: {
+        checkVersionPopup.isAutoVersionCheckMode = homePage.isAutoVersionCheckMode
+        appWindow.autoVersionCheck = homePage.isAutoVersionCheckMode
     }
 
     //topPadding: 12
@@ -25,8 +26,6 @@ Pane {
     Image {
         id: conferenceImage
         anchors.fill: parent
-        //width: appWindow.width
-        //height: appWindow.height
         fillMode: Image.PreserveAspectCrop
         source: isLandscape? "qrc:/images/extra/sf_landscape.jpg" : "qrc:/images/extra/sf_portrait.jpg"
         horizontalAlignment: Image.AlignLeft
@@ -43,7 +42,7 @@ Pane {
 
 
     FloatingActionButton {
-        visible: !homePage.isSilentMode
+        visible: !homePage.isAutoVersionCheckMode
         property string imageName: "/refresh.png"
         z: 1
         anchors.margins: 20
@@ -64,14 +63,14 @@ Pane {
 
     // open modal dialog and wait if update required
     function checkVersionExplicitely() {
-        homePage.isSilentMode = false
+        homePage.isAutoVersionCheckMode = false
         checkVersionPopup.text = qsTr("Checking QtWS Server\nfor new Schedule Data ...")
         checkVersionPopup.buttonsVisible = false
         checkVersionPopup.isUpdate = false
         checkVersionPopup.open()
     }
-    function checkVersionSilently() {
-        homePage.isSilentMode = true
+    function checkVersionAutomatically() {
+        homePage.isAutoVersionCheckMode = true
         dataUtil.checkVersion()
     }
 
@@ -87,32 +86,36 @@ Pane {
                 rootPane.startUpdate()
                 return
             }
-            // TODO if cancel: restart timer now or later or do it manually
             if(checkVersionPopup.doItManually) {
-                isSilentMode = false
+                isAutoVersionCheckMode = false
                 return
             }
             // has canceled - try it later
-            isSilentMode = true
-            rootPane.startSilentVersionCheckTimer()
+            isAutoVersionCheckMode = true
+            rootPane.startAutoVersionCheckTimer()
         }
     } // checkVersionPopup
+
+    function updateDone() {
+        // update was done with success
+        // so we switch back to auto version check if coming from manually version check
+        homePage.isAutoVersionCheckMode = true
+    }
 
     function updateAvailable(apiVersion) {
         console.log("QML updateAvailable " + apiVersion)
         checkVersionPopup.text = qsTr("Update available.\nAPI Version: ")+apiVersion
         checkVersionPopup.showUpdateButton = true
         checkVersionPopup.buttonsVisible = true
-        if(isSilentMode) {
+        if(isAutoVersionCheckMode) {
             rootPane.gotoFirstDestination()
             checkVersionPopup.open()
         }
-
     }
     function noUpdateRequired() {
         console.log("QML noUpdateRequired")
-        if(isSilentMode) {
-            rootPane.startSilentVersionCheckTimer()
+        if(isAutoVersionCheckMode) {
+            rootPane.startAutoVersionCheckTimer()
             return
         }
         checkVersionPopup.text = qsTr("No Update required.")
@@ -121,8 +124,8 @@ Pane {
     }
     function checkFailed(message) {
         console.log("QML checkFailed "+message)
-        if(isSilentMode) {
-            rootPane.startSilentVersionCheckTimer()
+        if(isAutoVersionCheckMode) {
+            rootPane.startAutoVersionCheckTimer()
             return
         }
         checkVersionPopup.text = qsTr("Version Check failed:\n")+message
@@ -143,7 +146,12 @@ Pane {
     }
     Connections {
         target: appWindow
-        onDoSilentVersionCheck: checkVersionSilently()
+        onDoAutoVersionCheck: checkVersionAutomatically()
+    }
+    // also catched from main
+    Connections {
+        target: dataUtil
+        onUpdateDone: rootPane.updateDone()
     }
 
     // emitting a Signal could be another option

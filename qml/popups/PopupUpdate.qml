@@ -13,7 +13,7 @@ Popup {
     property bool isUpdate: false
     property bool buttonsVisible: false
     property bool showUpdateButton: false
-    property bool isSilentMode: false
+    property bool isAutoVersionCheckMode: false
     property bool doItManually: false
     Material.elevation: 8
     x: (parent.width - width) / 2
@@ -46,7 +46,7 @@ Popup {
             }
             ButtonFlat {
                 Layout.preferredWidth: 1
-                text: updatePopup.showUpdateButton? isSilentMode? qsTr("Later") : qsTr("Cancel") : qsTr("OK")
+                text: updatePopup.showUpdateButton? isAutoVersionCheckMode? qsTr("Later") : qsTr("Cancel") : qsTr("OK")
                 textColor: accentColor
                 onClicked: {
                     updatePopup.isUpdate = false
@@ -56,7 +56,7 @@ Popup {
             }
             ButtonFlat {
                 id: manuallyButton
-                visible: updatePopup.isSilentMode && updatePopup.showUpdateButton
+                visible: updatePopup.isAutoVersionCheckMode && updatePopup.showUpdateButton
                 Layout.preferredWidth: 1
                 text: qsTr("Manually")
                 textColor: accentColor
