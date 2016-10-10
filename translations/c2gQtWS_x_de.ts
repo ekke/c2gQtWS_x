@@ -26,10 +26,9 @@ https://github.com/ekke/c2gQtCon_x</source>
 https://github.com/ekke/c2gQtCon_x</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="80"/>
         <source>My blog series about Qt for x-platform Business Apps:
 http://j.mp/qt-x</source>
-        <translation>Meine Blog Serie &apos;Qt for x-platform Business Apps&apos;:
+        <translation type="vanished">Meine Blog Serie &apos;Qt for x-platform Business Apps&apos;:
 http://j.mp/qt-x</translation>
     </message>
     <message>
@@ -39,17 +38,17 @@ http://bit.ly/qtCon2016App</source>
 http://bit.ly/qtCon2016App</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="97"/>
+        <location filename="../qml/pages/AboutPage.qml" line="101"/>
         <source>Thanks !</source>
         <translation>Danke !</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="106"/>
+        <location filename="../qml/pages/AboutPage.qml" line="110"/>
         <source>Thanks to &apos;Tero Kojo, qt.io&apos; managing all around the Conference App.</source>
         <translation>Vielen Dank an &apos;Tero Kojo, qt.io&apos; der alles rund um die Konferenz App gemanaged hat.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="114"/>
+        <location filename="../qml/pages/AboutPage.qml" line="118"/>
         <source>Thanks for great Design of APP Icons and (iOS)-Splashscreen by &apos;Diana de Sousa, qt.io&apos;</source>
         <translation>Vielen Dank für das großartige Design der APP Icons und des (iOS) - Splash Screens an &apos;Diana de Sousa, qt.io&apos;</translation>
     </message>
@@ -77,50 +76,67 @@ entwickelt von ekke (@ekkescorner)</translation>
         <translation>Dies ist eine meiner ersten APPs für Android und iOS. Die letzten Jahre habe ich für BlackBerry 10 / Cascades entwickelt.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="63"/>
         <source>This is also one of my first APPs I developed using Qt.
 This APP is developed with Qt 5.7 and brandnew QtQuickControls2.</source>
-        <translation>Dies ist ausserdem eine meiner ersten APPs, die ich mit Qt entwickelt habe.
+        <translation type="vanished">Dies ist ausserdem eine meiner ersten APPs, die ich mit Qt entwickelt habe.
 Diese APP basiert auf Qt 5.7 und den brandneuen QtQuickControls2.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="71"/>
         <source>All work is done in my spare time and complete sourcecode is available at Github:
 https://github.com/ekke/c2gQtWS_x</source>
-        <translation>Die Entwicklung erfolgte in meiner &quot;Freizeit&quot; und der komplette Sourcecode ist auf GitHub verfügbar.
+        <translation type="vanished">Die Entwicklung erfolgte in meiner &quot;Freizeit&quot; und der komplette Sourcecode ist auf GitHub verfügbar.
 https://github.com/ekke/c2gQtWS_x</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="88"/>
         <source>Please report bugs, feature requests or discuss the APP in the Comments:
 http://bit.ly/qtWS2016App</source>
-        <translation>Ich freue mich über BugReports, Feature Requests und Diskussionen in den Kommentaren hier:
+        <translation type="vanished">Ich freue mich über BugReports, Feature Requests und Diskussionen in den Kommentaren hier:
 http://bit.ly/qtWS2016App</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="122"/>
+        <location filename="../qml/pages/AboutPage.qml" line="63"/>
+        <source>This is also one of my first APPs I developed using Qt. This APP is developed with Qt 5.7 and brandnew &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</source>
+        <translation>Dies ist auch eine meiner ersten Apps, die ich mit Qt entwickelt habe. Die App basiert auf Qt 5.7 und den brandneuen &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="72"/>
+        <source>All work is done in my spare time and complete sourcecode is available at &lt;a href=&quot;https://github.com/ekke/c2gQtWS_x&quot;&gt;Github&lt;/a&gt;</source>
+        <translation>Die Entwicklung habe ich in meiner freien Zeit getan und der komplette Sourcecode ist verfügbar bei &lt;a href=&quot;https://github.com/ekke/c2gQtWS_x&quot;&gt;Github&lt;/a&gt; </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="82"/>
+        <source>My blog series about &lt;a href=&quot;http://j.mp/qt-x&quot;&gt;Qt for x-platform Business Apps&lt;/a&gt;</source>
+        <translation>Meine Blog Serie über &lt;a href=&quot;http://j.mp/qt-x&quot;&gt;Qt for x-platform Business Apps&lt;/a</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="91"/>
+        <source>Please report bugs, feature requests or discuss the APP in the &lt;a href=&quot;http://bit.ly/qtWS2016App&quot;&gt;Comments&lt;/a&gt;</source>
+        <translation>Fehlerberichte, Feature Requests und Diskussionen auch gerne in den &lt;a href=&quot;http://bit.ly/qtWS2016App&quot;&gt;Kommentaren&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="126"/>
         <source>Thanks supporting my requests at Server Site (JSON, API): &apos;Olli Puurunen, qt.io&apos;</source>
         <translation>Vielen Dank für die super Unterstützung auf der Server Seite (JSON, API): &apos;Olli Puurunen, qt.io&apos;</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="130"/>
+        <location filename="../qml/pages/AboutPage.qml" line="134"/>
         <source>Thanks J-P Nurmi, Mitch Curtis and others @qt.io for help, bug-fixing and inspirations.</source>
         <translation>Besonderen Dank an J-P Nurmi, Mitch Curtis und andere @ qt.io für Hilfe, Bug Fixing und Inspirationen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="139"/>
+        <location filename="../qml/pages/AboutPage.qml" line="143"/>
         <source>Need a Business APP for BlackBerry10, Android, iOS ?</source>
         <translation>Sie benötigen eine Business APP für BlackBerry10, Android, iOS ?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="148"/>
+        <location filename="../qml/pages/AboutPage.qml" line="152"/>
         <source>ekke is doing international development for Enterprise and SMB (Small and Medium Business). Most APPs are &apos;hidden&apos; because they&apos;re running as inhouse APP at customer site.
 This Conference App will give you some impressions what kind of APPs you can expect. Need an APP ? ask ekke</source>
         <translation>ekke entwickelt für internationale Kunden aus Enterprise und SMB (Kleine Firmen, Mittelstand). Die meisten APPs sind &apos;unsichtbar&apos;, da sie auf Kunden Servern installiert sind. (BES12 u.a.)
 Diese Konferenz APP gibt einen kleinen Eindruck, was für APPs Sie erwarten können. Sie brauchen eine APP ? Einfach ekke fragen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="158"/>
+        <location filename="../qml/pages/AboutPage.qml" line="162"/>
         <source>ekke is BlackBerry Elite Developer, Enterprise Platinum Partner and certified Builder for Native.</source>
         <translation>ekke ist BlackBerry Elite Developer, Enterprise Platinum Partner und zertifizierter &apos;Builder for Native.&apos;</translation>
     </message>
@@ -1082,9 +1098,8 @@ Soll die App beendet werden ?
         <translation type="vanished">Raum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomListPage.qml" line="64"/>
         <source>Room  </source>
-        <translation>Raum </translation>
+        <translation type="vanished">Raum </translation>
     </message>
     <message>
         <location filename="../qml/pages/RoomListPage.qml" line="70"/>
@@ -1095,9 +1110,8 @@ Soll die App beendet werden ?
 <context>
     <name>RoomSessionListPage</name>
     <message>
-        <location filename="../qml/pages/RoomSessionListPage.qml" line="85"/>
         <source>Room </source>
-        <translation>Raum</translation>
+        <translation type="vanished">Raum</translation>
     </message>
 </context>
 <context>
@@ -1126,9 +1140,8 @@ Soll die App beendet werden ?
         <translation>Vom Persönlichen Zeitplan entfern</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionDetailPage.qml" line="168"/>
         <source>Room: </source>
-        <translation>Raum: </translation>
+        <translation type="vanished">Raum: </translation>
     </message>
     <message>
         <location filename="../qml/pages/SessionDetailPage.qml" line="234"/>
@@ -1149,9 +1162,8 @@ Soll die App beendet werden ?
 <context>
     <name>SessionListView</name>
     <message>
-        <location filename="../qml/pages/SessionListView.qml" line="147"/>
         <source>Room </source>
-        <translation>Raum</translation>
+        <translation type="vanished">Raum</translation>
     </message>
     <message>
         <location filename="../qml/pages/SessionListView.qml" line="175"/>
@@ -1237,7 +1249,14 @@ Akzentfarbe: Deep Orange</translation>
         <translation>Klassische Material Navigation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="190"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="214"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="248"/>
+        <source>You must select one of the options.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="195"/>
         <source>Menu and Back Buttons: Top-Left
 Back Button on Android also at bottom.
 Open Drawer: swipe from left side or tap on Menu Button.
@@ -1248,12 +1267,12 @@ Zurück Button unter Android auch ganz unten.
 Dies ist der normale Weg unter Material, wenn ein &apos;Drawer&apos; genutzt wird, um die einzelnen Programmbereiche auszuwählen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="197"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="202"/>
         <source>Material Bottom Navigation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="219"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
         <source>Same as Classic Navigation
 plus: Bottom Navigation Bar.
 Bottom Navigation is a new way Google added recently to Google Material Style Guide.
@@ -1268,12 +1287,12 @@ QtCon Konferenz APP nutzt die &apos;Bottom Navigation Bar&apos; um schnell auf &
 Um andere Programmbereiche aufzurufen, muss der &apos;Drawer&apos; mit dem Menu Button oder durch Wischen vom linken Rand geöffnet werden.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="226"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="236"/>
         <source>One Hand Comfort Navigation</source>
         <translation>Komfort Navigation (mit einer Hand)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="245"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="261"/>
         <source>Same as Classic Navigation plus Bottom Navigation Bar
 plus: Menu Button (Hamburger Button) added to left most position of Bottom Navigation Bar.
 Now the Menu Button can be reached easy without moving fingers to Top Left Menu Button.
@@ -1284,29 +1303,29 @@ Jetzt kann der Menu Button erreicht werden, ohne die Finger nach ganz oben links
 Kommen Sie von BlackBerry 10 ? Dann ist Ihnen dieser Button unten links bereits bekannt.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="256"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="272"/>
         <source>Only one Menu Button</source>
         <translation>Nur einen Menu Button</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="272"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="288"/>
         <source>Using the Comfort Navigation and you don&apos;t like to have two Menu Buttons ?
 You can hide the Top-Left Menu Button in Portrait Mode and always use the one from Bottom Navigation Bar.</source>
         <translation>Bei der Komfort Navigation haben Sie zwei Menu Buttons. Gefällt Ihnen nicht ?
 Sie können im Portrait Modus den oberen Button verbergen und immer den aus der Bottom Navigation Bar nutzen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="280"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="296"/>
         <source>Stack Navigation</source>
         <translation>Stapel Navigation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="288"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="304"/>
         <source>ekke&apos;s Speed Navigation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="304"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
         <source>ekke&apos;s goal is always to provide apps with fluid and fast workflow.
 Some Pages are pushed on top of a Stack. To navigate back you must hit the Back Button.
 It&apos;s a common use-case that there are some Pages on the Stack - per ex. Schedule-&gt;Session Detail -&gt; Room Floorplan.
@@ -1397,7 +1416,7 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
 <context>
     <name>SpeakerListPage</name>
     <message>
-        <location filename="../qml/pages/SpeakerListPage.qml" line="57"/>
+        <location filename="../qml/pages/SpeakerListPage.qml" line="64"/>
         <source>Unnamed Speaker</source>
         <translation>Unbekannter Sprecher</translation>
     </message>
@@ -1515,7 +1534,7 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
     <message>
         <location filename="../qml/main.qml" line="61"/>
         <location filename="../qml/main.qml" line="63"/>
-        <location filename="../qml/main.qml" line="168"/>
+        <location filename="../qml/main.qml" line="169"/>
         <source>Schedule</source>
         <translation>Zeitplan</translation>
     </message>
@@ -1524,72 +1543,72 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
         <translation type="vanished">Sprecher</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="174"/>
+        <location filename="../qml/main.qml" line="175"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="175"/>
+        <location filename="../qml/main.qml" line="176"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="176"/>
+        <location filename="../qml/main.qml" line="177"/>
         <source>About this App</source>
         <translation>Über diese App</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="184"/>
+        <location filename="../qml/main.qml" line="185"/>
         <source>Qt World Summit 2016</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="186"/>
+        <location filename="../qml/main.qml" line="187"/>
         <source>QtWS 2016 Schedule</source>
         <translation>QtWS 2016 Zeitplan</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="187"/>
+        <location filename="../qml/main.qml" line="188"/>
         <source>QtWS 2016 Speakers</source>
         <translation>QtWS 2016 Sprecher</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="188"/>
+        <location filename="../qml/main.qml" line="189"/>
         <source>QtWS 2016 Tracks</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="189"/>
+        <location filename="../qml/main.qml" line="190"/>
         <source>QtWS 2016 Venue</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="190"/>
+        <location filename="../qml/main.qml" line="191"/>
         <source>QtWS 2016 Rooms</source>
         <translation>QtWS 2016 Räume</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="192"/>
+        <location filename="../qml/main.qml" line="193"/>
         <source>QtWS 2016 Settings</source>
         <translation>QtWS 2016 Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="193"/>
+        <location filename="../qml/main.qml" line="194"/>
         <source>QtWS 2016 Help</source>
         <translation>QtWS 2016 Hilfe</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="194"/>
+        <location filename="../qml/main.qml" line="195"/>
         <source>QtWS 2016 About</source>
         <translation>QtWS 2016 Über</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="195"/>
+        <location filename="../qml/main.qml" line="196"/>
         <source>QtWS 2016 D E V E L O P E R Tools</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="340"/>
+        <location filename="../qml/main.qml" line="341"/>
         <source>No more Pages</source>
         <translation>keine weiteren Seiten</translation>
     </message>
@@ -1602,12 +1621,12 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
         <translation type="vanished">QtCon 2016 Sprecher</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="169"/>
+        <location filename="../qml/main.qml" line="170"/>
         <source>Speakers</source>
         <translation>Sprecher</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="172"/>
+        <location filename="../qml/main.qml" line="173"/>
         <source>Rooms</source>
         <translation>Räume</translation>
     </message>
@@ -1640,7 +1659,7 @@ Bitte den &apos;Android Home Button&apos; nutzen
 um die APP zu verlassen.</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="665"/>
+        <location filename="../qml/main.qml" line="666"/>
         <source>OK</source>
         <translation></translation>
     </message>

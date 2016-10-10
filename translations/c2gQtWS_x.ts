@@ -4,23 +4,17 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="80"/>
-        <source>My blog series about Qt for x-platform Business Apps:
-http://j.mp/qt-x</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="97"/>
+        <location filename="../qml/pages/AboutPage.qml" line="101"/>
         <source>Thanks !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="106"/>
+        <location filename="../qml/pages/AboutPage.qml" line="110"/>
         <source>Thanks to &apos;Tero Kojo, qt.io&apos; managing all around the Conference App.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="114"/>
+        <location filename="../qml/pages/AboutPage.qml" line="118"/>
         <source>Thanks for great Design of APP Icons and (iOS)-Splashscreen by &apos;Diana de Sousa, qt.io&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -44,45 +38,47 @@ developed by ekke (@ekkescorner)</source>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
-        <source>This is also one of my first APPs I developed using Qt.
-This APP is developed with Qt 5.7 and brandnew QtQuickControls2.</source>
+        <source>This is also one of my first APPs I developed using Qt. This APP is developed with Qt 5.7 and brandnew &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="71"/>
-        <source>All work is done in my spare time and complete sourcecode is available at Github:
-https://github.com/ekke/c2gQtWS_x</source>
+        <location filename="../qml/pages/AboutPage.qml" line="72"/>
+        <source>All work is done in my spare time and complete sourcecode is available at &lt;a href=&quot;https://github.com/ekke/c2gQtWS_x&quot;&gt;Github&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="88"/>
-        <source>Please report bugs, feature requests or discuss the APP in the Comments:
-http://bit.ly/qtWS2016App</source>
+        <location filename="../qml/pages/AboutPage.qml" line="82"/>
+        <source>My blog series about &lt;a href=&quot;http://j.mp/qt-x&quot;&gt;Qt for x-platform Business Apps&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="122"/>
+        <location filename="../qml/pages/AboutPage.qml" line="91"/>
+        <source>Please report bugs, feature requests or discuss the APP in the &lt;a href=&quot;http://bit.ly/qtWS2016App&quot;&gt;Comments&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="126"/>
         <source>Thanks supporting my requests at Server Site (JSON, API): &apos;Olli Puurunen, qt.io&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="130"/>
+        <location filename="../qml/pages/AboutPage.qml" line="134"/>
         <source>Thanks J-P Nurmi, Mitch Curtis and others @qt.io for help, bug-fixing and inspirations.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="139"/>
+        <location filename="../qml/pages/AboutPage.qml" line="143"/>
         <source>Need a Business APP for BlackBerry10, Android, iOS ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="148"/>
+        <location filename="../qml/pages/AboutPage.qml" line="152"/>
         <source>ekke is doing international development for Enterprise and SMB (Small and Medium Business). Most APPs are &apos;hidden&apos; because they&apos;re running as inhouse APP at customer site.
 This Conference App will give you some impressions what kind of APPs you can expect. Need an APP ? ask ekke</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="158"/>
+        <location filename="../qml/pages/AboutPage.qml" line="162"/>
         <source>ekke is BlackBerry Elite Developer, Enterprise Platinum Partner and certified Builder for Native.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -959,21 +955,8 @@ Do you want to exit and leave the App ?
 <context>
     <name>RoomListPage</name>
     <message>
-        <location filename="../qml/pages/RoomListPage.qml" line="64"/>
-        <source>Room  </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/RoomListPage.qml" line="70"/>
         <source> Sessions</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>RoomSessionListPage</name>
-    <message>
-        <location filename="../qml/pages/RoomSessionListPage.qml" line="85"/>
-        <source>Room </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1003,11 +986,6 @@ Do you want to exit and leave the App ?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionDetailPage.qml" line="168"/>
-        <source>Room: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/SessionDetailPage.qml" line="234"/>
         <source>Speaker</source>
         <translation type="unfinished"></translation>
@@ -1025,11 +1003,6 @@ Do you want to exit and leave the App ?
 </context>
 <context>
     <name>SessionListView</name>
-    <message>
-        <location filename="../qml/pages/SessionListView.qml" line="147"/>
-        <source>Room </source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../qml/pages/SessionListView.qml" line="175"/>
         <source>Added to Personal Schedule</source>
@@ -1110,7 +1083,14 @@ Accent Color: Deep Orange</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="190"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="214"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="248"/>
+        <source>You must select one of the options.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="195"/>
         <source>Menu and Back Buttons: Top-Left
 Back Button on Android also at bottom.
 Open Drawer: swipe from left side or tap on Menu Button.
@@ -1118,12 +1098,12 @@ This is the classic Navigation Style using a Drawer to get access to all destina
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="197"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="202"/>
         <source>Material Bottom Navigation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="219"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
         <source>Same as Classic Navigation
 plus: Bottom Navigation Bar.
 Bottom Navigation is a new way Google added recently to Google Material Style Guide.
@@ -1133,12 +1113,12 @@ To access other destinations you must open Drawer from Menu Button or swipe from
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="226"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="236"/>
         <source>One Hand Comfort Navigation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="245"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="261"/>
         <source>Same as Classic Navigation plus Bottom Navigation Bar
 plus: Menu Button (Hamburger Button) added to left most position of Bottom Navigation Bar.
 Now the Menu Button can be reached easy without moving fingers to Top Left Menu Button.
@@ -1146,28 +1126,28 @@ Coming from BlackBerry 10 ? Then you already used the Menu Button from bottom le
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="256"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="272"/>
         <source>Only one Menu Button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="272"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="288"/>
         <source>Using the Comfort Navigation and you don&apos;t like to have two Menu Buttons ?
 You can hide the Top-Left Menu Button in Portrait Mode and always use the one from Bottom Navigation Bar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="280"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="296"/>
         <source>Stack Navigation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="288"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="304"/>
         <source>ekke&apos;s Speed Navigation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="304"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
         <source>ekke&apos;s goal is always to provide apps with fluid and fast workflow.
 Some Pages are pushed on top of a Stack. To navigate back you must hit the Back Button.
 It&apos;s a common use-case that there are some Pages on the Stack - per ex. Schedule-&gt;Session Detail -&gt; Room Floorplan.
@@ -1247,7 +1227,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
 <context>
     <name>SpeakerListPage</name>
     <message>
-        <location filename="../qml/pages/SpeakerListPage.qml" line="57"/>
+        <location filename="../qml/pages/SpeakerListPage.qml" line="64"/>
         <source>Unnamed Speaker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1361,92 +1341,92 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/main.qml" line="61"/>
         <location filename="../qml/main.qml" line="63"/>
-        <location filename="../qml/main.qml" line="168"/>
+        <location filename="../qml/main.qml" line="169"/>
         <source>Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="174"/>
+        <location filename="../qml/main.qml" line="175"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="175"/>
+        <location filename="../qml/main.qml" line="176"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="176"/>
+        <location filename="../qml/main.qml" line="177"/>
         <source>About this App</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="184"/>
+        <location filename="../qml/main.qml" line="185"/>
         <source>Qt World Summit 2016</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="186"/>
+        <location filename="../qml/main.qml" line="187"/>
         <source>QtWS 2016 Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="187"/>
+        <location filename="../qml/main.qml" line="188"/>
         <source>QtWS 2016 Speakers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="188"/>
+        <location filename="../qml/main.qml" line="189"/>
         <source>QtWS 2016 Tracks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="189"/>
+        <location filename="../qml/main.qml" line="190"/>
         <source>QtWS 2016 Venue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="190"/>
+        <location filename="../qml/main.qml" line="191"/>
         <source>QtWS 2016 Rooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="192"/>
+        <location filename="../qml/main.qml" line="193"/>
         <source>QtWS 2016 Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="193"/>
+        <location filename="../qml/main.qml" line="194"/>
         <source>QtWS 2016 Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="194"/>
+        <location filename="../qml/main.qml" line="195"/>
         <source>QtWS 2016 About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="195"/>
+        <location filename="../qml/main.qml" line="196"/>
         <source>QtWS 2016 D E V E L O P E R Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="340"/>
+        <location filename="../qml/main.qml" line="341"/>
         <source>No more Pages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="169"/>
+        <location filename="../qml/main.qml" line="170"/>
         <source>Speakers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="172"/>
+        <location filename="../qml/main.qml" line="173"/>
         <source>Rooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="665"/>
+        <location filename="../qml/main.qml" line="666"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>

@@ -60,7 +60,8 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("This is also one of my first APPs I developed using Qt.\nThis APP is developed with Qt 5.7 and brandnew QtQuickControls2.")
+                    text: qsTr("This is also one of my first APPs I developed using Qt. This APP is developed with Qt 5.7 and brandnew <a href=\"http://doc.qt.io/qt-5/qtquickcontrols2-index.html\">QtQuickControls2</a>.")
+                    onLinkActivated: Qt.openUrlExternally("http://doc.qt.io/qt-5/qtquickcontrols2-index.html")
                 }
             }
             RowLayout {
@@ -68,7 +69,8 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("All work is done in my spare time and complete sourcecode is available at Github:\nhttps://github.com/ekke/c2gQtWS_x")
+                    text: qsTr("All work is done in my spare time and complete sourcecode is available at <a href=\"https://github.com/ekke/c2gQtWS_x\">Github</a>")
+                    onLinkActivated: Qt.openUrlExternally("https://github.com/ekke/c2gQtWS_x")
                 }
             }
 //
@@ -77,7 +79,8 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("My blog series about Qt for x-platform Business Apps:\nhttp://j.mp/qt-x")
+                    text: qsTr("My blog series about <a href=\"http://j.mp/qt-x\">Qt for x-platform Business Apps</a>")
+                    onLinkActivated: Qt.openUrlExternally("http://j.mp/qt-x")
                 }
             }
             RowLayout {
@@ -85,7 +88,8 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Please report bugs, feature requests or discuss the APP in the Comments:\nhttp://bit.ly/qtWS2016App")
+                    text: qsTr("Please report bugs, feature requests or discuss the APP in the <a href=\"http://bit.ly/qtWS2016App\">Comments</a>")
+                    onLinkActivated: Qt.openUrlExternally("http://bit.ly/qtWS2016App")
                 }
             }
             HorizontalDivider {}
