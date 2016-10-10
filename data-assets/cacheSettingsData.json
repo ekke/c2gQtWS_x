@@ -15,7 +15,7 @@
     "oneMenuButton": true,
     "primaryColor": 9,
     "publicRoot4Dev": "/data/ekkescorner/c2gQtWS_x",
-    "useCompactJsonFormat": false,
+    "useCompactJsonFormat": true,
     "useMarkerColors": false,
     "version": 1
 }
