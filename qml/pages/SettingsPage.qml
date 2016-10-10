@@ -175,6 +175,11 @@ Flickable {
                     focusPolicy: Qt.NoFocus
                     checked: root.settings? root.settings.navigationStyle == 2:false
                     onCheckedChanged: {
+                        if(!checked && !bottomNavigationSwitch.checked && !oneHandComfortNavigationSwitch.checked) {
+                            checked = true
+                            appWindow.showToast(qsTr("You must select one of the options."))
+                            return
+                        }
                         if(root.settings && checked ) {
                             root.settings.navigationStyle = 2
                             oneHandComfortNavigationSwitch.checked = false
@@ -204,6 +209,11 @@ Flickable {
                     focusPolicy: Qt.NoFocus
                     checked: root.settings? root.settings.navigationStyle == 1:false
                     onCheckedChanged: {
+                        if(!checked && !oneHandComfortNavigationSwitch.checked && !classicNavigationSwitch.checked) {
+                            checked = true
+                            appWindow.showToast(qsTr("You must select one of the options."))
+                            return
+                        }
                         if(root.settings && checked ) {
                             root.settings.navigationStyle = 1
                             oneHandComfortNavigationSwitch.checked = false
@@ -233,6 +243,12 @@ Flickable {
                     focusPolicy: Qt.NoFocus
                     checked: root.settings? root.settings.navigationStyle == 0:false
                     onCheckedChanged: {
+                        if(!checked && !bottomNavigationSwitch.checked && !classicNavigationSwitch.checked) {
+                            checked = true
+                            appWindow.showToast(qsTr("You must select one of the options."))
+                            return
+                        }
+
                         if(root.settings && checked ) {
                             root.settings.navigationStyle = 0
                             bottomNavigationSwitch.checked = false
