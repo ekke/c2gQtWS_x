@@ -1,5 +1,7 @@
+work in progress
+
 # QtWS 2016 Conference App
-![alt tag](https://appbus.files.wordpress.com/2016/08/qtconappicon-180x180.png  "QtWS 2016 App Logo")
+![alt tag](https://appbus.files.wordpress.com/2016/10/qtws16appicon-180x180.png  "QtWS 2016 App Logo")
 
 Conference2Go QtWS for x-platform (Android, iOS)
 
