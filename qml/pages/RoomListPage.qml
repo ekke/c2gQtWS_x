@@ -61,7 +61,7 @@ Page {
                             Layout.minimumWidth: appWindow.width-60-64
 
                             LabelHeadline {
-                                text: qsTr("Room  ") + model.modelData.roomName
+                                text: model.modelData.roomName
                                 color: primaryColor
                                 wrapMode: Label.WordWrap
                             } // label

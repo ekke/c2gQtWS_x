@@ -144,7 +144,7 @@ ListView {
                                 }
                                 LabelBody {
                                     Layout.fillWidth: false
-                                    text: qsTr("Room ") + model.modelData.roomAsDataObject.roomName
+                                    text: model.modelData.roomAsDataObject.roomName
                                 }
                             }
                             RowLayout {

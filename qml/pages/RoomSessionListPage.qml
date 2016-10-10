@@ -82,7 +82,7 @@ Page {
     function init() {
         console.log("Init from roomSessionListPage")
         room = dataManager.findRoomByRoomId(roomId)
-        headerLabel.text = qsTr("Room ") + room.roomName
+        headerLabel.text = room.roomName
         listView.model = room.sessionsPropertyList
         console.log(" Room "+room.roomName+" Sessions:"+room.sessionsPropertyList.length)
 

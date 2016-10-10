@@ -165,7 +165,7 @@ Page {
                     }
                     LabelSubheading {
                         Layout.leftMargin: 16
-                        text: qsTr("Room: ") + session.roomAsDataObject.roomName
+                        text: session.roomAsDataObject.roomName
                     }
                     FloatingActionMiniButton {
                         z: 1
