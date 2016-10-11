@@ -493,7 +493,7 @@ ApplicationWindow {
         // as long as conference is ended
         Timer {
             id: autoVersionCheckTimer
-            interval: 60*60*1000
+            interval: 3600000 // 60*60*1000
             repeat: false
             onTriggered: {
                 appWindow.doAutoVersionCheck()
