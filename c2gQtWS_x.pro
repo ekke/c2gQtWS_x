@@ -178,7 +178,7 @@ winrt {
     WINRT_MANIFEST.background = white
     WINRT_MANIFEST.default_language = en
     WINRT_MANIFEST.description = QtWS 2016 Conference App
-    WINRT_MANIFEST.version = 1.1.0.0
+    WINRT_MANIFEST.version = 1.2.0.0
 	
-    WINRT_MANIFEST = winrt/myPackage.appxmanifest
+    # WINRT_MANIFEST = winrt/myPackage.appxmanifest
 }
