@@ -36,6 +36,10 @@
         <file>images/black/x18/calendar@2x.png</file>
         <file>images/black/x18/calendar@3x.png</file>
         <file>images/black/x18/calendar@4x.png</file>
+        <file>images/black/x18/call.png</file>
+        <file>images/black/x18/call@2x.png</file>
+        <file>images/black/x18/call@3x.png</file>
+        <file>images/black/x18/call@4x.png</file>
         <file>images/black/x18/car.png</file>
         <file>images/black/x18/car@2x.png</file>
         <file>images/black/x18/car@3x.png</file>
@@ -276,6 +280,10 @@
         <file>images/black/x36/calendar@2x.png</file>
         <file>images/black/x36/calendar@3x.png</file>
         <file>images/black/x36/calendar@4x.png</file>
+        <file>images/black/x36/call.png</file>
+        <file>images/black/x36/call@2x.png</file>
+        <file>images/black/x36/call@3x.png</file>
+        <file>images/black/x36/call@4x.png</file>
         <file>images/black/x36/car.png</file>
         <file>images/black/x36/car@2x.png</file>
         <file>images/black/x36/car@3x.png</file>
@@ -516,6 +524,10 @@
         <file>images/black/x48/calendar@2x.png</file>
         <file>images/black/x48/calendar@3x.png</file>
         <file>images/black/x48/calendar@4x.png</file>
+        <file>images/black/x48/call.png</file>
+        <file>images/black/x48/call@2x.png</file>
+        <file>images/black/x48/call@3x.png</file>
+        <file>images/black/x48/call@4x.png</file>
         <file>images/black/x48/car.png</file>
         <file>images/black/x48/car@2x.png</file>
         <file>images/black/x48/car@3x.png</file>
@@ -756,6 +768,10 @@
         <file>images/black/calendar@2x.png</file>
         <file>images/black/calendar@3x.png</file>
         <file>images/black/calendar@4x.png</file>
+        <file>images/black/call.png</file>
+        <file>images/black/call@2x.png</file>
+        <file>images/black/call@3x.png</file>
+        <file>images/black/call@4x.png</file>
         <file>images/black/car.png</file>
         <file>images/black/car@2x.png</file>
         <file>images/black/car@3x.png</file>
@@ -992,10 +1008,13 @@
         <file>images/extra/qt-logo@2x.png</file>
         <file>images/extra/qt-logo@3x.png</file>
         <file>images/extra/qt-logo@4x.png</file>
+        <file>images/extra/qt_world_summit.png</file>
         <file>images/extra/qtws-app.png</file>
         <file>images/extra/qtws-app@2x.png</file>
         <file>images/extra/qtws-app@3x.png</file>
         <file>images/extra/qtws-app@4x.png</file>
+        <file>images/extra/sf_landscape.jpg</file>
+        <file>images/extra/sf_portrait.jpg</file>
         <file>images/white/x18/add.png</file>
         <file>images/white/x18/add@2x.png</file>
         <file>images/white/x18/add@3x.png</file>
@@ -1032,6 +1051,10 @@
         <file>images/white/x18/calendar@2x.png</file>
         <file>images/white/x18/calendar@3x.png</file>
         <file>images/white/x18/calendar@4x.png</file>
+        <file>images/white/x18/call.png</file>
+        <file>images/white/x18/call@2x.png</file>
+        <file>images/white/x18/call@3x.png</file>
+        <file>images/white/x18/call@4x.png</file>
         <file>images/white/x18/car.png</file>
         <file>images/white/x18/car@2x.png</file>
         <file>images/white/x18/car@3x.png</file>
@@ -1272,6 +1295,10 @@
         <file>images/white/x36/calendar@2x.png</file>
         <file>images/white/x36/calendar@3x.png</file>
         <file>images/white/x36/calendar@4x.png</file>
+        <file>images/white/x36/call.png</file>
+        <file>images/white/x36/call@2x.png</file>
+        <file>images/white/x36/call@3x.png</file>
+        <file>images/white/x36/call@4x.png</file>
         <file>images/white/x36/car.png</file>
         <file>images/white/x36/car@2x.png</file>
         <file>images/white/x36/car@3x.png</file>
@@ -1512,6 +1539,10 @@
         <file>images/white/x48/calendar@2x.png</file>
         <file>images/white/x48/calendar@3x.png</file>
         <file>images/white/x48/calendar@4x.png</file>
+        <file>images/white/x48/call.png</file>
+        <file>images/white/x48/call@2x.png</file>
+        <file>images/white/x48/call@3x.png</file>
+        <file>images/white/x48/call@4x.png</file>
         <file>images/white/x48/car.png</file>
         <file>images/white/x48/car@2x.png</file>
         <file>images/white/x48/car@3x.png</file>
@@ -1752,6 +1783,10 @@
         <file>images/white/calendar@2x.png</file>
         <file>images/white/calendar@3x.png</file>
         <file>images/white/calendar@4x.png</file>
+        <file>images/white/call.png</file>
+        <file>images/white/call@2x.png</file>
+        <file>images/white/call@3x.png</file>
+        <file>images/white/call@4x.png</file>
         <file>images/white/car.png</file>
         <file>images/white/car@2x.png</file>
         <file>images/white/car@3x.png</file>
@@ -1888,6 +1923,7 @@
         <file>images/white/schedule_sametime@2x.png</file>
         <file>images/white/schedule_sametime@3x.png</file>
         <file>images/white/schedule_sametime@4x.png</file>
+        <file>images/white/schedule_sametime@“x.png</file>
         <file>images/white/search.png</file>
         <file>images/white/search@2x.png</file>
         <file>images/white/search@3x.png</file>
@@ -1961,8 +1997,5 @@
         <file>images/white/zoom_out@3x.png</file>
         <file>images/white/zoom_out@4x.png</file>
         <file>images/LICENSE</file>
-        <file>images/extra/sf_landscape.jpg</file>
-        <file>images/extra/qt_world_summit.png</file>
-        <file>images/extra/sf_portrait.jpg</file>
     </qresource>
 </RCC>
