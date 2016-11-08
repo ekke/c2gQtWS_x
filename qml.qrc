@@ -84,5 +84,6 @@
         <file>qml/common/IconOnAccent.qml</file>
         <file>qml/navigation/RoomsNavigation.qml</file>
         <file>qml/popups/PopupExit.qml</file>
+        <file>qml/common/MenuItemWithIcon.qml</file>
     </qresource>
 </RCC>
