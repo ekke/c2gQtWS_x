@@ -47,6 +47,9 @@ ApplicationWindow {
 
     //
     property bool isLandscape: width > height
+    // Samsung XCover3 has 320
+    property bool isSmallDevice: !isLandscape && width < 360
+
     property bool myScheduleActive: false
     onMyScheduleActiveChanged: {
         if(myScheduleActive) {
