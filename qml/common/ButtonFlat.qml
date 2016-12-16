@@ -10,6 +10,7 @@ Button {
     id: button
     // default: flatButtonTextColor
     property alias textColor: buttonText.color
+    property bool materialBackground: false
     focusPolicy: Qt.NoFocus
     Layout.fillWidth: true
     Layout.preferredWidth : 1
@@ -31,7 +32,7 @@ Button {
         id: buttonBackground
         implicitHeight: 48
         Layout.minimumWidth: 88
-        color: button.pressed ? buttonText.color : "transparent"
+        color: button.pressed ? buttonText.color : button.materialBackground? Material.background : "transparent"
         radius: 2
         opacity: button.pressed ? 0.12 : 1.0
     } // background
