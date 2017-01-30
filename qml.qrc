@@ -85,5 +85,11 @@
         <file>qml/navigation/RoomsNavigation.qml</file>
         <file>qml/popups/PopupExit.qml</file>
         <file>qml/common/MenuItemWithIcon.qml</file>
+        <file>qml/common/SearchTextPane.qml</file>
+        <file>qml/common/DotMarker.qml</file>
+        <file>qml/common/TextFieldDoubleInt.qml</file>
+        <file>qml/common/TextFieldDecimal.qml</file>
+        <file>qml/common/TextFieldInt.qml</file>
+        <file>qml/common/ComboBoxWithIcon.qml</file>
     </qresource>
 </RCC>
