@@ -12,6 +12,10 @@
         <file>images/black/x18/arrow_back@2x.png</file>
         <file>images/black/x18/arrow_back@3x.png</file>
         <file>images/black/x18/arrow_back@4x.png</file>
+        <file>images/black/x18/arrow_forward.png</file>
+        <file>images/black/x18/arrow_forward@2x.png</file>
+        <file>images/black/x18/arrow_forward@3x.png</file>
+        <file>images/black/x18/arrow_forward@4x.png</file>
         <file>images/black/x18/aspect_ratio.png</file>
         <file>images/black/x18/aspect_ratio@2x.png</file>
         <file>images/black/x18/aspect_ratio@3x.png</file>
@@ -24,6 +28,14 @@
         <file>images/black/x18/block@2x.png</file>
         <file>images/black/x18/block@3x.png</file>
         <file>images/black/x18/block@4x.png</file>
+        <file>images/black/x18/bluetooth.png</file>
+        <file>images/black/x18/bluetooth@2x.png</file>
+        <file>images/black/x18/bluetooth@3x.png</file>
+        <file>images/black/x18/bluetooth@4x.png</file>
+        <file>images/black/x18/bluetooth_off.png</file>
+        <file>images/black/x18/bluetooth_off@2x.png</file>
+        <file>images/black/x18/bluetooth_off@3x.png</file>
+        <file>images/black/x18/bluetooth_off@4x.png</file>
         <file>images/black/x18/break.png</file>
         <file>images/black/x18/break@2x.png</file>
         <file>images/black/x18/break@3x.png</file>
@@ -44,6 +56,10 @@
         <file>images/black/x18/call@2x.png</file>
         <file>images/black/x18/call@3x.png</file>
         <file>images/black/x18/call@4x.png</file>
+        <file>images/black/x18/camera.png</file>
+        <file>images/black/x18/camera@2x.png</file>
+        <file>images/black/x18/camera@3x.png</file>
+        <file>images/black/x18/camera@4x.png</file>
         <file>images/black/x18/car.png</file>
         <file>images/black/x18/car@2x.png</file>
         <file>images/black/x18/car@3x.png</file>
@@ -108,6 +124,30 @@
         <file>images/black/x18/florist@2x.png</file>
         <file>images/black/x18/florist@3x.png</file>
         <file>images/black/x18/florist@4x.png</file>
+        <file>images/black/x18/folder.png</file>
+        <file>images/black/x18/folder@2x.png</file>
+        <file>images/black/x18/folder@3x.png</file>
+        <file>images/black/x18/folder@4x.png</file>
+        <file>images/black/x18/folder_fav.png</file>
+        <file>images/black/x18/folder_fav@2x.png</file>
+        <file>images/black/x18/folder_fav@3x.png</file>
+        <file>images/black/x18/folder_fav@4x.png</file>
+        <file>images/black/x18/folder_new.png</file>
+        <file>images/black/x18/folder_new@2x.png</file>
+        <file>images/black/x18/folder_new@3x.png</file>
+        <file>images/black/x18/folder_new@4x.png</file>
+        <file>images/black/x18/folder_open.png</file>
+        <file>images/black/x18/folder_open@2x.png</file>
+        <file>images/black/x18/folder_open@3x.png</file>
+        <file>images/black/x18/folder_open@4x.png</file>
+        <file>images/black/x18/folder_shared.png</file>
+        <file>images/black/x18/folder_shared@2x.png</file>
+        <file>images/black/x18/folder_shared@3x.png</file>
+        <file>images/black/x18/folder_shared@4x.png</file>
+        <file>images/black/x18/form.png</file>
+        <file>images/black/x18/form@2x.png</file>
+        <file>images/black/x18/form@3x.png</file>
+        <file>images/black/x18/form@4x.png</file>
         <file>images/black/x18/goto.png</file>
         <file>images/black/x18/goto@2x.png</file>
         <file>images/black/x18/goto@3x.png</file>
@@ -132,6 +172,10 @@
         <file>images/black/x18/hotel@2x.png</file>
         <file>images/black/x18/hotel@3x.png</file>
         <file>images/black/x18/hotel@4x.png</file>
+        <file>images/black/x18/image.png</file>
+        <file>images/black/x18/image@2x.png</file>
+        <file>images/black/x18/image@3x.png</file>
+        <file>images/black/x18/image@4x.png</file>
         <file>images/black/x18/info.png</file>
         <file>images/black/x18/info@2x.png</file>
         <file>images/black/x18/info@3x.png</file>
@@ -156,6 +200,10 @@
         <file>images/black/x18/menu@2x.png</file>
         <file>images/black/x18/menu@3x.png</file>
         <file>images/black/x18/menu@4x.png</file>
+        <file>images/black/x18/movies.png</file>
+        <file>images/black/x18/movies@2x.png</file>
+        <file>images/black/x18/movies@3x.png</file>
+        <file>images/black/x18/movies@4x.png</file>
         <file>images/black/x18/my_location.png</file>
         <file>images/black/x18/my_location@2x.png</file>
         <file>images/black/x18/my_location@3x.png</file>
@@ -168,6 +216,10 @@
         <file>images/black/x18/party_event@2x.png</file>
         <file>images/black/x18/party_event@3x.png</file>
         <file>images/black/x18/party_event@4x.png</file>
+        <file>images/black/x18/pdf.png</file>
+        <file>images/black/x18/pdf@2x.png</file>
+        <file>images/black/x18/pdf@3x.png</file>
+        <file>images/black/x18/pdf@4x.png</file>
         <file>images/black/x18/person.png</file>
         <file>images/black/x18/person@2x.png</file>
         <file>images/black/x18/person@3x.png</file>
@@ -180,6 +232,10 @@
         <file>images/black/x18/play@2x.png</file>
         <file>images/black/x18/play@3x.png</file>
         <file>images/black/x18/play@4x.png</file>
+        <file>images/black/x18/printer.png</file>
+        <file>images/black/x18/printer@2x.png</file>
+        <file>images/black/x18/printer@3x.png</file>
+        <file>images/black/x18/printer@4x.png</file>
         <file>images/black/x18/refresh.png</file>
         <file>images/black/x18/refresh@2x.png</file>
         <file>images/black/x18/refresh@3x.png</file>
@@ -216,6 +272,10 @@
         <file>images/black/x18/settings@2x.png</file>
         <file>images/black/x18/settings@3x.png</file>
         <file>images/black/x18/settings@4x.png</file>
+        <file>images/black/x18/signal.png</file>
+        <file>images/black/x18/signal@2x.png</file>
+        <file>images/black/x18/signal@3x.png</file>
+        <file>images/black/x18/signal@4x.png</file>
         <file>images/black/x18/sms.png</file>
         <file>images/black/x18/sms@2x.png</file>
         <file>images/black/x18/sms@3x.png</file>
@@ -308,6 +368,10 @@
         <file>images/black/x36/arrow_back@2x.png</file>
         <file>images/black/x36/arrow_back@3x.png</file>
         <file>images/black/x36/arrow_back@4x.png</file>
+        <file>images/black/x36/arrow_forward.png</file>
+        <file>images/black/x36/arrow_forward@2x.png</file>
+        <file>images/black/x36/arrow_forward@3x.png</file>
+        <file>images/black/x36/arrow_forward@4x.png</file>
         <file>images/black/x36/aspect_ratio.png</file>
         <file>images/black/x36/aspect_ratio@2x.png</file>
         <file>images/black/x36/aspect_ratio@3x.png</file>
@@ -320,6 +384,14 @@
         <file>images/black/x36/block@2x.png</file>
         <file>images/black/x36/block@3x.png</file>
         <file>images/black/x36/block@4x.png</file>
+        <file>images/black/x36/bluetooth.png</file>
+        <file>images/black/x36/bluetooth@2x.png</file>
+        <file>images/black/x36/bluetooth@3x.png</file>
+        <file>images/black/x36/bluetooth@4x.png</file>
+        <file>images/black/x36/bluetooth_off.png</file>
+        <file>images/black/x36/bluetooth_off@2x.png</file>
+        <file>images/black/x36/bluetooth_off@3x.png</file>
+        <file>images/black/x36/bluetooth_off@4x.png</file>
         <file>images/black/x36/break.png</file>
         <file>images/black/x36/break@2x.png</file>
         <file>images/black/x36/break@3x.png</file>
@@ -340,6 +412,10 @@
         <file>images/black/x36/call@2x.png</file>
         <file>images/black/x36/call@3x.png</file>
         <file>images/black/x36/call@4x.png</file>
+        <file>images/black/x36/camera.png</file>
+        <file>images/black/x36/camera@2x.png</file>
+        <file>images/black/x36/camera@3x.png</file>
+        <file>images/black/x36/camera@4x.png</file>
         <file>images/black/x36/car.png</file>
         <file>images/black/x36/car@2x.png</file>
         <file>images/black/x36/car@3x.png</file>
@@ -404,6 +480,30 @@
         <file>images/black/x36/florist@2x.png</file>
         <file>images/black/x36/florist@3x.png</file>
         <file>images/black/x36/florist@4x.png</file>
+        <file>images/black/x36/folder.png</file>
+        <file>images/black/x36/folder@2x.png</file>
+        <file>images/black/x36/folder@3x.png</file>
+        <file>images/black/x36/folder@4x.png</file>
+        <file>images/black/x36/folder_fav.png</file>
+        <file>images/black/x36/folder_fav@2x.png</file>
+        <file>images/black/x36/folder_fav@3x.png</file>
+        <file>images/black/x36/folder_fav@4x.png</file>
+        <file>images/black/x36/folder_new.png</file>
+        <file>images/black/x36/folder_new@2x.png</file>
+        <file>images/black/x36/folder_new@3x.png</file>
+        <file>images/black/x36/folder_new@4x.png</file>
+        <file>images/black/x36/folder_open.png</file>
+        <file>images/black/x36/folder_open@2x.png</file>
+        <file>images/black/x36/folder_open@3x.png</file>
+        <file>images/black/x36/folder_open@4x.png</file>
+        <file>images/black/x36/folder_shared.png</file>
+        <file>images/black/x36/folder_shared@2x.png</file>
+        <file>images/black/x36/folder_shared@3x.png</file>
+        <file>images/black/x36/folder_shared@4x.png</file>
+        <file>images/black/x36/form.png</file>
+        <file>images/black/x36/form@2x.png</file>
+        <file>images/black/x36/form@3x.png</file>
+        <file>images/black/x36/form@4x.png</file>
         <file>images/black/x36/goto.png</file>
         <file>images/black/x36/goto@2x.png</file>
         <file>images/black/x36/goto@3x.png</file>
@@ -428,6 +528,10 @@
         <file>images/black/x36/hotel@2x.png</file>
         <file>images/black/x36/hotel@3x.png</file>
         <file>images/black/x36/hotel@4x.png</file>
+        <file>images/black/x36/image.png</file>
+        <file>images/black/x36/image@2x.png</file>
+        <file>images/black/x36/image@3x.png</file>
+        <file>images/black/x36/image@4x.png</file>
         <file>images/black/x36/info.png</file>
         <file>images/black/x36/info@2x.png</file>
         <file>images/black/x36/info@3x.png</file>
@@ -452,6 +556,10 @@
         <file>images/black/x36/menu@2x.png</file>
         <file>images/black/x36/menu@3x.png</file>
         <file>images/black/x36/menu@4x.png</file>
+        <file>images/black/x36/movies.png</file>
+        <file>images/black/x36/movies@2x.png</file>
+        <file>images/black/x36/movies@3x.png</file>
+        <file>images/black/x36/movies@4x.png</file>
         <file>images/black/x36/my_location.png</file>
         <file>images/black/x36/my_location@2x.png</file>
         <file>images/black/x36/my_location@3x.png</file>
@@ -464,6 +572,10 @@
         <file>images/black/x36/party_event@2x.png</file>
         <file>images/black/x36/party_event@3x.png</file>
         <file>images/black/x36/party_event@4x.png</file>
+        <file>images/black/x36/pdf.png</file>
+        <file>images/black/x36/pdf@2x.png</file>
+        <file>images/black/x36/pdf@3x.png</file>
+        <file>images/black/x36/pdf@4x.png</file>
         <file>images/black/x36/person.png</file>
         <file>images/black/x36/person@2x.png</file>
         <file>images/black/x36/person@3x.png</file>
@@ -476,6 +588,10 @@
         <file>images/black/x36/play@2x.png</file>
         <file>images/black/x36/play@3x.png</file>
         <file>images/black/x36/play@4x.png</file>
+        <file>images/black/x36/printer.png</file>
+        <file>images/black/x36/printer@2x.png</file>
+        <file>images/black/x36/printer@3x.png</file>
+        <file>images/black/x36/printer@4x.png</file>
         <file>images/black/x36/refresh.png</file>
         <file>images/black/x36/refresh@2x.png</file>
         <file>images/black/x36/refresh@3x.png</file>
@@ -512,6 +628,10 @@
         <file>images/black/x36/settings@2x.png</file>
         <file>images/black/x36/settings@3x.png</file>
         <file>images/black/x36/settings@4x.png</file>
+        <file>images/black/x36/signal.png</file>
+        <file>images/black/x36/signal@2x.png</file>
+        <file>images/black/x36/signal@3x.png</file>
+        <file>images/black/x36/signal@4x.png</file>
         <file>images/black/x36/sms.png</file>
         <file>images/black/x36/sms@2x.png</file>
         <file>images/black/x36/sms@3x.png</file>
@@ -604,6 +724,10 @@
         <file>images/black/x48/arrow_back@2x.png</file>
         <file>images/black/x48/arrow_back@3x.png</file>
         <file>images/black/x48/arrow_back@4x.png</file>
+        <file>images/black/x48/arrow_forward.png</file>
+        <file>images/black/x48/arrow_forward@2x.png</file>
+        <file>images/black/x48/arrow_forward@3x.png</file>
+        <file>images/black/x48/arrow_forward@4x.png</file>
         <file>images/black/x48/aspect_ratio.png</file>
         <file>images/black/x48/aspect_ratio@2x.png</file>
         <file>images/black/x48/aspect_ratio@3x.png</file>
@@ -616,6 +740,14 @@
         <file>images/black/x48/block@2x.png</file>
         <file>images/black/x48/block@3x.png</file>
         <file>images/black/x48/block@4x.png</file>
+        <file>images/black/x48/bluetooth.png</file>
+        <file>images/black/x48/bluetooth@2x.png</file>
+        <file>images/black/x48/bluetooth@3x.png</file>
+        <file>images/black/x48/bluetooth@4x.png</file>
+        <file>images/black/x48/bluetooth_off.png</file>
+        <file>images/black/x48/bluetooth_off@2x.png</file>
+        <file>images/black/x48/bluetooth_off@3x.png</file>
+        <file>images/black/x48/bluetooth_off@4x.png</file>
         <file>images/black/x48/break.png</file>
         <file>images/black/x48/break@2x.png</file>
         <file>images/black/x48/break@3x.png</file>
@@ -636,6 +768,10 @@
         <file>images/black/x48/call@2x.png</file>
         <file>images/black/x48/call@3x.png</file>
         <file>images/black/x48/call@4x.png</file>
+        <file>images/black/x48/camera.png</file>
+        <file>images/black/x48/camera@2x.png</file>
+        <file>images/black/x48/camera@3x.png</file>
+        <file>images/black/x48/camera@4x.png</file>
         <file>images/black/x48/car.png</file>
         <file>images/black/x48/car@2x.png</file>
         <file>images/black/x48/car@3x.png</file>
@@ -700,6 +836,30 @@
         <file>images/black/x48/florist@2x.png</file>
         <file>images/black/x48/florist@3x.png</file>
         <file>images/black/x48/florist@4x.png</file>
+        <file>images/black/x48/folder.png</file>
+        <file>images/black/x48/folder@2x.png</file>
+        <file>images/black/x48/folder@3x.png</file>
+        <file>images/black/x48/folder@4x.png</file>
+        <file>images/black/x48/folder_fav.png</file>
+        <file>images/black/x48/folder_fav@2x.png</file>
+        <file>images/black/x48/folder_fav@3x.png</file>
+        <file>images/black/x48/folder_fav@4x.png</file>
+        <file>images/black/x48/folder_new.png</file>
+        <file>images/black/x48/folder_new@2x.png</file>
+        <file>images/black/x48/folder_new@3x.png</file>
+        <file>images/black/x48/folder_new@4x.png</file>
+        <file>images/black/x48/folder_open.png</file>
+        <file>images/black/x48/folder_open@2x.png</file>
+        <file>images/black/x48/folder_open@3x.png</file>
+        <file>images/black/x48/folder_open@4x.png</file>
+        <file>images/black/x48/folder_shared.png</file>
+        <file>images/black/x48/folder_shared@2x.png</file>
+        <file>images/black/x48/folder_shared@3x.png</file>
+        <file>images/black/x48/folder_shared@4x.png</file>
+        <file>images/black/x48/form.png</file>
+        <file>images/black/x48/form@2x.png</file>
+        <file>images/black/x48/form@3x.png</file>
+        <file>images/black/x48/form@4x.png</file>
         <file>images/black/x48/goto.png</file>
         <file>images/black/x48/goto@2x.png</file>
         <file>images/black/x48/goto@3x.png</file>
@@ -724,6 +884,10 @@
         <file>images/black/x48/hotel@2x.png</file>
         <file>images/black/x48/hotel@3x.png</file>
         <file>images/black/x48/hotel@4x.png</file>
+        <file>images/black/x48/image.png</file>
+        <file>images/black/x48/image@2x.png</file>
+        <file>images/black/x48/image@3x.png</file>
+        <file>images/black/x48/image@4x.png</file>
         <file>images/black/x48/info.png</file>
         <file>images/black/x48/info@2x.png</file>
         <file>images/black/x48/info@3x.png</file>
@@ -748,6 +912,10 @@
         <file>images/black/x48/menu@2x.png</file>
         <file>images/black/x48/menu@3x.png</file>
         <file>images/black/x48/menu@4x.png</file>
+        <file>images/black/x48/movies.png</file>
+        <file>images/black/x48/movies@2x.png</file>
+        <file>images/black/x48/movies@3x.png</file>
+        <file>images/black/x48/movies@4x.png</file>
         <file>images/black/x48/my_location.png</file>
         <file>images/black/x48/my_location@2x.png</file>
         <file>images/black/x48/my_location@3x.png</file>
@@ -760,6 +928,10 @@
         <file>images/black/x48/party_event@2x.png</file>
         <file>images/black/x48/party_event@3x.png</file>
         <file>images/black/x48/party_event@4x.png</file>
+        <file>images/black/x48/pdf.png</file>
+        <file>images/black/x48/pdf@2x.png</file>
+        <file>images/black/x48/pdf@3x.png</file>
+        <file>images/black/x48/pdf@4x.png</file>
         <file>images/black/x48/person.png</file>
         <file>images/black/x48/person@2x.png</file>
         <file>images/black/x48/person@3x.png</file>
@@ -772,6 +944,10 @@
         <file>images/black/x48/play@2x.png</file>
         <file>images/black/x48/play@3x.png</file>
         <file>images/black/x48/play@4x.png</file>
+        <file>images/black/x48/printer.png</file>
+        <file>images/black/x48/printer@2x.png</file>
+        <file>images/black/x48/printer@3x.png</file>
+        <file>images/black/x48/printer@4x.png</file>
         <file>images/black/x48/refresh.png</file>
         <file>images/black/x48/refresh@2x.png</file>
         <file>images/black/x48/refresh@3x.png</file>
@@ -808,6 +984,10 @@
         <file>images/black/x48/settings@2x.png</file>
         <file>images/black/x48/settings@3x.png</file>
         <file>images/black/x48/settings@4x.png</file>
+        <file>images/black/x48/signal.png</file>
+        <file>images/black/x48/signal@2x.png</file>
+        <file>images/black/x48/signal@3x.png</file>
+        <file>images/black/x48/signal@4x.png</file>
         <file>images/black/x48/sms.png</file>
         <file>images/black/x48/sms@2x.png</file>
         <file>images/black/x48/sms@3x.png</file>
@@ -900,6 +1080,10 @@
         <file>images/black/arrow_back@2x.png</file>
         <file>images/black/arrow_back@3x.png</file>
         <file>images/black/arrow_back@4x.png</file>
+        <file>images/black/arrow_forward.png</file>
+        <file>images/black/arrow_forward@2x.png</file>
+        <file>images/black/arrow_forward@3x.png</file>
+        <file>images/black/arrow_forward@4x.png</file>
         <file>images/black/aspect_ratio.png</file>
         <file>images/black/aspect_ratio@2x.png</file>
         <file>images/black/aspect_ratio@3x.png</file>
@@ -912,6 +1096,14 @@
         <file>images/black/block@2x.png</file>
         <file>images/black/block@3x.png</file>
         <file>images/black/block@4x.png</file>
+        <file>images/black/bluetooth.png</file>
+        <file>images/black/bluetooth@2x.png</file>
+        <file>images/black/bluetooth@3x.png</file>
+        <file>images/black/bluetooth@4x.png</file>
+        <file>images/black/bluetooth_off.png</file>
+        <file>images/black/bluetooth_off@2x.png</file>
+        <file>images/black/bluetooth_off@3x.png</file>
+        <file>images/black/bluetooth_off@4x.png</file>
         <file>images/black/break.png</file>
         <file>images/black/break@2x.png</file>
         <file>images/black/break@3x.png</file>
@@ -932,6 +1124,10 @@
         <file>images/black/call@2x.png</file>
         <file>images/black/call@3x.png</file>
         <file>images/black/call@4x.png</file>
+        <file>images/black/camera.png</file>
+        <file>images/black/camera@2x.png</file>
+        <file>images/black/camera@3x.png</file>
+        <file>images/black/camera@4x.png</file>
         <file>images/black/car.png</file>
         <file>images/black/car@2x.png</file>
         <file>images/black/car@3x.png</file>
@@ -996,6 +1192,30 @@
         <file>images/black/florist@2x.png</file>
         <file>images/black/florist@3x.png</file>
         <file>images/black/florist@4x.png</file>
+        <file>images/black/folder.png</file>
+        <file>images/black/folder@2x.png</file>
+        <file>images/black/folder@3x.png</file>
+        <file>images/black/folder@4x.png</file>
+        <file>images/black/folder_fav.png</file>
+        <file>images/black/folder_fav@2x.png</file>
+        <file>images/black/folder_fav@3x.png</file>
+        <file>images/black/folder_fav@4x.png</file>
+        <file>images/black/folder_new.png</file>
+        <file>images/black/folder_new@2x.png</file>
+        <file>images/black/folder_new@3x.png</file>
+        <file>images/black/folder_new@4x.png</file>
+        <file>images/black/folder_open.png</file>
+        <file>images/black/folder_open@2x.png</file>
+        <file>images/black/folder_open@3x.png</file>
+        <file>images/black/folder_open@4x.png</file>
+        <file>images/black/folder_shared.png</file>
+        <file>images/black/folder_shared@2x.png</file>
+        <file>images/black/folder_shared@3x.png</file>
+        <file>images/black/folder_shared@4x.png</file>
+        <file>images/black/form.png</file>
+        <file>images/black/form@2x.png</file>
+        <file>images/black/form@3x.png</file>
+        <file>images/black/form@4x.png</file>
         <file>images/black/goto.png</file>
         <file>images/black/goto@2x.png</file>
         <file>images/black/goto@3x.png</file>
@@ -1020,6 +1240,10 @@
         <file>images/black/hotel@2x.png</file>
         <file>images/black/hotel@3x.png</file>
         <file>images/black/hotel@4x.png</file>
+        <file>images/black/image.png</file>
+        <file>images/black/image@2x.png</file>
+        <file>images/black/image@3x.png</file>
+        <file>images/black/image@4x.png</file>
         <file>images/black/info.png</file>
         <file>images/black/info@2x.png</file>
         <file>images/black/info@3x.png</file>
@@ -1048,6 +1272,10 @@
         <file>images/black/more_vert@2x.png</file>
         <file>images/black/more_vert@3x.png</file>
         <file>images/black/more_vert@4x.png</file>
+        <file>images/black/movies.png</file>
+        <file>images/black/movies@2x.png</file>
+        <file>images/black/movies@3x.png</file>
+        <file>images/black/movies@4x.png</file>
         <file>images/black/my_location.png</file>
         <file>images/black/my_location@2x.png</file>
         <file>images/black/my_location@3x.png</file>
@@ -1060,6 +1288,10 @@
         <file>images/black/party_event@2x.png</file>
         <file>images/black/party_event@3x.png</file>
         <file>images/black/party_event@4x.png</file>
+        <file>images/black/pdf.png</file>
+        <file>images/black/pdf@2x.png</file>
+        <file>images/black/pdf@3x.png</file>
+        <file>images/black/pdf@4x.png</file>
         <file>images/black/person.png</file>
         <file>images/black/person@2x.png</file>
         <file>images/black/person@3x.png</file>
@@ -1072,6 +1304,10 @@
         <file>images/black/play@2x.png</file>
         <file>images/black/play@3x.png</file>
         <file>images/black/play@4x.png</file>
+        <file>images/black/printer.png</file>
+        <file>images/black/printer@2x.png</file>
+        <file>images/black/printer@3x.png</file>
+        <file>images/black/printer@4x.png</file>
         <file>images/black/refresh.png</file>
         <file>images/black/refresh@2x.png</file>
         <file>images/black/refresh@3x.png</file>
@@ -1100,6 +1336,7 @@
         <file>images/black/search@2x.png</file>
         <file>images/black/search@3x.png</file>
         <file>images/black/search@4x.png</file>
+        <file>images/black/search@“x.png</file>
         <file>images/black/send.png</file>
         <file>images/black/send@2x.png</file>
         <file>images/black/send@3x.png</file>
@@ -1108,6 +1345,10 @@
         <file>images/black/settings@2x.png</file>
         <file>images/black/settings@3x.png</file>
         <file>images/black/settings@4x.png</file>
+        <file>images/black/signal.png</file>
+        <file>images/black/signal@2x.png</file>
+        <file>images/black/signal@3x.png</file>
+        <file>images/black/signal@4x.png</file>
         <file>images/black/sms.png</file>
         <file>images/black/sms@2x.png</file>
         <file>images/black/sms@3x.png</file>
@@ -1235,6 +1476,10 @@
         <file>images/white/x18/arrow_back@2x.png</file>
         <file>images/white/x18/arrow_back@3x.png</file>
         <file>images/white/x18/arrow_back@4x.png</file>
+        <file>images/white/x18/arrow_forward.png</file>
+        <file>images/white/x18/arrow_forward@2x.png</file>
+        <file>images/white/x18/arrow_forward@3x.png</file>
+        <file>images/white/x18/arrow_forward@4x.png</file>
         <file>images/white/x18/aspect_ratio.png</file>
         <file>images/white/x18/aspect_ratio@2x.png</file>
         <file>images/white/x18/aspect_ratio@3x.png</file>
@@ -1247,6 +1492,14 @@
         <file>images/white/x18/block@2x.png</file>
         <file>images/white/x18/block@3x.png</file>
         <file>images/white/x18/block@4x.png</file>
+        <file>images/white/x18/bluetooth.png</file>
+        <file>images/white/x18/bluetooth@2x.png</file>
+        <file>images/white/x18/bluetooth@3x.png</file>
+        <file>images/white/x18/bluetooth@4x.png</file>
+        <file>images/white/x18/bluetooth_off.png</file>
+        <file>images/white/x18/bluetooth_off@2x.png</file>
+        <file>images/white/x18/bluetooth_off@3x.png</file>
+        <file>images/white/x18/bluetooth_off@4x.png</file>
         <file>images/white/x18/break.png</file>
         <file>images/white/x18/break@2x.png</file>
         <file>images/white/x18/break@3x.png</file>
@@ -1267,6 +1520,10 @@
         <file>images/white/x18/call@2x.png</file>
         <file>images/white/x18/call@3x.png</file>
         <file>images/white/x18/call@4x.png</file>
+        <file>images/white/x18/camera.png</file>
+        <file>images/white/x18/camera@2x.png</file>
+        <file>images/white/x18/camera@3x.png</file>
+        <file>images/white/x18/camera@4x.png</file>
         <file>images/white/x18/car.png</file>
         <file>images/white/x18/car@2x.png</file>
         <file>images/white/x18/car@3x.png</file>
@@ -1331,6 +1588,30 @@
         <file>images/white/x18/florist@2x.png</file>
         <file>images/white/x18/florist@3x.png</file>
         <file>images/white/x18/florist@4x.png</file>
+        <file>images/white/x18/folder.png</file>
+        <file>images/white/x18/folder@2x.png</file>
+        <file>images/white/x18/folder@3x.png</file>
+        <file>images/white/x18/folder@4x.png</file>
+        <file>images/white/x18/folder_fav.png</file>
+        <file>images/white/x18/folder_fav@2x.png</file>
+        <file>images/white/x18/folder_fav@3x.png</file>
+        <file>images/white/x18/folder_fav@4x.png</file>
+        <file>images/white/x18/folder_new.png</file>
+        <file>images/white/x18/folder_new@2x.png</file>
+        <file>images/white/x18/folder_new@3x.png</file>
+        <file>images/white/x18/folder_new@4x.png</file>
+        <file>images/white/x18/folder_open.png</file>
+        <file>images/white/x18/folder_open@2x.png</file>
+        <file>images/white/x18/folder_open@3x.png</file>
+        <file>images/white/x18/folder_open@4x.png</file>
+        <file>images/white/x18/folder_shared.png</file>
+        <file>images/white/x18/folder_shared@2x.png</file>
+        <file>images/white/x18/folder_shared@3x.png</file>
+        <file>images/white/x18/folder_shared@4x.png</file>
+        <file>images/white/x18/form.png</file>
+        <file>images/white/x18/form@2x.png</file>
+        <file>images/white/x18/form@3x.png</file>
+        <file>images/white/x18/form@4x.png</file>
         <file>images/white/x18/goto.png</file>
         <file>images/white/x18/goto@2x.png</file>
         <file>images/white/x18/goto@3x.png</file>
@@ -1355,6 +1636,10 @@
         <file>images/white/x18/hotel@2x.png</file>
         <file>images/white/x18/hotel@3x.png</file>
         <file>images/white/x18/hotel@4x.png</file>
+        <file>images/white/x18/image.png</file>
+        <file>images/white/x18/image@2x.png</file>
+        <file>images/white/x18/image@3x.png</file>
+        <file>images/white/x18/image@4x.png</file>
         <file>images/white/x18/info.png</file>
         <file>images/white/x18/info@2x.png</file>
         <file>images/white/x18/info@3x.png</file>
@@ -1379,6 +1664,10 @@
         <file>images/white/x18/menu@2x.png</file>
         <file>images/white/x18/menu@3x.png</file>
         <file>images/white/x18/menu@4x.png</file>
+        <file>images/white/x18/movies.png</file>
+        <file>images/white/x18/movies@2x.png</file>
+        <file>images/white/x18/movies@3x.png</file>
+        <file>images/white/x18/movies@4x.png</file>
         <file>images/white/x18/my_location.png</file>
         <file>images/white/x18/my_location@2x.png</file>
         <file>images/white/x18/my_location@3x.png</file>
@@ -1391,6 +1680,10 @@
         <file>images/white/x18/party_event@2x.png</file>
         <file>images/white/x18/party_event@3x.png</file>
         <file>images/white/x18/party_event@4x.png</file>
+        <file>images/white/x18/pdf.png</file>
+        <file>images/white/x18/pdf@2x.png</file>
+        <file>images/white/x18/pdf@3x.png</file>
+        <file>images/white/x18/pdf@4x.png</file>
         <file>images/white/x18/person.png</file>
         <file>images/white/x18/person@2x.png</file>
         <file>images/white/x18/person@3x.png</file>
@@ -1403,6 +1696,10 @@
         <file>images/white/x18/play@2x.png</file>
         <file>images/white/x18/play@3x.png</file>
         <file>images/white/x18/play@4x.png</file>
+        <file>images/white/x18/printer.png</file>
+        <file>images/white/x18/printer@2x.png</file>
+        <file>images/white/x18/printer@3x.png</file>
+        <file>images/white/x18/printer@4x.png</file>
         <file>images/white/x18/refresh.png</file>
         <file>images/white/x18/refresh@2x.png</file>
         <file>images/white/x18/refresh@3x.png</file>
@@ -1439,6 +1736,10 @@
         <file>images/white/x18/settings@2x.png</file>
         <file>images/white/x18/settings@3x.png</file>
         <file>images/white/x18/settings@4x.png</file>
+        <file>images/white/x18/signal.png</file>
+        <file>images/white/x18/signal@2x.png</file>
+        <file>images/white/x18/signal@3x.png</file>
+        <file>images/white/x18/signal@4x.png</file>
         <file>images/white/x18/sms.png</file>
         <file>images/white/x18/sms@2x.png</file>
         <file>images/white/x18/sms@3x.png</file>
@@ -1531,6 +1832,10 @@
         <file>images/white/x36/arrow_back@2x.png</file>
         <file>images/white/x36/arrow_back@3x.png</file>
         <file>images/white/x36/arrow_back@4x.png</file>
+        <file>images/white/x36/arrow_forward.png</file>
+        <file>images/white/x36/arrow_forward@2x.png</file>
+        <file>images/white/x36/arrow_forward@3x.png</file>
+        <file>images/white/x36/arrow_forward@4x.png</file>
         <file>images/white/x36/aspect_ratio.png</file>
         <file>images/white/x36/aspect_ratio@2x.png</file>
         <file>images/white/x36/aspect_ratio@3x.png</file>
@@ -1543,6 +1848,14 @@
         <file>images/white/x36/block@2x.png</file>
         <file>images/white/x36/block@3x.png</file>
         <file>images/white/x36/block@4x.png</file>
+        <file>images/white/x36/bluetooth.png</file>
+        <file>images/white/x36/bluetooth@2x.png</file>
+        <file>images/white/x36/bluetooth@3x.png</file>
+        <file>images/white/x36/bluetooth@4x.png</file>
+        <file>images/white/x36/bluetooth_off.png</file>
+        <file>images/white/x36/bluetooth_off@2x.png</file>
+        <file>images/white/x36/bluetooth_off@3x.png</file>
+        <file>images/white/x36/bluetooth_off@4x.png</file>
         <file>images/white/x36/break.png</file>
         <file>images/white/x36/break@2x.png</file>
         <file>images/white/x36/break@3x.png</file>
@@ -1563,6 +1876,10 @@
         <file>images/white/x36/call@2x.png</file>
         <file>images/white/x36/call@3x.png</file>
         <file>images/white/x36/call@4x.png</file>
+        <file>images/white/x36/camera.png</file>
+        <file>images/white/x36/camera@2x.png</file>
+        <file>images/white/x36/camera@3x.png</file>
+        <file>images/white/x36/camera@4x.png</file>
         <file>images/white/x36/car.png</file>
         <file>images/white/x36/car@2x.png</file>
         <file>images/white/x36/car@3x.png</file>
@@ -1627,6 +1944,30 @@
         <file>images/white/x36/florist@2x.png</file>
         <file>images/white/x36/florist@3x.png</file>
         <file>images/white/x36/florist@4x.png</file>
+        <file>images/white/x36/folder.png</file>
+        <file>images/white/x36/folder@2x.png</file>
+        <file>images/white/x36/folder@3x.png</file>
+        <file>images/white/x36/folder@4x.png</file>
+        <file>images/white/x36/folder_fav.png</file>
+        <file>images/white/x36/folder_fav@2x.png</file>
+        <file>images/white/x36/folder_fav@3x.png</file>
+        <file>images/white/x36/folder_fav@4x.png</file>
+        <file>images/white/x36/folder_new.png</file>
+        <file>images/white/x36/folder_new@2x.png</file>
+        <file>images/white/x36/folder_new@3x.png</file>
+        <file>images/white/x36/folder_new@4x.png</file>
+        <file>images/white/x36/folder_open.png</file>
+        <file>images/white/x36/folder_open@2x.png</file>
+        <file>images/white/x36/folder_open@3x.png</file>
+        <file>images/white/x36/folder_open@4x.png</file>
+        <file>images/white/x36/folder_shared.png</file>
+        <file>images/white/x36/folder_shared@2x.png</file>
+        <file>images/white/x36/folder_shared@3x.png</file>
+        <file>images/white/x36/folder_shared@4x.png</file>
+        <file>images/white/x36/form.png</file>
+        <file>images/white/x36/form@2x.png</file>
+        <file>images/white/x36/form@3x.png</file>
+        <file>images/white/x36/form@4x.png</file>
         <file>images/white/x36/goto.png</file>
         <file>images/white/x36/goto@2x.png</file>
         <file>images/white/x36/goto@3x.png</file>
@@ -1651,6 +1992,10 @@
         <file>images/white/x36/hotel@2x.png</file>
         <file>images/white/x36/hotel@3x.png</file>
         <file>images/white/x36/hotel@4x.png</file>
+        <file>images/white/x36/image.png</file>
+        <file>images/white/x36/image@2x.png</file>
+        <file>images/white/x36/image@3x.png</file>
+        <file>images/white/x36/image@4x.png</file>
         <file>images/white/x36/info.png</file>
         <file>images/white/x36/info@2x.png</file>
         <file>images/white/x36/info@3x.png</file>
@@ -1675,6 +2020,10 @@
         <file>images/white/x36/menu@2x.png</file>
         <file>images/white/x36/menu@3x.png</file>
         <file>images/white/x36/menu@4x.png</file>
+        <file>images/white/x36/movies.png</file>
+        <file>images/white/x36/movies@2x.png</file>
+        <file>images/white/x36/movies@3x.png</file>
+        <file>images/white/x36/movies@4x.png</file>
         <file>images/white/x36/my_location.png</file>
         <file>images/white/x36/my_location@2x.png</file>
         <file>images/white/x36/my_location@3x.png</file>
@@ -1687,6 +2036,10 @@
         <file>images/white/x36/party_event@2x.png</file>
         <file>images/white/x36/party_event@3x.png</file>
         <file>images/white/x36/party_event@4x.png</file>
+        <file>images/white/x36/pdf.png</file>
+        <file>images/white/x36/pdf@2x.png</file>
+        <file>images/white/x36/pdf@3x.png</file>
+        <file>images/white/x36/pdf@4x.png</file>
         <file>images/white/x36/person.png</file>
         <file>images/white/x36/person@2x.png</file>
         <file>images/white/x36/person@3x.png</file>
@@ -1699,6 +2052,10 @@
         <file>images/white/x36/play@2x.png</file>
         <file>images/white/x36/play@3x.png</file>
         <file>images/white/x36/play@4x.png</file>
+        <file>images/white/x36/printer.png</file>
+        <file>images/white/x36/printer@2x.png</file>
+        <file>images/white/x36/printer@3x.png</file>
+        <file>images/white/x36/printer@4x.png</file>
         <file>images/white/x36/refresh.png</file>
         <file>images/white/x36/refresh@2x.png</file>
         <file>images/white/x36/refresh@3x.png</file>
@@ -1735,6 +2092,10 @@
         <file>images/white/x36/settings@2x.png</file>
         <file>images/white/x36/settings@3x.png</file>
         <file>images/white/x36/settings@4x.png</file>
+        <file>images/white/x36/signal.png</file>
+        <file>images/white/x36/signal@2x.png</file>
+        <file>images/white/x36/signal@3x.png</file>
+        <file>images/white/x36/signal@4x.png</file>
         <file>images/white/x36/sms.png</file>
         <file>images/white/x36/sms@2x.png</file>
         <file>images/white/x36/sms@3x.png</file>
@@ -1827,6 +2188,10 @@
         <file>images/white/x48/arrow_back@2x.png</file>
         <file>images/white/x48/arrow_back@3x.png</file>
         <file>images/white/x48/arrow_back@4.png</file>
+        <file>images/white/x48/arrow_forward.png</file>
+        <file>images/white/x48/arrow_forward@2x.png</file>
+        <file>images/white/x48/arrow_forward@3x.png</file>
+        <file>images/white/x48/arrow_forward@4x.png</file>
         <file>images/white/x48/aspect_ratio.png</file>
         <file>images/white/x48/aspect_ratio@2x.png</file>
         <file>images/white/x48/aspect_ratio@3x.png</file>
@@ -1839,6 +2204,14 @@
         <file>images/white/x48/block@2x.png</file>
         <file>images/white/x48/block@3x.png</file>
         <file>images/white/x48/block@4x.png</file>
+        <file>images/white/x48/bluetooth.png</file>
+        <file>images/white/x48/bluetooth@2x.png</file>
+        <file>images/white/x48/bluetooth@3x.png</file>
+        <file>images/white/x48/bluetooth@4x.png</file>
+        <file>images/white/x48/bluetooth_off.png</file>
+        <file>images/white/x48/bluetooth_off@2x.png</file>
+        <file>images/white/x48/bluetooth_off@3x.png</file>
+        <file>images/white/x48/bluetooth_off@4x.png</file>
         <file>images/white/x48/break.png</file>
         <file>images/white/x48/break@2x.png</file>
         <file>images/white/x48/break@3x.png</file>
@@ -1859,6 +2232,10 @@
         <file>images/white/x48/call@2x.png</file>
         <file>images/white/x48/call@3x.png</file>
         <file>images/white/x48/call@4x.png</file>
+        <file>images/white/x48/camera.png</file>
+        <file>images/white/x48/camera@2x.png</file>
+        <file>images/white/x48/camera@3x.png</file>
+        <file>images/white/x48/camera@4x.png</file>
         <file>images/white/x48/car.png</file>
         <file>images/white/x48/car@2x.png</file>
         <file>images/white/x48/car@3x.png</file>
@@ -1923,6 +2300,30 @@
         <file>images/white/x48/florist@2x.png</file>
         <file>images/white/x48/florist@3x.png</file>
         <file>images/white/x48/florist@4x.png</file>
+        <file>images/white/x48/folder.png</file>
+        <file>images/white/x48/folder@2x.png</file>
+        <file>images/white/x48/folder@3x.png</file>
+        <file>images/white/x48/folder@4x.png</file>
+        <file>images/white/x48/folder_fav.png</file>
+        <file>images/white/x48/folder_fav@2x.png</file>
+        <file>images/white/x48/folder_fav@3x.png</file>
+        <file>images/white/x48/folder_fav@4x.png</file>
+        <file>images/white/x48/folder_new.png</file>
+        <file>images/white/x48/folder_new@2x.png</file>
+        <file>images/white/x48/folder_new@3x.png</file>
+        <file>images/white/x48/folder_new@4x.png</file>
+        <file>images/white/x48/folder_open.png</file>
+        <file>images/white/x48/folder_open@2x.png</file>
+        <file>images/white/x48/folder_open@3x.png</file>
+        <file>images/white/x48/folder_open@4x.png</file>
+        <file>images/white/x48/folder_shared.png</file>
+        <file>images/white/x48/folder_shared@2x.png</file>
+        <file>images/white/x48/folder_shared@3x.png</file>
+        <file>images/white/x48/folder_shared@4x.png</file>
+        <file>images/white/x48/form.png</file>
+        <file>images/white/x48/form@2x.png</file>
+        <file>images/white/x48/form@3x.png</file>
+        <file>images/white/x48/form@4x.png</file>
         <file>images/white/x48/goto.png</file>
         <file>images/white/x48/goto@2x.png</file>
         <file>images/white/x48/goto@3x.png</file>
@@ -1947,6 +2348,10 @@
         <file>images/white/x48/hotel@2x.png</file>
         <file>images/white/x48/hotel@3x.png</file>
         <file>images/white/x48/hotel@4x.png</file>
+        <file>images/white/x48/image.png</file>
+        <file>images/white/x48/image@2x.png</file>
+        <file>images/white/x48/image@3x.png</file>
+        <file>images/white/x48/image@4x.png</file>
         <file>images/white/x48/info.png</file>
         <file>images/white/x48/info@2x.png</file>
         <file>images/white/x48/info@3x.png</file>
@@ -1971,6 +2376,10 @@
         <file>images/white/x48/menu@2x.png</file>
         <file>images/white/x48/menu@3x.png</file>
         <file>images/white/x48/menu@4x.png</file>
+        <file>images/white/x48/movies.png</file>
+        <file>images/white/x48/movies@2x.png</file>
+        <file>images/white/x48/movies@3x.png</file>
+        <file>images/white/x48/movies@4x.png</file>
         <file>images/white/x48/my_location.png</file>
         <file>images/white/x48/my_location@2x.png</file>
         <file>images/white/x48/my_location@3x.png</file>
@@ -1983,6 +2392,10 @@
         <file>images/white/x48/party_event@2x.png</file>
         <file>images/white/x48/party_event@3x.png</file>
         <file>images/white/x48/party_event@4x.png</file>
+        <file>images/white/x48/pdf.png</file>
+        <file>images/white/x48/pdf@2x.png</file>
+        <file>images/white/x48/pdf@3x.png</file>
+        <file>images/white/x48/pdf@4x.png</file>
         <file>images/white/x48/person.png</file>
         <file>images/white/x48/person@2x.png</file>
         <file>images/white/x48/person@3x.png</file>
@@ -1995,6 +2408,10 @@
         <file>images/white/x48/play@2x.png</file>
         <file>images/white/x48/play@3x.png</file>
         <file>images/white/x48/play@4x.png</file>
+        <file>images/white/x48/printer.png</file>
+        <file>images/white/x48/printer@2x.png</file>
+        <file>images/white/x48/printer@3x.png</file>
+        <file>images/white/x48/printer@4x.png</file>
         <file>images/white/x48/refresh.png</file>
         <file>images/white/x48/refresh@2x.png</file>
         <file>images/white/x48/refresh@3x.png</file>
@@ -2031,6 +2448,10 @@
         <file>images/white/x48/settings@2x.png</file>
         <file>images/white/x48/settings@3x.png</file>
         <file>images/white/x48/settings@4x.png</file>
+        <file>images/white/x48/signal.png</file>
+        <file>images/white/x48/signal@2x.png</file>
+        <file>images/white/x48/signal@3x.png</file>
+        <file>images/white/x48/signal@4x.png</file>
         <file>images/white/x48/sms.png</file>
         <file>images/white/x48/sms@2x.png</file>
         <file>images/white/x48/sms@3x.png</file>
@@ -2123,6 +2544,10 @@
         <file>images/white/arrow_back@2x.png</file>
         <file>images/white/arrow_back@3x.png</file>
         <file>images/white/arrow_back@4x.png</file>
+        <file>images/white/arrow_forward.png</file>
+        <file>images/white/arrow_forward@2x.png</file>
+        <file>images/white/arrow_forward@3x.png</file>
+        <file>images/white/arrow_forward@4x.png</file>
         <file>images/white/aspect_ratio.png</file>
         <file>images/white/aspect_ratio@2x.png</file>
         <file>images/white/aspect_ratio@3x.png</file>
@@ -2135,6 +2560,14 @@
         <file>images/white/block@2x.png</file>
         <file>images/white/block@3x.png</file>
         <file>images/white/block@4x.png</file>
+        <file>images/white/bluetooth.png</file>
+        <file>images/white/bluetooth@2x.png</file>
+        <file>images/white/bluetooth@3x.png</file>
+        <file>images/white/bluetooth@4x.png</file>
+        <file>images/white/bluetooth_off.png</file>
+        <file>images/white/bluetooth_off@2x.png</file>
+        <file>images/white/bluetooth_off@3x.png</file>
+        <file>images/white/bluetooth_off@4x.png</file>
         <file>images/white/break.png</file>
         <file>images/white/break@2x.png</file>
         <file>images/white/break@3x.png</file>
@@ -2155,6 +2588,10 @@
         <file>images/white/call@2x.png</file>
         <file>images/white/call@3x.png</file>
         <file>images/white/call@4x.png</file>
+        <file>images/white/camera.png</file>
+        <file>images/white/camera@2x.png</file>
+        <file>images/white/camera@3x.png</file>
+        <file>images/white/camera@4x.png</file>
         <file>images/white/car.png</file>
         <file>images/white/car@2x.png</file>
         <file>images/white/car@3x.png</file>
@@ -2219,6 +2656,30 @@
         <file>images/white/florist@2x.png</file>
         <file>images/white/florist@3x.png</file>
         <file>images/white/florist@4x.png</file>
+        <file>images/white/folder.png</file>
+        <file>images/white/folder@2x.png</file>
+        <file>images/white/folder@3x.png</file>
+        <file>images/white/folder@4x.png</file>
+        <file>images/white/folder_fav.png</file>
+        <file>images/white/folder_fav@2x.png</file>
+        <file>images/white/folder_fav@3x.png</file>
+        <file>images/white/folder_fav@4x.png</file>
+        <file>images/white/folder_new.png</file>
+        <file>images/white/folder_new@2x.png</file>
+        <file>images/white/folder_new@3x.png</file>
+        <file>images/white/folder_new@4x.png</file>
+        <file>images/white/folder_open.png</file>
+        <file>images/white/folder_open@2x.png</file>
+        <file>images/white/folder_open@3x.png</file>
+        <file>images/white/folder_open@4x.png</file>
+        <file>images/white/folder_shared.png</file>
+        <file>images/white/folder_shared@2x.png</file>
+        <file>images/white/folder_shared@3x.png</file>
+        <file>images/white/folder_shared@4x.png</file>
+        <file>images/white/form.png</file>
+        <file>images/white/form@2x.png</file>
+        <file>images/white/form@3x.png</file>
+        <file>images/white/form@4x.png</file>
         <file>images/white/goto.png</file>
         <file>images/white/goto@2x.png</file>
         <file>images/white/goto@3x.png</file>
@@ -2243,6 +2704,10 @@
         <file>images/white/hotel@2x.png</file>
         <file>images/white/hotel@3x.png</file>
         <file>images/white/hotel@4x.png</file>
+        <file>images/white/image.png</file>
+        <file>images/white/image@2x.png</file>
+        <file>images/white/image@3x.png</file>
+        <file>images/white/image@4x.png</file>
         <file>images/white/info.png</file>
         <file>images/white/info@2x.png</file>
         <file>images/white/info@3x.png</file>
@@ -2271,6 +2736,10 @@
         <file>images/white/more_vert@2x.png</file>
         <file>images/white/more_vert@3x.png</file>
         <file>images/white/more_vert@4x.png</file>
+        <file>images/white/movies.png</file>
+        <file>images/white/movies@2x.png</file>
+        <file>images/white/movies@3x.png</file>
+        <file>images/white/movies@4x.png</file>
         <file>images/white/my_location.png</file>
         <file>images/white/my_location@2x.png</file>
         <file>images/white/my_location@3x.png</file>
@@ -2283,6 +2752,10 @@
         <file>images/white/party_event@2x.png</file>
         <file>images/white/party_event@3x.png</file>
         <file>images/white/party_event@4x.png</file>
+        <file>images/white/pdf.png</file>
+        <file>images/white/pdf@2x.png</file>
+        <file>images/white/pdf@3x.png</file>
+        <file>images/white/pdf@4x.png</file>
         <file>images/white/person.png</file>
         <file>images/white/person@2x.png</file>
         <file>images/white/person@3x.png</file>
@@ -2295,6 +2768,10 @@
         <file>images/white/play@2x.png</file>
         <file>images/white/play@3x.png</file>
         <file>images/white/play@4x.png</file>
+        <file>images/white/printer.png</file>
+        <file>images/white/printer@2x.png</file>
+        <file>images/white/printer@3x.png</file>
+        <file>images/white/printer@4x.png</file>
         <file>images/white/refresh.png</file>
         <file>images/white/refresh@2x.png</file>
         <file>images/white/refresh@3x.png</file>
@@ -2332,6 +2809,10 @@
         <file>images/white/settings@2x.png</file>
         <file>images/white/settings@3x.png</file>
         <file>images/white/settings@4x.png</file>
+        <file>images/white/signal.png</file>
+        <file>images/white/signal@2x.png</file>
+        <file>images/white/signal@3x.png</file>
+        <file>images/white/signal@4x.png</file>
         <file>images/white/sms.png</file>
         <file>images/white/sms@2x.png</file>
         <file>images/white/sms@3x.png</file>
@@ -2412,6 +2893,5 @@
         <file>images/white/zoom_out@2x.png</file>
         <file>images/white/zoom_out@3x.png</file>
         <file>images/white/zoom_out@4x.png</file>
-        <file>images/LICENSE</file>
     </qresource>
 </RCC>
