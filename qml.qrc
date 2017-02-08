@@ -91,5 +91,6 @@
         <file>qml/common/TextFieldDecimal.qml</file>
         <file>qml/common/TextFieldInt.qml</file>
         <file>qml/common/ComboBoxWithIcon.qml</file>
+        <file>qml/common/CommunicationButton.qml</file>
     </qresource>
 </RCC>
