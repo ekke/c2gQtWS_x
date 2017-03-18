@@ -6,6 +6,7 @@ import QtQuick.Controls.Material 2.1
 
 TextField {
     id: valueText
+    selectByMouse: true
     property real minValue: 0.0
     property real maxValue: 999.0
     property int maxDecimals: 2

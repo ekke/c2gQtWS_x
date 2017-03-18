@@ -6,6 +6,7 @@ import QtQuick.Controls.Material 2.1
 
 TextField {
     id: valueText
+    selectByMouse: true
     property int minValue: 0
     property int maxValue: 999
     validator: IntValidator{bottom: minValue; top: maxValue;}

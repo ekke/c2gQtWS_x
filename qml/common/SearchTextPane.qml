@@ -32,6 +32,7 @@ Pane {
         width: parent.width - 30
         TextField {
             id: theSearchTextField
+            selectByMouse: true
             Layout.fillWidth: true
             Layout.topMargin: 6
             Layout.leftMargin: 6

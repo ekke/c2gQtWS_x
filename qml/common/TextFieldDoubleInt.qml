@@ -6,6 +6,7 @@ import QtQuick.Controls.Material 2.1
 
 TextField {
     id: valueText
+    selectByMouse: true
     property int minValue: 0
     property int maxValue: 999
     validator: RegExpValidator{regExp: /\d{2,3}[\.\,\/]\d{2,3}/}
