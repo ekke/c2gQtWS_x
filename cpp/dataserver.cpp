@@ -23,8 +23,191 @@ void DataServer::init(DataManager *dataManager)
     // otherwise accessibility not detected if switch off and on again
     // mNetworkAccessManager = new QNetworkAccessManager(this);
 
+    // ONLINE, OFFLINE, HUNGRY
+    // get this from settings:
+    mUseOnlineStableTimer = true;
+    mOnlineStateCollectorInterval = 500;
+    mOnlineStableTimerInterval = 2*60*1000; // 2 minutes
+
+    // ATTENTION problem on iOS to get correct isOnline info:
+    // https://bugreports.qt.io/browse/QTBUG-56151
+    // https://bugreports.qt.io/browse/QTBUG-58946
+    // so even in airplane mode isOnline reports true
+    mNetworkConfigManager = new QNetworkConfigurationManager(this);
+    mCurrentIsOnline = mNetworkConfigManager->isOnline();
+    qDebug() << "INIT IS   O N L I N E ?" << mCurrentIsOnline;
+    bool connectResult = false;
+#if defined (Q_OS_IOS)
+    connectResult = connect(mNetworkConfigManager, SIGNAL(configurationAdded(const QNetworkConfiguration&)), this, SLOT(onNetworkConfigurationChanges(const QNetworkConfiguration&)));
+    Q_ASSERT(connectResult);
+    connectResult = connect(mNetworkConfigManager, SIGNAL(configurationChanged(const QNetworkConfiguration&)), this, SLOT(onNetworkConfigurationChanges(const QNetworkConfiguration&)));
+    Q_ASSERT(connectResult);
+    connectResult = connect(mNetworkConfigManager, SIGNAL(configurationRemoved(const QNetworkConfiguration&)), this, SLOT(onNetworkConfigurationChanges(const QNetworkConfiguration&)));
+    Q_ASSERT(connectResult);
+#else
+    connectResult = connect(mNetworkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(onOnlineStateChanged(bool)));
+    Q_ASSERT(connectResult);
+#endif
+
+
+    // to avoid too short on-off-cycles
+    // coming back from suspended all collected signals
+    // fired by QNetworkConfigurationManager
+    // this timer waits short time before emitting signal onlineChanged
+    mOnlineStateCollector = new QTimer(this);
+    mOnlineStateCollector->setSingleShot(true);
+    mOnlineStateCollector->setInterval(mOnlineStateCollectorInterval);
+
+    mIsHungry = false;
+    if(mUseOnlineStableTimer) {
+        mOnlineStableTimer = new QTimer(this);
+        mOnlineStableTimer->setSingleShot(true);
+        // 2 minutes
+        mOnlineStableTimer->setInterval(mOnlineStableTimerInterval);
+        if(mCurrentIsOnline) {
+            mOnlineStableTimer->start();
+        }
+    }
+
+    connectResult = connect(mOnlineStateCollector, SIGNAL(timeout()), this, SLOT(onOnlineStateCollected()));
+    Q_ASSERT(connectResult);
+
+    if(mUseOnlineStableTimer) {
+        connectResult = connect(mOnlineStableTimer, SIGNAL(timeout()), this, SLOT(onOnlineStableConnection()));
+        Q_ASSERT(connectResult);
+    }
+
+    Q_UNUSED(connectResult);
+
+
     qDebug() << "Data Server INIT done";
 }
+
+// get the current state
+bool DataServer::isOnline()
+{
+    return mCurrentIsOnline;
+}
+
+bool DataServer::serverIsHungry()
+{
+    return mIsHungry;
+}
+
+// Network Info INVOKABLE used in TitleBar onlineButton
+// see https://bugreports.qt.io/browse/QTBUG-56151
+QString DataServer::networkInfo()
+{
+    QString networkInfo;
+    networkInfo.append("Online: ");
+    QString activeNetworkConfigNames;
+    bool isOnline = false;
+    int activeNetworks = 0;
+    QList<QNetworkConfiguration> activeConfigs = mNetworkConfigManager->allConfigurations(QNetworkConfiguration::Active);
+    for (int i = 0; i < activeConfigs.size(); ++i) {
+        QNetworkConfiguration config = activeConfigs.at(i);
+#if defined (Q_OS_IOS)
+        if(config.name() != "utun0") {
+            activeNetworks++;
+        }
+#else
+        activeNetworks++;
+#endif
+        if(!activeNetworkConfigNames.isEmpty()) {
+            activeNetworkConfigNames.append(" | ");
+        }
+        if(config.bearerTypeName() == "Unknown") {
+            activeNetworkConfigNames.append("?? ");
+        } else {
+            activeNetworkConfigNames.append(config.bearerTypeName());
+        }
+        activeNetworkConfigNames.append(":").append(config.name());
+    } // all active configurations
+#if defined (Q_OS_IOS)
+    if(activeNetworks > 0) {
+        isOnline = true;
+    }
+#else
+    isOnline = mNetworkConfigManager->isOnline();
+#endif
+    if(isOnline) {
+         networkInfo.append(tr("Yes")).append(", ");
+    } else {
+        networkInfo.append(tr("No")).append(", ");
+    }
+    networkInfo.append("Active: ");
+    networkInfo.append(activeNetworkConfigNames).append("\n");
+    networkInfo.append("Default: ").append(mNetworkConfigManager->defaultConfiguration().name());
+
+    if(activeNetworkConfigNames.isEmpty()) {
+        networkInfo.append("\n").append(tr("no network connection - WIFI On ?")).append("\n");
+    }
+    if(mIsHungry) {
+        networkInfo.append(tr("stable connection - ready for transmissions to server"));
+    }
+    // ad more infos from configurations
+    // or add infos about running requests, last action done, ...
+    return networkInfo;
+}
+
+// SLOT
+// for some ms no new SIGNAL collected
+// now we can inform UI if different from last state
+// if stableTimer is used, also watch if offline / online
+void DataServer::onOnlineStateCollected() {
+    if(mCurrentIsOnline != mNewestIsOnline) {
+        mCurrentIsOnline = mNewestIsOnline;
+        qDebug() << "NEW ONLINE STATE: " << mCurrentIsOnline;
+        emit onlineChanged(mCurrentIsOnline);
+        if(mUseOnlineStableTimer) {
+            if(!mCurrentIsOnline) {
+                // stop mOnlineStableTimer if offline
+                mOnlineStableTimer->stop();
+                mIsHungry = false;
+            } else {
+                // if online start mOnlineStableTimer if not already running
+                if(!mOnlineStableTimer->isActive()) {
+                    mOnlineStableTimer->start();
+                }
+            }
+        }
+    }
+}
+
+// SLOT
+// waits 2 minutes stable online connection
+// before emitting SIGNAL that server is now hungry
+// to do heavy work (downloads, uploads)
+void DataServer::onOnlineStableConnection() {
+    qDebug() << "SERVER H U N G R Y";
+    mIsHungry = true;
+    emit serverIsHungryForHeavyWork();
+    // do something - per ex process server queue
+}
+
+// Signal coming from QNetworkConfigurationManager
+void DataServer::onOnlineStateChanged(bool isOnline)
+{
+    mNewestIsOnline = isOnline;
+    // always restart Collector (Timer)
+    mOnlineStateCollector->start();
+    if(isOnline) {
+        qDebug() << "collect: O N";
+    } else {
+        qDebug() << "collect: O F F";
+    }
+}
+
+void DataServer::onNetworkConfigurationChanges(const QNetworkConfiguration&)
+{
+    qDebug() << "onNetworkConfigurationChanges I O S";
+    const auto configurations = mNetworkConfigManager->allConfigurations(QNetworkConfiguration::Active);
+    onOnlineStateChanged(configurations.size() > 1
+                         || (configurations.size() == 1 && configurations.constFirst().name() != QString("utun0")) );
+}
+
+// ONLINE end
+
 
 void DataServer::setConferenceDataPath(const QString &conferenceDataPath)
 {

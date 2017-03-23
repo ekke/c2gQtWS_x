@@ -57,6 +57,40 @@ ToolBar {
             verticalAlignment: Qt.AlignVCenter
             color: textOnPrimary
         }
+        ItemDelegate {
+            id: isOnlineButton
+            width: 36
+            focusPolicy: Qt.NoFocus
+            Image {
+                anchors.centerIn: parent
+                source: "qrc:/images/"+iconOnPrimaryFolder+"/download.png"
+            }
+            Rectangle {
+                id: onlineMarker
+                width: 8
+                height: 8
+                radius: width / 2
+                // adjust colors or position in the middle
+                color: appWindow.isOnline? titleBarOnlineColor : titleBarOfflineColor
+                anchors.right: parent.right
+                anchors.top: parent.top
+                anchors.topMargin: 12
+            }
+            // colors not working with selected palette:
+            // use this diagonal line
+            Rectangle {
+                visible: !appWindow.isOnline
+                width: 2
+                height: 32
+                color: textOnPrimary
+                anchors.centerIn: parent
+                rotation: -45
+            }
+
+            onClicked: {
+                appWindow.showInfo(dataServer.networkInfo())
+            }
+        } // isOnlineButton
         ToolButton {
             id: scheduleGoToButton
             visible: !myScheduleActive && navigationIndex == scheduleNavigationIndex && destinations.itemAt(scheduleNavigationIndex).item.depth == 1

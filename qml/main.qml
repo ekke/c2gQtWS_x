@@ -67,6 +67,12 @@ ApplicationWindow {
         }
     }
 
+    // ONLINE - OFFLINE - NETWORK STATE
+    property bool isOnline: dataServer.isOnline()
+    // TODO include into palette
+    property color titleBarOnlineColor: "LightGreen"
+    property color titleBarOfflineColor: "Red"
+
     // primary and accent properties:
     property variant primaryPalette: myApp.defaultPrimaryPalette()
     property color primaryLightColor: primaryPalette[0]
@@ -671,7 +677,17 @@ ApplicationWindow {
     }
     // end APP WINDOW FUNCTIONS
 
+    // APP WINDOW CONNECTIONS
+    function onOnlineChanged(currentState) {
+        console.log("QML ONLINE: "+currentState);
+        appWindow.isOnline = currentState
+    }
 
+    Connections {
+        target: dataServer
+        onOnlineChanged: onOnlineChanged(currentState)
+    }
+    // end APP WINDOW CONNECTIONS
 
     // APP WINDOW POPUPS
     PopupExit {

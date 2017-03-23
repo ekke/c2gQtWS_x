@@ -31,6 +31,7 @@ void ApplicationUI::addContextProperty(QQmlContext *context)
 {
     context->setContextProperty("dataManager", mDataManager);
     context->setContextProperty("dataUtil", mDataUtil);
+    context->setContextProperty("dataServer", mDataServer);
 }
 
 /* Change Theme Palette */
