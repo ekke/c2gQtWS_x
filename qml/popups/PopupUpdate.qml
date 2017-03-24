@@ -77,6 +77,14 @@ Popup {
                 }
             }
         } // row layout
+    }
 
+    // workaround https://bugreports.qt.io/browse/QTBUG-59670
+    onOpened: {
+        appWindow.modalPopupActive = true
+
+    }
+    onClosed: {
+        appWindow.modalPopupActive = false
     }
 }
