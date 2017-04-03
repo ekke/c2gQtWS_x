@@ -31,6 +31,7 @@ Popup {
         rightPadding: 16
         font.pixelSize: 16
         color: "white"
+        wrapMode: Label.WordWrap
     } // toastLabel
     onAboutToShow: {
         toastTimer.start()
