@@ -93,5 +93,6 @@
         <file>qml/common/ComboBoxWithIcon.qml</file>
         <file>qml/common/CommunicationButton.qml</file>
         <file>qml/common/TextAreaRow.qml</file>
+        <file>qml/common/CommunicationMenu.qml</file>
     </qresource>
 </RCC>

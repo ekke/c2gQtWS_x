@@ -739,4 +739,12 @@ ApplicationWindow {
     } // popupError
     // end APP WINDOW POPUPS
 
+    // global Communication Menu to speed up
+    function doCommunication(button, phoneNumber) {
+        mainCommunicationMenu.doCommunication(button, phoneNumber)
+    }
+    CommunicationMenu {
+        id: mainCommunicationMenu
+    }
+
 } // app window
