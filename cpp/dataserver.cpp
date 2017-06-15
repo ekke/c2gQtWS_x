@@ -326,7 +326,7 @@ void DataServer::onFinishedSchedule()
         emit serverFailed(tr("No Network Reply"));
         return;
     }
-    const int available = reply->bytesAvailable();
+    const qint64 available = reply->bytesAvailable();
     if(available == 0) {
         qWarning() << "Schedule: No Bytes received";
         emit serverFailed(tr("No Schedule Data received"));
@@ -361,7 +361,7 @@ void DataServer::onFinishedSpeaker()
         emit serverFailed(tr("No Network Reply"));
         return;
     }
-    const int available = reply->bytesAvailable();
+    const qint64 available = reply->bytesAvailable();
     if(available == 0) {
         qWarning() << "Speaker No Bytes received";
         emit serverFailed(tr("No Speaker Data received"));
@@ -395,7 +395,7 @@ void DataServer::onFinishedVersion()
         emit versionFailed(tr("No Network Reply"));
         return;
     }
-    const int available = reply->bytesAvailable();
+    const qint64 available = reply->bytesAvailable();
     if(available == 0) {
         qWarning() << "Version No Bytes received";
         emit versionFailed(tr("No Version Data received"));
