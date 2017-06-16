@@ -106,7 +106,19 @@ QString DataServer::networkInfo()
     // active network configurations are confusing
     // under iOS "utun0" and "en2" are reported active even in airplane mode
     // so we don't use QNetworkConfigurationManager for iOS
-    // TODO get some more infos from reachability classes
+    switch (status()) {
+    case utility::NotReachable:
+        networkInfo.append(tr("Internet not reachable"));
+        break;
+    case utility::ReachableViaWiFi:
+        networkInfo.append(tr("WiFi internet connection"));
+        break;
+    case utility::ReachableViaWWAN:
+        networkInfo.append(tr("mobile data internet connection"));
+        break;
+    default:
+        break;
+    }
 #else
     QString activeNetworkConfigNames;
     QList<QNetworkConfiguration> activeConfigs = mNetworkConfigManager->allConfigurations(QNetworkConfiguration::Active);
