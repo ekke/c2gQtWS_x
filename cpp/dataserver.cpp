@@ -29,26 +29,23 @@ void DataServer::init(DataManager *dataManager)
     mOnlineStateCollectorInterval = 500;
     mOnlineStableTimerInterval = 2*60*1000; // 2 minutes
 
-    // ATTENTION problem on iOS to get correct isOnline info:
+    bool connectResult = false;
+
+    // ATTENTION problem on iOS to get correct isOnline from QNetworkConfigurationManager:
     // https://bugreports.qt.io/browse/QTBUG-56151
     // https://bugreports.qt.io/browse/QTBUG-58946
-    // so even in airplane mode isOnline reports true
+    // so even in airplane mode  isOnline reports true
+    // so we' added're using iOS Reachability classes instead
+#if defined (Q_OS_IOS)
+    mCurrentIsOnline = status() != utility::NotReachable;
+    qDebug() << "I O S  REACHABILITY: INIT IS   O N L I N E ?" << mCurrentIsOnline;
+#else
     mNetworkConfigManager = new QNetworkConfigurationManager(this);
     mCurrentIsOnline = mNetworkConfigManager->isOnline();
     qDebug() << "INIT IS   O N L I N E ?" << mCurrentIsOnline;
-    bool connectResult = false;
-#if defined (Q_OS_IOS)
-    connectResult = connect(mNetworkConfigManager, SIGNAL(configurationAdded(const QNetworkConfiguration&)), this, SLOT(onNetworkConfigurationChanges(const QNetworkConfiguration&)));
-    Q_ASSERT(connectResult);
-    connectResult = connect(mNetworkConfigManager, SIGNAL(configurationChanged(const QNetworkConfiguration&)), this, SLOT(onNetworkConfigurationChanges(const QNetworkConfiguration&)));
-    Q_ASSERT(connectResult);
-    connectResult = connect(mNetworkConfigManager, SIGNAL(configurationRemoved(const QNetworkConfiguration&)), this, SLOT(onNetworkConfigurationChanges(const QNetworkConfiguration&)));
-    Q_ASSERT(connectResult);
-#else
     connectResult = connect(mNetworkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(onOnlineStateChanged(bool)));
     Q_ASSERT(connectResult);
 #endif
-
 
     // to avoid too short on-off-cycles
     // coming back from suspended all collected signals
@@ -100,19 +97,21 @@ QString DataServer::networkInfo()
 {
     QString networkInfo;
     networkInfo.append("Online: ");
+    if(mCurrentIsOnline) {
+        networkInfo.append(tr("YES\n"));
+    } else {
+        networkInfo.append(tr("NO\n"));
+    }
+#if defined (Q_OS_IOS)
+    // active network configurations are confusing
+    // under iOS "utun0" and "en2" are reported active even in airplane mode
+    // so we don't use QNetworkConfigurationManager for iOS
+    // TODO get some more infos from reachability classes
+#else
     QString activeNetworkConfigNames;
-    bool isOnline = false;
-    int activeNetworks = 0;
     QList<QNetworkConfiguration> activeConfigs = mNetworkConfigManager->allConfigurations(QNetworkConfiguration::Active);
     for (int i = 0; i < activeConfigs.size(); ++i) {
         QNetworkConfiguration config = activeConfigs.at(i);
-#if defined (Q_OS_IOS)
-        if(config.name() != "utun0") {
-            activeNetworks++;
-        }
-#else
-        activeNetworks++;
-#endif
         if(!activeNetworkConfigNames.isEmpty()) {
             activeNetworkConfigNames.append(" | ");
         }
@@ -123,28 +122,14 @@ QString DataServer::networkInfo()
         }
         activeNetworkConfigNames.append(":").append(config.name());
     } // all active configurations
-#if defined (Q_OS_IOS)
-    if(activeNetworks > 0) {
-        isOnline = true;
-    }
-#else
-    isOnline = mNetworkConfigManager->isOnline();
-#endif
-    if(isOnline) {
-         networkInfo.append(tr("Yes")).append(", ");
-    } else {
-        networkInfo.append(tr("No")).append(", ");
-    }
     networkInfo.append("Active: ");
     networkInfo.append(activeNetworkConfigNames).append("\n");
     networkInfo.append("Default: ").append(mNetworkConfigManager->defaultConfiguration().name());
 
     if(activeNetworkConfigNames.isEmpty()) {
-        networkInfo.append("\n").append(tr("no network connection - WIFI On ?")).append("\n");
+        networkInfo.append("\n").append(tr("no network connection - WIFI On ?"));
     }
-    if(mIsHungry) {
-        networkInfo.append(tr("stable connection - ready for transmissions to server"));
-    }
+#endif
     // ad more infos from configurations
     // or add infos about running requests, last action done, ...
     return networkInfo;
@@ -198,13 +183,18 @@ void DataServer::onOnlineStateChanged(bool isOnline)
     }
 }
 
-void DataServer::onNetworkConfigurationChanges(const QNetworkConfiguration&)
+#if defined (Q_OS_IOS)
+void DataServer::statusChanged(utility::NetworkStatus newStatus)
 {
-    qDebug() << "onNetworkConfigurationChanges I O S";
-    const auto configurations = mNetworkConfigManager->allConfigurations(QNetworkConfiguration::Active);
-    onOnlineStateChanged(configurations.size() > 1
-                         || (configurations.size() == 1 && configurations.constFirst().name() != QString("utun0")) );
+    if (newStatus == utility::NotReachable) {
+        qDebug("I O S   REACHABILITY: OFFLINE");
+        onOnlineStateChanged(false);
+    } else {
+        onOnlineStateChanged(true);
+        qDebug("I O S   REACHABILITY: ONLINE");
+    }
 }
+#endif
 
 // ONLINE end
 

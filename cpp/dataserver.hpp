@@ -5,6 +5,10 @@
 
 #include "gen/DataManager.hpp"
 
+#if defined (Q_OS_IOS)
+#include "ios/src/ReachabilityListener.h"
+#endif
+
 #include <QUrl>
 #include <QDebug>
 #include <QtNetwork/qnetworkaccessmanager.h>
@@ -16,6 +20,10 @@
 #include <QTimer>
 
 class DataServer : public QObject
+#if defined (Q_OS_IOS)
+    , private utility::ReachabilityDelegate
+#endif
+
 {
     Q_OBJECT
 public:
@@ -57,8 +65,6 @@ public slots:
 private slots:
     // NETWORK
     void onOnlineStateChanged(bool isOnline);
-    // workaround to get isOnline on iOS
-    void onNetworkConfigurationChanges(const QNetworkConfiguration &);
     // timeouts from Timers
     void onOnlineStateCollected();
     void onOnlineStableConnection();
@@ -93,6 +99,10 @@ private:
     // timer timeout intervals
     int mOnlineStateCollectorInterval;
     int mOnlineStableTimerInterval;
+
+#if defined (Q_OS_IOS)
+    void statusChanged(utility::NetworkStatus newStatus);
+#endif
 
     // REST
     QNetworkAccessManager* mNetworkAccessManager;

@@ -152,6 +152,12 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 include(android-openssl.pri)
 
 ios {
+    # framework needed for Reachability classes
+    LIBS += -framework SystemConfiguration
+    # Reachability to get reliable online state
+    OBJECTIVE_SOURCES += ios/src/Reachability.mm \
+    ios/src/ReachabilityListener.mm
+
     QMAKE_INFO_PLIST = ios/Info.plist
     ios_icon.files = $$files($$PWD/ios/Icon*.png)
     QMAKE_BUNDLE_DATA += ios_icon
