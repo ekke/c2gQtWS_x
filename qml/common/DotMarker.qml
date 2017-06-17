@@ -1,4 +1,4 @@
-import QtQuick 2.7
+import QtQuick 2.9
 
 // to be placed on top of MiniFAB or FAB
 Rectangle {
