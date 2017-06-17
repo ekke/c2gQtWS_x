@@ -60,7 +60,7 @@ void ImageLoader::onReplyFinished()
 
     if (reply) {
         if (reply->error() == QNetworkReply::NoError) {
-            const int available = reply->bytesAvailable();
+            const qint64 available = reply->bytesAvailable();
             if (available > 0) {
                 int httpStatusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
                 if(httpStatusCode == 200) {
