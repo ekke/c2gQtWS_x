@@ -168,6 +168,10 @@ ios {
 
     QMAKE_IOS_DEPLOYMENT_TARGET = 8.2
 
+    disable_warning.name = GCC_WARN_64_TO_32_BIT_CONVERSION
+    disable_warning.value = NO
+    QMAKE_MAC_XCODE_SETTINGS += disable_warning
+
     # see https://bugreports.qt.io/browse/QTCREATORBUG-16968
     # ios_signature.pri not part of project repo because of private signature details
     # contains:
