@@ -94,5 +94,7 @@
         <file>qml/common/CommunicationButton.qml</file>
         <file>qml/common/TextAreaRow.qml</file>
         <file>qml/common/CommunicationMenu.qml</file>
+        <file>qml/common/MenuItemWithDot.qml</file>
+        <file>qml/popups/PopupOK.qml</file>
     </qresource>
 </RCC>
