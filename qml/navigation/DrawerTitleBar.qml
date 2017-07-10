@@ -151,7 +151,11 @@ ToolBar {
                         navigationIndex = aboutNavigationIndex
                     }
                 }
+                onAboutToShow: {
+                    appWindow.modalMenuOpen = true
+                }
                 onAboutToHide: {
+                    appWindow.modalMenuOpen = false
                     appWindow.resetFocus()
                 }
             } // end optionsMenu

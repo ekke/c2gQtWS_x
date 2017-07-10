@@ -47,6 +47,13 @@ Item {
         onClosed: {
             callMenu.parent = rootPane
         }
+        onAboutToShow: {
+            appWindow.modalMenuOpen = true
+        }
+        onAboutToHide: {
+            appWindow.modalMenuOpen = false
+            appWindow.resetFocus()
+        }
     } // end callMenu
 
     Menu {
@@ -78,6 +85,13 @@ Item {
         }
         onClosed: {
             callMenuIOS.parent = rootPane
+        }
+        onAboutToShow: {
+            appWindow.modalMenuOpen = true
+        }
+        onAboutToHide: {
+            appWindow.modalMenuOpen = false
+            appWindow.resetFocus()
         }
     } // end callMenuIOS
 

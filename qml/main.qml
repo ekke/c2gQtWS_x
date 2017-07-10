@@ -52,6 +52,7 @@ ApplicationWindow {
 
     property bool backKeyfreezed: false
     property bool modalPopupActive: false
+    property bool modalMenuOpen: false
 
     property bool myScheduleActive: false
     onMyScheduleActiveChanged: {
@@ -346,6 +347,8 @@ ApplicationWindow {
                 showToast(qsTr("Back key not allowed - please select an option."))
                 return
             }
+            // we don't have to check for appWindow.modalMenuOpen
+            // because my modal menus allow close by ESCAPE (== Android BACK key)
             if(!initDone) {
                 return
             }
