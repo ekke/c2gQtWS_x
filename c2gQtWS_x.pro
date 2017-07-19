@@ -155,7 +155,7 @@ ios {
     # framework needed for Reachability classes
     LIBS += -framework SystemConfiguration
     # Reachability to get reliable online state
-    OBJECTIVE_SOURCES += ios/src/Reachability.mm \
+    SOURCES += ios/src/Reachability.mm \
     ios/src/ReachabilityListener.mm
 
     QMAKE_INFO_PLIST = ios/Info.plist
@@ -185,7 +185,7 @@ ios {
     include(ios_signature.pri)
 
     # Note for devices: 1=iPhone, 2=iPad, 1,2=Universal.
-    QMAKE_IOS_TARGETED_DEVICE_FAMILY = 1,2
+    QMAKE_APPLE_TARGETED_DEVICE_FAMILY = 1,2
 }
 
 # winrt work in progress
