@@ -2893,5 +2893,9 @@
         <file>images/white/zoom_out@2x.png</file>
         <file>images/white/zoom_out@3x.png</file>
         <file>images/white/zoom_out@4x.png</file>
+        <file>images/extra/dropdown_arrow.png</file>
+        <file>images/extra/dropdown_arrow@2x.png</file>
+        <file>images/extra/dropdown_arrow@3x.png</file>
+        <file>images/extra/dropdown_arrow@4x.png</file>
     </qresource>
 </RCC>

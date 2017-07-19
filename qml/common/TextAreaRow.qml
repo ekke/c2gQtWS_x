@@ -21,7 +21,7 @@ RowLayout {
         TextArea {
             id: theTextField
             // Qt 5.8
-            // only iof set to true we can mark words by double tap
+            // only if set to true we can mark words by double tap
             selectByMouse: doubleTapIsDefault
             // important - otherwise text goes endless without wrapping
             width: parent.width
@@ -33,6 +33,18 @@ RowLayout {
         spacing: 0
         anchors.top: textPane.top
         Layout.minimumWidth: textClearButton.visible || textSelectToggleButton.visible || textDoneButton.visible? 48 : 0
+        ButtonIconActive {
+            id: textDoneButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: theTextField.activeFocus
+            focusPolicy: Qt.ClickFocus
+            imageName: "done.png"
+            onClicked: {
+                // we only need the focus
+                // emit signal so users can give another field the activeFocus
+                theTextRow.done()
+            }
+        } // textDoneButton
         ButtonIconActive {
             id: textClearButton
             anchors.horizontalCenter: parent.horizontalCenter
@@ -58,17 +70,6 @@ RowLayout {
                 }
             }
         } // textSelectButton
-        ButtonIconActive {
-            id: textDoneButton
-            anchors.horizontalCenter: parent.horizontalCenter
-            visible: theTextField.activeFocus
-            focusPolicy: Qt.ClickFocus
-            imageName: "done.png"
-            onClicked: {
-                // we only need the focus
-                // emit signal so users can give another field the activeFocus
-                theTextRow.done()
-            }
-        } // textDoneButton
+
     }
 } // row w text area

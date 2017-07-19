@@ -96,5 +96,8 @@
         <file>qml/common/CommunicationMenu.qml</file>
         <file>qml/common/MenuItemWithDot.qml</file>
         <file>qml/popups/PopupOK.qml</file>
+        <file>qml/common/CharButton.qml</file>
+        <file>qml/common/ComboBoxButton.qml</file>
+        <file>qml/common/ComboBoxModal.qml</file>
     </qresource>
 </RCC>
