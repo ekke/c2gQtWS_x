@@ -9,6 +9,7 @@
 
 
 #include "Day.hpp"
+#include "SessionTrack.hpp"
 
 
 class Conference: public QObject
@@ -26,13 +27,13 @@ class Conference: public QObject
 	Q_PROPERTY(QString hashTag READ hashTag WRITE setHashTag NOTIFY hashTagChanged FINAL)
 	Q_PROPERTY(QString homePage READ homePage WRITE setHomePage NOTIFY homePageChanged FINAL)
 	Q_PROPERTY(QString coordinate READ coordinate WRITE setCoordinate NOTIFY coordinateChanged FINAL)
-	Q_PROPERTY(int lastBuildingId READ lastBuildingId WRITE setLastBuildingId NOTIFY lastBuildingIdChanged FINAL)
-	Q_PROPERTY(int lastFloorId READ lastFloorId WRITE setLastFloorId NOTIFY lastFloorIdChanged FINAL)
 	Q_PROPERTY(int lastRoomId READ lastRoomId WRITE setLastRoomId NOTIFY lastRoomIdChanged FINAL)
 	Q_PROPERTY(int lastSessionTrackId READ lastSessionTrackId WRITE setLastSessionTrackId NOTIFY lastSessionTrackIdChanged FINAL)
 
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<Day> daysPropertyList READ daysPropertyList NOTIFY daysPropertyListChanged)
+	// QQmlListProperty to get easy access from QML
+	Q_PROPERTY(QQmlListProperty<SessionTrack> tracksPropertyList READ tracksPropertyList NOTIFY tracksPropertyListChanged)
 
 public:
 	Conference(QObject *parent = 0);
@@ -81,10 +82,6 @@ public:
 	void setHomePage(QString homePage);
 	QString coordinate() const;
 	void setCoordinate(QString coordinate);
-	int lastBuildingId() const;
-	void setLastBuildingId(int lastBuildingId);
-	int lastFloorId() const;
-	void setLastFloorId(int lastFloorId);
 	int lastRoomId() const;
 	void setLastRoomId(int lastRoomId);
 	int lastSessionTrackId() const;
@@ -93,6 +90,9 @@ public:
 	
 	Q_INVOKABLE
 	QVariantList daysAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList daysAsCacheQVariantList();
 	
 	Q_INVOKABLE
 	QVariantList daysAsForeignQVariantList();
@@ -125,6 +125,44 @@ public:
 	void setDays(QList<Day*> days);
 	// access from QML to days
 	QQmlListProperty<Day> daysPropertyList();
+	
+	Q_INVOKABLE
+	QVariantList tracksAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList tracksAsCacheQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList tracksAsForeignQVariantList();
+
+	
+	Q_INVOKABLE
+	void addToTracks(SessionTrack* sessionTrack);
+	
+	Q_INVOKABLE
+	bool removeFromTracks(SessionTrack* sessionTrack);
+
+	Q_INVOKABLE
+	void clearTracks();
+
+	// lazy Array of independent Data Objects: only keys are persisted
+	Q_INVOKABLE
+	bool areTracksKeysResolved();
+
+	Q_INVOKABLE
+	QStringList tracksKeys();
+
+	Q_INVOKABLE
+	void resolveTracksKeys(QList<SessionTrack*> tracks);
+	
+	Q_INVOKABLE
+	int tracksCount();
+	
+	 // access from C++ to tracks
+	QList<SessionTrack*> tracks();
+	void setTracks(QList<SessionTrack*> tracks);
+	// access from QML to tracks
+	QQmlListProperty<SessionTrack> tracksPropertyList();
 
 
 	virtual ~Conference();
@@ -142,13 +180,15 @@ public:
 	void hashTagChanged(QString hashTag);
 	void homePageChanged(QString homePage);
 	void coordinateChanged(QString coordinate);
-	void lastBuildingIdChanged(int lastBuildingId);
-	void lastFloorIdChanged(int lastFloorId);
 	void lastRoomIdChanged(int lastRoomId);
 	void lastSessionTrackIdChanged(int lastSessionTrackId);
 	void daysChanged(QList<Day*> days);
 	void addedToDays(Day* day);
 	void daysPropertyListChanged();
+	
+	void tracksChanged(QList<SessionTrack*> tracks);
+	void addedToTracks(SessionTrack* sessionTrack);
+	void tracksPropertyListChanged();
 	
 	
 
@@ -165,8 +205,6 @@ private:
 	QString mHashTag;
 	QString mHomePage;
 	QString mCoordinate;
-	int mLastBuildingId;
-	int mLastFloorId;
 	int mLastRoomId;
 	int mLastSessionTrackId;
 	// lazy Array of independent Data Objects: only keys are persisted
@@ -180,6 +218,18 @@ private:
 	static int daysPropertyCount(QQmlListProperty<Day> *daysList);
 	static Day* atDaysProperty(QQmlListProperty<Day> *daysList, int pos);
 	static void clearDaysProperty(QQmlListProperty<Day> *daysList);
+	
+	// lazy Array of independent Data Objects: only keys are persisted
+	QStringList mTracksKeys;
+	bool mTracksKeysResolved;
+	QList<SessionTrack*> mTracks;
+	// implementation for QQmlListProperty to use
+	// QML functions for List of SessionTrack*
+	static void appendToTracksProperty(QQmlListProperty<SessionTrack> *tracksList,
+		SessionTrack* sessionTrack);
+	static int tracksPropertyCount(QQmlListProperty<SessionTrack> *tracksList);
+	static SessionTrack* atTracksProperty(QQmlListProperty<SessionTrack> *tracksList, int pos);
+	static void clearTracksProperty(QQmlListProperty<SessionTrack> *tracksList);
 	
 
 	Q_DISABLE_COPY (Conference)

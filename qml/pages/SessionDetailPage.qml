@@ -23,7 +23,7 @@ Page {
             // already resolved for the list
             // dataManager.resolveOrderReferences(order)
             // customer = order.customerAsDataObject
-            isScheduleItem = session.hasScheduleItem()
+            isScheduleItem = session.hasGenericScheduleItem()
         }
     }
 
@@ -189,13 +189,13 @@ Page {
                     height: 3
                     transform: Translate{y: -8}
                 }
-                LabelSubheading {
-                    visible: session.subtitle.length
-                    Layout.leftMargin: 16
-                    Layout.rightMargin: 16
-                    text: session.subtitle
-                    wrapMode: Text.WordWrap
-                }
+//                LabelSubheading {
+//                    visible: session.subtitle.length
+//                    Layout.leftMargin: 16
+//                    Layout.rightMargin: 16
+//                    text: session.subtitle
+//                    wrapMode: Text.WordWrap
+//                }
                 LabelSubheading {
                     visible: session.description.length
                     Layout.topMargin: 12
@@ -206,7 +206,7 @@ Page {
                 }
 
                 HorizontalDivider{
-                    visible: session.subtitle.length || session.description.length
+                    visible: session.description.length // session.subtitle.length ||
                 }
 
                 LabelSubheading {

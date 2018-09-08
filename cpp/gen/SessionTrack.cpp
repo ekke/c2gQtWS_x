@@ -7,12 +7,14 @@
 // keys of QVariantMap used in this APP
 static const QString trackIdKey = "trackId";
 static const QString nameKey = "name";
+static const QString colorKey = "color";
 static const QString inAssetsKey = "inAssets";
 static const QString sessionsKey = "sessions";
 
 // keys used from Server API etc
 static const QString trackIdForeignKey = "trackId";
 static const QString nameForeignKey = "name";
+static const QString colorForeignKey = "color";
 static const QString inAssetsForeignKey = "inAssets";
 static const QString sessionsForeignKey = "sessions";
 
@@ -20,7 +22,7 @@ static const QString sessionsForeignKey = "sessions";
  * Default Constructor if SessionTrack not initialized from QVariantMap
  */
 SessionTrack::SessionTrack(QObject *parent) :
-        QObject(parent), mTrackId(-1), mName(""), mInAssets(false)
+        QObject(parent), mTrackId(-1), mName(""), mColor(""), mInAssets(false)
 {
 		// lazy Arrays where only keys are persisted
 		mSessionsKeysResolved = false;
@@ -45,6 +47,7 @@ void SessionTrack::fillFromMap(const QVariantMap& sessionTrackMap)
 {
 	mTrackId = sessionTrackMap.value(trackIdKey).toInt();
 	mName = sessionTrackMap.value(nameKey).toString();
+	mColor = sessionTrackMap.value(colorKey).toString();
 	mInAssets = sessionTrackMap.value(inAssetsKey).toBool();
 	// mSessions is (lazy loaded) Array of Session*
 	mSessionsKeys = sessionTrackMap.value(sessionsKey).toStringList();
@@ -63,6 +66,7 @@ void SessionTrack::fillFromForeignMap(const QVariantMap& sessionTrackMap)
 {
 	mTrackId = sessionTrackMap.value(trackIdForeignKey).toInt();
 	mName = sessionTrackMap.value(nameForeignKey).toString();
+	mColor = sessionTrackMap.value(colorForeignKey).toString();
 	mInAssets = sessionTrackMap.value(inAssetsForeignKey).toBool();
 	// mSessions is (lazy loaded) Array of Session*
 	mSessionsKeys = sessionTrackMap.value(sessionsForeignKey).toStringList();
@@ -81,6 +85,7 @@ void SessionTrack::fillFromCacheMap(const QVariantMap& sessionTrackMap)
 {
 	mTrackId = sessionTrackMap.value(trackIdKey).toInt();
 	mName = sessionTrackMap.value(nameKey).toString();
+	mColor = sessionTrackMap.value(colorKey).toString();
 	mInAssets = sessionTrackMap.value(inAssetsKey).toBool();
 	// mSessions is (lazy loaded) Array of Session*
 	mSessionsKeys = sessionTrackMap.value(sessionsKey).toStringList();
@@ -130,6 +135,7 @@ QVariantMap SessionTrack::toMap()
 	sessionTrackMap.insert(sessionsKey, mSessionsKeys);
 	sessionTrackMap.insert(trackIdKey, mTrackId);
 	sessionTrackMap.insert(nameKey, mName);
+	sessionTrackMap.insert(colorKey, mColor);
 	sessionTrackMap.insert(inAssetsKey, mInAssets);
 	return sessionTrackMap;
 }
@@ -157,9 +163,10 @@ QVariantMap SessionTrack::toForeignMap()
 		session = mSessions.at(i);
 		mSessionsKeys << QString::number(session->sessionId());
 	}
-	sessionTrackMap.insert(sessionsKey, mSessionsKeys);
+	sessionTrackMap.insert(sessionsForeignKey, mSessionsKeys);
 	sessionTrackMap.insert(trackIdForeignKey, mTrackId);
 	sessionTrackMap.insert(nameForeignKey, mName);
+	sessionTrackMap.insert(colorForeignKey, mColor);
 	sessionTrackMap.insert(inAssetsForeignKey, mInAssets);
 	return sessionTrackMap;
 }
@@ -206,6 +213,20 @@ void SessionTrack::setName(QString name)
 	}
 }
 // ATT 
+// Optional: color
+QString SessionTrack::color() const
+{
+	return mColor;
+}
+
+void SessionTrack::setColor(QString color)
+{
+	if (color != mColor) {
+		mColor = color;
+		emit colorChanged(color);
+	}
+}
+// ATT 
 // Optional: inAssets
 bool SessionTrack::inAssets() const
 {
@@ -226,6 +247,14 @@ QVariantList SessionTrack::sessionsAsQVariantList()
 	QVariantList sessionsList;
 	for (int i = 0; i < mSessions.size(); ++i) {
         sessionsList.append((mSessions.at(i))->toMap());
+    }
+	return sessionsList;
+}
+QVariantList SessionTrack::sessionsAsCacheQVariantList()
+{
+	QVariantList sessionsList;
+	for (int i = 0; i < mSessions.size(); ++i) {
+        sessionsList.append((mSessions.at(i))->toCacheMap());
     }
 	return sessionsList;
 }

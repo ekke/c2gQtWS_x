@@ -2,22 +2,18 @@
 #include <QDebug>
 #include <quuid.h>
 // target also references to this
-#include "Floor.hpp"
-// target also references to this
 #include "Session.hpp"
 
 // keys of QVariantMap used in this APP
 static const QString roomIdKey = "roomId";
 static const QString roomNameKey = "roomName";
 static const QString inAssetsKey = "inAssets";
-static const QString floorKey = "floor";
 static const QString sessionsKey = "sessions";
 
 // keys used from Server API etc
 static const QString roomIdForeignKey = "roomId";
 static const QString roomNameForeignKey = "roomName";
 static const QString inAssetsForeignKey = "inAssets";
-static const QString floorForeignKey = "floor";
 static const QString sessionsForeignKey = "sessions";
 
 /*
@@ -26,19 +22,12 @@ static const QString sessionsForeignKey = "sessions";
 Room::Room(QObject *parent) :
         QObject(parent), mRoomId(-1), mRoomName(""), mInAssets(false)
 {
-	// lazy references:
-	mFloor = -1;
-	mFloorAsDataObject = 0;
-	mFloorInvalid = false;
 		// lazy Arrays where only keys are persisted
 		mSessionsKeysResolved = false;
 }
 
 bool Room::isAllResolved()
 {
-	if (hasFloor() && !isFloorResolvedAsDataObject()) {
-		return false;
-	}
     if(!areSessionsKeysResolved()) {
         return false;
     }
@@ -57,13 +46,6 @@ void Room::fillFromMap(const QVariantMap& roomMap)
 	mRoomId = roomMap.value(roomIdKey).toInt();
 	mRoomName = roomMap.value(roomNameKey).toString();
 	mInAssets = roomMap.value(inAssetsKey).toBool();
-	// floor lazy pointing to Floor* (domainKey: floorId)
-	if (roomMap.contains(floorKey)) {
-		mFloor = roomMap.value(floorKey).toInt();
-		if (mFloor != -1) {
-			// resolve the corresponding Data Object on demand from DataManager
-		}
-	}
 	// mSessions is (lazy loaded) Array of Session*
 	mSessionsKeys = roomMap.value(sessionsKey).toStringList();
 	// mSessions must be resolved later if there are keys
@@ -82,13 +64,6 @@ void Room::fillFromForeignMap(const QVariantMap& roomMap)
 	mRoomId = roomMap.value(roomIdForeignKey).toInt();
 	mRoomName = roomMap.value(roomNameForeignKey).toString();
 	mInAssets = roomMap.value(inAssetsForeignKey).toBool();
-	// floor lazy pointing to Floor* (domainKey: floorId)
-	if (roomMap.contains(floorForeignKey)) {
-		mFloor = roomMap.value(floorForeignKey).toInt();
-		if (mFloor != -1) {
-			// resolve the corresponding Data Object on demand from DataManager
-		}
-	}
 	// mSessions is (lazy loaded) Array of Session*
 	mSessionsKeys = roomMap.value(sessionsForeignKey).toStringList();
 	// mSessions must be resolved later if there are keys
@@ -107,13 +82,6 @@ void Room::fillFromCacheMap(const QVariantMap& roomMap)
 	mRoomId = roomMap.value(roomIdKey).toInt();
 	mRoomName = roomMap.value(roomNameKey).toString();
 	mInAssets = roomMap.value(inAssetsKey).toBool();
-	// floor lazy pointing to Floor* (domainKey: floorId)
-	if (roomMap.contains(floorKey)) {
-		mFloor = roomMap.value(floorKey).toInt();
-		if (mFloor != -1) {
-			// resolve the corresponding Data Object on demand from DataManager
-		}
-	}
 	// mSessions is (lazy loaded) Array of Session*
 	mSessionsKeys = roomMap.value(sessionsKey).toStringList();
 	// mSessions must be resolved later if there are keys
@@ -133,10 +101,6 @@ bool Room::isValid()
 	if (mRoomId == -1) {
 		return false;
 	}
-	// floor lazy pointing to Floor* (domainKey: floorId)
-	if (mFloor == -1) {
-		return false;
-	}
 	return true;
 }
 	
@@ -148,10 +112,6 @@ bool Room::isValid()
 QVariantMap Room::toMap()
 {
 	QVariantMap roomMap;
-	// floor lazy pointing to Floor* (domainKey: floorId)
-	if (mFloor != -1) {
-		roomMap.insert(floorKey, mFloor);
-	}
 	// mSessions points to Session*
 	// lazy array: persist only keys
 	//
@@ -182,10 +142,6 @@ QVariantMap Room::toMap()
 QVariantMap Room::toForeignMap()
 {
 	QVariantMap roomMap;
-	// floor lazy pointing to Floor* (domainKey: floorId)
-	if (mFloor != -1) {
-		roomMap.insert(floorForeignKey, mFloor);
-	}
 	// mSessions points to Session*
 	// lazy array: persist only keys
 	//
@@ -201,7 +157,7 @@ QVariantMap Room::toForeignMap()
 		session = mSessions.at(i);
 		mSessionsKeys << QString::number(session->sessionId());
 	}
-	roomMap.insert(sessionsKey, mSessionsKeys);
+	roomMap.insert(sessionsForeignKey, mSessionsKeys);
 	roomMap.insert(roomIdForeignKey, mRoomId);
 	roomMap.insert(roomNameForeignKey, mRoomName);
 	roomMap.insert(inAssetsForeignKey, mInAssets);
@@ -219,73 +175,6 @@ QVariantMap Room::toCacheMap()
 	// no transient properties found from data model
 	// use default toMao()
 	return toMap();
-}
-// REF
-// Lazy: floor
-// Mandatory: floor
-// floor lazy pointing to Floor* (domainKey: floorId)
-int Room::floor() const
-{
-	return mFloor;
-}
-Floor* Room::floorAsDataObject() const
-{
-	return mFloorAsDataObject;
-}
-void Room::setFloor(int floor)
-{
-	if (floor != mFloor) {
-        // remove old Data Object if one was resolved
-        if (mFloorAsDataObject) {
-            // reset pointer, don't delete the independent object !
-            mFloorAsDataObject = 0;
-        }
-        // set the new lazy reference
-        mFloor = floor;
-        mFloorInvalid = false;
-        emit floorChanged(floor);
-        if (floor != -1) {
-            // resolve the corresponding Data Object on demand from DataManager
-        }
-    }
-}
-void Room::removeFloor()
-{
-	if (mFloor != -1) {
-		setFloor(-1);
-	}
-}
-bool Room::hasFloor()
-{
-    if (!mFloorInvalid && mFloor != -1) {
-        return true;
-    } else {
-        return false;
-    }
-}
-bool Room::isFloorResolvedAsDataObject()
-{
-    if (!mFloorInvalid && mFloorAsDataObject) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-// lazy bound Data Object was resolved. overwrite floorId if different
-void Room::resolveFloorAsDataObject(Floor* floor)
-{
-    if (floor) {
-        if (floor->floorId() != mFloor) {
-            setFloor(floor->floorId());
-        }
-        mFloorAsDataObject = floor;
-        mFloorInvalid = false;
-    }
-}
-void Room::markFloorAsInvalid()
-{
-    mFloorInvalid = true;
 }
 // ATT 
 // Mandatory: roomId
@@ -337,6 +226,14 @@ QVariantList Room::sessionsAsQVariantList()
 	QVariantList sessionsList;
 	for (int i = 0; i < mSessions.size(); ++i) {
         sessionsList.append((mSessions.at(i))->toMap());
+    }
+	return sessionsList;
+}
+QVariantList Room::sessionsAsCacheQVariantList()
+{
+	QVariantList sessionsList;
+	for (int i = 0; i < mSessions.size(); ++i) {
+        sessionsList.append((mSessions.at(i))->toCacheMap());
     }
 	return sessionsList;
 }

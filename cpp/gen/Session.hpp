@@ -10,7 +10,6 @@
 
 // forward declaration (target references to this)
 class Speaker;
-#include "SessionLink.hpp"
 // forward declaration (target references to this)
 class SessionTrack;
 // forward declaration (target references to this)
@@ -18,7 +17,7 @@ class Day;
 // forward declaration (target references to this)
 class Room;
 // forward declaration (target references to this)
-class ScheduleItem;
+class GenericScheduleItem;
 
 
 class Session: public QObject
@@ -36,7 +35,6 @@ class Session: public QObject
 	Q_PROPERTY(bool isUnconference READ isUnconference WRITE setIsUnconference NOTIFY isUnconferenceChanged FINAL)
 	Q_PROPERTY(bool isMeeting READ isMeeting WRITE setIsMeeting NOTIFY isMeetingChanged FINAL)
 	Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged FINAL)
-	Q_PROPERTY(QString subtitle READ subtitle WRITE setSubtitle NOTIFY subtitleChanged FINAL)
 	Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged FINAL)
 	Q_PROPERTY(QString sessionType READ sessionType WRITE setSessionType NOTIFY sessionTypeChanged FINAL)
 	Q_PROPERTY(QTime startTime READ startTime WRITE setStartTime NOTIFY startTimeChanged FINAL)
@@ -51,14 +49,12 @@ class Session: public QObject
 	// room lazy pointing to Room* (domainKey: roomId)
 	Q_PROPERTY(int room READ room WRITE setRoom NOTIFY roomChanged FINAL)
 	Q_PROPERTY(Room* roomAsDataObject READ roomAsDataObject WRITE resolveRoomAsDataObject NOTIFY roomAsDataObjectChanged FINAL)
-	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-	Q_PROPERTY(int scheduleItem READ scheduleItem WRITE setScheduleItem NOTIFY scheduleItemChanged FINAL)
-	Q_PROPERTY(ScheduleItem* scheduleItemAsDataObject READ scheduleItemAsDataObject WRITE resolveScheduleItemAsDataObject NOTIFY scheduleItemAsDataObjectChanged FINAL)
+	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+	Q_PROPERTY(int genericScheduleItem READ genericScheduleItem WRITE setGenericScheduleItem NOTIFY genericScheduleItemChanged FINAL)
+	Q_PROPERTY(GenericScheduleItem* genericScheduleItemAsDataObject READ genericScheduleItemAsDataObject WRITE resolveGenericScheduleItemAsDataObject NOTIFY genericScheduleItemAsDataObjectChanged FINAL)
 
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<Speaker> presenterPropertyList READ presenterPropertyList NOTIFY presenterPropertyListChanged)
-	// QQmlListProperty to get easy access from QML
-	Q_PROPERTY(QQmlListProperty<SessionLink> sessionLinksPropertyList READ sessionLinksPropertyList NOTIFY sessionLinksPropertyListChanged)
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<SessionTrack> sessionTracksPropertyList READ sessionTracksPropertyList NOTIFY sessionTracksPropertyListChanged)
 
@@ -103,8 +99,6 @@ public:
 	void setIsMeeting(bool isMeeting);
 	QString title() const;
 	void setTitle(QString title);
-	QString subtitle() const;
-	void setSubtitle(QString subtitle);
 	QString description() const;
 	void setDescription(QString description);
 	QString sessionType() const;
@@ -173,30 +167,33 @@ public:
 	Q_INVOKABLE
 	void markRoomAsInvalid();
 	
-	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-	int scheduleItem() const;
-	void setScheduleItem(int scheduleItem);
-	ScheduleItem* scheduleItemAsDataObject() const;
+	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+	int genericScheduleItem() const;
+	void setGenericScheduleItem(int genericScheduleItem);
+	GenericScheduleItem* genericScheduleItemAsDataObject() const;
 	
 	Q_INVOKABLE
-	void resolveScheduleItemAsDataObject(ScheduleItem* scheduleItem);
+	void resolveGenericScheduleItemAsDataObject(GenericScheduleItem* genericScheduleItem);
 	
 	Q_INVOKABLE
-	void removeScheduleItem();
+	void removeGenericScheduleItem();
 	
 	Q_INVOKABLE
-	bool hasScheduleItem();
+	bool hasGenericScheduleItem();
 	
 	Q_INVOKABLE
-	bool isScheduleItemResolvedAsDataObject();
+	bool isGenericScheduleItemResolvedAsDataObject();
 	
 	Q_INVOKABLE
-	void markScheduleItemAsInvalid();
+	void markGenericScheduleItemAsInvalid();
 	
 
 	
 	Q_INVOKABLE
 	QVariantList presenterAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList presenterAsCacheQVariantList();
 	
 	Q_INVOKABLE
 	QVariantList presenterAsForeignQVariantList();
@@ -231,42 +228,10 @@ public:
 	QQmlListProperty<Speaker> presenterPropertyList();
 	
 	Q_INVOKABLE
-	QVariantList sessionLinksAsQVariantList();
-	
-	Q_INVOKABLE
-	QVariantList sessionLinksAsForeignQVariantList();
-
-	
-	Q_INVOKABLE
-	void addToSessionLinks(SessionLink* sessionLink);
-	
-	Q_INVOKABLE
-	bool removeFromSessionLinks(SessionLink* sessionLink);
-
-	Q_INVOKABLE
-	void clearSessionLinks();
-
-	// lazy Array of independent Data Objects: only keys are persisted
-	Q_INVOKABLE
-	bool areSessionLinksKeysResolved();
-
-	Q_INVOKABLE
-	QStringList sessionLinksKeys();
-
-	Q_INVOKABLE
-	void resolveSessionLinksKeys(QList<SessionLink*> sessionLinks);
-	
-	Q_INVOKABLE
-	int sessionLinksCount();
-	
-	 // access from C++ to sessionLinks
-	QList<SessionLink*> sessionLinks();
-	void setSessionLinks(QList<SessionLink*> sessionLinks);
-	// access from QML to sessionLinks
-	QQmlListProperty<SessionLink> sessionLinksPropertyList();
-	
-	Q_INVOKABLE
 	QVariantList sessionTracksAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList sessionTracksAsCacheQVariantList();
 	
 	Q_INVOKABLE
 	QVariantList sessionTracksAsForeignQVariantList();
@@ -316,7 +281,6 @@ public:
 	void isUnconferenceChanged(bool isUnconference);
 	void isMeetingChanged(bool isMeeting);
 	void titleChanged(QString title);
-	void subtitleChanged(QString subtitle);
 	void descriptionChanged(QString description);
 	void sessionTypeChanged(QString sessionType);
 	void startTimeChanged(QTime startTime);
@@ -331,16 +295,12 @@ public:
 	// room lazy pointing to Room* (domainKey: roomId)
 	void roomChanged(int room);
 	void roomAsDataObjectChanged(Room* room);
-	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-	void scheduleItemChanged(int scheduleItem);
-	void scheduleItemAsDataObjectChanged(ScheduleItem* scheduleItem);
+	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+	void genericScheduleItemChanged(int genericScheduleItem);
+	void genericScheduleItemAsDataObjectChanged(GenericScheduleItem* genericScheduleItem);
 	void presenterChanged(QList<Speaker*> presenter);
 	void addedToPresenter(Speaker* speaker);
 	void presenterPropertyListChanged();
-	
-	void sessionLinksChanged(QList<SessionLink*> sessionLinks);
-	void addedToSessionLinks(SessionLink* sessionLink);
-	void sessionLinksPropertyListChanged();
 	
 	void sessionTracksChanged(QList<SessionTrack*> sessionTracks);
 	void addedToSessionTracks(SessionTrack* sessionTrack);
@@ -361,7 +321,6 @@ private:
 	bool mIsUnconference;
 	bool mIsMeeting;
 	QString mTitle;
-	QString mSubtitle;
 	QString mDescription;
 	QString mSessionType;
 	QTime mStartTime;
@@ -376,9 +335,9 @@ private:
 	int mRoom;
 	bool mRoomInvalid;
 	Room* mRoomAsDataObject;
-	int mScheduleItem;
-	bool mScheduleItemInvalid;
-	ScheduleItem* mScheduleItemAsDataObject;
+	int mGenericScheduleItem;
+	bool mGenericScheduleItemInvalid;
+	GenericScheduleItem* mGenericScheduleItemAsDataObject;
 	// lazy Array of independent Data Objects: only keys are persisted
 	QStringList mPresenterKeys;
 	bool mPresenterKeysResolved;
@@ -390,18 +349,6 @@ private:
 	static int presenterPropertyCount(QQmlListProperty<Speaker> *presenterList);
 	static Speaker* atPresenterProperty(QQmlListProperty<Speaker> *presenterList, int pos);
 	static void clearPresenterProperty(QQmlListProperty<Speaker> *presenterList);
-	
-	// lazy Array of independent Data Objects: only keys are persisted
-	QStringList mSessionLinksKeys;
-	bool mSessionLinksKeysResolved;
-	QList<SessionLink*> mSessionLinks;
-	// implementation for QQmlListProperty to use
-	// QML functions for List of SessionLink*
-	static void appendToSessionLinksProperty(QQmlListProperty<SessionLink> *sessionLinksList,
-		SessionLink* sessionLink);
-	static int sessionLinksPropertyCount(QQmlListProperty<SessionLink> *sessionLinksList);
-	static SessionLink* atSessionLinksProperty(QQmlListProperty<SessionLink> *sessionLinksList, int pos);
-	static void clearSessionLinksProperty(QQmlListProperty<SessionLink> *sessionLinksList);
 	
 	// lazy Array of independent Data Objects: only keys are persisted
 	QStringList mSessionTracksKeys;

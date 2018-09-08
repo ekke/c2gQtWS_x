@@ -8,8 +8,6 @@
 
 
 // forward declaration (target references to this)
-class Floor;
-// forward declaration (target references to this)
 class Session;
 
 
@@ -20,9 +18,6 @@ class Room: public QObject
 	Q_PROPERTY(int roomId READ roomId WRITE setRoomId NOTIFY roomIdChanged FINAL)
 	Q_PROPERTY(QString roomName READ roomName WRITE setRoomName NOTIFY roomNameChanged FINAL)
 	Q_PROPERTY(bool inAssets READ inAssets WRITE setInAssets NOTIFY inAssetsChanged FINAL)
-	// floor lazy pointing to Floor* (domainKey: floorId)
-	Q_PROPERTY(int floor READ floor WRITE setFloor NOTIFY floorChanged FINAL)
-	Q_PROPERTY(Floor* floorAsDataObject READ floorAsDataObject WRITE resolveFloorAsDataObject NOTIFY floorAsDataObjectChanged FINAL)
 
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<Session> sessionsPropertyList READ sessionsPropertyList NOTIFY sessionsPropertyListChanged)
@@ -52,30 +47,13 @@ public:
 	void setRoomName(QString roomName);
 	bool inAssets() const;
 	void setInAssets(bool inAssets);
-	// floor lazy pointing to Floor* (domainKey: floorId)
-	int floor() const;
-	void setFloor(int floor);
-	Floor* floorAsDataObject() const;
-	
-	Q_INVOKABLE
-	void resolveFloorAsDataObject(Floor* floor);
-	
-	Q_INVOKABLE
-	void removeFloor();
-	
-	Q_INVOKABLE
-	bool hasFloor();
-	
-	Q_INVOKABLE
-	bool isFloorResolvedAsDataObject();
-	
-	Q_INVOKABLE
-	void markFloorAsInvalid();
-	
 
 	
 	Q_INVOKABLE
 	QVariantList sessionsAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList sessionsAsCacheQVariantList();
 	
 	Q_INVOKABLE
 	QVariantList sessionsAsForeignQVariantList();
@@ -117,9 +95,6 @@ public:
 	void roomIdChanged(int roomId);
 	void roomNameChanged(QString roomName);
 	void inAssetsChanged(bool inAssets);
-	// floor lazy pointing to Floor* (domainKey: floorId)
-	void floorChanged(int floor);
-	void floorAsDataObjectChanged(Floor* floor);
 	void sessionsChanged(QList<Session*> sessions);
 	void addedToSessions(Session* session);
 	void sessionsPropertyListChanged();
@@ -131,9 +106,6 @@ private:
 	int mRoomId;
 	QString mRoomName;
 	bool mInAssets;
-	int mFloor;
-	bool mFloorInvalid;
-	Floor* mFloorAsDataObject;
 	// lazy Array of independent Data Objects: only keys are persisted
 	QStringList mSessionsKeys;
 	bool mSessionsKeysResolved;

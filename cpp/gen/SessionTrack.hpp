@@ -17,6 +17,7 @@ class SessionTrack: public QObject
 
 	Q_PROPERTY(int trackId READ trackId WRITE setTrackId NOTIFY trackIdChanged FINAL)
 	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged FINAL)
+	Q_PROPERTY(QString color READ color WRITE setColor NOTIFY colorChanged FINAL)
 	Q_PROPERTY(bool inAssets READ inAssets WRITE setInAssets NOTIFY inAssetsChanged FINAL)
 
 	// QQmlListProperty to get easy access from QML
@@ -45,12 +46,17 @@ public:
 	void setTrackId(int trackId);
 	QString name() const;
 	void setName(QString name);
+	QString color() const;
+	void setColor(QString color);
 	bool inAssets() const;
 	void setInAssets(bool inAssets);
 
 	
 	Q_INVOKABLE
 	QVariantList sessionsAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList sessionsAsCacheQVariantList();
 	
 	Q_INVOKABLE
 	QVariantList sessionsAsForeignQVariantList();
@@ -91,6 +97,7 @@ public:
 
 	void trackIdChanged(int trackId);
 	void nameChanged(QString name);
+	void colorChanged(QString color);
 	void inAssetsChanged(bool inAssets);
 	void sessionsChanged(QList<Session*> sessions);
 	void addedToSessions(Session* session);
@@ -102,6 +109,7 @@ private:
 
 	int mTrackId;
 	QString mName;
+	QString mColor;
 	bool mInAssets;
 	// lazy Array of independent Data Objects: only keys are persisted
 	QStringList mSessionsKeys;

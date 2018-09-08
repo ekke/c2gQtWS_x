@@ -5,50 +5,42 @@
 // keys of QVariantMap used in this APP
 static const QString sessionIdKey = "sessionId";
 static const QString titleKey = "title";
-static const QString subtitleKey = "subtitle";
 static const QString descriptionKey = "description";
-static const QString sessionTypeKey = "sessionType";
 static const QString startTimeKey = "startTime";
 static const QString durationKey = "duration";
-static const QString abstractTextKey = "abstractText";
 static const QString roomKey = "room";
 static const QString sessionTracksKey = "sessionTracks";
 static const QString presenterKey = "presenter";
-static const QString sessionLinksKey = "sessionLinks";
 
 // keys used from Server API etc
 static const QString sessionIdForeignKey = "id";
 static const QString titleForeignKey = "title";
-static const QString subtitleForeignKey = "subtitle";
 static const QString descriptionForeignKey = "description";
-static const QString sessionTypeForeignKey = "type";
 static const QString startTimeForeignKey = "start";
 static const QString durationForeignKey = "duration";
-static const QString abstractTextForeignKey = "abstract";
 static const QString roomForeignKey = "room";
 static const QString sessionTracksForeignKey = "tracks";
 static const QString presenterForeignKey = "persons";
-static const QString sessionLinksForeignKey = "links";
 
 /*
  * Default Constructor if SessionAPI not initialized from QVariantMap
  */
 SessionAPI::SessionAPI(QObject *parent) :
-        QObject(parent), mSessionId(-1), mTitle(""), mSubtitle(""), mDescription(""), mSessionType(""), mDuration(""), mAbstractText(""), mRoom("")
+        QObject(parent), mSessionId(-1), mTitle(""), mDescription(""), mDuration(""), mRoom("")
 {
 	// Date, Time or Timestamp ? construct null value
 	mStartTime = QTime();
 		// lazy Arrays where only keys are persisted
+		mSessionTracksKeysResolved = false;
 		mPresenterKeysResolved = false;
-		mSessionLinksKeysResolved = false;
 }
 
 bool SessionAPI::isAllResolved()
 {
-    if(!arePresenterKeysResolved()) {
+    if(!areSessionTracksKeysResolved()) {
         return false;
     }
-    if(!areSessionLinksKeysResolved()) {
+    if(!arePresenterKeysResolved()) {
         return false;
     }
     return true;
@@ -65,9 +57,7 @@ void SessionAPI::fillFromMap(const QVariantMap& sessionAPIMap)
 {
 	mSessionId = sessionAPIMap.value(sessionIdKey).toInt();
 	mTitle = sessionAPIMap.value(titleKey).toString();
-	mSubtitle = sessionAPIMap.value(subtitleKey).toString();
 	mDescription = sessionAPIMap.value(descriptionKey).toString();
-	mSessionType = sessionAPIMap.value(sessionTypeKey).toString();
 	if (sessionAPIMap.contains(startTimeKey)) {
 		// always getting the Date as a String (from server or JSON)
 		QString startTimeAsString = sessionAPIMap.value(startTimeKey).toString();
@@ -78,19 +68,17 @@ void SessionAPI::fillFromMap(const QVariantMap& sessionAPIMap)
 		}
 	}
 	mDuration = sessionAPIMap.value(durationKey).toString();
-	mAbstractText = sessionAPIMap.value(abstractTextKey).toString();
 	mRoom = sessionAPIMap.value(roomKey).toString();
+	// mSessionTracks is (lazy loaded) Array of SessionTrackAPI*
+	mSessionTracksKeys = sessionAPIMap.value(sessionTracksKey).toStringList();
+	// mSessionTracks must be resolved later if there are keys
+	mSessionTracksKeysResolved = (mSessionTracksKeys.size() == 0);
+	mSessionTracks.clear();
 	// mPresenter is (lazy loaded) Array of PersonsAPI*
 	mPresenterKeys = sessionAPIMap.value(presenterKey).toStringList();
 	// mPresenter must be resolved later if there are keys
 	mPresenterKeysResolved = (mPresenterKeys.size() == 0);
 	mPresenter.clear();
-	// mSessionLinks is (lazy loaded) Array of SessionLinkAPI*
-	mSessionLinksKeys = sessionAPIMap.value(sessionLinksKey).toStringList();
-	// mSessionLinks must be resolved later if there are keys
-	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
-	mSessionLinks.clear();
-	mSessionTracksStringList = sessionAPIMap.value(sessionTracksKey).toStringList();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -103,9 +91,7 @@ void SessionAPI::fillFromForeignMap(const QVariantMap& sessionAPIMap)
 {
 	mSessionId = sessionAPIMap.value(sessionIdForeignKey).toInt();
 	mTitle = sessionAPIMap.value(titleForeignKey).toString();
-	mSubtitle = sessionAPIMap.value(subtitleForeignKey).toString();
 	mDescription = sessionAPIMap.value(descriptionForeignKey).toString();
-	mSessionType = sessionAPIMap.value(sessionTypeForeignKey).toString();
 	if (sessionAPIMap.contains(startTimeForeignKey)) {
 		// always getting the Date as a String (from server or JSON)
 		QString startTimeAsString = sessionAPIMap.value(startTimeForeignKey).toString();
@@ -116,19 +102,17 @@ void SessionAPI::fillFromForeignMap(const QVariantMap& sessionAPIMap)
 		}
 	}
 	mDuration = sessionAPIMap.value(durationForeignKey).toString();
-	mAbstractText = sessionAPIMap.value(abstractTextForeignKey).toString();
 	mRoom = sessionAPIMap.value(roomForeignKey).toString();
+	// mSessionTracks is (lazy loaded) Array of SessionTrackAPI*
+	mSessionTracksKeys = sessionAPIMap.value(sessionTracksForeignKey).toStringList();
+	// mSessionTracks must be resolved later if there are keys
+	mSessionTracksKeysResolved = (mSessionTracksKeys.size() == 0);
+	mSessionTracks.clear();
 	// mPresenter is (lazy loaded) Array of PersonsAPI*
 	mPresenterKeys = sessionAPIMap.value(presenterForeignKey).toStringList();
 	// mPresenter must be resolved later if there are keys
 	mPresenterKeysResolved = (mPresenterKeys.size() == 0);
 	mPresenter.clear();
-	// mSessionLinks is (lazy loaded) Array of SessionLinkAPI*
-	mSessionLinksKeys = sessionAPIMap.value(sessionLinksForeignKey).toStringList();
-	// mSessionLinks must be resolved later if there are keys
-	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
-	mSessionLinks.clear();
-	mSessionTracksStringList = sessionAPIMap.value(sessionTracksForeignKey).toStringList();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -141,9 +125,7 @@ void SessionAPI::fillFromCacheMap(const QVariantMap& sessionAPIMap)
 {
 	mSessionId = sessionAPIMap.value(sessionIdKey).toInt();
 	mTitle = sessionAPIMap.value(titleKey).toString();
-	mSubtitle = sessionAPIMap.value(subtitleKey).toString();
 	mDescription = sessionAPIMap.value(descriptionKey).toString();
-	mSessionType = sessionAPIMap.value(sessionTypeKey).toString();
 	if (sessionAPIMap.contains(startTimeKey)) {
 		// always getting the Date as a String (from server or JSON)
 		QString startTimeAsString = sessionAPIMap.value(startTimeKey).toString();
@@ -154,19 +136,17 @@ void SessionAPI::fillFromCacheMap(const QVariantMap& sessionAPIMap)
 		}
 	}
 	mDuration = sessionAPIMap.value(durationKey).toString();
-	mAbstractText = sessionAPIMap.value(abstractTextKey).toString();
 	mRoom = sessionAPIMap.value(roomKey).toString();
+	// mSessionTracks is (lazy loaded) Array of SessionTrackAPI*
+	mSessionTracksKeys = sessionAPIMap.value(sessionTracksKey).toStringList();
+	// mSessionTracks must be resolved later if there are keys
+	mSessionTracksKeysResolved = (mSessionTracksKeys.size() == 0);
+	mSessionTracks.clear();
 	// mPresenter is (lazy loaded) Array of PersonsAPI*
 	mPresenterKeys = sessionAPIMap.value(presenterKey).toStringList();
 	// mPresenter must be resolved later if there are keys
 	mPresenterKeysResolved = (mPresenterKeys.size() == 0);
 	mPresenter.clear();
-	// mSessionLinks is (lazy loaded) Array of SessionLinkAPI*
-	mSessionLinksKeys = sessionAPIMap.value(sessionLinksKey).toStringList();
-	// mSessionLinks must be resolved later if there are keys
-	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
-	mSessionLinks.clear();
-	mSessionTracksStringList = sessionAPIMap.value(sessionTracksKey).toStringList();
 }
 
 void SessionAPI::prepareNew()
@@ -192,6 +172,22 @@ bool SessionAPI::isValid()
 QVariantMap SessionAPI::toMap()
 {
 	QVariantMap sessionAPIMap;
+	// mSessionTracks points to SessionTrackAPI*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mSessionTracksKeysResolved) {
+		mSessionTracksKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+		SessionTrackAPI* sessionTrackAPI;
+		sessionTrackAPI = mSessionTracks.at(i);
+		mSessionTracksKeys << sessionTrackAPI->uuid();
+	}
+	sessionAPIMap.insert(sessionTracksKey, mSessionTracksKeys);
 	// mPresenter points to PersonsAPI*
 	// lazy array: persist only keys
 	//
@@ -208,35 +204,14 @@ QVariantMap SessionAPI::toMap()
 		mPresenterKeys << QString::number(personsAPI->speakerId());
 	}
 	sessionAPIMap.insert(presenterKey, mPresenterKeys);
-	// mSessionLinks points to SessionLinkAPI*
-	// lazy array: persist only keys
-	//
-	// if keys alreadyy resolved: clear them
-	// otherwise reuse the keys and add objects from mPositions
-	// this can happen if added to objects without resolving keys before
-	if(mSessionLinksKeysResolved) {
-		mSessionLinksKeys.clear();
-	}
-	// add objects from mPositions
-	for (int i = 0; i < mSessionLinks.size(); ++i) {
-		SessionLinkAPI* sessionLinkAPI;
-		sessionLinkAPI = mSessionLinks.at(i);
-		mSessionLinksKeys << sessionLinkAPI->uuid();
-	}
-	sessionAPIMap.insert(sessionLinksKey, mSessionLinksKeys);
 	sessionAPIMap.insert(sessionIdKey, mSessionId);
 	sessionAPIMap.insert(titleKey, mTitle);
-	sessionAPIMap.insert(subtitleKey, mSubtitle);
 	sessionAPIMap.insert(descriptionKey, mDescription);
-	sessionAPIMap.insert(sessionTypeKey, mSessionType);
 	if (hasStartTime()) {
 		sessionAPIMap.insert(startTimeKey, mStartTime.toString("HH:mm"));
 	}
 	sessionAPIMap.insert(durationKey, mDuration);
-	sessionAPIMap.insert(abstractTextKey, mAbstractText);
 	sessionAPIMap.insert(roomKey, mRoom);
-	// Array of QString
-	sessionAPIMap.insert(sessionTracksKey, mSessionTracksStringList);
 	return sessionAPIMap;
 }
 
@@ -248,6 +223,22 @@ QVariantMap SessionAPI::toMap()
 QVariantMap SessionAPI::toForeignMap()
 {
 	QVariantMap sessionAPIMap;
+	// mSessionTracks points to SessionTrackAPI*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mSessionTracksKeysResolved) {
+		mSessionTracksKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+		SessionTrackAPI* sessionTrackAPI;
+		sessionTrackAPI = mSessionTracks.at(i);
+		mSessionTracksKeys << sessionTrackAPI->uuid();
+	}
+	sessionAPIMap.insert(sessionTracksForeignKey, mSessionTracksKeys);
 	// mPresenter points to PersonsAPI*
 	// lazy array: persist only keys
 	//
@@ -263,36 +254,15 @@ QVariantMap SessionAPI::toForeignMap()
 		personsAPI = mPresenter.at(i);
 		mPresenterKeys << QString::number(personsAPI->speakerId());
 	}
-	sessionAPIMap.insert(presenterKey, mPresenterKeys);
-	// mSessionLinks points to SessionLinkAPI*
-	// lazy array: persist only keys
-	//
-	// if keys alreadyy resolved: clear them
-	// otherwise reuse the keys and add objects from mPositions
-	// this can happen if added to objects without resolving keys before
-	if(mSessionLinksKeysResolved) {
-		mSessionLinksKeys.clear();
-	}
-	// add objects from mPositions
-	for (int i = 0; i < mSessionLinks.size(); ++i) {
-		SessionLinkAPI* sessionLinkAPI;
-		sessionLinkAPI = mSessionLinks.at(i);
-		mSessionLinksKeys << sessionLinkAPI->uuid();
-	}
-	sessionAPIMap.insert(sessionLinksKey, mSessionLinksKeys);
+	sessionAPIMap.insert(presenterForeignKey, mPresenterKeys);
 	sessionAPIMap.insert(sessionIdForeignKey, mSessionId);
 	sessionAPIMap.insert(titleForeignKey, mTitle);
-	sessionAPIMap.insert(subtitleForeignKey, mSubtitle);
 	sessionAPIMap.insert(descriptionForeignKey, mDescription);
-	sessionAPIMap.insert(sessionTypeForeignKey, mSessionType);
 	if (hasStartTime()) {
 		sessionAPIMap.insert(startTimeForeignKey, mStartTime.toString("HH:mm"));
 	}
 	sessionAPIMap.insert(durationForeignKey, mDuration);
-	sessionAPIMap.insert(abstractTextForeignKey, mAbstractText);
 	sessionAPIMap.insert(roomForeignKey, mRoom);
-	// Array of QString
-	sessionAPIMap.insert(sessionTracksForeignKey, mSessionTracksStringList);
 	return sessionAPIMap;
 }
 
@@ -338,20 +308,6 @@ void SessionAPI::setTitle(QString title)
 	}
 }
 // ATT 
-// Optional: subtitle
-QString SessionAPI::subtitle() const
-{
-	return mSubtitle;
-}
-
-void SessionAPI::setSubtitle(QString subtitle)
-{
-	if (subtitle != mSubtitle) {
-		mSubtitle = subtitle;
-		emit subtitleChanged(subtitle);
-	}
-}
-// ATT 
 // Optional: description
 QString SessionAPI::description() const
 {
@@ -363,20 +319,6 @@ void SessionAPI::setDescription(QString description)
 	if (description != mDescription) {
 		mDescription = description;
 		emit descriptionChanged(description);
-	}
-}
-// ATT 
-// Optional: sessionType
-QString SessionAPI::sessionType() const
-{
-	return mSessionType;
-}
-
-void SessionAPI::setSessionType(QString sessionType)
-{
-	if (sessionType != mSessionType) {
-		mSessionType = sessionType;
-		emit sessionTypeChanged(sessionType);
 	}
 }
 // ATT 
@@ -429,20 +371,6 @@ void SessionAPI::setDuration(QString duration)
 	}
 }
 // ATT 
-// Optional: abstractText
-QString SessionAPI::abstractText() const
-{
-	return mAbstractText;
-}
-
-void SessionAPI::setAbstractText(QString abstractText)
-{
-	if (abstractText != mAbstractText) {
-		mAbstractText = abstractText;
-		emit abstractTextChanged(abstractText);
-	}
-}
-// ATT 
 // Optional: room
 QString SessionAPI::room() const
 {
@@ -458,38 +386,179 @@ void SessionAPI::setRoom(QString room)
 }
 // ATT 
 // Optional: sessionTracks
-void SessionAPI::addToSessionTracksStringList(const QString& stringValue)
+QVariantList SessionAPI::sessionTracksAsQVariantList()
 {
-    mSessionTracksStringList.append(stringValue);
-    emit addedToSessionTracksStringList(stringValue);
+	QVariantList sessionTracksList;
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+        sessionTracksList.append((mSessionTracks.at(i))->toMap());
+    }
+	return sessionTracksList;
+}
+QVariantList SessionAPI::sessionTracksAsCacheQVariantList()
+{
+	QVariantList sessionTracksList;
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+        sessionTracksList.append((mSessionTracks.at(i))->toCacheMap());
+    }
+	return sessionTracksList;
+}
+QVariantList SessionAPI::sessionTracksAsForeignQVariantList()
+{
+	QVariantList sessionTracksList;
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+        sessionTracksList.append((mSessionTracks.at(i))->toForeignMap());
+    }
+	return sessionTracksList;
+}
+// no create() or undoCreate() because dto is root object
+// see methods in DataManager
+/**
+ * you can add sessionTracks without resolving existing keys before
+ * attention: before looping through the objects
+ * you must resolveSessionTracksKeys
+ */
+void SessionAPI::addToSessionTracks(SessionTrackAPI* sessionTrackAPI)
+{
+    mSessionTracks.append(sessionTrackAPI);
+    emit addedToSessionTracks(sessionTrackAPI);
+    emit sessionTracksPropertyListChanged();
 }
 
-bool SessionAPI::removeFromSessionTracksStringList(const QString& stringValue)
+bool SessionAPI::removeFromSessionTracks(SessionTrackAPI* sessionTrackAPI)
 {
     bool ok = false;
-    ok = mSessionTracksStringList.removeOne(stringValue);
+    ok = mSessionTracks.removeOne(sessionTrackAPI);
     if (!ok) {
-    	qDebug() << "QString& not found in mSessionTracksStringList: " << stringValue;
+    	qDebug() << "SessionTrackAPI* not found in sessionTracks";
     	return false;
     }
-    emit removedFromSessionTracksStringList(stringValue);
+    emit sessionTracksPropertyListChanged();
+    // sessionTracks are independent - DON'T delete them
     return true;
 }
+void SessionAPI::clearSessionTracks()
+{
+    for (int i = mSessionTracks.size(); i > 0; --i) {
+        removeFromSessionTracks(mSessionTracks.last());
+    }
+    mSessionTracksKeys.clear();
+}
+
+/**
+ * lazy Array of independent Data Objects: only keys are persited
+ * so we get a list of keys (uuid or domain keys) from map
+ * and we persist only the keys toMap()
+ * after initializing the keys must be resolved:
+ * - get the list of keys: sessionTracksKeys()
+ * - resolve them from DataManager
+ * - then resolveSessionTracksKeys()
+ */
+bool SessionAPI::areSessionTracksKeysResolved()
+{
+    return mSessionTracksKeysResolved;
+}
+
+QStringList SessionAPI::sessionTracksKeys()
+{
+    return mSessionTracksKeys;
+}
+
+/**
+ * Objects from sessionTracksKeys will be added to existing sessionTracks
+ * This enables to use addToSessionTracks() without resolving before
+ * Hint: it's your responsibility to resolve before looping thru sessionTracks
+ */
+void SessionAPI::resolveSessionTracksKeys(QList<SessionTrackAPI*> sessionTracks)
+{
+    if(mSessionTracksKeysResolved){
+        return;
+    }
+    // don't clear mSessionTracks (see above)
+    for (int i = 0; i < sessionTracks.size(); ++i) {
+        addToSessionTracks(sessionTracks.at(i));
+    }
+    mSessionTracksKeysResolved = true;
+}
+
 int SessionAPI::sessionTracksCount()
 {
-    return mSessionTracksStringList.size();
+    return mSessionTracks.size();
 }
-QStringList SessionAPI::sessionTracksStringList()
+QList<SessionTrackAPI*> SessionAPI::sessionTracks()
 {
-	return mSessionTracksStringList;
+	return mSessionTracks;
 }
-void SessionAPI::setSessionTracksStringList(const QStringList& sessionTracks) 
+void SessionAPI::setSessionTracks(QList<SessionTrackAPI*> sessionTracks) 
 {
-	if (sessionTracks != mSessionTracksStringList) {
-		mSessionTracksStringList = sessionTracks;
-		emit sessionTracksStringListChanged(sessionTracks);
+	if (sessionTracks != mSessionTracks) {
+		mSessionTracks = sessionTracks;
+		emit sessionTracksChanged(sessionTracks);
+		emit sessionTracksPropertyListChanged();
 	}
 }
+
+/**
+ * to access lists from QML we're using QQmlListProperty
+ * and implement methods to append, count and clear
+ * now from QML we can use
+ * sessionAPI.sessionTracksPropertyList.length to get the size
+ * sessionAPI.sessionTracksPropertyList[2] to get SessionTrackAPI* at position 2
+ * sessionAPI.sessionTracksPropertyList = [] to clear the list
+ * or get easy access to properties like
+ * sessionAPI.sessionTracksPropertyList[2].myPropertyName
+ */
+QQmlListProperty<SessionTrackAPI> SessionAPI::sessionTracksPropertyList()
+{
+    return QQmlListProperty<SessionTrackAPI>(this, 0, &SessionAPI::appendToSessionTracksProperty,
+            &SessionAPI::sessionTracksPropertyCount, &SessionAPI::atSessionTracksProperty,
+            &SessionAPI::clearSessionTracksProperty);
+}
+void SessionAPI::appendToSessionTracksProperty(QQmlListProperty<SessionTrackAPI> *sessionTracksList,
+        SessionTrackAPI* sessionTrackAPI)
+{
+    SessionAPI *sessionAPIObject = qobject_cast<SessionAPI *>(sessionTracksList->object);
+    if (sessionAPIObject) {
+        sessionAPIObject->mSessionTracks.append(sessionTrackAPI);
+        emit sessionAPIObject->addedToSessionTracks(sessionTrackAPI);
+    } else {
+        qWarning() << "cannot append SessionTrackAPI* to sessionTracks " << "Object is not of type SessionAPI*";
+    }
+}
+int SessionAPI::sessionTracksPropertyCount(QQmlListProperty<SessionTrackAPI> *sessionTracksList)
+{
+    SessionAPI *sessionAPI = qobject_cast<SessionAPI *>(sessionTracksList->object);
+    if (sessionAPI) {
+        return sessionAPI->mSessionTracks.size();
+    } else {
+        qWarning() << "cannot get size sessionTracks " << "Object is not of type SessionAPI*";
+    }
+    return 0;
+}
+SessionTrackAPI* SessionAPI::atSessionTracksProperty(QQmlListProperty<SessionTrackAPI> *sessionTracksList, int pos)
+{
+    SessionAPI *sessionAPI = qobject_cast<SessionAPI *>(sessionTracksList->object);
+    if (sessionAPI) {
+        if (sessionAPI->mSessionTracks.size() > pos) {
+            return sessionAPI->mSessionTracks.at(pos);
+        }
+        qWarning() << "cannot get SessionTrackAPI* at pos " << pos << " size is "
+                << sessionAPI->mSessionTracks.size();
+    } else {
+        qWarning() << "cannot get SessionTrackAPI* at pos " << pos << "Object is not of type SessionAPI*";
+    }
+    return 0;
+}
+void SessionAPI::clearSessionTracksProperty(QQmlListProperty<SessionTrackAPI> *sessionTracksList)
+{
+    SessionAPI *sessionAPI = qobject_cast<SessionAPI *>(sessionTracksList->object);
+    if (sessionAPI) {
+        // sessionTracks are independent - DON'T delete them
+        sessionAPI->mSessionTracks.clear();
+    } else {
+        qWarning() << "cannot clear sessionTracks " << "Object is not of type SessionAPI*";
+    }
+}
+
 // ATT 
 // Optional: presenter
 QVariantList SessionAPI::presenterAsQVariantList()
@@ -497,6 +566,14 @@ QVariantList SessionAPI::presenterAsQVariantList()
 	QVariantList presenterList;
 	for (int i = 0; i < mPresenter.size(); ++i) {
         presenterList.append((mPresenter.at(i))->toMap());
+    }
+	return presenterList;
+}
+QVariantList SessionAPI::presenterAsCacheQVariantList()
+{
+	QVariantList presenterList;
+	for (int i = 0; i < mPresenter.size(); ++i) {
+        presenterList.append((mPresenter.at(i))->toCacheMap());
     }
 	return presenterList;
 }
@@ -654,173 +731,6 @@ void SessionAPI::clearPresenterProperty(QQmlListProperty<PersonsAPI> *presenterL
         sessionAPI->mPresenter.clear();
     } else {
         qWarning() << "cannot clear presenter " << "Object is not of type SessionAPI*";
-    }
-}
-
-// ATT 
-// Optional: sessionLinks
-QVariantList SessionAPI::sessionLinksAsQVariantList()
-{
-	QVariantList sessionLinksList;
-	for (int i = 0; i < mSessionLinks.size(); ++i) {
-        sessionLinksList.append((mSessionLinks.at(i))->toMap());
-    }
-	return sessionLinksList;
-}
-QVariantList SessionAPI::sessionLinksAsForeignQVariantList()
-{
-	QVariantList sessionLinksList;
-	for (int i = 0; i < mSessionLinks.size(); ++i) {
-        sessionLinksList.append((mSessionLinks.at(i))->toForeignMap());
-    }
-	return sessionLinksList;
-}
-// no create() or undoCreate() because dto is root object
-// see methods in DataManager
-/**
- * you can add sessionLinks without resolving existing keys before
- * attention: before looping through the objects
- * you must resolveSessionLinksKeys
- */
-void SessionAPI::addToSessionLinks(SessionLinkAPI* sessionLinkAPI)
-{
-    mSessionLinks.append(sessionLinkAPI);
-    emit addedToSessionLinks(sessionLinkAPI);
-    emit sessionLinksPropertyListChanged();
-}
-
-bool SessionAPI::removeFromSessionLinks(SessionLinkAPI* sessionLinkAPI)
-{
-    bool ok = false;
-    ok = mSessionLinks.removeOne(sessionLinkAPI);
-    if (!ok) {
-    	qDebug() << "SessionLinkAPI* not found in sessionLinks";
-    	return false;
-    }
-    emit sessionLinksPropertyListChanged();
-    // sessionLinks are independent - DON'T delete them
-    return true;
-}
-void SessionAPI::clearSessionLinks()
-{
-    for (int i = mSessionLinks.size(); i > 0; --i) {
-        removeFromSessionLinks(mSessionLinks.last());
-    }
-    mSessionLinksKeys.clear();
-}
-
-/**
- * lazy Array of independent Data Objects: only keys are persited
- * so we get a list of keys (uuid or domain keys) from map
- * and we persist only the keys toMap()
- * after initializing the keys must be resolved:
- * - get the list of keys: sessionLinksKeys()
- * - resolve them from DataManager
- * - then resolveSessionLinksKeys()
- */
-bool SessionAPI::areSessionLinksKeysResolved()
-{
-    return mSessionLinksKeysResolved;
-}
-
-QStringList SessionAPI::sessionLinksKeys()
-{
-    return mSessionLinksKeys;
-}
-
-/**
- * Objects from sessionLinksKeys will be added to existing sessionLinks
- * This enables to use addToSessionLinks() without resolving before
- * Hint: it's your responsibility to resolve before looping thru sessionLinks
- */
-void SessionAPI::resolveSessionLinksKeys(QList<SessionLinkAPI*> sessionLinks)
-{
-    if(mSessionLinksKeysResolved){
-        return;
-    }
-    // don't clear mSessionLinks (see above)
-    for (int i = 0; i < sessionLinks.size(); ++i) {
-        addToSessionLinks(sessionLinks.at(i));
-    }
-    mSessionLinksKeysResolved = true;
-}
-
-int SessionAPI::sessionLinksCount()
-{
-    return mSessionLinks.size();
-}
-QList<SessionLinkAPI*> SessionAPI::sessionLinks()
-{
-	return mSessionLinks;
-}
-void SessionAPI::setSessionLinks(QList<SessionLinkAPI*> sessionLinks) 
-{
-	if (sessionLinks != mSessionLinks) {
-		mSessionLinks = sessionLinks;
-		emit sessionLinksChanged(sessionLinks);
-		emit sessionLinksPropertyListChanged();
-	}
-}
-
-/**
- * to access lists from QML we're using QQmlListProperty
- * and implement methods to append, count and clear
- * now from QML we can use
- * sessionAPI.sessionLinksPropertyList.length to get the size
- * sessionAPI.sessionLinksPropertyList[2] to get SessionLinkAPI* at position 2
- * sessionAPI.sessionLinksPropertyList = [] to clear the list
- * or get easy access to properties like
- * sessionAPI.sessionLinksPropertyList[2].myPropertyName
- */
-QQmlListProperty<SessionLinkAPI> SessionAPI::sessionLinksPropertyList()
-{
-    return QQmlListProperty<SessionLinkAPI>(this, 0, &SessionAPI::appendToSessionLinksProperty,
-            &SessionAPI::sessionLinksPropertyCount, &SessionAPI::atSessionLinksProperty,
-            &SessionAPI::clearSessionLinksProperty);
-}
-void SessionAPI::appendToSessionLinksProperty(QQmlListProperty<SessionLinkAPI> *sessionLinksList,
-        SessionLinkAPI* sessionLinkAPI)
-{
-    SessionAPI *sessionAPIObject = qobject_cast<SessionAPI *>(sessionLinksList->object);
-    if (sessionAPIObject) {
-        sessionAPIObject->mSessionLinks.append(sessionLinkAPI);
-        emit sessionAPIObject->addedToSessionLinks(sessionLinkAPI);
-    } else {
-        qWarning() << "cannot append SessionLinkAPI* to sessionLinks " << "Object is not of type SessionAPI*";
-    }
-}
-int SessionAPI::sessionLinksPropertyCount(QQmlListProperty<SessionLinkAPI> *sessionLinksList)
-{
-    SessionAPI *sessionAPI = qobject_cast<SessionAPI *>(sessionLinksList->object);
-    if (sessionAPI) {
-        return sessionAPI->mSessionLinks.size();
-    } else {
-        qWarning() << "cannot get size sessionLinks " << "Object is not of type SessionAPI*";
-    }
-    return 0;
-}
-SessionLinkAPI* SessionAPI::atSessionLinksProperty(QQmlListProperty<SessionLinkAPI> *sessionLinksList, int pos)
-{
-    SessionAPI *sessionAPI = qobject_cast<SessionAPI *>(sessionLinksList->object);
-    if (sessionAPI) {
-        if (sessionAPI->mSessionLinks.size() > pos) {
-            return sessionAPI->mSessionLinks.at(pos);
-        }
-        qWarning() << "cannot get SessionLinkAPI* at pos " << pos << " size is "
-                << sessionAPI->mSessionLinks.size();
-    } else {
-        qWarning() << "cannot get SessionLinkAPI* at pos " << pos << "Object is not of type SessionAPI*";
-    }
-    return 0;
-}
-void SessionAPI::clearSessionLinksProperty(QQmlListProperty<SessionLinkAPI> *sessionLinksList)
-{
-    SessionAPI *sessionAPI = qobject_cast<SessionAPI *>(sessionLinksList->object);
-    if (sessionAPI) {
-        // sessionLinks are independent - DON'T delete them
-        sessionAPI->mSessionLinks.clear();
-    } else {
-        qWarning() << "cannot clear sessionLinks " << "Object is not of type SessionAPI*";
     }
 }
 

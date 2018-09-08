@@ -107,16 +107,16 @@ QString DataUtil::speakerNamesForSession(Session *session)
 
 QString DataUtil::scheduleItemImageForSession(Session *session)
 {
-    if(!session || !session->hasScheduleItem()) {
+    if(!session || !session->hasGenericScheduleItem()) {
         return "";
     }
-    if(session->scheduleItemAsDataObject()->isRegistration()) {
+    if(session->genericScheduleItemAsDataObject()->isRegistration()) {
         return "key.png";
     }
-    if(session->scheduleItemAsDataObject()->isLunch()) {
+    if(session->genericScheduleItemAsDataObject()->isLunch()) {
         return "lunch.png";
     }
-    if(session->scheduleItemAsDataObject()->isEvent()) {
+    if(session->genericScheduleItemAsDataObject()->isEvent()) {
         return "party_event.png";
     }
     return "break.png";
@@ -162,14 +162,14 @@ QString DataUtil::textForSessionType(Session *session)
         return "";
     }
     QString info = " (" + QString::number(session->minutes()) + tr(" Minutes)");
-    if(session->hasScheduleItem()) {
-        if(session->scheduleItemAsDataObject()->isRegistration()) {
+    if(session->hasGenericScheduleItem()) {
+        if(session->genericScheduleItemAsDataObject()->isRegistration()) {
             return tr("Registration")+info;
         }
-        if(session->scheduleItemAsDataObject()->isEvent()) {
+        if(session->genericScheduleItemAsDataObject()->isEvent()) {
             return tr("Event")+info;
         }
-        if(session->scheduleItemAsDataObject()->isLunch()) {
+        if(session->genericScheduleItemAsDataObject()->isLunch()) {
             return tr("Lunch")+info;
         }
         return tr("Break")+info;
@@ -373,8 +373,6 @@ void DataUtil::prepareConference() {
     qDebug() << "cache DATA";
     mDataManager->saveConferenceToCache();
     mDataManager->saveDayToCache();
-    mDataManager->saveBuildingToCache();
-    mDataManager->saveFloorToCache();
     mDataManager->saveRoomToCache();
     mDataManager->saveSessionToCache();
     // sort Tracks
@@ -392,8 +390,7 @@ void DataUtil::prepareConference() {
     }
 
     mDataManager->saveSessionTrackToCache();
-    mDataManager->saveScheduleItemToCache();
-    mDataManager->saveSessionLinkToCache();
+    mDataManager->saveGenericScheduleItemToCache();
 
     mDataManager->saveSpeakerToCache();
     // set API Version
@@ -408,29 +405,12 @@ void DataUtil::prepareEventData() {
     mDataManager->deleteConference();
     mDataManager->deleteDay();
     mDataManager->deleteSession();
-    mDataManager->deleteScheduleItem();
-    mDataManager->deleteSessionLink();
+    mDataManager->deleteGenericScheduleItem();
     mDataManager->deleteSpeaker();
     mDataManager->deleteSpeakerImage();
     //
     Conference* conference = mDataManager->createConference();
     int lastNr = 0;
-    for (int i = 0; i < mDataManager->allBuilding().size(); ++i) {
-        Building* building = (Building*) mDataManager->allBuilding().at(i);
-        if(building->buildingId() > lastNr) {
-            lastNr = building->buildingId();
-        }
-    }
-    conference->setLastBuildingId(lastNr);
-    lastNr = 0;
-    for (int i = 0; i < mDataManager->allFloor().size(); ++i) {
-        Floor* floor = (Floor*) mDataManager->allFloor().at(i);
-        if(floor->floorId() > lastNr) {
-            lastNr = floor->floorId();
-        }
-    }
-    conference->setLastFloorId(lastNr);
-    lastNr = 0;
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
         Room* room = (Room*) mDataManager->allRoom().at(i);
         if(room->roomId() > lastNr) {
@@ -588,25 +568,6 @@ void DataUtil::adjustPersons(QVariantMap& sessionMap) {
             }
         }
         sessionMap.insert("persons", personKeys);
-    }
-}
-
-void DataUtil::createAndAdjustLinks(QVariantMap& sessionMap) {
-    QStringList linkKeys;
-    QVariantList linksList;
-    linksList = sessionMap.value("links").toList();
-    if (linksList.size() > 0) {
-        for (int lvl = 0; lvl < linksList.size(); ++lvl) {
-            QVariantMap map = linksList.at(lvl).toMap();
-            if(map.contains("url")) {
-                SessionLink* sessionLink = mDataManager->createSessionLink();
-                sessionLink->setUrl(map.value("url").toString());
-                sessionLink->setTitle(map.value("title").toString());
-                mDataManager->insertSessionLink(sessionLink);
-                linkKeys.append(sessionLink->uuid());
-            }
-        }
-        sessionMap.insert("links", linkKeys);
     }
 }
 
@@ -800,9 +761,6 @@ void DataUtil::prepareSessions()
 
                 // adjust tracks
                 adjustTracks(sessionMap, conference, false);
-
-                // create and adjust links
-                createAndAdjustLinks(sessionMap);
 
                 SessionAPI* sessionAPI = mDataManager->createSessionAPI();
                 sessionAPI->fillFromForeignMap(sessionMap);
@@ -1132,39 +1090,6 @@ void DataUtil::updateSpeakerImages() {
     updateSessions();
 }
 
-void DataUtil::updateAndAdjustLinks(QVariantMap &sessionMap) {
-    QStringList linkKeys;
-    QVariantList linksList;
-    linksList = sessionMap.value("links").toList();
-    if (linksList.size() > 0) {
-        for (int lvl = 0; lvl < linksList.size(); ++lvl) {
-            QVariantMap map = linksList.at(lvl).toMap();
-            if(map.contains("url")) {
-                QString linkUrl = map.value("url").toString();
-                SessionLink* sessionLink = nullptr;
-                bool linkFound = false;
-                for (int xsl = 0; xsl < mDataManager->allSessionLink().size(); ++xsl) {
-                    sessionLink = (SessionLink*) mDataManager->allSessionLink().at(xsl);
-                    if(sessionLink->url() == linkUrl) {
-                        linkFound = true;
-                        break;
-                    }
-                } // end for all existing links
-                if(!linkFound) {
-                    sessionLink = mDataManager->createSessionLink();
-                }
-                sessionLink->setUrl(linkUrl);
-                sessionLink->setTitle(map.value("title").toString());
-                if(!linkFound) {
-                    mDataManager->insertSessionLink(sessionLink);
-                }
-                linkKeys.append(sessionLink->uuid());
-            } // map contains url
-        } // end for all links
-        sessionMap.insert("links", linkKeys);
-    } // end if linklist size
-}
-
 void DataUtil::updateSessions() {
     mProgressInfotext.append("\n").append(tr("Sync Sessions"));
     emit progressInfo(mProgressInfotext);
@@ -1281,8 +1206,6 @@ void DataUtil::updateSessions() {
                 adjustPersons(sessionMap);
                 // adjust tracks
                 adjustTracks(sessionMap, conference, true);
-                // update and adjust SessionLink
-                updateAndAdjustLinks(sessionMap);
 
                 SessionAPI* sessionAPI = mDataManager->createSessionAPI();
                 sessionAPI->fillFromForeignMap(sessionMap);
@@ -1408,12 +1331,9 @@ void DataUtil::finishUpdate() {
     qDebug() << "FINISH: Rooms Days Tracks Speaker Sessions sorted";
     mDataManager->saveSessionToCache();
     qDebug() << "FINISH: Sessions saved";
-    // SessionLink
-    mDataManager->saveSessionLinkToCache();
-    qDebug() << "FINISH: SessionLinks saved";
 
     // ScheduleItem
-    mDataManager->saveScheduleItemToCache();
+    mDataManager->saveGenericScheduleItemToCache();
     qDebug() << "FINISH: ScheduleItems saved";
 
     // SPEAKER

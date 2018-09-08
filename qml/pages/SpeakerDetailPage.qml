@@ -295,16 +295,16 @@ Page {
                                             }
                                         }
                                     } // title
-                                    LabelBody {
-                                        visible: modelData.subtitle.length
-                                        text: modelData.subtitle
-                                        wrapMode: Label.WordWrap
-                                        ListRowButton {
-                                            onClicked: {
-                                                navPane.pushSessionDetail(modelData.sessionId)
-                                            }
-                                        }
-                                    } // subtitle
+//                                    LabelBody {
+//                                        visible: modelData.subtitle.length
+//                                        text: modelData.subtitle
+//                                        wrapMode: Label.WordWrap
+//                                        ListRowButton {
+//                                            onClicked: {
+//                                                navPane.pushSessionDetail(modelData.sessionId)
+//                                            }
+//                                        }
+//                                    } // subtitle
                                     RowLayout {
                                         id: presenterRow
                                         visible: modelData.presenterPropertyList.length > 1

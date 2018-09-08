@@ -1,5 +1,5 @@
-#ifndef SCHEDULEITEM_HPP_
-#define SCHEDULEITEM_HPP_
+#ifndef GENERICSCHEDULEITEM_HPP_
+#define GENERICSCHEDULEITEM_HPP_
 
 #include <QObject>
 #include <qvariant.h>
@@ -9,7 +9,7 @@
 class Session;
 
 
-class ScheduleItem: public QObject
+class GenericScheduleItem: public QObject
 {
 	Q_OBJECT
 
@@ -24,14 +24,14 @@ class ScheduleItem: public QObject
 
 
 public:
-	ScheduleItem(QObject *parent = 0);
+	GenericScheduleItem(QObject *parent = 0);
 
 	Q_INVOKABLE
 	bool isAllResolved();
 
-	void fillFromMap(const QVariantMap& scheduleItemMap);
-	void fillFromForeignMap(const QVariantMap& scheduleItemMap);
-	void fillFromCacheMap(const QVariantMap& scheduleItemMap);
+	void fillFromMap(const QVariantMap& genericScheduleItemMap);
+	void fillFromForeignMap(const QVariantMap& genericScheduleItemMap);
+	void fillFromCacheMap(const QVariantMap& genericScheduleItemMap);
 	
 	void prepareNew();
 	
@@ -75,7 +75,7 @@ public:
 
 
 
-	virtual ~ScheduleItem();
+	virtual ~GenericScheduleItem();
 
 	Q_SIGNALS:
 
@@ -100,9 +100,9 @@ private:
 	bool mSessionInvalid;
 	Session* mSessionAsDataObject;
 
-	Q_DISABLE_COPY (ScheduleItem)
+	Q_DISABLE_COPY (GenericScheduleItem)
 };
-Q_DECLARE_METATYPE(ScheduleItem*)
+Q_DECLARE_METATYPE(GenericScheduleItem*)
 
-#endif /* SCHEDULEITEM_HPP_ */
+#endif /* GENERICSCHEDULEITEM_HPP_ */
 

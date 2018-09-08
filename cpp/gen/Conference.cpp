@@ -14,11 +14,10 @@ static const QString conferenceToKey = "conferenceTo";
 static const QString hashTagKey = "hashTag";
 static const QString homePageKey = "homePage";
 static const QString coordinateKey = "coordinate";
-static const QString lastBuildingIdKey = "lastBuildingId";
-static const QString lastFloorIdKey = "lastFloorId";
 static const QString lastRoomIdKey = "lastRoomId";
 static const QString lastSessionTrackIdKey = "lastSessionTrackId";
 static const QString daysKey = "days";
+static const QString tracksKey = "tracks";
 
 // keys used from Server API etc
 static const QString idForeignKey = "id";
@@ -32,28 +31,31 @@ static const QString conferenceToForeignKey = "conferenceTo";
 static const QString hashTagForeignKey = "hashTag";
 static const QString homePageForeignKey = "homePage";
 static const QString coordinateForeignKey = "coordinate";
-static const QString lastBuildingIdForeignKey = "lastBuildingId";
-static const QString lastFloorIdForeignKey = "lastFloorId";
 static const QString lastRoomIdForeignKey = "lastRoomId";
 static const QString lastSessionTrackIdForeignKey = "lastSessionTrackId";
 static const QString daysForeignKey = "days";
+static const QString tracksForeignKey = "tracks";
 
 /*
  * Default Constructor if Conference not initialized from QVariantMap
  */
 Conference::Conference(QObject *parent) :
-        QObject(parent), mId(-1), mConferenceName(""), mConferenceCity(""), mAddress(""), mTimeZoneName(""), mTimeZoneOffsetSeconds(0), mHashTag(""), mHomePage(""), mCoordinate(""), mLastBuildingId(0), mLastFloorId(0), mLastRoomId(0), mLastSessionTrackId(0)
+        QObject(parent), mId(-1), mConferenceName(""), mConferenceCity(""), mAddress(""), mTimeZoneName(""), mTimeZoneOffsetSeconds(0), mHashTag(""), mHomePage(""), mCoordinate(""), mLastRoomId(0), mLastSessionTrackId(0)
 {
 	// Date, Time or Timestamp ? construct null value
 	mConferenceFrom = QDate();
 	mConferenceTo = QDate();
 		// lazy Arrays where only keys are persisted
 		mDaysKeysResolved = false;
+		mTracksKeysResolved = false;
 }
 
 bool Conference::isAllResolved()
 {
     if(!areDaysKeysResolved()) {
+        return false;
+    }
+    if(!areTracksKeysResolved()) {
         return false;
     }
     return true;
@@ -95,8 +97,6 @@ void Conference::fillFromMap(const QVariantMap& conferenceMap)
 	mHashTag = conferenceMap.value(hashTagKey).toString();
 	mHomePage = conferenceMap.value(homePageKey).toString();
 	mCoordinate = conferenceMap.value(coordinateKey).toString();
-	mLastBuildingId = conferenceMap.value(lastBuildingIdKey).toInt();
-	mLastFloorId = conferenceMap.value(lastFloorIdKey).toInt();
 	mLastRoomId = conferenceMap.value(lastRoomIdKey).toInt();
 	mLastSessionTrackId = conferenceMap.value(lastSessionTrackIdKey).toInt();
 	// mDays is (lazy loaded) Array of Day*
@@ -104,6 +104,11 @@ void Conference::fillFromMap(const QVariantMap& conferenceMap)
 	// mDays must be resolved later if there are keys
 	mDaysKeysResolved = (mDaysKeys.size() == 0);
 	mDays.clear();
+	// mTracks is (lazy loaded) Array of SessionTrack*
+	mTracksKeys = conferenceMap.value(tracksKey).toStringList();
+	// mTracks must be resolved later if there are keys
+	mTracksKeysResolved = (mTracksKeys.size() == 0);
+	mTracks.clear();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -141,8 +146,6 @@ void Conference::fillFromForeignMap(const QVariantMap& conferenceMap)
 	mHashTag = conferenceMap.value(hashTagForeignKey).toString();
 	mHomePage = conferenceMap.value(homePageForeignKey).toString();
 	mCoordinate = conferenceMap.value(coordinateForeignKey).toString();
-	mLastBuildingId = conferenceMap.value(lastBuildingIdForeignKey).toInt();
-	mLastFloorId = conferenceMap.value(lastFloorIdForeignKey).toInt();
 	mLastRoomId = conferenceMap.value(lastRoomIdForeignKey).toInt();
 	mLastSessionTrackId = conferenceMap.value(lastSessionTrackIdForeignKey).toInt();
 	// mDays is (lazy loaded) Array of Day*
@@ -150,6 +153,11 @@ void Conference::fillFromForeignMap(const QVariantMap& conferenceMap)
 	// mDays must be resolved later if there are keys
 	mDaysKeysResolved = (mDaysKeys.size() == 0);
 	mDays.clear();
+	// mTracks is (lazy loaded) Array of SessionTrack*
+	mTracksKeys = conferenceMap.value(tracksForeignKey).toStringList();
+	// mTracks must be resolved later if there are keys
+	mTracksKeysResolved = (mTracksKeys.size() == 0);
+	mTracks.clear();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -187,8 +195,6 @@ void Conference::fillFromCacheMap(const QVariantMap& conferenceMap)
 	mHashTag = conferenceMap.value(hashTagKey).toString();
 	mHomePage = conferenceMap.value(homePageKey).toString();
 	mCoordinate = conferenceMap.value(coordinateKey).toString();
-	mLastBuildingId = conferenceMap.value(lastBuildingIdKey).toInt();
-	mLastFloorId = conferenceMap.value(lastFloorIdKey).toInt();
 	mLastRoomId = conferenceMap.value(lastRoomIdKey).toInt();
 	mLastSessionTrackId = conferenceMap.value(lastSessionTrackIdKey).toInt();
 	// mDays is (lazy loaded) Array of Day*
@@ -196,6 +202,11 @@ void Conference::fillFromCacheMap(const QVariantMap& conferenceMap)
 	// mDays must be resolved later if there are keys
 	mDaysKeysResolved = (mDaysKeys.size() == 0);
 	mDays.clear();
+	// mTracks is (lazy loaded) Array of SessionTrack*
+	mTracksKeys = conferenceMap.value(tracksKey).toStringList();
+	// mTracks must be resolved later if there are keys
+	mTracksKeysResolved = (mTracksKeys.size() == 0);
+	mTracks.clear();
 }
 
 void Conference::prepareNew()
@@ -237,6 +248,22 @@ QVariantMap Conference::toMap()
 		mDaysKeys << QString::number(day->id());
 	}
 	conferenceMap.insert(daysKey, mDaysKeys);
+	// mTracks points to SessionTrack*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mTracksKeysResolved) {
+		mTracksKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mTracks.size(); ++i) {
+		SessionTrack* sessionTrack;
+		sessionTrack = mTracks.at(i);
+		mTracksKeys << QString::number(sessionTrack->trackId());
+	}
+	conferenceMap.insert(tracksKey, mTracksKeys);
 	conferenceMap.insert(idKey, mId);
 	conferenceMap.insert(conferenceNameKey, mConferenceName);
 	conferenceMap.insert(conferenceCityKey, mConferenceCity);
@@ -252,8 +279,6 @@ QVariantMap Conference::toMap()
 	conferenceMap.insert(hashTagKey, mHashTag);
 	conferenceMap.insert(homePageKey, mHomePage);
 	conferenceMap.insert(coordinateKey, mCoordinate);
-	conferenceMap.insert(lastBuildingIdKey, mLastBuildingId);
-	conferenceMap.insert(lastFloorIdKey, mLastFloorId);
 	conferenceMap.insert(lastRoomIdKey, mLastRoomId);
 	conferenceMap.insert(lastSessionTrackIdKey, mLastSessionTrackId);
 	return conferenceMap;
@@ -282,7 +307,23 @@ QVariantMap Conference::toForeignMap()
 		day = mDays.at(i);
 		mDaysKeys << QString::number(day->id());
 	}
-	conferenceMap.insert(daysKey, mDaysKeys);
+	conferenceMap.insert(daysForeignKey, mDaysKeys);
+	// mTracks points to SessionTrack*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mTracksKeysResolved) {
+		mTracksKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mTracks.size(); ++i) {
+		SessionTrack* sessionTrack;
+		sessionTrack = mTracks.at(i);
+		mTracksKeys << QString::number(sessionTrack->trackId());
+	}
+	conferenceMap.insert(tracksForeignKey, mTracksKeys);
 	conferenceMap.insert(idForeignKey, mId);
 	conferenceMap.insert(conferenceNameForeignKey, mConferenceName);
 	conferenceMap.insert(conferenceCityForeignKey, mConferenceCity);
@@ -298,8 +339,6 @@ QVariantMap Conference::toForeignMap()
 	conferenceMap.insert(hashTagForeignKey, mHashTag);
 	conferenceMap.insert(homePageForeignKey, mHomePage);
 	conferenceMap.insert(coordinateForeignKey, mCoordinate);
-	conferenceMap.insert(lastBuildingIdForeignKey, mLastBuildingId);
-	conferenceMap.insert(lastFloorIdForeignKey, mLastFloorId);
 	conferenceMap.insert(lastRoomIdForeignKey, mLastRoomId);
 	conferenceMap.insert(lastSessionTrackIdForeignKey, mLastSessionTrackId);
 	return conferenceMap;
@@ -497,34 +536,6 @@ void Conference::setCoordinate(QString coordinate)
 	}
 }
 // ATT 
-// Optional: lastBuildingId
-int Conference::lastBuildingId() const
-{
-	return mLastBuildingId;
-}
-
-void Conference::setLastBuildingId(int lastBuildingId)
-{
-	if (lastBuildingId != mLastBuildingId) {
-		mLastBuildingId = lastBuildingId;
-		emit lastBuildingIdChanged(lastBuildingId);
-	}
-}
-// ATT 
-// Optional: lastFloorId
-int Conference::lastFloorId() const
-{
-	return mLastFloorId;
-}
-
-void Conference::setLastFloorId(int lastFloorId)
-{
-	if (lastFloorId != mLastFloorId) {
-		mLastFloorId = lastFloorId;
-		emit lastFloorIdChanged(lastFloorId);
-	}
-}
-// ATT 
 // Optional: lastRoomId
 int Conference::lastRoomId() const
 {
@@ -559,6 +570,14 @@ QVariantList Conference::daysAsQVariantList()
 	QVariantList daysList;
 	for (int i = 0; i < mDays.size(); ++i) {
         daysList.append((mDays.at(i))->toMap());
+    }
+	return daysList;
+}
+QVariantList Conference::daysAsCacheQVariantList()
+{
+	QVariantList daysList;
+	for (int i = 0; i < mDays.size(); ++i) {
+        daysList.append((mDays.at(i))->toCacheMap());
     }
 	return daysList;
 }
@@ -716,6 +735,181 @@ void Conference::clearDaysProperty(QQmlListProperty<Day> *daysList)
         conference->mDays.clear();
     } else {
         qWarning() << "cannot clear days " << "Object is not of type Conference*";
+    }
+}
+
+// ATT 
+// Optional: tracks
+QVariantList Conference::tracksAsQVariantList()
+{
+	QVariantList tracksList;
+	for (int i = 0; i < mTracks.size(); ++i) {
+        tracksList.append((mTracks.at(i))->toMap());
+    }
+	return tracksList;
+}
+QVariantList Conference::tracksAsCacheQVariantList()
+{
+	QVariantList tracksList;
+	for (int i = 0; i < mTracks.size(); ++i) {
+        tracksList.append((mTracks.at(i))->toCacheMap());
+    }
+	return tracksList;
+}
+QVariantList Conference::tracksAsForeignQVariantList()
+{
+	QVariantList tracksList;
+	for (int i = 0; i < mTracks.size(); ++i) {
+        tracksList.append((mTracks.at(i))->toForeignMap());
+    }
+	return tracksList;
+}
+// no create() or undoCreate() because dto is root object
+// see methods in DataManager
+/**
+ * you can add tracks without resolving existing keys before
+ * attention: before looping through the objects
+ * you must resolveTracksKeys
+ */
+void Conference::addToTracks(SessionTrack* sessionTrack)
+{
+    mTracks.append(sessionTrack);
+    emit addedToTracks(sessionTrack);
+    emit tracksPropertyListChanged();
+}
+
+bool Conference::removeFromTracks(SessionTrack* sessionTrack)
+{
+    bool ok = false;
+    ok = mTracks.removeOne(sessionTrack);
+    if (!ok) {
+    	qDebug() << "SessionTrack* not found in tracks";
+    	return false;
+    }
+    emit tracksPropertyListChanged();
+    // tracks are independent - DON'T delete them
+    return true;
+}
+void Conference::clearTracks()
+{
+    for (int i = mTracks.size(); i > 0; --i) {
+        removeFromTracks(mTracks.last());
+    }
+    mTracksKeys.clear();
+}
+
+/**
+ * lazy Array of independent Data Objects: only keys are persited
+ * so we get a list of keys (uuid or domain keys) from map
+ * and we persist only the keys toMap()
+ * after initializing the keys must be resolved:
+ * - get the list of keys: tracksKeys()
+ * - resolve them from DataManager
+ * - then resolveTracksKeys()
+ */
+bool Conference::areTracksKeysResolved()
+{
+    return mTracksKeysResolved;
+}
+
+QStringList Conference::tracksKeys()
+{
+    return mTracksKeys;
+}
+
+/**
+ * Objects from tracksKeys will be added to existing tracks
+ * This enables to use addToTracks() without resolving before
+ * Hint: it's your responsibility to resolve before looping thru tracks
+ */
+void Conference::resolveTracksKeys(QList<SessionTrack*> tracks)
+{
+    if(mTracksKeysResolved){
+        return;
+    }
+    // don't clear mTracks (see above)
+    for (int i = 0; i < tracks.size(); ++i) {
+        addToTracks(tracks.at(i));
+    }
+    mTracksKeysResolved = true;
+}
+
+int Conference::tracksCount()
+{
+    return mTracks.size();
+}
+QList<SessionTrack*> Conference::tracks()
+{
+	return mTracks;
+}
+void Conference::setTracks(QList<SessionTrack*> tracks) 
+{
+	if (tracks != mTracks) {
+		mTracks = tracks;
+		emit tracksChanged(tracks);
+		emit tracksPropertyListChanged();
+	}
+}
+
+/**
+ * to access lists from QML we're using QQmlListProperty
+ * and implement methods to append, count and clear
+ * now from QML we can use
+ * conference.tracksPropertyList.length to get the size
+ * conference.tracksPropertyList[2] to get SessionTrack* at position 2
+ * conference.tracksPropertyList = [] to clear the list
+ * or get easy access to properties like
+ * conference.tracksPropertyList[2].myPropertyName
+ */
+QQmlListProperty<SessionTrack> Conference::tracksPropertyList()
+{
+    return QQmlListProperty<SessionTrack>(this, 0, &Conference::appendToTracksProperty,
+            &Conference::tracksPropertyCount, &Conference::atTracksProperty,
+            &Conference::clearTracksProperty);
+}
+void Conference::appendToTracksProperty(QQmlListProperty<SessionTrack> *tracksList,
+        SessionTrack* sessionTrack)
+{
+    Conference *conferenceObject = qobject_cast<Conference *>(tracksList->object);
+    if (conferenceObject) {
+        conferenceObject->mTracks.append(sessionTrack);
+        emit conferenceObject->addedToTracks(sessionTrack);
+    } else {
+        qWarning() << "cannot append SessionTrack* to tracks " << "Object is not of type Conference*";
+    }
+}
+int Conference::tracksPropertyCount(QQmlListProperty<SessionTrack> *tracksList)
+{
+    Conference *conference = qobject_cast<Conference *>(tracksList->object);
+    if (conference) {
+        return conference->mTracks.size();
+    } else {
+        qWarning() << "cannot get size tracks " << "Object is not of type Conference*";
+    }
+    return 0;
+}
+SessionTrack* Conference::atTracksProperty(QQmlListProperty<SessionTrack> *tracksList, int pos)
+{
+    Conference *conference = qobject_cast<Conference *>(tracksList->object);
+    if (conference) {
+        if (conference->mTracks.size() > pos) {
+            return conference->mTracks.at(pos);
+        }
+        qWarning() << "cannot get SessionTrack* at pos " << pos << " size is "
+                << conference->mTracks.size();
+    } else {
+        qWarning() << "cannot get SessionTrack* at pos " << pos << "Object is not of type Conference*";
+    }
+    return 0;
+}
+void Conference::clearTracksProperty(QQmlListProperty<SessionTrack> *tracksList)
+{
+    Conference *conference = qobject_cast<Conference *>(tracksList->object);
+    if (conference) {
+        // tracks are independent - DON'T delete them
+        conference->mTracks.clear();
+    } else {
+        qWarning() << "cannot clear tracks " << "Object is not of type Conference*";
     }
 }
 

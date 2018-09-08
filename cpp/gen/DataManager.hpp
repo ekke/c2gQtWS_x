@@ -7,22 +7,19 @@
 
 #include "SettingsData.hpp"
 #include "Conference.hpp"
-#include "Building.hpp"
-#include "Floor.hpp"
 #include "Room.hpp"
 #include "Session.hpp"
-#include "ScheduleItem.hpp"
+#include "GenericScheduleItem.hpp"
 #include "Favorite.hpp"
 #include "Bookmark.hpp"
 #include "SessionLists.hpp"
-#include "SessionLink.hpp"
 #include "Speaker.hpp"
 #include "SpeakerImage.hpp"
 #include "SessionTrack.hpp"
 #include "Day.hpp"
 #include "SessionAPI.hpp"
 #include "PersonsAPI.hpp"
-#include "SessionLinkAPI.hpp"
+#include "SessionTrackAPI.hpp"
 #include "SpeakerAPI.hpp"
 
 class DataManager: public QObject
@@ -31,22 +28,19 @@ Q_OBJECT
 
 // QQmlListProperty to get easy access from QML
 Q_PROPERTY(QQmlListProperty<Conference> conferencePropertyList READ conferencePropertyList NOTIFY conferencePropertyListChanged)
-Q_PROPERTY(QQmlListProperty<Building> buildingPropertyList READ buildingPropertyList NOTIFY buildingPropertyListChanged)
-Q_PROPERTY(QQmlListProperty<Floor> floorPropertyList READ floorPropertyList NOTIFY floorPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Room> roomPropertyList READ roomPropertyList NOTIFY roomPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Session> sessionPropertyList READ sessionPropertyList NOTIFY sessionPropertyListChanged)
-Q_PROPERTY(QQmlListProperty<ScheduleItem> scheduleItemPropertyList READ scheduleItemPropertyList NOTIFY scheduleItemPropertyListChanged)
+Q_PROPERTY(QQmlListProperty<GenericScheduleItem> genericScheduleItemPropertyList READ genericScheduleItemPropertyList NOTIFY genericScheduleItemPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Favorite> favoritePropertyList READ favoritePropertyList NOTIFY favoritePropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Bookmark> bookmarkPropertyList READ bookmarkPropertyList NOTIFY bookmarkPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<SessionLists> sessionListsPropertyList READ sessionListsPropertyList NOTIFY sessionListsPropertyListChanged)
-Q_PROPERTY(QQmlListProperty<SessionLink> sessionLinkPropertyList READ sessionLinkPropertyList NOTIFY sessionLinkPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Speaker> speakerPropertyList READ speakerPropertyList NOTIFY speakerPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<SpeakerImage> speakerImagePropertyList READ speakerImagePropertyList NOTIFY speakerImagePropertyListChanged)
 Q_PROPERTY(QQmlListProperty<SessionTrack> sessionTrackPropertyList READ sessionTrackPropertyList NOTIFY sessionTrackPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Day> dayPropertyList READ dayPropertyList NOTIFY dayPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<SessionAPI> sessionAPIPropertyList READ sessionAPIPropertyList NOTIFY sessionAPIPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<PersonsAPI> personsAPIPropertyList READ personsAPIPropertyList NOTIFY personsAPIPropertyListChanged)
-Q_PROPERTY(QQmlListProperty<SessionLinkAPI> sessionLinkAPIPropertyList READ sessionLinkAPIPropertyList NOTIFY sessionLinkAPIPropertyListChanged)
+Q_PROPERTY(QQmlListProperty<SessionTrackAPI> sessionTrackAPIPropertyList READ sessionTrackAPIPropertyList NOTIFY sessionTrackAPIPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<SpeakerAPI> speakerAPIPropertyList READ speakerAPIPropertyList NOTIFY speakerAPIPropertyListChanged)
 
 public:
@@ -113,96 +107,6 @@ public:
     Conference* findConferenceById(const int& id);
 
 	
-	
-	Q_INVOKABLE
-	QList<Building*> listOfBuildingForKeys(QStringList keyList);
-
-	Q_INVOKABLE
-	QVariantList buildingAsQVariantList();
-
-	Q_INVOKABLE
-	QList<QObject*> allBuilding();
-
-	Q_INVOKABLE
-	void deleteBuilding();
-
-	// access from QML to list of all Building
-	QQmlListProperty<Building> buildingPropertyList();
-
-	Q_INVOKABLE
-	Building* createBuilding();
-
-	Q_INVOKABLE
-	void undoCreateBuilding(Building* building);
-
-	Q_INVOKABLE
-	void insertBuilding(Building* building);
-
-	Q_INVOKABLE
-	void insertBuildingFromMap(const QVariantMap& buildingMap, const bool& useForeignProperties);
-
-	Q_INVOKABLE
-	bool deleteBuilding(Building* building);
-	
-
-	Q_INVOKABLE
-	bool deleteBuildingByBuildingId(const int& buildingId);
-
-	Q_INVOKABLE
-    Building* findBuildingByBuildingId(const int& buildingId);
-
-	
-
-	Q_INVOKABLE
-	void resolveFloorReferences(Floor* floor);
-
-	Q_INVOKABLE
-	void resolveReferencesForAllFloor();
-	
-	Q_INVOKABLE
-	QList<Floor*> listOfFloorForKeys(QStringList keyList);
-
-	Q_INVOKABLE
-	QVariantList floorAsQVariantList();
-
-	Q_INVOKABLE
-	QList<QObject*> allFloor();
-
-	Q_INVOKABLE
-	void deleteFloor();
-
-	// access from QML to list of all Floor
-	QQmlListProperty<Floor> floorPropertyList();
-
-	Q_INVOKABLE
-	Floor* createFloor();
-
-	Q_INVOKABLE
-	void undoCreateFloor(Floor* floor);
-
-	Q_INVOKABLE
-	void insertFloor(Floor* floor);
-
-	Q_INVOKABLE
-	void insertFloorFromMap(const QVariantMap& floorMap, const bool& useForeignProperties);
-
-	Q_INVOKABLE
-	bool deleteFloor(Floor* floor);
-	
-
-	Q_INVOKABLE
-	bool deleteFloorByFloorId(const int& floorId);
-
-	Q_INVOKABLE
-    Floor* findFloorByFloorId(const int& floorId);
-
-	
-
-	Q_INVOKABLE
-	void resolveRoomReferences(Room* room);
-
-	Q_INVOKABLE
-	void resolveReferencesForAllRoom();
 	
 	Q_INVOKABLE
 	QList<Room*> listOfRoomForKeys(QStringList keyList);
@@ -289,47 +193,47 @@ public:
 	
 
 	Q_INVOKABLE
-	void resolveScheduleItemReferences(ScheduleItem* scheduleItem);
+	void resolveGenericScheduleItemReferences(GenericScheduleItem* genericScheduleItem);
 
 	Q_INVOKABLE
-	void resolveReferencesForAllScheduleItem();
+	void resolveReferencesForAllGenericScheduleItem();
 	
 	Q_INVOKABLE
-	QList<ScheduleItem*> listOfScheduleItemForKeys(QStringList keyList);
+	QList<GenericScheduleItem*> listOfGenericScheduleItemForKeys(QStringList keyList);
 
 	Q_INVOKABLE
-	QVariantList scheduleItemAsQVariantList();
+	QVariantList genericScheduleItemAsQVariantList();
 
 	Q_INVOKABLE
-	QList<QObject*> allScheduleItem();
+	QList<QObject*> allGenericScheduleItem();
 
 	Q_INVOKABLE
-	void deleteScheduleItem();
+	void deleteGenericScheduleItem();
 
-	// access from QML to list of all ScheduleItem
-	QQmlListProperty<ScheduleItem> scheduleItemPropertyList();
-
-	Q_INVOKABLE
-	ScheduleItem* createScheduleItem();
+	// access from QML to list of all GenericScheduleItem
+	QQmlListProperty<GenericScheduleItem> genericScheduleItemPropertyList();
 
 	Q_INVOKABLE
-	void undoCreateScheduleItem(ScheduleItem* scheduleItem);
+	GenericScheduleItem* createGenericScheduleItem();
 
 	Q_INVOKABLE
-	void insertScheduleItem(ScheduleItem* scheduleItem);
+	void undoCreateGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
 
 	Q_INVOKABLE
-	void insertScheduleItemFromMap(const QVariantMap& scheduleItemMap, const bool& useForeignProperties);
+	void insertGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
 
 	Q_INVOKABLE
-	bool deleteScheduleItem(ScheduleItem* scheduleItem);
+	void insertGenericScheduleItemFromMap(const QVariantMap& genericScheduleItemMap, const bool& useForeignProperties);
+
+	Q_INVOKABLE
+	bool deleteGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
 	
 
 	Q_INVOKABLE
-	bool deleteScheduleItemBySessionId(const int& sessionId);
+	bool deleteGenericScheduleItemBySessionId(const int& sessionId);
 
 	Q_INVOKABLE
-    ScheduleItem* findScheduleItemBySessionId(const int& sessionId);
+    GenericScheduleItem* findGenericScheduleItemBySessionId(const int& sessionId);
 
 	
 
@@ -459,44 +363,6 @@ public:
 
 	Q_INVOKABLE
 	SessionLists* findSessionListsByUuid(const QString& uuid);
-	
-	
-	Q_INVOKABLE
-	QList<SessionLink*> listOfSessionLinkForKeys(QStringList keyList);
-
-	Q_INVOKABLE
-	QVariantList sessionLinkAsQVariantList();
-
-	Q_INVOKABLE
-	QList<QObject*> allSessionLink();
-
-	Q_INVOKABLE
-	void deleteSessionLink();
-
-	// access from QML to list of all SessionLink
-	QQmlListProperty<SessionLink> sessionLinkPropertyList();
-
-	Q_INVOKABLE
-	SessionLink* createSessionLink();
-
-	Q_INVOKABLE
-	void undoCreateSessionLink(SessionLink* sessionLink);
-
-	Q_INVOKABLE
-	void insertSessionLink(SessionLink* sessionLink);
-
-	Q_INVOKABLE
-	void insertSessionLinkFromMap(const QVariantMap& sessionLinkMap, const bool& useForeignProperties);
-
-	Q_INVOKABLE
-	bool deleteSessionLink(SessionLink* sessionLink);
-	
-
-	Q_INVOKABLE
-	bool deleteSessionLinkByUuid(const QString& uuid);
-
-	Q_INVOKABLE
-	SessionLink* findSessionLinkByUuid(const QString& uuid);
 	
 
 	Q_INVOKABLE
@@ -740,41 +606,41 @@ public:
 	
 	
 	Q_INVOKABLE
-	QList<SessionLinkAPI*> listOfSessionLinkAPIForKeys(QStringList keyList);
+	QList<SessionTrackAPI*> listOfSessionTrackAPIForKeys(QStringList keyList);
 
 	Q_INVOKABLE
-	QVariantList sessionLinkAPIAsQVariantList();
+	QVariantList sessionTrackAPIAsQVariantList();
 
 	Q_INVOKABLE
-	QList<QObject*> allSessionLinkAPI();
+	QList<QObject*> allSessionTrackAPI();
 
 	Q_INVOKABLE
-	void deleteSessionLinkAPI();
+	void deleteSessionTrackAPI();
 
-	// access from QML to list of all SessionLinkAPI
-	QQmlListProperty<SessionLinkAPI> sessionLinkAPIPropertyList();
-
-	Q_INVOKABLE
-	SessionLinkAPI* createSessionLinkAPI();
+	// access from QML to list of all SessionTrackAPI
+	QQmlListProperty<SessionTrackAPI> sessionTrackAPIPropertyList();
 
 	Q_INVOKABLE
-	void undoCreateSessionLinkAPI(SessionLinkAPI* sessionLinkAPI);
+	SessionTrackAPI* createSessionTrackAPI();
 
 	Q_INVOKABLE
-	void insertSessionLinkAPI(SessionLinkAPI* sessionLinkAPI);
+	void undoCreateSessionTrackAPI(SessionTrackAPI* sessionTrackAPI);
 
 	Q_INVOKABLE
-	void insertSessionLinkAPIFromMap(const QVariantMap& sessionLinkAPIMap, const bool& useForeignProperties);
+	void insertSessionTrackAPI(SessionTrackAPI* sessionTrackAPI);
 
 	Q_INVOKABLE
-	bool deleteSessionLinkAPI(SessionLinkAPI* sessionLinkAPI);
+	void insertSessionTrackAPIFromMap(const QVariantMap& sessionTrackAPIMap, const bool& useForeignProperties);
+
+	Q_INVOKABLE
+	bool deleteSessionTrackAPI(SessionTrackAPI* sessionTrackAPI);
 	
 
 	Q_INVOKABLE
-	bool deleteSessionLinkAPIByUuid(const QString& uuid);
+	bool deleteSessionTrackAPIByUuid(const QString& uuid);
 
 	Q_INVOKABLE
-	SessionLinkAPI* findSessionLinkAPIByUuid(const QString& uuid);
+	SessionTrackAPI* findSessionTrackAPIByUuid(const QString& uuid);
 	
 	
 	Q_INVOKABLE
@@ -817,22 +683,19 @@ public:
 
 
     void initConferenceFromCache();
-    void initBuildingFromCache();
-    void initFloorFromCache();
     void initRoomFromCache();
     void initSessionFromCache();
-    void initScheduleItemFromCache();
+    void initGenericScheduleItemFromCache();
     void initFavoriteFromCache();
     void initBookmarkFromCache();
     void initSessionListsFromCache();
-    void initSessionLinkFromCache();
     void initSpeakerFromCache();
     void initSpeakerImageFromCache();
     void initSessionTrackFromCache();
     void initDayFromCache();
     void initSessionAPIFromCache();
     void initPersonsAPIFromCache();
-    void initSessionLinkAPIFromCache();
+    void initSessionTrackAPIFromCache();
     void initSpeakerAPIFromCache();
 	Q_INVOKABLE
 	SettingsData* settingsData();
@@ -846,14 +709,6 @@ Q_SIGNALS:
 	void deletedFromAllConferenceById(int id);
 	void deletedFromAllConference(Conference* conference);
 	void conferencePropertyListChanged();
-	void addedToAllBuilding(Building* building);
-	void deletedFromAllBuildingByBuildingId(int buildingId);
-	void deletedFromAllBuilding(Building* building);
-	void buildingPropertyListChanged();
-	void addedToAllFloor(Floor* floor);
-	void deletedFromAllFloorByFloorId(int floorId);
-	void deletedFromAllFloor(Floor* floor);
-	void floorPropertyListChanged();
 	void addedToAllRoom(Room* room);
 	void deletedFromAllRoomByRoomId(int roomId);
 	void deletedFromAllRoom(Room* room);
@@ -862,10 +717,10 @@ Q_SIGNALS:
 	void deletedFromAllSessionBySessionId(int sessionId);
 	void deletedFromAllSession(Session* session);
 	void sessionPropertyListChanged();
-	void addedToAllScheduleItem(ScheduleItem* scheduleItem);
-	void deletedFromAllScheduleItemBySessionId(int sessionId);
-	void deletedFromAllScheduleItem(ScheduleItem* scheduleItem);
-	void scheduleItemPropertyListChanged();
+	void addedToAllGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
+	void deletedFromAllGenericScheduleItemBySessionId(int sessionId);
+	void deletedFromAllGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
+	void genericScheduleItemPropertyListChanged();
 	void addedToAllFavorite(Favorite* favorite);
 	void deletedFromAllFavoriteBySessionId(int sessionId);
 	void deletedFromAllFavorite(Favorite* favorite);
@@ -878,10 +733,6 @@ Q_SIGNALS:
 	void deletedFromAllSessionListsByUuid(QString uuid);
 	void deletedFromAllSessionLists(SessionLists* sessionLists);
 	void sessionListsPropertyListChanged();
-	void addedToAllSessionLink(SessionLink* sessionLink);
-	void deletedFromAllSessionLinkByUuid(QString uuid);
-	void deletedFromAllSessionLink(SessionLink* sessionLink);
-	void sessionLinkPropertyListChanged();
 	void addedToAllSpeaker(Speaker* speaker);
 	void deletedFromAllSpeakerBySpeakerId(int speakerId);
 	void deletedFromAllSpeaker(Speaker* speaker);
@@ -906,10 +757,10 @@ Q_SIGNALS:
 	void deletedFromAllPersonsAPIBySpeakerId(int speakerId);
 	void deletedFromAllPersonsAPI(PersonsAPI* personsAPI);
 	void personsAPIPropertyListChanged();
-	void addedToAllSessionLinkAPI(SessionLinkAPI* sessionLinkAPI);
-	void deletedFromAllSessionLinkAPIByUuid(QString uuid);
-	void deletedFromAllSessionLinkAPI(SessionLinkAPI* sessionLinkAPI);
-	void sessionLinkAPIPropertyListChanged();
+	void addedToAllSessionTrackAPI(SessionTrackAPI* sessionTrackAPI);
+	void deletedFromAllSessionTrackAPIByUuid(QString uuid);
+	void deletedFromAllSessionTrackAPI(SessionTrackAPI* sessionTrackAPI);
+	void sessionTrackAPIPropertyListChanged();
 	void addedToAllSpeakerAPI(SpeakerAPI* speakerAPI);
 	void deletedFromAllSpeakerAPIById(int id);
 	void deletedFromAllSpeakerAPI(SpeakerAPI* speakerAPI);
@@ -944,32 +795,6 @@ private:
     static void clearConferenceProperty(
     	QQmlListProperty<Conference> *conferenceList);
     	
-    QList<QObject*> mAllBuilding;
-    // implementation for QQmlListProperty to use
-    // QML functions for List of All Building*
-    static void appendToBuildingProperty(
-    	QQmlListProperty<Building> *buildingList,
-    	Building* building);
-    static int buildingPropertyCount(
-    	QQmlListProperty<Building> *buildingList);
-    static Building* atBuildingProperty(
-    	QQmlListProperty<Building> *buildingList, int pos);
-    static void clearBuildingProperty(
-    	QQmlListProperty<Building> *buildingList);
-    	
-    QList<QObject*> mAllFloor;
-    // implementation for QQmlListProperty to use
-    // QML functions for List of All Floor*
-    static void appendToFloorProperty(
-    	QQmlListProperty<Floor> *floorList,
-    	Floor* floor);
-    static int floorPropertyCount(
-    	QQmlListProperty<Floor> *floorList);
-    static Floor* atFloorProperty(
-    	QQmlListProperty<Floor> *floorList, int pos);
-    static void clearFloorProperty(
-    	QQmlListProperty<Floor> *floorList);
-    	
     QList<QObject*> mAllRoom;
     // implementation for QQmlListProperty to use
     // QML functions for List of All Room*
@@ -996,18 +821,18 @@ private:
     static void clearSessionProperty(
     	QQmlListProperty<Session> *sessionList);
     	
-    QList<QObject*> mAllScheduleItem;
+    QList<QObject*> mAllGenericScheduleItem;
     // implementation for QQmlListProperty to use
-    // QML functions for List of All ScheduleItem*
-    static void appendToScheduleItemProperty(
-    	QQmlListProperty<ScheduleItem> *scheduleItemList,
-    	ScheduleItem* scheduleItem);
-    static int scheduleItemPropertyCount(
-    	QQmlListProperty<ScheduleItem> *scheduleItemList);
-    static ScheduleItem* atScheduleItemProperty(
-    	QQmlListProperty<ScheduleItem> *scheduleItemList, int pos);
-    static void clearScheduleItemProperty(
-    	QQmlListProperty<ScheduleItem> *scheduleItemList);
+    // QML functions for List of All GenericScheduleItem*
+    static void appendToGenericScheduleItemProperty(
+    	QQmlListProperty<GenericScheduleItem> *genericScheduleItemList,
+    	GenericScheduleItem* genericScheduleItem);
+    static int genericScheduleItemPropertyCount(
+    	QQmlListProperty<GenericScheduleItem> *genericScheduleItemList);
+    static GenericScheduleItem* atGenericScheduleItemProperty(
+    	QQmlListProperty<GenericScheduleItem> *genericScheduleItemList, int pos);
+    static void clearGenericScheduleItemProperty(
+    	QQmlListProperty<GenericScheduleItem> *genericScheduleItemList);
     	
     QList<QObject*> mAllFavorite;
     // implementation for QQmlListProperty to use
@@ -1047,19 +872,6 @@ private:
     	QQmlListProperty<SessionLists> *sessionListsList, int pos);
     static void clearSessionListsProperty(
     	QQmlListProperty<SessionLists> *sessionListsList);
-    	
-    QList<QObject*> mAllSessionLink;
-    // implementation for QQmlListProperty to use
-    // QML functions for List of All SessionLink*
-    static void appendToSessionLinkProperty(
-    	QQmlListProperty<SessionLink> *sessionLinkList,
-    	SessionLink* sessionLink);
-    static int sessionLinkPropertyCount(
-    	QQmlListProperty<SessionLink> *sessionLinkList);
-    static SessionLink* atSessionLinkProperty(
-    	QQmlListProperty<SessionLink> *sessionLinkList, int pos);
-    static void clearSessionLinkProperty(
-    	QQmlListProperty<SessionLink> *sessionLinkList);
     	
     QList<QObject*> mAllSpeaker;
     // implementation for QQmlListProperty to use
@@ -1139,18 +951,18 @@ private:
     static void clearPersonsAPIProperty(
     	QQmlListProperty<PersonsAPI> *personsAPIList);
     	
-    QList<QObject*> mAllSessionLinkAPI;
+    QList<QObject*> mAllSessionTrackAPI;
     // implementation for QQmlListProperty to use
-    // QML functions for List of All SessionLinkAPI*
-    static void appendToSessionLinkAPIProperty(
-    	QQmlListProperty<SessionLinkAPI> *sessionLinkAPIList,
-    	SessionLinkAPI* sessionLinkAPI);
-    static int sessionLinkAPIPropertyCount(
-    	QQmlListProperty<SessionLinkAPI> *sessionLinkAPIList);
-    static SessionLinkAPI* atSessionLinkAPIProperty(
-    	QQmlListProperty<SessionLinkAPI> *sessionLinkAPIList, int pos);
-    static void clearSessionLinkAPIProperty(
-    	QQmlListProperty<SessionLinkAPI> *sessionLinkAPIList);
+    // QML functions for List of All SessionTrackAPI*
+    static void appendToSessionTrackAPIProperty(
+    	QQmlListProperty<SessionTrackAPI> *sessionTrackAPIList,
+    	SessionTrackAPI* sessionTrackAPI);
+    static int sessionTrackAPIPropertyCount(
+    	QQmlListProperty<SessionTrackAPI> *sessionTrackAPIList);
+    static SessionTrackAPI* atSessionTrackAPIProperty(
+    	QQmlListProperty<SessionTrackAPI> *sessionTrackAPIList, int pos);
+    static void clearSessionTrackAPIProperty(
+    	QQmlListProperty<SessionTrackAPI> *sessionTrackAPIList);
     	
     QList<QObject*> mAllSpeakerAPI;
     // implementation for QQmlListProperty to use
@@ -1167,22 +979,19 @@ private:
     	
 
     void saveConferenceToCache();
-    void saveBuildingToCache();
-    void saveFloorToCache();
     void saveRoomToCache();
     void saveSessionToCache();
-    void saveScheduleItemToCache();
+    void saveGenericScheduleItemToCache();
     void saveFavoriteToCache();
     void saveBookmarkToCache();
     void saveSessionListsToCache();
-    void saveSessionLinkToCache();
     void saveSpeakerToCache();
     void saveSpeakerImageToCache();
     void saveSessionTrackToCache();
     void saveDayToCache();
     void saveSessionAPIToCache();
     void savePersonsAPIToCache();
-    void saveSessionLinkAPIToCache();
+    void saveSessionTrackAPIToCache();
     void saveSpeakerAPIToCache();
 
 

@@ -26,7 +26,7 @@ ListView {
         Loader {
         id: sessionLoader
         // define Components inside Loader to enable direct access to ListView functions and modelData
-        sourceComponent: hasScheduleItem()? scheduleRowComponent : sessionRowComponent
+        sourceComponent: hasGenericScheduleItem()? scheduleRowComponent : sessionRowComponent
 
         // LIST ROW DELEGATES
         Component {
@@ -125,14 +125,14 @@ ListView {
                                 maximumLineCount: 2
                                 elide: Label.ElideRight
                             } // label
-                            LabelBody {
-                                visible: model.modelData.subtitle.length
-                                rightPadding: 12
-                                text: model.modelData.subtitle
-                                wrapMode: Label.WordWrap
-                                maximumLineCount: 2
-                                elide: Label.ElideRight
-                            }
+//                            LabelBody {
+//                                visible: model.modelData.subtitle.length
+//                                rightPadding: 12
+//                                text: model.modelData.subtitle
+//                                wrapMode: Label.WordWrap
+//                                maximumLineCount: 2
+//                                elide: Label.ElideRight
+//                            }
                             RowLayout {
                                 LabelBody {
                                     Layout.fillWidth: false

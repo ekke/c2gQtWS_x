@@ -4,13 +4,17 @@
 
 // keys of QVariantMap used in this APP
 static const QString uuidKey = "uuid";
+static const QString conferenceKey = "conference";
 static const QString scheduledSessionsKey = "scheduledSessions";
+static const QString bookmarkedSessionsKey = "bookmarkedSessions";
 static const QString sameTimeSessionsKey = "sameTimeSessions";
 static const QString specialTimeSessionsKey = "specialTimeSessions";
 
 // keys used from Server API etc
 static const QString uuidForeignKey = "uuid";
+static const QString conferenceForeignKey = "conference";
 static const QString scheduledSessionsForeignKey = "scheduledSessions";
+static const QString bookmarkedSessionsForeignKey = "bookmarkedSessions";
 static const QString sameTimeSessionsForeignKey = "sameTimeSessions";
 static const QString specialTimeSessionsForeignKey = "specialTimeSessions";
 
@@ -18,10 +22,11 @@ static const QString specialTimeSessionsForeignKey = "specialTimeSessions";
  * Default Constructor if SessionLists not initialized from QVariantMap
  */
 SessionLists::SessionLists(QObject *parent) :
-        QObject(parent), mUuid("")
+        QObject(parent), mUuid(""), mConference(0)
 {
 		// lazy Arrays where only keys are persisted
 		mScheduledSessionsKeysResolved = false;
+		mBookmarkedSessionsKeysResolved = false;
 		mSameTimeSessionsKeysResolved = false;
 		mSpecialTimeSessionsKeysResolved = false;
 }
@@ -29,6 +34,9 @@ SessionLists::SessionLists(QObject *parent) :
 bool SessionLists::isAllResolved()
 {
     if(!areScheduledSessionsKeysResolved()) {
+        return false;
+    }
+    if(!areBookmarkedSessionsKeysResolved()) {
         return false;
     }
     if(!areSameTimeSessionsKeysResolved()) {
@@ -55,11 +63,17 @@ void SessionLists::fillFromMap(const QVariantMap& sessionListsMap)
 		mUuid = mUuid.right(mUuid.length() - 1);
 		mUuid = mUuid.left(mUuid.length() - 1);
 	}	
+	mConference = sessionListsMap.value(conferenceKey).toInt();
 	// mScheduledSessions is (lazy loaded) Array of Session*
 	mScheduledSessionsKeys = sessionListsMap.value(scheduledSessionsKey).toStringList();
 	// mScheduledSessions must be resolved later if there are keys
 	mScheduledSessionsKeysResolved = (mScheduledSessionsKeys.size() == 0);
 	mScheduledSessions.clear();
+	// mBookmarkedSessions is (lazy loaded) Array of Session*
+	mBookmarkedSessionsKeys = sessionListsMap.value(bookmarkedSessionsKey).toStringList();
+	// mBookmarkedSessions must be resolved later if there are keys
+	mBookmarkedSessionsKeysResolved = (mBookmarkedSessionsKeys.size() == 0);
+	mBookmarkedSessions.clear();
 	// mSameTimeSessions is (lazy loaded) Array of Session*
 	mSameTimeSessionsKeys = sessionListsMap.value(sameTimeSessionsKey).toStringList();
 	// mSameTimeSessions must be resolved later if there are keys
@@ -86,11 +100,17 @@ void SessionLists::fillFromForeignMap(const QVariantMap& sessionListsMap)
 		mUuid = mUuid.right(mUuid.length() - 1);
 		mUuid = mUuid.left(mUuid.length() - 1);
 	}	
+	mConference = sessionListsMap.value(conferenceForeignKey).toInt();
 	// mScheduledSessions is (lazy loaded) Array of Session*
 	mScheduledSessionsKeys = sessionListsMap.value(scheduledSessionsForeignKey).toStringList();
 	// mScheduledSessions must be resolved later if there are keys
 	mScheduledSessionsKeysResolved = (mScheduledSessionsKeys.size() == 0);
 	mScheduledSessions.clear();
+	// mBookmarkedSessions is (lazy loaded) Array of Session*
+	mBookmarkedSessionsKeys = sessionListsMap.value(bookmarkedSessionsForeignKey).toStringList();
+	// mBookmarkedSessions must be resolved later if there are keys
+	mBookmarkedSessionsKeysResolved = (mBookmarkedSessionsKeys.size() == 0);
+	mBookmarkedSessions.clear();
 	// mSameTimeSessions is (lazy loaded) Array of Session*
 	mSameTimeSessionsKeys = sessionListsMap.value(sameTimeSessionsForeignKey).toStringList();
 	// mSameTimeSessions must be resolved later if there are keys
@@ -117,11 +137,17 @@ void SessionLists::fillFromCacheMap(const QVariantMap& sessionListsMap)
 		mUuid = mUuid.right(mUuid.length() - 1);
 		mUuid = mUuid.left(mUuid.length() - 1);
 	}	
+	mConference = sessionListsMap.value(conferenceKey).toInt();
 	// mScheduledSessions is (lazy loaded) Array of Session*
 	mScheduledSessionsKeys = sessionListsMap.value(scheduledSessionsKey).toStringList();
 	// mScheduledSessions must be resolved later if there are keys
 	mScheduledSessionsKeysResolved = (mScheduledSessionsKeys.size() == 0);
 	mScheduledSessions.clear();
+	// mBookmarkedSessions is (lazy loaded) Array of Session*
+	mBookmarkedSessionsKeys = sessionListsMap.value(bookmarkedSessionsKey).toStringList();
+	// mBookmarkedSessions must be resolved later if there are keys
+	mBookmarkedSessionsKeysResolved = (mBookmarkedSessionsKeys.size() == 0);
+	mBookmarkedSessions.clear();
 	// mSameTimeSessions is (lazy loaded) Array of Session*
 	mSameTimeSessionsKeys = sessionListsMap.value(sameTimeSessionsKey).toStringList();
 	// mSameTimeSessions must be resolved later if there are keys
@@ -176,6 +202,22 @@ QVariantMap SessionLists::toMap()
 		mScheduledSessionsKeys << QString::number(session->sessionId());
 	}
 	sessionListsMap.insert(scheduledSessionsKey, mScheduledSessionsKeys);
+	// mBookmarkedSessions points to Session*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mBookmarkedSessionsKeysResolved) {
+		mBookmarkedSessionsKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mBookmarkedSessions.size(); ++i) {
+		Session* session;
+		session = mBookmarkedSessions.at(i);
+		mBookmarkedSessionsKeys << QString::number(session->sessionId());
+	}
+	sessionListsMap.insert(bookmarkedSessionsKey, mBookmarkedSessionsKeys);
 	// mSameTimeSessions points to Session*
 	// lazy array: persist only keys
 	//
@@ -209,6 +251,7 @@ QVariantMap SessionLists::toMap()
 	}
 	sessionListsMap.insert(specialTimeSessionsKey, mSpecialTimeSessionsKeys);
 	sessionListsMap.insert(uuidKey, mUuid);
+	sessionListsMap.insert(conferenceKey, mConference);
 	return sessionListsMap;
 }
 
@@ -235,7 +278,23 @@ QVariantMap SessionLists::toForeignMap()
 		session = mScheduledSessions.at(i);
 		mScheduledSessionsKeys << QString::number(session->sessionId());
 	}
-	sessionListsMap.insert(scheduledSessionsKey, mScheduledSessionsKeys);
+	sessionListsMap.insert(scheduledSessionsForeignKey, mScheduledSessionsKeys);
+	// mBookmarkedSessions points to Session*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mBookmarkedSessionsKeysResolved) {
+		mBookmarkedSessionsKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mBookmarkedSessions.size(); ++i) {
+		Session* session;
+		session = mBookmarkedSessions.at(i);
+		mBookmarkedSessionsKeys << QString::number(session->sessionId());
+	}
+	sessionListsMap.insert(bookmarkedSessionsForeignKey, mBookmarkedSessionsKeys);
 	// mSameTimeSessions points to Session*
 	// lazy array: persist only keys
 	//
@@ -251,7 +310,7 @@ QVariantMap SessionLists::toForeignMap()
 		session = mSameTimeSessions.at(i);
 		mSameTimeSessionsKeys << QString::number(session->sessionId());
 	}
-	sessionListsMap.insert(sameTimeSessionsKey, mSameTimeSessionsKeys);
+	sessionListsMap.insert(sameTimeSessionsForeignKey, mSameTimeSessionsKeys);
 	// mSpecialTimeSessions points to Session*
 	// lazy array: persist only keys
 	//
@@ -267,8 +326,9 @@ QVariantMap SessionLists::toForeignMap()
 		session = mSpecialTimeSessions.at(i);
 		mSpecialTimeSessionsKeys << QString::number(session->sessionId());
 	}
-	sessionListsMap.insert(specialTimeSessionsKey, mSpecialTimeSessionsKeys);
+	sessionListsMap.insert(specialTimeSessionsForeignKey, mSpecialTimeSessionsKeys);
 	sessionListsMap.insert(uuidForeignKey, mUuid);
+	sessionListsMap.insert(conferenceForeignKey, mConference);
 	return sessionListsMap;
 }
 
@@ -300,12 +360,34 @@ void SessionLists::setUuid(QString uuid)
 	}
 }
 // ATT 
+// Optional: conference
+int SessionLists::conference() const
+{
+	return mConference;
+}
+
+void SessionLists::setConference(int conference)
+{
+	if (conference != mConference) {
+		mConference = conference;
+		emit conferenceChanged(conference);
+	}
+}
+// ATT 
 // Optional: scheduledSessions
 QVariantList SessionLists::scheduledSessionsAsQVariantList()
 {
 	QVariantList scheduledSessionsList;
 	for (int i = 0; i < mScheduledSessions.size(); ++i) {
         scheduledSessionsList.append((mScheduledSessions.at(i))->toMap());
+    }
+	return scheduledSessionsList;
+}
+QVariantList SessionLists::scheduledSessionsAsCacheQVariantList()
+{
+	QVariantList scheduledSessionsList;
+	for (int i = 0; i < mScheduledSessions.size(); ++i) {
+        scheduledSessionsList.append((mScheduledSessions.at(i))->toCacheMap());
     }
 	return scheduledSessionsList;
 }
@@ -467,12 +549,195 @@ void SessionLists::clearScheduledSessionsProperty(QQmlListProperty<Session> *sch
 }
 
 // ATT 
+// Optional: bookmarkedSessions
+QVariantList SessionLists::bookmarkedSessionsAsQVariantList()
+{
+	QVariantList bookmarkedSessionsList;
+	for (int i = 0; i < mBookmarkedSessions.size(); ++i) {
+        bookmarkedSessionsList.append((mBookmarkedSessions.at(i))->toMap());
+    }
+	return bookmarkedSessionsList;
+}
+QVariantList SessionLists::bookmarkedSessionsAsCacheQVariantList()
+{
+	QVariantList bookmarkedSessionsList;
+	for (int i = 0; i < mBookmarkedSessions.size(); ++i) {
+        bookmarkedSessionsList.append((mBookmarkedSessions.at(i))->toCacheMap());
+    }
+	return bookmarkedSessionsList;
+}
+QVariantList SessionLists::bookmarkedSessionsAsForeignQVariantList()
+{
+	QVariantList bookmarkedSessionsList;
+	for (int i = 0; i < mBookmarkedSessions.size(); ++i) {
+        bookmarkedSessionsList.append((mBookmarkedSessions.at(i))->toForeignMap());
+    }
+	return bookmarkedSessionsList;
+}
+// no create() or undoCreate() because dto is root object
+// see methods in DataManager
+/**
+ * you can add bookmarkedSessions without resolving existing keys before
+ * attention: before looping through the objects
+ * you must resolveBookmarkedSessionsKeys
+ */
+void SessionLists::addToBookmarkedSessions(Session* session)
+{
+    mBookmarkedSessions.append(session);
+    emit addedToBookmarkedSessions(session);
+    emit bookmarkedSessionsPropertyListChanged();
+}
+
+bool SessionLists::removeFromBookmarkedSessions(Session* session)
+{
+    bool ok = false;
+    ok = mBookmarkedSessions.removeOne(session);
+    if (!ok) {
+    	qDebug() << "Session* not found in bookmarkedSessions";
+    	return false;
+    }
+    emit bookmarkedSessionsPropertyListChanged();
+    // bookmarkedSessions are independent - DON'T delete them
+    return true;
+}
+void SessionLists::clearBookmarkedSessions()
+{
+    for (int i = mBookmarkedSessions.size(); i > 0; --i) {
+        removeFromBookmarkedSessions(mBookmarkedSessions.last());
+    }
+    mBookmarkedSessionsKeys.clear();
+}
+
+/**
+ * lazy Array of independent Data Objects: only keys are persited
+ * so we get a list of keys (uuid or domain keys) from map
+ * and we persist only the keys toMap()
+ * after initializing the keys must be resolved:
+ * - get the list of keys: bookmarkedSessionsKeys()
+ * - resolve them from DataManager
+ * - then resolveBookmarkedSessionsKeys()
+ */
+bool SessionLists::areBookmarkedSessionsKeysResolved()
+{
+    return mBookmarkedSessionsKeysResolved;
+}
+
+QStringList SessionLists::bookmarkedSessionsKeys()
+{
+    return mBookmarkedSessionsKeys;
+}
+
+/**
+ * Objects from bookmarkedSessionsKeys will be added to existing bookmarkedSessions
+ * This enables to use addToBookmarkedSessions() without resolving before
+ * Hint: it's your responsibility to resolve before looping thru bookmarkedSessions
+ */
+void SessionLists::resolveBookmarkedSessionsKeys(QList<Session*> bookmarkedSessions)
+{
+    if(mBookmarkedSessionsKeysResolved){
+        return;
+    }
+    // don't clear mBookmarkedSessions (see above)
+    for (int i = 0; i < bookmarkedSessions.size(); ++i) {
+        addToBookmarkedSessions(bookmarkedSessions.at(i));
+    }
+    mBookmarkedSessionsKeysResolved = true;
+}
+
+int SessionLists::bookmarkedSessionsCount()
+{
+    return mBookmarkedSessions.size();
+}
+QList<Session*> SessionLists::bookmarkedSessions()
+{
+	return mBookmarkedSessions;
+}
+void SessionLists::setBookmarkedSessions(QList<Session*> bookmarkedSessions) 
+{
+	if (bookmarkedSessions != mBookmarkedSessions) {
+		mBookmarkedSessions = bookmarkedSessions;
+		emit bookmarkedSessionsChanged(bookmarkedSessions);
+		emit bookmarkedSessionsPropertyListChanged();
+	}
+}
+
+/**
+ * to access lists from QML we're using QQmlListProperty
+ * and implement methods to append, count and clear
+ * now from QML we can use
+ * sessionLists.bookmarkedSessionsPropertyList.length to get the size
+ * sessionLists.bookmarkedSessionsPropertyList[2] to get Session* at position 2
+ * sessionLists.bookmarkedSessionsPropertyList = [] to clear the list
+ * or get easy access to properties like
+ * sessionLists.bookmarkedSessionsPropertyList[2].myPropertyName
+ */
+QQmlListProperty<Session> SessionLists::bookmarkedSessionsPropertyList()
+{
+    return QQmlListProperty<Session>(this, 0, &SessionLists::appendToBookmarkedSessionsProperty,
+            &SessionLists::bookmarkedSessionsPropertyCount, &SessionLists::atBookmarkedSessionsProperty,
+            &SessionLists::clearBookmarkedSessionsProperty);
+}
+void SessionLists::appendToBookmarkedSessionsProperty(QQmlListProperty<Session> *bookmarkedSessionsList,
+        Session* session)
+{
+    SessionLists *sessionListsObject = qobject_cast<SessionLists *>(bookmarkedSessionsList->object);
+    if (sessionListsObject) {
+        sessionListsObject->mBookmarkedSessions.append(session);
+        emit sessionListsObject->addedToBookmarkedSessions(session);
+    } else {
+        qWarning() << "cannot append Session* to bookmarkedSessions " << "Object is not of type SessionLists*";
+    }
+}
+int SessionLists::bookmarkedSessionsPropertyCount(QQmlListProperty<Session> *bookmarkedSessionsList)
+{
+    SessionLists *sessionLists = qobject_cast<SessionLists *>(bookmarkedSessionsList->object);
+    if (sessionLists) {
+        return sessionLists->mBookmarkedSessions.size();
+    } else {
+        qWarning() << "cannot get size bookmarkedSessions " << "Object is not of type SessionLists*";
+    }
+    return 0;
+}
+Session* SessionLists::atBookmarkedSessionsProperty(QQmlListProperty<Session> *bookmarkedSessionsList, int pos)
+{
+    SessionLists *sessionLists = qobject_cast<SessionLists *>(bookmarkedSessionsList->object);
+    if (sessionLists) {
+        if (sessionLists->mBookmarkedSessions.size() > pos) {
+            return sessionLists->mBookmarkedSessions.at(pos);
+        }
+        qWarning() << "cannot get Session* at pos " << pos << " size is "
+                << sessionLists->mBookmarkedSessions.size();
+    } else {
+        qWarning() << "cannot get Session* at pos " << pos << "Object is not of type SessionLists*";
+    }
+    return 0;
+}
+void SessionLists::clearBookmarkedSessionsProperty(QQmlListProperty<Session> *bookmarkedSessionsList)
+{
+    SessionLists *sessionLists = qobject_cast<SessionLists *>(bookmarkedSessionsList->object);
+    if (sessionLists) {
+        // bookmarkedSessions are independent - DON'T delete them
+        sessionLists->mBookmarkedSessions.clear();
+    } else {
+        qWarning() << "cannot clear bookmarkedSessions " << "Object is not of type SessionLists*";
+    }
+}
+
+// ATT 
 // Optional: sameTimeSessions
 QVariantList SessionLists::sameTimeSessionsAsQVariantList()
 {
 	QVariantList sameTimeSessionsList;
 	for (int i = 0; i < mSameTimeSessions.size(); ++i) {
         sameTimeSessionsList.append((mSameTimeSessions.at(i))->toMap());
+    }
+	return sameTimeSessionsList;
+}
+QVariantList SessionLists::sameTimeSessionsAsCacheQVariantList()
+{
+	QVariantList sameTimeSessionsList;
+	for (int i = 0; i < mSameTimeSessions.size(); ++i) {
+        sameTimeSessionsList.append((mSameTimeSessions.at(i))->toCacheMap());
     }
 	return sameTimeSessionsList;
 }
@@ -640,6 +905,14 @@ QVariantList SessionLists::specialTimeSessionsAsQVariantList()
 	QVariantList specialTimeSessionsList;
 	for (int i = 0; i < mSpecialTimeSessions.size(); ++i) {
         specialTimeSessionsList.append((mSpecialTimeSessions.at(i))->toMap());
+    }
+	return specialTimeSessionsList;
+}
+QVariantList SessionLists::specialTimeSessionsAsCacheQVariantList()
+{
+	QVariantList specialTimeSessionsList;
+	for (int i = 0; i < mSpecialTimeSessions.size(); ++i) {
+        specialTimeSessionsList.append((mSpecialTimeSessions.at(i))->toCacheMap());
     }
 	return specialTimeSessionsList;
 }

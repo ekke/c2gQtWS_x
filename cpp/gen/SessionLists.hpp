@@ -10,6 +10,7 @@
 #include "Session.hpp"
 #include "Session.hpp"
 #include "Session.hpp"
+#include "Session.hpp"
 
 
 class SessionLists: public QObject
@@ -17,9 +18,12 @@ class SessionLists: public QObject
 	Q_OBJECT
 
 	Q_PROPERTY(QString uuid READ uuid WRITE setUuid NOTIFY uuidChanged FINAL)
+	Q_PROPERTY(int conference READ conference WRITE setConference NOTIFY conferenceChanged FINAL)
 
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<Session> scheduledSessionsPropertyList READ scheduledSessionsPropertyList NOTIFY scheduledSessionsPropertyListChanged)
+	// QQmlListProperty to get easy access from QML
+	Q_PROPERTY(QQmlListProperty<Session> bookmarkedSessionsPropertyList READ bookmarkedSessionsPropertyList NOTIFY bookmarkedSessionsPropertyListChanged)
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<Session> sameTimeSessionsPropertyList READ sameTimeSessionsPropertyList NOTIFY sameTimeSessionsPropertyListChanged)
 	// QQmlListProperty to get easy access from QML
@@ -46,10 +50,15 @@ public:
 
 	QString uuid() const;
 	void setUuid(QString uuid);
+	int conference() const;
+	void setConference(int conference);
 
 	
 	Q_INVOKABLE
 	QVariantList scheduledSessionsAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList scheduledSessionsAsCacheQVariantList();
 	
 	Q_INVOKABLE
 	QVariantList scheduledSessionsAsForeignQVariantList();
@@ -84,7 +93,48 @@ public:
 	QQmlListProperty<Session> scheduledSessionsPropertyList();
 	
 	Q_INVOKABLE
+	QVariantList bookmarkedSessionsAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList bookmarkedSessionsAsCacheQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList bookmarkedSessionsAsForeignQVariantList();
+
+	
+	Q_INVOKABLE
+	void addToBookmarkedSessions(Session* session);
+	
+	Q_INVOKABLE
+	bool removeFromBookmarkedSessions(Session* session);
+
+	Q_INVOKABLE
+	void clearBookmarkedSessions();
+
+	// lazy Array of independent Data Objects: only keys are persisted
+	Q_INVOKABLE
+	bool areBookmarkedSessionsKeysResolved();
+
+	Q_INVOKABLE
+	QStringList bookmarkedSessionsKeys();
+
+	Q_INVOKABLE
+	void resolveBookmarkedSessionsKeys(QList<Session*> bookmarkedSessions);
+	
+	Q_INVOKABLE
+	int bookmarkedSessionsCount();
+	
+	 // access from C++ to bookmarkedSessions
+	QList<Session*> bookmarkedSessions();
+	void setBookmarkedSessions(QList<Session*> bookmarkedSessions);
+	// access from QML to bookmarkedSessions
+	QQmlListProperty<Session> bookmarkedSessionsPropertyList();
+	
+	Q_INVOKABLE
 	QVariantList sameTimeSessionsAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList sameTimeSessionsAsCacheQVariantList();
 	
 	Q_INVOKABLE
 	QVariantList sameTimeSessionsAsForeignQVariantList();
@@ -120,6 +170,9 @@ public:
 	
 	Q_INVOKABLE
 	QVariantList specialTimeSessionsAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList specialTimeSessionsAsCacheQVariantList();
 	
 	Q_INVOKABLE
 	QVariantList specialTimeSessionsAsForeignQVariantList();
@@ -159,9 +212,14 @@ public:
 	Q_SIGNALS:
 
 	void uuidChanged(QString uuid);
+	void conferenceChanged(int conference);
 	void scheduledSessionsChanged(QList<Session*> scheduledSessions);
 	void addedToScheduledSessions(Session* session);
 	void scheduledSessionsPropertyListChanged();
+	
+	void bookmarkedSessionsChanged(QList<Session*> bookmarkedSessions);
+	void addedToBookmarkedSessions(Session* session);
+	void bookmarkedSessionsPropertyListChanged();
 	
 	void sameTimeSessionsChanged(QList<Session*> sameTimeSessions);
 	void addedToSameTimeSessions(Session* session);
@@ -176,6 +234,7 @@ public:
 private:
 
 	QString mUuid;
+	int mConference;
 	// lazy Array of independent Data Objects: only keys are persisted
 	QStringList mScheduledSessionsKeys;
 	bool mScheduledSessionsKeysResolved;
@@ -187,6 +246,18 @@ private:
 	static int scheduledSessionsPropertyCount(QQmlListProperty<Session> *scheduledSessionsList);
 	static Session* atScheduledSessionsProperty(QQmlListProperty<Session> *scheduledSessionsList, int pos);
 	static void clearScheduledSessionsProperty(QQmlListProperty<Session> *scheduledSessionsList);
+	
+	// lazy Array of independent Data Objects: only keys are persisted
+	QStringList mBookmarkedSessionsKeys;
+	bool mBookmarkedSessionsKeysResolved;
+	QList<Session*> mBookmarkedSessions;
+	// implementation for QQmlListProperty to use
+	// QML functions for List of Session*
+	static void appendToBookmarkedSessionsProperty(QQmlListProperty<Session> *bookmarkedSessionsList,
+		Session* session);
+	static int bookmarkedSessionsPropertyCount(QQmlListProperty<Session> *bookmarkedSessionsList);
+	static Session* atBookmarkedSessionsProperty(QQmlListProperty<Session> *bookmarkedSessionsList, int pos);
+	static void clearBookmarkedSessionsProperty(QQmlListProperty<Session> *bookmarkedSessionsList);
 	
 	// lazy Array of independent Data Objects: only keys are persisted
 	QStringList mSameTimeSessionsKeys;

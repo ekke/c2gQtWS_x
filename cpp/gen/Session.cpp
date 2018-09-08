@@ -10,7 +10,7 @@
 // target also references to this
 #include "Room.hpp"
 // target also references to this
-#include "ScheduleItem.hpp"
+#include "GenericScheduleItem.hpp"
 
 // keys of QVariantMap used in this APP
 static const QString sessionIdKey = "sessionId";
@@ -24,7 +24,6 @@ static const QString isCommunityKey = "isCommunity";
 static const QString isUnconferenceKey = "isUnconference";
 static const QString isMeetingKey = "isMeeting";
 static const QString titleKey = "title";
-static const QString subtitleKey = "subtitle";
 static const QString descriptionKey = "description";
 static const QString sessionTypeKey = "sessionType";
 static const QString startTimeKey = "startTime";
@@ -34,11 +33,10 @@ static const QString abstractTextKey = "abstractText";
 static const QString isFavoriteKey = "isFavorite";
 static const QString isBookmarkedKey = "isBookmarked";
 static const QString presenterKey = "presenter";
-static const QString sessionLinksKey = "sessionLinks";
 static const QString sessionTracksKey = "sessionTracks";
 static const QString sessionDayKey = "sessionDay";
 static const QString roomKey = "room";
-static const QString scheduleItemKey = "scheduleItem";
+static const QString genericScheduleItemKey = "genericScheduleItem";
 
 // keys used from Server API etc
 static const QString sessionIdForeignKey = "sessionId";
@@ -52,7 +50,6 @@ static const QString isCommunityForeignKey = "isCommunity";
 static const QString isUnconferenceForeignKey = "isUnconference";
 static const QString isMeetingForeignKey = "isMeeting";
 static const QString titleForeignKey = "title";
-static const QString subtitleForeignKey = "subtitle";
 static const QString descriptionForeignKey = "description";
 static const QString sessionTypeForeignKey = "sessionType";
 static const QString startTimeForeignKey = "startTime";
@@ -62,17 +59,16 @@ static const QString abstractTextForeignKey = "abstractText";
 static const QString isFavoriteForeignKey = "isFavorite";
 static const QString isBookmarkedForeignKey = "isBookmarked";
 static const QString presenterForeignKey = "presenter";
-static const QString sessionLinksForeignKey = "sessionLinks";
 static const QString sessionTracksForeignKey = "sessionTracks";
 static const QString sessionDayForeignKey = "sessionDay";
 static const QString roomForeignKey = "room";
-static const QString scheduleItemForeignKey = "scheduleItem";
+static const QString genericScheduleItemForeignKey = "genericScheduleItem";
 
 /*
  * Default Constructor if Session not initialized from QVariantMap
  */
 Session::Session(QObject *parent) :
-        QObject(parent), mSessionId(-1), mIsDeprecated(false), mSortKey(""), mIsTraining(false), mIsLightning(false), mIsKeynote(false), mIsSession(false), mIsCommunity(false), mIsUnconference(false), mIsMeeting(false), mTitle(""), mSubtitle(""), mDescription(""), mSessionType(""), mMinutes(0), mAbstractText(""), mIsFavorite(false), mIsBookmarked(false)
+        QObject(parent), mSessionId(-1), mIsDeprecated(false), mSortKey(""), mIsTraining(false), mIsLightning(false), mIsKeynote(false), mIsSession(false), mIsCommunity(false), mIsUnconference(false), mIsMeeting(false), mTitle(""), mDescription(""), mSessionType(""), mMinutes(0), mAbstractText(""), mIsFavorite(false), mIsBookmarked(false)
 {
 	// lazy references:
 	mSessionDay = -1;
@@ -81,9 +77,9 @@ Session::Session(QObject *parent) :
 	mRoom = -1;
 	mRoomAsDataObject = 0;
 	mRoomInvalid = false;
-	mScheduleItem = -1;
-	mScheduleItemAsDataObject = 0;
-	mScheduleItemInvalid = false;
+	mGenericScheduleItem = -1;
+	mGenericScheduleItemAsDataObject = 0;
+	mGenericScheduleItemInvalid = false;
 	// Date, Time or Timestamp ? construct null value
 	mStartTime = QTime();
 	mEndTime = QTime();
@@ -92,7 +88,6 @@ Session::Session(QObject *parent) :
 	// bool mIsBookmarked
 		// lazy Arrays where only keys are persisted
 		mPresenterKeysResolved = false;
-		mSessionLinksKeysResolved = false;
 		mSessionTracksKeysResolved = false;
 }
 
@@ -104,13 +99,10 @@ bool Session::isAllResolved()
 	if (hasRoom() && !isRoomResolvedAsDataObject()) {
 		return false;
 	}
-	if (hasScheduleItem() && !isScheduleItemResolvedAsDataObject()) {
+	if (hasGenericScheduleItem() && !isGenericScheduleItemResolvedAsDataObject()) {
 		return false;
 	}
     if(!arePresenterKeysResolved()) {
-        return false;
-    }
-    if(!areSessionLinksKeysResolved()) {
         return false;
     }
     if(!areSessionTracksKeysResolved()) {
@@ -139,7 +131,6 @@ void Session::fillFromMap(const QVariantMap& sessionMap)
 	mIsUnconference = sessionMap.value(isUnconferenceKey).toBool();
 	mIsMeeting = sessionMap.value(isMeetingKey).toBool();
 	mTitle = sessionMap.value(titleKey).toString();
-	mSubtitle = sessionMap.value(subtitleKey).toString();
 	mDescription = sessionMap.value(descriptionKey).toString();
 	mSessionType = sessionMap.value(sessionTypeKey).toString();
 	if (sessionMap.contains(startTimeKey)) {
@@ -184,10 +175,10 @@ void Session::fillFromMap(const QVariantMap& sessionMap)
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
-	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-	if (sessionMap.contains(scheduleItemKey)) {
-		mScheduleItem = sessionMap.value(scheduleItemKey).toInt();
-		if (mScheduleItem != -1) {
+	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+	if (sessionMap.contains(genericScheduleItemKey)) {
+		mGenericScheduleItem = sessionMap.value(genericScheduleItemKey).toInt();
+		if (mGenericScheduleItem != -1) {
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
@@ -196,11 +187,6 @@ void Session::fillFromMap(const QVariantMap& sessionMap)
 	// mPresenter must be resolved later if there are keys
 	mPresenterKeysResolved = (mPresenterKeys.size() == 0);
 	mPresenter.clear();
-	// mSessionLinks is (lazy loaded) Array of SessionLink*
-	mSessionLinksKeys = sessionMap.value(sessionLinksKey).toStringList();
-	// mSessionLinks must be resolved later if there are keys
-	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
-	mSessionLinks.clear();
 	// mSessionTracks is (lazy loaded) Array of SessionTrack*
 	mSessionTracksKeys = sessionMap.value(sessionTracksKey).toStringList();
 	// mSessionTracks must be resolved later if there are keys
@@ -227,7 +213,6 @@ void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 	mIsUnconference = sessionMap.value(isUnconferenceForeignKey).toBool();
 	mIsMeeting = sessionMap.value(isMeetingForeignKey).toBool();
 	mTitle = sessionMap.value(titleForeignKey).toString();
-	mSubtitle = sessionMap.value(subtitleForeignKey).toString();
 	mDescription = sessionMap.value(descriptionForeignKey).toString();
 	mSessionType = sessionMap.value(sessionTypeForeignKey).toString();
 	if (sessionMap.contains(startTimeForeignKey)) {
@@ -272,10 +257,10 @@ void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
-	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-	if (sessionMap.contains(scheduleItemForeignKey)) {
-		mScheduleItem = sessionMap.value(scheduleItemForeignKey).toInt();
-		if (mScheduleItem != -1) {
+	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+	if (sessionMap.contains(genericScheduleItemForeignKey)) {
+		mGenericScheduleItem = sessionMap.value(genericScheduleItemForeignKey).toInt();
+		if (mGenericScheduleItem != -1) {
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
@@ -284,11 +269,6 @@ void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 	// mPresenter must be resolved later if there are keys
 	mPresenterKeysResolved = (mPresenterKeys.size() == 0);
 	mPresenter.clear();
-	// mSessionLinks is (lazy loaded) Array of SessionLink*
-	mSessionLinksKeys = sessionMap.value(sessionLinksForeignKey).toStringList();
-	// mSessionLinks must be resolved later if there are keys
-	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
-	mSessionLinks.clear();
 	// mSessionTracks is (lazy loaded) Array of SessionTrack*
 	mSessionTracksKeys = sessionMap.value(sessionTracksForeignKey).toStringList();
 	// mSessionTracks must be resolved later if there are keys
@@ -315,7 +295,6 @@ void Session::fillFromCacheMap(const QVariantMap& sessionMap)
 	mIsUnconference = sessionMap.value(isUnconferenceKey).toBool();
 	mIsMeeting = sessionMap.value(isMeetingKey).toBool();
 	mTitle = sessionMap.value(titleKey).toString();
-	mSubtitle = sessionMap.value(subtitleKey).toString();
 	mDescription = sessionMap.value(descriptionKey).toString();
 	mSessionType = sessionMap.value(sessionTypeKey).toString();
 	if (sessionMap.contains(startTimeKey)) {
@@ -354,10 +333,10 @@ void Session::fillFromCacheMap(const QVariantMap& sessionMap)
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
-	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-	if (sessionMap.contains(scheduleItemKey)) {
-		mScheduleItem = sessionMap.value(scheduleItemKey).toInt();
-		if (mScheduleItem != -1) {
+	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+	if (sessionMap.contains(genericScheduleItemKey)) {
+		mGenericScheduleItem = sessionMap.value(genericScheduleItemKey).toInt();
+		if (mGenericScheduleItem != -1) {
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
@@ -366,11 +345,6 @@ void Session::fillFromCacheMap(const QVariantMap& sessionMap)
 	// mPresenter must be resolved later if there are keys
 	mPresenterKeysResolved = (mPresenterKeys.size() == 0);
 	mPresenter.clear();
-	// mSessionLinks is (lazy loaded) Array of SessionLink*
-	mSessionLinksKeys = sessionMap.value(sessionLinksKey).toStringList();
-	// mSessionLinks must be resolved later if there are keys
-	mSessionLinksKeysResolved = (mSessionLinksKeys.size() == 0);
-	mSessionLinks.clear();
 	// mSessionTracks is (lazy loaded) Array of SessionTrack*
 	mSessionTracksKeys = sessionMap.value(sessionTracksKey).toStringList();
 	// mSessionTracks must be resolved later if there are keys
@@ -413,9 +387,9 @@ QVariantMap Session::toMap()
 	if (mRoom != -1) {
 		sessionMap.insert(roomKey, mRoom);
 	}
-	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-	if (mScheduleItem != -1) {
-		sessionMap.insert(scheduleItemKey, mScheduleItem);
+	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+	if (mGenericScheduleItem != -1) {
+		sessionMap.insert(genericScheduleItemKey, mGenericScheduleItem);
 	}
 	// mPresenter points to Speaker*
 	// lazy array: persist only keys
@@ -433,22 +407,6 @@ QVariantMap Session::toMap()
 		mPresenterKeys << QString::number(speaker->speakerId());
 	}
 	sessionMap.insert(presenterKey, mPresenterKeys);
-	// mSessionLinks points to SessionLink*
-	// lazy array: persist only keys
-	//
-	// if keys alreadyy resolved: clear them
-	// otherwise reuse the keys and add objects from mPositions
-	// this can happen if added to objects without resolving keys before
-	if(mSessionLinksKeysResolved) {
-		mSessionLinksKeys.clear();
-	}
-	// add objects from mPositions
-	for (int i = 0; i < mSessionLinks.size(); ++i) {
-		SessionLink* sessionLink;
-		sessionLink = mSessionLinks.at(i);
-		mSessionLinksKeys << sessionLink->uuid();
-	}
-	sessionMap.insert(sessionLinksKey, mSessionLinksKeys);
 	// mSessionTracks points to SessionTrack*
 	// lazy array: persist only keys
 	//
@@ -476,7 +434,6 @@ QVariantMap Session::toMap()
 	sessionMap.insert(isUnconferenceKey, mIsUnconference);
 	sessionMap.insert(isMeetingKey, mIsMeeting);
 	sessionMap.insert(titleKey, mTitle);
-	sessionMap.insert(subtitleKey, mSubtitle);
 	sessionMap.insert(descriptionKey, mDescription);
 	sessionMap.insert(sessionTypeKey, mSessionType);
 	if (hasStartTime()) {
@@ -508,9 +465,9 @@ QVariantMap Session::toForeignMap()
 	if (mRoom != -1) {
 		sessionMap.insert(roomForeignKey, mRoom);
 	}
-	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-	if (mScheduleItem != -1) {
-		sessionMap.insert(scheduleItemForeignKey, mScheduleItem);
+	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+	if (mGenericScheduleItem != -1) {
+		sessionMap.insert(genericScheduleItemForeignKey, mGenericScheduleItem);
 	}
 	// mPresenter points to Speaker*
 	// lazy array: persist only keys
@@ -527,23 +484,7 @@ QVariantMap Session::toForeignMap()
 		speaker = mPresenter.at(i);
 		mPresenterKeys << QString::number(speaker->speakerId());
 	}
-	sessionMap.insert(presenterKey, mPresenterKeys);
-	// mSessionLinks points to SessionLink*
-	// lazy array: persist only keys
-	//
-	// if keys alreadyy resolved: clear them
-	// otherwise reuse the keys and add objects from mPositions
-	// this can happen if added to objects without resolving keys before
-	if(mSessionLinksKeysResolved) {
-		mSessionLinksKeys.clear();
-	}
-	// add objects from mPositions
-	for (int i = 0; i < mSessionLinks.size(); ++i) {
-		SessionLink* sessionLink;
-		sessionLink = mSessionLinks.at(i);
-		mSessionLinksKeys << sessionLink->uuid();
-	}
-	sessionMap.insert(sessionLinksKey, mSessionLinksKeys);
+	sessionMap.insert(presenterForeignKey, mPresenterKeys);
 	// mSessionTracks points to SessionTrack*
 	// lazy array: persist only keys
 	//
@@ -559,7 +500,7 @@ QVariantMap Session::toForeignMap()
 		sessionTrack = mSessionTracks.at(i);
 		mSessionTracksKeys << QString::number(sessionTrack->trackId());
 	}
-	sessionMap.insert(sessionTracksKey, mSessionTracksKeys);
+	sessionMap.insert(sessionTracksForeignKey, mSessionTracksKeys);
 	sessionMap.insert(sessionIdForeignKey, mSessionId);
 	sessionMap.insert(isDeprecatedForeignKey, mIsDeprecated);
 	sessionMap.insert(sortKeyForeignKey, mSortKey);
@@ -571,7 +512,6 @@ QVariantMap Session::toForeignMap()
 	sessionMap.insert(isUnconferenceForeignKey, mIsUnconference);
 	sessionMap.insert(isMeetingForeignKey, mIsMeeting);
 	sessionMap.insert(titleForeignKey, mTitle);
-	sessionMap.insert(subtitleForeignKey, mSubtitle);
 	sessionMap.insert(descriptionForeignKey, mDescription);
 	sessionMap.insert(sessionTypeForeignKey, mSessionType);
 	if (hasStartTime()) {
@@ -603,9 +543,9 @@ QVariantMap Session::toCacheMap()
 	if (mRoom != -1) {
 		sessionMap.insert(roomKey, mRoom);
 	}
-	// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-	if (mScheduleItem != -1) {
-		sessionMap.insert(scheduleItemKey, mScheduleItem);
+	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+	if (mGenericScheduleItem != -1) {
+		sessionMap.insert(genericScheduleItemKey, mGenericScheduleItem);
 	}
 	// mPresenter points to Speaker*
 	// lazy array: persist only keys
@@ -623,22 +563,6 @@ QVariantMap Session::toCacheMap()
 		mPresenterKeys << QString::number(speaker->speakerId());
 	}
 	sessionMap.insert(presenterKey, mPresenterKeys);
-	// mSessionLinks points to SessionLink*
-	// lazy array: persist only keys
-	//
-	// if keys alreadyy resolved: clear them
-	// otherwise reuse the keys and add objects from mPositions
-	// this can happen if added to objects without resolving keys before
-	if(mSessionLinksKeysResolved) {
-		mSessionLinksKeys.clear();
-	}
-	// add objects from mPositions
-	for (int i = 0; i < mSessionLinks.size(); ++i) {
-		SessionLink* sessionLink;
-		sessionLink = mSessionLinks.at(i);
-		mSessionLinksKeys << sessionLink->uuid();
-	}
-	sessionMap.insert(sessionLinksKey, mSessionLinksKeys);
 	// mSessionTracks points to SessionTrack*
 	// lazy array: persist only keys
 	//
@@ -666,7 +590,6 @@ QVariantMap Session::toCacheMap()
 	sessionMap.insert(isUnconferenceKey, mIsUnconference);
 	sessionMap.insert(isMeetingKey, mIsMeeting);
 	sessionMap.insert(titleKey, mTitle);
-	sessionMap.insert(subtitleKey, mSubtitle);
 	sessionMap.insert(descriptionKey, mDescription);
 	sessionMap.insert(sessionTypeKey, mSessionType);
 	if (hasStartTime()) {
@@ -816,51 +739,51 @@ void Session::markRoomAsInvalid()
     mRoomInvalid = true;
 }
 // REF
-// Lazy: scheduleItem
-// Optional: scheduleItem
-// scheduleItem lazy pointing to ScheduleItem* (domainKey: sessionId)
-int Session::scheduleItem() const
+// Lazy: genericScheduleItem
+// Optional: genericScheduleItem
+// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
+int Session::genericScheduleItem() const
 {
-	return mScheduleItem;
+	return mGenericScheduleItem;
 }
-ScheduleItem* Session::scheduleItemAsDataObject() const
+GenericScheduleItem* Session::genericScheduleItemAsDataObject() const
 {
-	return mScheduleItemAsDataObject;
+	return mGenericScheduleItemAsDataObject;
 }
-void Session::setScheduleItem(int scheduleItem)
+void Session::setGenericScheduleItem(int genericScheduleItem)
 {
-	if (scheduleItem != mScheduleItem) {
+	if (genericScheduleItem != mGenericScheduleItem) {
         // remove old Data Object if one was resolved
-        if (mScheduleItemAsDataObject) {
+        if (mGenericScheduleItemAsDataObject) {
             // reset pointer, don't delete the independent object !
-            mScheduleItemAsDataObject = 0;
+            mGenericScheduleItemAsDataObject = 0;
         }
         // set the new lazy reference
-        mScheduleItem = scheduleItem;
-        mScheduleItemInvalid = false;
-        emit scheduleItemChanged(scheduleItem);
-        if (scheduleItem != -1) {
+        mGenericScheduleItem = genericScheduleItem;
+        mGenericScheduleItemInvalid = false;
+        emit genericScheduleItemChanged(genericScheduleItem);
+        if (genericScheduleItem != -1) {
             // resolve the corresponding Data Object on demand from DataManager
         }
     }
 }
-void Session::removeScheduleItem()
+void Session::removeGenericScheduleItem()
 {
-	if (mScheduleItem != -1) {
-		setScheduleItem(-1);
+	if (mGenericScheduleItem != -1) {
+		setGenericScheduleItem(-1);
 	}
 }
-bool Session::hasScheduleItem()
+bool Session::hasGenericScheduleItem()
 {
-    if (!mScheduleItemInvalid && mScheduleItem != -1) {
+    if (!mGenericScheduleItemInvalid && mGenericScheduleItem != -1) {
         return true;
     } else {
         return false;
     }
 }
-bool Session::isScheduleItemResolvedAsDataObject()
+bool Session::isGenericScheduleItemResolvedAsDataObject()
 {
-    if (!mScheduleItemInvalid && mScheduleItemAsDataObject) {
+    if (!mGenericScheduleItemInvalid && mGenericScheduleItemAsDataObject) {
         return true;
     } else {
         return false;
@@ -868,19 +791,19 @@ bool Session::isScheduleItemResolvedAsDataObject()
 }
 
 // lazy bound Data Object was resolved. overwrite sessionId if different
-void Session::resolveScheduleItemAsDataObject(ScheduleItem* scheduleItem)
+void Session::resolveGenericScheduleItemAsDataObject(GenericScheduleItem* genericScheduleItem)
 {
-    if (scheduleItem) {
-        if (scheduleItem->sessionId() != mScheduleItem) {
-            setScheduleItem(scheduleItem->sessionId());
+    if (genericScheduleItem) {
+        if (genericScheduleItem->sessionId() != mGenericScheduleItem) {
+            setGenericScheduleItem(genericScheduleItem->sessionId());
         }
-        mScheduleItemAsDataObject = scheduleItem;
-        mScheduleItemInvalid = false;
+        mGenericScheduleItemAsDataObject = genericScheduleItem;
+        mGenericScheduleItemInvalid = false;
     }
 }
-void Session::markScheduleItemAsInvalid()
+void Session::markGenericScheduleItemAsInvalid()
 {
-    mScheduleItemInvalid = true;
+    mGenericScheduleItemInvalid = true;
 }
 // ATT 
 // Mandatory: sessionId
@@ -1035,20 +958,6 @@ void Session::setTitle(QString title)
 	if (title != mTitle) {
 		mTitle = title;
 		emit titleChanged(title);
-	}
-}
-// ATT 
-// Optional: subtitle
-QString Session::subtitle() const
-{
-	return mSubtitle;
-}
-
-void Session::setSubtitle(QString subtitle)
-{
-	if (subtitle != mSubtitle) {
-		mSubtitle = subtitle;
-		emit subtitleChanged(subtitle);
 	}
 }
 // ATT 
@@ -1215,6 +1124,14 @@ QVariantList Session::presenterAsQVariantList()
     }
 	return presenterList;
 }
+QVariantList Session::presenterAsCacheQVariantList()
+{
+	QVariantList presenterList;
+	for (int i = 0; i < mPresenter.size(); ++i) {
+        presenterList.append((mPresenter.at(i))->toCacheMap());
+    }
+	return presenterList;
+}
 QVariantList Session::presenterAsForeignQVariantList()
 {
 	QVariantList presenterList;
@@ -1373,179 +1290,20 @@ void Session::clearPresenterProperty(QQmlListProperty<Speaker> *presenterList)
 }
 
 // ATT 
-// Optional: sessionLinks
-QVariantList Session::sessionLinksAsQVariantList()
-{
-	QVariantList sessionLinksList;
-	for (int i = 0; i < mSessionLinks.size(); ++i) {
-        sessionLinksList.append((mSessionLinks.at(i))->toMap());
-    }
-	return sessionLinksList;
-}
-QVariantList Session::sessionLinksAsForeignQVariantList()
-{
-	QVariantList sessionLinksList;
-	for (int i = 0; i < mSessionLinks.size(); ++i) {
-        sessionLinksList.append((mSessionLinks.at(i))->toForeignMap());
-    }
-	return sessionLinksList;
-}
-// no create() or undoCreate() because dto is root object
-// see methods in DataManager
-/**
- * you can add sessionLinks without resolving existing keys before
- * attention: before looping through the objects
- * you must resolveSessionLinksKeys
- */
-void Session::addToSessionLinks(SessionLink* sessionLink)
-{
-    mSessionLinks.append(sessionLink);
-    emit addedToSessionLinks(sessionLink);
-    emit sessionLinksPropertyListChanged();
-}
-
-bool Session::removeFromSessionLinks(SessionLink* sessionLink)
-{
-    bool ok = false;
-    ok = mSessionLinks.removeOne(sessionLink);
-    if (!ok) {
-    	qDebug() << "SessionLink* not found in sessionLinks";
-    	return false;
-    }
-    emit sessionLinksPropertyListChanged();
-    // sessionLinks are independent - DON'T delete them
-    return true;
-}
-void Session::clearSessionLinks()
-{
-    for (int i = mSessionLinks.size(); i > 0; --i) {
-        removeFromSessionLinks(mSessionLinks.last());
-    }
-    mSessionLinksKeys.clear();
-}
-
-/**
- * lazy Array of independent Data Objects: only keys are persited
- * so we get a list of keys (uuid or domain keys) from map
- * and we persist only the keys toMap()
- * after initializing the keys must be resolved:
- * - get the list of keys: sessionLinksKeys()
- * - resolve them from DataManager
- * - then resolveSessionLinksKeys()
- */
-bool Session::areSessionLinksKeysResolved()
-{
-    return mSessionLinksKeysResolved;
-}
-
-QStringList Session::sessionLinksKeys()
-{
-    return mSessionLinksKeys;
-}
-
-/**
- * Objects from sessionLinksKeys will be added to existing sessionLinks
- * This enables to use addToSessionLinks() without resolving before
- * Hint: it's your responsibility to resolve before looping thru sessionLinks
- */
-void Session::resolveSessionLinksKeys(QList<SessionLink*> sessionLinks)
-{
-    if(mSessionLinksKeysResolved){
-        return;
-    }
-    // don't clear mSessionLinks (see above)
-    for (int i = 0; i < sessionLinks.size(); ++i) {
-        addToSessionLinks(sessionLinks.at(i));
-    }
-    mSessionLinksKeysResolved = true;
-}
-
-int Session::sessionLinksCount()
-{
-    return mSessionLinks.size();
-}
-QList<SessionLink*> Session::sessionLinks()
-{
-	return mSessionLinks;
-}
-void Session::setSessionLinks(QList<SessionLink*> sessionLinks) 
-{
-	if (sessionLinks != mSessionLinks) {
-		mSessionLinks = sessionLinks;
-		emit sessionLinksChanged(sessionLinks);
-		emit sessionLinksPropertyListChanged();
-	}
-}
-
-/**
- * to access lists from QML we're using QQmlListProperty
- * and implement methods to append, count and clear
- * now from QML we can use
- * session.sessionLinksPropertyList.length to get the size
- * session.sessionLinksPropertyList[2] to get SessionLink* at position 2
- * session.sessionLinksPropertyList = [] to clear the list
- * or get easy access to properties like
- * session.sessionLinksPropertyList[2].myPropertyName
- */
-QQmlListProperty<SessionLink> Session::sessionLinksPropertyList()
-{
-    return QQmlListProperty<SessionLink>(this, 0, &Session::appendToSessionLinksProperty,
-            &Session::sessionLinksPropertyCount, &Session::atSessionLinksProperty,
-            &Session::clearSessionLinksProperty);
-}
-void Session::appendToSessionLinksProperty(QQmlListProperty<SessionLink> *sessionLinksList,
-        SessionLink* sessionLink)
-{
-    Session *sessionObject = qobject_cast<Session *>(sessionLinksList->object);
-    if (sessionObject) {
-        sessionObject->mSessionLinks.append(sessionLink);
-        emit sessionObject->addedToSessionLinks(sessionLink);
-    } else {
-        qWarning() << "cannot append SessionLink* to sessionLinks " << "Object is not of type Session*";
-    }
-}
-int Session::sessionLinksPropertyCount(QQmlListProperty<SessionLink> *sessionLinksList)
-{
-    Session *session = qobject_cast<Session *>(sessionLinksList->object);
-    if (session) {
-        return session->mSessionLinks.size();
-    } else {
-        qWarning() << "cannot get size sessionLinks " << "Object is not of type Session*";
-    }
-    return 0;
-}
-SessionLink* Session::atSessionLinksProperty(QQmlListProperty<SessionLink> *sessionLinksList, int pos)
-{
-    Session *session = qobject_cast<Session *>(sessionLinksList->object);
-    if (session) {
-        if (session->mSessionLinks.size() > pos) {
-            return session->mSessionLinks.at(pos);
-        }
-        qWarning() << "cannot get SessionLink* at pos " << pos << " size is "
-                << session->mSessionLinks.size();
-    } else {
-        qWarning() << "cannot get SessionLink* at pos " << pos << "Object is not of type Session*";
-    }
-    return 0;
-}
-void Session::clearSessionLinksProperty(QQmlListProperty<SessionLink> *sessionLinksList)
-{
-    Session *session = qobject_cast<Session *>(sessionLinksList->object);
-    if (session) {
-        // sessionLinks are independent - DON'T delete them
-        session->mSessionLinks.clear();
-    } else {
-        qWarning() << "cannot clear sessionLinks " << "Object is not of type Session*";
-    }
-}
-
-// ATT 
 // Optional: sessionTracks
 QVariantList Session::sessionTracksAsQVariantList()
 {
 	QVariantList sessionTracksList;
 	for (int i = 0; i < mSessionTracks.size(); ++i) {
         sessionTracksList.append((mSessionTracks.at(i))->toMap());
+    }
+	return sessionTracksList;
+}
+QVariantList Session::sessionTracksAsCacheQVariantList()
+{
+	QVariantList sessionTracksList;
+	for (int i = 0; i < mSessionTracks.size(); ++i) {
+        sessionTracksList.append((mSessionTracks.at(i))->toCacheMap());
     }
 	return sessionTracksList;
 }

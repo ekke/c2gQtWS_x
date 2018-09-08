@@ -1,4 +1,4 @@
-work in progress
+work in progress !!! I'm just developing the Qt WS 2018 App. wait for blog and tweet before using this repo !!!
 
 # QtWS 2016 Conference App
 ![alt tag](https://appbus.files.wordpress.com/2016/10/qtws16appicon-180x180.png  "QtWS 2016 App Logo")

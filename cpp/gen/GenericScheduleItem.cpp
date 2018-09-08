@@ -1,4 +1,4 @@
-#include "ScheduleItem.hpp"
+#include "GenericScheduleItem.hpp"
 #include <QDebug>
 #include <quuid.h>
 // target also references to this
@@ -21,9 +21,9 @@ static const QString isRegistrationForeignKey = "isRegistration";
 static const QString sessionForeignKey = "session";
 
 /*
- * Default Constructor if ScheduleItem not initialized from QVariantMap
+ * Default Constructor if GenericScheduleItem not initialized from QVariantMap
  */
-ScheduleItem::ScheduleItem(QObject *parent) :
+GenericScheduleItem::GenericScheduleItem(QObject *parent) :
         QObject(parent), mSessionId(-1), mIsBreak(false), mIsLunch(false), mIsEvent(false), mIsRegistration(false)
 {
 	// lazy references:
@@ -32,7 +32,7 @@ ScheduleItem::ScheduleItem(QObject *parent) :
 	mSessionInvalid = false;
 }
 
-bool ScheduleItem::isAllResolved()
+bool GenericScheduleItem::isAllResolved()
 {
 	if (hasSession() && !isSessionResolvedAsDataObject()) {
 		return false;
@@ -41,22 +41,22 @@ bool ScheduleItem::isAllResolved()
 }
 
 /*
- * initialize ScheduleItem from QVariantMap
+ * initialize GenericScheduleItem from QVariantMap
  * Map got from JsonDataAccess or so
  * includes also transient values
  * uses own property names
  * corresponding export method: toMap()
  */
-void ScheduleItem::fillFromMap(const QVariantMap& scheduleItemMap)
+void GenericScheduleItem::fillFromMap(const QVariantMap& genericScheduleItemMap)
 {
-	mSessionId = scheduleItemMap.value(sessionIdKey).toInt();
-	mIsBreak = scheduleItemMap.value(isBreakKey).toBool();
-	mIsLunch = scheduleItemMap.value(isLunchKey).toBool();
-	mIsEvent = scheduleItemMap.value(isEventKey).toBool();
-	mIsRegistration = scheduleItemMap.value(isRegistrationKey).toBool();
+	mSessionId = genericScheduleItemMap.value(sessionIdKey).toInt();
+	mIsBreak = genericScheduleItemMap.value(isBreakKey).toBool();
+	mIsLunch = genericScheduleItemMap.value(isLunchKey).toBool();
+	mIsEvent = genericScheduleItemMap.value(isEventKey).toBool();
+	mIsRegistration = genericScheduleItemMap.value(isRegistrationKey).toBool();
 	// session lazy pointing to Session* (domainKey: sessionId)
-	if (scheduleItemMap.contains(sessionKey)) {
-		mSession = scheduleItemMap.value(sessionKey).toInt();
+	if (genericScheduleItemMap.contains(sessionKey)) {
+		mSession = genericScheduleItemMap.value(sessionKey).toInt();
 		if (mSession != -1) {
 			// resolve the corresponding Data Object on demand from DataManager
 		}
@@ -69,16 +69,16 @@ void ScheduleItem::fillFromMap(const QVariantMap& scheduleItemMap)
  * uses foreign property names - per ex. from Server API
  * corresponding export method: toForeignMap()
  */
-void ScheduleItem::fillFromForeignMap(const QVariantMap& scheduleItemMap)
+void GenericScheduleItem::fillFromForeignMap(const QVariantMap& genericScheduleItemMap)
 {
-	mSessionId = scheduleItemMap.value(sessionIdForeignKey).toInt();
-	mIsBreak = scheduleItemMap.value(isBreakForeignKey).toBool();
-	mIsLunch = scheduleItemMap.value(isLunchForeignKey).toBool();
-	mIsEvent = scheduleItemMap.value(isEventForeignKey).toBool();
-	mIsRegistration = scheduleItemMap.value(isRegistrationForeignKey).toBool();
+	mSessionId = genericScheduleItemMap.value(sessionIdForeignKey).toInt();
+	mIsBreak = genericScheduleItemMap.value(isBreakForeignKey).toBool();
+	mIsLunch = genericScheduleItemMap.value(isLunchForeignKey).toBool();
+	mIsEvent = genericScheduleItemMap.value(isEventForeignKey).toBool();
+	mIsRegistration = genericScheduleItemMap.value(isRegistrationForeignKey).toBool();
 	// session lazy pointing to Session* (domainKey: sessionId)
-	if (scheduleItemMap.contains(sessionForeignKey)) {
-		mSession = scheduleItemMap.value(sessionForeignKey).toInt();
+	if (genericScheduleItemMap.contains(sessionForeignKey)) {
+		mSession = genericScheduleItemMap.value(sessionForeignKey).toInt();
 		if (mSession != -1) {
 			// resolve the corresponding Data Object on demand from DataManager
 		}
@@ -91,30 +91,30 @@ void ScheduleItem::fillFromForeignMap(const QVariantMap& scheduleItemMap)
  * uses own property names
  * corresponding export method: toCacheMap()
  */
-void ScheduleItem::fillFromCacheMap(const QVariantMap& scheduleItemMap)
+void GenericScheduleItem::fillFromCacheMap(const QVariantMap& genericScheduleItemMap)
 {
-	mSessionId = scheduleItemMap.value(sessionIdKey).toInt();
-	mIsBreak = scheduleItemMap.value(isBreakKey).toBool();
-	mIsLunch = scheduleItemMap.value(isLunchKey).toBool();
-	mIsEvent = scheduleItemMap.value(isEventKey).toBool();
-	mIsRegistration = scheduleItemMap.value(isRegistrationKey).toBool();
+	mSessionId = genericScheduleItemMap.value(sessionIdKey).toInt();
+	mIsBreak = genericScheduleItemMap.value(isBreakKey).toBool();
+	mIsLunch = genericScheduleItemMap.value(isLunchKey).toBool();
+	mIsEvent = genericScheduleItemMap.value(isEventKey).toBool();
+	mIsRegistration = genericScheduleItemMap.value(isRegistrationKey).toBool();
 	// session lazy pointing to Session* (domainKey: sessionId)
-	if (scheduleItemMap.contains(sessionKey)) {
-		mSession = scheduleItemMap.value(sessionKey).toInt();
+	if (genericScheduleItemMap.contains(sessionKey)) {
+		mSession = genericScheduleItemMap.value(sessionKey).toInt();
 		if (mSession != -1) {
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
 }
 
-void ScheduleItem::prepareNew()
+void GenericScheduleItem::prepareNew()
 {
 }
 
 /*
  * Checks if all mandatory attributes, all DomainKeys and uuid's are filled
  */
-bool ScheduleItem::isValid()
+bool GenericScheduleItem::isValid()
 {
 	if (mSessionId == -1) {
 		return false;
@@ -127,52 +127,52 @@ bool ScheduleItem::isValid()
 }
 	
 /*
- * Exports Properties from ScheduleItem as QVariantMap
+ * Exports Properties from GenericScheduleItem as QVariantMap
  * exports ALL data including transient properties
  * To store persistent Data in JsonDataAccess use toCacheMap()
  */
-QVariantMap ScheduleItem::toMap()
+QVariantMap GenericScheduleItem::toMap()
 {
-	QVariantMap scheduleItemMap;
+	QVariantMap genericScheduleItemMap;
 	// session lazy pointing to Session* (domainKey: sessionId)
 	if (mSession != -1) {
-		scheduleItemMap.insert(sessionKey, mSession);
+		genericScheduleItemMap.insert(sessionKey, mSession);
 	}
-	scheduleItemMap.insert(sessionIdKey, mSessionId);
-	scheduleItemMap.insert(isBreakKey, mIsBreak);
-	scheduleItemMap.insert(isLunchKey, mIsLunch);
-	scheduleItemMap.insert(isEventKey, mIsEvent);
-	scheduleItemMap.insert(isRegistrationKey, mIsRegistration);
-	return scheduleItemMap;
+	genericScheduleItemMap.insert(sessionIdKey, mSessionId);
+	genericScheduleItemMap.insert(isBreakKey, mIsBreak);
+	genericScheduleItemMap.insert(isLunchKey, mIsLunch);
+	genericScheduleItemMap.insert(isEventKey, mIsEvent);
+	genericScheduleItemMap.insert(isRegistrationKey, mIsRegistration);
+	return genericScheduleItemMap;
 }
 
 /*
- * Exports Properties from ScheduleItem as QVariantMap
+ * Exports Properties from GenericScheduleItem as QVariantMap
  * To send data as payload to Server
  * Makes it possible to use defferent naming conditions
  */
-QVariantMap ScheduleItem::toForeignMap()
+QVariantMap GenericScheduleItem::toForeignMap()
 {
-	QVariantMap scheduleItemMap;
+	QVariantMap genericScheduleItemMap;
 	// session lazy pointing to Session* (domainKey: sessionId)
 	if (mSession != -1) {
-		scheduleItemMap.insert(sessionForeignKey, mSession);
+		genericScheduleItemMap.insert(sessionForeignKey, mSession);
 	}
-	scheduleItemMap.insert(sessionIdForeignKey, mSessionId);
-	scheduleItemMap.insert(isBreakForeignKey, mIsBreak);
-	scheduleItemMap.insert(isLunchForeignKey, mIsLunch);
-	scheduleItemMap.insert(isEventForeignKey, mIsEvent);
-	scheduleItemMap.insert(isRegistrationForeignKey, mIsRegistration);
-	return scheduleItemMap;
+	genericScheduleItemMap.insert(sessionIdForeignKey, mSessionId);
+	genericScheduleItemMap.insert(isBreakForeignKey, mIsBreak);
+	genericScheduleItemMap.insert(isLunchForeignKey, mIsLunch);
+	genericScheduleItemMap.insert(isEventForeignKey, mIsEvent);
+	genericScheduleItemMap.insert(isRegistrationForeignKey, mIsRegistration);
+	return genericScheduleItemMap;
 }
 
 
 /*
- * Exports Properties from ScheduleItem as QVariantMap
+ * Exports Properties from GenericScheduleItem as QVariantMap
  * transient properties are excluded:
  * To export ALL data use toMap()
  */
-QVariantMap ScheduleItem::toCacheMap()
+QVariantMap GenericScheduleItem::toCacheMap()
 {
 	// no transient properties found from data model
 	// use default toMao()
@@ -182,15 +182,15 @@ QVariantMap ScheduleItem::toCacheMap()
 // Lazy: session
 // Mandatory: session
 // session lazy pointing to Session* (domainKey: sessionId)
-int ScheduleItem::session() const
+int GenericScheduleItem::session() const
 {
 	return mSession;
 }
-Session* ScheduleItem::sessionAsDataObject() const
+Session* GenericScheduleItem::sessionAsDataObject() const
 {
 	return mSessionAsDataObject;
 }
-void ScheduleItem::setSession(int session)
+void GenericScheduleItem::setSession(int session)
 {
 	if (session != mSession) {
         // remove old Data Object if one was resolved
@@ -207,13 +207,13 @@ void ScheduleItem::setSession(int session)
         }
     }
 }
-void ScheduleItem::removeSession()
+void GenericScheduleItem::removeSession()
 {
 	if (mSession != -1) {
 		setSession(-1);
 	}
 }
-bool ScheduleItem::hasSession()
+bool GenericScheduleItem::hasSession()
 {
     if (!mSessionInvalid && mSession != -1) {
         return true;
@@ -221,7 +221,7 @@ bool ScheduleItem::hasSession()
         return false;
     }
 }
-bool ScheduleItem::isSessionResolvedAsDataObject()
+bool GenericScheduleItem::isSessionResolvedAsDataObject()
 {
     if (!mSessionInvalid && mSessionAsDataObject) {
         return true;
@@ -231,7 +231,7 @@ bool ScheduleItem::isSessionResolvedAsDataObject()
 }
 
 // lazy bound Data Object was resolved. overwrite sessionId if different
-void ScheduleItem::resolveSessionAsDataObject(Session* session)
+void GenericScheduleItem::resolveSessionAsDataObject(Session* session)
 {
     if (session) {
         if (session->sessionId() != mSession) {
@@ -241,19 +241,19 @@ void ScheduleItem::resolveSessionAsDataObject(Session* session)
         mSessionInvalid = false;
     }
 }
-void ScheduleItem::markSessionAsInvalid()
+void GenericScheduleItem::markSessionAsInvalid()
 {
     mSessionInvalid = true;
 }
 // ATT 
 // Mandatory: sessionId
 // Domain KEY: sessionId
-int ScheduleItem::sessionId() const
+int GenericScheduleItem::sessionId() const
 {
 	return mSessionId;
 }
 
-void ScheduleItem::setSessionId(int sessionId)
+void GenericScheduleItem::setSessionId(int sessionId)
 {
 	if (sessionId != mSessionId) {
 		mSessionId = sessionId;
@@ -262,12 +262,12 @@ void ScheduleItem::setSessionId(int sessionId)
 }
 // ATT 
 // Optional: isBreak
-bool ScheduleItem::isBreak() const
+bool GenericScheduleItem::isBreak() const
 {
 	return mIsBreak;
 }
 
-void ScheduleItem::setIsBreak(bool isBreak)
+void GenericScheduleItem::setIsBreak(bool isBreak)
 {
 	if (isBreak != mIsBreak) {
 		mIsBreak = isBreak;
@@ -276,12 +276,12 @@ void ScheduleItem::setIsBreak(bool isBreak)
 }
 // ATT 
 // Optional: isLunch
-bool ScheduleItem::isLunch() const
+bool GenericScheduleItem::isLunch() const
 {
 	return mIsLunch;
 }
 
-void ScheduleItem::setIsLunch(bool isLunch)
+void GenericScheduleItem::setIsLunch(bool isLunch)
 {
 	if (isLunch != mIsLunch) {
 		mIsLunch = isLunch;
@@ -290,12 +290,12 @@ void ScheduleItem::setIsLunch(bool isLunch)
 }
 // ATT 
 // Optional: isEvent
-bool ScheduleItem::isEvent() const
+bool GenericScheduleItem::isEvent() const
 {
 	return mIsEvent;
 }
 
-void ScheduleItem::setIsEvent(bool isEvent)
+void GenericScheduleItem::setIsEvent(bool isEvent)
 {
 	if (isEvent != mIsEvent) {
 		mIsEvent = isEvent;
@@ -304,12 +304,12 @@ void ScheduleItem::setIsEvent(bool isEvent)
 }
 // ATT 
 // Optional: isRegistration
-bool ScheduleItem::isRegistration() const
+bool GenericScheduleItem::isRegistration() const
 {
 	return mIsRegistration;
 }
 
-void ScheduleItem::setIsRegistration(bool isRegistration)
+void GenericScheduleItem::setIsRegistration(bool isRegistration)
 {
 	if (isRegistration != mIsRegistration) {
 		mIsRegistration = isRegistration;
@@ -318,7 +318,7 @@ void ScheduleItem::setIsRegistration(bool isRegistration)
 }
 
 
-ScheduleItem::~ScheduleItem()
+GenericScheduleItem::~GenericScheduleItem()
 {
 	// place cleanUp code here
 }

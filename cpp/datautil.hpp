@@ -156,8 +156,6 @@ private:
     bool checkIfIgnored(SessionAPI *sessionAPI);
     void setDuration(SessionAPI *sessionAPI, Session* session);
     void setType(Session *session);
-    void createAndAdjustLinks(QVariantMap &sessionMap);
-    void updateAndAdjustLinks(QVariantMap &sessionMap);
     void finishUpdate();
     void sortedSessionsIntoRoomDayTrackSpeaker();
 };

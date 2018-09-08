@@ -10,15 +10,13 @@ HEADERS += \
     cpp/uiconstants.hpp \
     cpp/gen/SettingsData.hpp \ 
     cpp/gen/Bookmark.hpp \
-    cpp/gen/Building.hpp \
     cpp/gen/Conference.hpp \
     cpp/gen/DataManager.hpp \
     cpp/gen/Day.hpp \
     cpp/gen/Favorite.hpp \
-    cpp/gen/Floor.hpp \
     cpp/gen/PersonsAPI.hpp \
     cpp/gen/Room.hpp \
-    cpp/gen/ScheduleItem.hpp \
+    cpp/gen/GenericScheduleItem.hpp \
     cpp/gen/Session.hpp \
     cpp/gen/SessionAPI.hpp \
     cpp/gen/SessionTrack.hpp \
@@ -27,8 +25,7 @@ HEADERS += \
     cpp/gen/SpeakerImage.hpp \
     cpp/datautil.hpp \
     cpp/imageloader.hpp \
-    cpp/gen/SessionLink.hpp \
-    cpp/gen/SessionLinkAPI.hpp \
+    cpp/gen/SessionTrackAPI.hpp \
     cpp/gen/SessionLists.hpp \
     cpp/dataserver.hpp
 
@@ -36,15 +33,13 @@ SOURCES += cpp/main.cpp \
     cpp/applicationui.cpp \
     cpp/gen/SettingsData.cpp \ 
     cpp/gen/Bookmark.cpp \
-    cpp/gen/Building.cpp \
     cpp/gen/Conference.cpp \
     cpp/gen/DataManager.cpp \
     cpp/gen/Day.cpp \
     cpp/gen/Favorite.cpp \
-    cpp/gen/Floor.cpp \
     cpp/gen/PersonsAPI.cpp \
     cpp/gen/Room.cpp \
-    cpp/gen/ScheduleItem.cpp \
+    cpp/gen/GenericScheduleItem.cpp \
     cpp/gen/Session.cpp \
     cpp/gen/SessionAPI.cpp \
     cpp/gen/SessionTrack.cpp \
@@ -53,8 +48,7 @@ SOURCES += cpp/main.cpp \
     cpp/gen/SpeakerImage.cpp \
     cpp/datautil.cpp \
     cpp/imageloader.cpp \
-    cpp/gen/SessionLink.cpp \
-    cpp/gen/SessionLinkAPI.cpp \
+    cpp/gen/SessionTrackAPI.cpp \
     cpp/gen/SessionLists.cpp \
     cpp/dataserver.cpp
 

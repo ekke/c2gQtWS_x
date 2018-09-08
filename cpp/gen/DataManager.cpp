@@ -14,22 +14,19 @@ static bool isProductionEnvironment = true;
 
 static const QString cacheSettingsData = "cacheSettingsData.json";
 static const QString cacheConference = "cacheConference.json";
-static const QString cacheBuilding = "cacheBuilding.json";
-static const QString cacheFloor = "cacheFloor.json";
 static const QString cacheRoom = "cacheRoom.json";
 static const QString cacheSession = "cacheSession.json";
-static const QString cacheScheduleItem = "cacheScheduleItem.json";
+static const QString cacheGenericScheduleItem = "cacheGenericScheduleItem.json";
 static const QString cacheFavorite = "cacheFavorite.json";
 static const QString cacheBookmark = "cacheBookmark.json";
 static const QString cacheSessionLists = "cacheSessionLists.json";
-static const QString cacheSessionLink = "cacheSessionLink.json";
 static const QString cacheSpeaker = "cacheSpeaker.json";
 static const QString cacheSpeakerImage = "cacheSpeakerImage.json";
 static const QString cacheSessionTrack = "cacheSessionTrack.json";
 static const QString cacheDay = "cacheDay.json";
 static const QString cacheSessionAPI = "cacheSessionAPI.json";
 static const QString cachePersonsAPI = "cachePersonsAPI.json";
-static const QString cacheSessionLinkAPI = "cacheSessionLinkAPI.json";
+static const QString cacheSessionTrackAPI = "cacheSessionTrackAPI.json";
 static const QString cacheSpeakerAPI = "cacheSpeakerAPI.json";
 
 
@@ -89,43 +86,37 @@ DataManager::DataManager(QObject *parent) :
     // ROOT:
     // SettingsData
     // Conference
-    // Building
-    // Floor
     // Room
     // Session
-    // ScheduleItem
+    // GenericScheduleItem
     // Favorite
     // Bookmark
     // SessionLists
-    // SessionLink
     // Speaker
     // SpeakerImage
     // SessionTrack
     // Day
     // SessionAPI
     // PersonsAPI
-    // SessionLinkAPI
+    // SessionTrackAPI
     // SpeakerAPI
 
     // register all DataObjects to get access to properties from QML:
 	qmlRegisterType<SettingsData>("org.ekkescorner.data", 1, 0, "SettingsData");
 	qmlRegisterType<Conference>("org.ekkescorner.data", 1, 0, "Conference");
-	qmlRegisterType<Building>("org.ekkescorner.data", 1, 0, "Building");
-	qmlRegisterType<Floor>("org.ekkescorner.data", 1, 0, "Floor");
 	qmlRegisterType<Room>("org.ekkescorner.data", 1, 0, "Room");
 	qmlRegisterType<Session>("org.ekkescorner.data", 1, 0, "Session");
-	qmlRegisterType<ScheduleItem>("org.ekkescorner.data", 1, 0, "ScheduleItem");
+	qmlRegisterType<GenericScheduleItem>("org.ekkescorner.data", 1, 0, "GenericScheduleItem");
 	qmlRegisterType<Favorite>("org.ekkescorner.data", 1, 0, "Favorite");
 	qmlRegisterType<Bookmark>("org.ekkescorner.data", 1, 0, "Bookmark");
 	qmlRegisterType<SessionLists>("org.ekkescorner.data", 1, 0, "SessionLists");
-	qmlRegisterType<SessionLink>("org.ekkescorner.data", 1, 0, "SessionLink");
 	qmlRegisterType<Speaker>("org.ekkescorner.data", 1, 0, "Speaker");
 	qmlRegisterType<SpeakerImage>("org.ekkescorner.data", 1, 0, "SpeakerImage");
 	qmlRegisterType<SessionTrack>("org.ekkescorner.data", 1, 0, "SessionTrack");
 	qmlRegisterType<Day>("org.ekkescorner.data", 1, 0, "Day");
 	qmlRegisterType<SessionAPI>("org.ekkescorner.data", 1, 0, "SessionAPI");
 	qmlRegisterType<PersonsAPI>("org.ekkescorner.data", 1, 0, "PersonsAPI");
-	qmlRegisterType<SessionLinkAPI>("org.ekkescorner.data", 1, 0, "SessionLinkAPI");
+	qmlRegisterType<SessionTrackAPI>("org.ekkescorner.data", 1, 0, "SessionTrackAPI");
 	qmlRegisterType<SpeakerAPI>("org.ekkescorner.data", 1, 0, "SpeakerAPI");
 	// register all ENUMs to get access from QML
 	
@@ -198,22 +189,19 @@ void DataManager::init()
     // get all from cache
 
     initConferenceFromCache();
-    initBuildingFromCache();
-    initFloorFromCache();
     initRoomFromCache();
     initSessionFromCache();
-    initScheduleItemFromCache();
+    initGenericScheduleItemFromCache();
     initFavoriteFromCache();
     initBookmarkFromCache();
     // SessionLists is transient - not automatically read from cache
-    initSessionLinkFromCache();
     initSpeakerFromCache();
     initSpeakerImageFromCache();
     initSessionTrackFromCache();
     initDayFromCache();
     // SessionAPI is transient - not automatically read from cache
     // PersonsAPI is transient - not automatically read from cache
-    // SessionLinkAPI is transient - not automatically read from cache
+    // SessionTrackAPI is transient - not automatically read from cache
     // SpeakerAPI is transient - not automatically read from cache
 }
 
@@ -223,22 +211,19 @@ void DataManager::finish()
 {
     saveSettings();
     // Conference is read-only - not saved to cache
-    // Building is read-only - not saved to cache
-    // Floor is read-only - not saved to cache
     // Room is read-only - not saved to cache
     // Session is read-only - not saved to cache
-    // ScheduleItem is read-only - not saved to cache
+    // GenericScheduleItem is read-only - not saved to cache
     saveFavoriteToCache();
     saveBookmarkToCache();
     // SessionLists is read-only - not saved to cache
-    // SessionLink is read-only - not saved to cache
     // Speaker is read-only - not saved to cache
     // SpeakerImage is read-only - not saved to cache
     // SessionTrack is read-only - not saved to cache
     // Day is read-only - not saved to cache
     // SessionAPI is read-only - not saved to cache
     // PersonsAPI is read-only - not saved to cache
-    // SessionLinkAPI is read-only - not saved to cache
+    // SessionTrackAPI is read-only - not saved to cache
     // SpeakerAPI is read-only - not saved to cache
 }
 
@@ -272,7 +257,7 @@ SettingsData* DataManager::createSettingsData()
 void DataManager::undoCreateSettingsData(SettingsData* settingsData)
 {
     if (settingsData) {
-        qDebug() << "undoCreateSettingsData " << settingsData->id();
+        // qDebug() << "undoCreateSettingsData " << settingsData->id();
         settingsData->deleteLater();
         settingsData = 0;
     }
@@ -484,7 +469,7 @@ Conference* DataManager::createConference()
 void DataManager::undoCreateConference(Conference* conference)
 {
     if (conference) {
-        qDebug() << "undoCreateConference " << conference->id();
+        // qDebug() << "undoCreateConference " << conference->id();
         conference->deleteLater();
         conference = 0;
     }
@@ -563,603 +548,6 @@ Conference* DataManager::findConferenceById(const int& id){
 }
 
 /*
- * reads Maps of Building in from JSON cache
- * creates List of Building*  from QVariantList
- * List declared as list of QObject* - only way to use in GroupDataModel
- */
-void DataManager::initBuildingFromCache()
-{
-	qDebug() << "start initBuildingFromCache";
-    mAllBuilding.clear();
-    QVariantList cacheList;
-    cacheList = readFromCache(cacheBuilding);
-    qDebug() << "read Building from cache #" << cacheList.size();
-    for (int i = 0; i < cacheList.size(); ++i) {
-        QVariantMap cacheMap;
-        cacheMap = cacheList.at(i).toMap();
-        Building* building = new Building();
-        // Important: DataManager must be parent of all root DTOs
-        building->setParent(this);
-        building->fillFromCacheMap(cacheMap);
-        mAllBuilding.append(building);
-    }
-    qDebug() << "created Building* #" << mAllBuilding.size();
-}
-
-
-/*
- * save List of Building* to JSON cache
- * convert list of Building* to QVariantList
- * toCacheMap stores all properties without transient values
- * Building is read-only Cache - so it's not saved automatically at exit
- */
-void DataManager::saveBuildingToCache()
-{
-    QVariantList cacheList;
-    qDebug() << "now caching Building* #" << mAllBuilding.size();
-    for (int i = 0; i < mAllBuilding.size(); ++i) {
-        Building* building;
-        building = (Building*)mAllBuilding.at(i);
-        QVariantMap cacheMap;
-        cacheMap = building->toCacheMap();
-        cacheList.append(cacheMap);
-    }
-    qDebug() << "Building* converted to JSON cache #" << cacheList.size();
-    writeToCache(cacheBuilding, cacheList);
-}
-
-
-
-/**
-* converts a list of keys in to a list of DataObjects
-* per ex. used to resolve lazy arrays
-*/
-QList<Building*> DataManager::listOfBuildingForKeys(
-        QStringList keyList)
-{
-    QList<Building*> listOfData;
-    keyList.removeDuplicates();
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    for (int i = 0; i < mAllBuilding.size(); ++i) {
-        Building* building;
-        building = (Building*) mAllBuilding.at(i);
-        if (keyList.contains(QString::number(building->buildingId()))) {
-            listOfData.append(building);
-            keyList.removeOne(QString::number(building->buildingId()));
-            if(keyList.isEmpty()){
-                break;
-            }
-        }
-    }
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    qWarning() << "not all keys found for Building: " << keyList.join(", ");
-    return listOfData;
-}
-
-QVariantList DataManager::buildingAsQVariantList()
-{
-    QVariantList buildingList;
-    for (int i = 0; i < mAllBuilding.size(); ++i) {
-        buildingList.append(((Building*) (mAllBuilding.at(i)))->toMap());
-    }
-    return buildingList;
-}
-
-QList<QObject*> DataManager::allBuilding()
-{
-    return mAllBuilding;
-}
-
-QQmlListProperty<Building> DataManager::buildingPropertyList()
-{
-    return QQmlListProperty<Building>(this, 0,
-            &DataManager::appendToBuildingProperty, &DataManager::buildingPropertyCount,
-            &DataManager::atBuildingProperty, &DataManager::clearBuildingProperty);
-}
-
-// implementation for QQmlListProperty to use
-// QML functions for List of Building*
-void DataManager::appendToBuildingProperty(
-        QQmlListProperty<Building> *buildingList,
-        Building* building)
-{
-    DataManager *dataManagerObject = qobject_cast<DataManager *>(buildingList->object);
-    if (dataManagerObject) {
-        building->setParent(dataManagerObject);
-        dataManagerObject->mAllBuilding.append(building);
-        emit dataManagerObject->addedToAllBuilding(building);
-    } else {
-        qWarning() << "cannot append Building* to mAllBuilding "
-                << "Object is not of type DataManager*";
-    }
-}
-int DataManager::buildingPropertyCount(
-        QQmlListProperty<Building> *buildingList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(buildingList->object);
-    if (dataManager) {
-        return dataManager->mAllBuilding.size();
-    } else {
-        qWarning() << "cannot get size mAllBuilding " << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-Building* DataManager::atBuildingProperty(
-        QQmlListProperty<Building> *buildingList, int pos)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(buildingList->object);
-    if (dataManager) {
-        if (dataManager->mAllBuilding.size() > pos) {
-            return (Building*) dataManager->mAllBuilding.at(pos);
-        }
-        qWarning() << "cannot get Building* at pos " << pos << " size is "
-                << dataManager->mAllBuilding.size();
-    } else {
-        qWarning() << "cannot get Building* at pos " << pos
-                << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-void DataManager::clearBuildingProperty(
-        QQmlListProperty<Building> *buildingList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(buildingList->object);
-    if (dataManager) {
-        for (int i = 0; i < dataManager->mAllBuilding.size(); ++i) {
-            Building* building;
-            building = (Building*) dataManager->mAllBuilding.at(i);
-			emit dataManager->deletedFromAllBuildingByBuildingId(building->buildingId());
-			emit dataManager->deletedFromAllBuilding(building);
-            building->deleteLater();
-            building = 0;
-        }
-        dataManager->mAllBuilding.clear();
-    } else {
-        qWarning() << "cannot clear mAllBuilding " << "Object is not of type DataManager*";
-    }
-}
-
-/**
- * deletes all Building
- * and clears the list
- */
-void DataManager::deleteBuilding()
-{
-    for (int i = 0; i < mAllBuilding.size(); ++i) {
-        Building* building;
-        building = (Building*) mAllBuilding.at(i);
-        emit deletedFromAllBuildingByBuildingId(building->buildingId());
-		emit deletedFromAllBuilding(building);
-		emit buildingPropertyListChanged();
-        building->deleteLater();
-        building = 0;
-     }
-     mAllBuilding.clear();
-}
-
-/**
- * creates a new Building
- * parent is DataManager
- * if data is successfully entered you must insertBuilding
- * if edit was canceled you must undoCreateBuilding to free up memory
- */
-Building* DataManager::createBuilding()
-{
-    Building* building;
-    building = new Building();
-    building->setParent(this);
-    building->prepareNew();
-    return building;
-}
-
-/**
- * deletes Building
- * if createBuilding was canceled from UI
- * to delete a previous successfully inserted Building
- * use deleteBuilding
- */
-void DataManager::undoCreateBuilding(Building* building)
-{
-    if (building) {
-        qDebug() << "undoCreateBuilding " << building->buildingId();
-        building->deleteLater();
-        building = 0;
-    }
-}
-
-void DataManager::insertBuilding(Building* building)
-{
-    // Important: DataManager must be parent of all root DTOs
-    building->setParent(this);
-    mAllBuilding.append(building);
-    emit addedToAllBuilding(building);
-    emit buildingPropertyListChanged();
-}
-
-void DataManager::insertBuildingFromMap(const QVariantMap& buildingMap,
-        const bool& useForeignProperties)
-{
-    Building* building = new Building();
-    building->setParent(this);
-    if (useForeignProperties) {
-        building->fillFromForeignMap(buildingMap);
-    } else {
-        building->fillFromMap(buildingMap);
-    }
-    mAllBuilding.append(building);
-    emit addedToAllBuilding(building);
-    buildingPropertyListChanged();
-}
-
-bool DataManager::deleteBuilding(Building* building)
-{
-    bool ok = false;
-    ok = mAllBuilding.removeOne(building);
-    if (!ok) {
-        return ok;
-    }
-    emit deletedFromAllBuildingByBuildingId(building->buildingId());
-    emit deletedFromAllBuilding(building);
-    emit buildingPropertyListChanged();
-    building->deleteLater();
-    building = 0;
-    return ok;
-}
-
-
-bool DataManager::deleteBuildingByBuildingId(const int& buildingId)
-{
-    for (int i = 0; i < mAllBuilding.size(); ++i) {
-        Building* building;
-        building = (Building*) mAllBuilding.at(i);
-        if (building->buildingId() == buildingId) {
-            mAllBuilding.removeAt(i);
-            emit deletedFromAllBuildingByBuildingId(buildingId);
-            emit deletedFromAllBuilding(building);
-            emit buildingPropertyListChanged();
-            building->deleteLater();
-            building = 0;
-            return true;
-        }
-    }
-    return false;
-}
-
-
-// nr is DomainKey
-Building* DataManager::findBuildingByBuildingId(const int& buildingId){
-    for (int i = 0; i < mAllBuilding.size(); ++i) {
-        Building* building;
-        building = (Building*)mAllBuilding.at(i);
-        if(building->buildingId() == buildingId){
-            return building;
-        }
-    }
-    qDebug() << "no Building found for buildingId " << buildingId;
-    return 0;
-}
-
-/*
- * reads Maps of Floor in from JSON cache
- * creates List of Floor*  from QVariantList
- * List declared as list of QObject* - only way to use in GroupDataModel
- */
-void DataManager::initFloorFromCache()
-{
-	qDebug() << "start initFloorFromCache";
-    mAllFloor.clear();
-    QVariantList cacheList;
-    cacheList = readFromCache(cacheFloor);
-    qDebug() << "read Floor from cache #" << cacheList.size();
-    for (int i = 0; i < cacheList.size(); ++i) {
-        QVariantMap cacheMap;
-        cacheMap = cacheList.at(i).toMap();
-        Floor* floor = new Floor();
-        // Important: DataManager must be parent of all root DTOs
-        floor->setParent(this);
-        floor->fillFromCacheMap(cacheMap);
-        mAllFloor.append(floor);
-    }
-    qDebug() << "created Floor* #" << mAllFloor.size();
-}
-
-
-/*
- * save List of Floor* to JSON cache
- * convert list of Floor* to QVariantList
- * toCacheMap stores all properties without transient values
- * Floor is read-only Cache - so it's not saved automatically at exit
- */
-void DataManager::saveFloorToCache()
-{
-    QVariantList cacheList;
-    qDebug() << "now caching Floor* #" << mAllFloor.size();
-    for (int i = 0; i < mAllFloor.size(); ++i) {
-        Floor* floor;
-        floor = (Floor*)mAllFloor.at(i);
-        QVariantMap cacheMap;
-        cacheMap = floor->toCacheMap();
-        cacheList.append(cacheMap);
-    }
-    qDebug() << "Floor* converted to JSON cache #" << cacheList.size();
-    writeToCache(cacheFloor, cacheList);
-}
-
-
-void DataManager::resolveFloorReferences(Floor* floor)
-{
-	if (!floor) {
-        qDebug() << "cannot resolveFloorReferences with floor NULL";
-        return;
-    }
-    if(floor->isAllResolved()) {
-	    qDebug() << "nothing to do: all is resolved";
-	    return;
-	}
-    if (floor->hasBuilding() && !floor->isBuildingResolvedAsDataObject()) {
-    	Building* building;
-   		building = findBuildingByBuildingId(floor->building());
-    	if (building) {
-    		floor->resolveBuildingAsDataObject(building);
-    	} else {
-    		qDebug() << "markBuildingAsInvalid: " << floor->building();
-    		floor->markBuildingAsInvalid();
-    	}
-    }
-    if (!floor->areRoomsKeysResolved()) {
-        floor->resolveRoomsKeys(
-                listOfRoomForKeys(floor->roomsKeys()));
-    }
-}
-
-void DataManager::resolveReferencesForAllFloor()
-{
-    for (int i = 0; i < mAllFloor.size(); ++i) {
-        Floor* floor;
-        floor = (Floor*)mAllFloor.at(i);
-    	resolveFloorReferences(floor);
-    }
-}
-
-
-/**
-* converts a list of keys in to a list of DataObjects
-* per ex. used to resolve lazy arrays
-*/
-QList<Floor*> DataManager::listOfFloorForKeys(
-        QStringList keyList)
-{
-    QList<Floor*> listOfData;
-    keyList.removeDuplicates();
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    for (int i = 0; i < mAllFloor.size(); ++i) {
-        Floor* floor;
-        floor = (Floor*) mAllFloor.at(i);
-        if (keyList.contains(QString::number(floor->floorId()))) {
-            listOfData.append(floor);
-            keyList.removeOne(QString::number(floor->floorId()));
-            if(keyList.isEmpty()){
-                break;
-            }
-        }
-    }
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    qWarning() << "not all keys found for Floor: " << keyList.join(", ");
-    return listOfData;
-}
-
-QVariantList DataManager::floorAsQVariantList()
-{
-    QVariantList floorList;
-    for (int i = 0; i < mAllFloor.size(); ++i) {
-        floorList.append(((Floor*) (mAllFloor.at(i)))->toMap());
-    }
-    return floorList;
-}
-
-QList<QObject*> DataManager::allFloor()
-{
-    return mAllFloor;
-}
-
-QQmlListProperty<Floor> DataManager::floorPropertyList()
-{
-    return QQmlListProperty<Floor>(this, 0,
-            &DataManager::appendToFloorProperty, &DataManager::floorPropertyCount,
-            &DataManager::atFloorProperty, &DataManager::clearFloorProperty);
-}
-
-// implementation for QQmlListProperty to use
-// QML functions for List of Floor*
-void DataManager::appendToFloorProperty(
-        QQmlListProperty<Floor> *floorList,
-        Floor* floor)
-{
-    DataManager *dataManagerObject = qobject_cast<DataManager *>(floorList->object);
-    if (dataManagerObject) {
-        floor->setParent(dataManagerObject);
-        dataManagerObject->mAllFloor.append(floor);
-        emit dataManagerObject->addedToAllFloor(floor);
-    } else {
-        qWarning() << "cannot append Floor* to mAllFloor "
-                << "Object is not of type DataManager*";
-    }
-}
-int DataManager::floorPropertyCount(
-        QQmlListProperty<Floor> *floorList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(floorList->object);
-    if (dataManager) {
-        return dataManager->mAllFloor.size();
-    } else {
-        qWarning() << "cannot get size mAllFloor " << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-Floor* DataManager::atFloorProperty(
-        QQmlListProperty<Floor> *floorList, int pos)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(floorList->object);
-    if (dataManager) {
-        if (dataManager->mAllFloor.size() > pos) {
-            return (Floor*) dataManager->mAllFloor.at(pos);
-        }
-        qWarning() << "cannot get Floor* at pos " << pos << " size is "
-                << dataManager->mAllFloor.size();
-    } else {
-        qWarning() << "cannot get Floor* at pos " << pos
-                << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-void DataManager::clearFloorProperty(
-        QQmlListProperty<Floor> *floorList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(floorList->object);
-    if (dataManager) {
-        for (int i = 0; i < dataManager->mAllFloor.size(); ++i) {
-            Floor* floor;
-            floor = (Floor*) dataManager->mAllFloor.at(i);
-			emit dataManager->deletedFromAllFloorByFloorId(floor->floorId());
-			emit dataManager->deletedFromAllFloor(floor);
-            floor->deleteLater();
-            floor = 0;
-        }
-        dataManager->mAllFloor.clear();
-    } else {
-        qWarning() << "cannot clear mAllFloor " << "Object is not of type DataManager*";
-    }
-}
-
-/**
- * deletes all Floor
- * and clears the list
- */
-void DataManager::deleteFloor()
-{
-    for (int i = 0; i < mAllFloor.size(); ++i) {
-        Floor* floor;
-        floor = (Floor*) mAllFloor.at(i);
-        emit deletedFromAllFloorByFloorId(floor->floorId());
-		emit deletedFromAllFloor(floor);
-		emit floorPropertyListChanged();
-        floor->deleteLater();
-        floor = 0;
-     }
-     mAllFloor.clear();
-}
-
-/**
- * creates a new Floor
- * parent is DataManager
- * if data is successfully entered you must insertFloor
- * if edit was canceled you must undoCreateFloor to free up memory
- */
-Floor* DataManager::createFloor()
-{
-    Floor* floor;
-    floor = new Floor();
-    floor->setParent(this);
-    floor->prepareNew();
-    return floor;
-}
-
-/**
- * deletes Floor
- * if createFloor was canceled from UI
- * to delete a previous successfully inserted Floor
- * use deleteFloor
- */
-void DataManager::undoCreateFloor(Floor* floor)
-{
-    if (floor) {
-        qDebug() << "undoCreateFloor " << floor->floorId();
-        floor->deleteLater();
-        floor = 0;
-    }
-}
-
-void DataManager::insertFloor(Floor* floor)
-{
-    // Important: DataManager must be parent of all root DTOs
-    floor->setParent(this);
-    mAllFloor.append(floor);
-    emit addedToAllFloor(floor);
-    emit floorPropertyListChanged();
-}
-
-void DataManager::insertFloorFromMap(const QVariantMap& floorMap,
-        const bool& useForeignProperties)
-{
-    Floor* floor = new Floor();
-    floor->setParent(this);
-    if (useForeignProperties) {
-        floor->fillFromForeignMap(floorMap);
-    } else {
-        floor->fillFromMap(floorMap);
-    }
-    mAllFloor.append(floor);
-    emit addedToAllFloor(floor);
-    floorPropertyListChanged();
-}
-
-bool DataManager::deleteFloor(Floor* floor)
-{
-    bool ok = false;
-    ok = mAllFloor.removeOne(floor);
-    if (!ok) {
-        return ok;
-    }
-    emit deletedFromAllFloorByFloorId(floor->floorId());
-    emit deletedFromAllFloor(floor);
-    emit floorPropertyListChanged();
-    floor->deleteLater();
-    floor = 0;
-    return ok;
-}
-
-
-bool DataManager::deleteFloorByFloorId(const int& floorId)
-{
-    for (int i = 0; i < mAllFloor.size(); ++i) {
-        Floor* floor;
-        floor = (Floor*) mAllFloor.at(i);
-        if (floor->floorId() == floorId) {
-            mAllFloor.removeAt(i);
-            emit deletedFromAllFloorByFloorId(floorId);
-            emit deletedFromAllFloor(floor);
-            emit floorPropertyListChanged();
-            floor->deleteLater();
-            floor = 0;
-            return true;
-        }
-    }
-    return false;
-}
-
-
-// nr is DomainKey
-Floor* DataManager::findFloorByFloorId(const int& floorId){
-    for (int i = 0; i < mAllFloor.size(); ++i) {
-        Floor* floor;
-        floor = (Floor*)mAllFloor.at(i);
-        if(floor->floorId() == floorId){
-            return floor;
-        }
-    }
-    qDebug() << "no Floor found for floorId " << floorId;
-    return 0;
-}
-
-/*
  * reads Maps of Room in from JSON cache
  * creates List of Room*  from QVariantList
  * List declared as list of QObject* - only way to use in GroupDataModel
@@ -1205,41 +593,6 @@ void DataManager::saveRoomToCache()
     writeToCache(cacheRoom, cacheList);
 }
 
-
-void DataManager::resolveRoomReferences(Room* room)
-{
-	if (!room) {
-        qDebug() << "cannot resolveRoomReferences with room NULL";
-        return;
-    }
-    if(room->isAllResolved()) {
-	    qDebug() << "nothing to do: all is resolved";
-	    return;
-	}
-    if (room->hasFloor() && !room->isFloorResolvedAsDataObject()) {
-    	Floor* floor;
-   		floor = findFloorByFloorId(room->floor());
-    	if (floor) {
-    		room->resolveFloorAsDataObject(floor);
-    	} else {
-    		qDebug() << "markFloorAsInvalid: " << room->floor();
-    		room->markFloorAsInvalid();
-    	}
-    }
-    if (!room->areSessionsKeysResolved()) {
-        room->resolveSessionsKeys(
-                listOfSessionForKeys(room->sessionsKeys()));
-    }
-}
-
-void DataManager::resolveReferencesForAllRoom()
-{
-    for (int i = 0; i < mAllRoom.size(); ++i) {
-        Room* room;
-        room = (Room*)mAllRoom.at(i);
-    	resolveRoomReferences(room);
-    }
-}
 
 
 /**
@@ -1397,7 +750,7 @@ Room* DataManager::createRoom()
 void DataManager::undoCreateRoom(Room* room)
 {
     if (room) {
-        qDebug() << "undoCreateRoom " << room->roomId();
+        // qDebug() << "undoCreateRoom " << room->roomId();
         room->deleteLater();
         room = 0;
     }
@@ -1552,23 +905,19 @@ void DataManager::resolveSessionReferences(Session* session)
     		session->markRoomAsInvalid();
     	}
     }
-    if (session->hasScheduleItem() && !session->isScheduleItemResolvedAsDataObject()) {
-    	ScheduleItem* scheduleItem;
-   		scheduleItem = findScheduleItemBySessionId(session->scheduleItem());
-    	if (scheduleItem) {
-    		session->resolveScheduleItemAsDataObject(scheduleItem);
+    if (session->hasGenericScheduleItem() && !session->isGenericScheduleItemResolvedAsDataObject()) {
+    	GenericScheduleItem* genericScheduleItem;
+   		genericScheduleItem = findGenericScheduleItemBySessionId(session->genericScheduleItem());
+    	if (genericScheduleItem) {
+    		session->resolveGenericScheduleItemAsDataObject(genericScheduleItem);
     	} else {
-    		qDebug() << "markScheduleItemAsInvalid: " << session->scheduleItem();
-    		session->markScheduleItemAsInvalid();
+    		qDebug() << "markGenericScheduleItemAsInvalid: " << session->genericScheduleItem();
+    		session->markGenericScheduleItemAsInvalid();
     	}
     }
     if (!session->arePresenterKeysResolved()) {
         session->resolvePresenterKeys(
                 listOfSpeakerForKeys(session->presenterKeys()));
-    }
-    if (!session->areSessionLinksKeysResolved()) {
-        session->resolveSessionLinksKeys(
-                listOfSessionLinkForKeys(session->sessionLinksKeys()));
     }
     if (!session->areSessionTracksKeysResolved()) {
         session->resolveSessionTracksKeys(
@@ -1741,7 +1090,7 @@ Session* DataManager::createSession()
 void DataManager::undoCreateSession(Session* session)
 {
     if (session) {
-        qDebug() << "undoCreateSession " << session->sessionId();
+        // qDebug() << "undoCreateSession " << session->sessionId();
         session->deleteLater();
         session = 0;
     }
@@ -1820,80 +1169,80 @@ Session* DataManager::findSessionBySessionId(const int& sessionId){
 }
 
 /*
- * reads Maps of ScheduleItem in from JSON cache
- * creates List of ScheduleItem*  from QVariantList
+ * reads Maps of GenericScheduleItem in from JSON cache
+ * creates List of GenericScheduleItem*  from QVariantList
  * List declared as list of QObject* - only way to use in GroupDataModel
  */
-void DataManager::initScheduleItemFromCache()
+void DataManager::initGenericScheduleItemFromCache()
 {
-	qDebug() << "start initScheduleItemFromCache";
-    mAllScheduleItem.clear();
+	qDebug() << "start initGenericScheduleItemFromCache";
+    mAllGenericScheduleItem.clear();
     QVariantList cacheList;
-    cacheList = readFromCache(cacheScheduleItem);
-    qDebug() << "read ScheduleItem from cache #" << cacheList.size();
+    cacheList = readFromCache(cacheGenericScheduleItem);
+    qDebug() << "read GenericScheduleItem from cache #" << cacheList.size();
     for (int i = 0; i < cacheList.size(); ++i) {
         QVariantMap cacheMap;
         cacheMap = cacheList.at(i).toMap();
-        ScheduleItem* scheduleItem = new ScheduleItem();
+        GenericScheduleItem* genericScheduleItem = new GenericScheduleItem();
         // Important: DataManager must be parent of all root DTOs
-        scheduleItem->setParent(this);
-        scheduleItem->fillFromCacheMap(cacheMap);
-        mAllScheduleItem.append(scheduleItem);
+        genericScheduleItem->setParent(this);
+        genericScheduleItem->fillFromCacheMap(cacheMap);
+        mAllGenericScheduleItem.append(genericScheduleItem);
     }
-    qDebug() << "created ScheduleItem* #" << mAllScheduleItem.size();
+    qDebug() << "created GenericScheduleItem* #" << mAllGenericScheduleItem.size();
 }
 
 
 /*
- * save List of ScheduleItem* to JSON cache
- * convert list of ScheduleItem* to QVariantList
+ * save List of GenericScheduleItem* to JSON cache
+ * convert list of GenericScheduleItem* to QVariantList
  * toCacheMap stores all properties without transient values
- * ScheduleItem is read-only Cache - so it's not saved automatically at exit
+ * GenericScheduleItem is read-only Cache - so it's not saved automatically at exit
  */
-void DataManager::saveScheduleItemToCache()
+void DataManager::saveGenericScheduleItemToCache()
 {
     QVariantList cacheList;
-    qDebug() << "now caching ScheduleItem* #" << mAllScheduleItem.size();
-    for (int i = 0; i < mAllScheduleItem.size(); ++i) {
-        ScheduleItem* scheduleItem;
-        scheduleItem = (ScheduleItem*)mAllScheduleItem.at(i);
+    qDebug() << "now caching GenericScheduleItem* #" << mAllGenericScheduleItem.size();
+    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
+        GenericScheduleItem* genericScheduleItem;
+        genericScheduleItem = (GenericScheduleItem*)mAllGenericScheduleItem.at(i);
         QVariantMap cacheMap;
-        cacheMap = scheduleItem->toCacheMap();
+        cacheMap = genericScheduleItem->toCacheMap();
         cacheList.append(cacheMap);
     }
-    qDebug() << "ScheduleItem* converted to JSON cache #" << cacheList.size();
-    writeToCache(cacheScheduleItem, cacheList);
+    qDebug() << "GenericScheduleItem* converted to JSON cache #" << cacheList.size();
+    writeToCache(cacheGenericScheduleItem, cacheList);
 }
 
 
-void DataManager::resolveScheduleItemReferences(ScheduleItem* scheduleItem)
+void DataManager::resolveGenericScheduleItemReferences(GenericScheduleItem* genericScheduleItem)
 {
-	if (!scheduleItem) {
-        qDebug() << "cannot resolveScheduleItemReferences with scheduleItem NULL";
+	if (!genericScheduleItem) {
+        qDebug() << "cannot resolveGenericScheduleItemReferences with genericScheduleItem NULL";
         return;
     }
-    if(scheduleItem->isAllResolved()) {
+    if(genericScheduleItem->isAllResolved()) {
 	    qDebug() << "nothing to do: all is resolved";
 	    return;
 	}
-    if (scheduleItem->hasSession() && !scheduleItem->isSessionResolvedAsDataObject()) {
+    if (genericScheduleItem->hasSession() && !genericScheduleItem->isSessionResolvedAsDataObject()) {
     	Session* session;
-   		session = findSessionBySessionId(scheduleItem->session());
+   		session = findSessionBySessionId(genericScheduleItem->session());
     	if (session) {
-    		scheduleItem->resolveSessionAsDataObject(session);
+    		genericScheduleItem->resolveSessionAsDataObject(session);
     	} else {
-    		qDebug() << "markSessionAsInvalid: " << scheduleItem->session();
-    		scheduleItem->markSessionAsInvalid();
+    		qDebug() << "markSessionAsInvalid: " << genericScheduleItem->session();
+    		genericScheduleItem->markSessionAsInvalid();
     	}
     }
 }
 
-void DataManager::resolveReferencesForAllScheduleItem()
+void DataManager::resolveReferencesForAllGenericScheduleItem()
 {
-    for (int i = 0; i < mAllScheduleItem.size(); ++i) {
-        ScheduleItem* scheduleItem;
-        scheduleItem = (ScheduleItem*)mAllScheduleItem.at(i);
-    	resolveScheduleItemReferences(scheduleItem);
+    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
+        GenericScheduleItem* genericScheduleItem;
+        genericScheduleItem = (GenericScheduleItem*)mAllGenericScheduleItem.at(i);
+    	resolveGenericScheduleItemReferences(genericScheduleItem);
     }
 }
 
@@ -1902,20 +1251,20 @@ void DataManager::resolveReferencesForAllScheduleItem()
 * converts a list of keys in to a list of DataObjects
 * per ex. used to resolve lazy arrays
 */
-QList<ScheduleItem*> DataManager::listOfScheduleItemForKeys(
+QList<GenericScheduleItem*> DataManager::listOfGenericScheduleItemForKeys(
         QStringList keyList)
 {
-    QList<ScheduleItem*> listOfData;
+    QList<GenericScheduleItem*> listOfData;
     keyList.removeDuplicates();
     if (keyList.isEmpty()) {
         return listOfData;
     }
-    for (int i = 0; i < mAllScheduleItem.size(); ++i) {
-        ScheduleItem* scheduleItem;
-        scheduleItem = (ScheduleItem*) mAllScheduleItem.at(i);
-        if (keyList.contains(QString::number(scheduleItem->sessionId()))) {
-            listOfData.append(scheduleItem);
-            keyList.removeOne(QString::number(scheduleItem->sessionId()));
+    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
+        GenericScheduleItem* genericScheduleItem;
+        genericScheduleItem = (GenericScheduleItem*) mAllGenericScheduleItem.at(i);
+        if (keyList.contains(QString::number(genericScheduleItem->sessionId()))) {
+            listOfData.append(genericScheduleItem);
+            keyList.removeOne(QString::number(genericScheduleItem->sessionId()));
             if(keyList.isEmpty()){
                 break;
             }
@@ -1924,193 +1273,193 @@ QList<ScheduleItem*> DataManager::listOfScheduleItemForKeys(
     if (keyList.isEmpty()) {
         return listOfData;
     }
-    qWarning() << "not all keys found for ScheduleItem: " << keyList.join(", ");
+    qWarning() << "not all keys found for GenericScheduleItem: " << keyList.join(", ");
     return listOfData;
 }
 
-QVariantList DataManager::scheduleItemAsQVariantList()
+QVariantList DataManager::genericScheduleItemAsQVariantList()
 {
-    QVariantList scheduleItemList;
-    for (int i = 0; i < mAllScheduleItem.size(); ++i) {
-        scheduleItemList.append(((ScheduleItem*) (mAllScheduleItem.at(i)))->toMap());
+    QVariantList genericScheduleItemList;
+    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
+        genericScheduleItemList.append(((GenericScheduleItem*) (mAllGenericScheduleItem.at(i)))->toMap());
     }
-    return scheduleItemList;
+    return genericScheduleItemList;
 }
 
-QList<QObject*> DataManager::allScheduleItem()
+QList<QObject*> DataManager::allGenericScheduleItem()
 {
-    return mAllScheduleItem;
+    return mAllGenericScheduleItem;
 }
 
-QQmlListProperty<ScheduleItem> DataManager::scheduleItemPropertyList()
+QQmlListProperty<GenericScheduleItem> DataManager::genericScheduleItemPropertyList()
 {
-    return QQmlListProperty<ScheduleItem>(this, 0,
-            &DataManager::appendToScheduleItemProperty, &DataManager::scheduleItemPropertyCount,
-            &DataManager::atScheduleItemProperty, &DataManager::clearScheduleItemProperty);
+    return QQmlListProperty<GenericScheduleItem>(this, 0,
+            &DataManager::appendToGenericScheduleItemProperty, &DataManager::genericScheduleItemPropertyCount,
+            &DataManager::atGenericScheduleItemProperty, &DataManager::clearGenericScheduleItemProperty);
 }
 
 // implementation for QQmlListProperty to use
-// QML functions for List of ScheduleItem*
-void DataManager::appendToScheduleItemProperty(
-        QQmlListProperty<ScheduleItem> *scheduleItemList,
-        ScheduleItem* scheduleItem)
+// QML functions for List of GenericScheduleItem*
+void DataManager::appendToGenericScheduleItemProperty(
+        QQmlListProperty<GenericScheduleItem> *genericScheduleItemList,
+        GenericScheduleItem* genericScheduleItem)
 {
-    DataManager *dataManagerObject = qobject_cast<DataManager *>(scheduleItemList->object);
+    DataManager *dataManagerObject = qobject_cast<DataManager *>(genericScheduleItemList->object);
     if (dataManagerObject) {
-        scheduleItem->setParent(dataManagerObject);
-        dataManagerObject->mAllScheduleItem.append(scheduleItem);
-        emit dataManagerObject->addedToAllScheduleItem(scheduleItem);
+        genericScheduleItem->setParent(dataManagerObject);
+        dataManagerObject->mAllGenericScheduleItem.append(genericScheduleItem);
+        emit dataManagerObject->addedToAllGenericScheduleItem(genericScheduleItem);
     } else {
-        qWarning() << "cannot append ScheduleItem* to mAllScheduleItem "
+        qWarning() << "cannot append GenericScheduleItem* to mAllGenericScheduleItem "
                 << "Object is not of type DataManager*";
     }
 }
-int DataManager::scheduleItemPropertyCount(
-        QQmlListProperty<ScheduleItem> *scheduleItemList)
+int DataManager::genericScheduleItemPropertyCount(
+        QQmlListProperty<GenericScheduleItem> *genericScheduleItemList)
 {
-    DataManager *dataManager = qobject_cast<DataManager *>(scheduleItemList->object);
+    DataManager *dataManager = qobject_cast<DataManager *>(genericScheduleItemList->object);
     if (dataManager) {
-        return dataManager->mAllScheduleItem.size();
+        return dataManager->mAllGenericScheduleItem.size();
     } else {
-        qWarning() << "cannot get size mAllScheduleItem " << "Object is not of type DataManager*";
+        qWarning() << "cannot get size mAllGenericScheduleItem " << "Object is not of type DataManager*";
     }
     return 0;
 }
-ScheduleItem* DataManager::atScheduleItemProperty(
-        QQmlListProperty<ScheduleItem> *scheduleItemList, int pos)
+GenericScheduleItem* DataManager::atGenericScheduleItemProperty(
+        QQmlListProperty<GenericScheduleItem> *genericScheduleItemList, int pos)
 {
-    DataManager *dataManager = qobject_cast<DataManager *>(scheduleItemList->object);
+    DataManager *dataManager = qobject_cast<DataManager *>(genericScheduleItemList->object);
     if (dataManager) {
-        if (dataManager->mAllScheduleItem.size() > pos) {
-            return (ScheduleItem*) dataManager->mAllScheduleItem.at(pos);
+        if (dataManager->mAllGenericScheduleItem.size() > pos) {
+            return (GenericScheduleItem*) dataManager->mAllGenericScheduleItem.at(pos);
         }
-        qWarning() << "cannot get ScheduleItem* at pos " << pos << " size is "
-                << dataManager->mAllScheduleItem.size();
+        qWarning() << "cannot get GenericScheduleItem* at pos " << pos << " size is "
+                << dataManager->mAllGenericScheduleItem.size();
     } else {
-        qWarning() << "cannot get ScheduleItem* at pos " << pos
+        qWarning() << "cannot get GenericScheduleItem* at pos " << pos
                 << "Object is not of type DataManager*";
     }
     return 0;
 }
-void DataManager::clearScheduleItemProperty(
-        QQmlListProperty<ScheduleItem> *scheduleItemList)
+void DataManager::clearGenericScheduleItemProperty(
+        QQmlListProperty<GenericScheduleItem> *genericScheduleItemList)
 {
-    DataManager *dataManager = qobject_cast<DataManager *>(scheduleItemList->object);
+    DataManager *dataManager = qobject_cast<DataManager *>(genericScheduleItemList->object);
     if (dataManager) {
-        for (int i = 0; i < dataManager->mAllScheduleItem.size(); ++i) {
-            ScheduleItem* scheduleItem;
-            scheduleItem = (ScheduleItem*) dataManager->mAllScheduleItem.at(i);
-			emit dataManager->deletedFromAllScheduleItemBySessionId(scheduleItem->sessionId());
-			emit dataManager->deletedFromAllScheduleItem(scheduleItem);
-            scheduleItem->deleteLater();
-            scheduleItem = 0;
+        for (int i = 0; i < dataManager->mAllGenericScheduleItem.size(); ++i) {
+            GenericScheduleItem* genericScheduleItem;
+            genericScheduleItem = (GenericScheduleItem*) dataManager->mAllGenericScheduleItem.at(i);
+			emit dataManager->deletedFromAllGenericScheduleItemBySessionId(genericScheduleItem->sessionId());
+			emit dataManager->deletedFromAllGenericScheduleItem(genericScheduleItem);
+            genericScheduleItem->deleteLater();
+            genericScheduleItem = 0;
         }
-        dataManager->mAllScheduleItem.clear();
+        dataManager->mAllGenericScheduleItem.clear();
     } else {
-        qWarning() << "cannot clear mAllScheduleItem " << "Object is not of type DataManager*";
+        qWarning() << "cannot clear mAllGenericScheduleItem " << "Object is not of type DataManager*";
     }
 }
 
 /**
- * deletes all ScheduleItem
+ * deletes all GenericScheduleItem
  * and clears the list
  */
-void DataManager::deleteScheduleItem()
+void DataManager::deleteGenericScheduleItem()
 {
-    for (int i = 0; i < mAllScheduleItem.size(); ++i) {
-        ScheduleItem* scheduleItem;
-        scheduleItem = (ScheduleItem*) mAllScheduleItem.at(i);
-        emit deletedFromAllScheduleItemBySessionId(scheduleItem->sessionId());
-		emit deletedFromAllScheduleItem(scheduleItem);
-		emit scheduleItemPropertyListChanged();
-        scheduleItem->deleteLater();
-        scheduleItem = 0;
+    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
+        GenericScheduleItem* genericScheduleItem;
+        genericScheduleItem = (GenericScheduleItem*) mAllGenericScheduleItem.at(i);
+        emit deletedFromAllGenericScheduleItemBySessionId(genericScheduleItem->sessionId());
+		emit deletedFromAllGenericScheduleItem(genericScheduleItem);
+		emit genericScheduleItemPropertyListChanged();
+        genericScheduleItem->deleteLater();
+        genericScheduleItem = 0;
      }
-     mAllScheduleItem.clear();
+     mAllGenericScheduleItem.clear();
 }
 
 /**
- * creates a new ScheduleItem
+ * creates a new GenericScheduleItem
  * parent is DataManager
- * if data is successfully entered you must insertScheduleItem
- * if edit was canceled you must undoCreateScheduleItem to free up memory
+ * if data is successfully entered you must insertGenericScheduleItem
+ * if edit was canceled you must undoCreateGenericScheduleItem to free up memory
  */
-ScheduleItem* DataManager::createScheduleItem()
+GenericScheduleItem* DataManager::createGenericScheduleItem()
 {
-    ScheduleItem* scheduleItem;
-    scheduleItem = new ScheduleItem();
-    scheduleItem->setParent(this);
-    scheduleItem->prepareNew();
-    return scheduleItem;
+    GenericScheduleItem* genericScheduleItem;
+    genericScheduleItem = new GenericScheduleItem();
+    genericScheduleItem->setParent(this);
+    genericScheduleItem->prepareNew();
+    return genericScheduleItem;
 }
 
 /**
- * deletes ScheduleItem
- * if createScheduleItem was canceled from UI
- * to delete a previous successfully inserted ScheduleItem
- * use deleteScheduleItem
+ * deletes GenericScheduleItem
+ * if createGenericScheduleItem was canceled from UI
+ * to delete a previous successfully inserted GenericScheduleItem
+ * use deleteGenericScheduleItem
  */
-void DataManager::undoCreateScheduleItem(ScheduleItem* scheduleItem)
+void DataManager::undoCreateGenericScheduleItem(GenericScheduleItem* genericScheduleItem)
 {
-    if (scheduleItem) {
-        qDebug() << "undoCreateScheduleItem " << scheduleItem->sessionId();
-        scheduleItem->deleteLater();
-        scheduleItem = 0;
+    if (genericScheduleItem) {
+        // qDebug() << "undoCreateGenericScheduleItem " << genericScheduleItem->sessionId();
+        genericScheduleItem->deleteLater();
+        genericScheduleItem = 0;
     }
 }
 
-void DataManager::insertScheduleItem(ScheduleItem* scheduleItem)
+void DataManager::insertGenericScheduleItem(GenericScheduleItem* genericScheduleItem)
 {
     // Important: DataManager must be parent of all root DTOs
-    scheduleItem->setParent(this);
-    mAllScheduleItem.append(scheduleItem);
-    emit addedToAllScheduleItem(scheduleItem);
-    emit scheduleItemPropertyListChanged();
+    genericScheduleItem->setParent(this);
+    mAllGenericScheduleItem.append(genericScheduleItem);
+    emit addedToAllGenericScheduleItem(genericScheduleItem);
+    emit genericScheduleItemPropertyListChanged();
 }
 
-void DataManager::insertScheduleItemFromMap(const QVariantMap& scheduleItemMap,
+void DataManager::insertGenericScheduleItemFromMap(const QVariantMap& genericScheduleItemMap,
         const bool& useForeignProperties)
 {
-    ScheduleItem* scheduleItem = new ScheduleItem();
-    scheduleItem->setParent(this);
+    GenericScheduleItem* genericScheduleItem = new GenericScheduleItem();
+    genericScheduleItem->setParent(this);
     if (useForeignProperties) {
-        scheduleItem->fillFromForeignMap(scheduleItemMap);
+        genericScheduleItem->fillFromForeignMap(genericScheduleItemMap);
     } else {
-        scheduleItem->fillFromMap(scheduleItemMap);
+        genericScheduleItem->fillFromMap(genericScheduleItemMap);
     }
-    mAllScheduleItem.append(scheduleItem);
-    emit addedToAllScheduleItem(scheduleItem);
-    scheduleItemPropertyListChanged();
+    mAllGenericScheduleItem.append(genericScheduleItem);
+    emit addedToAllGenericScheduleItem(genericScheduleItem);
+    genericScheduleItemPropertyListChanged();
 }
 
-bool DataManager::deleteScheduleItem(ScheduleItem* scheduleItem)
+bool DataManager::deleteGenericScheduleItem(GenericScheduleItem* genericScheduleItem)
 {
     bool ok = false;
-    ok = mAllScheduleItem.removeOne(scheduleItem);
+    ok = mAllGenericScheduleItem.removeOne(genericScheduleItem);
     if (!ok) {
         return ok;
     }
-    emit deletedFromAllScheduleItemBySessionId(scheduleItem->sessionId());
-    emit deletedFromAllScheduleItem(scheduleItem);
-    emit scheduleItemPropertyListChanged();
-    scheduleItem->deleteLater();
-    scheduleItem = 0;
+    emit deletedFromAllGenericScheduleItemBySessionId(genericScheduleItem->sessionId());
+    emit deletedFromAllGenericScheduleItem(genericScheduleItem);
+    emit genericScheduleItemPropertyListChanged();
+    genericScheduleItem->deleteLater();
+    genericScheduleItem = 0;
     return ok;
 }
 
 
-bool DataManager::deleteScheduleItemBySessionId(const int& sessionId)
+bool DataManager::deleteGenericScheduleItemBySessionId(const int& sessionId)
 {
-    for (int i = 0; i < mAllScheduleItem.size(); ++i) {
-        ScheduleItem* scheduleItem;
-        scheduleItem = (ScheduleItem*) mAllScheduleItem.at(i);
-        if (scheduleItem->sessionId() == sessionId) {
-            mAllScheduleItem.removeAt(i);
-            emit deletedFromAllScheduleItemBySessionId(sessionId);
-            emit deletedFromAllScheduleItem(scheduleItem);
-            emit scheduleItemPropertyListChanged();
-            scheduleItem->deleteLater();
-            scheduleItem = 0;
+    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
+        GenericScheduleItem* genericScheduleItem;
+        genericScheduleItem = (GenericScheduleItem*) mAllGenericScheduleItem.at(i);
+        if (genericScheduleItem->sessionId() == sessionId) {
+            mAllGenericScheduleItem.removeAt(i);
+            emit deletedFromAllGenericScheduleItemBySessionId(sessionId);
+            emit deletedFromAllGenericScheduleItem(genericScheduleItem);
+            emit genericScheduleItemPropertyListChanged();
+            genericScheduleItem->deleteLater();
+            genericScheduleItem = 0;
             return true;
         }
     }
@@ -2119,15 +1468,15 @@ bool DataManager::deleteScheduleItemBySessionId(const int& sessionId)
 
 
 // nr is DomainKey
-ScheduleItem* DataManager::findScheduleItemBySessionId(const int& sessionId){
-    for (int i = 0; i < mAllScheduleItem.size(); ++i) {
-        ScheduleItem* scheduleItem;
-        scheduleItem = (ScheduleItem*)mAllScheduleItem.at(i);
-        if(scheduleItem->sessionId() == sessionId){
-            return scheduleItem;
+GenericScheduleItem* DataManager::findGenericScheduleItemBySessionId(const int& sessionId){
+    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
+        GenericScheduleItem* genericScheduleItem;
+        genericScheduleItem = (GenericScheduleItem*)mAllGenericScheduleItem.at(i);
+        if(genericScheduleItem->sessionId() == sessionId){
+            return genericScheduleItem;
         }
     }
-    qDebug() << "no ScheduleItem found for sessionId " << sessionId;
+    qDebug() << "no GenericScheduleItem found for sessionId " << sessionId;
     return 0;
 }
 
@@ -2364,7 +1713,7 @@ Favorite* DataManager::createFavorite()
 void DataManager::undoCreateFavorite(Favorite* favorite)
 {
     if (favorite) {
-        qDebug() << "undoCreateFavorite " << favorite->sessionId();
+        // qDebug() << "undoCreateFavorite " << favorite->sessionId();
         favorite->deleteLater();
         favorite = 0;
     }
@@ -2675,7 +2024,7 @@ Bookmark* DataManager::createBookmark()
 void DataManager::undoCreateBookmark(Bookmark* bookmark)
 {
     if (bookmark) {
-        qDebug() << "undoCreateBookmark " << bookmark->sessionId();
+        // qDebug() << "undoCreateBookmark " << bookmark->sessionId();
         bookmark->deleteLater();
         bookmark = 0;
     }
@@ -2956,7 +2305,7 @@ SessionLists* DataManager::createSessionLists()
 void DataManager::undoCreateSessionLists(SessionLists* sessionLists)
 {
     if (sessionLists) {
-        qDebug() << "undoCreateSessionLists " << sessionLists->uuid();
+        // qDebug() << "undoCreateSessionLists " << sessionLists->uuid();
         sessionLists->deleteLater();
         sessionLists = 0;
     }
@@ -3037,294 +2386,6 @@ SessionLists* DataManager::findSessionListsByUuid(const QString& uuid){
         }
     }
     qDebug() << "no SessionLists found for uuid " << uuid;
-    return 0;
-}
-
-
-/*
- * reads Maps of SessionLink in from JSON cache
- * creates List of SessionLink*  from QVariantList
- * List declared as list of QObject* - only way to use in GroupDataModel
- */
-void DataManager::initSessionLinkFromCache()
-{
-	qDebug() << "start initSessionLinkFromCache";
-    mAllSessionLink.clear();
-    QVariantList cacheList;
-    cacheList = readFromCache(cacheSessionLink);
-    qDebug() << "read SessionLink from cache #" << cacheList.size();
-    for (int i = 0; i < cacheList.size(); ++i) {
-        QVariantMap cacheMap;
-        cacheMap = cacheList.at(i).toMap();
-        SessionLink* sessionLink = new SessionLink();
-        // Important: DataManager must be parent of all root DTOs
-        sessionLink->setParent(this);
-        sessionLink->fillFromCacheMap(cacheMap);
-        mAllSessionLink.append(sessionLink);
-    }
-    qDebug() << "created SessionLink* #" << mAllSessionLink.size();
-}
-
-
-/*
- * save List of SessionLink* to JSON cache
- * convert list of SessionLink* to QVariantList
- * toCacheMap stores all properties without transient values
- * SessionLink is read-only Cache - so it's not saved automatically at exit
- */
-void DataManager::saveSessionLinkToCache()
-{
-    QVariantList cacheList;
-    qDebug() << "now caching SessionLink* #" << mAllSessionLink.size();
-    for (int i = 0; i < mAllSessionLink.size(); ++i) {
-        SessionLink* sessionLink;
-        sessionLink = (SessionLink*)mAllSessionLink.at(i);
-        QVariantMap cacheMap;
-        cacheMap = sessionLink->toCacheMap();
-        cacheList.append(cacheMap);
-    }
-    qDebug() << "SessionLink* converted to JSON cache #" << cacheList.size();
-    writeToCache(cacheSessionLink, cacheList);
-}
-
-
-
-/**
-* converts a list of keys in to a list of DataObjects
-* per ex. used to resolve lazy arrays
-*/
-QList<SessionLink*> DataManager::listOfSessionLinkForKeys(
-        QStringList keyList)
-{
-    QList<SessionLink*> listOfData;
-    keyList.removeDuplicates();
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    for (int i = 0; i < mAllSessionLink.size(); ++i) {
-        SessionLink* sessionLink;
-        sessionLink = (SessionLink*) mAllSessionLink.at(i);
-        if (keyList.contains(sessionLink->uuid())) {
-            listOfData.append(sessionLink);
-            keyList.removeOne(sessionLink->uuid());
-            if(keyList.isEmpty()){
-                break;
-            }
-        }
-    }
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    qWarning() << "not all keys found for SessionLink: " << keyList.join(", ");
-    return listOfData;
-}
-
-QVariantList DataManager::sessionLinkAsQVariantList()
-{
-    QVariantList sessionLinkList;
-    for (int i = 0; i < mAllSessionLink.size(); ++i) {
-        sessionLinkList.append(((SessionLink*) (mAllSessionLink.at(i)))->toMap());
-    }
-    return sessionLinkList;
-}
-
-QList<QObject*> DataManager::allSessionLink()
-{
-    return mAllSessionLink;
-}
-
-QQmlListProperty<SessionLink> DataManager::sessionLinkPropertyList()
-{
-    return QQmlListProperty<SessionLink>(this, 0,
-            &DataManager::appendToSessionLinkProperty, &DataManager::sessionLinkPropertyCount,
-            &DataManager::atSessionLinkProperty, &DataManager::clearSessionLinkProperty);
-}
-
-// implementation for QQmlListProperty to use
-// QML functions for List of SessionLink*
-void DataManager::appendToSessionLinkProperty(
-        QQmlListProperty<SessionLink> *sessionLinkList,
-        SessionLink* sessionLink)
-{
-    DataManager *dataManagerObject = qobject_cast<DataManager *>(sessionLinkList->object);
-    if (dataManagerObject) {
-        sessionLink->setParent(dataManagerObject);
-        dataManagerObject->mAllSessionLink.append(sessionLink);
-        emit dataManagerObject->addedToAllSessionLink(sessionLink);
-    } else {
-        qWarning() << "cannot append SessionLink* to mAllSessionLink "
-                << "Object is not of type DataManager*";
-    }
-}
-int DataManager::sessionLinkPropertyCount(
-        QQmlListProperty<SessionLink> *sessionLinkList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(sessionLinkList->object);
-    if (dataManager) {
-        return dataManager->mAllSessionLink.size();
-    } else {
-        qWarning() << "cannot get size mAllSessionLink " << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-SessionLink* DataManager::atSessionLinkProperty(
-        QQmlListProperty<SessionLink> *sessionLinkList, int pos)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(sessionLinkList->object);
-    if (dataManager) {
-        if (dataManager->mAllSessionLink.size() > pos) {
-            return (SessionLink*) dataManager->mAllSessionLink.at(pos);
-        }
-        qWarning() << "cannot get SessionLink* at pos " << pos << " size is "
-                << dataManager->mAllSessionLink.size();
-    } else {
-        qWarning() << "cannot get SessionLink* at pos " << pos
-                << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-void DataManager::clearSessionLinkProperty(
-        QQmlListProperty<SessionLink> *sessionLinkList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(sessionLinkList->object);
-    if (dataManager) {
-        for (int i = 0; i < dataManager->mAllSessionLink.size(); ++i) {
-            SessionLink* sessionLink;
-            sessionLink = (SessionLink*) dataManager->mAllSessionLink.at(i);
-			emit dataManager->deletedFromAllSessionLinkByUuid(sessionLink->uuid());
-			emit dataManager->deletedFromAllSessionLink(sessionLink);
-            sessionLink->deleteLater();
-            sessionLink = 0;
-        }
-        dataManager->mAllSessionLink.clear();
-    } else {
-        qWarning() << "cannot clear mAllSessionLink " << "Object is not of type DataManager*";
-    }
-}
-
-/**
- * deletes all SessionLink
- * and clears the list
- */
-void DataManager::deleteSessionLink()
-{
-    for (int i = 0; i < mAllSessionLink.size(); ++i) {
-        SessionLink* sessionLink;
-        sessionLink = (SessionLink*) mAllSessionLink.at(i);
-        emit deletedFromAllSessionLinkByUuid(sessionLink->uuid());
-		emit deletedFromAllSessionLink(sessionLink);
-		emit sessionLinkPropertyListChanged();
-        sessionLink->deleteLater();
-        sessionLink = 0;
-     }
-     mAllSessionLink.clear();
-}
-
-/**
- * creates a new SessionLink
- * parent is DataManager
- * if data is successfully entered you must insertSessionLink
- * if edit was canceled you must undoCreateSessionLink to free up memory
- */
-SessionLink* DataManager::createSessionLink()
-{
-    SessionLink* sessionLink;
-    sessionLink = new SessionLink();
-    sessionLink->setParent(this);
-    sessionLink->prepareNew();
-    return sessionLink;
-}
-
-/**
- * deletes SessionLink
- * if createSessionLink was canceled from UI
- * to delete a previous successfully inserted SessionLink
- * use deleteSessionLink
- */
-void DataManager::undoCreateSessionLink(SessionLink* sessionLink)
-{
-    if (sessionLink) {
-        qDebug() << "undoCreateSessionLink " << sessionLink->uuid();
-        sessionLink->deleteLater();
-        sessionLink = 0;
-    }
-}
-
-void DataManager::insertSessionLink(SessionLink* sessionLink)
-{
-    // Important: DataManager must be parent of all root DTOs
-    sessionLink->setParent(this);
-    mAllSessionLink.append(sessionLink);
-    emit addedToAllSessionLink(sessionLink);
-    emit sessionLinkPropertyListChanged();
-}
-
-void DataManager::insertSessionLinkFromMap(const QVariantMap& sessionLinkMap,
-        const bool& useForeignProperties)
-{
-    SessionLink* sessionLink = new SessionLink();
-    sessionLink->setParent(this);
-    if (useForeignProperties) {
-        sessionLink->fillFromForeignMap(sessionLinkMap);
-    } else {
-        sessionLink->fillFromMap(sessionLinkMap);
-    }
-    mAllSessionLink.append(sessionLink);
-    emit addedToAllSessionLink(sessionLink);
-    sessionLinkPropertyListChanged();
-}
-
-bool DataManager::deleteSessionLink(SessionLink* sessionLink)
-{
-    bool ok = false;
-    ok = mAllSessionLink.removeOne(sessionLink);
-    if (!ok) {
-        return ok;
-    }
-    emit deletedFromAllSessionLinkByUuid(sessionLink->uuid());
-    emit deletedFromAllSessionLink(sessionLink);
-    emit sessionLinkPropertyListChanged();
-    sessionLink->deleteLater();
-    sessionLink = 0;
-    return ok;
-}
-
-bool DataManager::deleteSessionLinkByUuid(const QString& uuid)
-{
-    if (uuid.isNull() || uuid.isEmpty()) {
-        qDebug() << "cannot delete SessionLink from empty uuid";
-        return false;
-    }
-    for (int i = 0; i < mAllSessionLink.size(); ++i) {
-        SessionLink* sessionLink;
-        sessionLink = (SessionLink*) mAllSessionLink.at(i);
-        if (sessionLink->uuid() == uuid) {
-            mAllSessionLink.removeAt(i);
-            emit deletedFromAllSessionLinkByUuid(uuid);
-            emit deletedFromAllSessionLink(sessionLink);
-            emit sessionLinkPropertyListChanged();
-            sessionLink->deleteLater();
-            sessionLink = 0;
-            return true;
-        }
-    }
-    return false;
-}
-
-
-SessionLink* DataManager::findSessionLinkByUuid(const QString& uuid){
-    if (uuid.isNull() || uuid.isEmpty()) {
-        qDebug() << "cannot find SessionLink from empty uuid";
-        return 0;
-    }
-    for (int i = 0; i < mAllSessionLink.size(); ++i) {
-        SessionLink* sessionLink;
-        sessionLink = (SessionLink*)mAllSessionLink.at(i);
-        if(sessionLink->uuid() == uuid){
-            return sessionLink;
-        }
-    }
-    qDebug() << "no SessionLink found for uuid " << uuid;
     return 0;
 }
 
@@ -3567,7 +2628,7 @@ Speaker* DataManager::createSpeaker()
 void DataManager::undoCreateSpeaker(Speaker* speaker)
 {
     if (speaker) {
-        qDebug() << "undoCreateSpeaker " << speaker->speakerId();
+        // qDebug() << "undoCreateSpeaker " << speaker->speakerId();
         speaker->deleteLater();
         speaker = 0;
     }
@@ -3848,7 +2909,7 @@ SpeakerImage* DataManager::createSpeakerImage()
 void DataManager::undoCreateSpeakerImage(SpeakerImage* speakerImage)
 {
     if (speakerImage) {
-        qDebug() << "undoCreateSpeakerImage " << speakerImage->speakerId();
+        // qDebug() << "undoCreateSpeakerImage " << speakerImage->speakerId();
         speakerImage->deleteLater();
         speakerImage = 0;
     }
@@ -4129,7 +3190,7 @@ SessionTrack* DataManager::createSessionTrack()
 void DataManager::undoCreateSessionTrack(SessionTrack* sessionTrack)
 {
     if (sessionTrack) {
-        qDebug() << "undoCreateSessionTrack " << sessionTrack->trackId();
+        // qDebug() << "undoCreateSessionTrack " << sessionTrack->trackId();
         sessionTrack->deleteLater();
         sessionTrack = 0;
     }
@@ -4410,7 +3471,7 @@ Day* DataManager::createDay()
 void DataManager::undoCreateDay(Day* day)
 {
     if (day) {
-        qDebug() << "undoCreateDay " << day->id();
+        // qDebug() << "undoCreateDay " << day->id();
         day->deleteLater();
         day = 0;
     }
@@ -4691,7 +3752,7 @@ SessionAPI* DataManager::createSessionAPI()
 void DataManager::undoCreateSessionAPI(SessionAPI* sessionAPI)
 {
     if (sessionAPI) {
-        qDebug() << "undoCreateSessionAPI " << sessionAPI->sessionId();
+        // qDebug() << "undoCreateSessionAPI " << sessionAPI->sessionId();
         sessionAPI->deleteLater();
         sessionAPI = 0;
     }
@@ -4972,7 +4033,7 @@ PersonsAPI* DataManager::createPersonsAPI()
 void DataManager::undoCreatePersonsAPI(PersonsAPI* personsAPI)
 {
     if (personsAPI) {
-        qDebug() << "undoCreatePersonsAPI " << personsAPI->speakerId();
+        // qDebug() << "undoCreatePersonsAPI " << personsAPI->speakerId();
         personsAPI->deleteLater();
         personsAPI = 0;
     }
@@ -5051,49 +4112,49 @@ PersonsAPI* DataManager::findPersonsAPIBySpeakerId(const int& speakerId){
 }
 
 /*
- * reads Maps of SessionLinkAPI in from JSON cache
- * creates List of SessionLinkAPI*  from QVariantList
+ * reads Maps of SessionTrackAPI in from JSON cache
+ * creates List of SessionTrackAPI*  from QVariantList
  * List declared as list of QObject* - only way to use in GroupDataModel
  */
-void DataManager::initSessionLinkAPIFromCache()
+void DataManager::initSessionTrackAPIFromCache()
 {
-	qDebug() << "start initSessionLinkAPIFromCache";
-    mAllSessionLinkAPI.clear();
+	qDebug() << "start initSessionTrackAPIFromCache";
+    mAllSessionTrackAPI.clear();
     QVariantList cacheList;
-    cacheList = readFromCache(cacheSessionLinkAPI);
-    qDebug() << "read SessionLinkAPI from cache #" << cacheList.size();
+    cacheList = readFromCache(cacheSessionTrackAPI);
+    qDebug() << "read SessionTrackAPI from cache #" << cacheList.size();
     for (int i = 0; i < cacheList.size(); ++i) {
         QVariantMap cacheMap;
         cacheMap = cacheList.at(i).toMap();
-        SessionLinkAPI* sessionLinkAPI = new SessionLinkAPI();
+        SessionTrackAPI* sessionTrackAPI = new SessionTrackAPI();
         // Important: DataManager must be parent of all root DTOs
-        sessionLinkAPI->setParent(this);
-        sessionLinkAPI->fillFromCacheMap(cacheMap);
-        mAllSessionLinkAPI.append(sessionLinkAPI);
+        sessionTrackAPI->setParent(this);
+        sessionTrackAPI->fillFromCacheMap(cacheMap);
+        mAllSessionTrackAPI.append(sessionTrackAPI);
     }
-    qDebug() << "created SessionLinkAPI* #" << mAllSessionLinkAPI.size();
+    qDebug() << "created SessionTrackAPI* #" << mAllSessionTrackAPI.size();
 }
 
 
 /*
- * save List of SessionLinkAPI* to JSON cache
- * convert list of SessionLinkAPI* to QVariantList
+ * save List of SessionTrackAPI* to JSON cache
+ * convert list of SessionTrackAPI* to QVariantList
  * toCacheMap stores all properties without transient values
- * SessionLinkAPI is read-only Cache - so it's not saved automatically at exit
+ * SessionTrackAPI is read-only Cache - so it's not saved automatically at exit
  */
-void DataManager::saveSessionLinkAPIToCache()
+void DataManager::saveSessionTrackAPIToCache()
 {
     QVariantList cacheList;
-    qDebug() << "now caching SessionLinkAPI* #" << mAllSessionLinkAPI.size();
-    for (int i = 0; i < mAllSessionLinkAPI.size(); ++i) {
-        SessionLinkAPI* sessionLinkAPI;
-        sessionLinkAPI = (SessionLinkAPI*)mAllSessionLinkAPI.at(i);
+    qDebug() << "now caching SessionTrackAPI* #" << mAllSessionTrackAPI.size();
+    for (int i = 0; i < mAllSessionTrackAPI.size(); ++i) {
+        SessionTrackAPI* sessionTrackAPI;
+        sessionTrackAPI = (SessionTrackAPI*)mAllSessionTrackAPI.at(i);
         QVariantMap cacheMap;
-        cacheMap = sessionLinkAPI->toCacheMap();
+        cacheMap = sessionTrackAPI->toCacheMap();
         cacheList.append(cacheMap);
     }
-    qDebug() << "SessionLinkAPI* converted to JSON cache #" << cacheList.size();
-    writeToCache(cacheSessionLinkAPI, cacheList);
+    qDebug() << "SessionTrackAPI* converted to JSON cache #" << cacheList.size();
+    writeToCache(cacheSessionTrackAPI, cacheList);
 }
 
 
@@ -5102,20 +4163,20 @@ void DataManager::saveSessionLinkAPIToCache()
 * converts a list of keys in to a list of DataObjects
 * per ex. used to resolve lazy arrays
 */
-QList<SessionLinkAPI*> DataManager::listOfSessionLinkAPIForKeys(
+QList<SessionTrackAPI*> DataManager::listOfSessionTrackAPIForKeys(
         QStringList keyList)
 {
-    QList<SessionLinkAPI*> listOfData;
+    QList<SessionTrackAPI*> listOfData;
     keyList.removeDuplicates();
     if (keyList.isEmpty()) {
         return listOfData;
     }
-    for (int i = 0; i < mAllSessionLinkAPI.size(); ++i) {
-        SessionLinkAPI* sessionLinkAPI;
-        sessionLinkAPI = (SessionLinkAPI*) mAllSessionLinkAPI.at(i);
-        if (keyList.contains(sessionLinkAPI->uuid())) {
-            listOfData.append(sessionLinkAPI);
-            keyList.removeOne(sessionLinkAPI->uuid());
+    for (int i = 0; i < mAllSessionTrackAPI.size(); ++i) {
+        SessionTrackAPI* sessionTrackAPI;
+        sessionTrackAPI = (SessionTrackAPI*) mAllSessionTrackAPI.at(i);
+        if (keyList.contains(sessionTrackAPI->uuid())) {
+            listOfData.append(sessionTrackAPI);
+            keyList.removeOne(sessionTrackAPI->uuid());
             if(keyList.isEmpty()){
                 break;
             }
@@ -5124,196 +4185,196 @@ QList<SessionLinkAPI*> DataManager::listOfSessionLinkAPIForKeys(
     if (keyList.isEmpty()) {
         return listOfData;
     }
-    qWarning() << "not all keys found for SessionLinkAPI: " << keyList.join(", ");
+    qWarning() << "not all keys found for SessionTrackAPI: " << keyList.join(", ");
     return listOfData;
 }
 
-QVariantList DataManager::sessionLinkAPIAsQVariantList()
+QVariantList DataManager::sessionTrackAPIAsQVariantList()
 {
-    QVariantList sessionLinkAPIList;
-    for (int i = 0; i < mAllSessionLinkAPI.size(); ++i) {
-        sessionLinkAPIList.append(((SessionLinkAPI*) (mAllSessionLinkAPI.at(i)))->toMap());
+    QVariantList sessionTrackAPIList;
+    for (int i = 0; i < mAllSessionTrackAPI.size(); ++i) {
+        sessionTrackAPIList.append(((SessionTrackAPI*) (mAllSessionTrackAPI.at(i)))->toMap());
     }
-    return sessionLinkAPIList;
+    return sessionTrackAPIList;
 }
 
-QList<QObject*> DataManager::allSessionLinkAPI()
+QList<QObject*> DataManager::allSessionTrackAPI()
 {
-    return mAllSessionLinkAPI;
+    return mAllSessionTrackAPI;
 }
 
-QQmlListProperty<SessionLinkAPI> DataManager::sessionLinkAPIPropertyList()
+QQmlListProperty<SessionTrackAPI> DataManager::sessionTrackAPIPropertyList()
 {
-    return QQmlListProperty<SessionLinkAPI>(this, 0,
-            &DataManager::appendToSessionLinkAPIProperty, &DataManager::sessionLinkAPIPropertyCount,
-            &DataManager::atSessionLinkAPIProperty, &DataManager::clearSessionLinkAPIProperty);
+    return QQmlListProperty<SessionTrackAPI>(this, 0,
+            &DataManager::appendToSessionTrackAPIProperty, &DataManager::sessionTrackAPIPropertyCount,
+            &DataManager::atSessionTrackAPIProperty, &DataManager::clearSessionTrackAPIProperty);
 }
 
 // implementation for QQmlListProperty to use
-// QML functions for List of SessionLinkAPI*
-void DataManager::appendToSessionLinkAPIProperty(
-        QQmlListProperty<SessionLinkAPI> *sessionLinkAPIList,
-        SessionLinkAPI* sessionLinkAPI)
+// QML functions for List of SessionTrackAPI*
+void DataManager::appendToSessionTrackAPIProperty(
+        QQmlListProperty<SessionTrackAPI> *sessionTrackAPIList,
+        SessionTrackAPI* sessionTrackAPI)
 {
-    DataManager *dataManagerObject = qobject_cast<DataManager *>(sessionLinkAPIList->object);
+    DataManager *dataManagerObject = qobject_cast<DataManager *>(sessionTrackAPIList->object);
     if (dataManagerObject) {
-        sessionLinkAPI->setParent(dataManagerObject);
-        dataManagerObject->mAllSessionLinkAPI.append(sessionLinkAPI);
-        emit dataManagerObject->addedToAllSessionLinkAPI(sessionLinkAPI);
+        sessionTrackAPI->setParent(dataManagerObject);
+        dataManagerObject->mAllSessionTrackAPI.append(sessionTrackAPI);
+        emit dataManagerObject->addedToAllSessionTrackAPI(sessionTrackAPI);
     } else {
-        qWarning() << "cannot append SessionLinkAPI* to mAllSessionLinkAPI "
+        qWarning() << "cannot append SessionTrackAPI* to mAllSessionTrackAPI "
                 << "Object is not of type DataManager*";
     }
 }
-int DataManager::sessionLinkAPIPropertyCount(
-        QQmlListProperty<SessionLinkAPI> *sessionLinkAPIList)
+int DataManager::sessionTrackAPIPropertyCount(
+        QQmlListProperty<SessionTrackAPI> *sessionTrackAPIList)
 {
-    DataManager *dataManager = qobject_cast<DataManager *>(sessionLinkAPIList->object);
+    DataManager *dataManager = qobject_cast<DataManager *>(sessionTrackAPIList->object);
     if (dataManager) {
-        return dataManager->mAllSessionLinkAPI.size();
+        return dataManager->mAllSessionTrackAPI.size();
     } else {
-        qWarning() << "cannot get size mAllSessionLinkAPI " << "Object is not of type DataManager*";
+        qWarning() << "cannot get size mAllSessionTrackAPI " << "Object is not of type DataManager*";
     }
     return 0;
 }
-SessionLinkAPI* DataManager::atSessionLinkAPIProperty(
-        QQmlListProperty<SessionLinkAPI> *sessionLinkAPIList, int pos)
+SessionTrackAPI* DataManager::atSessionTrackAPIProperty(
+        QQmlListProperty<SessionTrackAPI> *sessionTrackAPIList, int pos)
 {
-    DataManager *dataManager = qobject_cast<DataManager *>(sessionLinkAPIList->object);
+    DataManager *dataManager = qobject_cast<DataManager *>(sessionTrackAPIList->object);
     if (dataManager) {
-        if (dataManager->mAllSessionLinkAPI.size() > pos) {
-            return (SessionLinkAPI*) dataManager->mAllSessionLinkAPI.at(pos);
+        if (dataManager->mAllSessionTrackAPI.size() > pos) {
+            return (SessionTrackAPI*) dataManager->mAllSessionTrackAPI.at(pos);
         }
-        qWarning() << "cannot get SessionLinkAPI* at pos " << pos << " size is "
-                << dataManager->mAllSessionLinkAPI.size();
+        qWarning() << "cannot get SessionTrackAPI* at pos " << pos << " size is "
+                << dataManager->mAllSessionTrackAPI.size();
     } else {
-        qWarning() << "cannot get SessionLinkAPI* at pos " << pos
+        qWarning() << "cannot get SessionTrackAPI* at pos " << pos
                 << "Object is not of type DataManager*";
     }
     return 0;
 }
-void DataManager::clearSessionLinkAPIProperty(
-        QQmlListProperty<SessionLinkAPI> *sessionLinkAPIList)
+void DataManager::clearSessionTrackAPIProperty(
+        QQmlListProperty<SessionTrackAPI> *sessionTrackAPIList)
 {
-    DataManager *dataManager = qobject_cast<DataManager *>(sessionLinkAPIList->object);
+    DataManager *dataManager = qobject_cast<DataManager *>(sessionTrackAPIList->object);
     if (dataManager) {
-        for (int i = 0; i < dataManager->mAllSessionLinkAPI.size(); ++i) {
-            SessionLinkAPI* sessionLinkAPI;
-            sessionLinkAPI = (SessionLinkAPI*) dataManager->mAllSessionLinkAPI.at(i);
-			emit dataManager->deletedFromAllSessionLinkAPIByUuid(sessionLinkAPI->uuid());
-			emit dataManager->deletedFromAllSessionLinkAPI(sessionLinkAPI);
-            sessionLinkAPI->deleteLater();
-            sessionLinkAPI = 0;
+        for (int i = 0; i < dataManager->mAllSessionTrackAPI.size(); ++i) {
+            SessionTrackAPI* sessionTrackAPI;
+            sessionTrackAPI = (SessionTrackAPI*) dataManager->mAllSessionTrackAPI.at(i);
+			emit dataManager->deletedFromAllSessionTrackAPIByUuid(sessionTrackAPI->uuid());
+			emit dataManager->deletedFromAllSessionTrackAPI(sessionTrackAPI);
+            sessionTrackAPI->deleteLater();
+            sessionTrackAPI = 0;
         }
-        dataManager->mAllSessionLinkAPI.clear();
+        dataManager->mAllSessionTrackAPI.clear();
     } else {
-        qWarning() << "cannot clear mAllSessionLinkAPI " << "Object is not of type DataManager*";
+        qWarning() << "cannot clear mAllSessionTrackAPI " << "Object is not of type DataManager*";
     }
 }
 
 /**
- * deletes all SessionLinkAPI
+ * deletes all SessionTrackAPI
  * and clears the list
  */
-void DataManager::deleteSessionLinkAPI()
+void DataManager::deleteSessionTrackAPI()
 {
-    for (int i = 0; i < mAllSessionLinkAPI.size(); ++i) {
-        SessionLinkAPI* sessionLinkAPI;
-        sessionLinkAPI = (SessionLinkAPI*) mAllSessionLinkAPI.at(i);
-        emit deletedFromAllSessionLinkAPIByUuid(sessionLinkAPI->uuid());
-		emit deletedFromAllSessionLinkAPI(sessionLinkAPI);
-		emit sessionLinkAPIPropertyListChanged();
-        sessionLinkAPI->deleteLater();
-        sessionLinkAPI = 0;
+    for (int i = 0; i < mAllSessionTrackAPI.size(); ++i) {
+        SessionTrackAPI* sessionTrackAPI;
+        sessionTrackAPI = (SessionTrackAPI*) mAllSessionTrackAPI.at(i);
+        emit deletedFromAllSessionTrackAPIByUuid(sessionTrackAPI->uuid());
+		emit deletedFromAllSessionTrackAPI(sessionTrackAPI);
+		emit sessionTrackAPIPropertyListChanged();
+        sessionTrackAPI->deleteLater();
+        sessionTrackAPI = 0;
      }
-     mAllSessionLinkAPI.clear();
+     mAllSessionTrackAPI.clear();
 }
 
 /**
- * creates a new SessionLinkAPI
+ * creates a new SessionTrackAPI
  * parent is DataManager
- * if data is successfully entered you must insertSessionLinkAPI
- * if edit was canceled you must undoCreateSessionLinkAPI to free up memory
+ * if data is successfully entered you must insertSessionTrackAPI
+ * if edit was canceled you must undoCreateSessionTrackAPI to free up memory
  */
-SessionLinkAPI* DataManager::createSessionLinkAPI()
+SessionTrackAPI* DataManager::createSessionTrackAPI()
 {
-    SessionLinkAPI* sessionLinkAPI;
-    sessionLinkAPI = new SessionLinkAPI();
-    sessionLinkAPI->setParent(this);
-    sessionLinkAPI->prepareNew();
-    return sessionLinkAPI;
+    SessionTrackAPI* sessionTrackAPI;
+    sessionTrackAPI = new SessionTrackAPI();
+    sessionTrackAPI->setParent(this);
+    sessionTrackAPI->prepareNew();
+    return sessionTrackAPI;
 }
 
 /**
- * deletes SessionLinkAPI
- * if createSessionLinkAPI was canceled from UI
- * to delete a previous successfully inserted SessionLinkAPI
- * use deleteSessionLinkAPI
+ * deletes SessionTrackAPI
+ * if createSessionTrackAPI was canceled from UI
+ * to delete a previous successfully inserted SessionTrackAPI
+ * use deleteSessionTrackAPI
  */
-void DataManager::undoCreateSessionLinkAPI(SessionLinkAPI* sessionLinkAPI)
+void DataManager::undoCreateSessionTrackAPI(SessionTrackAPI* sessionTrackAPI)
 {
-    if (sessionLinkAPI) {
-        qDebug() << "undoCreateSessionLinkAPI " << sessionLinkAPI->uuid();
-        sessionLinkAPI->deleteLater();
-        sessionLinkAPI = 0;
+    if (sessionTrackAPI) {
+        // qDebug() << "undoCreateSessionTrackAPI " << sessionTrackAPI->uuid();
+        sessionTrackAPI->deleteLater();
+        sessionTrackAPI = 0;
     }
 }
 
-void DataManager::insertSessionLinkAPI(SessionLinkAPI* sessionLinkAPI)
+void DataManager::insertSessionTrackAPI(SessionTrackAPI* sessionTrackAPI)
 {
     // Important: DataManager must be parent of all root DTOs
-    sessionLinkAPI->setParent(this);
-    mAllSessionLinkAPI.append(sessionLinkAPI);
-    emit addedToAllSessionLinkAPI(sessionLinkAPI);
-    emit sessionLinkAPIPropertyListChanged();
+    sessionTrackAPI->setParent(this);
+    mAllSessionTrackAPI.append(sessionTrackAPI);
+    emit addedToAllSessionTrackAPI(sessionTrackAPI);
+    emit sessionTrackAPIPropertyListChanged();
 }
 
-void DataManager::insertSessionLinkAPIFromMap(const QVariantMap& sessionLinkAPIMap,
+void DataManager::insertSessionTrackAPIFromMap(const QVariantMap& sessionTrackAPIMap,
         const bool& useForeignProperties)
 {
-    SessionLinkAPI* sessionLinkAPI = new SessionLinkAPI();
-    sessionLinkAPI->setParent(this);
+    SessionTrackAPI* sessionTrackAPI = new SessionTrackAPI();
+    sessionTrackAPI->setParent(this);
     if (useForeignProperties) {
-        sessionLinkAPI->fillFromForeignMap(sessionLinkAPIMap);
+        sessionTrackAPI->fillFromForeignMap(sessionTrackAPIMap);
     } else {
-        sessionLinkAPI->fillFromMap(sessionLinkAPIMap);
+        sessionTrackAPI->fillFromMap(sessionTrackAPIMap);
     }
-    mAllSessionLinkAPI.append(sessionLinkAPI);
-    emit addedToAllSessionLinkAPI(sessionLinkAPI);
-    sessionLinkAPIPropertyListChanged();
+    mAllSessionTrackAPI.append(sessionTrackAPI);
+    emit addedToAllSessionTrackAPI(sessionTrackAPI);
+    sessionTrackAPIPropertyListChanged();
 }
 
-bool DataManager::deleteSessionLinkAPI(SessionLinkAPI* sessionLinkAPI)
+bool DataManager::deleteSessionTrackAPI(SessionTrackAPI* sessionTrackAPI)
 {
     bool ok = false;
-    ok = mAllSessionLinkAPI.removeOne(sessionLinkAPI);
+    ok = mAllSessionTrackAPI.removeOne(sessionTrackAPI);
     if (!ok) {
         return ok;
     }
-    emit deletedFromAllSessionLinkAPIByUuid(sessionLinkAPI->uuid());
-    emit deletedFromAllSessionLinkAPI(sessionLinkAPI);
-    emit sessionLinkAPIPropertyListChanged();
-    sessionLinkAPI->deleteLater();
-    sessionLinkAPI = 0;
+    emit deletedFromAllSessionTrackAPIByUuid(sessionTrackAPI->uuid());
+    emit deletedFromAllSessionTrackAPI(sessionTrackAPI);
+    emit sessionTrackAPIPropertyListChanged();
+    sessionTrackAPI->deleteLater();
+    sessionTrackAPI = 0;
     return ok;
 }
 
-bool DataManager::deleteSessionLinkAPIByUuid(const QString& uuid)
+bool DataManager::deleteSessionTrackAPIByUuid(const QString& uuid)
 {
     if (uuid.isNull() || uuid.isEmpty()) {
-        qDebug() << "cannot delete SessionLinkAPI from empty uuid";
+        qDebug() << "cannot delete SessionTrackAPI from empty uuid";
         return false;
     }
-    for (int i = 0; i < mAllSessionLinkAPI.size(); ++i) {
-        SessionLinkAPI* sessionLinkAPI;
-        sessionLinkAPI = (SessionLinkAPI*) mAllSessionLinkAPI.at(i);
-        if (sessionLinkAPI->uuid() == uuid) {
-            mAllSessionLinkAPI.removeAt(i);
-            emit deletedFromAllSessionLinkAPIByUuid(uuid);
-            emit deletedFromAllSessionLinkAPI(sessionLinkAPI);
-            emit sessionLinkAPIPropertyListChanged();
-            sessionLinkAPI->deleteLater();
-            sessionLinkAPI = 0;
+    for (int i = 0; i < mAllSessionTrackAPI.size(); ++i) {
+        SessionTrackAPI* sessionTrackAPI;
+        sessionTrackAPI = (SessionTrackAPI*) mAllSessionTrackAPI.at(i);
+        if (sessionTrackAPI->uuid() == uuid) {
+            mAllSessionTrackAPI.removeAt(i);
+            emit deletedFromAllSessionTrackAPIByUuid(uuid);
+            emit deletedFromAllSessionTrackAPI(sessionTrackAPI);
+            emit sessionTrackAPIPropertyListChanged();
+            sessionTrackAPI->deleteLater();
+            sessionTrackAPI = 0;
             return true;
         }
     }
@@ -5321,19 +4382,19 @@ bool DataManager::deleteSessionLinkAPIByUuid(const QString& uuid)
 }
 
 
-SessionLinkAPI* DataManager::findSessionLinkAPIByUuid(const QString& uuid){
+SessionTrackAPI* DataManager::findSessionTrackAPIByUuid(const QString& uuid){
     if (uuid.isNull() || uuid.isEmpty()) {
-        qDebug() << "cannot find SessionLinkAPI from empty uuid";
+        qDebug() << "cannot find SessionTrackAPI from empty uuid";
         return 0;
     }
-    for (int i = 0; i < mAllSessionLinkAPI.size(); ++i) {
-        SessionLinkAPI* sessionLinkAPI;
-        sessionLinkAPI = (SessionLinkAPI*)mAllSessionLinkAPI.at(i);
-        if(sessionLinkAPI->uuid() == uuid){
-            return sessionLinkAPI;
+    for (int i = 0; i < mAllSessionTrackAPI.size(); ++i) {
+        SessionTrackAPI* sessionTrackAPI;
+        sessionTrackAPI = (SessionTrackAPI*)mAllSessionTrackAPI.at(i);
+        if(sessionTrackAPI->uuid() == uuid){
+            return sessionTrackAPI;
         }
     }
-    qDebug() << "no SessionLinkAPI found for uuid " << uuid;
+    qDebug() << "no SessionTrackAPI found for uuid " << uuid;
     return 0;
 }
 
@@ -5541,7 +4602,7 @@ SpeakerAPI* DataManager::createSpeakerAPI()
 void DataManager::undoCreateSpeakerAPI(SpeakerAPI* speakerAPI)
 {
     if (speakerAPI) {
-        qDebug() << "undoCreateSpeakerAPI " << speakerAPI->id();
+        // qDebug() << "undoCreateSpeakerAPI " << speakerAPI->id();
         speakerAPI->deleteLater();
         speakerAPI = 0;
     }
