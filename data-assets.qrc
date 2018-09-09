@@ -326,18 +326,16 @@
         <file>data-assets/conference/schedule.json</file>
         <file>data-assets/conference/speaker.json</file>
         <file>data-assets/prod/cacheBookmark.json</file>
-        <file>data-assets/prod/cacheBuilding.json</file>
         <file>data-assets/prod/cacheConference.json</file>
         <file>data-assets/prod/cacheDay.json</file>
         <file>data-assets/prod/cacheFavorite.json</file>
-        <file>data-assets/prod/cacheFloor.json</file>
         <file>data-assets/prod/cacheRoom.json</file>
         <file>data-assets/prod/cacheScheduleItem.json</file>
         <file>data-assets/prod/cacheSession.json</file>
-        <file>data-assets/prod/cacheSessionLink.json</file>
         <file>data-assets/prod/cacheSessionTrack.json</file>
         <file>data-assets/prod/cacheSpeaker.json</file>
         <file>data-assets/prod/cacheSpeakerImage.json</file>
         <file>data-assets/cacheSettingsData.json</file>
+        <file>data-assets/conference/roomimages/mapping.json</file>
     </qresource>
 </RCC>
