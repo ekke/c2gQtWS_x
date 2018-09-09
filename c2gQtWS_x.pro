@@ -77,6 +77,7 @@ OTHER_FILES += images/black/*.png \
     data-assets/test/*.json \
     data-assets/conference/*.json \
     data-assets/conference/speakerImages/*.* \
+    data-assets/conference/roomImages/*.* \
     data-assets/conference/floorplan/*.png \
     images/LICENSE \
     LICENSE \
@@ -135,9 +136,7 @@ DISTFILES += \
     android/res/values/libs.xml \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
-    android/gradlew.bat \
-    winrt/*.appxmanifest \
-    winrt/assets/*.png
+    android/gradlew.bat
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
@@ -180,15 +179,4 @@ ios {
 
     # Note for devices: 1=iPhone, 2=iPad, 1,2=Universal.
     QMAKE_APPLE_TARGETED_DEVICE_FAMILY = 1,2
-}
-
-# winrt work in progress
-winrt {
-    WINRT_MANIFEST.name = Qt World Summit 2016
-    WINRT_MANIFEST.background = white
-    WINRT_MANIFEST.default_language = en
-    WINRT_MANIFEST.description = QtWS 2016 Conference App
-    WINRT_MANIFEST.version = 1.2.0.0
-	
-    # WINRT_MANIFEST = winrt/myPackage.appxmanifest
 }
