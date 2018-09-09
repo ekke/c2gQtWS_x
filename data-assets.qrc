@@ -337,5 +337,18 @@
         <file>data-assets/prod/cacheSpeakerImage.json</file>
         <file>data-assets/cacheSettingsData.json</file>
         <file>data-assets/conference/roomimages/mapping.json</file>
+        <file>data-assets/conference/roomimages/room_2018001.png</file>
+        <file>data-assets/conference/roomimages/room_2018002.png</file>
+        <file>data-assets/conference/roomimages/room_2018003.png</file>
+        <file>data-assets/conference/roomimages/room_2018004.png</file>
+        <file>data-assets/conference/roomimages/room_2018005.png</file>
+        <file>data-assets/conference/roomimages/room_2018006.png</file>
+        <file>data-assets/conference/roomimages/room_2018007.png</file>
+        <file>data-assets/conference/roomimages/room_2018008.png</file>
+        <file>data-assets/conference/roomimages/room_2018009.png</file>
+        <file>data-assets/conference/roomimages/room_2018010.png</file>
+        <file>data-assets/conference/roomimages/room_2018011.png</file>
+        <file>data-assets/conference/roomimages/room_2018012.png</file>
+        <file>data-assets/conference/roomimages/room_2018013.png</file>
     </qresource>
 </RCC>
