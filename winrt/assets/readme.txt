@@ -1,1 +1,0 @@
-place here the assets from VS project
