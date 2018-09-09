@@ -20,7 +20,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     </variation>
                 </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" image="iTunesArtwork 512x512.png" translatesAutoresizingMaskIntoConstraints="NO" id="nSS-cA-hgK">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" image="iTunesArtwork.png" translatesAutoresizingMaskIntoConstraints="NO" id="nSS-cA-hgK">
                     <rect key="frame" x="122" y="122" width="236" height="236"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="236" id="I0e-Ga-462"/>
@@ -67,6 +67,6 @@
         </view>
     </objects>
     <resources>
-        <image name="iTunesArtwork 512x512.png" width="512" height="512"/>
+        <image name="iTunesArtwork.png" width="512" height="512"/>
     </resources>
 </document>
