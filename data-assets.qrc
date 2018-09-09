@@ -350,5 +350,8 @@
         <file>data-assets/conference/roomimages/room_2018011.png</file>
         <file>data-assets/conference/roomimages/room_2018012.png</file>
         <file>data-assets/conference/roomimages/room_2018013.png</file>
+        <file>data-assets/conference/floorplan/QtWS2018_Boston_hotel.png</file>
+        <file>data-assets/conference/floorplan/QtWS2018_Boston_day2.png</file>
+        <file>data-assets/conference/floorplan/QtWS2018_Boston_day1.png</file>
     </qresource>
 </RCC>
