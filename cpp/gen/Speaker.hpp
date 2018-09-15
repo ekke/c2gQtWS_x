@@ -10,6 +10,7 @@
 #include "SpeakerImage.hpp"
 // forward declaration (target references to this)
 class Session;
+#include "Conference.hpp"
 
 
 class Speaker: public QObject
@@ -29,6 +30,8 @@ class Speaker: public QObject
 
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<Session> sessionsPropertyList READ sessionsPropertyList NOTIFY sessionsPropertyListChanged)
+	// QQmlListProperty to get easy access from QML
+	Q_PROPERTY(QQmlListProperty<Conference> conferencesPropertyList READ conferencesPropertyList NOTIFY conferencesPropertyListChanged)
 
 public:
 	Speaker(QObject *parent = 0);
@@ -122,6 +125,44 @@ public:
 	void setSessions(QList<Session*> sessions);
 	// access from QML to sessions
 	QQmlListProperty<Session> sessionsPropertyList();
+	
+	Q_INVOKABLE
+	QVariantList conferencesAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList conferencesAsCacheQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList conferencesAsForeignQVariantList();
+
+	
+	Q_INVOKABLE
+	void addToConferences(Conference* conference);
+	
+	Q_INVOKABLE
+	bool removeFromConferences(Conference* conference);
+
+	Q_INVOKABLE
+	void clearConferences();
+
+	// lazy Array of independent Data Objects: only keys are persisted
+	Q_INVOKABLE
+	bool areConferencesKeysResolved();
+
+	Q_INVOKABLE
+	QStringList conferencesKeys();
+
+	Q_INVOKABLE
+	void resolveConferencesKeys(QList<Conference*> conferences);
+	
+	Q_INVOKABLE
+	int conferencesCount();
+	
+	 // access from C++ to conferences
+	QList<Conference*> conferences();
+	void setConferences(QList<Conference*> conferences);
+	// access from QML to conferences
+	QQmlListProperty<Conference> conferencesPropertyList();
 
 
 	virtual ~Speaker();
@@ -141,6 +182,10 @@ public:
 	void sessionsChanged(QList<Session*> sessions);
 	void addedToSessions(Session* session);
 	void sessionsPropertyListChanged();
+	
+	void conferencesChanged(QList<Conference*> conferences);
+	void addedToConferences(Conference* conference);
+	void conferencesPropertyListChanged();
 	
 	
 
@@ -167,6 +212,18 @@ private:
 	static int sessionsPropertyCount(QQmlListProperty<Session> *sessionsList);
 	static Session* atSessionsProperty(QQmlListProperty<Session> *sessionsList, int pos);
 	static void clearSessionsProperty(QQmlListProperty<Session> *sessionsList);
+	
+	// lazy Array of independent Data Objects: only keys are persisted
+	QStringList mConferencesKeys;
+	bool mConferencesKeysResolved;
+	QList<Conference*> mConferences;
+	// implementation for QQmlListProperty to use
+	// QML functions for List of Conference*
+	static void appendToConferencesProperty(QQmlListProperty<Conference> *conferencesList,
+		Conference* conference);
+	static int conferencesPropertyCount(QQmlListProperty<Conference> *conferencesList);
+	static Conference* atConferencesProperty(QQmlListProperty<Conference> *conferencesList, int pos);
+	static void clearConferencesProperty(QQmlListProperty<Conference> *conferencesList);
 	
 
 	Q_DISABLE_COPY (Speaker)

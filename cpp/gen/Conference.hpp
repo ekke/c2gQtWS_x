@@ -10,6 +10,7 @@
 
 #include "Day.hpp"
 #include "SessionTrack.hpp"
+#include "Room.hpp"
 
 
 class Conference: public QObject
@@ -29,11 +30,14 @@ class Conference: public QObject
 	Q_PROPERTY(QString coordinate READ coordinate WRITE setCoordinate NOTIFY coordinateChanged FINAL)
 	Q_PROPERTY(int lastRoomId READ lastRoomId WRITE setLastRoomId NOTIFY lastRoomIdChanged FINAL)
 	Q_PROPERTY(int lastSessionTrackId READ lastSessionTrackId WRITE setLastSessionTrackId NOTIFY lastSessionTrackIdChanged FINAL)
+	Q_PROPERTY(int lastGenericSessionId READ lastGenericSessionId WRITE setLastGenericSessionId NOTIFY lastGenericSessionIdChanged FINAL)
 
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<Day> daysPropertyList READ daysPropertyList NOTIFY daysPropertyListChanged)
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<SessionTrack> tracksPropertyList READ tracksPropertyList NOTIFY tracksPropertyListChanged)
+	// QQmlListProperty to get easy access from QML
+	Q_PROPERTY(QQmlListProperty<Room> roomsPropertyList READ roomsPropertyList NOTIFY roomsPropertyListChanged)
 
 public:
 	Conference(QObject *parent = 0);
@@ -86,6 +90,8 @@ public:
 	void setLastRoomId(int lastRoomId);
 	int lastSessionTrackId() const;
 	void setLastSessionTrackId(int lastSessionTrackId);
+	int lastGenericSessionId() const;
+	void setLastGenericSessionId(int lastGenericSessionId);
 
 	
 	Q_INVOKABLE
@@ -163,6 +169,44 @@ public:
 	void setTracks(QList<SessionTrack*> tracks);
 	// access from QML to tracks
 	QQmlListProperty<SessionTrack> tracksPropertyList();
+	
+	Q_INVOKABLE
+	QVariantList roomsAsQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList roomsAsCacheQVariantList();
+	
+	Q_INVOKABLE
+	QVariantList roomsAsForeignQVariantList();
+
+	
+	Q_INVOKABLE
+	void addToRooms(Room* room);
+	
+	Q_INVOKABLE
+	bool removeFromRooms(Room* room);
+
+	Q_INVOKABLE
+	void clearRooms();
+
+	// lazy Array of independent Data Objects: only keys are persisted
+	Q_INVOKABLE
+	bool areRoomsKeysResolved();
+
+	Q_INVOKABLE
+	QStringList roomsKeys();
+
+	Q_INVOKABLE
+	void resolveRoomsKeys(QList<Room*> rooms);
+	
+	Q_INVOKABLE
+	int roomsCount();
+	
+	 // access from C++ to rooms
+	QList<Room*> rooms();
+	void setRooms(QList<Room*> rooms);
+	// access from QML to rooms
+	QQmlListProperty<Room> roomsPropertyList();
 
 
 	virtual ~Conference();
@@ -182,6 +226,7 @@ public:
 	void coordinateChanged(QString coordinate);
 	void lastRoomIdChanged(int lastRoomId);
 	void lastSessionTrackIdChanged(int lastSessionTrackId);
+	void lastGenericSessionIdChanged(int lastGenericSessionId);
 	void daysChanged(QList<Day*> days);
 	void addedToDays(Day* day);
 	void daysPropertyListChanged();
@@ -189,6 +234,10 @@ public:
 	void tracksChanged(QList<SessionTrack*> tracks);
 	void addedToTracks(SessionTrack* sessionTrack);
 	void tracksPropertyListChanged();
+	
+	void roomsChanged(QList<Room*> rooms);
+	void addedToRooms(Room* room);
+	void roomsPropertyListChanged();
 	
 	
 
@@ -207,6 +256,7 @@ private:
 	QString mCoordinate;
 	int mLastRoomId;
 	int mLastSessionTrackId;
+	int mLastGenericSessionId;
 	// lazy Array of independent Data Objects: only keys are persisted
 	QStringList mDaysKeys;
 	bool mDaysKeysResolved;
@@ -230,6 +280,18 @@ private:
 	static int tracksPropertyCount(QQmlListProperty<SessionTrack> *tracksList);
 	static SessionTrack* atTracksProperty(QQmlListProperty<SessionTrack> *tracksList, int pos);
 	static void clearTracksProperty(QQmlListProperty<SessionTrack> *tracksList);
+	
+	// lazy Array of independent Data Objects: only keys are persisted
+	QStringList mRoomsKeys;
+	bool mRoomsKeysResolved;
+	QList<Room*> mRooms;
+	// implementation for QQmlListProperty to use
+	// QML functions for List of Room*
+	static void appendToRoomsProperty(QQmlListProperty<Room> *roomsList,
+		Room* room);
+	static int roomsPropertyCount(QQmlListProperty<Room> *roomsList);
+	static Room* atRoomsProperty(QQmlListProperty<Room> *roomsList, int pos);
+	static void clearRoomsProperty(QQmlListProperty<Room> *roomsList);
 	
 
 	Q_DISABLE_COPY (Conference)

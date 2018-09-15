@@ -14,6 +14,7 @@ static const QString publicNameKey = "publicName";
 static const QString bioKey = "bio";
 static const QString speakerImageKey = "speakerImage";
 static const QString sessionsKey = "sessions";
+static const QString conferencesKey = "conferences";
 
 // keys used from Server API etc
 static const QString speakerIdForeignKey = "speakerId";
@@ -25,6 +26,7 @@ static const QString publicNameForeignKey = "publicName";
 static const QString bioForeignKey = "bio";
 static const QString speakerImageForeignKey = "speakerImage";
 static const QString sessionsForeignKey = "sessions";
+static const QString conferencesForeignKey = "conferences";
 
 /*
  * Default Constructor if Speaker not initialized from QVariantMap
@@ -38,6 +40,7 @@ Speaker::Speaker(QObject *parent) :
 	mSpeakerImageInvalid = false;
 		// lazy Arrays where only keys are persisted
 		mSessionsKeysResolved = false;
+		mConferencesKeysResolved = false;
 }
 
 bool Speaker::isAllResolved()
@@ -46,6 +49,9 @@ bool Speaker::isAllResolved()
 		return false;
 	}
     if(!areSessionsKeysResolved()) {
+        return false;
+    }
+    if(!areConferencesKeysResolved()) {
         return false;
     }
     return true;
@@ -79,6 +85,11 @@ void Speaker::fillFromMap(const QVariantMap& speakerMap)
 	// mSessions must be resolved later if there are keys
 	mSessionsKeysResolved = (mSessionsKeys.size() == 0);
 	mSessions.clear();
+	// mConferences is (lazy loaded) Array of Conference*
+	mConferencesKeys = speakerMap.value(conferencesKey).toStringList();
+	// mConferences must be resolved later if there are keys
+	mConferencesKeysResolved = (mConferencesKeys.size() == 0);
+	mConferences.clear();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -108,6 +119,11 @@ void Speaker::fillFromForeignMap(const QVariantMap& speakerMap)
 	// mSessions must be resolved later if there are keys
 	mSessionsKeysResolved = (mSessionsKeys.size() == 0);
 	mSessions.clear();
+	// mConferences is (lazy loaded) Array of Conference*
+	mConferencesKeys = speakerMap.value(conferencesForeignKey).toStringList();
+	// mConferences must be resolved later if there are keys
+	mConferencesKeysResolved = (mConferencesKeys.size() == 0);
+	mConferences.clear();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -137,6 +153,11 @@ void Speaker::fillFromCacheMap(const QVariantMap& speakerMap)
 	// mSessions must be resolved later if there are keys
 	mSessionsKeysResolved = (mSessionsKeys.size() == 0);
 	mSessions.clear();
+	// mConferences is (lazy loaded) Array of Conference*
+	mConferencesKeys = speakerMap.value(conferencesKey).toStringList();
+	// mConferences must be resolved later if there are keys
+	mConferencesKeysResolved = (mConferencesKeys.size() == 0);
+	mConferences.clear();
 }
 
 void Speaker::prepareNew()
@@ -182,6 +203,22 @@ QVariantMap Speaker::toMap()
 		mSessionsKeys << QString::number(session->sessionId());
 	}
 	speakerMap.insert(sessionsKey, mSessionsKeys);
+	// mConferences points to Conference*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mConferencesKeysResolved) {
+		mConferencesKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mConferences.size(); ++i) {
+		Conference* conference;
+		conference = mConferences.at(i);
+		mConferencesKeys << QString::number(conference->id());
+	}
+	speakerMap.insert(conferencesKey, mConferencesKeys);
 	speakerMap.insert(speakerIdKey, mSpeakerId);
 	speakerMap.insert(isDeprecatedKey, mIsDeprecated);
 	speakerMap.insert(sortKeyKey, mSortKey);
@@ -220,6 +257,22 @@ QVariantMap Speaker::toForeignMap()
 		mSessionsKeys << QString::number(session->sessionId());
 	}
 	speakerMap.insert(sessionsForeignKey, mSessionsKeys);
+	// mConferences points to Conference*
+	// lazy array: persist only keys
+	//
+	// if keys alreadyy resolved: clear them
+	// otherwise reuse the keys and add objects from mPositions
+	// this can happen if added to objects without resolving keys before
+	if(mConferencesKeysResolved) {
+		mConferencesKeys.clear();
+	}
+	// add objects from mPositions
+	for (int i = 0; i < mConferences.size(); ++i) {
+		Conference* conference;
+		conference = mConferences.at(i);
+		mConferencesKeys << QString::number(conference->id());
+	}
+	speakerMap.insert(conferencesForeignKey, mConferencesKeys);
 	speakerMap.insert(speakerIdForeignKey, mSpeakerId);
 	speakerMap.insert(isDeprecatedForeignKey, mIsDeprecated);
 	speakerMap.insert(sortKeyForeignKey, mSortKey);
@@ -580,6 +633,181 @@ void Speaker::clearSessionsProperty(QQmlListProperty<Session> *sessionsList)
         speaker->mSessions.clear();
     } else {
         qWarning() << "cannot clear sessions " << "Object is not of type Speaker*";
+    }
+}
+
+// ATT 
+// Optional: conferences
+QVariantList Speaker::conferencesAsQVariantList()
+{
+	QVariantList conferencesList;
+	for (int i = 0; i < mConferences.size(); ++i) {
+        conferencesList.append((mConferences.at(i))->toMap());
+    }
+	return conferencesList;
+}
+QVariantList Speaker::conferencesAsCacheQVariantList()
+{
+	QVariantList conferencesList;
+	for (int i = 0; i < mConferences.size(); ++i) {
+        conferencesList.append((mConferences.at(i))->toCacheMap());
+    }
+	return conferencesList;
+}
+QVariantList Speaker::conferencesAsForeignQVariantList()
+{
+	QVariantList conferencesList;
+	for (int i = 0; i < mConferences.size(); ++i) {
+        conferencesList.append((mConferences.at(i))->toForeignMap());
+    }
+	return conferencesList;
+}
+// no create() or undoCreate() because dto is root object
+// see methods in DataManager
+/**
+ * you can add conferences without resolving existing keys before
+ * attention: before looping through the objects
+ * you must resolveConferencesKeys
+ */
+void Speaker::addToConferences(Conference* conference)
+{
+    mConferences.append(conference);
+    emit addedToConferences(conference);
+    emit conferencesPropertyListChanged();
+}
+
+bool Speaker::removeFromConferences(Conference* conference)
+{
+    bool ok = false;
+    ok = mConferences.removeOne(conference);
+    if (!ok) {
+    	qDebug() << "Conference* not found in conferences";
+    	return false;
+    }
+    emit conferencesPropertyListChanged();
+    // conferences are independent - DON'T delete them
+    return true;
+}
+void Speaker::clearConferences()
+{
+    for (int i = mConferences.size(); i > 0; --i) {
+        removeFromConferences(mConferences.last());
+    }
+    mConferencesKeys.clear();
+}
+
+/**
+ * lazy Array of independent Data Objects: only keys are persited
+ * so we get a list of keys (uuid or domain keys) from map
+ * and we persist only the keys toMap()
+ * after initializing the keys must be resolved:
+ * - get the list of keys: conferencesKeys()
+ * - resolve them from DataManager
+ * - then resolveConferencesKeys()
+ */
+bool Speaker::areConferencesKeysResolved()
+{
+    return mConferencesKeysResolved;
+}
+
+QStringList Speaker::conferencesKeys()
+{
+    return mConferencesKeys;
+}
+
+/**
+ * Objects from conferencesKeys will be added to existing conferences
+ * This enables to use addToConferences() without resolving before
+ * Hint: it's your responsibility to resolve before looping thru conferences
+ */
+void Speaker::resolveConferencesKeys(QList<Conference*> conferences)
+{
+    if(mConferencesKeysResolved){
+        return;
+    }
+    // don't clear mConferences (see above)
+    for (int i = 0; i < conferences.size(); ++i) {
+        addToConferences(conferences.at(i));
+    }
+    mConferencesKeysResolved = true;
+}
+
+int Speaker::conferencesCount()
+{
+    return mConferences.size();
+}
+QList<Conference*> Speaker::conferences()
+{
+	return mConferences;
+}
+void Speaker::setConferences(QList<Conference*> conferences) 
+{
+	if (conferences != mConferences) {
+		mConferences = conferences;
+		emit conferencesChanged(conferences);
+		emit conferencesPropertyListChanged();
+	}
+}
+
+/**
+ * to access lists from QML we're using QQmlListProperty
+ * and implement methods to append, count and clear
+ * now from QML we can use
+ * speaker.conferencesPropertyList.length to get the size
+ * speaker.conferencesPropertyList[2] to get Conference* at position 2
+ * speaker.conferencesPropertyList = [] to clear the list
+ * or get easy access to properties like
+ * speaker.conferencesPropertyList[2].myPropertyName
+ */
+QQmlListProperty<Conference> Speaker::conferencesPropertyList()
+{
+    return QQmlListProperty<Conference>(this, 0, &Speaker::appendToConferencesProperty,
+            &Speaker::conferencesPropertyCount, &Speaker::atConferencesProperty,
+            &Speaker::clearConferencesProperty);
+}
+void Speaker::appendToConferencesProperty(QQmlListProperty<Conference> *conferencesList,
+        Conference* conference)
+{
+    Speaker *speakerObject = qobject_cast<Speaker *>(conferencesList->object);
+    if (speakerObject) {
+        speakerObject->mConferences.append(conference);
+        emit speakerObject->addedToConferences(conference);
+    } else {
+        qWarning() << "cannot append Conference* to conferences " << "Object is not of type Speaker*";
+    }
+}
+int Speaker::conferencesPropertyCount(QQmlListProperty<Conference> *conferencesList)
+{
+    Speaker *speaker = qobject_cast<Speaker *>(conferencesList->object);
+    if (speaker) {
+        return speaker->mConferences.size();
+    } else {
+        qWarning() << "cannot get size conferences " << "Object is not of type Speaker*";
+    }
+    return 0;
+}
+Conference* Speaker::atConferencesProperty(QQmlListProperty<Conference> *conferencesList, int pos)
+{
+    Speaker *speaker = qobject_cast<Speaker *>(conferencesList->object);
+    if (speaker) {
+        if (speaker->mConferences.size() > pos) {
+            return speaker->mConferences.at(pos);
+        }
+        qWarning() << "cannot get Conference* at pos " << pos << " size is "
+                << speaker->mConferences.size();
+    } else {
+        qWarning() << "cannot get Conference* at pos " << pos << "Object is not of type Speaker*";
+    }
+    return 0;
+}
+void Speaker::clearConferencesProperty(QQmlListProperty<Conference> *conferencesList)
+{
+    Speaker *speaker = qobject_cast<Speaker *>(conferencesList->object);
+    if (speaker) {
+        // conferences are independent - DON'T delete them
+        speaker->mConferences.clear();
+    } else {
+        qWarning() << "cannot clear conferences " << "Object is not of type Speaker*";
     }
 }
 

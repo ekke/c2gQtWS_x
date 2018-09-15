@@ -9,11 +9,10 @@
 #include "Day.hpp"
 // target also references to this
 #include "Room.hpp"
-// target also references to this
-#include "GenericScheduleItem.hpp"
 
 // keys of QVariantMap used in this APP
 static const QString sessionIdKey = "sessionId";
+static const QString conferenceKey = "conference";
 static const QString isDeprecatedKey = "isDeprecated";
 static const QString sortKeyKey = "sortKey";
 static const QString isTrainingKey = "isTraining";
@@ -23,6 +22,11 @@ static const QString isSessionKey = "isSession";
 static const QString isCommunityKey = "isCommunity";
 static const QString isUnconferenceKey = "isUnconference";
 static const QString isMeetingKey = "isMeeting";
+static const QString isGenericScheduleSessionKey = "isGenericScheduleSession";
+static const QString isBreakKey = "isBreak";
+static const QString isLunchKey = "isLunch";
+static const QString isEventKey = "isEvent";
+static const QString isRegistrationKey = "isRegistration";
 static const QString titleKey = "title";
 static const QString descriptionKey = "description";
 static const QString sessionTypeKey = "sessionType";
@@ -31,15 +35,14 @@ static const QString endTimeKey = "endTime";
 static const QString minutesKey = "minutes";
 static const QString abstractTextKey = "abstractText";
 static const QString isFavoriteKey = "isFavorite";
-static const QString isBookmarkedKey = "isBookmarked";
 static const QString presenterKey = "presenter";
 static const QString sessionTracksKey = "sessionTracks";
 static const QString sessionDayKey = "sessionDay";
 static const QString roomKey = "room";
-static const QString genericScheduleItemKey = "genericScheduleItem";
 
 // keys used from Server API etc
 static const QString sessionIdForeignKey = "sessionId";
+static const QString conferenceForeignKey = "conference";
 static const QString isDeprecatedForeignKey = "isDeprecated";
 static const QString sortKeyForeignKey = "sortKey";
 static const QString isTrainingForeignKey = "isTraining";
@@ -49,6 +52,11 @@ static const QString isSessionForeignKey = "isSession";
 static const QString isCommunityForeignKey = "isCommunity";
 static const QString isUnconferenceForeignKey = "isUnconference";
 static const QString isMeetingForeignKey = "isMeeting";
+static const QString isGenericScheduleSessionForeignKey = "isGenericScheduleSession";
+static const QString isBreakForeignKey = "isBreak";
+static const QString isLunchForeignKey = "isLunch";
+static const QString isEventForeignKey = "isEvent";
+static const QString isRegistrationForeignKey = "isRegistration";
 static const QString titleForeignKey = "title";
 static const QString descriptionForeignKey = "description";
 static const QString sessionTypeForeignKey = "sessionType";
@@ -57,18 +65,16 @@ static const QString endTimeForeignKey = "endTime";
 static const QString minutesForeignKey = "minutes";
 static const QString abstractTextForeignKey = "abstractText";
 static const QString isFavoriteForeignKey = "isFavorite";
-static const QString isBookmarkedForeignKey = "isBookmarked";
 static const QString presenterForeignKey = "presenter";
 static const QString sessionTracksForeignKey = "sessionTracks";
 static const QString sessionDayForeignKey = "sessionDay";
 static const QString roomForeignKey = "room";
-static const QString genericScheduleItemForeignKey = "genericScheduleItem";
 
 /*
  * Default Constructor if Session not initialized from QVariantMap
  */
 Session::Session(QObject *parent) :
-        QObject(parent), mSessionId(-1), mIsDeprecated(false), mSortKey(""), mIsTraining(false), mIsLightning(false), mIsKeynote(false), mIsSession(false), mIsCommunity(false), mIsUnconference(false), mIsMeeting(false), mTitle(""), mDescription(""), mSessionType(""), mMinutes(0), mAbstractText(""), mIsFavorite(false), mIsBookmarked(false)
+        QObject(parent), mSessionId(-1), mConference(0), mIsDeprecated(false), mSortKey(""), mIsTraining(false), mIsLightning(false), mIsKeynote(false), mIsSession(false), mIsCommunity(false), mIsUnconference(false), mIsMeeting(false), mIsGenericScheduleSession(false), mIsBreak(false), mIsLunch(false), mIsEvent(false), mIsRegistration(false), mTitle(""), mDescription(""), mSessionType(""), mMinutes(0), mAbstractText(""), mIsFavorite(false)
 {
 	// lazy references:
 	mSessionDay = -1;
@@ -77,15 +83,11 @@ Session::Session(QObject *parent) :
 	mRoom = -1;
 	mRoomAsDataObject = 0;
 	mRoomInvalid = false;
-	mGenericScheduleItem = -1;
-	mGenericScheduleItemAsDataObject = 0;
-	mGenericScheduleItemInvalid = false;
 	// Date, Time or Timestamp ? construct null value
 	mStartTime = QTime();
 	mEndTime = QTime();
 	// transient values (not cached)
 	// bool mIsFavorite
-	// bool mIsBookmarked
 		// lazy Arrays where only keys are persisted
 		mPresenterKeysResolved = false;
 		mSessionTracksKeysResolved = false;
@@ -97,9 +99,6 @@ bool Session::isAllResolved()
 		return false;
 	}
 	if (hasRoom() && !isRoomResolvedAsDataObject()) {
-		return false;
-	}
-	if (hasGenericScheduleItem() && !isGenericScheduleItemResolvedAsDataObject()) {
 		return false;
 	}
     if(!arePresenterKeysResolved()) {
@@ -121,6 +120,7 @@ bool Session::isAllResolved()
 void Session::fillFromMap(const QVariantMap& sessionMap)
 {
 	mSessionId = sessionMap.value(sessionIdKey).toInt();
+	mConference = sessionMap.value(conferenceKey).toInt();
 	mIsDeprecated = sessionMap.value(isDeprecatedKey).toBool();
 	mSortKey = sessionMap.value(sortKeyKey).toString();
 	mIsTraining = sessionMap.value(isTrainingKey).toBool();
@@ -130,6 +130,11 @@ void Session::fillFromMap(const QVariantMap& sessionMap)
 	mIsCommunity = sessionMap.value(isCommunityKey).toBool();
 	mIsUnconference = sessionMap.value(isUnconferenceKey).toBool();
 	mIsMeeting = sessionMap.value(isMeetingKey).toBool();
+	mIsGenericScheduleSession = sessionMap.value(isGenericScheduleSessionKey).toBool();
+	mIsBreak = sessionMap.value(isBreakKey).toBool();
+	mIsLunch = sessionMap.value(isLunchKey).toBool();
+	mIsEvent = sessionMap.value(isEventKey).toBool();
+	mIsRegistration = sessionMap.value(isRegistrationKey).toBool();
 	mTitle = sessionMap.value(titleKey).toString();
 	mDescription = sessionMap.value(descriptionKey).toString();
 	mSessionType = sessionMap.value(sessionTypeKey).toString();
@@ -157,10 +162,6 @@ void Session::fillFromMap(const QVariantMap& sessionMap)
 	if (sessionMap.contains(isFavoriteKey)) {
 		mIsFavorite = sessionMap.value(isFavoriteKey).toBool();
 	}
-	// mIsBookmarked is transient
-	if (sessionMap.contains(isBookmarkedKey)) {
-		mIsBookmarked = sessionMap.value(isBookmarkedKey).toBool();
-	}
 	// sessionDay lazy pointing to Day* (domainKey: id)
 	if (sessionMap.contains(sessionDayKey)) {
 		mSessionDay = sessionMap.value(sessionDayKey).toInt();
@@ -172,13 +173,6 @@ void Session::fillFromMap(const QVariantMap& sessionMap)
 	if (sessionMap.contains(roomKey)) {
 		mRoom = sessionMap.value(roomKey).toInt();
 		if (mRoom != -1) {
-			// resolve the corresponding Data Object on demand from DataManager
-		}
-	}
-	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-	if (sessionMap.contains(genericScheduleItemKey)) {
-		mGenericScheduleItem = sessionMap.value(genericScheduleItemKey).toInt();
-		if (mGenericScheduleItem != -1) {
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
@@ -203,6 +197,7 @@ void Session::fillFromMap(const QVariantMap& sessionMap)
 void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 {
 	mSessionId = sessionMap.value(sessionIdForeignKey).toInt();
+	mConference = sessionMap.value(conferenceForeignKey).toInt();
 	mIsDeprecated = sessionMap.value(isDeprecatedForeignKey).toBool();
 	mSortKey = sessionMap.value(sortKeyForeignKey).toString();
 	mIsTraining = sessionMap.value(isTrainingForeignKey).toBool();
@@ -212,6 +207,11 @@ void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 	mIsCommunity = sessionMap.value(isCommunityForeignKey).toBool();
 	mIsUnconference = sessionMap.value(isUnconferenceForeignKey).toBool();
 	mIsMeeting = sessionMap.value(isMeetingForeignKey).toBool();
+	mIsGenericScheduleSession = sessionMap.value(isGenericScheduleSessionForeignKey).toBool();
+	mIsBreak = sessionMap.value(isBreakForeignKey).toBool();
+	mIsLunch = sessionMap.value(isLunchForeignKey).toBool();
+	mIsEvent = sessionMap.value(isEventForeignKey).toBool();
+	mIsRegistration = sessionMap.value(isRegistrationForeignKey).toBool();
 	mTitle = sessionMap.value(titleForeignKey).toString();
 	mDescription = sessionMap.value(descriptionForeignKey).toString();
 	mSessionType = sessionMap.value(sessionTypeForeignKey).toString();
@@ -239,10 +239,6 @@ void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 	if (sessionMap.contains(isFavoriteForeignKey)) {
 		mIsFavorite = sessionMap.value(isFavoriteForeignKey).toBool();
 	}
-	// mIsBookmarked is transient
-	if (sessionMap.contains(isBookmarkedForeignKey)) {
-		mIsBookmarked = sessionMap.value(isBookmarkedForeignKey).toBool();
-	}
 	// sessionDay lazy pointing to Day* (domainKey: id)
 	if (sessionMap.contains(sessionDayForeignKey)) {
 		mSessionDay = sessionMap.value(sessionDayForeignKey).toInt();
@@ -254,13 +250,6 @@ void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 	if (sessionMap.contains(roomForeignKey)) {
 		mRoom = sessionMap.value(roomForeignKey).toInt();
 		if (mRoom != -1) {
-			// resolve the corresponding Data Object on demand from DataManager
-		}
-	}
-	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-	if (sessionMap.contains(genericScheduleItemForeignKey)) {
-		mGenericScheduleItem = sessionMap.value(genericScheduleItemForeignKey).toInt();
-		if (mGenericScheduleItem != -1) {
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
@@ -285,6 +274,7 @@ void Session::fillFromForeignMap(const QVariantMap& sessionMap)
 void Session::fillFromCacheMap(const QVariantMap& sessionMap)
 {
 	mSessionId = sessionMap.value(sessionIdKey).toInt();
+	mConference = sessionMap.value(conferenceKey).toInt();
 	mIsDeprecated = sessionMap.value(isDeprecatedKey).toBool();
 	mSortKey = sessionMap.value(sortKeyKey).toString();
 	mIsTraining = sessionMap.value(isTrainingKey).toBool();
@@ -294,6 +284,11 @@ void Session::fillFromCacheMap(const QVariantMap& sessionMap)
 	mIsCommunity = sessionMap.value(isCommunityKey).toBool();
 	mIsUnconference = sessionMap.value(isUnconferenceKey).toBool();
 	mIsMeeting = sessionMap.value(isMeetingKey).toBool();
+	mIsGenericScheduleSession = sessionMap.value(isGenericScheduleSessionKey).toBool();
+	mIsBreak = sessionMap.value(isBreakKey).toBool();
+	mIsLunch = sessionMap.value(isLunchKey).toBool();
+	mIsEvent = sessionMap.value(isEventKey).toBool();
+	mIsRegistration = sessionMap.value(isRegistrationKey).toBool();
 	mTitle = sessionMap.value(titleKey).toString();
 	mDescription = sessionMap.value(descriptionKey).toString();
 	mSessionType = sessionMap.value(sessionTypeKey).toString();
@@ -318,7 +313,6 @@ void Session::fillFromCacheMap(const QVariantMap& sessionMap)
 	mMinutes = sessionMap.value(minutesKey).toInt();
 	mAbstractText = sessionMap.value(abstractTextKey).toString();
 	// mIsFavorite is transient - don't forget to initialize
-	// mIsBookmarked is transient - don't forget to initialize
 	// sessionDay lazy pointing to Day* (domainKey: id)
 	if (sessionMap.contains(sessionDayKey)) {
 		mSessionDay = sessionMap.value(sessionDayKey).toInt();
@@ -330,13 +324,6 @@ void Session::fillFromCacheMap(const QVariantMap& sessionMap)
 	if (sessionMap.contains(roomKey)) {
 		mRoom = sessionMap.value(roomKey).toInt();
 		if (mRoom != -1) {
-			// resolve the corresponding Data Object on demand from DataManager
-		}
-	}
-	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-	if (sessionMap.contains(genericScheduleItemKey)) {
-		mGenericScheduleItem = sessionMap.value(genericScheduleItemKey).toInt();
-		if (mGenericScheduleItem != -1) {
 			// resolve the corresponding Data Object on demand from DataManager
 		}
 	}
@@ -387,10 +374,6 @@ QVariantMap Session::toMap()
 	if (mRoom != -1) {
 		sessionMap.insert(roomKey, mRoom);
 	}
-	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-	if (mGenericScheduleItem != -1) {
-		sessionMap.insert(genericScheduleItemKey, mGenericScheduleItem);
-	}
 	// mPresenter points to Speaker*
 	// lazy array: persist only keys
 	//
@@ -424,6 +407,7 @@ QVariantMap Session::toMap()
 	}
 	sessionMap.insert(sessionTracksKey, mSessionTracksKeys);
 	sessionMap.insert(sessionIdKey, mSessionId);
+	sessionMap.insert(conferenceKey, mConference);
 	sessionMap.insert(isDeprecatedKey, mIsDeprecated);
 	sessionMap.insert(sortKeyKey, mSortKey);
 	sessionMap.insert(isTrainingKey, mIsTraining);
@@ -433,6 +417,11 @@ QVariantMap Session::toMap()
 	sessionMap.insert(isCommunityKey, mIsCommunity);
 	sessionMap.insert(isUnconferenceKey, mIsUnconference);
 	sessionMap.insert(isMeetingKey, mIsMeeting);
+	sessionMap.insert(isGenericScheduleSessionKey, mIsGenericScheduleSession);
+	sessionMap.insert(isBreakKey, mIsBreak);
+	sessionMap.insert(isLunchKey, mIsLunch);
+	sessionMap.insert(isEventKey, mIsEvent);
+	sessionMap.insert(isRegistrationKey, mIsRegistration);
 	sessionMap.insert(titleKey, mTitle);
 	sessionMap.insert(descriptionKey, mDescription);
 	sessionMap.insert(sessionTypeKey, mSessionType);
@@ -445,7 +434,6 @@ QVariantMap Session::toMap()
 	sessionMap.insert(minutesKey, mMinutes);
 	sessionMap.insert(abstractTextKey, mAbstractText);
 	sessionMap.insert(isFavoriteKey, mIsFavorite);
-	sessionMap.insert(isBookmarkedKey, mIsBookmarked);
 	return sessionMap;
 }
 
@@ -464,10 +452,6 @@ QVariantMap Session::toForeignMap()
 	// room lazy pointing to Room* (domainKey: roomId)
 	if (mRoom != -1) {
 		sessionMap.insert(roomForeignKey, mRoom);
-	}
-	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-	if (mGenericScheduleItem != -1) {
-		sessionMap.insert(genericScheduleItemForeignKey, mGenericScheduleItem);
 	}
 	// mPresenter points to Speaker*
 	// lazy array: persist only keys
@@ -502,6 +486,7 @@ QVariantMap Session::toForeignMap()
 	}
 	sessionMap.insert(sessionTracksForeignKey, mSessionTracksKeys);
 	sessionMap.insert(sessionIdForeignKey, mSessionId);
+	sessionMap.insert(conferenceForeignKey, mConference);
 	sessionMap.insert(isDeprecatedForeignKey, mIsDeprecated);
 	sessionMap.insert(sortKeyForeignKey, mSortKey);
 	sessionMap.insert(isTrainingForeignKey, mIsTraining);
@@ -511,6 +496,11 @@ QVariantMap Session::toForeignMap()
 	sessionMap.insert(isCommunityForeignKey, mIsCommunity);
 	sessionMap.insert(isUnconferenceForeignKey, mIsUnconference);
 	sessionMap.insert(isMeetingForeignKey, mIsMeeting);
+	sessionMap.insert(isGenericScheduleSessionForeignKey, mIsGenericScheduleSession);
+	sessionMap.insert(isBreakForeignKey, mIsBreak);
+	sessionMap.insert(isLunchForeignKey, mIsLunch);
+	sessionMap.insert(isEventForeignKey, mIsEvent);
+	sessionMap.insert(isRegistrationForeignKey, mIsRegistration);
 	sessionMap.insert(titleForeignKey, mTitle);
 	sessionMap.insert(descriptionForeignKey, mDescription);
 	sessionMap.insert(sessionTypeForeignKey, mSessionType);
@@ -529,7 +519,7 @@ QVariantMap Session::toForeignMap()
 /*
  * Exports Properties from Session as QVariantMap
  * transient properties are excluded:
- * mIsFavorite, mIsBookmarked
+ * mIsFavorite
  * To export ALL data use toMap()
  */
 QVariantMap Session::toCacheMap()
@@ -542,10 +532,6 @@ QVariantMap Session::toCacheMap()
 	// room lazy pointing to Room* (domainKey: roomId)
 	if (mRoom != -1) {
 		sessionMap.insert(roomKey, mRoom);
-	}
-	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-	if (mGenericScheduleItem != -1) {
-		sessionMap.insert(genericScheduleItemKey, mGenericScheduleItem);
 	}
 	// mPresenter points to Speaker*
 	// lazy array: persist only keys
@@ -580,6 +566,7 @@ QVariantMap Session::toCacheMap()
 	}
 	sessionMap.insert(sessionTracksKey, mSessionTracksKeys);
 	sessionMap.insert(sessionIdKey, mSessionId);
+	sessionMap.insert(conferenceKey, mConference);
 	sessionMap.insert(isDeprecatedKey, mIsDeprecated);
 	sessionMap.insert(sortKeyKey, mSortKey);
 	sessionMap.insert(isTrainingKey, mIsTraining);
@@ -589,6 +576,11 @@ QVariantMap Session::toCacheMap()
 	sessionMap.insert(isCommunityKey, mIsCommunity);
 	sessionMap.insert(isUnconferenceKey, mIsUnconference);
 	sessionMap.insert(isMeetingKey, mIsMeeting);
+	sessionMap.insert(isGenericScheduleSessionKey, mIsGenericScheduleSession);
+	sessionMap.insert(isBreakKey, mIsBreak);
+	sessionMap.insert(isLunchKey, mIsLunch);
+	sessionMap.insert(isEventKey, mIsEvent);
+	sessionMap.insert(isRegistrationKey, mIsRegistration);
 	sessionMap.insert(titleKey, mTitle);
 	sessionMap.insert(descriptionKey, mDescription);
 	sessionMap.insert(sessionTypeKey, mSessionType);
@@ -601,7 +593,6 @@ QVariantMap Session::toCacheMap()
 	sessionMap.insert(minutesKey, mMinutes);
 	sessionMap.insert(abstractTextKey, mAbstractText);
 	// excluded: mIsFavorite
-	// excluded: mIsBookmarked
 	return sessionMap;
 }
 // REF
@@ -738,73 +729,6 @@ void Session::markRoomAsInvalid()
 {
     mRoomInvalid = true;
 }
-// REF
-// Lazy: genericScheduleItem
-// Optional: genericScheduleItem
-// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-int Session::genericScheduleItem() const
-{
-	return mGenericScheduleItem;
-}
-GenericScheduleItem* Session::genericScheduleItemAsDataObject() const
-{
-	return mGenericScheduleItemAsDataObject;
-}
-void Session::setGenericScheduleItem(int genericScheduleItem)
-{
-	if (genericScheduleItem != mGenericScheduleItem) {
-        // remove old Data Object if one was resolved
-        if (mGenericScheduleItemAsDataObject) {
-            // reset pointer, don't delete the independent object !
-            mGenericScheduleItemAsDataObject = 0;
-        }
-        // set the new lazy reference
-        mGenericScheduleItem = genericScheduleItem;
-        mGenericScheduleItemInvalid = false;
-        emit genericScheduleItemChanged(genericScheduleItem);
-        if (genericScheduleItem != -1) {
-            // resolve the corresponding Data Object on demand from DataManager
-        }
-    }
-}
-void Session::removeGenericScheduleItem()
-{
-	if (mGenericScheduleItem != -1) {
-		setGenericScheduleItem(-1);
-	}
-}
-bool Session::hasGenericScheduleItem()
-{
-    if (!mGenericScheduleItemInvalid && mGenericScheduleItem != -1) {
-        return true;
-    } else {
-        return false;
-    }
-}
-bool Session::isGenericScheduleItemResolvedAsDataObject()
-{
-    if (!mGenericScheduleItemInvalid && mGenericScheduleItemAsDataObject) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-// lazy bound Data Object was resolved. overwrite sessionId if different
-void Session::resolveGenericScheduleItemAsDataObject(GenericScheduleItem* genericScheduleItem)
-{
-    if (genericScheduleItem) {
-        if (genericScheduleItem->sessionId() != mGenericScheduleItem) {
-            setGenericScheduleItem(genericScheduleItem->sessionId());
-        }
-        mGenericScheduleItemAsDataObject = genericScheduleItem;
-        mGenericScheduleItemInvalid = false;
-    }
-}
-void Session::markGenericScheduleItemAsInvalid()
-{
-    mGenericScheduleItemInvalid = true;
-}
 // ATT 
 // Mandatory: sessionId
 // Domain KEY: sessionId
@@ -818,6 +742,20 @@ void Session::setSessionId(int sessionId)
 	if (sessionId != mSessionId) {
 		mSessionId = sessionId;
 		emit sessionIdChanged(sessionId);
+	}
+}
+// ATT 
+// Optional: conference
+int Session::conference() const
+{
+	return mConference;
+}
+
+void Session::setConference(int conference)
+{
+	if (conference != mConference) {
+		mConference = conference;
+		emit conferenceChanged(conference);
 	}
 }
 // ATT 
@@ -944,6 +882,76 @@ void Session::setIsMeeting(bool isMeeting)
 	if (isMeeting != mIsMeeting) {
 		mIsMeeting = isMeeting;
 		emit isMeetingChanged(isMeeting);
+	}
+}
+// ATT 
+// Optional: isGenericScheduleSession
+bool Session::isGenericScheduleSession() const
+{
+	return mIsGenericScheduleSession;
+}
+
+void Session::setIsGenericScheduleSession(bool isGenericScheduleSession)
+{
+	if (isGenericScheduleSession != mIsGenericScheduleSession) {
+		mIsGenericScheduleSession = isGenericScheduleSession;
+		emit isGenericScheduleSessionChanged(isGenericScheduleSession);
+	}
+}
+// ATT 
+// Optional: isBreak
+bool Session::isBreak() const
+{
+	return mIsBreak;
+}
+
+void Session::setIsBreak(bool isBreak)
+{
+	if (isBreak != mIsBreak) {
+		mIsBreak = isBreak;
+		emit isBreakChanged(isBreak);
+	}
+}
+// ATT 
+// Optional: isLunch
+bool Session::isLunch() const
+{
+	return mIsLunch;
+}
+
+void Session::setIsLunch(bool isLunch)
+{
+	if (isLunch != mIsLunch) {
+		mIsLunch = isLunch;
+		emit isLunchChanged(isLunch);
+	}
+}
+// ATT 
+// Optional: isEvent
+bool Session::isEvent() const
+{
+	return mIsEvent;
+}
+
+void Session::setIsEvent(bool isEvent)
+{
+	if (isEvent != mIsEvent) {
+		mIsEvent = isEvent;
+		emit isEventChanged(isEvent);
+	}
+}
+// ATT 
+// Optional: isRegistration
+bool Session::isRegistration() const
+{
+	return mIsRegistration;
+}
+
+void Session::setIsRegistration(bool isRegistration)
+{
+	if (isRegistration != mIsRegistration) {
+		mIsRegistration = isRegistration;
+		emit isRegistrationChanged(isRegistration);
 	}
 }
 // ATT 
@@ -1098,20 +1106,6 @@ void Session::setIsFavorite(bool isFavorite)
 	if (isFavorite != mIsFavorite) {
 		mIsFavorite = isFavorite;
 		emit isFavoriteChanged(isFavorite);
-	}
-}
-// ATT 
-// Optional: isBookmarked
-bool Session::isBookmarked() const
-{
-	return mIsBookmarked;
-}
-
-void Session::setIsBookmarked(bool isBookmarked)
-{
-	if (isBookmarked != mIsBookmarked) {
-		mIsBookmarked = isBookmarked;
-		emit isBookmarkedChanged(isBookmarked);
 	}
 }
 // ATT 

@@ -9,14 +9,12 @@ HEADERS += \
     cpp/applicationui.hpp \
     cpp/uiconstants.hpp \
     cpp/gen/SettingsData.hpp \ 
-    cpp/gen/Bookmark.hpp \
     cpp/gen/Conference.hpp \
     cpp/gen/DataManager.hpp \
     cpp/gen/Day.hpp \
     cpp/gen/Favorite.hpp \
     cpp/gen/PersonsAPI.hpp \
     cpp/gen/Room.hpp \
-    cpp/gen/GenericScheduleItem.hpp \
     cpp/gen/Session.hpp \
     cpp/gen/SessionAPI.hpp \
     cpp/gen/SessionTrack.hpp \
@@ -32,14 +30,12 @@ HEADERS += \
 SOURCES += cpp/main.cpp \
     cpp/applicationui.cpp \
     cpp/gen/SettingsData.cpp \ 
-    cpp/gen/Bookmark.cpp \
     cpp/gen/Conference.cpp \
     cpp/gen/DataManager.cpp \
     cpp/gen/Day.cpp \
     cpp/gen/Favorite.cpp \
     cpp/gen/PersonsAPI.cpp \
     cpp/gen/Room.cpp \
-    cpp/gen/GenericScheduleItem.cpp \
     cpp/gen/Session.cpp \
     cpp/gen/SessionAPI.cpp \
     cpp/gen/SessionTrack.cpp \

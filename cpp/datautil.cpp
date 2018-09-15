@@ -107,16 +107,16 @@ QString DataUtil::speakerNamesForSession(Session *session)
 
 QString DataUtil::scheduleItemImageForSession(Session *session)
 {
-    if(!session || !session->hasGenericScheduleItem()) {
+    if(!session || !session->isGenericScheduleSession()) {
         return "";
     }
-    if(session->genericScheduleItemAsDataObject()->isRegistration()) {
+    if(session->isRegistration()) {
         return "key.png";
     }
-    if(session->genericScheduleItemAsDataObject()->isLunch()) {
+    if(session->isLunch()) {
         return "lunch.png";
     }
-    if(session->genericScheduleItemAsDataObject()->isEvent()) {
+    if(session->isEvent()) {
         return "party_event.png";
     }
     return "break.png";
@@ -162,14 +162,14 @@ QString DataUtil::textForSessionType(Session *session)
         return "";
     }
     QString info = " (" + QString::number(session->minutes()) + tr(" Minutes)");
-    if(session->hasGenericScheduleItem()) {
-        if(session->genericScheduleItemAsDataObject()->isRegistration()) {
+    if(session->isGenericScheduleSession()) {
+        if(session->isRegistration()) {
             return tr("Registration")+info;
         }
-        if(session->genericScheduleItemAsDataObject()->isEvent()) {
+        if(session->isEvent()) {
             return tr("Event")+info;
         }
-        if(session->genericScheduleItemAsDataObject()->isLunch()) {
+        if(session->isLunch()) {
             return tr("Lunch")+info;
         }
         return tr("Break")+info;
@@ -390,7 +390,6 @@ void DataUtil::prepareConference() {
     }
 
     mDataManager->saveSessionTrackToCache();
-    mDataManager->saveGenericScheduleItemToCache();
 
     mDataManager->saveSpeakerToCache();
     // set API Version
@@ -405,7 +404,6 @@ void DataUtil::prepareEventData() {
     mDataManager->deleteConference();
     mDataManager->deleteDay();
     mDataManager->deleteSession();
-    mDataManager->deleteGenericScheduleItem();
     mDataManager->deleteSpeaker();
     mDataManager->deleteSpeakerImage();
     //
@@ -1332,8 +1330,6 @@ void DataUtil::finishUpdate() {
     mDataManager->saveSessionToCache();
     qDebug() << "FINISH: Sessions saved";
 
-    // ScheduleItem
-    mDataManager->saveGenericScheduleItemToCache();
     qDebug() << "FINISH: ScheduleItems saved";
 
     // SPEAKER

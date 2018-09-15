@@ -23,7 +23,7 @@ Page {
             // already resolved for the list
             // dataManager.resolveOrderReferences(order)
             // customer = order.customerAsDataObject
-            isScheduleItem = session.hasGenericScheduleItem()
+            isScheduleItem = session.isGenericScheduleSession
         }
     }
 

@@ -9,9 +9,7 @@
 #include "Conference.hpp"
 #include "Room.hpp"
 #include "Session.hpp"
-#include "GenericScheduleItem.hpp"
 #include "Favorite.hpp"
-#include "Bookmark.hpp"
 #include "SessionLists.hpp"
 #include "Speaker.hpp"
 #include "SpeakerImage.hpp"
@@ -30,9 +28,7 @@ Q_OBJECT
 Q_PROPERTY(QQmlListProperty<Conference> conferencePropertyList READ conferencePropertyList NOTIFY conferencePropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Room> roomPropertyList READ roomPropertyList NOTIFY roomPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Session> sessionPropertyList READ sessionPropertyList NOTIFY sessionPropertyListChanged)
-Q_PROPERTY(QQmlListProperty<GenericScheduleItem> genericScheduleItemPropertyList READ genericScheduleItemPropertyList NOTIFY genericScheduleItemPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Favorite> favoritePropertyList READ favoritePropertyList NOTIFY favoritePropertyListChanged)
-Q_PROPERTY(QQmlListProperty<Bookmark> bookmarkPropertyList READ bookmarkPropertyList NOTIFY bookmarkPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<SessionLists> sessionListsPropertyList READ sessionListsPropertyList NOTIFY sessionListsPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<Speaker> speakerPropertyList READ speakerPropertyList NOTIFY speakerPropertyListChanged)
 Q_PROPERTY(QQmlListProperty<SpeakerImage> speakerImagePropertyList READ speakerImagePropertyList NOTIFY speakerImagePropertyListChanged)
@@ -193,51 +189,6 @@ public:
 	
 
 	Q_INVOKABLE
-	void resolveGenericScheduleItemReferences(GenericScheduleItem* genericScheduleItem);
-
-	Q_INVOKABLE
-	void resolveReferencesForAllGenericScheduleItem();
-	
-	Q_INVOKABLE
-	QList<GenericScheduleItem*> listOfGenericScheduleItemForKeys(QStringList keyList);
-
-	Q_INVOKABLE
-	QVariantList genericScheduleItemAsQVariantList();
-
-	Q_INVOKABLE
-	QList<QObject*> allGenericScheduleItem();
-
-	Q_INVOKABLE
-	void deleteGenericScheduleItem();
-
-	// access from QML to list of all GenericScheduleItem
-	QQmlListProperty<GenericScheduleItem> genericScheduleItemPropertyList();
-
-	Q_INVOKABLE
-	GenericScheduleItem* createGenericScheduleItem();
-
-	Q_INVOKABLE
-	void undoCreateGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
-
-	Q_INVOKABLE
-	void insertGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
-
-	Q_INVOKABLE
-	void insertGenericScheduleItemFromMap(const QVariantMap& genericScheduleItemMap, const bool& useForeignProperties);
-
-	Q_INVOKABLE
-	bool deleteGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
-	
-
-	Q_INVOKABLE
-	bool deleteGenericScheduleItemBySessionId(const int& sessionId);
-
-	Q_INVOKABLE
-    GenericScheduleItem* findGenericScheduleItemBySessionId(const int& sessionId);
-
-	
-
-	Q_INVOKABLE
 	void resolveFavoriteReferences(Favorite* favorite);
 
 	Q_INVOKABLE
@@ -279,51 +230,6 @@ public:
 
 	Q_INVOKABLE
     Favorite* findFavoriteBySessionId(const int& sessionId);
-
-	
-
-	Q_INVOKABLE
-	void resolveBookmarkReferences(Bookmark* bookmark);
-
-	Q_INVOKABLE
-	void resolveReferencesForAllBookmark();
-	
-	Q_INVOKABLE
-	QList<Bookmark*> listOfBookmarkForKeys(QStringList keyList);
-
-	Q_INVOKABLE
-	QVariantList bookmarkAsQVariantList();
-
-	Q_INVOKABLE
-	QList<QObject*> allBookmark();
-
-	Q_INVOKABLE
-	void deleteBookmark();
-
-	// access from QML to list of all Bookmark
-	QQmlListProperty<Bookmark> bookmarkPropertyList();
-
-	Q_INVOKABLE
-	Bookmark* createBookmark();
-
-	Q_INVOKABLE
-	void undoCreateBookmark(Bookmark* bookmark);
-
-	Q_INVOKABLE
-	void insertBookmark(Bookmark* bookmark);
-
-	Q_INVOKABLE
-	void insertBookmarkFromMap(const QVariantMap& bookmarkMap, const bool& useForeignProperties);
-
-	Q_INVOKABLE
-	bool deleteBookmark(Bookmark* bookmark);
-	
-
-	Q_INVOKABLE
-	bool deleteBookmarkBySessionId(const int& sessionId);
-
-	Q_INVOKABLE
-    Bookmark* findBookmarkBySessionId(const int& sessionId);
 
 	
 	
@@ -685,9 +591,7 @@ public:
     void initConferenceFromCache();
     void initRoomFromCache();
     void initSessionFromCache();
-    void initGenericScheduleItemFromCache();
     void initFavoriteFromCache();
-    void initBookmarkFromCache();
     void initSessionListsFromCache();
     void initSpeakerFromCache();
     void initSpeakerImageFromCache();
@@ -717,18 +621,10 @@ Q_SIGNALS:
 	void deletedFromAllSessionBySessionId(int sessionId);
 	void deletedFromAllSession(Session* session);
 	void sessionPropertyListChanged();
-	void addedToAllGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
-	void deletedFromAllGenericScheduleItemBySessionId(int sessionId);
-	void deletedFromAllGenericScheduleItem(GenericScheduleItem* genericScheduleItem);
-	void genericScheduleItemPropertyListChanged();
 	void addedToAllFavorite(Favorite* favorite);
 	void deletedFromAllFavoriteBySessionId(int sessionId);
 	void deletedFromAllFavorite(Favorite* favorite);
 	void favoritePropertyListChanged();
-	void addedToAllBookmark(Bookmark* bookmark);
-	void deletedFromAllBookmarkBySessionId(int sessionId);
-	void deletedFromAllBookmark(Bookmark* bookmark);
-	void bookmarkPropertyListChanged();
 	void addedToAllSessionLists(SessionLists* sessionLists);
 	void deletedFromAllSessionListsByUuid(QString uuid);
 	void deletedFromAllSessionLists(SessionLists* sessionLists);
@@ -821,19 +717,6 @@ private:
     static void clearSessionProperty(
     	QQmlListProperty<Session> *sessionList);
     	
-    QList<QObject*> mAllGenericScheduleItem;
-    // implementation for QQmlListProperty to use
-    // QML functions for List of All GenericScheduleItem*
-    static void appendToGenericScheduleItemProperty(
-    	QQmlListProperty<GenericScheduleItem> *genericScheduleItemList,
-    	GenericScheduleItem* genericScheduleItem);
-    static int genericScheduleItemPropertyCount(
-    	QQmlListProperty<GenericScheduleItem> *genericScheduleItemList);
-    static GenericScheduleItem* atGenericScheduleItemProperty(
-    	QQmlListProperty<GenericScheduleItem> *genericScheduleItemList, int pos);
-    static void clearGenericScheduleItemProperty(
-    	QQmlListProperty<GenericScheduleItem> *genericScheduleItemList);
-    	
     QList<QObject*> mAllFavorite;
     // implementation for QQmlListProperty to use
     // QML functions for List of All Favorite*
@@ -846,19 +729,6 @@ private:
     	QQmlListProperty<Favorite> *favoriteList, int pos);
     static void clearFavoriteProperty(
     	QQmlListProperty<Favorite> *favoriteList);
-    	
-    QList<QObject*> mAllBookmark;
-    // implementation for QQmlListProperty to use
-    // QML functions for List of All Bookmark*
-    static void appendToBookmarkProperty(
-    	QQmlListProperty<Bookmark> *bookmarkList,
-    	Bookmark* bookmark);
-    static int bookmarkPropertyCount(
-    	QQmlListProperty<Bookmark> *bookmarkList);
-    static Bookmark* atBookmarkProperty(
-    	QQmlListProperty<Bookmark> *bookmarkList, int pos);
-    static void clearBookmarkProperty(
-    	QQmlListProperty<Bookmark> *bookmarkList);
     	
     QList<QObject*> mAllSessionLists;
     // implementation for QQmlListProperty to use
@@ -981,9 +851,7 @@ private:
     void saveConferenceToCache();
     void saveRoomToCache();
     void saveSessionToCache();
-    void saveGenericScheduleItemToCache();
     void saveFavoriteToCache();
-    void saveBookmarkToCache();
     void saveSessionListsToCache();
     void saveSpeakerToCache();
     void saveSpeakerImageToCache();

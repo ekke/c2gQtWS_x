@@ -13,6 +13,7 @@ class Favorite: public QObject
 	Q_OBJECT
 
 	Q_PROPERTY(int sessionId READ sessionId WRITE setSessionId NOTIFY sessionIdChanged FINAL)
+	Q_PROPERTY(int conference READ conference WRITE setConference NOTIFY conferenceChanged FINAL)
 	// session lazy pointing to Session* (domainKey: sessionId)
 	Q_PROPERTY(int session READ session WRITE setSession NOTIFY sessionChanged FINAL)
 	Q_PROPERTY(Session* sessionAsDataObject READ sessionAsDataObject WRITE resolveSessionAsDataObject NOTIFY sessionAsDataObjectChanged FINAL)
@@ -39,6 +40,8 @@ public:
 
 	int sessionId() const;
 	void setSessionId(int sessionId);
+	int conference() const;
+	void setConference(int conference);
 	// session lazy pointing to Session* (domainKey: sessionId)
 	int session() const;
 	void setSession(int session);
@@ -67,6 +70,7 @@ public:
 	Q_SIGNALS:
 
 	void sessionIdChanged(int sessionId);
+	void conferenceChanged(int conference);
 	// session lazy pointing to Session* (domainKey: sessionId)
 	void sessionChanged(int session);
 	void sessionAsDataObjectChanged(Session* session);
@@ -75,6 +79,7 @@ public:
 private:
 
 	int mSessionId;
+	int mConference;
 	int mSession;
 	bool mSessionInvalid;
 	Session* mSessionAsDataObject;

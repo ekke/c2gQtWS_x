@@ -16,6 +16,7 @@ class Room: public QObject
 	Q_OBJECT
 
 	Q_PROPERTY(int roomId READ roomId WRITE setRoomId NOTIFY roomIdChanged FINAL)
+	Q_PROPERTY(int conference READ conference WRITE setConference NOTIFY conferenceChanged FINAL)
 	Q_PROPERTY(QString roomName READ roomName WRITE setRoomName NOTIFY roomNameChanged FINAL)
 	Q_PROPERTY(bool inAssets READ inAssets WRITE setInAssets NOTIFY inAssetsChanged FINAL)
 
@@ -43,6 +44,8 @@ public:
 
 	int roomId() const;
 	void setRoomId(int roomId);
+	int conference() const;
+	void setConference(int conference);
 	QString roomName() const;
 	void setRoomName(QString roomName);
 	bool inAssets() const;
@@ -93,6 +96,7 @@ public:
 	Q_SIGNALS:
 
 	void roomIdChanged(int roomId);
+	void conferenceChanged(int conference);
 	void roomNameChanged(QString roomName);
 	void inAssetsChanged(bool inAssets);
 	void sessionsChanged(QList<Session*> sessions);
@@ -104,6 +108,7 @@ public:
 private:
 
 	int mRoomId;
+	int mConference;
 	QString mRoomName;
 	bool mInAssets;
 	// lazy Array of independent Data Objects: only keys are persisted

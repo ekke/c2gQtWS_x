@@ -26,7 +26,7 @@ ListView {
         Loader {
         id: sessionLoader
         // define Components inside Loader to enable direct access to ListView functions and modelData
-        sourceComponent: hasGenericScheduleItem()? scheduleRowComponent : sessionRowComponent
+        sourceComponent: isGenericScheduleSession? scheduleRowComponent : sessionRowComponent
 
         // LIST ROW DELEGATES
         Component {

@@ -6,12 +6,14 @@
 
 // keys of QVariantMap used in this APP
 static const QString idKey = "id";
+static const QString conferenceKey = "conference";
 static const QString weekDayKey = "weekDay";
 static const QString conferenceDayKey = "conferenceDay";
 static const QString sessionsKey = "sessions";
 
 // keys used from Server API etc
 static const QString idForeignKey = "id";
+static const QString conferenceForeignKey = "conference";
 static const QString weekDayForeignKey = "weekDay";
 static const QString conferenceDayForeignKey = "conferenceDay";
 static const QString sessionsForeignKey = "sessions";
@@ -20,7 +22,7 @@ static const QString sessionsForeignKey = "sessions";
  * Default Constructor if Day not initialized from QVariantMap
  */
 Day::Day(QObject *parent) :
-        QObject(parent), mId(-1), mWeekDay(0)
+        QObject(parent), mId(-1), mConference(0), mWeekDay(0)
 {
 	// Date, Time or Timestamp ? construct null value
 	mConferenceDay = QDate();
@@ -46,6 +48,7 @@ bool Day::isAllResolved()
 void Day::fillFromMap(const QVariantMap& dayMap)
 {
 	mId = dayMap.value(idKey).toInt();
+	mConference = dayMap.value(conferenceKey).toInt();
 	mWeekDay = dayMap.value(weekDayKey).toInt();
 	if (dayMap.contains(conferenceDayKey)) {
 		// always getting the Date as a String (from server or JSON)
@@ -72,6 +75,7 @@ void Day::fillFromMap(const QVariantMap& dayMap)
 void Day::fillFromForeignMap(const QVariantMap& dayMap)
 {
 	mId = dayMap.value(idForeignKey).toInt();
+	mConference = dayMap.value(conferenceForeignKey).toInt();
 	mWeekDay = dayMap.value(weekDayForeignKey).toInt();
 	if (dayMap.contains(conferenceDayForeignKey)) {
 		// always getting the Date as a String (from server or JSON)
@@ -98,6 +102,7 @@ void Day::fillFromForeignMap(const QVariantMap& dayMap)
 void Day::fillFromCacheMap(const QVariantMap& dayMap)
 {
 	mId = dayMap.value(idKey).toInt();
+	mConference = dayMap.value(conferenceKey).toInt();
 	mWeekDay = dayMap.value(weekDayKey).toInt();
 	if (dayMap.contains(conferenceDayKey)) {
 		// always getting the Date as a String (from server or JSON)
@@ -155,6 +160,7 @@ QVariantMap Day::toMap()
 	}
 	dayMap.insert(sessionsKey, mSessionsKeys);
 	dayMap.insert(idKey, mId);
+	dayMap.insert(conferenceKey, mConference);
 	dayMap.insert(weekDayKey, mWeekDay);
 	if (hasConferenceDay()) {
 		dayMap.insert(conferenceDayKey, mConferenceDay.toString("yyyy-MM-dd"));
@@ -187,6 +193,7 @@ QVariantMap Day::toForeignMap()
 	}
 	dayMap.insert(sessionsForeignKey, mSessionsKeys);
 	dayMap.insert(idForeignKey, mId);
+	dayMap.insert(conferenceForeignKey, mConference);
 	dayMap.insert(weekDayForeignKey, mWeekDay);
 	if (hasConferenceDay()) {
 		dayMap.insert(conferenceDayForeignKey, mConferenceDay.toString("yyyy-MM-dd"));
@@ -219,6 +226,20 @@ void Day::setId(int id)
 	if (id != mId) {
 		mId = id;
 		emit idChanged(id);
+	}
+}
+// ATT 
+// Optional: conference
+int Day::conference() const
+{
+	return mConference;
+}
+
+void Day::setConference(int conference)
+{
+	if (conference != mConference) {
+		mConference = conference;
+		emit conferenceChanged(conference);
 	}
 }
 // ATT 

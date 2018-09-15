@@ -17,6 +17,7 @@ class Day: public QObject
 	Q_OBJECT
 
 	Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged FINAL)
+	Q_PROPERTY(int conference READ conference WRITE setConference NOTIFY conferenceChanged FINAL)
 	Q_PROPERTY(int weekDay READ weekDay WRITE setWeekDay NOTIFY weekDayChanged FINAL)
 	Q_PROPERTY(QDate conferenceDay READ conferenceDay WRITE setConferenceDay NOTIFY conferenceDayChanged FINAL)
 
@@ -44,6 +45,8 @@ public:
 
 	int id() const;
 	void setId(int id);
+	int conference() const;
+	void setConference(int conference);
 	int weekDay() const;
 	void setWeekDay(int weekDay);
 	QDate conferenceDay() const;
@@ -97,6 +100,7 @@ public:
 	Q_SIGNALS:
 
 	void idChanged(int id);
+	void conferenceChanged(int conference);
 	void weekDayChanged(int weekDay);
 	void conferenceDayChanged(QDate conferenceDay);
 	void sessionsChanged(QList<Session*> sessions);
@@ -108,6 +112,7 @@ public:
 private:
 
 	int mId;
+	int mConference;
 	int mWeekDay;
 	QDate mConferenceDay;
 	// lazy Array of independent Data Objects: only keys are persisted

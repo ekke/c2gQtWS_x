@@ -34,6 +34,7 @@ package org.ekkescorner.dsl.qtws {
 	@TargetOS("Qt")
 	dto Conference {
 		domainKey int id;
+		// per ex 201801 (BOSTON) 201802 (BERLIN)
 		var QString conferenceName;
 		var QString conferenceCity;
 		var QString address;
@@ -50,16 +51,20 @@ package org.ekkescorner.dsl.qtws {
 		var QString coordinate;
 		var int lastRoomId;
 		var int lastSessionTrackId;
+		// same as id + nnn per ex 201801001
+		var int lastGenericSessionId;
 		// implicitly ref lazy
 		// sorted: day,start
 		var Day [ 0 .. * ] days;
 		var SessionTrack [ 0 .. * ] tracks;
+		var Room [ 0 .. * ] rooms;
 	}
 
 	@CachePolicy("-R-")
 	@TargetOS("Qt")
 	dto Room {
 		domainKey int roomId;
+		var int conference;
 		var QString roomName;
 		var bool inAssets;
 
@@ -72,6 +77,7 @@ package org.ekkescorner.dsl.qtws {
 	@TargetOS("Qt")
 	dto Session {
 		domainKey int sessionId;
+		var int conference;
 		var bool isDeprecated;
 		// sort day start 010900
 		var QString sortKey;
@@ -82,6 +88,13 @@ package org.ekkescorner.dsl.qtws {
 		var bool isCommunity;
 		var bool isUnconference;
 		var bool isMeeting;
+		// Generic Session
+		var bool isGenericScheduleSession;
+		var bool isBreak;
+		var bool isLunch;
+		var bool isEvent;
+		var bool isRegistration;
+		//
 		var QString title;
 		var QString description;
 		var QString sessionType;
@@ -92,42 +105,22 @@ package org.ekkescorner.dsl.qtws {
 		var int minutes;
 		var QString abstractText;
 		
-		// don't want to cache updated Sessions
-		// so isFavorite and isBookmarked are updated at Startup
+		// don't want to cache Sessions if marked as Favorite
+		// isFavorite will be updated at Startup
 		transient bool isFavorite;
-		transient bool isBookmarked;
 		
 		// implicitly ref lazy
 		var Speaker [0 .. *] presenter;
 		var SessionTrack [0 .. *] sessionTracks;
 		ref lazy Day [ 1 ] sessionDay; 
 		ref lazy Room [ 0 .. 1 ] room;	
-		ref lazy GenericScheduleItem [0 .. 1] genericScheduleItem;
-
-	}
-	
-	@CachePolicy("-R-")
-	@TargetOS("Qt")
-	dto GenericScheduleItem {
-		domainKey int sessionId;
-		var bool isBreak;
-		var bool isLunch;
-		var bool isEvent;
-		var bool isRegistration;
-		
-		ref lazy Session [1] session;
 	}
 	
 	@TargetOS("Qt")
 	// Scheduled Sessions
 	dto Favorite {
 		domainKey int sessionId;
-		ref lazy Session [1] session;
-	}
-	
-	@TargetOS("Qt")
-	dto Bookmark {
-		domainKey int sessionId;
+		var int conference;
 		ref lazy Session [1] session;
 	}
 	
@@ -140,9 +133,7 @@ package org.ekkescorner.dsl.qtws {
 		// implicitly ref lazy
 		// scheduled sessions: favorites
 		var Session [ 0 .. * ] scheduledSessions;
-		var Session [ 0 .. * ] bookmarkedSessions;
 		var Session [ 0 .. * ] sameTimeSessions;
-		var Session [ 0 .. * ] specialTimeSessions;
 	}
 
 	@CachePolicy("-R-")
@@ -162,6 +153,7 @@ package org.ekkescorner.dsl.qtws {
 		// implicitly ref lazy
 		// sort day, start
 		var Session [0 .. *] sessions;
+		var Conference [0 .. *] conferences;
 	}
 	
 	@CachePolicy("-R-")
@@ -182,6 +174,7 @@ package org.ekkescorner.dsl.qtws {
 	@TargetOS("Qt")
 	dto SessionTrack {
 		domainKey int trackId;
+		var int conference;
 		var QString name;
 		var QString color;
 		var bool inAssets;
@@ -194,6 +187,7 @@ package org.ekkescorner.dsl.qtws {
 	@TargetOS("Qt")
 	dto Day {
 		domainKey int id;
+		var int conference;
 		// 0..6
 		var int weekDay;
 		@DateFormatString("yyyy-MM-dd")

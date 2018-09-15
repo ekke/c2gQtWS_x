@@ -16,8 +16,6 @@ class SessionTrack;
 class Day;
 // forward declaration (target references to this)
 class Room;
-// forward declaration (target references to this)
-class GenericScheduleItem;
 
 
 class Session: public QObject
@@ -25,6 +23,7 @@ class Session: public QObject
 	Q_OBJECT
 
 	Q_PROPERTY(int sessionId READ sessionId WRITE setSessionId NOTIFY sessionIdChanged FINAL)
+	Q_PROPERTY(int conference READ conference WRITE setConference NOTIFY conferenceChanged FINAL)
 	Q_PROPERTY(bool isDeprecated READ isDeprecated WRITE setIsDeprecated NOTIFY isDeprecatedChanged FINAL)
 	Q_PROPERTY(QString sortKey READ sortKey WRITE setSortKey NOTIFY sortKeyChanged FINAL)
 	Q_PROPERTY(bool isTraining READ isTraining WRITE setIsTraining NOTIFY isTrainingChanged FINAL)
@@ -34,6 +33,11 @@ class Session: public QObject
 	Q_PROPERTY(bool isCommunity READ isCommunity WRITE setIsCommunity NOTIFY isCommunityChanged FINAL)
 	Q_PROPERTY(bool isUnconference READ isUnconference WRITE setIsUnconference NOTIFY isUnconferenceChanged FINAL)
 	Q_PROPERTY(bool isMeeting READ isMeeting WRITE setIsMeeting NOTIFY isMeetingChanged FINAL)
+	Q_PROPERTY(bool isGenericScheduleSession READ isGenericScheduleSession WRITE setIsGenericScheduleSession NOTIFY isGenericScheduleSessionChanged FINAL)
+	Q_PROPERTY(bool isBreak READ isBreak WRITE setIsBreak NOTIFY isBreakChanged FINAL)
+	Q_PROPERTY(bool isLunch READ isLunch WRITE setIsLunch NOTIFY isLunchChanged FINAL)
+	Q_PROPERTY(bool isEvent READ isEvent WRITE setIsEvent NOTIFY isEventChanged FINAL)
+	Q_PROPERTY(bool isRegistration READ isRegistration WRITE setIsRegistration NOTIFY isRegistrationChanged FINAL)
 	Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged FINAL)
 	Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged FINAL)
 	Q_PROPERTY(QString sessionType READ sessionType WRITE setSessionType NOTIFY sessionTypeChanged FINAL)
@@ -42,16 +46,12 @@ class Session: public QObject
 	Q_PROPERTY(int minutes READ minutes WRITE setMinutes NOTIFY minutesChanged FINAL)
 	Q_PROPERTY(QString abstractText READ abstractText WRITE setAbstractText NOTIFY abstractTextChanged FINAL)
 	Q_PROPERTY(bool isFavorite READ isFavorite WRITE setIsFavorite NOTIFY isFavoriteChanged FINAL)
-	Q_PROPERTY(bool isBookmarked READ isBookmarked WRITE setIsBookmarked NOTIFY isBookmarkedChanged FINAL)
 	// sessionDay lazy pointing to Day* (domainKey: id)
 	Q_PROPERTY(int sessionDay READ sessionDay WRITE setSessionDay NOTIFY sessionDayChanged FINAL)
 	Q_PROPERTY(Day* sessionDayAsDataObject READ sessionDayAsDataObject WRITE resolveSessionDayAsDataObject NOTIFY sessionDayAsDataObjectChanged FINAL)
 	// room lazy pointing to Room* (domainKey: roomId)
 	Q_PROPERTY(int room READ room WRITE setRoom NOTIFY roomChanged FINAL)
 	Q_PROPERTY(Room* roomAsDataObject READ roomAsDataObject WRITE resolveRoomAsDataObject NOTIFY roomAsDataObjectChanged FINAL)
-	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-	Q_PROPERTY(int genericScheduleItem READ genericScheduleItem WRITE setGenericScheduleItem NOTIFY genericScheduleItemChanged FINAL)
-	Q_PROPERTY(GenericScheduleItem* genericScheduleItemAsDataObject READ genericScheduleItemAsDataObject WRITE resolveGenericScheduleItemAsDataObject NOTIFY genericScheduleItemAsDataObjectChanged FINAL)
 
 	// QQmlListProperty to get easy access from QML
 	Q_PROPERTY(QQmlListProperty<Speaker> presenterPropertyList READ presenterPropertyList NOTIFY presenterPropertyListChanged)
@@ -79,6 +79,8 @@ public:
 
 	int sessionId() const;
 	void setSessionId(int sessionId);
+	int conference() const;
+	void setConference(int conference);
 	bool isDeprecated() const;
 	void setIsDeprecated(bool isDeprecated);
 	QString sortKey() const;
@@ -97,6 +99,16 @@ public:
 	void setIsUnconference(bool isUnconference);
 	bool isMeeting() const;
 	void setIsMeeting(bool isMeeting);
+	bool isGenericScheduleSession() const;
+	void setIsGenericScheduleSession(bool isGenericScheduleSession);
+	bool isBreak() const;
+	void setIsBreak(bool isBreak);
+	bool isLunch() const;
+	void setIsLunch(bool isLunch);
+	bool isEvent() const;
+	void setIsEvent(bool isEvent);
+	bool isRegistration() const;
+	void setIsRegistration(bool isRegistration);
 	QString title() const;
 	void setTitle(QString title);
 	QString description() const;
@@ -125,8 +137,6 @@ public:
 	void setAbstractText(QString abstractText);
 	bool isFavorite() const;
 	void setIsFavorite(bool isFavorite);
-	bool isBookmarked() const;
-	void setIsBookmarked(bool isBookmarked);
 	// sessionDay lazy pointing to Day* (domainKey: id)
 	int sessionDay() const;
 	void setSessionDay(int sessionDay);
@@ -166,26 +176,6 @@ public:
 	
 	Q_INVOKABLE
 	void markRoomAsInvalid();
-	
-	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-	int genericScheduleItem() const;
-	void setGenericScheduleItem(int genericScheduleItem);
-	GenericScheduleItem* genericScheduleItemAsDataObject() const;
-	
-	Q_INVOKABLE
-	void resolveGenericScheduleItemAsDataObject(GenericScheduleItem* genericScheduleItem);
-	
-	Q_INVOKABLE
-	void removeGenericScheduleItem();
-	
-	Q_INVOKABLE
-	bool hasGenericScheduleItem();
-	
-	Q_INVOKABLE
-	bool isGenericScheduleItemResolvedAsDataObject();
-	
-	Q_INVOKABLE
-	void markGenericScheduleItemAsInvalid();
 	
 
 	
@@ -271,6 +261,7 @@ public:
 	Q_SIGNALS:
 
 	void sessionIdChanged(int sessionId);
+	void conferenceChanged(int conference);
 	void isDeprecatedChanged(bool isDeprecated);
 	void sortKeyChanged(QString sortKey);
 	void isTrainingChanged(bool isTraining);
@@ -280,6 +271,11 @@ public:
 	void isCommunityChanged(bool isCommunity);
 	void isUnconferenceChanged(bool isUnconference);
 	void isMeetingChanged(bool isMeeting);
+	void isGenericScheduleSessionChanged(bool isGenericScheduleSession);
+	void isBreakChanged(bool isBreak);
+	void isLunchChanged(bool isLunch);
+	void isEventChanged(bool isEvent);
+	void isRegistrationChanged(bool isRegistration);
 	void titleChanged(QString title);
 	void descriptionChanged(QString description);
 	void sessionTypeChanged(QString sessionType);
@@ -288,16 +284,12 @@ public:
 	void minutesChanged(int minutes);
 	void abstractTextChanged(QString abstractText);
 	void isFavoriteChanged(bool isFavorite);
-	void isBookmarkedChanged(bool isBookmarked);
 	// sessionDay lazy pointing to Day* (domainKey: id)
 	void sessionDayChanged(int sessionDay);
 	void sessionDayAsDataObjectChanged(Day* day);
 	// room lazy pointing to Room* (domainKey: roomId)
 	void roomChanged(int room);
 	void roomAsDataObjectChanged(Room* room);
-	// genericScheduleItem lazy pointing to GenericScheduleItem* (domainKey: sessionId)
-	void genericScheduleItemChanged(int genericScheduleItem);
-	void genericScheduleItemAsDataObjectChanged(GenericScheduleItem* genericScheduleItem);
 	void presenterChanged(QList<Speaker*> presenter);
 	void addedToPresenter(Speaker* speaker);
 	void presenterPropertyListChanged();
@@ -311,6 +303,7 @@ public:
 private:
 
 	int mSessionId;
+	int mConference;
 	bool mIsDeprecated;
 	QString mSortKey;
 	bool mIsTraining;
@@ -320,6 +313,11 @@ private:
 	bool mIsCommunity;
 	bool mIsUnconference;
 	bool mIsMeeting;
+	bool mIsGenericScheduleSession;
+	bool mIsBreak;
+	bool mIsLunch;
+	bool mIsEvent;
+	bool mIsRegistration;
 	QString mTitle;
 	QString mDescription;
 	QString mSessionType;
@@ -328,16 +326,12 @@ private:
 	int mMinutes;
 	QString mAbstractText;
 	bool mIsFavorite;
-	bool mIsBookmarked;
 	int mSessionDay;
 	bool mSessionDayInvalid;
 	Day* mSessionDayAsDataObject;
 	int mRoom;
 	bool mRoomInvalid;
 	Room* mRoomAsDataObject;
-	int mGenericScheduleItem;
-	bool mGenericScheduleItemInvalid;
-	GenericScheduleItem* mGenericScheduleItemAsDataObject;
 	// lazy Array of independent Data Objects: only keys are persisted
 	QStringList mPresenterKeys;
 	bool mPresenterKeysResolved;

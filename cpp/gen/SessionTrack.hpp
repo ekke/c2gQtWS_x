@@ -16,6 +16,7 @@ class SessionTrack: public QObject
 	Q_OBJECT
 
 	Q_PROPERTY(int trackId READ trackId WRITE setTrackId NOTIFY trackIdChanged FINAL)
+	Q_PROPERTY(int conference READ conference WRITE setConference NOTIFY conferenceChanged FINAL)
 	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged FINAL)
 	Q_PROPERTY(QString color READ color WRITE setColor NOTIFY colorChanged FINAL)
 	Q_PROPERTY(bool inAssets READ inAssets WRITE setInAssets NOTIFY inAssetsChanged FINAL)
@@ -44,6 +45,8 @@ public:
 
 	int trackId() const;
 	void setTrackId(int trackId);
+	int conference() const;
+	void setConference(int conference);
 	QString name() const;
 	void setName(QString name);
 	QString color() const;
@@ -96,6 +99,7 @@ public:
 	Q_SIGNALS:
 
 	void trackIdChanged(int trackId);
+	void conferenceChanged(int conference);
 	void nameChanged(QString name);
 	void colorChanged(QString color);
 	void inAssetsChanged(bool inAssets);
@@ -108,6 +112,7 @@ public:
 private:
 
 	int mTrackId;
+	int mConference;
 	QString mName;
 	QString mColor;
 	bool mInAssets;

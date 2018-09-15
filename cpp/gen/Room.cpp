@@ -6,12 +6,14 @@
 
 // keys of QVariantMap used in this APP
 static const QString roomIdKey = "roomId";
+static const QString conferenceKey = "conference";
 static const QString roomNameKey = "roomName";
 static const QString inAssetsKey = "inAssets";
 static const QString sessionsKey = "sessions";
 
 // keys used from Server API etc
 static const QString roomIdForeignKey = "roomId";
+static const QString conferenceForeignKey = "conference";
 static const QString roomNameForeignKey = "roomName";
 static const QString inAssetsForeignKey = "inAssets";
 static const QString sessionsForeignKey = "sessions";
@@ -20,7 +22,7 @@ static const QString sessionsForeignKey = "sessions";
  * Default Constructor if Room not initialized from QVariantMap
  */
 Room::Room(QObject *parent) :
-        QObject(parent), mRoomId(-1), mRoomName(""), mInAssets(false)
+        QObject(parent), mRoomId(-1), mConference(0), mRoomName(""), mInAssets(false)
 {
 		// lazy Arrays where only keys are persisted
 		mSessionsKeysResolved = false;
@@ -44,6 +46,7 @@ bool Room::isAllResolved()
 void Room::fillFromMap(const QVariantMap& roomMap)
 {
 	mRoomId = roomMap.value(roomIdKey).toInt();
+	mConference = roomMap.value(conferenceKey).toInt();
 	mRoomName = roomMap.value(roomNameKey).toString();
 	mInAssets = roomMap.value(inAssetsKey).toBool();
 	// mSessions is (lazy loaded) Array of Session*
@@ -62,6 +65,7 @@ void Room::fillFromMap(const QVariantMap& roomMap)
 void Room::fillFromForeignMap(const QVariantMap& roomMap)
 {
 	mRoomId = roomMap.value(roomIdForeignKey).toInt();
+	mConference = roomMap.value(conferenceForeignKey).toInt();
 	mRoomName = roomMap.value(roomNameForeignKey).toString();
 	mInAssets = roomMap.value(inAssetsForeignKey).toBool();
 	// mSessions is (lazy loaded) Array of Session*
@@ -80,6 +84,7 @@ void Room::fillFromForeignMap(const QVariantMap& roomMap)
 void Room::fillFromCacheMap(const QVariantMap& roomMap)
 {
 	mRoomId = roomMap.value(roomIdKey).toInt();
+	mConference = roomMap.value(conferenceKey).toInt();
 	mRoomName = roomMap.value(roomNameKey).toString();
 	mInAssets = roomMap.value(inAssetsKey).toBool();
 	// mSessions is (lazy loaded) Array of Session*
@@ -129,6 +134,7 @@ QVariantMap Room::toMap()
 	}
 	roomMap.insert(sessionsKey, mSessionsKeys);
 	roomMap.insert(roomIdKey, mRoomId);
+	roomMap.insert(conferenceKey, mConference);
 	roomMap.insert(roomNameKey, mRoomName);
 	roomMap.insert(inAssetsKey, mInAssets);
 	return roomMap;
@@ -159,6 +165,7 @@ QVariantMap Room::toForeignMap()
 	}
 	roomMap.insert(sessionsForeignKey, mSessionsKeys);
 	roomMap.insert(roomIdForeignKey, mRoomId);
+	roomMap.insert(conferenceForeignKey, mConference);
 	roomMap.insert(roomNameForeignKey, mRoomName);
 	roomMap.insert(inAssetsForeignKey, mInAssets);
 	return roomMap;
@@ -189,6 +196,20 @@ void Room::setRoomId(int roomId)
 	if (roomId != mRoomId) {
 		mRoomId = roomId;
 		emit roomIdChanged(roomId);
+	}
+}
+// ATT 
+// Optional: conference
+int Room::conference() const
+{
+	return mConference;
+}
+
+void Room::setConference(int conference)
+{
+	if (conference != mConference) {
+		mConference = conference;
+		emit conferenceChanged(conference);
 	}
 }
 // ATT 

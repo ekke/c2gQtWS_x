@@ -16,9 +16,7 @@ static const QString cacheSettingsData = "cacheSettingsData.json";
 static const QString cacheConference = "cacheConference.json";
 static const QString cacheRoom = "cacheRoom.json";
 static const QString cacheSession = "cacheSession.json";
-static const QString cacheGenericScheduleItem = "cacheGenericScheduleItem.json";
 static const QString cacheFavorite = "cacheFavorite.json";
-static const QString cacheBookmark = "cacheBookmark.json";
 static const QString cacheSessionLists = "cacheSessionLists.json";
 static const QString cacheSpeaker = "cacheSpeaker.json";
 static const QString cacheSpeakerImage = "cacheSpeakerImage.json";
@@ -88,9 +86,7 @@ DataManager::DataManager(QObject *parent) :
     // Conference
     // Room
     // Session
-    // GenericScheduleItem
     // Favorite
-    // Bookmark
     // SessionLists
     // Speaker
     // SpeakerImage
@@ -106,9 +102,7 @@ DataManager::DataManager(QObject *parent) :
 	qmlRegisterType<Conference>("org.ekkescorner.data", 1, 0, "Conference");
 	qmlRegisterType<Room>("org.ekkescorner.data", 1, 0, "Room");
 	qmlRegisterType<Session>("org.ekkescorner.data", 1, 0, "Session");
-	qmlRegisterType<GenericScheduleItem>("org.ekkescorner.data", 1, 0, "GenericScheduleItem");
 	qmlRegisterType<Favorite>("org.ekkescorner.data", 1, 0, "Favorite");
-	qmlRegisterType<Bookmark>("org.ekkescorner.data", 1, 0, "Bookmark");
 	qmlRegisterType<SessionLists>("org.ekkescorner.data", 1, 0, "SessionLists");
 	qmlRegisterType<Speaker>("org.ekkescorner.data", 1, 0, "Speaker");
 	qmlRegisterType<SpeakerImage>("org.ekkescorner.data", 1, 0, "SpeakerImage");
@@ -191,9 +185,7 @@ void DataManager::init()
     initConferenceFromCache();
     initRoomFromCache();
     initSessionFromCache();
-    initGenericScheduleItemFromCache();
     initFavoriteFromCache();
-    initBookmarkFromCache();
     // SessionLists is transient - not automatically read from cache
     initSpeakerFromCache();
     initSpeakerImageFromCache();
@@ -213,9 +205,7 @@ void DataManager::finish()
     // Conference is read-only - not saved to cache
     // Room is read-only - not saved to cache
     // Session is read-only - not saved to cache
-    // GenericScheduleItem is read-only - not saved to cache
     saveFavoriteToCache();
-    saveBookmarkToCache();
     // SessionLists is read-only - not saved to cache
     // Speaker is read-only - not saved to cache
     // SpeakerImage is read-only - not saved to cache
@@ -905,16 +895,6 @@ void DataManager::resolveSessionReferences(Session* session)
     		session->markRoomAsInvalid();
     	}
     }
-    if (session->hasGenericScheduleItem() && !session->isGenericScheduleItemResolvedAsDataObject()) {
-    	GenericScheduleItem* genericScheduleItem;
-   		genericScheduleItem = findGenericScheduleItemBySessionId(session->genericScheduleItem());
-    	if (genericScheduleItem) {
-    		session->resolveGenericScheduleItemAsDataObject(genericScheduleItem);
-    	} else {
-    		qDebug() << "markGenericScheduleItemAsInvalid: " << session->genericScheduleItem();
-    		session->markGenericScheduleItemAsInvalid();
-    	}
-    }
     if (!session->arePresenterKeysResolved()) {
         session->resolvePresenterKeys(
                 listOfSpeakerForKeys(session->presenterKeys()));
@@ -1165,318 +1145,6 @@ Session* DataManager::findSessionBySessionId(const int& sessionId){
         }
     }
     qDebug() << "no Session found for sessionId " << sessionId;
-    return 0;
-}
-
-/*
- * reads Maps of GenericScheduleItem in from JSON cache
- * creates List of GenericScheduleItem*  from QVariantList
- * List declared as list of QObject* - only way to use in GroupDataModel
- */
-void DataManager::initGenericScheduleItemFromCache()
-{
-	qDebug() << "start initGenericScheduleItemFromCache";
-    mAllGenericScheduleItem.clear();
-    QVariantList cacheList;
-    cacheList = readFromCache(cacheGenericScheduleItem);
-    qDebug() << "read GenericScheduleItem from cache #" << cacheList.size();
-    for (int i = 0; i < cacheList.size(); ++i) {
-        QVariantMap cacheMap;
-        cacheMap = cacheList.at(i).toMap();
-        GenericScheduleItem* genericScheduleItem = new GenericScheduleItem();
-        // Important: DataManager must be parent of all root DTOs
-        genericScheduleItem->setParent(this);
-        genericScheduleItem->fillFromCacheMap(cacheMap);
-        mAllGenericScheduleItem.append(genericScheduleItem);
-    }
-    qDebug() << "created GenericScheduleItem* #" << mAllGenericScheduleItem.size();
-}
-
-
-/*
- * save List of GenericScheduleItem* to JSON cache
- * convert list of GenericScheduleItem* to QVariantList
- * toCacheMap stores all properties without transient values
- * GenericScheduleItem is read-only Cache - so it's not saved automatically at exit
- */
-void DataManager::saveGenericScheduleItemToCache()
-{
-    QVariantList cacheList;
-    qDebug() << "now caching GenericScheduleItem* #" << mAllGenericScheduleItem.size();
-    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
-        GenericScheduleItem* genericScheduleItem;
-        genericScheduleItem = (GenericScheduleItem*)mAllGenericScheduleItem.at(i);
-        QVariantMap cacheMap;
-        cacheMap = genericScheduleItem->toCacheMap();
-        cacheList.append(cacheMap);
-    }
-    qDebug() << "GenericScheduleItem* converted to JSON cache #" << cacheList.size();
-    writeToCache(cacheGenericScheduleItem, cacheList);
-}
-
-
-void DataManager::resolveGenericScheduleItemReferences(GenericScheduleItem* genericScheduleItem)
-{
-	if (!genericScheduleItem) {
-        qDebug() << "cannot resolveGenericScheduleItemReferences with genericScheduleItem NULL";
-        return;
-    }
-    if(genericScheduleItem->isAllResolved()) {
-	    qDebug() << "nothing to do: all is resolved";
-	    return;
-	}
-    if (genericScheduleItem->hasSession() && !genericScheduleItem->isSessionResolvedAsDataObject()) {
-    	Session* session;
-   		session = findSessionBySessionId(genericScheduleItem->session());
-    	if (session) {
-    		genericScheduleItem->resolveSessionAsDataObject(session);
-    	} else {
-    		qDebug() << "markSessionAsInvalid: " << genericScheduleItem->session();
-    		genericScheduleItem->markSessionAsInvalid();
-    	}
-    }
-}
-
-void DataManager::resolveReferencesForAllGenericScheduleItem()
-{
-    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
-        GenericScheduleItem* genericScheduleItem;
-        genericScheduleItem = (GenericScheduleItem*)mAllGenericScheduleItem.at(i);
-    	resolveGenericScheduleItemReferences(genericScheduleItem);
-    }
-}
-
-
-/**
-* converts a list of keys in to a list of DataObjects
-* per ex. used to resolve lazy arrays
-*/
-QList<GenericScheduleItem*> DataManager::listOfGenericScheduleItemForKeys(
-        QStringList keyList)
-{
-    QList<GenericScheduleItem*> listOfData;
-    keyList.removeDuplicates();
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
-        GenericScheduleItem* genericScheduleItem;
-        genericScheduleItem = (GenericScheduleItem*) mAllGenericScheduleItem.at(i);
-        if (keyList.contains(QString::number(genericScheduleItem->sessionId()))) {
-            listOfData.append(genericScheduleItem);
-            keyList.removeOne(QString::number(genericScheduleItem->sessionId()));
-            if(keyList.isEmpty()){
-                break;
-            }
-        }
-    }
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    qWarning() << "not all keys found for GenericScheduleItem: " << keyList.join(", ");
-    return listOfData;
-}
-
-QVariantList DataManager::genericScheduleItemAsQVariantList()
-{
-    QVariantList genericScheduleItemList;
-    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
-        genericScheduleItemList.append(((GenericScheduleItem*) (mAllGenericScheduleItem.at(i)))->toMap());
-    }
-    return genericScheduleItemList;
-}
-
-QList<QObject*> DataManager::allGenericScheduleItem()
-{
-    return mAllGenericScheduleItem;
-}
-
-QQmlListProperty<GenericScheduleItem> DataManager::genericScheduleItemPropertyList()
-{
-    return QQmlListProperty<GenericScheduleItem>(this, 0,
-            &DataManager::appendToGenericScheduleItemProperty, &DataManager::genericScheduleItemPropertyCount,
-            &DataManager::atGenericScheduleItemProperty, &DataManager::clearGenericScheduleItemProperty);
-}
-
-// implementation for QQmlListProperty to use
-// QML functions for List of GenericScheduleItem*
-void DataManager::appendToGenericScheduleItemProperty(
-        QQmlListProperty<GenericScheduleItem> *genericScheduleItemList,
-        GenericScheduleItem* genericScheduleItem)
-{
-    DataManager *dataManagerObject = qobject_cast<DataManager *>(genericScheduleItemList->object);
-    if (dataManagerObject) {
-        genericScheduleItem->setParent(dataManagerObject);
-        dataManagerObject->mAllGenericScheduleItem.append(genericScheduleItem);
-        emit dataManagerObject->addedToAllGenericScheduleItem(genericScheduleItem);
-    } else {
-        qWarning() << "cannot append GenericScheduleItem* to mAllGenericScheduleItem "
-                << "Object is not of type DataManager*";
-    }
-}
-int DataManager::genericScheduleItemPropertyCount(
-        QQmlListProperty<GenericScheduleItem> *genericScheduleItemList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(genericScheduleItemList->object);
-    if (dataManager) {
-        return dataManager->mAllGenericScheduleItem.size();
-    } else {
-        qWarning() << "cannot get size mAllGenericScheduleItem " << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-GenericScheduleItem* DataManager::atGenericScheduleItemProperty(
-        QQmlListProperty<GenericScheduleItem> *genericScheduleItemList, int pos)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(genericScheduleItemList->object);
-    if (dataManager) {
-        if (dataManager->mAllGenericScheduleItem.size() > pos) {
-            return (GenericScheduleItem*) dataManager->mAllGenericScheduleItem.at(pos);
-        }
-        qWarning() << "cannot get GenericScheduleItem* at pos " << pos << " size is "
-                << dataManager->mAllGenericScheduleItem.size();
-    } else {
-        qWarning() << "cannot get GenericScheduleItem* at pos " << pos
-                << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-void DataManager::clearGenericScheduleItemProperty(
-        QQmlListProperty<GenericScheduleItem> *genericScheduleItemList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(genericScheduleItemList->object);
-    if (dataManager) {
-        for (int i = 0; i < dataManager->mAllGenericScheduleItem.size(); ++i) {
-            GenericScheduleItem* genericScheduleItem;
-            genericScheduleItem = (GenericScheduleItem*) dataManager->mAllGenericScheduleItem.at(i);
-			emit dataManager->deletedFromAllGenericScheduleItemBySessionId(genericScheduleItem->sessionId());
-			emit dataManager->deletedFromAllGenericScheduleItem(genericScheduleItem);
-            genericScheduleItem->deleteLater();
-            genericScheduleItem = 0;
-        }
-        dataManager->mAllGenericScheduleItem.clear();
-    } else {
-        qWarning() << "cannot clear mAllGenericScheduleItem " << "Object is not of type DataManager*";
-    }
-}
-
-/**
- * deletes all GenericScheduleItem
- * and clears the list
- */
-void DataManager::deleteGenericScheduleItem()
-{
-    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
-        GenericScheduleItem* genericScheduleItem;
-        genericScheduleItem = (GenericScheduleItem*) mAllGenericScheduleItem.at(i);
-        emit deletedFromAllGenericScheduleItemBySessionId(genericScheduleItem->sessionId());
-		emit deletedFromAllGenericScheduleItem(genericScheduleItem);
-		emit genericScheduleItemPropertyListChanged();
-        genericScheduleItem->deleteLater();
-        genericScheduleItem = 0;
-     }
-     mAllGenericScheduleItem.clear();
-}
-
-/**
- * creates a new GenericScheduleItem
- * parent is DataManager
- * if data is successfully entered you must insertGenericScheduleItem
- * if edit was canceled you must undoCreateGenericScheduleItem to free up memory
- */
-GenericScheduleItem* DataManager::createGenericScheduleItem()
-{
-    GenericScheduleItem* genericScheduleItem;
-    genericScheduleItem = new GenericScheduleItem();
-    genericScheduleItem->setParent(this);
-    genericScheduleItem->prepareNew();
-    return genericScheduleItem;
-}
-
-/**
- * deletes GenericScheduleItem
- * if createGenericScheduleItem was canceled from UI
- * to delete a previous successfully inserted GenericScheduleItem
- * use deleteGenericScheduleItem
- */
-void DataManager::undoCreateGenericScheduleItem(GenericScheduleItem* genericScheduleItem)
-{
-    if (genericScheduleItem) {
-        // qDebug() << "undoCreateGenericScheduleItem " << genericScheduleItem->sessionId();
-        genericScheduleItem->deleteLater();
-        genericScheduleItem = 0;
-    }
-}
-
-void DataManager::insertGenericScheduleItem(GenericScheduleItem* genericScheduleItem)
-{
-    // Important: DataManager must be parent of all root DTOs
-    genericScheduleItem->setParent(this);
-    mAllGenericScheduleItem.append(genericScheduleItem);
-    emit addedToAllGenericScheduleItem(genericScheduleItem);
-    emit genericScheduleItemPropertyListChanged();
-}
-
-void DataManager::insertGenericScheduleItemFromMap(const QVariantMap& genericScheduleItemMap,
-        const bool& useForeignProperties)
-{
-    GenericScheduleItem* genericScheduleItem = new GenericScheduleItem();
-    genericScheduleItem->setParent(this);
-    if (useForeignProperties) {
-        genericScheduleItem->fillFromForeignMap(genericScheduleItemMap);
-    } else {
-        genericScheduleItem->fillFromMap(genericScheduleItemMap);
-    }
-    mAllGenericScheduleItem.append(genericScheduleItem);
-    emit addedToAllGenericScheduleItem(genericScheduleItem);
-    genericScheduleItemPropertyListChanged();
-}
-
-bool DataManager::deleteGenericScheduleItem(GenericScheduleItem* genericScheduleItem)
-{
-    bool ok = false;
-    ok = mAllGenericScheduleItem.removeOne(genericScheduleItem);
-    if (!ok) {
-        return ok;
-    }
-    emit deletedFromAllGenericScheduleItemBySessionId(genericScheduleItem->sessionId());
-    emit deletedFromAllGenericScheduleItem(genericScheduleItem);
-    emit genericScheduleItemPropertyListChanged();
-    genericScheduleItem->deleteLater();
-    genericScheduleItem = 0;
-    return ok;
-}
-
-
-bool DataManager::deleteGenericScheduleItemBySessionId(const int& sessionId)
-{
-    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
-        GenericScheduleItem* genericScheduleItem;
-        genericScheduleItem = (GenericScheduleItem*) mAllGenericScheduleItem.at(i);
-        if (genericScheduleItem->sessionId() == sessionId) {
-            mAllGenericScheduleItem.removeAt(i);
-            emit deletedFromAllGenericScheduleItemBySessionId(sessionId);
-            emit deletedFromAllGenericScheduleItem(genericScheduleItem);
-            emit genericScheduleItemPropertyListChanged();
-            genericScheduleItem->deleteLater();
-            genericScheduleItem = 0;
-            return true;
-        }
-    }
-    return false;
-}
-
-
-// nr is DomainKey
-GenericScheduleItem* DataManager::findGenericScheduleItemBySessionId(const int& sessionId){
-    for (int i = 0; i < mAllGenericScheduleItem.size(); ++i) {
-        GenericScheduleItem* genericScheduleItem;
-        genericScheduleItem = (GenericScheduleItem*)mAllGenericScheduleItem.at(i);
-        if(genericScheduleItem->sessionId() == sessionId){
-            return genericScheduleItem;
-        }
-    }
-    qDebug() << "no GenericScheduleItem found for sessionId " << sessionId;
     return 0;
 }
 
@@ -1788,317 +1456,6 @@ Favorite* DataManager::findFavoriteBySessionId(const int& sessionId){
         }
     }
     qDebug() << "no Favorite found for sessionId " << sessionId;
-    return 0;
-}
-
-/*
- * reads Maps of Bookmark in from JSON cache
- * creates List of Bookmark*  from QVariantList
- * List declared as list of QObject* - only way to use in GroupDataModel
- */
-void DataManager::initBookmarkFromCache()
-{
-	qDebug() << "start initBookmarkFromCache";
-    mAllBookmark.clear();
-    QVariantList cacheList;
-    cacheList = readFromCache(cacheBookmark);
-    qDebug() << "read Bookmark from cache #" << cacheList.size();
-    for (int i = 0; i < cacheList.size(); ++i) {
-        QVariantMap cacheMap;
-        cacheMap = cacheList.at(i).toMap();
-        Bookmark* bookmark = new Bookmark();
-        // Important: DataManager must be parent of all root DTOs
-        bookmark->setParent(this);
-        bookmark->fillFromCacheMap(cacheMap);
-        mAllBookmark.append(bookmark);
-    }
-    qDebug() << "created Bookmark* #" << mAllBookmark.size();
-}
-
-
-/*
- * save List of Bookmark* to JSON cache
- * convert list of Bookmark* to QVariantList
- * toCacheMap stores all properties without transient values
- */
-void DataManager::saveBookmarkToCache()
-{
-    QVariantList cacheList;
-    qDebug() << "now caching Bookmark* #" << mAllBookmark.size();
-    for (int i = 0; i < mAllBookmark.size(); ++i) {
-        Bookmark* bookmark;
-        bookmark = (Bookmark*)mAllBookmark.at(i);
-        QVariantMap cacheMap;
-        cacheMap = bookmark->toCacheMap();
-        cacheList.append(cacheMap);
-    }
-    qDebug() << "Bookmark* converted to JSON cache #" << cacheList.size();
-    writeToCache(cacheBookmark, cacheList);
-}
-
-
-void DataManager::resolveBookmarkReferences(Bookmark* bookmark)
-{
-	if (!bookmark) {
-        qDebug() << "cannot resolveBookmarkReferences with bookmark NULL";
-        return;
-    }
-    if(bookmark->isAllResolved()) {
-	    qDebug() << "nothing to do: all is resolved";
-	    return;
-	}
-    if (bookmark->hasSession() && !bookmark->isSessionResolvedAsDataObject()) {
-    	Session* session;
-   		session = findSessionBySessionId(bookmark->session());
-    	if (session) {
-    		bookmark->resolveSessionAsDataObject(session);
-    	} else {
-    		qDebug() << "markSessionAsInvalid: " << bookmark->session();
-    		bookmark->markSessionAsInvalid();
-    	}
-    }
-}
-
-void DataManager::resolveReferencesForAllBookmark()
-{
-    for (int i = 0; i < mAllBookmark.size(); ++i) {
-        Bookmark* bookmark;
-        bookmark = (Bookmark*)mAllBookmark.at(i);
-    	resolveBookmarkReferences(bookmark);
-    }
-}
-
-
-/**
-* converts a list of keys in to a list of DataObjects
-* per ex. used to resolve lazy arrays
-*/
-QList<Bookmark*> DataManager::listOfBookmarkForKeys(
-        QStringList keyList)
-{
-    QList<Bookmark*> listOfData;
-    keyList.removeDuplicates();
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    for (int i = 0; i < mAllBookmark.size(); ++i) {
-        Bookmark* bookmark;
-        bookmark = (Bookmark*) mAllBookmark.at(i);
-        if (keyList.contains(QString::number(bookmark->sessionId()))) {
-            listOfData.append(bookmark);
-            keyList.removeOne(QString::number(bookmark->sessionId()));
-            if(keyList.isEmpty()){
-                break;
-            }
-        }
-    }
-    if (keyList.isEmpty()) {
-        return listOfData;
-    }
-    qWarning() << "not all keys found for Bookmark: " << keyList.join(", ");
-    return listOfData;
-}
-
-QVariantList DataManager::bookmarkAsQVariantList()
-{
-    QVariantList bookmarkList;
-    for (int i = 0; i < mAllBookmark.size(); ++i) {
-        bookmarkList.append(((Bookmark*) (mAllBookmark.at(i)))->toMap());
-    }
-    return bookmarkList;
-}
-
-QList<QObject*> DataManager::allBookmark()
-{
-    return mAllBookmark;
-}
-
-QQmlListProperty<Bookmark> DataManager::bookmarkPropertyList()
-{
-    return QQmlListProperty<Bookmark>(this, 0,
-            &DataManager::appendToBookmarkProperty, &DataManager::bookmarkPropertyCount,
-            &DataManager::atBookmarkProperty, &DataManager::clearBookmarkProperty);
-}
-
-// implementation for QQmlListProperty to use
-// QML functions for List of Bookmark*
-void DataManager::appendToBookmarkProperty(
-        QQmlListProperty<Bookmark> *bookmarkList,
-        Bookmark* bookmark)
-{
-    DataManager *dataManagerObject = qobject_cast<DataManager *>(bookmarkList->object);
-    if (dataManagerObject) {
-        bookmark->setParent(dataManagerObject);
-        dataManagerObject->mAllBookmark.append(bookmark);
-        emit dataManagerObject->addedToAllBookmark(bookmark);
-    } else {
-        qWarning() << "cannot append Bookmark* to mAllBookmark "
-                << "Object is not of type DataManager*";
-    }
-}
-int DataManager::bookmarkPropertyCount(
-        QQmlListProperty<Bookmark> *bookmarkList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(bookmarkList->object);
-    if (dataManager) {
-        return dataManager->mAllBookmark.size();
-    } else {
-        qWarning() << "cannot get size mAllBookmark " << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-Bookmark* DataManager::atBookmarkProperty(
-        QQmlListProperty<Bookmark> *bookmarkList, int pos)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(bookmarkList->object);
-    if (dataManager) {
-        if (dataManager->mAllBookmark.size() > pos) {
-            return (Bookmark*) dataManager->mAllBookmark.at(pos);
-        }
-        qWarning() << "cannot get Bookmark* at pos " << pos << " size is "
-                << dataManager->mAllBookmark.size();
-    } else {
-        qWarning() << "cannot get Bookmark* at pos " << pos
-                << "Object is not of type DataManager*";
-    }
-    return 0;
-}
-void DataManager::clearBookmarkProperty(
-        QQmlListProperty<Bookmark> *bookmarkList)
-{
-    DataManager *dataManager = qobject_cast<DataManager *>(bookmarkList->object);
-    if (dataManager) {
-        for (int i = 0; i < dataManager->mAllBookmark.size(); ++i) {
-            Bookmark* bookmark;
-            bookmark = (Bookmark*) dataManager->mAllBookmark.at(i);
-			emit dataManager->deletedFromAllBookmarkBySessionId(bookmark->sessionId());
-			emit dataManager->deletedFromAllBookmark(bookmark);
-            bookmark->deleteLater();
-            bookmark = 0;
-        }
-        dataManager->mAllBookmark.clear();
-    } else {
-        qWarning() << "cannot clear mAllBookmark " << "Object is not of type DataManager*";
-    }
-}
-
-/**
- * deletes all Bookmark
- * and clears the list
- */
-void DataManager::deleteBookmark()
-{
-    for (int i = 0; i < mAllBookmark.size(); ++i) {
-        Bookmark* bookmark;
-        bookmark = (Bookmark*) mAllBookmark.at(i);
-        emit deletedFromAllBookmarkBySessionId(bookmark->sessionId());
-		emit deletedFromAllBookmark(bookmark);
-		emit bookmarkPropertyListChanged();
-        bookmark->deleteLater();
-        bookmark = 0;
-     }
-     mAllBookmark.clear();
-}
-
-/**
- * creates a new Bookmark
- * parent is DataManager
- * if data is successfully entered you must insertBookmark
- * if edit was canceled you must undoCreateBookmark to free up memory
- */
-Bookmark* DataManager::createBookmark()
-{
-    Bookmark* bookmark;
-    bookmark = new Bookmark();
-    bookmark->setParent(this);
-    bookmark->prepareNew();
-    return bookmark;
-}
-
-/**
- * deletes Bookmark
- * if createBookmark was canceled from UI
- * to delete a previous successfully inserted Bookmark
- * use deleteBookmark
- */
-void DataManager::undoCreateBookmark(Bookmark* bookmark)
-{
-    if (bookmark) {
-        // qDebug() << "undoCreateBookmark " << bookmark->sessionId();
-        bookmark->deleteLater();
-        bookmark = 0;
-    }
-}
-
-void DataManager::insertBookmark(Bookmark* bookmark)
-{
-    // Important: DataManager must be parent of all root DTOs
-    bookmark->setParent(this);
-    mAllBookmark.append(bookmark);
-    emit addedToAllBookmark(bookmark);
-    emit bookmarkPropertyListChanged();
-}
-
-void DataManager::insertBookmarkFromMap(const QVariantMap& bookmarkMap,
-        const bool& useForeignProperties)
-{
-    Bookmark* bookmark = new Bookmark();
-    bookmark->setParent(this);
-    if (useForeignProperties) {
-        bookmark->fillFromForeignMap(bookmarkMap);
-    } else {
-        bookmark->fillFromMap(bookmarkMap);
-    }
-    mAllBookmark.append(bookmark);
-    emit addedToAllBookmark(bookmark);
-    bookmarkPropertyListChanged();
-}
-
-bool DataManager::deleteBookmark(Bookmark* bookmark)
-{
-    bool ok = false;
-    ok = mAllBookmark.removeOne(bookmark);
-    if (!ok) {
-        return ok;
-    }
-    emit deletedFromAllBookmarkBySessionId(bookmark->sessionId());
-    emit deletedFromAllBookmark(bookmark);
-    emit bookmarkPropertyListChanged();
-    bookmark->deleteLater();
-    bookmark = 0;
-    return ok;
-}
-
-
-bool DataManager::deleteBookmarkBySessionId(const int& sessionId)
-{
-    for (int i = 0; i < mAllBookmark.size(); ++i) {
-        Bookmark* bookmark;
-        bookmark = (Bookmark*) mAllBookmark.at(i);
-        if (bookmark->sessionId() == sessionId) {
-            mAllBookmark.removeAt(i);
-            emit deletedFromAllBookmarkBySessionId(sessionId);
-            emit deletedFromAllBookmark(bookmark);
-            emit bookmarkPropertyListChanged();
-            bookmark->deleteLater();
-            bookmark = 0;
-            return true;
-        }
-    }
-    return false;
-}
-
-
-// nr is DomainKey
-Bookmark* DataManager::findBookmarkBySessionId(const int& sessionId){
-    for (int i = 0; i < mAllBookmark.size(); ++i) {
-        Bookmark* bookmark;
-        bookmark = (Bookmark*)mAllBookmark.at(i);
-        if(bookmark->sessionId() == sessionId){
-            return bookmark;
-        }
-    }
-    qDebug() << "no Bookmark found for sessionId " << sessionId;
     return 0;
 }
 
@@ -2460,6 +1817,10 @@ void DataManager::resolveSpeakerReferences(Speaker* speaker)
     if (!speaker->areSessionsKeysResolved()) {
         speaker->resolveSessionsKeys(
                 listOfSessionForKeys(speaker->sessionsKeys()));
+    }
+    if (!speaker->areConferencesKeysResolved()) {
+        speaker->resolveConferencesKeys(
+                listOfConferenceForKeys(speaker->conferencesKeys()));
     }
 }
 

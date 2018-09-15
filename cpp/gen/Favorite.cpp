@@ -4,17 +4,19 @@
 
 // keys of QVariantMap used in this APP
 static const QString sessionIdKey = "sessionId";
+static const QString conferenceKey = "conference";
 static const QString sessionKey = "session";
 
 // keys used from Server API etc
 static const QString sessionIdForeignKey = "sessionId";
+static const QString conferenceForeignKey = "conference";
 static const QString sessionForeignKey = "session";
 
 /*
  * Default Constructor if Favorite not initialized from QVariantMap
  */
 Favorite::Favorite(QObject *parent) :
-        QObject(parent), mSessionId(-1)
+        QObject(parent), mSessionId(-1), mConference(0)
 {
 	// lazy references:
 	mSession = -1;
@@ -40,6 +42,7 @@ bool Favorite::isAllResolved()
 void Favorite::fillFromMap(const QVariantMap& favoriteMap)
 {
 	mSessionId = favoriteMap.value(sessionIdKey).toInt();
+	mConference = favoriteMap.value(conferenceKey).toInt();
 	// session lazy pointing to Session* (domainKey: sessionId)
 	if (favoriteMap.contains(sessionKey)) {
 		mSession = favoriteMap.value(sessionKey).toInt();
@@ -58,6 +61,7 @@ void Favorite::fillFromMap(const QVariantMap& favoriteMap)
 void Favorite::fillFromForeignMap(const QVariantMap& favoriteMap)
 {
 	mSessionId = favoriteMap.value(sessionIdForeignKey).toInt();
+	mConference = favoriteMap.value(conferenceForeignKey).toInt();
 	// session lazy pointing to Session* (domainKey: sessionId)
 	if (favoriteMap.contains(sessionForeignKey)) {
 		mSession = favoriteMap.value(sessionForeignKey).toInt();
@@ -76,6 +80,7 @@ void Favorite::fillFromForeignMap(const QVariantMap& favoriteMap)
 void Favorite::fillFromCacheMap(const QVariantMap& favoriteMap)
 {
 	mSessionId = favoriteMap.value(sessionIdKey).toInt();
+	mConference = favoriteMap.value(conferenceKey).toInt();
 	// session lazy pointing to Session* (domainKey: sessionId)
 	if (favoriteMap.contains(sessionKey)) {
 		mSession = favoriteMap.value(sessionKey).toInt();
@@ -117,6 +122,7 @@ QVariantMap Favorite::toMap()
 		favoriteMap.insert(sessionKey, mSession);
 	}
 	favoriteMap.insert(sessionIdKey, mSessionId);
+	favoriteMap.insert(conferenceKey, mConference);
 	return favoriteMap;
 }
 
@@ -133,6 +139,7 @@ QVariantMap Favorite::toForeignMap()
 		favoriteMap.insert(sessionForeignKey, mSession);
 	}
 	favoriteMap.insert(sessionIdForeignKey, mSessionId);
+	favoriteMap.insert(conferenceForeignKey, mConference);
 	return favoriteMap;
 }
 
@@ -228,6 +235,20 @@ void Favorite::setSessionId(int sessionId)
 	if (sessionId != mSessionId) {
 		mSessionId = sessionId;
 		emit sessionIdChanged(sessionId);
+	}
+}
+// ATT 
+// Optional: conference
+int Favorite::conference() const
+{
+	return mConference;
+}
+
+void Favorite::setConference(int conference)
+{
+	if (conference != mConference) {
+		mConference = conference;
+		emit conferenceChanged(conference);
 	}
 }
 
