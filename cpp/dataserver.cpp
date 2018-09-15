@@ -217,7 +217,7 @@ void DataServer::setConferenceDataPath(const QString &conferenceDataPath)
     qDebug() << "Conference Data path: " << mConferenceDataPath;
 }
 
-void DataServer::requestSchedule()
+void DataServer::requestSchedule(const int conferenceId)
 {
     // workaround bug iOS - cannot reuse QNetworkAccessManager QTBUG-49751
     // otherwise accessibility not detected if switch off and on again
@@ -235,15 +235,23 @@ void DataServer::requestSchedule()
 
     QString uri;
     // uri = "https://conf.qtcon.org/en/qtcon/public/schedule.json";
-    uri = "http://www.qtworldsummit.com/api/schedule/all/";
+    // uri = "http://www.qtworldsummit.com/api/schedule/all/";
+    if(conferenceId == 201801) {
+        uri = "https://www.qtworldsummit.com/2018/api/schedule/all/?location=Boston";
+    } else {
+        uri = "https://www.qtworldsummit.com/2018/api/schedule/all/?location=Berlin";
+    }
+
     qDebug() << "requestSchedule uri:" << uri;
 
     QNetworkRequest request(uri);
+    QByteArray ba = QString::number(conferenceId).toUtf8();
+    request.setRawHeader("CONFERENCE_ID", ba);
 
     // to avoid ssl errors:
-//    QSslConfiguration conf = request.sslConfiguration();
-//    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
-//    request.setSslConfiguration(conf);
+    QSslConfiguration conf = request.sslConfiguration();
+    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+    request.setSslConfiguration(conf);
 
     QNetworkReply* reply = networkAccessManager->get(request);
     bool connectResult = connect(reply, SIGNAL(finished()), this, SLOT(onFinishedSchedule()));
@@ -269,7 +277,8 @@ void DataServer::requestVersion()
 
     QString uri;
     // uri = "https://conf.qtcon.org/en/qtcon/public/schedule/version.json";
-    uri = "http://www.qtworldsummit.com/api/version/show/";
+    // uri = "http://www.qtworldsummit.com/api/version/show/";
+    uri = "https://www.qtworldsummit.com/2018/api/version/show/";
     qDebug() << "requestVersion uri:" << uri;
 
     QNetworkRequest request(uri);
@@ -341,7 +350,11 @@ void DataServer::onFinishedSchedule()
         emit serverFailed(tr("No sucess getting Schedule from Server. Got HTTP Status ")+QString::number(httpStatusCode));
         return;
     }
-    QString scheduleFilePath = mConferenceDataPath+"schedule.json";
+    // more schedules this year ?
+    QByteArray ba = reply->request().rawHeader("CONFERENCE_ID");
+    QString conferenceString = QString::fromUtf8(ba);
+
+    QString scheduleFilePath = mConferenceDataPath+"schedule_"+conferenceString+".json";
     QFile saveFile(scheduleFilePath);
     if (!saveFile.open(QIODevice::WriteOnly)) {
         qWarning() << "Couldn't open file to write " << scheduleFilePath;
@@ -351,8 +364,17 @@ void DataServer::onFinishedSchedule()
     qint64 bytesWritten = saveFile.write(reply->readAll());
     saveFile.close();
     qDebug() << "Schedule Data Bytes written: " << bytesWritten << " to: " << scheduleFilePath;
+
+    // more schedules this year ?
+    int conferenceId = conferenceString.toInt();
+    if(conferenceId == 201801) {
+        requestSchedule(201802);
+    }
+
     // now getting the speaker data
-    requestSpeaker();
+
+    // TODO
+    // requestSpeaker();
 }
 
 void DataServer::onFinishedSpeaker()

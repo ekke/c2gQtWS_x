@@ -74,6 +74,9 @@ public:
     bool isDateTooLate();
 
     Q_INVOKABLE
+    bool isOldConference();
+
+    Q_INVOKABLE
     QString sessionInfoForSpeaker(Speaker* speaker);
 
     Q_INVOKABLE
@@ -96,6 +99,7 @@ public:
 
     Q_INVOKABLE
     QString trackColorFirstTrack(Session* session);
+
 
 signals:
     void myScheduleRefreshed();

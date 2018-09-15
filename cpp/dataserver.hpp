@@ -44,7 +44,7 @@ public:
     QString networkInfo();
     //
 
-    void requestSchedule();
+    void requestSchedule(const int conferenceId);
     void requestVersion();
 
 signals:

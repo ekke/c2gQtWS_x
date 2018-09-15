@@ -59,6 +59,18 @@ QString DataUtil::conferenceDataPath4QML() {
     return "file://"+mConferenceDataPath;
 }
 
+bool DataUtil::isOldConference()
+{
+    if(mDataManager->allConference().size() > 0) {
+        Conference* conference = (Conference*) mDataManager->allConference().last();
+        if(conference->id() < 201801) {
+            qDebug() << " we have old conference data";
+            return true;
+        }
+    }
+    return false;
+}
+
 bool DataUtil::isDateTooLate()
 {
     QString todayDate = QDate::currentDate().toString(YYYY_MM_DD);
@@ -970,7 +982,7 @@ void DataUtil::startUpdate()
     }
     mProgressInfotext = tr("Request Schedule and Speakers from Server");
     emit progressInfo(mProgressInfotext);
-    mDataServer->requestSchedule();
+    mDataServer->requestSchedule(201801);
 }
 
 void DataUtil::continueUpdate()

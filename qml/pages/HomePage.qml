@@ -73,6 +73,14 @@ Pane {
         homePage.isAutoVersionCheckMode = true
         dataUtil.checkVersion()
     }
+    // open modal dialog and wait
+    function updateFromOldConference() {
+        homePage.isAutoVersionCheckMode = false
+        checkVersionPopup.text = qsTr("New Conference Data available ...")
+        checkVersionPopup.buttonsVisible = false
+        checkVersionPopup.isUpdate = false
+        checkVersionPopup.open()
+    }
 
     PopupUpdate {
         id: checkVersionPopup
@@ -149,6 +157,11 @@ Pane {
         target: appWindow
         onDoAutoVersionCheck: checkVersionAutomatically()
     }
+    Connections {
+        target: appWindow
+        onOldConference: updateFromOldConference()
+    }
+
     // also catched from main
     Connections {
         target: dataUtil

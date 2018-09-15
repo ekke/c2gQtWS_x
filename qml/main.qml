@@ -28,6 +28,7 @@ ApplicationWindow {
     // visibile must set to true - default is false
     visible: true
     signal doAutoVersionCheck()
+    signal oldConference()
     property bool autoVersionCheck: true
     //
     property bool appIsActive: Qt.application.state == Qt.ApplicationActive
@@ -507,6 +508,11 @@ ApplicationWindow {
                 // show first destination (should always be IMMEDIATELY)
                 rootPane.activateDestination(firstActiveDestination)
                 console.log("startupDelayedTimer DONE")
+                if(dataUtil.isOldConference()) {
+                    appWindow.oldConference()
+                    return
+                }
+
                 if(dataUtil.isDateTooLate()) {
                     // no version checks anymore - conference closed
                     return
