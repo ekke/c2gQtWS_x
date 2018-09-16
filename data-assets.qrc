@@ -314,7 +314,6 @@
         <file>data-assets/conference/speakerImages/speaker_940.png</file>
         <file>data-assets/conference/speakerImages/speaker_940@2x.png</file>
         <file>data-assets/conference/speakerImages/speaker_940@3x.png</file>
-        <file>data-assets/conference/schedule.json</file>
         <file>data-assets/conference/speaker.json</file>
         <file>data-assets/prod/cacheBookmark.json</file>
         <file>data-assets/prod/cacheConference.json</file>
@@ -344,5 +343,7 @@
         <file>data-assets/conference/floorplan/QtWS2018_Boston_hotel.png</file>
         <file>data-assets/conference/floorplan/QtWS2018_Boston_day2.png</file>
         <file>data-assets/conference/floorplan/QtWS2018_Boston_day1.png</file>
+        <file>data-assets/conference/schedule_201802.json</file>
+        <file>data-assets/conference/schedule_201801.json</file>
     </qresource>
 </RCC>
