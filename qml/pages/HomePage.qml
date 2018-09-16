@@ -176,7 +176,7 @@ Pane {
 
     // called immediately after Loader.loaded
     function init() {
-        conference = dataManager.conferencePropertyList[0]
+        conference = dataManager.conferencePropertyList.length > 0? dataManager.conferencePropertyList[0] : dataManager.createConference()
         console.log("Init done from Home Page")
     }
     // called from Component.destruction

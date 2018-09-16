@@ -140,7 +140,7 @@ Page {
                     }
                     LabelSubheading {
                         Layout.leftMargin: 16
-                        text: session.sessionDayAsDataObject.conferenceDay.toLocaleDateString()
+                        text: session.sessionDayAsDataObject? session.sessionDayAsDataObject.conferenceDay.toLocaleDateString() : ""
                     }
                 }
                 RowLayout {
@@ -165,11 +165,11 @@ Page {
                     }
                     LabelSubheading {
                         Layout.leftMargin: 16
-                        text: session.roomAsDataObject.roomName
+                        text: session.roomAsDataObject? session.roomAsDataObject.roomName : ""
                     }
                     FloatingActionMiniButton {
                         z: 1
-                        visible: session.roomAsDataObject.inAssets
+                        visible: session.roomAsDataObject && session.roomAsDataObject.inAssets
                         transform: Translate{y: -6}
                         showShadow: true
                         imageSource: "qrc:/images/"+iconOnAccentFolder+"/directions.png"

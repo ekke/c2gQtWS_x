@@ -67,12 +67,17 @@ bool DataUtil::isOldConference()
             qDebug() << " we have old conference data";
             return true;
         }
+    } else {
+        return true;
     }
     return false;
 }
 
 bool DataUtil::isDateTooLate()
 {
+    if(mDataManager->allDay().size() == 0) {
+        return true;
+    }
     QString todayDate = QDate::currentDate().toString(YYYY_MM_DD);
     QString lastConferenceDay = ((Day*) mDataManager->mAllDay.last())->conferenceDay().toString(YYYY_MM_DD);
     qDebug() << "todayDate" << todayDate << "lastConferenceDay" << lastConferenceDay;
@@ -422,11 +427,11 @@ void DataUtil::prepareEventData() {
     mDataManager->deleteSpeakerImage();
     // Rooms and Room Images
     prepareRooms();
-    return;
     // Conference, Days
     prepareBoston201801();
     prepareBerlin201802();
 
+        return;
 
     //
 }
@@ -437,6 +442,20 @@ void DataUtil::prepareRooms() {
     QVariantList dataList;
     dataList = readRoomMappingFile(path);
     qDebug() << "read room mappings #" << dataList.size();
+    for (int i = 0; i < dataList.size(); ++i) {
+        QVariantMap map = dataList.at(i).toMap();
+        int id = map.value("id").toInt();
+        QString name = map.value("name").toString();
+        Room* room = mDataManager->createRoom();
+        room->setRoomId(id);
+        if(room->roomId() > 2018000 && room->roomId() < 2018100) {
+            room->setConference(201801);
+        } else if (room->roomId() > 2018100 && room->roomId() < 2018200) {
+            room->setConference(201802);
+        }
+        room->setRoomName(name);
+        mDataManager->insertRoom(room);
+    }
 }
 
 void DataUtil::prepareSanFrancisco201601() {
@@ -484,6 +503,7 @@ void DataUtil::prepareSanFrancisco201601() {
 
 void DataUtil::prepareBoston201801() {
     Conference* conference = mDataManager->createConference();
+    conference->setId(201801);
     conference->setConferenceName("Qt World Summit 2018");
     conference->setConferenceCity("Boston, MA");
     QString venueAddress;
@@ -526,6 +546,7 @@ void DataUtil::prepareBoston201801() {
 
 void DataUtil::prepareBerlin201802() {
     Conference* conference = mDataManager->createConference();
+    conference->setId(201802);
     conference->setConferenceName("Qt World Summit 2018");
     conference->setConferenceCity("Berlin");
     QString venueAddress;

@@ -80,10 +80,16 @@ Page {
     function init() {
         console.log("Init done from dayListPage")
         console.log("Day# "+dataManager.dayPropertyList.length)
-        conferenceDay = dataManager.dayPropertyList[index]
-        console.log(conferenceDay.conferenceDay)
-        console.log("Sessions:"+conferenceDay.sessionsPropertyList.length)
-        listView.model = conferenceDay.sessionsPropertyList
+        if(dataManager.dayPropertyList.length > 0) {
+            conferenceDay = dataManager.dayPropertyList[index]
+            console.log(conferenceDay.conferenceDay)
+            console.log("Sessions:"+conferenceDay.sessionsPropertyList.length)
+            listView.model = conferenceDay.sessionsPropertyList
+        } else {
+            listView.model =  []
+        }
+
+
     }
     // called from Component.destruction
     function cleanup() {

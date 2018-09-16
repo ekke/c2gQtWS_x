@@ -178,7 +178,7 @@ ApplicationWindow {
     property int helpNavigationIndex: 9
     property int aboutNavigationIndex: 10
     property var navigationModel: [
-        {"type": "../navigation/DrawerNavigationButton.qml", "name": "QtWS16", "icon": "home.png", "source": "../pages/HomePage.qml", "showCounter":false, "showMarker":false, "a_p":1, "canGoBack":false},
+        {"type": "../navigation/DrawerNavigationButton.qml", "name": "QtWS18", "icon": "home.png", "source": "../pages/HomePage.qml", "showCounter":false, "showMarker":false, "a_p":1, "canGoBack":false},
         {"type": "../navigation/DrawerDivider.qml", "name": "", "icon": "", "source": "", "a_p":1, "canGoBack":false},
         {"type": "../navigation/DrawerNavigationButton.qml", "name": qsTr("Schedule"), "icon": "schedule.png", "source": "../navigation/ScheduleNavigation.qml", "showCounter":false, "showMarker":false, "a_p":2, "canGoBack":true},
         {"type": "../navigation/DrawerNavigationButton.qml", "name": qsTr("Speakers"), "icon": "speaker.png", "source": "../navigation/SpeakerNavigation.qml", "showCounter":false, "showMarker":false, "a_p":2, "canGoBack":true},
@@ -196,18 +196,18 @@ ApplicationWindow {
     property bool initDone: false
 
     property var navigationTitles: [
-        qsTr("Qt World Summit 2016"),
+        qsTr("Qt World Summit 2018"),
         "",
-        qsTr("QtWS 2016 Schedule"),
-        qsTr("QtWS 2016 Speakers"),
-        qsTr("QtWS 2016 Tracks"),
-        qsTr("QtWS 2016 Venue"),
-        qsTr("QtWS 2016 Rooms"),
+        qsTr("QtWS 2018 Schedule"),
+        qsTr("QtWS 2018 Speakers"),
+        qsTr("QtWS 2018 Tracks"),
+        qsTr("QtWS 2018 Venue"),
+        qsTr("QtWS 2018 Rooms"),
         "",
-        qsTr("QtWS 2016 Settings"),
-        qsTr("QtWS 2016 Help"),
-        qsTr("QtWS 2016 About"),
-        qsTr("QtWS 2016 D E V E L O P E R Tools")
+        qsTr("QtWS 2018 Settings"),
+        qsTr("QtWS 2018 Help"),
+        qsTr("QtWS 2018 About"),
+        qsTr("QtWS 2018 D E V E L O P E R Tools")
     ]
     property string currentTitle: navigationTitles[navigationIndex]
     // Counter: orders
@@ -509,11 +509,13 @@ ApplicationWindow {
                 rootPane.activateDestination(firstActiveDestination)
                 console.log("startupDelayedTimer DONE")
                 if(dataUtil.isOldConference()) {
+                    console.log("startupDelayedTimer: isOldConference")
                     appWindow.oldConference()
                     return
                 }
 
                 if(dataUtil.isDateTooLate()) {
+                    console.log("startupDelayedTimer: isDateTooLate")
                     // no version checks anymore - conference closed
                     return
                 }
