@@ -1,14 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>data-assets/conference/floorplan/building_1.png</file>
-        <file>data-assets/conference/floorplan/floor_1.png</file>
-        <file>data-assets/conference/floorplan/pier27_room_mapping.txt</file>
-        <file>data-assets/conference/floorplan/room_1.png</file>
-        <file>data-assets/conference/floorplan/room_2.png</file>
-        <file>data-assets/conference/floorplan/room_3.png</file>
-        <file>data-assets/conference/floorplan/room_4.png</file>
-        <file>data-assets/conference/floorplan/room_5.png</file>
-        <file>data-assets/conference/floorplan/room_6.png</file>
         <file>data-assets/conference/speakerImages/speaker_1033.jpg</file>
         <file>data-assets/conference/speakerImages/speaker_1033@2x.jpg</file>
         <file>data-assets/conference/speakerImages/speaker_1033@3x.jpg</file>

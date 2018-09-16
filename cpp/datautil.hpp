@@ -138,6 +138,7 @@ private:
     void prepareHighDpiImages(SpeakerImage *speakerImage, int width, int height);
 
     void prepareEventData();
+    void prepareRooms();
     void prepareSanFrancisco201601();
     void prepareBoston201801();
     void prepareBerlin201802();
@@ -154,6 +155,7 @@ private:
     QMultiMap<bool, SpeakerImage*> mMultiSpeakerImages;
     QVariantMap readScheduleFile(const QString schedulePath);
     QVariantList readSpeakerFile(const QString speakerPath);
+    QVariantList readRoomMappingFile(const QString path);
     void calcSpeakerName(Speaker *speaker, SpeakerAPI *speakerAPI);
     void updateSpeakerImages();
     void updateSessions();

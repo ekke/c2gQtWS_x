@@ -420,12 +420,23 @@ void DataUtil::prepareEventData() {
     mDataManager->deleteSessionTrack();
     mDataManager->deleteSpeaker();
     mDataManager->deleteSpeakerImage();
-    //
+    // Rooms and Room Images
+    prepareRooms();
+    return;
+    // Conference, Days
     prepareBoston201801();
     prepareBerlin201802();
 
 
     //
+}
+
+void DataUtil::prepareRooms() {
+    const QString path = ":/data-assets/conference/roomimages/mapping.json";
+    qDebug() << "PREPARE ROOMS ";
+    QVariantList dataList;
+    dataList = readRoomMappingFile(path);
+    qDebug() << "read room mappings #" << dataList.size();
 }
 
 void DataUtil::prepareSanFrancisco201601() {
@@ -918,6 +929,29 @@ QVariantList DataUtil::readSpeakerFile(const QString speakerPath) {
         return dataList;
     }
     qDebug() << "QJsonDocument for speaker with Array :)";
+    dataList = jda.toVariant().toList();
+    return dataList;
+}
+
+QVariantList DataUtil::readRoomMappingFile(const QString path) {
+    QVariantList dataList;
+    QFile readFile(path);
+    if(!readFile.exists()) {
+        qWarning() << "Room Mapping Path not found " << path;
+        return dataList;
+    }
+    if (!readFile.open(QIODevice::ReadOnly)) {
+        qWarning() << "Couldn't open file: " << path;
+        return dataList;
+    }
+    QJsonDocument jda = QJsonDocument::fromJson(readFile.readAll());
+
+    readFile.close();
+    if(!jda.isArray()) {
+        qWarning() << "Couldn't create JSON from file: " << path;
+        return dataList;
+    }
+    qDebug() << "QJsonDocument for room mappings with Array :)";
     dataList = jda.toVariant().toList();
     return dataList;
 }
@@ -1788,13 +1822,11 @@ void DataUtil::onServerSuccess()
     qDebug() << "S U C C E S S request Schedule (BOSTON, BERLIN) and Speaker";
 
     // check if conference is prepared
-    if(isOldConference()) {
+    if(isOldConference() || mDataManager->allConference().size() == 0 || mDataManager->settingsData()->version() < 201800) {
         prepareConference();
     }
-
-    // now do the real work
+    return;
     continueUpdate();
-
 }
 
 void DataUtil::onVersionSuccess(QByteArray currentVersionBytes)
