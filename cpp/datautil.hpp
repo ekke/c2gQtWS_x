@@ -14,11 +14,7 @@ public:
 
     void init(DataManager *dataManager, DataServer* dataServer);
 
-    Q_INVOKABLE
     void prepareConference();
-    void prepareSessions();
-    void prepareSpeaker();
-    void prepareSpeakerImages();
 
     Q_INVOKABLE
     void checkVersion();
@@ -100,7 +96,6 @@ public:
     Q_INVOKABLE
     QString trackColorFirstTrack(Session* session);
 
-
 signals:
     void myScheduleRefreshed();
 
@@ -114,11 +109,9 @@ signals:
     void progressInfo(const QString progressInfo);
 
 public slots:
-    void onSpeakerImageLoaded(QObject* dataObject, int width, int height);
-
     void onSpeakerImageUpdateLoaded(QObject *dataObject, int width, int height);
-    void onSpeakerImageFailed(QObject *dataObject, QString message);
     void onSpeakerImageUpdateFailed(QObject *dataObject, QString message);
+
 private slots:
     void onServerSuccess();
     void onServerFailed(const QString message);

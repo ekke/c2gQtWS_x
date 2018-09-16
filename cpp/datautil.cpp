@@ -349,20 +349,9 @@ bool DataUtil::checkDirs()
     return true;
 }
 
-// P R E   C O N F E R E N C E   S T U F F
-/**
- * Prepare will be done before submitting the App to AppStore
- * Use public Cache
- * Best practice:
- * 1. remove app from dev device
- * 2. start app, switch to public cache
- * 3. restart app
- * If all done send files from Phone to PC/Mac
- * Copy them into data-assets /prod or /test
- * Test again after deleting app from dev device
- * Now Users will get this directly by installing the app
- * and updates are fast
- */
+// Conference, Days, Rooms
+// some special stuff to initialize a new conference
+// or to update if there were changes ion data-assets
 void DataUtil::prepareConference() {
     qDebug() << "PREPARE CONFERENCE ";
     // check dirs for pre-conference stuff
@@ -374,44 +363,12 @@ void DataUtil::prepareConference() {
     // create some data for this specific conference
     prepareEventData();
 
-
-    // prepare speaker
-    // XXX prepareSpeaker();
-    // prepare sessions
-    // speaker must exist because sessions will be added to
-    // XXX prepareSessions();
-    // download speaker images
-    // XXX prepareSpeakerImages();
-    // now cache all the data
-    // if ok - copied to qrc: data-assets
     qDebug() << "cache DATA";
     mDataManager->saveConferenceToCache();
     mDataManager->saveDayToCache();
     mDataManager->saveRoomToCache();
 
-    qDebug() << "PREPARE   D O N E - WAIT FOR IMAGES";
-
-//    mDataManager->saveSessionToCache();
-//    // sort Tracks
-//    QMultiMap<QString, SessionTrack*> sessionTrackSortMap;
-//    for (int i = 0; i < mDataManager->allSessionTrack().size(); ++i) {
-//        SessionTrack* sessionTrack = (SessionTrack*) mDataManager->allSessionTrack().at(i);
-//        sessionTrackSortMap.insert(sessionTrack->name(), sessionTrack);
-//    }
-//    mDataManager->mAllSessionTrack.clear();
-//    QMapIterator<QString, SessionTrack*> sessionTrackIterator(sessionTrackSortMap);
-//    while (sessionTrackIterator.hasNext()) {
-//        sessionTrackIterator.next();
-//        SessionTrack* sessionTrack = sessionTrackIterator.value();
-//        mDataManager->insertSessionTrack(sessionTrack);
-//    }
-
-//    mDataManager->saveSessionTrackToCache();
-
-//    mDataManager->saveSpeakerToCache();
-//    // set API Version
-//    mDataManager->mSettingsData->setApiVersion(mNewApi);
-//    qDebug() << "PREPARE   D O N E - WAIT FOR IMAGES";
+    qDebug() << "PREPARE   D O N E";
 }
 
 // conference, days, rooms
@@ -430,12 +387,9 @@ void DataUtil::prepareEventData() {
     // Conference, Days
     prepareBoston201801();
     prepareBerlin201802();
-
-        return;
-
-    //
 }
 
+// Rooms
 void DataUtil::prepareRooms() {
     const QString path = ":/data-assets/conference/roomimages/mapping.json";
     qDebug() << "PREPARE ROOMS ";
@@ -454,10 +408,12 @@ void DataUtil::prepareRooms() {
             room->setConference(201802);
         }
         room->setRoomName(name);
+        room-> setInAssets(true);
         mDataManager->insertRoom(room);
     }
 }
 
+// Conference, Days
 void DataUtil::prepareSanFrancisco201601() {
     Conference* conference = mDataManager->createConference();
     conference->setConferenceName("Qt World Summit 2016");
@@ -501,6 +457,7 @@ void DataUtil::prepareSanFrancisco201601() {
     mDataManager->insertDay(day);
 }
 
+// Conference, Days
 void DataUtil::prepareBoston201801() {
     Conference* conference = mDataManager->createConference();
     conference->setId(201801);
@@ -544,6 +501,7 @@ void DataUtil::prepareBoston201801() {
     mDataManager->insertDay(day);
 }
 
+// Conference, Days
 void DataUtil::prepareBerlin201802() {
     Conference* conference = mDataManager->createConference();
     conference->setId(201802);
@@ -751,145 +709,6 @@ void DataUtil::setType(Session* session) {
     // for QtCon here we create ScheduleItems which are not part of QtWS data
 }
 
-void DataUtil::prepareSessions()
-{
-    const QString schedulePath = mDataManager->mDataAssetsPath + "conference/schedule.json";
-    qDebug() << "PREPARE SESSIONS ";
-    QVariantMap map;
-    map = readScheduleFile(schedulePath);
-
-    if(map.isEmpty()) {
-        qWarning() << "Schedule is no Map";
-        return;
-    }
-    // QtCon
-    //    map = map.value("schedule").toMap();
-    //    if(map.isEmpty()) {
-    //        qWarning() << "No 'schedule' found";
-    //        return;
-    //    }
-    mNewApi = map.value("version").toString();
-    qDebug() << "VERSION: " + mNewApi;
-
-    map = map.value("conference").toMap();
-    if(map.isEmpty()) {
-        qWarning() << "No 'conference' found";
-        return;
-    }
-
-    qDebug() << "TITLE: " << map.value("title").toString();
-    Conference* conference;
-    conference = (Conference*) mDataManager->allConference().first();
-    QVariantList dayList;
-    // dayList = map.value("days").toList();
-    // QtCon gives us a list of days
-    // QtWS a days object, so we have to construct the list
-    QVariantMap allDaysMap;
-    allDaysMap = map.value("days").toMap();
-    dayList.append(allDaysMap.value("2016-10-19").toMap());
-    dayList.append(allDaysMap.value("2016-10-20").toMap());
-
-    if(dayList.isEmpty()) {
-        qWarning() << "No 'days' found";
-        return;
-    }
-    mMultiSession.clear();
-    qDebug() << "DAYS: " << dayList.size();
-    for (int i = 0; i < dayList.size(); ++i) {
-        QVariantMap dayMap;
-        dayMap = dayList.at(i).toMap();
-        if(dayMap.isEmpty()) {
-            qWarning() << "No 'DAY' found #" << i;
-            continue;
-        }
-        QString dayDate;
-        dayDate = dayMap.value("date").toString();
-        qDebug() << "processing DATE: " << dayDate;
-
-        Day* day = findDayForServerDate(dayDate);
-        if(!day) {
-            qWarning() << "No Day* found for " << dayDate;
-            continue;
-        }
-
-        bool found = false;
-        QVariantMap roomMap;
-        roomMap = dayMap.value("rooms").toMap();
-        QStringList roomKeys = roomMap.keys();
-        if(roomKeys.isEmpty()) {
-            qWarning() << "No 'ROOMS' found for DAY # i";
-            continue;
-        }
-        for (int r = 0; r < roomKeys.size(); ++r) {
-            QVariantList sessionList;
-            sessionList = roomMap.value(roomKeys.at(r)).toList();
-            if(sessionList.isEmpty()) {
-                qWarning() << "DAY: " << dayDate << " ROOM: " << roomKeys.at(r) << " ignored - No Sessions available";
-                continue;
-            }
-            Room* room = nullptr;
-            found = false;
-            for (int rl = 0; rl < mDataManager->mAllRoom.size(); ++rl) {
-                room = (Room*) mDataManager->mAllRoom.at(rl);
-                if(room->roomName() == roomKeys.at(r)) {
-                    found = true;
-                    break;
-                }
-            }
-            if(!found) {
-                qWarning() << "Room* not found for " << dayDate << " Room: " << roomKeys.at(r);
-                if(roomKeys.at(r).isEmpty()) {
-                    // use dummi room
-                    room = (Room*) mDataManager->mAllRoom.first();
-                    qDebug() << "Room Name empty - using Room " << room->roomName();
-                } else {
-                    room = mDataManager->createRoom();
-                    conference->setLastRoomId(conference->lastRoomId()+1);
-                    room->setRoomId(conference->lastRoomId());
-                    room->setInAssets(true);
-                    room->setRoomName(roomKeys.at(r));
-                    mDataManager->insertRoom(room);
-                }
-            }
-            for (int sl = 0; sl < sessionList.size(); ++sl) {
-                QVariantMap sessionMap;
-                sessionMap = sessionList.at(sl).toMap();
-                if(sessionMap.isEmpty()) {
-                    qWarning() << "No 'SESSION' Map DAY: " << dayDate << " ROOM: " << roomKeys.at(r);
-                    continue;
-                }
-                // adjust persons
-                adjustPersons(sessionMap);
-
-                // adjust tracks
-                adjustTracks(sessionMap, conference, false);
-
-                SessionAPI* sessionAPI = mDataManager->createSessionAPI();
-                sessionAPI->fillFromForeignMap(sessionMap);
-                // ignore unwanted Sessions
-                if (checkIfIgnored(sessionAPI)) {
-                    continue;
-                }
-                Session* session = mDataManager->createSession();
-                session->fillFromMap(sessionAPI->toMap());
-                setDuration(sessionAPI, session);
-                // refs
-                // DAY
-                session->setSessionDay(day->id());
-                // ROOM
-                session->setRoom(room->roomId());
-                // TYPE SCHEDULE
-                setType(session);
-                // SORT
-                session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
-                mMultiSession.insert(session->sortKey(), session);
-            } // end for session of a room
-        } // room keys
-    } // for days list
-    // insert sorted Sessions
-    sortedSessionsIntoRoomDayTrackSpeaker();
-}
-
 // sessions must be cleared before for Day Track, Room, Speaker
 // always if prepare Conference, explicitely if Update Schedule
 void DataUtil::sortedSessionsIntoRoomDayTrackSpeaker() {
@@ -994,92 +813,6 @@ void DataUtil::calcSpeakerName(Speaker* speaker, SpeakerAPI* speakerAPI) {
         speaker->setSortKey("*");
         speaker->setSortGroup("*");
     }
-}
-
-void DataUtil::prepareSpeaker()
-{
-    const QString speakersPath = mDataManager->mDataAssetsPath + "conference/speaker.json";
-    qDebug() << "PREPARE SPEAKER ";
-    QVariantList dataList;
-    dataList = readSpeakerFile(speakersPath);
-    if(dataList.size() == 0) {
-        qWarning() << "Speaker List empty";
-        return;
-    }
-
-    mMultiSpeaker.clear();
-    for (int i = 0; i < dataList.size(); ++i) {
-        SpeakerAPI* speakerAPI = mDataManager->createSpeakerAPI();
-        speakerAPI->fillFromForeignMap(dataList.at(i).toMap());
-
-        Speaker* speaker = mDataManager->createSpeaker();
-        speaker->setSpeakerId(speakerAPI->id());
-
-        calcSpeakerName(speaker, speakerAPI);
-        speaker->setBio(speakerAPI->bio());
-
-        if(speakerAPI->avatar().length() > 0 && speakerAPI->avatar() != DEFAULT_SPEAKER_IMAGE_URL) {
-            QString avatar = speakerAPI->avatar();
-            QStringList sl = avatar.split("?");
-            if(sl.size() > 1) {
-                sl.removeLast();
-                avatar = sl.join("?");
-            }
-            sl = avatar.split(".");
-            if(sl.size() < 2) {
-                qWarning() << "AVATAR wrong "+speakerAPI->avatar();
-            } else {
-                // only for QtCon16 avatar = avatar.replace("http://","https://");
-                SpeakerImage* speakerImage = mDataManager->createSpeakerImage();
-                speakerImage->setSpeakerId(speaker->speakerId());
-                speakerImage->setOriginImageUrl(avatar);
-                speakerImage->setSuffix(sl.last());
-                mDataManager->insertSpeakerImage(speakerImage);
-                speaker->resolveSpeakerImageAsDataObject(speakerImage);
-            }
-        }
-        // using MultiMap to get Speakers sorted
-        mMultiSpeaker.insert(speaker->sortKey(), speaker);
-    } // end for all SpeakersAPI
-    // insert sorted Speakers
-    mDataManager->mAllSpeaker.clear();
-    QMapIterator<QString, Speaker*> speakerIterator(mMultiSpeaker);
-    while (speakerIterator.hasNext()) {
-        speakerIterator.next();
-        mDataManager->insertSpeaker(speakerIterator.value());
-    }
-}
-
-void DataUtil::prepareSpeakerImages()
-{
-    const QString speakerImagesPath = mConferenceDataPath + "speakerImages/";
-    for (int i = 0; i < mDataManager->allSpeakerImage().size(); ++i) {
-        SpeakerImage* speakerImage = (SpeakerImage*) mDataManager->allSpeakerImage().at(i);
-        if (!speakerImage->downloadSuccess() && !speakerImage->downloadFailed()) {
-            qDebug() << "loading..." << speakerImage->speakerId();
-            QString fileName;
-            fileName = "speaker_";
-            fileName.append(QString::number(speakerImage->speakerId()));
-            fileName.append('.');
-            fileName.append(speakerImage->suffix());
-            mImageLoader = new ImageLoader(speakerImage->originImageUrl(), speakerImagesPath+fileName, this);
-            bool res = connect(mImageLoader, SIGNAL(loaded(QObject*, int, int)), this,
-                               SLOT(onSpeakerImageLoaded(QObject*, int, int)));
-            if (!res) {
-                Q_ASSERT(res);
-            }
-            res = connect(mImageLoader, SIGNAL(loadingFailed(QObject*, QString)), this,
-                          SLOT(onSpeakerImageFailed(QObject*, QString)));
-            if (!res) {
-                Q_ASSERT(res);
-            }
-            mImageLoader->loadSpeaker(speakerImage);
-            return;
-        }
-    } // for all speaker images
-    // N OW cache speaker images
-    mDataManager->saveSpeakerImageToCache();
-    qDebug() << "SPEAKER IMAGES   D O W N L O A D E D";
 }
 
 void DataUtil::checkVersion()
@@ -1212,6 +945,8 @@ void DataUtil::updateSpeakerImages() {
         } // waiting for download
     } // new images map
     // all done
+    // XXX
+    return;
     updateSessions();
 }
 
@@ -1715,34 +1450,6 @@ void DataUtil::onSpeakerImageUpdateFailed(QObject *dataObject, QString message) 
     updateSpeakerImages();
 }
 
-
-// SLOT  PREPARE CONFERENCE
-void DataUtil::onSpeakerImageLoaded(QObject *dataObject, int width, int height)
-{
-    mImageLoader->deleteLater();
-    SpeakerImage* speakerImage = (SpeakerImage*) dataObject;
-    qDebug() << "loaded..." << speakerImage->speakerId() << " " << width << "x" << height;
-    speakerImage->setDownloadSuccess(true);
-    speakerImage->setDownloadFailed(false);
-    speakerImage->setInAssets(true);
-    speakerImage->setInData(false);
-    prepareHighDpiImages(speakerImage, width, height);
-    // more to load ?
-    prepareSpeakerImages();
-}
-
-void DataUtil::onSpeakerImageFailed(QObject *dataObject, QString message) {
-    mImageLoader->deleteLater();
-    SpeakerImage* speakerImage = (SpeakerImage*) dataObject;
-    qDebug() << "PREPARE: Cannot load Speaker Image:  " << message << speakerImage->speakerId();
-    speakerImage->setDownloadSuccess(false);
-    speakerImage->setDownloadFailed(true);
-    speakerImage->setInAssets(false);
-    speakerImage->setInData(false);
-    // more to load ?
-    prepareSpeakerImages();
-}
-
 void DataUtil::prepareHighDpiImages(SpeakerImage* speakerImage, int width, int height) {
     const QString speakerImagesPath = mConferenceDataPath + "speakerImages/";
     QString fileName;
@@ -1846,7 +1553,6 @@ void DataUtil::onServerSuccess()
     if(isOldConference() || mDataManager->allConference().size() == 0 || mDataManager->settingsData()->version() < 201800) {
         prepareConference();
     }
-    return;
     continueUpdate();
 }
 
