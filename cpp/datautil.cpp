@@ -947,11 +947,17 @@ void DataUtil::updateSpeakerImages() {
     // all done
     // XXX
     return;
-    updateSessions();
+    updateSessions(201801);
+    updateSessions(201802);
 }
 
-void DataUtil::updateSessions() {
-    mProgressInfotext.append("\n").append(tr("Sync Sessions"));
+void DataUtil::updateSessions(const int conferenceId) {
+    if(conferenceId == 201801) {
+        mProgressInfotext.append("\n").append(tr("Sync Sessions BOSTON"));
+    } else {
+        mProgressInfotext.append("\n").append(tr("Sync Sessions BERLIN"));
+    }
+
     emit progressInfo(mProgressInfotext);
     mMultiSession.clear();
     const QString schedulePath = mConferenceDataPath + "schedule.json";
