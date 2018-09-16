@@ -947,67 +947,72 @@ void DataUtil::updateSpeakerImages() {
     // all done
     // XXX
     return;
-    updateSessions(201801);
-    updateSessions(201802);
+
+    mMultiSession.clear();
+    bool sessionOK = updateSessions(201801);
+    if(!sessionOK) {
+        return;
+    }
+    sessionOK = updateSessions(201802);
+    if(!sessionOK) {
+        return;
+    }
+    mProgressInfotext.append("\n").append(tr("Schedule and Speaker successfully synchronized :)"));
+    emit progressInfo(mProgressInfotext);
+
+    finishUpdate();
 }
 
-void DataUtil::updateSessions(const int conferenceId) {
+bool DataUtil::updateSessions(const int conferenceId) {
+    QString city;
     if(conferenceId == 201801) {
-        mProgressInfotext.append("\n").append(tr("Sync Sessions BOSTON"));
+        city = "BOSTON";
     } else {
-        mProgressInfotext.append("\n").append(tr("Sync Sessions BERLIN"));
+        city = "BERLIN";
     }
+    mProgressInfotext.append("\n").append(tr("Sync Sessions ")).append(city);
 
     emit progressInfo(mProgressInfotext);
-    mMultiSession.clear();
-    const QString schedulePath = mConferenceDataPath + "schedule.json";
+
+    const QString schedulePath = mConferenceDataPath + "schedule_"+QString::number(conferenceId)+".json";
     QVariantMap map;
     map = readScheduleFile(schedulePath);
     if(map.isEmpty()) {
-        qWarning() << "Schedule is no Map";
-        emit updateFailed(tr("Error: Received Map is empty."));
-        return;
+        qWarning() << "Schedule is no Map for " << city;
+        emit updateFailed(tr("Error: Received Map is empty.")+" "+city);
+        return false;
     }
-    // QtCon
-    //    map = map.value("schedule").toMap();
-    //    if(map.isEmpty()) {
-    //        qWarning() << "No 'schedule' found";
-    //        emit updateFailed(tr("Error: Received Map missed 'schedule'."));
-    //        return;
-    //    }
     map = map.value("conference").toMap();
     if(map.isEmpty()) {
-        qWarning() << "No 'conference' found";
-        emit updateFailed(tr("Error: Received Map missed 'conference'."));
-        return;
+        qWarning() << "No 'conference' found for " << city;
+        emit updateFailed(tr("Error: Received Map missed 'conference'.")+" "+city);
+        return false;
     }
     Conference* conference;
-    conference = (Conference*) mDataManager->allConference().first();
-    QVariantList dayList;
-    // dayList = map.value("days").toList();
-    // QtCon gives us a list of days
-    // QtWS a days object, so we have to construct the list
+    conference = (Conference*) mDataManager->findConferenceById(conferenceId);
+    QVariantList serverDayList;
     QVariantMap allDaysMap;
     allDaysMap = map.value("days").toMap();
-    dayList.append(allDaysMap.value("2016-10-19").toMap());
-    dayList.append(allDaysMap.value("2016-10-20").toMap());
+    serverDayList.append(allDaysMap.value(conference->conferenceFrom().toString("yyyy-MM-dd")).toMap());
+    serverDayList.append(allDaysMap.value(conference->conferenceTo().toString("yyyy-MM-dd")).toMap());
 
-    if(dayList.isEmpty()) {
-        qWarning() << "No 'days' found";
-        emit updateFailed(tr("Error: Received Map missed 'days'."));
-        return;
+    if(serverDayList.isEmpty()) {
+        qWarning() << "No 'days' found for" << city;
+        emit updateFailed(tr("Error: Received Map missed 'days'.")+" "+city);
+        return false;
     }
-    if(dayList.size() != 2) {
-        qWarning() << "Wrong number of 'days' found";
-        emit updateFailed(tr("Error: # of 'days' expected: 2 - but got ")+QString::number(dayList.size()));
-        return;
+    if(serverDayList.size() != conference->days().size()) {
+        qWarning() << "Wrong number of 'days' found " << city;
+        emit updateFailed(tr("Error: # of 'days' expected: 2 - but got ")+QString::number(serverDayList.size()));
+        return false;
     }
-    for (int i = 0; i < dayList.size(); ++i) {
+    for (int i = 0; i < serverDayList.size(); ++i) {
         QVariantMap dayMap;
-        dayMap = dayList.at(i).toMap();
+        dayMap = serverDayList.at(i).toMap();
         if(dayMap.isEmpty()) {
-            qWarning() << "No 'DAY' found #" << i;
-            emit updateFailed(tr("Map for Day missed from Server"));
+            qWarning() << "No 'DAY' found #" << i << " " << city;
+            emit updateFailed(tr("Map for Day missed from Server")+" "+city);
+            // TODO remember error and return false later
             continue;
         }
         QString dayDate;
@@ -1015,24 +1020,24 @@ void DataUtil::updateSessions(const int conferenceId) {
         qDebug() << "processing DATE: " << dayDate;
         Day* day = findDayForServerDate(dayDate);
         if(!day) {
-            qWarning() << "No Day* found for " << dayDate;
-            emit updateFailed(tr("No Day* found for ")+dayDate);
-            return;
+            qWarning() << "No Day* found for " << dayDate << " " << city;
+            emit updateFailed(tr("No Day* found for ")+dayDate+" "+city);
+            return false;
         }
         bool found = false;
         QVariantMap roomMap;
         roomMap = dayMap.value("rooms").toMap();
         QStringList roomKeys = roomMap.keys();
         if(roomKeys.isEmpty()) {
-            qWarning() << "No 'ROOMS' found for DAY # i";
-            emit updateFailed(tr("No 'ROOMS' found for DAY ") + dayDate);
-            return;
+            qWarning() << "No 'ROOMS' found for DAY # i" << " " << city;
+            emit updateFailed(tr("No 'ROOMS' found for DAY ") + dayDate+" "+city);
+            return false;
         }
         for (int r = 0; r < roomKeys.size(); ++r) {
             QVariantList sessionList;
             sessionList = roomMap.value(roomKeys.at(r)).toList();
             if(sessionList.isEmpty()) {
-                qWarning() << "DAY: " << dayDate << " ROOM: " << roomKeys.at(r) << " ignored - No Sessions available";
+                qWarning() << "DAY: " << dayDate << " ROOM: " << roomKeys.at(r) << " ignored - No Sessions available " << city;
                 continue;
             }
             Room* room = nullptr;
@@ -1049,7 +1054,7 @@ void DataUtil::updateSessions(const int conferenceId) {
                 if(roomKeys.at(r).isEmpty()) {
                     // use dummi room
                     room = (Room*) mDataManager->mAllRoom.first();
-                    qDebug() << "Room Name empty - using Room " << room->roomName();
+                    qDebug() << "Room Name empty - using Room " << room->roomName() << "for " << city;
                 } else {
                     room = mDataManager->createRoom();
                     conference->setLastRoomId(conference->lastRoomId()+1);
@@ -1065,7 +1070,7 @@ void DataUtil::updateSessions(const int conferenceId) {
                 QVariantMap sessionMap;
                 sessionMap = sessionList.at(sl).toMap();
                 if(sessionMap.isEmpty()) {
-                    qWarning() << "No 'SESSION' Map DAY: " << dayDate << " ROOM: " << roomKeys.at(r);
+                    qWarning() << "No 'SESSION' Map DAY: " << dayDate << " ROOM: " << roomKeys.at(r) << " for " << city;
                     continue;
                 }
                 // adjust persons
@@ -1116,9 +1121,9 @@ void DataUtil::updateSessions(const int conferenceId) {
     qDebug() << "SESSIONS: " << mDataManager->mAllSession.size() << " --> " << mMultiSession.size();
     // speaker, images, sessions, days, rooms, tracks --> cache
     // delete orphans
-    mProgressInfotext.append("\n").append(tr("Schedule and Speaker successfully synchronized :)"));
+    mProgressInfotext.append("\n").append(tr("Schedule successfully synchronized :)")).append(" ").append(city);
     emit progressInfo(mProgressInfotext);
-    finishUpdate();
+    return true;
 }
 
 void DataUtil::finishUpdate() {

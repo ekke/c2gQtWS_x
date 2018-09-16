@@ -151,7 +151,7 @@ private:
     QVariantList readRoomMappingFile(const QString path);
     void calcSpeakerName(Speaker *speaker, SpeakerAPI *speakerAPI);
     void updateSpeakerImages();
-    void updateSessions(const int conferenceId);
+    bool updateSessions(const int conferenceId);
     Day *findDayForServerDate(const QString &dayDate);
     void adjustPersons(QVariantMap &sessionMap);
     void adjustTracks(QVariantMap &sessionMap, Conference *conference, const bool isUpdate);
