@@ -138,6 +138,9 @@ private:
     void prepareHighDpiImages(SpeakerImage *speakerImage, int width, int height);
 
     void prepareEventData();
+    void prepareSanFrancisco201601();
+    void prepareBoston201801();
+    void prepareBerlin201802();
 
     bool checkDirs();
     QString mConferenceDataPath;
@@ -162,6 +165,8 @@ private:
     void setType(Session *session);
     void finishUpdate();
     void sortedSessionsIntoRoomDayTrackSpeaker();
+
+
 };
 
 #endif // DATAUTIL_H

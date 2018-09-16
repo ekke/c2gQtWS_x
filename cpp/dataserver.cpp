@@ -312,15 +312,16 @@ void DataServer::requestSpeaker()
 
     QString uri;
     // uri = "https://conf.qtcon.org/en/qtcon/public/speakers.json";
-    uri = "http://www.qtworldsummit.com/api/speakers/all/";
+    // uri = "http://www.qtworldsummit.com/api/speakers/all/";
+    uri = "https://www.qtworldsummit.com/2018/api/speakers/all/";
     qDebug() << "requestSpeaker uri:" << uri;
 
     QNetworkRequest request(uri);
 
     // to avoid ssl errors:
-//    QSslConfiguration conf = request.sslConfiguration();
-//    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
-//    request.setSslConfiguration(conf);
+    QSslConfiguration conf = request.sslConfiguration();
+    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+    request.setSslConfiguration(conf);
 
     QNetworkReply* reply = networkAccessManager->get(request);
     bool connectResult = connect(reply, SIGNAL(finished()), this, SLOT(onFinishedSpeaker()));
@@ -372,9 +373,7 @@ void DataServer::onFinishedSchedule()
     }
 
     // now getting the speaker data
-
-    // TODO
-    // requestSpeaker();
+    requestSpeaker();
 }
 
 void DataServer::onFinishedSpeaker()
@@ -408,6 +407,7 @@ void DataServer::onFinishedSpeaker()
     qint64 bytesWritten = saveFile.write(reply->readAll());
     saveFile.close();
     qDebug() << "Data Bytes written: " << bytesWritten << " to: " << speakerFilePath;
+
     emit serverSuccess();
 }
 

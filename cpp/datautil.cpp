@@ -14,7 +14,7 @@ const QString YYYY_MM_DD_HH_MM = "yyyy-MM-ddHH:mm";
 const QString DAYNAME = "dddd";
 const QString DAYNAME_HH_MM = "dddd, HH:mm";
 const QString DEFAULT_SPEAKER_IMAGE_URL = "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2016/uploads/2016/07/man-silhouette-black-gray.jpg";
-                                          //"http://conf.qtcon.org/person_original.png";
+//"http://conf.qtcon.org/person_original.png";
 const QString EMPTY_TRACK = "*****";
 
 DataUtil::DataUtil(QObject *parent) : QObject(parent)
@@ -359,11 +359,6 @@ bool DataUtil::checkDirs()
  * and updates are fast
  */
 void DataUtil::prepareConference() {
-    // must use public cache
-//    if(!mDataManager->settingsData()->hasPublicCache()) {
-//        qWarning() << "Preparation must be done from public cache";
-//        return;
-//    }
     qDebug() << "PREPARE CONFERENCE ";
     // check dirs for pre-conference stuff
     bool dirsOk = checkDirs();
@@ -373,72 +368,68 @@ void DataUtil::prepareConference() {
     }
     // create some data for this specific conference
     prepareEventData();
+
+
     // prepare speaker
-    prepareSpeaker();
+    // XXX prepareSpeaker();
     // prepare sessions
     // speaker must exist because sessions will be added to
-    prepareSessions();
+    // XXX prepareSessions();
     // download speaker images
-    prepareSpeakerImages();
+    // XXX prepareSpeakerImages();
     // now cache all the data
     // if ok - copied to qrc: data-assets
     qDebug() << "cache DATA";
     mDataManager->saveConferenceToCache();
     mDataManager->saveDayToCache();
     mDataManager->saveRoomToCache();
-    mDataManager->saveSessionToCache();
-    // sort Tracks
-    QMultiMap<QString, SessionTrack*> sessionTrackSortMap;
-    for (int i = 0; i < mDataManager->allSessionTrack().size(); ++i) {
-        SessionTrack* sessionTrack = (SessionTrack*) mDataManager->allSessionTrack().at(i);
-        sessionTrackSortMap.insert(sessionTrack->name(), sessionTrack);
-    }
-    mDataManager->mAllSessionTrack.clear();
-    QMapIterator<QString, SessionTrack*> sessionTrackIterator(sessionTrackSortMap);
-    while (sessionTrackIterator.hasNext()) {
-        sessionTrackIterator.next();
-        SessionTrack* sessionTrack = sessionTrackIterator.value();
-        mDataManager->insertSessionTrack(sessionTrack);
-    }
 
-    mDataManager->saveSessionTrackToCache();
-
-    mDataManager->saveSpeakerToCache();
-    // set API Version
-    mDataManager->mSettingsData->setApiVersion(mNewApi);
     qDebug() << "PREPARE   D O N E - WAIT FOR IMAGES";
+
+//    mDataManager->saveSessionToCache();
+//    // sort Tracks
+//    QMultiMap<QString, SessionTrack*> sessionTrackSortMap;
+//    for (int i = 0; i < mDataManager->allSessionTrack().size(); ++i) {
+//        SessionTrack* sessionTrack = (SessionTrack*) mDataManager->allSessionTrack().at(i);
+//        sessionTrackSortMap.insert(sessionTrack->name(), sessionTrack);
+//    }
+//    mDataManager->mAllSessionTrack.clear();
+//    QMapIterator<QString, SessionTrack*> sessionTrackIterator(sessionTrackSortMap);
+//    while (sessionTrackIterator.hasNext()) {
+//        sessionTrackIterator.next();
+//        SessionTrack* sessionTrack = sessionTrackIterator.value();
+//        mDataManager->insertSessionTrack(sessionTrack);
+//    }
+
+//    mDataManager->saveSessionTrackToCache();
+
+//    mDataManager->saveSpeakerToCache();
+//    // set API Version
+//    mDataManager->mSettingsData->setApiVersion(mNewApi);
+//    qDebug() << "PREPARE   D O N E - WAIT FOR IMAGES";
 }
 
-// conference, days, building-floor-rooms
+// conference, days, rooms
 void DataUtil::prepareEventData() {
     qDebug() << "PREPARE EVENT ";
     // CONFERENCE
     mDataManager->deleteConference();
+    mDataManager->deleteRoom();
     mDataManager->deleteDay();
     mDataManager->deleteSession();
+    mDataManager->deleteSessionTrack();
     mDataManager->deleteSpeaker();
     mDataManager->deleteSpeakerImage();
     //
-    Conference* conference = mDataManager->createConference();
-    int lastNr = 0;
-    for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
-        Room* room = (Room*) mDataManager->allRoom().at(i);
-        if(room->roomId() > lastNr) {
-            lastNr = room->roomId();
-        }
-        room->clearSessions();
-    }
-    conference->setLastRoomId(lastNr);
-    lastNr = 0;
-    for (int i = 0; i < mDataManager->allSessionTrack().size(); ++i) {
-        SessionTrack* track = (SessionTrack*) mDataManager->allSessionTrack().at(i);
-        if(track->trackId() > lastNr) {
-            lastNr = track->trackId();
-        }
-        track->clearSessions();
-    }
-    conference->setLastSessionTrackId(lastNr);
+    prepareBoston201801();
+    prepareBerlin201802();
 
+
+    //
+}
+
+void DataUtil::prepareSanFrancisco201601() {
+    Conference* conference = mDataManager->createConference();
     conference->setConferenceName("Qt World Summit 2016");
     conference->setConferenceCity("San Francisco, CA");
     QString venueAddress;
@@ -460,12 +451,6 @@ void DataUtil::prepareEventData() {
     conference->setHomePage("http://www.qtworldsummit.com/");
     QString coordinate;
     coordinate = QString::number(37.799263)+";"+QString::number(-122.397673);
-    // Pier27:
-    // conference->coordinate()->setLatitude(37.799263);
-    // conference->coordinate()->setLongitude(-122.397673);
-    // bcc:
-    // conference->coordinate()->setLatitude(52.520778);
-    // conference->coordinate()->setLongitude(13.416515);
     conference->setCoordinate(coordinate);
     mDataManager->insertConference(conference);
     // DAYS
@@ -484,15 +469,90 @@ void DataUtil::prepareEventData() {
     day->setConferenceDay(QDate::fromString("2016-10-20", YYYY_MM_DD));
     conference->addToDays(day);
     mDataManager->insertDay(day);
-    // BUILDING
-    // Building and FLOORS already created
-    // ROOMS created, but delete current sessions yet
-    qDebug() << "ROOMS: #" << mDataManager->allRoom().size();
-    for (int r = 0; r < mDataManager->allRoom().size(); ++r) {
-        Room* room = (Room*) mDataManager->allRoom().at(r);
-        room->clearSessions();
-    }
-    //
+}
+
+void DataUtil::prepareBoston201801() {
+    Conference* conference = mDataManager->createConference();
+    conference->setConferenceName("Qt World Summit 2018");
+    conference->setConferenceCity("Boston, MA");
+    QString venueAddress;
+    venueAddress = "425 Summer Street";
+    venueAddress.append("\n");
+    venueAddress.append("The Westin Boston Waterfront");
+    venueAddress.append("\n");
+    venueAddress.append("Boston, Massachusetts 02210");
+    venueAddress.append("\n");
+    venueAddress.append("United States");
+    conference->setAddress(venueAddress);
+    conference->setTimeZoneName("EST – Eastern Daylight Time");
+    conference->setTimeZoneOffsetSeconds(-4 * 60 * 60); // -04:00 GMT
+    conference->setConferenceFrom(QDate::fromString("2018-10-29", YYYY_MM_DD));
+    conference->setConferenceTo(QDate::fromString("2018-10-30", YYYY_MM_DD));
+    conference->setHashTag("#QtWS18");
+    conference->setHomePage("https://www.qt.io/qtws18/home/");
+    QString coordinate;
+    coordinate = QString::number(42.3459926)+";"+QString::number(-71.04301040000001);
+    conference->setCoordinate(coordinate);
+    conference->setPlaceId("ChIJde0H54N644kR8QDFjYVOlMU");
+    mDataManager->insertConference(conference);
+    // DAYS
+    // Days dayOfWeek 1=monday, 7 = sunday
+    // monday
+    Day* day = mDataManager->createDay();
+    day->setId(2018011);
+    day->setWeekDay(1);
+    day->setConferenceDay(QDate::fromString("2018-10-29", YYYY_MM_DD));
+    conference->addToDays(day);
+    mDataManager->insertDay(day);
+    // tuesday
+    day = mDataManager->createDay();
+    day->setId(2018012);
+    day->setWeekDay(2);
+    day->setConferenceDay(QDate::fromString("2018-10-30", YYYY_MM_DD));
+    conference->addToDays(day);
+    mDataManager->insertDay(day);
+}
+
+void DataUtil::prepareBerlin201802() {
+    Conference* conference = mDataManager->createConference();
+    conference->setConferenceName("Qt World Summit 2018");
+    conference->setConferenceCity("Berlin");
+    QString venueAddress;
+    venueAddress = "Alexanderstraße 11";
+    venueAddress.append("\n");
+    venueAddress.append("bcc Berlin Congress Center");
+    venueAddress.append("\n");
+    venueAddress.append("10178 Berlin");
+    venueAddress.append("\n");
+    venueAddress.append("Germany");
+    conference->setAddress(venueAddress);
+    conference->setTimeZoneName("MEZ");
+    conference->setTimeZoneOffsetSeconds(+1 * 60 * 60); // +01:00 GMT
+    conference->setConferenceFrom(QDate::fromString("2018-12-05", YYYY_MM_DD));
+    conference->setConferenceTo(QDate::fromString("2018-12-06", YYYY_MM_DD));
+    conference->setHashTag("#QtWS18");
+    conference->setHomePage("https://www.qt.io/qtws18/home/");
+    QString coordinate;
+    coordinate = QString::number(52.52043099999999)+";"+QString::number(13.416334000000006);
+    conference->setCoordinate(coordinate);
+    conference->setPlaceId("ChIJQ7_AmBhOqEcRgCAfJCBSodI");
+    mDataManager->insertConference(conference);
+    // DAYS
+    // Days dayOfWeek 1=monday, 7 = sunday
+    // wednesday
+    Day* day = mDataManager->createDay();
+    day->setId(2018021);
+    day->setWeekDay(3);
+    day->setConferenceDay(QDate::fromString("2018-12-05", YYYY_MM_DD));
+    conference->addToDays(day);
+    mDataManager->insertDay(day);
+    // thursday
+    day = mDataManager->createDay();
+    day->setId(2018022);
+    day->setWeekDay(2);
+    day->setConferenceDay(QDate::fromString("2018-12-06", YYYY_MM_DD));
+    conference->addToDays(day);
+    mDataManager->insertDay(day);
 }
 
 QVariantMap DataUtil::readScheduleFile(const QString schedulePath) {
@@ -621,33 +681,33 @@ void DataUtil::setDuration(SessionAPI* sessionAPI, Session* session) {
 }
 
 void DataUtil::setType(Session* session) {
-//    for (int i = 0; i < sessionAPI->tracksStringList().size(); ++i) {
-//        SessionTrack* sessionTrack = nullptr;
-//        bool found = false;
-//        QString trackName;
-//        trackName = sessionAPI->tracksStringList().at(i);
-//        if(trackName.isEmpty()) {
-//            trackName = EMPTY_TRACK;
-//        }
-//        for (int tr = 0; tr < mDataManager->mAllSessionTrack.size(); ++tr) {
-//            sessionTrack = (SessionTrack*) mDataManager->mAllSessionTrack.at(tr);
-//            if(sessionTrack->name() == trackName) {
-//                found = true;
-//                break;
-//            }
-//        }
-//        if(!found) {
-//            sessionTrack = mDataManager->createSessionTrack();
-//            conference->setLastSessionTrackId(conference->lastSessionTrackId()+1);
-//            sessionTrack->setTrackId(conference->lastSessionTrackId());
-//            sessionTrack->setName(trackName);
-//            sessionTrack->setInAssets(isUpdate?false:true);
-//            mDataManager->insertSessionTrack(sessionTrack);
-//        }
-//        if (sessionTrack) {
-//            session->sessionTracksKeys().append(QString::number(sessionTrack->trackId()));
-//        }
-//    }
+    //    for (int i = 0; i < sessionAPI->tracksStringList().size(); ++i) {
+    //        SessionTrack* sessionTrack = nullptr;
+    //        bool found = false;
+    //        QString trackName;
+    //        trackName = sessionAPI->tracksStringList().at(i);
+    //        if(trackName.isEmpty()) {
+    //            trackName = EMPTY_TRACK;
+    //        }
+    //        for (int tr = 0; tr < mDataManager->mAllSessionTrack.size(); ++tr) {
+    //            sessionTrack = (SessionTrack*) mDataManager->mAllSessionTrack.at(tr);
+    //            if(sessionTrack->name() == trackName) {
+    //                found = true;
+    //                break;
+    //            }
+    //        }
+    //        if(!found) {
+    //            sessionTrack = mDataManager->createSessionTrack();
+    //            conference->setLastSessionTrackId(conference->lastSessionTrackId()+1);
+    //            sessionTrack->setTrackId(conference->lastSessionTrackId());
+    //            sessionTrack->setName(trackName);
+    //            sessionTrack->setInAssets(isUpdate?false:true);
+    //            mDataManager->insertSessionTrack(sessionTrack);
+    //        }
+    //        if (sessionTrack) {
+    //            session->sessionTracksKeys().append(QString::number(sessionTrack->trackId()));
+    //        }
+    //    }
     session->resolveSessionTracksKeys(mDataManager->listOfSessionTrackForKeys(session->sessionTracksKeys()));
     for (int i = 0; i < session->sessionTracks().size(); ++i) {
         SessionTrack* sessionTrack = session->sessionTracks().at(i);
@@ -671,11 +731,11 @@ void DataUtil::prepareSessions()
         return;
     }
     // QtCon
-//    map = map.value("schedule").toMap();
-//    if(map.isEmpty()) {
-//        qWarning() << "No 'schedule' found";
-//        return;
-//    }
+    //    map = map.value("schedule").toMap();
+    //    if(map.isEmpty()) {
+    //        qWarning() << "No 'schedule' found";
+    //        return;
+    //    }
     mNewApi = map.value("version").toString();
     qDebug() << "VERSION: " + mNewApi;
 
@@ -989,7 +1049,7 @@ void DataUtil::continueUpdate()
 {
     mProgressInfotext = tr("Save Favorites");
     emit progressInfo(mProgressInfotext);
-    // save F A V O R I T E S and bookmarks
+    // save F A V O R I T E S
     saveSessionFavorites();
     // S P E A K E R
     mProgressInfotext = tr("Sync Speaker");
@@ -1113,12 +1173,12 @@ void DataUtil::updateSessions() {
         return;
     }
     // QtCon
-//    map = map.value("schedule").toMap();
-//    if(map.isEmpty()) {
-//        qWarning() << "No 'schedule' found";
-//        emit updateFailed(tr("Error: Received Map missed 'schedule'."));
-//        return;
-//    }
+    //    map = map.value("schedule").toMap();
+    //    if(map.isEmpty()) {
+    //        qWarning() << "No 'schedule' found";
+    //        emit updateFailed(tr("Error: Received Map missed 'schedule'."));
+    //        return;
+    //    }
     map = map.value("conference").toMap();
     if(map.isEmpty()) {
         qWarning() << "No 'conference' found";
@@ -1725,25 +1785,12 @@ void DataUtil::prepareHighDpiImages(SpeakerImage* speakerImage, int width, int h
 // S L O T S
 void DataUtil::onServerSuccess()
 {
-    qDebug() << "S U C C E S S";
+    qDebug() << "S U C C E S S request Schedule (BOSTON, BERLIN) and Speaker";
 
-    const QString schedulePath = mConferenceDataPath + "schedule.json";
-    qDebug() << "CHECK FOR UPDATE SESSIONS ";
-    QVariantMap map;
-    map = readScheduleFile(schedulePath);
-
-    if(map.isEmpty()) {
-        qWarning() << "Schedule is no Map";
-        emit checkForUpdateFailed(tr("Error: Received Map is empty."));
-        return;
+    // check if conference is prepared
+    if(isOldConference()) {
+        prepareConference();
     }
-    // no schedule
-//    map = map.value("schedule").toMap();
-//    if(map.isEmpty()) {
-//        qWarning() << "No 'schedule' found";
-//        emit checkForUpdateFailed(tr("Error: Received Map missed 'schedule'."));
-//        return;
-//    }
 
     // now do the real work
     continueUpdate();

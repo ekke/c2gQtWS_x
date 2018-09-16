@@ -28,6 +28,7 @@ class Conference: public QObject
 	Q_PROPERTY(QString hashTag READ hashTag WRITE setHashTag NOTIFY hashTagChanged FINAL)
 	Q_PROPERTY(QString homePage READ homePage WRITE setHomePage NOTIFY homePageChanged FINAL)
 	Q_PROPERTY(QString coordinate READ coordinate WRITE setCoordinate NOTIFY coordinateChanged FINAL)
+	Q_PROPERTY(QString placeId READ placeId WRITE setPlaceId NOTIFY placeIdChanged FINAL)
 	Q_PROPERTY(int lastRoomId READ lastRoomId WRITE setLastRoomId NOTIFY lastRoomIdChanged FINAL)
 	Q_PROPERTY(int lastSessionTrackId READ lastSessionTrackId WRITE setLastSessionTrackId NOTIFY lastSessionTrackIdChanged FINAL)
 	Q_PROPERTY(int lastGenericSessionId READ lastGenericSessionId WRITE setLastGenericSessionId NOTIFY lastGenericSessionIdChanged FINAL)
@@ -86,6 +87,8 @@ public:
 	void setHomePage(QString homePage);
 	QString coordinate() const;
 	void setCoordinate(QString coordinate);
+	QString placeId() const;
+	void setPlaceId(QString placeId);
 	int lastRoomId() const;
 	void setLastRoomId(int lastRoomId);
 	int lastSessionTrackId() const;
@@ -224,6 +227,7 @@ public:
 	void hashTagChanged(QString hashTag);
 	void homePageChanged(QString homePage);
 	void coordinateChanged(QString coordinate);
+	void placeIdChanged(QString placeId);
 	void lastRoomIdChanged(int lastRoomId);
 	void lastSessionTrackIdChanged(int lastSessionTrackId);
 	void lastGenericSessionIdChanged(int lastGenericSessionId);
@@ -254,6 +258,7 @@ private:
 	QString mHashTag;
 	QString mHomePage;
 	QString mCoordinate;
+	QString mPlaceId;
 	int mLastRoomId;
 	int mLastSessionTrackId;
 	int mLastGenericSessionId;

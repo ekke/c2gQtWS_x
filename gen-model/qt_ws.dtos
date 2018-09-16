@@ -49,6 +49,7 @@ package org.ekkescorner.dsl.qtws {
 		var QString homePage;
 		// TODO Map Integration GeoCoordinate
 		var QString coordinate;
+		var QString placeId;
 		var int lastRoomId;
 		var int lastSessionTrackId;
 		// same as id + nnn per ex 201801001

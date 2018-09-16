@@ -14,6 +14,7 @@ static const QString conferenceToKey = "conferenceTo";
 static const QString hashTagKey = "hashTag";
 static const QString homePageKey = "homePage";
 static const QString coordinateKey = "coordinate";
+static const QString placeIdKey = "placeId";
 static const QString lastRoomIdKey = "lastRoomId";
 static const QString lastSessionTrackIdKey = "lastSessionTrackId";
 static const QString lastGenericSessionIdKey = "lastGenericSessionId";
@@ -33,6 +34,7 @@ static const QString conferenceToForeignKey = "conferenceTo";
 static const QString hashTagForeignKey = "hashTag";
 static const QString homePageForeignKey = "homePage";
 static const QString coordinateForeignKey = "coordinate";
+static const QString placeIdForeignKey = "placeId";
 static const QString lastRoomIdForeignKey = "lastRoomId";
 static const QString lastSessionTrackIdForeignKey = "lastSessionTrackId";
 static const QString lastGenericSessionIdForeignKey = "lastGenericSessionId";
@@ -44,7 +46,7 @@ static const QString roomsForeignKey = "rooms";
  * Default Constructor if Conference not initialized from QVariantMap
  */
 Conference::Conference(QObject *parent) :
-        QObject(parent), mId(-1), mConferenceName(""), mConferenceCity(""), mAddress(""), mTimeZoneName(""), mTimeZoneOffsetSeconds(0), mHashTag(""), mHomePage(""), mCoordinate(""), mLastRoomId(0), mLastSessionTrackId(0), mLastGenericSessionId(0)
+        QObject(parent), mId(-1), mConferenceName(""), mConferenceCity(""), mAddress(""), mTimeZoneName(""), mTimeZoneOffsetSeconds(0), mHashTag(""), mHomePage(""), mCoordinate(""), mPlaceId(""), mLastRoomId(0), mLastSessionTrackId(0), mLastGenericSessionId(0)
 {
 	// Date, Time or Timestamp ? construct null value
 	mConferenceFrom = QDate();
@@ -105,6 +107,7 @@ void Conference::fillFromMap(const QVariantMap& conferenceMap)
 	mHashTag = conferenceMap.value(hashTagKey).toString();
 	mHomePage = conferenceMap.value(homePageKey).toString();
 	mCoordinate = conferenceMap.value(coordinateKey).toString();
+	mPlaceId = conferenceMap.value(placeIdKey).toString();
 	mLastRoomId = conferenceMap.value(lastRoomIdKey).toInt();
 	mLastSessionTrackId = conferenceMap.value(lastSessionTrackIdKey).toInt();
 	mLastGenericSessionId = conferenceMap.value(lastGenericSessionIdKey).toInt();
@@ -160,6 +163,7 @@ void Conference::fillFromForeignMap(const QVariantMap& conferenceMap)
 	mHashTag = conferenceMap.value(hashTagForeignKey).toString();
 	mHomePage = conferenceMap.value(homePageForeignKey).toString();
 	mCoordinate = conferenceMap.value(coordinateForeignKey).toString();
+	mPlaceId = conferenceMap.value(placeIdForeignKey).toString();
 	mLastRoomId = conferenceMap.value(lastRoomIdForeignKey).toInt();
 	mLastSessionTrackId = conferenceMap.value(lastSessionTrackIdForeignKey).toInt();
 	mLastGenericSessionId = conferenceMap.value(lastGenericSessionIdForeignKey).toInt();
@@ -215,6 +219,7 @@ void Conference::fillFromCacheMap(const QVariantMap& conferenceMap)
 	mHashTag = conferenceMap.value(hashTagKey).toString();
 	mHomePage = conferenceMap.value(homePageKey).toString();
 	mCoordinate = conferenceMap.value(coordinateKey).toString();
+	mPlaceId = conferenceMap.value(placeIdKey).toString();
 	mLastRoomId = conferenceMap.value(lastRoomIdKey).toInt();
 	mLastSessionTrackId = conferenceMap.value(lastSessionTrackIdKey).toInt();
 	mLastGenericSessionId = conferenceMap.value(lastGenericSessionIdKey).toInt();
@@ -321,6 +326,7 @@ QVariantMap Conference::toMap()
 	conferenceMap.insert(hashTagKey, mHashTag);
 	conferenceMap.insert(homePageKey, mHomePage);
 	conferenceMap.insert(coordinateKey, mCoordinate);
+	conferenceMap.insert(placeIdKey, mPlaceId);
 	conferenceMap.insert(lastRoomIdKey, mLastRoomId);
 	conferenceMap.insert(lastSessionTrackIdKey, mLastSessionTrackId);
 	conferenceMap.insert(lastGenericSessionIdKey, mLastGenericSessionId);
@@ -398,6 +404,7 @@ QVariantMap Conference::toForeignMap()
 	conferenceMap.insert(hashTagForeignKey, mHashTag);
 	conferenceMap.insert(homePageForeignKey, mHomePage);
 	conferenceMap.insert(coordinateForeignKey, mCoordinate);
+	conferenceMap.insert(placeIdForeignKey, mPlaceId);
 	conferenceMap.insert(lastRoomIdForeignKey, mLastRoomId);
 	conferenceMap.insert(lastSessionTrackIdForeignKey, mLastSessionTrackId);
 	conferenceMap.insert(lastGenericSessionIdForeignKey, mLastGenericSessionId);
@@ -593,6 +600,20 @@ void Conference::setCoordinate(QString coordinate)
 	if (coordinate != mCoordinate) {
 		mCoordinate = coordinate;
 		emit coordinateChanged(coordinate);
+	}
+}
+// ATT 
+// Optional: placeId
+QString Conference::placeId() const
+{
+	return mPlaceId;
+}
+
+void Conference::setPlaceId(QString placeId)
+{
+	if (placeId != mPlaceId) {
+		mPlaceId = placeId;
+		emit placeIdChanged(placeId);
 	}
 }
 // ATT 
