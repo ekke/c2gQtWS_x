@@ -464,6 +464,7 @@ void DataUtil::prepareSanFrancisco201601() {
     day->setConferenceDay(QDate::fromString("2016-10-20", YYYY_MM_DD));
     conference->addToDays(day);
     mDataManager->insertDay(day);
+    qDebug() << "CONFERENCE " << conference->conferenceCity() << " with days #" << conference->days().size();
     conference->setLastSessionTrackId(conference->id()*100);
     // rooms
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
@@ -521,6 +522,7 @@ void DataUtil::prepareBoston201801() {
     day->setConferenceDay(QDate::fromString("2018-10-30", YYYY_MM_DD));
     conference->addToDays(day);
     mDataManager->insertDay(day);
+    qDebug() << "CONFERENCE " << conference->conferenceCity() << " with days #" << conference->days().size();
     conference->setLastSessionTrackId(conference->id()*100);
     // rooms
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
@@ -578,6 +580,7 @@ void DataUtil::prepareBerlin201802() {
     day->setConferenceDay(QDate::fromString("2018-12-06", YYYY_MM_DD));
     conference->addToDays(day);
     mDataManager->insertDay(day);
+    qDebug() << "CONFERENCE " << conference->conferenceCity() << " with days #" << conference->days().size();
     conference->setLastSessionTrackId(conference->id()*100);
     // rooms
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
@@ -617,8 +620,8 @@ QVariantMap DataUtil::readScheduleFile(const QString schedulePath) {
 Day* DataUtil::findDayForServerDate(const QString& dayDate, Conference* conference) {
     Day* day = nullptr;
     bool found = false;
-    for (int dl = 0; dl < conference->rooms().size(); ++dl) {
-        day = (Day*) conference->rooms().at(dl);
+    for (int dl = 0; dl < conference->days().size(); ++dl) {
+        day = (Day*) conference->days().at(dl);
         if(day->conferenceDay().toString(YYYY_MM_DD) == dayDate) {
             found = true;
             break;
@@ -657,6 +660,7 @@ void DataUtil::adjustTracks(QVariantMap& sessionMap, Conference* conference, con
             conference->setLastSessionTrackId(conference->lastSessionTrackId()+1);
             sessionTrack->setTrackId(conference->lastSessionTrackId());
             sessionTrack->setName(trackName);
+            sessionTrack->setConference(conference->id());
             sessionTrack->setColor(trackColor);
             sessionTrack->setInAssets(isUpdate?false:true);
             mDataManager->insertSessionTrack(sessionTrack);
@@ -998,7 +1002,6 @@ void DataUtil::updateSpeakerImages() {
     } // new images map
     // all speaker images done
 
-    mMultiSession.clear();
     bool sessionOK = updateSessions(201801);
     if(!sessionOK) {
         return;
@@ -1034,17 +1037,48 @@ bool DataUtil::updateSessions(const int conferenceId) {
     }
     map = map.value("conference").toMap();
     if(map.isEmpty()) {
-        qWarning() << "No 'conference' found for " << city;
+        qWarning() << "No 'conference' found in server response for " << city;
         emit updateFailed(tr("Error: Received Map missed 'conference'.")+" "+city);
         return false;
     }
     Conference* conference;
     conference = (Conference*) mDataManager->findConferenceById(conferenceId);
+    if(!conference) {
+        qWarning() << "No 'conference' found in prepared data for " << city;
+        emit updateFailed(tr("Error: Data missed 'conference'.")+" "+city);
+        return false;
+    }
     QVariantList serverDayList;
     QVariantMap allDaysMap;
     allDaysMap = map.value("days").toMap();
-    serverDayList.append(allDaysMap.value(conference->conferenceFrom().toString("yyyy-MM-dd")).toMap());
-    serverDayList.append(allDaysMap.value(conference->conferenceTo().toString("yyyy-MM-dd")).toMap());
+    QString myDay;
+    if(conferenceId == 201801) {
+        myDay= "2018-10-29";
+        if(allDaysMap.contains(myDay)) {
+            serverDayList.append(allDaysMap.value(myDay).toMap());
+        } else {
+            qDebug() << "Day missed in conference-days from server API " << myDay;
+        }
+        myDay = "2018-10-30";
+        if(allDaysMap.contains(myDay)) {
+            serverDayList.append(allDaysMap.value(myDay).toMap());
+        } else {
+            qDebug() << "Day missed in conference-days from server API " << myDay;
+        }
+    } else {
+        myDay= "2018-12-05";
+        if(allDaysMap.contains(myDay)) {
+            serverDayList.append(allDaysMap.value(myDay).toMap());
+        } else {
+            qDebug() << "Day missed in conference-days from server API " << myDay;
+        }
+        myDay = "2018-12-06";
+        if(allDaysMap.contains(myDay)) {
+            serverDayList.append(allDaysMap.value(myDay).toMap());
+        } else {
+            qDebug() << "Day missed in conference-days from server API " << myDay;
+        }
+    }
 
     if(serverDayList.isEmpty()) {
         qWarning() << "No 'days' found for" << city;
@@ -1169,6 +1203,8 @@ bool DataUtil::updateSessions(const int conferenceId) {
                 // SORT
                 session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
                 mMultiSession.insert(session->sortKey(), session);
+
+                qDebug() << "XXXXXX #" << mMultiSession.size();
             } // end for sessions of a room of a day
         } // end for rooms of a day
     } // end for list of days from server
