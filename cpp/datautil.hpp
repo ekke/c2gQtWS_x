@@ -152,7 +152,7 @@ private:
     void calcSpeakerName(Speaker *speaker, SpeakerAPI *speakerAPI);
     void updateSpeakerImages();
     bool updateSessions(const int conferenceId);
-    Day *findDayForServerDate(const QString &dayDate);
+    Day *findDayForServerDate(const QString &dayDate, Conference *conference);
     void adjustPersons(QVariantMap &sessionMap);
     void adjustTracks(QVariantMap &sessionMap, Conference *conference, const bool isUpdate);
     bool checkIfIgnored(SessionAPI *sessionAPI);

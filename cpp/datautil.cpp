@@ -384,13 +384,20 @@ void DataUtil::prepareEventData() {
     mDataManager->deleteSpeakerImage();
     // Rooms and Room Images
     prepareRooms();
-    // Conference, Days
+    // Conference, Days, connect Rooms
     prepareBoston201801();
     prepareBerlin201802();
 }
 
 // Rooms
 void DataUtil::prepareRooms() {
+    // create dummi room if session with no room name from update
+    Room* room = mDataManager->createRoom();
+    room->setRoomId(0);
+    room->setRoomName(tr("Room unknown"));
+    // we have no image
+    room-> setInAssets(false);
+    mDataManager->insertRoom(room);
     const QString path = ":/data-assets/conference/roomimages/mapping.json";
     qDebug() << "PREPARE ROOMS ";
     QVariantList dataList;
@@ -455,6 +462,17 @@ void DataUtil::prepareSanFrancisco201601() {
     day->setConferenceDay(QDate::fromString("2016-10-20", YYYY_MM_DD));
     conference->addToDays(day);
     mDataManager->insertDay(day);
+    conference->setLastSessionTrackId(conference->id()*100);
+    // rooms
+    for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
+        Room* room = (Room*) mDataManager->allRoom().at(i);
+        if(room->conference() == 201601) {
+            conference->addToRooms(room);
+            if(room->roomId() > conference->lastRoomId()) {
+                conference->setLastRoomId(room->roomId());
+            }
+        }
+    }
 }
 
 // Conference, Days
@@ -499,6 +517,17 @@ void DataUtil::prepareBoston201801() {
     day->setConferenceDay(QDate::fromString("2018-10-30", YYYY_MM_DD));
     conference->addToDays(day);
     mDataManager->insertDay(day);
+    conference->setLastSessionTrackId(conference->id()*100);
+    // rooms
+    for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
+        Room* room = (Room*) mDataManager->allRoom().at(i);
+        if(room->conference() == 201801) {
+            conference->addToRooms(room);
+            if(room->roomId() > conference->lastRoomId()) {
+                conference->setLastRoomId(room->roomId());
+            }
+        }
+    }
 }
 
 // Conference, Days
@@ -543,6 +572,17 @@ void DataUtil::prepareBerlin201802() {
     day->setConferenceDay(QDate::fromString("2018-12-06", YYYY_MM_DD));
     conference->addToDays(day);
     mDataManager->insertDay(day);
+    conference->setLastSessionTrackId(conference->id()*100);
+    // rooms
+    for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
+        Room* room = (Room*) mDataManager->allRoom().at(i);
+        if(room->conference() == 201802) {
+            conference->addToRooms(room);
+            if(room->roomId() > conference->lastRoomId()) {
+                conference->setLastRoomId(room->roomId());
+            }
+        }
+    }
 }
 
 QVariantMap DataUtil::readScheduleFile(const QString schedulePath) {
@@ -568,11 +608,11 @@ QVariantMap DataUtil::readScheduleFile(const QString schedulePath) {
     return map;
 }
 
-Day* DataUtil::findDayForServerDate(const QString& dayDate) {
+Day* DataUtil::findDayForServerDate(const QString& dayDate, Conference* conference) {
     Day* day = nullptr;
     bool found = false;
-    for (int dl = 0; dl < mDataManager->mAllDay.size(); ++dl) {
-        day = (Day*) mDataManager->mAllDay.at(dl);
+    for (int dl = 0; dl < conference->rooms().size(); ++dl) {
+        day = (Day*) conference->rooms().at(dl);
         if(day->conferenceDay().toString(YYYY_MM_DD) == dayDate) {
             found = true;
             break;
@@ -582,33 +622,39 @@ Day* DataUtil::findDayForServerDate(const QString& dayDate) {
         qDebug() << "Day found";
         return day;
     }
-    qDebug() << "Day not found";
+    qDebug() << "Day not found for conference " << conference->conferenceCity();
     return 0;
 }
 
 void DataUtil::adjustTracks(QVariantMap& sessionMap, Conference* conference, const bool isUpdate) {
     QStringList trackKeys;
-    QStringList trackNames;
-    trackNames = sessionMap.value("tracks").toStringList();
-    for (int tnl = 0; tnl < trackNames.size(); ++tnl) {
+    QVariantList trackList;
+    trackList = sessionMap.value("tracks").toList();
+    for (int tnl = 0; tnl < trackList.size(); ++tnl) {
+        QVariantMap trackMap;
+        trackMap = trackList.at(tnl).toMap();
         QString trackName;
-        trackName = trackNames.at(tnl);
+        trackName = trackMap.value("name").toString();
+        QString trackColor;
+        trackColor = trackMap.value("color").toString();
         bool found = false;
-        for (int i = 0; i < mDataManager->allSessionTrack().size(); ++i) {
-            SessionTrack* sessionTrack = (SessionTrack*) mDataManager->allSessionTrack().at(i);
+        for (int i = 0; i < conference->tracks().size(); ++i) {
+            SessionTrack* sessionTrack = conference->tracks().at(i);
             if(sessionTrack->name() == trackName) {
                 found = true;
                 trackKeys.append(QString::number(sessionTrack->trackId()));
                 break;
             }
-        } // for all tracks
+        } // for all tracks from selected conference
         if(!found) {
             SessionTrack* sessionTrack = mDataManager->createSessionTrack();
             conference->setLastSessionTrackId(conference->lastSessionTrackId()+1);
             sessionTrack->setTrackId(conference->lastSessionTrackId());
             sessionTrack->setName(trackName);
+            sessionTrack->setColor(trackColor);
             sessionTrack->setInAssets(isUpdate?false:true);
             mDataManager->insertSessionTrack(sessionTrack);
+            conference->addToTracks(sessionTrack);
             trackKeys.append(QString::number(sessionTrack->trackId()));
         }
     }
@@ -944,9 +990,7 @@ void DataUtil::updateSpeakerImages() {
             return;
         } // waiting for download
     } // new images map
-    // all done
-    // XXX
-    return;
+    // all speaker images done
 
     mMultiSession.clear();
     bool sessionOK = updateSessions(201801);
@@ -1001,38 +1045,42 @@ bool DataUtil::updateSessions(const int conferenceId) {
         emit updateFailed(tr("Error: Received Map missed 'days'.")+" "+city);
         return false;
     }
-    if(serverDayList.size() != conference->days().size()) {
-        qWarning() << "Wrong number of 'days' found " << city;
+    if(serverDayList.size() >= conference->days().size()) {
+        qWarning() << "too many 'days' found " << city;
         emit updateFailed(tr("Error: # of 'days' expected: 2 - but got ")+QString::number(serverDayList.size()));
         return false;
+    }
+    if(serverDayList.size() < conference->days().size()) {
+        qWarning() << "some 'days' missing " << city << " found " << serverDayList.size() << " expected "<< conference->days().size();
     }
     for (int i = 0; i < serverDayList.size(); ++i) {
         QVariantMap dayMap;
         dayMap = serverDayList.at(i).toMap();
         if(dayMap.isEmpty()) {
             qWarning() << "No 'DAY' found #" << i << " " << city;
-            emit updateFailed(tr("Map for Day missed from Server")+" "+city);
-            // TODO remember error and return false later
+            // emit updateFailed(tr("Map for Day missed from Server")+" "+city);
             continue;
         }
         QString dayDate;
         dayDate = dayMap.value("date").toString();
         qDebug() << "processing DATE: " << dayDate;
-        Day* day = findDayForServerDate(dayDate);
+        Day* day = findDayForServerDate(dayDate, conference);
         if(!day) {
             qWarning() << "No Day* found for " << dayDate << " " << city;
-            emit updateFailed(tr("No Day* found for ")+dayDate+" "+city);
-            return false;
+            // emit updateFailed(tr("No Day* found for ")+dayDate+" "+city);
+            continue;
         }
         bool found = false;
         QVariantMap roomMap;
         roomMap = dayMap.value("rooms").toMap();
+        // the keys are the room names
         QStringList roomKeys = roomMap.keys();
         if(roomKeys.isEmpty()) {
             qWarning() << "No 'ROOMS' found for DAY # i" << " " << city;
-            emit updateFailed(tr("No 'ROOMS' found for DAY ") + dayDate+" "+city);
-            return false;
+            // emit updateFailed(tr("No 'ROOMS' found for DAY ") + dayDate+" "+city);
+            continue;
         }
+        // loop thru room names
         for (int r = 0; r < roomKeys.size(); ++r) {
             QVariantList sessionList;
             sessionList = roomMap.value(roomKeys.at(r)).toList();
@@ -1042,8 +1090,8 @@ bool DataUtil::updateSessions(const int conferenceId) {
             }
             Room* room = nullptr;
             found = false;
-            for (int rl = 0; rl < mDataManager->mAllRoom.size(); ++rl) {
-                room = (Room*) mDataManager->mAllRoom.at(rl);
+            for (int rl = 0; rl < conference->rooms().size(); ++rl) {
+                room = conference->rooms().at(rl);
                 if(room->roomName() == roomKeys.at(r)) {
                     found = true;
                     break;
@@ -1053,7 +1101,7 @@ bool DataUtil::updateSessions(const int conferenceId) {
                 qDebug() << "Room* not found for " << dayDate << " Room: " << roomKeys.at(r);
                 if(roomKeys.at(r).isEmpty()) {
                     // use dummi room
-                    room = (Room*) mDataManager->mAllRoom.first();
+                    room = (Room*) mDataManager->allRoom().first();
                     qDebug() << "Room Name empty - using Room " << room->roomName() << "for " << city;
                 } else {
                     room = mDataManager->createRoom();
@@ -1062,6 +1110,7 @@ bool DataUtil::updateSessions(const int conferenceId) {
                     room->setInAssets(false);
                     room->setRoomName(roomKeys.at(r));
                     mDataManager->insertRoom(room);
+                    conference->addToRooms(room);
                     mProgressInfotext.append("R");
                     progressInfo(mProgressInfotext);
                 }
@@ -1075,7 +1124,7 @@ bool DataUtil::updateSessions(const int conferenceId) {
                 }
                 // adjust persons
                 adjustPersons(sessionMap);
-                // adjust tracks
+                // adjust tracks (true: isUpdate == not in assets
                 adjustTracks(sessionMap, conference, true);
 
                 SessionAPI* sessionAPI = mDataManager->createSessionAPI();
