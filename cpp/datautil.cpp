@@ -451,6 +451,7 @@ void DataUtil::prepareSanFrancisco201601() {
     // wednesday
     Day* day = mDataManager->createDay();
     day->setId(1);
+    day->setConference(201601);
     day->setWeekDay(3);
     day->setConferenceDay(QDate::fromString("2016-10-19", YYYY_MM_DD));
     conference->addToDays(day);
@@ -459,6 +460,7 @@ void DataUtil::prepareSanFrancisco201601() {
     day = mDataManager->createDay();
     day->setId(2);
     day->setWeekDay(4);
+    day->setConference(201601);
     day->setConferenceDay(QDate::fromString("2016-10-20", YYYY_MM_DD));
     conference->addToDays(day);
     mDataManager->insertDay(day);
@@ -507,12 +509,14 @@ void DataUtil::prepareBoston201801() {
     Day* day = mDataManager->createDay();
     day->setId(2018011);
     day->setWeekDay(1);
+    day->setConference(201801);
     day->setConferenceDay(QDate::fromString("2018-10-29", YYYY_MM_DD));
     conference->addToDays(day);
     mDataManager->insertDay(day);
     // tuesday
     day = mDataManager->createDay();
     day->setId(2018012);
+    day->setConference(201801);
     day->setWeekDay(2);
     day->setConferenceDay(QDate::fromString("2018-10-30", YYYY_MM_DD));
     conference->addToDays(day);
@@ -561,6 +565,7 @@ void DataUtil::prepareBerlin201802() {
     // wednesday
     Day* day = mDataManager->createDay();
     day->setId(2018021);
+    day->setConference(201802);
     day->setWeekDay(3);
     day->setConferenceDay(QDate::fromString("2018-12-05", YYYY_MM_DD));
     conference->addToDays(day);
@@ -568,6 +573,7 @@ void DataUtil::prepareBerlin201802() {
     // thursday
     day = mDataManager->createDay();
     day->setId(2018022);
+    day->setConference(201802);
     day->setWeekDay(2);
     day->setConferenceDay(QDate::fromString("2018-12-06", YYYY_MM_DD));
     conference->addToDays(day);
@@ -1045,9 +1051,9 @@ bool DataUtil::updateSessions(const int conferenceId) {
         emit updateFailed(tr("Error: Received Map missed 'days'.")+" "+city);
         return false;
     }
-    if(serverDayList.size() >= conference->days().size()) {
+    if(serverDayList.size() > conference->days().size()) {
         qWarning() << "too many 'days' found " << city;
-        emit updateFailed(tr("Error: # of 'days' expected: 2 - but got ")+QString::number(serverDayList.size()));
+        emit updateFailed(tr("Error: # of 'days' expected: ")+conference->days().size()+" got: "+QString::number(serverDayList.size()));
         return false;
     }
     if(serverDayList.size() < conference->days().size()) {
