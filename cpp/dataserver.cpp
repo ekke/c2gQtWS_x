@@ -370,6 +370,7 @@ void DataServer::onFinishedSchedule()
     int conferenceId = conferenceString.toInt();
     if(conferenceId == 201801) {
         requestSchedule(201802);
+        return;
     }
 
     // now getting the speaker data

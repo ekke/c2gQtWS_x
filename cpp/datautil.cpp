@@ -480,6 +480,7 @@ void DataUtil::prepareSanFrancisco201601() {
 
 // Conference, Days
 void DataUtil::prepareBoston201801() {
+    qDebug() << "prepareBoston201801";
     Conference* conference = mDataManager->createConference();
     conference->setId(201801);
     conference->setConferenceName("Qt World Summit 2018");
@@ -538,6 +539,7 @@ void DataUtil::prepareBoston201801() {
 
 // Conference, Days
 void DataUtil::prepareBerlin201802() {
+    qDebug() << "prepareBerlin201802";
     Conference* conference = mDataManager->createConference();
     conference->setId(201802);
     conference->setConferenceName("Qt World Summit 2018");
@@ -1001,6 +1003,7 @@ void DataUtil::updateSpeakerImages() {
         } // waiting for download
     } // new images map
     // all speaker images done
+    qDebug() << "ALL SPEAKER IMAGES DONE";
 
     bool sessionOK = updateSessions(201801);
     if(!sessionOK) {
@@ -1203,15 +1206,12 @@ bool DataUtil::updateSessions(const int conferenceId) {
                 // SORT
                 session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
                 mMultiSession.insert(session->sortKey(), session);
-
-                qDebug() << "XXXXXX #" << mMultiSession.size();
             } // end for sessions of a room of a day
         } // end for rooms of a day
     } // end for list of days from server
 
     qDebug() << "SESSIONS: " << mDataManager->mAllSession.size() << " --> " << mMultiSession.size();
-    // speaker, images, sessions, days, rooms, tracks --> cache
-    // delete orphans
+    qDebug() << "Conference " << conference->conferenceCity() << " with days #" << conference->days().size() << " rooms #" << conference->rooms().size();
     mProgressInfotext.append("\n").append(tr("Schedule successfully synchronized :)")).append(" ").append(city);
     emit progressInfo(mProgressInfotext);
     return true;
