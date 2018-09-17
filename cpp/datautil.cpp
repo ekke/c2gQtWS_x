@@ -1182,10 +1182,6 @@ void DataUtil::finishUpdate() {
     mDataManager->saveConferenceToCache();
     qDebug() << "FINISH: Conference saved";
 
-    // Building not changed - always initialized from Prepare Conference
-
-    // Floor not changed - always initialized from Prepare Conference
-
     // Room: clear sessions for update
     for (int r = 0; r < mDataManager->allRoom().size(); ++r) {
         Room* room = (Room*) mDataManager->allRoom().at(r);
