@@ -27,6 +27,7 @@ void DataUtil::init(DataManager* dataManager, DataServer* dataServer)
     mDataManager = dataManager;
     mDataServer = dataServer;
     mConferenceDataPath = mDataManager->mDataPath + "conference/";
+    mCacheDataPath = mDataManager->mDataPath + "prod/";
     mDataServer->setConferenceDataPath(mConferenceDataPath);
     // used for temp dynamic lists as QQmlPropertyLists
     mSessionLists = mDataManager->createSessionLists();
@@ -381,7 +382,16 @@ void DataUtil::prepareEventData() {
     mDataManager->deleteSession();
     mDataManager->deleteSessionTrack();
     mDataManager->deleteSpeaker();
+    // at first we delete current SpeakerImages file
+    // perhaps from old conferences
     mDataManager->deleteSpeakerImage();
+    QString cacheSpeakerImageFilePath = mCacheDataPath + "cacheSpeakerImage.json";
+    QFile cacheSpeakerImageFile(cacheSpeakerImageFilePath);
+    if(cacheSpeakerImageFile.exists()) {
+        cacheSpeakerImageFile.remove();
+    }
+    // as next we copy speaker images from assets
+    mDataManager->initSpeakerImageFromCache();
     // Rooms and Room Images
     prepareRooms();
     // Conference, Days, connect Rooms
@@ -957,7 +967,6 @@ void DataUtil::continueUpdate()
                 qWarning() << "AVATAR wrong "+speakerAPI->avatar();
             } else {
                 // check if modified
-                // only QtCon16 avatar = avatar.replace("http://","https://");
                 if(speaker->hasSpeakerImage()) {
                     if(speaker->speakerImageAsDataObject()->originImageUrl() != avatar) {
                         qDebug() << "IMAGE Changed";
@@ -967,14 +976,22 @@ void DataUtil::continueUpdate()
                         mMultiSpeakerImages.insert(false, speakerImage);
                     }
                 } else {
-                    qDebug() << "IMAGE NEW";
-                    SpeakerImage* speakerImage = mDataManager->createSpeakerImage();
-                    speakerImage->setSpeakerId(speaker->speakerId());
-                    speakerImage->setOriginImageUrl(avatar);
-                    speakerImage->setSuffix(sl.last());
-                    speakerImage->setInAssets(false);
-                    speaker->resolveSpeakerImageAsDataObject(speakerImage);
-                    mMultiSpeakerImages.insert(false, speakerImage);
+                    SpeakerImage* speakerImage = nullptr;
+                    qDebug() << "IMAGE already in ASSETS ?";
+                    speakerImage = mDataManager->findSpeakerImageBySpeakerId(speaker->speakerId());
+                    if(!speakerImage) {
+                        qDebug() << "IMAGE NEW";
+                        speakerImage = mDataManager->createSpeakerImage();
+                        speakerImage->setSpeakerId(speaker->speakerId());
+                        speakerImage->setOriginImageUrl(avatar);
+                        speakerImage->setSuffix(sl.last());
+                        speakerImage->setInAssets(false);
+                        speaker->resolveSpeakerImageAsDataObject(speakerImage);
+                        mMultiSpeakerImages.insert(false, speakerImage);
+                    } else {
+                        qDebug() << "IMAGE found from ASSETS";
+                        speaker->resolveSpeakerImageAsDataObject(speakerImage);
+                    }
                 }
             } // end if valid Avatar URL
         } // end check avatar if URL && not default
@@ -1186,7 +1203,7 @@ bool DataUtil::updateSessions(const int conferenceId) {
                 // adjust tracks (true: isUpdate == not in assets
                 adjustTracks(sessionMap, conference, true);
                 // ekke TODO fix generator bug (without resolving we get tracks doubled)
-                QList<Day*> tList;
+                QList<SessionTrack*> tList;
                 conference->resolveTracksKeys(tList);
 
                 SessionAPI* sessionAPI = mDataManager->createSessionAPI();

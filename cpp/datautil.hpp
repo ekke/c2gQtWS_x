@@ -138,6 +138,7 @@ private:
 
     bool checkDirs();
     QString mConferenceDataPath;
+    QString mCacheDataPath;
 
     // UPDATE
     void continueUpdate();
