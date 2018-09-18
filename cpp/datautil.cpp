@@ -476,6 +476,11 @@ void DataUtil::prepareSanFrancisco201601() {
             }
         }
     }
+    // ekke TODO fix generator bug (without resolving we get days, rooms tracks doubled)
+    QList<Day*> dList;
+    conference->resolveDaysKeys(dList);
+    QList<Room*> rList;
+    conference->resolveRoomsKeys(rList);
 }
 
 // Conference, Days
@@ -535,6 +540,11 @@ void DataUtil::prepareBoston201801() {
             }
         }
     }
+    // ekke TODO fix generator bug (without resolving we get days, rooms tracks doubled)
+    QList<Day*> dList;
+    conference->resolveDaysKeys(dList);
+    QList<Room*> rList;
+    conference->resolveRoomsKeys(rList);
 }
 
 // Conference, Days
@@ -594,6 +604,11 @@ void DataUtil::prepareBerlin201802() {
             }
         }
     }
+    // ekke TODO fix generator bug (without resolving we get days, rooms tracks doubled)
+    QList<Day*> dList;
+    conference->resolveDaysKeys(dList);
+    QList<Room*> rList;
+    conference->resolveRoomsKeys(rList);
 }
 
 QVariantMap DataUtil::readScheduleFile(const QString schedulePath) {
@@ -970,6 +985,7 @@ void DataUtil::continueUpdate()
     qDebug() << "SPEAKERS: " << mDataManager->mAllSpeaker.size() << " --> " << mMultiSpeaker.size() << " IMG: " << mMultiSpeakerImages.size();
     mProgressInfotext.append("\n").append(tr("Sync Speaker Images"));
     emit progressInfo(mProgressInfotext);
+
     updateSpeakerImages();
 }
 
@@ -1169,6 +1185,9 @@ bool DataUtil::updateSessions(const int conferenceId) {
                 adjustPersons(sessionMap);
                 // adjust tracks (true: isUpdate == not in assets
                 adjustTracks(sessionMap, conference, true);
+                // ekke TODO fix generator bug (without resolving we get tracks doubled)
+                QList<Day*> tList;
+                conference->resolveTracksKeys(tList);
 
                 SessionAPI* sessionAPI = mDataManager->createSessionAPI();
                 sessionAPI->fillFromForeignMap(sessionMap);
