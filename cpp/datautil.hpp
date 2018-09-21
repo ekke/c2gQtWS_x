@@ -135,6 +135,8 @@ private:
     void prepareSanFrancisco201601();
     void prepareBoston201801();
     void prepareBerlin201802();
+    void addGenericSessionsBoston201801();
+    void addGenericSessionsBerlin201802();
 
     bool checkDirs();
     QString mConferenceDataPath;
@@ -161,7 +163,6 @@ private:
     void setType(Session *session);
     void finishUpdate();
     void sortedSessionsIntoRoomDayTrackSpeaker();
-
 
 };
 

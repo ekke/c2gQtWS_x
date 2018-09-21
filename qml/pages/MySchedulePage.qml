@@ -61,7 +61,7 @@ Page {
                         text: dataUtil.localWeekdayAndTime(section)
                         anchors.verticalCenter: parent.verticalCenter
                         color: primaryColor
-                        font.bold: true
+                        // font.bold: true
                     }
                 } // section row
                 //HorizontalListDivider{}

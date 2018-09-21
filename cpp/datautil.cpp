@@ -476,6 +476,8 @@ void DataUtil::prepareSanFrancisco201601() {
     mDataManager->insertDay(day);
     qDebug() << "CONFERENCE " << conference->conferenceCity() << " with days #" << conference->days().size();
     conference->setLastSessionTrackId(conference->id()*100);
+    conference->setLastGenericSessionId(conference->id()*100*-1);
+    qDebug() << "Last SessionTrack " << conference->lastSessionTrackId() << " last Generic Session ID " << conference->lastGenericSessionId();
     // rooms
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
         Room* room = (Room*) mDataManager->allRoom().at(i);
@@ -540,6 +542,8 @@ void DataUtil::prepareBoston201801() {
     mDataManager->insertDay(day);
     qDebug() << "CONFERENCE " << conference->conferenceCity() << " with days #" << conference->days().size();
     conference->setLastSessionTrackId(conference->id()*100);
+    conference->setLastGenericSessionId(conference->id()*100*-1);
+    qDebug() << "Last SessionTrack " << conference->lastSessionTrackId() << " last Generic Session ID " << conference->lastGenericSessionId();
     // rooms
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
         Room* room = (Room*) mDataManager->allRoom().at(i);
@@ -604,6 +608,8 @@ void DataUtil::prepareBerlin201802() {
     mDataManager->insertDay(day);
     qDebug() << "CONFERENCE " << conference->conferenceCity() << " with days #" << conference->days().size();
     conference->setLastSessionTrackId(conference->id()*100);
+    conference->setLastGenericSessionId(conference->id()*100*-1);
+    qDebug() << "Last SessionTrack " << conference->lastSessionTrackId() << " last Generic Session ID " << conference->lastGenericSessionId();
     // rooms
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
         Room* room = (Room*) mDataManager->allRoom().at(i);
@@ -1061,6 +1067,32 @@ bool DataUtil::updateSessions(const int conferenceId) {
     }
     mProgressInfotext.append("\n").append(tr("Sync Sessions ")).append(city);
 
+    Conference* conference;
+    conference = (Conference*) mDataManager->findConferenceById(conferenceId);
+    if(!conference) {
+        qWarning() << "No 'conference' found in prepared data for " << city;
+        emit updateFailed(tr("Error: Data missed 'conference'.")+" "+city);
+        return false;
+    }
+
+    // delete old generic sessions
+    int firstGenericSession = conference->id()*100*-1;
+    int lastGenericSession = conference->lastGenericSessionId();
+    if(lastGenericSession == firstGenericSession) {
+        qDebug() << "NO GENERIC SESSIONS to be deleted";
+    } else {
+        for (int i = lastGenericSession; i < firstGenericSession; ++i) {
+            bool ok = mDataManager->deleteSessionBySessionId(i);
+            if(!ok) {
+                qDebug() << "cannot delete GENERIC SESSION " << i;
+            } else {
+                qDebug() << "GENERIC SESSION deleted " << i;
+            }
+        } // loop old generic sessions
+        // reset counter
+        conference->setLastGenericSessionId(conference->id()*100*-1);
+    } // loop delete generic sessions
+
     emit progressInfo(mProgressInfotext);
 
     const QString schedulePath = mConferenceDataPath + "schedule_"+QString::number(conferenceId)+".json";
@@ -1075,13 +1107,6 @@ bool DataUtil::updateSessions(const int conferenceId) {
     if(map.isEmpty()) {
         qWarning() << "No 'conference' found in server response for " << city;
         emit updateFailed(tr("Error: Received Map missed 'conference'.")+" "+city);
-        return false;
-    }
-    Conference* conference;
-    conference = (Conference*) mDataManager->findConferenceById(conferenceId);
-    if(!conference) {
-        qWarning() << "No 'conference' found in prepared data for " << city;
-        emit updateFailed(tr("Error: Data missed 'conference'.")+" "+city);
         return false;
     }
     QVariantList serverDayList;
@@ -1253,12 +1278,170 @@ bool DataUtil::updateSessions(const int conferenceId) {
     return true;
 }
 
+void DataUtil::addGenericSessionsBoston201801() {
+    int conferenceId = 201801;
+    Conference* conference;
+    conference = (Conference*) mDataManager->findConferenceById(conferenceId);
+    if(!conference) {
+        qWarning() << "No 'conference' found - cannot add Generic Sessions ";
+        emit updateFailed(tr("Error: Data missed 'conference'.")+QString::number(conferenceId));
+        return;
+    }
+    int lastGenericSession = conference->lastGenericSessionId();
+    Session* session = nullptr;
+    for (int i = 0; i < conference->days().size(); ++i) {
+        Day* day = conference->days().at(i);
+        if(day->conferenceDay().toString(YYYY_MM_DD) == "2018-10-29") {
+            // Tech Day
+            // REGISTRATION
+            session = mDataManager->createSession();
+            lastGenericSession --;
+            session->setSessionId(lastGenericSession);
+            session->setTitle(tr("Registration and Coffee"));
+            session->setIsGenericScheduleSession(true);
+            session->setIsRegistration(true);
+            session->setStartTime(QTime::fromString("08:00", HH_MM));
+            session->setEndTime(QTime::fromString("09:00", HH_MM));
+            session->setMinutes(60);
+            session->setConference(conferenceId);
+            session->setSessionDay(day->id());
+            session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
+            mMultiSession.insert(session->sortKey(), session);
+            mDataManager->insertSession(session);
+            // LUNCH
+            session = mDataManager->createSession();
+            lastGenericSession --;
+            session->setSessionId(lastGenericSession);
+            session->setTitle(tr("Lunch"));
+            session->setIsGenericScheduleSession(true);
+            session->setIsLunch(true);
+            session->setStartTime(QTime::fromString("12:00", HH_MM));
+            session->setEndTime(QTime::fromString("13:00", HH_MM));
+            session->setMinutes(60);
+            session->setConference(conferenceId);
+            session->setSessionDay(day->id());
+            session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
+            mMultiSession.insert(session->sortKey(), session);
+            mDataManager->insertSession(session);
+            // BREAK
+            session = mDataManager->createSession();
+            lastGenericSession --;
+            session->setSessionId(lastGenericSession);
+            session->setTitle(tr("Break"));
+            session->setIsGenericScheduleSession(true);
+            session->setIsBreak(true);
+            session->setStartTime(QTime::fromString("15:00", HH_MM));
+            session->setEndTime(QTime::fromString("15:30", HH_MM));
+            session->setMinutes(30);
+            session->setConference(conferenceId);
+            session->setSessionDay(day->id());
+            session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
+            mMultiSession.insert(session->sortKey(), session);
+            mDataManager->insertSession(session);
+            // NETWORKING
+            session = mDataManager->createSession();
+            lastGenericSession --;
+            session->setSessionId(lastGenericSession);
+            session->setTitle(tr("Networking and Drinks"));
+            session->setIsGenericScheduleSession(true);
+            session->setIsEvent(true);
+            session->setStartTime(QTime::fromString("17:15", HH_MM));
+            session->setEndTime(QTime::fromString("19:00", HH_MM));
+            session->setMinutes(105);
+            session->setConference(conferenceId);
+            session->setSessionDay(day->id());
+            session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
+            mMultiSession.insert(session->sortKey(), session);
+            mDataManager->insertSession(session);
+        } else {
+            // CONF DAY
+            // REGISTRATION
+            session = mDataManager->createSession();
+            lastGenericSession --;
+            session->setSessionId(lastGenericSession);
+            session->setTitle(tr("Registration and Coffee"));
+            session->setIsGenericScheduleSession(true);
+            session->setIsRegistration(true);
+            session->setStartTime(QTime::fromString("08:00", HH_MM));
+            session->setEndTime(QTime::fromString("09:00", HH_MM));
+            session->setMinutes(60);
+            session->setConference(conferenceId);
+            session->setSessionDay(day->id());
+            session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
+            mMultiSession.insert(session->sortKey(), session);
+            mDataManager->insertSession(session);
+            // BREAK COFFEE
+            session = mDataManager->createSession();
+            lastGenericSession --;
+            session->setSessionId(lastGenericSession);
+            session->setTitle(tr("Coffee"));
+            session->setIsGenericScheduleSession(true);
+            session->setIsBreak(true);
+            session->setStartTime(QTime::fromString("10:30", HH_MM));
+            session->setEndTime(QTime::fromString("11:00", HH_MM));
+            session->setMinutes(30);
+            session->setConference(conferenceId);
+            session->setSessionDay(day->id());
+            session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
+            mMultiSession.insert(session->sortKey(), session);
+            mDataManager->insertSession(session);
+            // LUNCH
+            session = mDataManager->createSession();
+            lastGenericSession --;
+            session->setSessionId(lastGenericSession);
+            session->setTitle(tr("Lunch"));
+            session->setIsGenericScheduleSession(true);
+            session->setIsLunch(true);
+            session->setStartTime(QTime::fromString("12:00", HH_MM));
+            session->setEndTime(QTime::fromString("13:00", HH_MM));
+            session->setMinutes(60);
+            session->setConference(conferenceId);
+            session->setSessionDay(day->id());
+            session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
+            mMultiSession.insert(session->sortKey(), session);
+            mDataManager->insertSession(session);
+            // BREAK
+            session = mDataManager->createSession();
+            lastGenericSession --;
+            session->setSessionId(lastGenericSession);
+            session->setTitle(tr("Break"));
+            session->setIsGenericScheduleSession(true);
+            session->setIsBreak(true);
+            session->setStartTime(QTime::fromString("14:30", HH_MM));
+            session->setEndTime(QTime::fromString("15:00", HH_MM));
+            session->setMinutes(30);
+            session->setConference(conferenceId);
+            session->setSessionDay(day->id());
+            session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
+            mMultiSession.insert(session->sortKey(), session);
+            mDataManager->insertSession(session);
+            // NETWORKING
+            session = mDataManager->createSession();
+            lastGenericSession --;
+            session->setSessionId(lastGenericSession);
+            session->setTitle(tr("Networking and Drinks"));
+            session->setIsGenericScheduleSession(true);
+            session->setIsEvent(true);
+            session->setStartTime(QTime::fromString("17:15", HH_MM));
+            session->setEndTime(QTime::fromString("19:00", HH_MM));
+            session->setMinutes(105);
+            session->setConference(conferenceId);
+            session->setSessionDay(day->id());
+            session->setSortKey(day->conferenceDay().toString(YYYY_MM_DD)+session->startTime().toString(HH_MM));
+            mMultiSession.insert(session->sortKey(), session);
+            mDataManager->insertSession(session);
+        }
+    }
+    conference->setLastGenericSessionId(lastGenericSession);
+}
+
+void DataUtil::addGenericSessionsBerlin201802() {
+
+}
+
 void DataUtil::finishUpdate() {
     mProgressInfotext.append("\n").append(tr("Now saving Conference Data to Cache"));
     emit progressInfo(mProgressInfotext);
-    // Conference save last xxx Id's
-    mDataManager->saveConferenceToCache();
-    qDebug() << "FINISH: Conference saved";
 
     // Room: clear sessions for update
     for (int r = 0; r < mDataManager->allRoom().size(); ++r) {
@@ -1320,13 +1503,13 @@ void DataUtil::finishUpdate() {
     // Session: insert sorted Sessions
     // presenter, sessionLinks, day, room, track scheduleItem are updated
     mDataManager->mAllSession.clear();
+    // now add Generic Sessions
+    addGenericSessionsBoston201801();
+    addGenericSessionsBerlin201802();
+    qDebug() << "FINISH: ScheduleItems added";
     // now insert sorted Sessions, update sessions for Day, Room, Tracks, Speaker
     sortedSessionsIntoRoomDayTrackSpeaker();
     qDebug() << "FINISH: Rooms Days Tracks Speaker Sessions sorted";
-    mDataManager->saveSessionToCache();
-    qDebug() << "FINISH: Sessions saved";
-
-    qDebug() << "FINISH: ScheduleItems saved";
 
     // SPEAKER
     mDataManager->saveSpeakerToCache();
@@ -1376,9 +1559,20 @@ void DataUtil::finishUpdate() {
     mDataManager->saveRoomToCache();
     qDebug() << "FINISH: Rooms saved";
 
+    // Sessions
+    mDataManager->saveSessionToCache();
+    qDebug() << "FINISH: Sessions saved";
+
     // SETTINGS update API
     mDataManager->mSettingsData->setApiVersion(mNewApi);
     mDataManager->mSettingsData->setLastUpdate(QDateTime::currentDateTime());
+    // mDataManager->mSettingsData->setVersion(201800);
+    mDataManager->saveSettings();
+
+    // SAVE CONFERENCES
+    mDataManager->saveConferenceToCache();
+    qDebug() << "FINISH: Conference saved";
+
     //
     mProgressInfotext.append("\n").append(tr("All done"));
     emit progressInfo(mProgressInfotext);

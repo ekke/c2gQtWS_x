@@ -58,6 +58,7 @@ ListView {
                         LabelTitle {
                             rightPadding: 12
                             text: model.modelData.title
+                            color: accentColor
                             //font.bold: true
                             wrapMode: Label.WordWrap
                             maximumLineCount: 2
@@ -70,11 +71,11 @@ ListView {
                             text: model.modelData.startTime.toLocaleTimeString("HH:mm") + " - " + model.modelData.endTime.toLocaleTimeString("HH:mm")
                         }
                     } // middle column
-                    ListRowButton {
-                        onClicked: {
-                            navPane.pushSessionDetail(model.modelData.sessionId)
-                        }
-                    }
+//                    ListRowButton {
+//                        onClicked: {
+//                            navPane.pushSessionDetail(model.modelData.sessionId)
+//                        }
+//                    }
                 }
             } // scheduleRow
 
