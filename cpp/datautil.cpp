@@ -32,6 +32,8 @@ void DataUtil::init(DataManager* dataManager, DataServer* dataServer)
     // used for temp dynamic lists as QQmlPropertyLists
     mSessionLists = mDataManager->createSessionLists();
 
+    mCurrentConference = nullptr;
+
     // connections
     bool res = connect(mDataServer, SIGNAL(serverSuccess()), this,
                        SLOT(onServerSuccess()));
@@ -1573,6 +1575,8 @@ void DataUtil::finishUpdate() {
     mDataManager->saveConferenceToCache();
     qDebug() << "FINISH: Conference saved";
 
+    mCurrentConference = currentConference();
+
     //
     mProgressInfotext.append("\n").append(tr("All done"));
     emit progressInfo(mProgressInfotext);
@@ -1617,16 +1621,46 @@ void DataUtil::saveSessionFavorites()
 }
 
 /**
- * list of sessions for a Day are lazy
+ * list of days for a conference and list of sessions for a Day are lazy
  * (only IDs stored in an Array)
  * for the Conference we always need all to create the schedule
  * so at startup or update this will be called
  */
 void DataUtil::resolveSessionsForSchedule() {
-    for (int i = 0; i < mDataManager->mAllDay.size(); ++i) {
-        Day* day = (Day*) mDataManager->mAllDay.at(i);
-        day->resolveSessionsKeys(mDataManager->listOfSessionForKeys(day->sessionsKeys()));
+    for (int i = 0; i < mDataManager->allConference().size(); ++i) {
+        Conference* conference = (Conference*) mDataManager->allConference().at(i);
+        conference->resolveDaysKeys(mDataManager->listOfDayForKeys(conference->daysKeys()));
+        for (int d = 0; d < conference->days().size(); ++d) {
+            Day* day = conference->days().at(d);
+            // cannot use my  generated method, because it's loosing the sort
+            // TODO GENERATOR bug fix
+            // day->resolveSessionsKeys(mDataManager->listOfSessionForKeys(day->sessionsKeys()));
+            day->resolveSessionsKeys(listOfSessionForSortedKeys(day->sessionsKeys()));
+        }
     }
+}
+
+// TODO remove if Generator is fixed
+QList<Session*> DataUtil::listOfSessionForSortedKeys(
+        QStringList keyList)
+{
+    QList<Session*> listOfData;
+    keyList.removeDuplicates();
+    for (int k = 0; k < keyList.size(); ++k) {
+        int theSessionId = keyList.at(k).toInt();
+        for (int i = 0; i < mDataManager->allSession().size(); ++i) {
+            Session* session;
+            session = (Session*) mDataManager->allSession().at(i);
+            if(session->sessionId() == theSessionId) {
+                listOfData.append(session);
+                break;
+            }
+        } // loop sessions
+    } // loop keys
+    if(listOfData.size() != keyList.size()) {
+        qDebug() << "not all found for keys";
+    }
+    return listOfData;
 }
 
 /**
@@ -1655,14 +1689,28 @@ void DataUtil::resolveSessionsForSpeaker(Speaker* speaker)
     speaker->resolveSessionsKeys(mDataManager->listOfSessionForKeys(speaker->sessionsKeys()));
 }
 
+Conference* DataUtil::currentConference() {
+    if(!mCurrentConference) {
+        // TODO depends from current date
+        // if currentDate > last day of first conference: use the second one
+        mCurrentConference = (Conference*) mDataManager->allConference().first();
+        qDebug() << "Current Conference is first: " << mCurrentConference->conferenceCity();
+    }
+    return mCurrentConference;
+}
+
 QString DataUtil::scheduleTabName(int tabBarIndex)
 {
-    if(mDataManager->mAllDay.size()<(tabBarIndex +1)) {
+    if(!mCurrentConference) {
+        currentConference();
+    }
+    if(mCurrentConference->days().size()<(tabBarIndex +1)) {
+        qWarning() << "Curren Conference has less Days ";
         return "??";
     }
-    Day* day = (Day*) mDataManager->mAllDay.at(tabBarIndex);
+    Day* day = mCurrentConference->days().at(tabBarIndex);
     //return day->conferenceDay().toString("ddd (dd)");
-    if(mDataManager->mAllDay.size() > 3) {
+    if(mCurrentConference->days().size() > 3) {
         return QDate::shortDayName(day->conferenceDay().dayOfWeek());
     }
     return QDate::longDayName(day->conferenceDay().dayOfWeek());
@@ -1675,11 +1723,17 @@ SessionLists *DataUtil::mySchedule()
 
 void DataUtil::refreshMySchedule()
 {
+    if(!mCurrentConference) {
+        currentConference();
+    }
     mSessionLists->clearScheduledSessions();
-    for (int i = 0; i < mDataManager->allSession().size(); ++i) {
-        Session* session = (Session*) mDataManager->allSession().at(i);
-        if(!session->isDeprecated() && session->isFavorite()) {
-            mSessionLists->addToScheduledSessions(session);
+    for (int d = 0; d < mCurrentConference->days().size(); ++d) {
+        Day* day = mCurrentConference->days().at(d);
+        for (int s = 0; s < day->sessions().size(); ++s) {
+            Session* session = (Session*) day->sessions().at(s);
+            if(!session->isDeprecated() && session->isFavorite()) {
+                mSessionLists->addToScheduledSessions(session);
+            }
         }
     }
     qDebug() << "MY SCHEDLUE #:" << mSessionLists->scheduledSessionsCount();
@@ -1688,11 +1742,14 @@ void DataUtil::refreshMySchedule()
 
 int DataUtil::findFirstSessionItem(int conferenceDayIndex, QString pickedTime)
 {
-    if(conferenceDayIndex < 0 || conferenceDayIndex > (mDataManager->mAllDay.size()-1)) {
+    if(!mCurrentConference) {
+        currentConference();
+    }
+    if(conferenceDayIndex < 0 || conferenceDayIndex > (mCurrentConference->days().size()-1)) {
         qDebug() << "Day Index wrong: conferenceDayIndex";
         return -1;
     }
-    Day* day = (Day*) mDataManager->mAllDay.at(conferenceDayIndex);
+    Day* day = (Day*) mCurrentConference->days().at(conferenceDayIndex);
     for (int i = 0; i < day->sessions().size(); ++i) {
         Session* session = day->sessions().at(i);
         QString theTime = session->sortKey().right(5);

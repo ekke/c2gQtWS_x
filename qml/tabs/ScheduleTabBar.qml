@@ -15,7 +15,7 @@ TabBar {
         navSwipePane.currentIndex = currentIndex // navPane
     }
     Repeater {
-        model: dataManager.dayPropertyList.length
+        model: currentConference.daysPropertyList.length //  dataManager.dayPropertyList.length
         TabButton {
             focusPolicy: Qt.NoFocus
             text: dataUtil.scheduleTabName(index)

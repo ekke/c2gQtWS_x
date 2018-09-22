@@ -15,6 +15,7 @@ Page {
     bottomPadding: 6
     topPadding: 6
 
+    property int dayIndex
 
     // SECTION HEADER DELEGATE
     Component {
@@ -75,22 +76,22 @@ Page {
         cleanup()
     }
 
-    // called immediately after Loader.loaded
-
     function init() {
         console.log("Init done from dayListPage")
-        console.log("Day# "+dataManager.dayPropertyList.length)
-        if(dataManager.dayPropertyList.length > 0) {
-            conferenceDay = dataManager.dayPropertyList[index]
+        console.log("Day# "+currentConference.daysPropertyList.length)
+        if(currentConference.daysPropertyList.length > 0) {
+            conferenceDay = currentConference.daysPropertyList[dayIndex]
             console.log(conferenceDay.conferenceDay)
             console.log("Sessions:"+conferenceDay.sessionsPropertyList.length)
             listView.model = conferenceDay.sessionsPropertyList
         } else {
             listView.model =  []
         }
-
-
     }
+    Component.onCompleted: {
+        init()
+    }
+
     // called from Component.destruction
     function cleanup() {
         console.log("Cleanup done from dayListPage")

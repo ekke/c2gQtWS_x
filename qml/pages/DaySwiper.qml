@@ -21,45 +21,20 @@ Page {
     property alias currentIndex: navSwipePane.currentIndex
 
     function goToIndex(theItemIndex) {
-        dayPagerepeater.itemAt(currentIndex).item.goToItemIndex(theItemIndex)
+        dayPagerepeater.itemAt(currentIndex).goToItemIndex(theItemIndex)
     }
 
     property bool tabBarIsFixed: true
 
-    header: isLandscape? null : tabBar
-
-    Loader {
+    header: ScheduleTabBar {
         id: tabBar
-        visible: !isLandscape
-        active: !isLandscape
-        source: "../tabs/ScheduleTabBar.qml"
-        onLoaded: {
-            console.log("Tab Bar LOADED")
-            if(item) {
-                item.currentIndex = navSwipePane.currentIndex
-            }
-        }
-    }
-    Loader {
-        id: tabBarFloating
-        visible: isLandscape
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-        active: isLandscape
-        source: "../tabs/ScheduleTabBar.qml"
-        onLoaded: {
-            console.log("Floating Tab Bar LOADED")
-            if(item) {
-                item.currentIndex = navSwipePane.currentIndex
-            }
-        }
+        currentIndex: navSwipePane.currentIndex
     }
 
     SwipeView {
         id: navSwipePane
         focus: true
-        anchors.top: isLandscape? tabBarFloating.bottom : parent.top
+        anchors.top: parent.top
         anchors.topMargin: isLandscape? 6 : 0
         anchors.left: parent.left
         anchors.right: parent.right
@@ -68,11 +43,7 @@ Page {
         // currentIndex is the NEXT index swiped to
         onCurrentIndexChanged: {
             console.log("Day Swipe View current index changed: "+currentIndex)
-            if(isLandscape) {
-                tabBarFloating.item.currentIndex = currentIndex
-            } else {
-                tabBar.item.currentIndex = currentIndex
-            }
+            tabBar.currentIndex = currentIndex
         }
 
         function goToPage(pageIndex) {
@@ -80,30 +51,20 @@ Page {
                 // it's the current page
                 return
             }
-            if(pageIndex > 1 || pageIndex < 0) {
+            if(pageIndex > (currentConference.daysPropertyList.length-1) || pageIndex < 0) {
                 return
             }
             navSwipePane.currentIndex = pageIndex
         } // goToPage
 
-        // only 2 Pages - all preloaded
+        // only less Pages - all preloaded
         Repeater {
             id: dayPagerepeater
-            model: 2
-
-            Loader {
-                id: pageOneLoader
-                active: true
-                source: "DayPage.qml"
-                onLoaded: {
-                    item.init()
-                }
+            model: currentConference.daysPropertyList.length
+            DayPage {
+                dayIndex: index
             }
-
         } // day repeater
-
-
-
 
     } // navSwipePane
 
@@ -113,10 +74,12 @@ Page {
     }
 
     function init() {
-        console.log("INIT day navSwipePage")
+        console.log("INIT day DaySwiperPage")
+        console.log("conference: "+ currentConference.conferenceCity)
+        console.log("days: "+ currentConference.daysPropertyList.length)
     }
     function cleanup() {
-        console.log("CLEANUP navSwipePage")
+        console.log("CLEANUP DaySwiperPage")
     }
 
 } // navSwipePage

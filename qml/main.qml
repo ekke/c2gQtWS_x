@@ -31,6 +31,8 @@ ApplicationWindow {
     signal oldConference()
     property bool autoVersionCheck: true
     //
+    property Conference currentConference
+    //
     property bool appIsActive: Qt.application.state == Qt.ApplicationActive
     onAppIsActiveChanged: {
         if(appIsActive) {
@@ -492,6 +494,8 @@ ApplicationWindow {
                 dataManager.resolveReferencesForAllSpeaker()
                 dataManager.resolveReferencesForAllSession()
                 dataUtil.resolveSessionsForSchedule()
+                currentConference = dataUtil.currentConference()
+                console.log("QML Current Conference: "+currentConference.conferenceCity)
                 initialPlaceholder.item.showInfo("Create Navigation Controls ...")
                 // add navigation model for DEBUG BUILD ?
                 if(myApp.isDebugBuild() && !initialPlaceholder.isUpdate) {

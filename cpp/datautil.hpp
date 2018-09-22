@@ -96,6 +96,10 @@ public:
     Q_INVOKABLE
     QString trackColorFirstTrack(Session* session);
 
+    Q_INVOKABLE
+    Conference *currentConference();
+
+
 signals:
     void myScheduleRefreshed();
 
@@ -123,6 +127,8 @@ private:
 
     DataManager* mDataManager;
     DataServer* mDataServer;
+
+    Conference* mCurrentConference;
 
     ImageLoader* mImageLoader;
 
@@ -164,6 +170,8 @@ private:
     void finishUpdate();
     void sortedSessionsIntoRoomDayTrackSpeaker();
 
+    // helper as workaround for generator bug
+    QList<Session *> listOfSessionForSortedKeys(QStringList keyList);
 };
 
 #endif // DATAUTIL_H

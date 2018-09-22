@@ -90,6 +90,7 @@ Page {
     } // popupInfo
 
     function myScheduleRefreshed() {
+        console.log("myScheduleRefreshed")
         sessionLists = dataUtil.mySchedule()
         listView.model = sessionLists.scheduledSessionsPropertyList
         if(sessionLists.scheduledSessionsPropertyList.length == 0) {
