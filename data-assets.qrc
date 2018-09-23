@@ -150,5 +150,12 @@
         <file>data-assets/conference/speakerImages/speaker_4153@3x.jpg</file>
         <file>data-assets/conference/speakerImages/speaker_4153@2x.jpg</file>
         <file>data-assets/conference/speakerImages/speaker_4153.jpg</file>
+        <file>data-assets/conference/roomimages/no_floorplan.png</file>
+        <file>data-assets/conference/roomimages/room_2018101.png</file>
+        <file>data-assets/conference/roomimages/room_2018102.png</file>
+        <file>data-assets/conference/roomimages/room_2018103.png</file>
+        <file>data-assets/conference/roomimages/room_2018104.png</file>
+        <file>data-assets/conference/roomimages/room_2018105.png</file>
+        <file>data-assets/conference/roomimages/no_floorplan.jpg</file>
     </qresource>
 </RCC>

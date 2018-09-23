@@ -879,7 +879,7 @@ void DataUtil::continueUpdate()
         emit progressInfo(mProgressInfotext);
         calcSpeakerName(speaker, speakerAPI);
         speaker->setBio(speakerAPI->bio());
-        if(speakerAPI->avatar().length() > 0 && speakerAPI->avatar() != DEFAULT_SPEAKER_IMAGE_URL) {
+        if(speakerAPI->avatar().length() > 0 && speakerAPI->avatar() != DEFAULT_SPEAKER_IMAGE_URL && speakerAPI->avatar() != "false") {
             QString avatar = speakerAPI->avatar();
             QStringList sl = avatar.split("?");
             if(sl.size() > 1) {
@@ -1100,6 +1100,7 @@ bool DataUtil::updateSessions(const int conferenceId) {
             continue;
         }
         // loop thru room names
+        qDebug() << "Searching Rooms from conference #" << conference->rooms().size() << " for server room names #" << roomKeys.size();
         for (int r = 0; r < roomKeys.size(); ++r) {
             QVariantList sessionList;
             sessionList = roomMap.value(roomKeys.at(r)).toList();
@@ -1554,6 +1555,8 @@ void DataUtil::resolveSessionsForSchedule() {
             // day->resolveSessionsKeys(mDataManager->listOfSessionForKeys(day->sessionsKeys()));
             day->resolveSessionsKeys(listOfSessionForSortedKeys(day->sessionsKeys()));
         }
+        conference->resolveRoomsKeys(mDataManager->listOfRoomForKeys(conference->roomsKeys()));
+        conference->resolveTracksKeys(mDataManager->listOfSessionTrackForKeys(conference->tracksKeys()));
     }
 }
 

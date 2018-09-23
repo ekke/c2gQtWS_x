@@ -90,7 +90,7 @@ Page {
                                     width: 64
                                     height: 64
                                     fillMode: Image.PreserveAspectFit
-                                    source: model.modelData.inAssets? "qrc:/data-assets/conference/floorplan/room_"+model.modelData.roomId+".png" : ""
+                                    source: model.modelData.inAssets? "qrc:/data-assets/conference/roomimages/room_"+model.modelData.roomId+".png" : ""
                                     horizontalAlignment: Image.AlignLeft
                                     verticalAlignment: Image.AlignTop
                                     transform: Translate {x: -16 }
