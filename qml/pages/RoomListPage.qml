@@ -82,7 +82,7 @@ Page {
                             Layout.maximumWidth: 64
                             Layout.minimumWidth: 64
                             Item {
-                                visible: model.modelData.inAssets
+                                // visible: model.modelData.inAssets
                                 width: 64
                                 height: 64
                                 Image {
@@ -90,7 +90,7 @@ Page {
                                     width: 64
                                     height: 64
                                     fillMode: Image.PreserveAspectFit
-                                    source: model.modelData.inAssets? "qrc:/data-assets/conference/roomimages/room_"+model.modelData.roomId+".png" : ""
+                                    source: model.modelData.inAssets? "qrc:/data-assets/conference/roomimages/room_"+model.modelData.roomId+".png" : "qrc:/data-assets/conference/roomimages/no_floorplan.png"
                                     horizontalAlignment: Image.AlignLeft
                                     verticalAlignment: Image.AlignTop
                                     transform: Translate {x: -16 }

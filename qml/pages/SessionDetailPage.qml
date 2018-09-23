@@ -169,7 +169,7 @@ Page {
                     }
                     FloatingActionMiniButton {
                         z: 1
-                        visible: session.roomAsDataObject && session.roomAsDataObject.inAssets
+                        visible: session.roomAsDataObject // && session.roomAsDataObject.inAssets
                         transform: Translate{y: -6}
                         showShadow: true
                         imageSource: "qrc:/images/"+iconOnAccentFolder+"/directions.png"
