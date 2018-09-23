@@ -60,7 +60,7 @@ Page {
                     LabelTitle {
                         text: dataUtil.localWeekdayAndTime(section)
                         anchors.verticalCenter: parent.verticalCenter
-                        color: primaryColor
+                        color: accentColor
                         // font.bold: true
                     }
                 } // section row

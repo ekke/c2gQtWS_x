@@ -1575,6 +1575,7 @@ void DataUtil::finishUpdate() {
     mDataManager->saveConferenceToCache();
     qDebug() << "FINISH: Conference saved";
 
+    mCurrentConference = nullptr;
     mCurrentConference = currentConference();
 
     //

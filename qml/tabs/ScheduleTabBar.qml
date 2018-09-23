@@ -1,7 +1,7 @@
 // ekke (Ekkehard Gentz) @ekkescorner
 import QtQuick 2.9
 import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.2
+import QtQuick.Controls 2.3
 import QtQuick.Controls.Material 2.2
 import QtGraphicalEffects 1.0
 import "../common"
@@ -12,10 +12,13 @@ TabBar {
     currentIndex: 0
     onCurrentIndexChanged: {
         console.log("Tab Bar current index changed: "+ currentIndex)
-        navSwipePane.currentIndex = currentIndex // navPane
+        if(navSwipePane.currentIndex !== currentIndex) {
+            navSwipePane.currentIndex = currentIndex
+        }
     }
+
     Repeater {
-        model: currentConference.daysPropertyList.length //  dataManager.dayPropertyList.length
+        model: currentConference.daysPropertyList.length
         TabButton {
             focusPolicy: Qt.NoFocus
             text: dataUtil.scheduleTabName(index)

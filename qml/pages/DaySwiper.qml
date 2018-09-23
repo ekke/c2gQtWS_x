@@ -1,7 +1,7 @@
 // ekke (Ekkehard Gentz) @ekkescorner
 import QtQuick 2.9
 import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.2
+import QtQuick.Controls 2.3
 import QtQuick.Controls.Material 2.2
 import QtGraphicalEffects 1.0
 
@@ -43,7 +43,9 @@ Page {
         // currentIndex is the NEXT index swiped to
         onCurrentIndexChanged: {
             console.log("Day Swipe View current index changed: "+currentIndex)
-            tabBar.currentIndex = currentIndex
+            if(tabBar.currentIndex !== currentIndex) {
+                tabBar.currentIndex = currentIndex
+            }
         }
 
         function goToPage(pageIndex) {
@@ -63,6 +65,8 @@ Page {
             model: currentConference.daysPropertyList.length
             DayPage {
                 dayIndex: index
+                conferenceDay: currentConference.daysPropertyList[index]
+                theModel: conferenceDay.sessionsPropertyList
             }
         } // day repeater
 

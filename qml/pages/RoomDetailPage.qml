@@ -38,7 +38,7 @@ Page {
                 width: sourceSize.width
                 height: sourceSize.height
                 fillMode: Image.PreserveAspectFit
-                source: "qrc:/data-assets/conference/floorplan/room_"+room.roomId+".png"
+                source: "qrc:/data-assets/conference/roomimages/room_"+room.roomId+".png"
                 horizontalAlignment: Image.AlignLeft
                 verticalAlignment: Image.AlignTop
                 transformOrigin: Item.TopLeft

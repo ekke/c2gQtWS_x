@@ -12,6 +12,7 @@ Page {
     focus: true
     property string name: "dayListPage"
     property Day conferenceDay
+    property alias theModel: listView.model
     bottomPadding: 6
     topPadding: 6
 
@@ -42,7 +43,7 @@ Page {
                     LabelTitle {
                         text: dataUtil.localWeekdayAndTime(section)
                         anchors.verticalCenter: parent.verticalCenter
-                        color: primaryColor
+                        color: accentColor
                         font.bold: true
                     }
                 } // section row
@@ -89,7 +90,7 @@ Page {
         }
     }
     Component.onCompleted: {
-        init()
+        // init()
     }
 
     // called from Component.destruction

@@ -17,9 +17,7 @@ ListView {
     // setting the margin to be able to scroll the list above the FAB to use the Switch on last row
     bottomMargin: 40
     // QList<Session*>
-    //model: dataManager.sessionPropertyList
-    // or
-    // sessionLists.scheduledSessionsPropertyList
+    // conferenceDay.sessionsPropertyList
 
     delegate:
 
@@ -58,7 +56,7 @@ ListView {
                         LabelTitle {
                             rightPadding: 12
                             text: model.modelData.title
-                            color: accentColor
+                            color: primaryColor
                             //font.bold: true
                             wrapMode: Label.WordWrap
                             maximumLineCount: 2
