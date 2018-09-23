@@ -51,7 +51,7 @@ Page {
                         anchors.top: theItem.top
                         height: trackRow.height-2
                         width: 8
-                        color: dataUtil.trackColor(model.modelData.trackId)
+                        color: model.modelData.color
                     }
 
                     ColumnLayout {

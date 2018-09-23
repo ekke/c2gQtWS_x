@@ -272,7 +272,7 @@ Page {
                                             Rectangle {
                                                 width: 16
                                                 height: 16
-                                                color: dataUtil.trackColor(modelData.trackId)
+                                                color: modelData.color
                                                 radius: width / 2
                                             }
                                             LabelBody {

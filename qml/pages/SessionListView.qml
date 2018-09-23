@@ -89,7 +89,7 @@ ListView {
                     anchors.top: theItem.top
                     height: sessionRow.height-2
                     width: 8
-                    color: model.modelData.isKeynote? "#B2DFDB" : dataUtil.trackColorFirstTrack(model.modelData)
+                    color: dataUtil.trackColorFirstTrack(model.modelData)
                 }
                 onClicked: {
                     navPane.pushSessionDetail(model.modelData.sessionId)

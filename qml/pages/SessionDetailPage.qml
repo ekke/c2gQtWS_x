@@ -119,7 +119,7 @@ Page {
                             Layout.leftMargin: 16
                             width: 16
                             height: 16
-                            color: dataUtil.trackColor(model.modelData.trackId)
+                            color: model.modelData.color
                             radius: width / 2
                         }
                         LabelSubheading {

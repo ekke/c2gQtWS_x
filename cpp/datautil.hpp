@@ -91,9 +91,6 @@ public:
     QString textForSessionType(Session* session);
 
     Q_INVOKABLE
-    QString trackColor(const int trackId);
-
-    Q_INVOKABLE
     QString trackColorFirstTrack(Session* session);
 
     Q_INVOKABLE
