@@ -38,6 +38,7 @@ package org.ekkescorner.dsl.qtws {
 		var QString conferenceName;
 		var QString conferenceCity;
 		var QString address;
+		var QString mapAddress;
 		// TODO not used yet
 		var QString timeZoneName;
 		var int timeZoneOffsetSeconds;

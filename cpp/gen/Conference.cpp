@@ -7,6 +7,7 @@ static const QString idKey = "id";
 static const QString conferenceNameKey = "conferenceName";
 static const QString conferenceCityKey = "conferenceCity";
 static const QString addressKey = "address";
+static const QString mapAddressKey = "mapAddress";
 static const QString timeZoneNameKey = "timeZoneName";
 static const QString timeZoneOffsetSecondsKey = "timeZoneOffsetSeconds";
 static const QString conferenceFromKey = "conferenceFrom";
@@ -27,6 +28,7 @@ static const QString idForeignKey = "id";
 static const QString conferenceNameForeignKey = "conferenceName";
 static const QString conferenceCityForeignKey = "conferenceCity";
 static const QString addressForeignKey = "address";
+static const QString mapAddressForeignKey = "mapAddress";
 static const QString timeZoneNameForeignKey = "timeZoneName";
 static const QString timeZoneOffsetSecondsForeignKey = "timeZoneOffsetSeconds";
 static const QString conferenceFromForeignKey = "conferenceFrom";
@@ -46,7 +48,7 @@ static const QString roomsForeignKey = "rooms";
  * Default Constructor if Conference not initialized from QVariantMap
  */
 Conference::Conference(QObject *parent) :
-        QObject(parent), mId(-1), mConferenceName(""), mConferenceCity(""), mAddress(""), mTimeZoneName(""), mTimeZoneOffsetSeconds(0), mHashTag(""), mHomePage(""), mCoordinate(""), mPlaceId(""), mLastRoomId(0), mLastSessionTrackId(0), mLastGenericSessionId(0)
+        QObject(parent), mId(-1), mConferenceName(""), mConferenceCity(""), mAddress(""), mMapAddress(""), mTimeZoneName(""), mTimeZoneOffsetSeconds(0), mHashTag(""), mHomePage(""), mCoordinate(""), mPlaceId(""), mLastRoomId(0), mLastSessionTrackId(0), mLastGenericSessionId(0)
 {
 	// Date, Time or Timestamp ? construct null value
 	mConferenceFrom = QDate();
@@ -84,6 +86,7 @@ void Conference::fillFromMap(const QVariantMap& conferenceMap)
 	mConferenceName = conferenceMap.value(conferenceNameKey).toString();
 	mConferenceCity = conferenceMap.value(conferenceCityKey).toString();
 	mAddress = conferenceMap.value(addressKey).toString();
+	mMapAddress = conferenceMap.value(mapAddressKey).toString();
 	mTimeZoneName = conferenceMap.value(timeZoneNameKey).toString();
 	mTimeZoneOffsetSeconds = conferenceMap.value(timeZoneOffsetSecondsKey).toInt();
 	if (conferenceMap.contains(conferenceFromKey)) {
@@ -140,6 +143,7 @@ void Conference::fillFromForeignMap(const QVariantMap& conferenceMap)
 	mConferenceName = conferenceMap.value(conferenceNameForeignKey).toString();
 	mConferenceCity = conferenceMap.value(conferenceCityForeignKey).toString();
 	mAddress = conferenceMap.value(addressForeignKey).toString();
+	mMapAddress = conferenceMap.value(mapAddressForeignKey).toString();
 	mTimeZoneName = conferenceMap.value(timeZoneNameForeignKey).toString();
 	mTimeZoneOffsetSeconds = conferenceMap.value(timeZoneOffsetSecondsForeignKey).toInt();
 	if (conferenceMap.contains(conferenceFromForeignKey)) {
@@ -196,6 +200,7 @@ void Conference::fillFromCacheMap(const QVariantMap& conferenceMap)
 	mConferenceName = conferenceMap.value(conferenceNameKey).toString();
 	mConferenceCity = conferenceMap.value(conferenceCityKey).toString();
 	mAddress = conferenceMap.value(addressKey).toString();
+	mMapAddress = conferenceMap.value(mapAddressKey).toString();
 	mTimeZoneName = conferenceMap.value(timeZoneNameKey).toString();
 	mTimeZoneOffsetSeconds = conferenceMap.value(timeZoneOffsetSecondsKey).toInt();
 	if (conferenceMap.contains(conferenceFromKey)) {
@@ -315,6 +320,7 @@ QVariantMap Conference::toMap()
 	conferenceMap.insert(conferenceNameKey, mConferenceName);
 	conferenceMap.insert(conferenceCityKey, mConferenceCity);
 	conferenceMap.insert(addressKey, mAddress);
+	conferenceMap.insert(mapAddressKey, mMapAddress);
 	conferenceMap.insert(timeZoneNameKey, mTimeZoneName);
 	conferenceMap.insert(timeZoneOffsetSecondsKey, mTimeZoneOffsetSeconds);
 	if (hasConferenceFrom()) {
@@ -393,6 +399,7 @@ QVariantMap Conference::toForeignMap()
 	conferenceMap.insert(conferenceNameForeignKey, mConferenceName);
 	conferenceMap.insert(conferenceCityForeignKey, mConferenceCity);
 	conferenceMap.insert(addressForeignKey, mAddress);
+	conferenceMap.insert(mapAddressForeignKey, mMapAddress);
 	conferenceMap.insert(timeZoneNameForeignKey, mTimeZoneName);
 	conferenceMap.insert(timeZoneOffsetSecondsForeignKey, mTimeZoneOffsetSeconds);
 	if (hasConferenceFrom()) {
@@ -478,6 +485,20 @@ void Conference::setAddress(QString address)
 	if (address != mAddress) {
 		mAddress = address;
 		emit addressChanged(address);
+	}
+}
+// ATT 
+// Optional: mapAddress
+QString Conference::mapAddress() const
+{
+	return mMapAddress;
+}
+
+void Conference::setMapAddress(QString mapAddress)
+{
+	if (mapAddress != mMapAddress) {
+		mMapAddress = mapAddress;
+		emit mapAddressChanged(mapAddress);
 	}
 }
 // ATT 

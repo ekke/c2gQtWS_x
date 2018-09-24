@@ -21,6 +21,7 @@ class Conference: public QObject
 	Q_PROPERTY(QString conferenceName READ conferenceName WRITE setConferenceName NOTIFY conferenceNameChanged FINAL)
 	Q_PROPERTY(QString conferenceCity READ conferenceCity WRITE setConferenceCity NOTIFY conferenceCityChanged FINAL)
 	Q_PROPERTY(QString address READ address WRITE setAddress NOTIFY addressChanged FINAL)
+	Q_PROPERTY(QString mapAddress READ mapAddress WRITE setMapAddress NOTIFY mapAddressChanged FINAL)
 	Q_PROPERTY(QString timeZoneName READ timeZoneName WRITE setTimeZoneName NOTIFY timeZoneNameChanged FINAL)
 	Q_PROPERTY(int timeZoneOffsetSeconds READ timeZoneOffsetSeconds WRITE setTimeZoneOffsetSeconds NOTIFY timeZoneOffsetSecondsChanged FINAL)
 	Q_PROPERTY(QDate conferenceFrom READ conferenceFrom WRITE setConferenceFrom NOTIFY conferenceFromChanged FINAL)
@@ -67,6 +68,8 @@ public:
 	void setConferenceCity(QString conferenceCity);
 	QString address() const;
 	void setAddress(QString address);
+	QString mapAddress() const;
+	void setMapAddress(QString mapAddress);
 	QString timeZoneName() const;
 	void setTimeZoneName(QString timeZoneName);
 	int timeZoneOffsetSeconds() const;
@@ -220,6 +223,7 @@ public:
 	void conferenceNameChanged(QString conferenceName);
 	void conferenceCityChanged(QString conferenceCity);
 	void addressChanged(QString address);
+	void mapAddressChanged(QString mapAddress);
 	void timeZoneNameChanged(QString timeZoneName);
 	void timeZoneOffsetSecondsChanged(int timeZoneOffsetSeconds);
 	void conferenceFromChanged(QDate conferenceFrom);
@@ -251,6 +255,7 @@ private:
 	QString mConferenceName;
 	QString mConferenceCity;
 	QString mAddress;
+	QString mMapAddress;
 	QString mTimeZoneName;
 	int mTimeZoneOffsetSeconds;
 	QDate mConferenceFrom;
