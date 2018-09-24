@@ -429,6 +429,7 @@ void DataUtil::prepareBoston201801() {
     venueAddress.append("\n");
     venueAddress.append("United States");
     conference->setAddress(venueAddress);
+    conference->setMapAddress("425%20Summer%20Street,The%20Westin%20Boston%20Waterfront,Boston,Massachusetts");
     conference->setTimeZoneName("EST – Eastern Daylight Time");
     conference->setTimeZoneOffsetSeconds(-4 * 60 * 60); // -04:00 GMT
     conference->setConferenceFrom(QDate::fromString("2018-10-29", YYYY_MM_DD));
@@ -495,6 +496,7 @@ void DataUtil::prepareBerlin201802() {
     venueAddress.append("\n");
     venueAddress.append("Germany");
     conference->setAddress(venueAddress);
+    conference->setMapAddress("Alexanderstraße%2011,bcc%20Berlin%20Congress%20Center,Berlin,Germany");
     conference->setTimeZoneName("MEZ");
     conference->setTimeZoneOffsetSeconds(+1 * 60 * 60); // +01:00 GMT
     conference->setConferenceFrom(QDate::fromString("2018-12-05", YYYY_MM_DD));
@@ -1485,7 +1487,7 @@ void DataUtil::finishUpdate() {
     // SETTINGS update API
     mDataManager->mSettingsData->setApiVersion(mNewApi);
     mDataManager->mSettingsData->setLastUpdate(QDateTime::currentDateTime());
-    mDataManager->mSettingsData->setVersion(201800);
+    mDataManager->mSettingsData->setVersion(201801);
     mDataManager->saveSettings();
 
     // SAVE CONFERENCES
@@ -1855,7 +1857,7 @@ void DataUtil::onServerSuccess()
     qDebug() << "S U C C E S S request Schedule (BOSTON, BERLIN) and Speaker";
 
     // check if conference is prepared
-    if(isOldConference() || mDataManager->allConference().size() == 0 || mDataManager->settingsData()->version() < 201800) {
+    if(isOldConference() || mDataManager->allConference().size() == 0 || mDataManager->settingsData()->version() < 201801) {
         prepareConference();
     }
     continueUpdate();
