@@ -140,12 +140,6 @@ ToolBar {
                     }
                 }
                 MenuItem {
-                    text: qsTr("Settings")
-                    onTriggered: {
-                        navigationIndex = settingsNavigationIndex
-                    }
-                }
-                MenuItem {
                     text: qsTr("About")
                     onTriggered: {
                         navigationIndex = aboutNavigationIndex

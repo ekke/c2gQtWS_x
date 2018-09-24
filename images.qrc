@@ -1462,8 +1462,6 @@
         <file>images/extra/qtws-app@2x.png</file>
         <file>images/extra/qtws-app@3x.png</file>
         <file>images/extra/qtws-app@4x.png</file>
-        <file>images/extra/sf_landscape.jpg</file>
-        <file>images/extra/sf_portrait.jpg</file>
         <file>images/white/x18/add.png</file>
         <file>images/white/x18/add@2x.png</file>
         <file>images/white/x18/add@3x.png</file>
@@ -2905,5 +2903,9 @@
         <file>images/extra/qt_champion_small@2x.png</file>
         <file>images/extra/qt_champion_small@3x.png</file>
         <file>images/extra/qt_champion_small@4x.png</file>
+        <file>images/extra/globe.png</file>
+        <file>images/extra/globe@2x.png</file>
+        <file>images/extra/globe@3x.png</file>
+        <file>images/extra/globe@4x.png</file>
     </qresource>
 </RCC>

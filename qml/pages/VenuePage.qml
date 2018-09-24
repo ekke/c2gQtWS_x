@@ -31,6 +31,7 @@ ScrollView {
             property real landscapeScale: 1.0
             scale: isLandscape? landscapeScale : portraitScale
             anchors.top: parent.top
+            anchors.topMargin: isLandscape? 16 : undefined
             anchors.left: parent.left
             width: sourceSize.width
             height: sourceSize.height
@@ -113,13 +114,15 @@ ScrollView {
         var portraitWidthScale = portraitWidth / conferenceImage.sourceSize.width
         var portraitHeightScale = portraitHeight / conferenceImage.sourceSize.height
         conferenceImage.portraitScale = Math.min(portraitWidthScale, portraitHeightScale)
-        var landscapeWidth = Math.max(appWindow.width,appWindow.height)
+        var landscapeWidth = Math.max(appWindow.width,appWindow.height)-300
         var landscapeHeight = Math.min(appWindow.width,appWindow.height)-80
         var landscapeWidthScale = landscapeWidth / conferenceImage.sourceSize.width
         var landscapeHeightScale = landscapeHeight / conferenceImage.sourceSize.height
         conferenceImage.landscapeScale = Math.min(landscapeWidthScale, landscapeHeightScale)
         //flickable.contentX = 0
         //flickable.contentY = 0
+        console.log("Portrait HEIGHT "+portraitHeight)
+        console.log("Portrait WIDTH "+portraitWidth)
     }
 
     // called immediately after Loader.loaded

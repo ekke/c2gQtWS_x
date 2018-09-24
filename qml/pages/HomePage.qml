@@ -25,19 +25,37 @@ Pane {
 
     Image {
         id: conferenceImage
-        anchors.fill: parent
-        fillMode: Image.PreserveAspectCrop
-        source: isLandscape? "qrc:/images/extra/sf_landscape.jpg" : "qrc:/images/extra/sf_portrait.jpg"
-        horizontalAlignment: Image.AlignLeft
+        anchors.top: parent
+        x: 16
+        y: 16
+        width: isLandscape? undefined : appWindow.width - 32
+        height: isLandscape? appWindow.height - 32 : undefined
+        fillMode: Image.PreserveAspectFit
+        source: "qrc:/images/extra/globe.png"
+        horizontalAlignment: isLandscape? Image.AlignLeft : Image.AlignHCenter
         verticalAlignment: Image.AlignTop
         transformOrigin: Item.TopLeft
     } // image
 
-    LabelDisplay1 {
-        anchors.centerIn: parent
-        text: qsTr("October, 18-20\nSan Francisco, USA\n\nWelcome")
-        color: "white"
-        opacity: 1.0
+    LabelHeadline {
+        id: conferenceTitle
+        anchors.top: isLandscape? parent.top : conferenceImage.bottom
+        anchors.topMargin: 10
+        anchors.left: isLandscape? conferenceImage.right : parent.left
+        anchors.leftMargin: isLandscape? 6 : 24
+        text: currentConference? currentConference.id === 201801? qsTr("October, 29-30\nBOSTON, Massachusetts") : qsTr("December, 05-06\nBERLIN, Germany") : ""
+        color: accentColor
+    }
+
+    ButtonRaised {
+        id: conferenceSwitchButton
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: isLandscape? 72 : 124
+        anchors.left: conferenceTitle.left
+        text: qsTr("Switch Conference")
+        onClicked: {
+            //
+        }
     }
 
 
