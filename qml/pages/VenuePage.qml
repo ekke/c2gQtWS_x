@@ -8,7 +8,7 @@ import org.ekkescorner.data 1.0
 
 import "../common"
 
-Flickable {
+ScrollView {
     id: flickable
     // index to get access to Loader (Destination)
     property int myIndex: index
@@ -17,7 +17,6 @@ Flickable {
     // StackView manages this, so please no anchors here
     // anchors.fill: parent
     property string name: "VenuePage"
-    property Conference conference
 
     Pane {
         id: root
@@ -36,7 +35,7 @@ Flickable {
             width: sourceSize.width
             height: sourceSize.height
             fillMode: Image.PreserveAspectFit
-            source: "qrc:/data-assets/conference/floorplan/building_1.png"
+            source: currentConference? currentConference.id === 201801? "qrc:/data-assets/conference/floorplan/QtWS2018_Boston.png" : "qrc:/data-assets/conference/floorplan/QtWS2018_Berlin.png" : ""
             horizontalAlignment: Image.AlignLeft
             verticalAlignment: Image.AlignTop
             transformOrigin: Item.TopLeft
@@ -56,13 +55,22 @@ Flickable {
                     leftPadding: 16
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: conference.address
+                    text: "QtWS2018 in " + currentConference.conferenceCity
+                    color: accentColor
+                }
+            }
+            RowLayout {
+                LabelTitle {
+                    leftPadding: 16
+                    rightPadding: 10
+                    wrapMode: Text.WordWrap
+                    text: currentConference.address
                     color: primaryColor
                 }
             }
         } // col layout
     } // root
-    ScrollIndicator.vertical: ScrollIndicator { }
+    // ScrollIndicator.vertical: ScrollIndicator { }
 
     // emitting a Signal could be another option
     Component.onDestruction: {
@@ -80,13 +88,12 @@ Flickable {
         var landscapeWidthScale = landscapeWidth / conferenceImage.sourceSize.width
         var landscapeHeightScale = landscapeHeight / conferenceImage.sourceSize.height
         conferenceImage.landscapeScale = Math.min(landscapeWidthScale, landscapeHeightScale)
-        flickable.contentX = 0
-        flickable.contentY = 0
+        //flickable.contentX = 0
+        //flickable.contentY = 0
     }
 
     // called immediately after Loader.loaded
     function init() {
-        conference = dataManager.findConferenceById(-1)
         fitIntoWindow()
         console.log("Init done from VenuePage")
     }
