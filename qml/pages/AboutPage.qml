@@ -90,8 +90,8 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Please report bugs, feature requests or discuss the APP in the <a href=\"http://bit.ly/qtWS2016App\">Comments</a>")
-                    onLinkActivated: Qt.openUrlExternally("http://bit.ly/qtWS2016App")
+                    text: qsTr("You want to discuss about this App or Qt for Mobile App Development ? <a href=\"http://slackin.qtmob.org/\">Join QtMob</a>")
+                    onLinkActivated: Qt.openUrlExternally("http://slackin.qtmob.org/")
                 }
             }
             HorizontalDivider {}
