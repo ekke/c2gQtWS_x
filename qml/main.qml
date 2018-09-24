@@ -33,7 +33,7 @@ ApplicationWindow {
     //
     property Conference currentConference
     //
-    property bool appIsActive: Qt.application.state == Qt.ApplicationActive
+    property bool appIsActive: Qt.application.state === Qt.ApplicationActive
     onAppIsActiveChanged: {
         if(appIsActive) {
             if(autoVersionCheck && initDone) {
@@ -177,8 +177,8 @@ ApplicationWindow {
     property int venueNavigationIndex: 5
     property int roomsNavigationIndex: 6
     property int settingsNavigationIndex: 8
-    property int helpNavigationIndex: 9
-    property int aboutNavigationIndex: 10
+    property int helpNavigationIndex: 8
+    property int aboutNavigationIndex: 9
     property var navigationModel: [
         {"type": "../navigation/DrawerNavigationButton.qml", "name": "QtWS18", "icon": "home.png", "source": "../pages/HomePage.qml", "showCounter":false, "showMarker":false, "a_p":1, "canGoBack":false},
         {"type": "../navigation/DrawerDivider.qml", "name": "", "icon": "", "source": "", "a_p":1, "canGoBack":false},
@@ -188,13 +188,9 @@ ApplicationWindow {
         {"type": "../navigation/DrawerNavigationButton.qml", "name": "Venue", "icon": "venue.png", "source": "../navigation/VenueNavigation.qml", "showCounter":false, "showMarker":false, "a_p":2, "canGoBack":true},
         {"type": "../navigation/DrawerNavigationButton.qml", "name": qsTr("Rooms"), "icon": "directions.png", "source": "../navigation/RoomsNavigation.qml", "showCounter":false, "showMarker":false, "a_p":2, "canGoBack":true},
         {"type": "../navigation/DrawerDivider.qml", "name": "", "icon": "", "source": "", "a_p":1, "canGoBack":false},
-        {"type": "../navigation/DrawerNavigationButton.qml", "name": qsTr("Settings"), "icon": "settings.png", "source": "../navigation/SettingsNavigation.qml", "showCounter":false, "showMarker":false, "a_p":3, "canGoBack":true},
         {"type": "../navigation/DrawerNavigationButton.qml", "name": qsTr("Help"), "icon": "help.png", "source": "../pages/HelpPage.qml", "showCounter":false, "showMarker":false, "a_p":3, "canGoBack":false},
         {"type": "../navigation/DrawerNavigationTextButton.qml", "name": qsTr("About this App"), "icon": "", "source": "../pages/AboutPage.qml", "showCounter":false, "showMarker":false, "a_p":3, "canGoBack":false}
     ]
-    property var developerModel: {
-        "type": "../navigation/DrawerNavigationButton.qml", "name": "Developer Tools", "icon": "code.png", "source": "../pages/DevToolsPage.qml", "showCounter":false, "showMarker":false, "a_p":3, "canGoBack":false
-    }
     property bool initDone: false
 
     property var navigationTitles: [
@@ -206,10 +202,8 @@ ApplicationWindow {
         qsTr("QtWS 2018 Venue"),
         qsTr("QtWS 2018 Rooms"),
         "",
-        qsTr("QtWS 2018 Settings"),
         qsTr("QtWS 2018 Help"),
-        qsTr("QtWS 2018 About"),
-        qsTr("QtWS 2018 D E V E L O P E R Tools")
+        qsTr("QtWS 2018 About")
     ]
     property string currentTitle: navigationTitles[navigationIndex]
     // Counter: orders
@@ -223,8 +217,6 @@ ApplicationWindow {
         {"counter":0, "marker":""},
         {"counter":0, "marker":""},
         {},
-        {"counter":0, "marker":""},
-        {"counter":0, "marker":""},
         {"counter":0, "marker":""},
         {"counter":0, "marker":""}
     ]
@@ -249,33 +241,15 @@ ApplicationWindow {
     property bool highlightActiveNavigationButton : true
 
     // NAVIGATION STYLE
-    property SettingsData settings
-    property int myNavigationStyle: settings? settings.navigationStyle : -1
-    onMyNavigationStyleChanged: {
-        if(myNavigationStyle == 2) {
-            isClassicNavigationStyle = true
-            isBottomNavigationStyle = false
-            isComfortNavigationStyle = false
-            return
-        }
-        if(myNavigationStyle == 1) {
-            isClassicNavigationStyle = false
-            isBottomNavigationStyle = true
-            isComfortNavigationStyle = false
-            return
-        }
-        isClassicNavigationStyle = false
-        isBottomNavigationStyle = false
-        isComfortNavigationStyle = true
-    }
+    // for this app the navigation style, colors (primary, accent) and theme (dark, light) are fix
     property bool isClassicNavigationStyle: false
     property bool isBottomNavigationStyle: false
     property bool isComfortNavigationStyle: true
-    property bool hasOnlyOneMenu: settings? (settings.oneMenuButton && isComfortNavigationStyle) : false
+    property bool hasOnlyOneMenu: true
 
     // header per Page, footer global in Portrait + perhaps per Page, too
     // header and footer invisible until initDone
-    footer: initDone && !isLandscape &&!isClassicNavigationStyle && drawerLoader.status == Loader.Ready && navigationBar.position == 0 ? favoritesLoader.item : null
+    footer: initDone && !isLandscape &&!isClassicNavigationStyle && drawerLoader.status == Loader.Ready && navigationBar.position === 0 ? favoritesLoader.item : null
     header: (isLandscape && !useDefaultTitleBarInLandscape) || !initDone ? null : titleBar
     // show TITLE  BARS is delayed until INIT DONE
     property bool useDefaultTitleBarInLandscape: false
@@ -488,7 +462,6 @@ ApplicationWindow {
                 initialPlaceholder.item.showInfo("Initialize Data ...")
                 if(!initialPlaceholder.isUpdate) {
                     dataManager.init()
-                    settings = dataManager.settingsData()
                 }
                 dataUtil.setSessionFavorites()
                 dataManager.resolveReferencesForAllSpeaker()
@@ -500,8 +473,6 @@ ApplicationWindow {
                 // add navigation model for DEBUG BUILD ?
                 if(myApp.isDebugBuild() && !initialPlaceholder.isUpdate) {
                     console.log("DEBUG BUILD added as destination")
-                    // special mode for ekke testing the app
-                    // navigationModel.push(developerModel)
                 }
                 // inject model into Destinations Repeater
                 destinations.model = navigationModel

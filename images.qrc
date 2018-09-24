@@ -2897,5 +2897,13 @@
         <file>images/extra/dropdown_arrow@2x.png</file>
         <file>images/extra/dropdown_arrow@3x.png</file>
         <file>images/extra/dropdown_arrow@4x.png</file>
+        <file>images/extra/qt_champion@2x.png</file>
+        <file>images/extra/qt_champion@3x.png</file>
+        <file>images/extra/qt_champion@4x.png</file>
+        <file>images/extra/qt_champion.png</file>
+        <file>images/extra/qt_champion_small.png</file>
+        <file>images/extra/qt_champion_small@2x.png</file>
+        <file>images/extra/qt_champion_small@3x.png</file>
+        <file>images/extra/qt_champion_small@4x.png</file>
     </qresource>
 </RCC>

@@ -161,7 +161,7 @@ Page {
     } // navPane
 
     FloatingActionButton {
-        visible: navPane.depth == 2 && !dataManager.settingsData().classicStackNavigation
+        visible: navPane.depth === 2
         property string imageName: "/directions.png"
         z: 1
         anchors.margins: 20
@@ -174,7 +174,7 @@ Page {
         }
     } // FAB
     FloatingActionButton {
-        visible: navPane.depth > 2 && !dataManager.settingsData().classicStackNavigation
+        visible: navPane.depth > 2
         property string imageName: "/list.png"
         z: 1
         anchors.margins: 20

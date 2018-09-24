@@ -27,10 +27,20 @@ Flickable {
                     source: "qrc:/images/extra/qtws-app.png"
                 }
                 LabelHeadline {
+                    visible: Qt.platform.os !== "ios"
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go\nQtWS 2016, San Francisco\n(Qt 5.7 - Android + iOS)")
+                    text: qsTr("Conference2Go\nQtWS 2018\nBoston + Berlin\n(Qt 5.11 - Android + iOS)")
+                    color: primaryColor
+                }
+                // Hint: I got Apps rejected by apple because I mentioned Android ;-)
+                LabelHeadline {
+                    visible: Qt.platform.os === "ios"
+                    leftPadding: 10
+                    rightPadding: 10
+                    wrapMode: Text.WordWrap
+                    text: qsTr("Conference2Go\nQtWS 2018\nBoston + Berlin\n(Qt 5.11 - crossplatform)")
                     color: primaryColor
                 }
             }
@@ -43,7 +53,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go QtWS 2016\ndeveloped by ekke (@ekkescorner)")
+                    text: qsTr("Conference2Go QtWS 2018\ndeveloped by ekke (@ekkescorner)")
                     color: accentColor
                 }
             }
@@ -52,15 +62,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("This is one of my first APPs for Android and iOS. Last years I developed for BlackBerry 10 / Cascades.")
-                }
-            }
-            RowLayout {
-                LabelSubheading {
-                    leftPadding: 10
-                    rightPadding: 10
-                    wrapMode: Text.WordWrap
-                    text: qsTr("This is also one of my first APPs I developed using Qt. This APP is developed with Qt 5.7 and brandnew <a href=\"http://doc.qt.io/qt-5/qtquickcontrols2-index.html\">QtQuickControls2</a>.")
+                    text: qsTr("This APP is developed with Qt 5.11 and <a href=\"http://doc.qt.io/qt-5/qtquickcontrols2-index.html\">QtQuickControls2</a>.")
                     onLinkActivated: Qt.openUrlExternally("http://doc.qt.io/qt-5/qtquickcontrols2-index.html")
                 }
             }
@@ -94,53 +96,22 @@ Flickable {
             }
             HorizontalDivider {}
             RowLayout {
+                visible: Qt.platform.os !== "ios"
                 LabelTitle {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Thanks !")
+                    text: qsTr("Need a Business APP for Android and iOS ?")
                     color: primaryColor
                 }
             }
             RowLayout {
-                LabelBodySecondary {
-                    leftPadding: 10
-                    rightPadding: 10
-                    wrapMode: Text.WordWrap
-                    text: qsTr("Thanks to 'Tero Kojo, qt.io' managing all around the Conference App.")
-                }
-            }
-            RowLayout {
-                LabelBodySecondary {
-                    leftPadding: 10
-                    rightPadding: 10
-                    wrapMode: Text.WordWrap
-                    text: qsTr("Thanks for great Design of APP Icons and (iOS)-Splashscreen by 'Diana de Sousa, qt.io'")
-                }
-            }
-            RowLayout {
-                LabelBodySecondary {
-                    leftPadding: 10
-                    rightPadding: 10
-                    wrapMode: Text.WordWrap
-                    text: qsTr("Thanks supporting my requests at Server Site (JSON, API): 'Olli Puurunen, qt.io'")
-                }
-            }
-            RowLayout {
-                LabelBodySecondary {
-                    leftPadding: 10
-                    rightPadding: 10
-                    wrapMode: Text.WordWrap
-                    text: qsTr("Thanks J-P Nurmi, Mitch Curtis and others @qt.io for help, bug-fixing and inspirations.")
-                }
-            }
-            HorizontalDivider {}
-            RowLayout {
+                visible: Qt.platform.os === "ios"
                 LabelTitle {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Need a Business APP for BlackBerry10, Android, iOS ?")
+                    text: qsTr("Need a Business APP for mobile ?")
                     color: primaryColor
                 }
             }
@@ -159,7 +130,7 @@ Flickable {
                     rightPadding: 10
                     font.italic: true
                     wrapMode: Text.WordWrap
-                    text: qsTr("ekke is BlackBerry Elite Developer, Enterprise Platinum Partner and certified Builder for Native.")
+                    text: qsTr("ekke is BlackBerry Elite Developer and QtChampion.")
                 }
             }
             RowLayout {
@@ -169,7 +140,7 @@ Flickable {
             }
             RowLayout {
                 Image {
-                    source: "qrc:/images/extra/bb-builder-native.png"
+                    source: "qrc:/images/extra/qt_champion_small.png"
                 }
             }
             HorizontalDivider {}

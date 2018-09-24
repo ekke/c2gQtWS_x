@@ -14,7 +14,7 @@ Pane {
         topPadding: 12
         wrapMode: Label.WordWrap
         horizontalAlignment: Qt.AlignHCenter
-        text: qsTr("Welcome to\nQt World Summit 2016")
+        text: qsTr("Welcome to\nQt World Summit 2018")
     }
     BusyIndicator {
         id: busyIndicator
@@ -70,7 +70,7 @@ Pane {
     function update() {
         console.log("InitialItemPage running from UPDATE")
         imageItem.visible = false
-        initLabel.text = qsTr("Conference2Go APP\nfor\nQtWS 2016")
+        initLabel.text = qsTr("Conference2Go APP\nfor\nQtWS 2018")
         infoLabel.text = qsTr("Conference Schedule will be updated...")
     }
 

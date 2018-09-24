@@ -27,10 +27,19 @@ Flickable {
                     source: "qrc:/images/extra/qtws-app.png"
                 }
                 LabelHeadline {
+                    visible: Qt.platform.os !== "ios"
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go\nQtWS 2016, San Francisco\n(Qt 5.7 - Android + iOS)")
+                    text: qsTr("Conference2Go\nQtWS 2018\nBoston + Berlin\n(Qt 5.11 - Android + iOS)")
+                    color: primaryColor
+                }
+                LabelHeadline {
+                    visible: Qt.platform.os === "ios"
+                    leftPadding: 10
+                    rightPadding: 10
+                    wrapMode: Text.WordWrap
+                    text: qsTr("Conference2Go\nQtWS 2018\nBoston + Berlin\n(Qt 5.11 crossplatform)")
                     color: primaryColor
                 }
             }
@@ -58,16 +67,16 @@ Flickable {
             }
             LabelTitle {
                 leftPadding: 10
-                text: qsTr("QtCon")
+                text: qsTr("QtWS 2018")
                 color: accentColor
             }
             HelpRow {
                 iconName: "home.png"
-                helpText: qsTr("Homepage - the first Page. From here you can start Updates.")
+                helpText: qsTr("Homepage - the first Page. QtWS 2018 App supports both 2018 conferences in Boston and Berlin. Form this Page you can switch between Conferences.")
             }
             HelpRow {
                 iconName: "refresh.png"
-                helpText: qsTr("QtWS Conference APP already contains the Conference Data, so you can start without waiting for Downloads. To get Schedule- and Speaker Updates tap on the Refresh Button.")
+                helpText: qsTr("QtWS checks automatically if an Update is required. To start Schedule- and Speaker Updates manually please tap on the Refresh Button. This Button is only visible if you rejected Auto - Update")
             }
             LabelTitle {
                 leftPadding: 10
@@ -93,7 +102,7 @@ Flickable {
             }
             HelpRow {
                 iconName: "speaker.png"
-                helpText: qsTr("List of all Speakers sorted by Last Name.")
+                helpText: qsTr("List of all Speakers sorted by Last Name. This List contains Speakers from both Conferences (Boston, Berlin)")
             }
             HelpRow {
                 iconName: "goto.png"
@@ -115,7 +124,7 @@ Flickable {
             }
             HelpRow {
                 iconName: "venue.png"
-                helpText: qsTr("Informations and Address of the Venue. From here you can also see a List of all Rooms.")
+                helpText: qsTr("Informations and Address of the Venue.")
             }
             HelpRow {
                 iconName: "directions.png"
@@ -123,16 +132,7 @@ Flickable {
             }
             LabelTitle {
                 leftPadding: 10
-                text: qsTr("Settings")
-                color: accentColor
-            }
-            HelpRow {
-                iconName: "settings.png"
-                helpText: qsTr("Customize QtWS Conference APP. You can change the Theme (light or dark) and also Primary or Accent Color. Colors can be selected from Material Style Colors.")
-            }
-            LabelTitle {
-                leftPadding: 10
-                text: qsTr("Talks")
+                text: qsTr("Sessions")
                 color: accentColor
             }
             HelpRow {
@@ -150,16 +150,6 @@ Flickable {
             HelpRow {
                 iconName: "time.png"
                 helpText: qsTr("Session Time from - to.")
-            }
-            HorizontalDivider {}
-            LabelTitle {
-                leftPadding: 10
-                text: qsTr("Navigation")
-                color: accentColor
-            }
-            HelpRow {
-                iconName: "my_location.png"
-                helpText:  qsTr("QtWS Conference app uses some special Navigation Styles to speed up Navigation.\nIf you don't like this way to go and want to use Google Material Classic Navigation Style you can customize this from 'Settings'.")
             }
             HorizontalDivider {}
             LabelSubheading {

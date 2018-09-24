@@ -35,7 +35,6 @@
         <file>qml/navigation/DrawerNavigationBar.qml</file>
         <file>qml/pages/HomePage.qml</file>
         <file>qml/navigation/DrawerDivider.qml</file>
-        <file>qml/pages/SettingsPage.qml</file>
         <file>qml/pages/AboutPage.qml</file>
         <file>qml/navigation/DrawerSubtitle.qml</file>
         <file>qml/navigation/DrawerNavigationTextButton.qml</file>
@@ -46,10 +45,8 @@
         <file>qml/tabs/TextTabBar.qml</file>
         <file>qml/pages/PrimaryColorPage.qml</file>
         <file>qml/pages/AccentColorPage.qml</file>
-        <file>qml/navigation/SettingsNavigation.qml</file>
         <file>qml/common/HorizontalListDivider.qml</file>
         <file>qml/common/FooterCancelSave.qml</file>
-        <file>qml/pages/DevToolsPage.qml</file>
         <file>qml/popups/PopupError.qml</file>
         <file>qml/popups/DatePicker.qml</file>
         <file>qml/popups/TimePicker.qml</file>
