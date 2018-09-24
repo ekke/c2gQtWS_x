@@ -371,7 +371,7 @@ void DataUtil::prepareSanFrancisco201601() {
     conference->setHashTag("#QtWS16");
     conference->setHomePage("http://www.qtworldsummit.com/");
     QString coordinate;
-    coordinate = QString::number(37.799263)+";"+QString::number(-122.397673);
+    coordinate = QString::number(37.799263)+","+QString::number(-122.397673);
     conference->setCoordinate(coordinate);
     mDataManager->insertConference(conference);
     // DAYS
@@ -436,7 +436,7 @@ void DataUtil::prepareBoston201801() {
     conference->setHashTag("#QtWS18");
     conference->setHomePage("https://www.qt.io/qtws18/home/");
     QString coordinate;
-    coordinate = QString::number(42.3459926)+";"+QString::number(-71.04301040000001);
+    coordinate = QString::number(42.3459926)+","+QString::number(-71.04301040000001);
     conference->setCoordinate(coordinate);
     conference->setPlaceId("ChIJde0H54N644kR8QDFjYVOlMU");
     mDataManager->insertConference(conference);
@@ -502,7 +502,7 @@ void DataUtil::prepareBerlin201802() {
     conference->setHashTag("#QtWS18");
     conference->setHomePage("https://www.qt.io/qtws18/home/");
     QString coordinate;
-    coordinate = QString::number(52.52043099999999)+";"+QString::number(13.416334000000006);
+    coordinate = QString::number(52.52043099999999)+","+QString::number(13.416334000000006);
     conference->setCoordinate(coordinate);
     conference->setPlaceId("ChIJQ7_AmBhOqEcRgCAfJCBSodI");
     mDataManager->insertConference(conference);

@@ -68,6 +68,36 @@ ScrollView {
                     color: primaryColor
                 }
             }
+            RowLayout {
+                LabelSubheading {
+                    topPadding: 10
+                    leftPadding: 16
+                    rightPadding: 10
+                    wrapMode: Text.WordWrap
+                    text: "<a href=\"" + currentConference.homePage + qsTr("\">Conference Homepage") + "</a>"
+                    onLinkActivated: Qt.openUrlExternally(currentConference.homePage)
+                }
+            }
+            RowLayout {
+                LabelSubheading {
+                    topPadding: 10
+                    leftPadding: 16
+                    rightPadding: 10
+                    wrapMode: Text.WordWrap
+                    text: "<a href=\"" + currentConference.homePage + qsTr("\">See in Google Maps") + "</a>"
+                    onLinkActivated: Qt.openUrlExternally("https://www.google.com/maps/search/?api=1&query="+currentConference.coordinate+"&query_place_id="+currentConference.placeId)
+                }
+            }
+            RowLayout {
+                LabelSubheading {
+                    topPadding: 10
+                    leftPadding: 16
+                    rightPadding: 10
+                    wrapMode: Text.WordWrap
+                    text: "<a href=\"" + currentConference.homePage + qsTr("\">See in Apple Map") + "</a>"
+                    onLinkActivated: Qt.openUrlExternally("http://maps.apple.com/maps/?sll="+currentConference.coordinate+"&address="+currentConference.mapAddress)
+                }
+            }
         } // col layout
     } // root
     // ScrollIndicator.vertical: ScrollIndicator { }
