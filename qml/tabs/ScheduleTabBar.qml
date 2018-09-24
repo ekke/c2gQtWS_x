@@ -18,6 +18,7 @@ TabBar {
     }
 
     Repeater {
+        id: tabRepeater
         model: currentConference.daysPropertyList.length
         TabButton {
             focusPolicy: Qt.NoFocus
@@ -25,5 +26,15 @@ TabBar {
             width: tabBarIsFixed? myTabBar.width / model.length  : Math.max(112, myTabBar.width / model.length)
         }
     } // repeater
+
+    function onConferenceSwitched() {
+        tabRepeater.model = []
+        tabRepeater.model = currentConference.daysPropertyList.length
+    }
+
+    Connections {
+        target: appWindow
+        onConferenceSwitched: myTabBar.onConferenceSwitched()
+    }
 
 }

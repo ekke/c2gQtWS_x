@@ -98,6 +98,7 @@ public:
 
     Q_INVOKABLE
     Conference *switchConference();
+
 signals:
     void myScheduleRefreshed();
 

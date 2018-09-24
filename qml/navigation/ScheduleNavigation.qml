@@ -173,6 +173,18 @@ Page {
             }
         }
 
+        function onConferenceSwitched() {
+            navPane.backToRootPage()
+            if(myScheduleLoader.active) {
+                dataUtil.refreshMySchedule()
+            }
+        }
+
+        Connections {
+            target: appWindow
+            onConferenceSwitched: navPane.onConferenceSwitched()
+        }
+
         function popOnePage() {
             var page = pop()
             if(page.name == "SpeakerDetailPage") {
@@ -252,6 +264,7 @@ Page {
         target: timePickerLoader.item
         onClosed: timePickerClosed()
     }
+
     // executed from GoTo Button at TitleBar
     function pickTime() {
         if(timePickerLoader.active) {

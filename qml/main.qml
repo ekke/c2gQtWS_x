@@ -29,6 +29,7 @@ ApplicationWindow {
     visible: true
     signal doAutoVersionCheck()
     signal oldConference()
+    signal conferenceSwitched()
     property bool autoVersionCheck: true
     //
     property Conference currentConference

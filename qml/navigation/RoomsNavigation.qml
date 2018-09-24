@@ -137,6 +137,15 @@ Page {
             }
         }
 
+        function onConferenceSwitched() {
+            navPane.backToRootPage()
+            initialItem.init()
+        }
+        Connections {
+            target: appWindow
+            onConferenceSwitched: navPane.onConferenceSwitched()
+        }
+
         function popOnePage() {
             var page = pop()
             if(page.name == "roomSessionListPage") {

@@ -55,6 +55,7 @@ Pane {
         text: qsTr("Switch Conference")
         onClicked: {
             currentConference = dataUtil.switchConference()
+            appWindow.conferenceSwitched()
         }
     }
 
