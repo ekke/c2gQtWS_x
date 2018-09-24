@@ -54,7 +54,7 @@ Pane {
         anchors.left: conferenceTitle.left
         text: qsTr("Switch Conference")
         onClicked: {
-            //
+            currentConference = dataUtil.switchConference()
         }
     }
 

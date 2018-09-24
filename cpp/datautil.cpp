@@ -1611,6 +1611,18 @@ void DataUtil::resolveSessionsForSpeaker(Speaker* speaker)
     speaker->resolveSessionsKeys(mDataManager->listOfSessionForKeys(speaker->sessionsKeys()));
 }
 
+Conference* DataUtil::switchConference() {
+    if(!mCurrentConference) {
+        return currentConference();
+    }
+    if(mCurrentConference == (Conference*) mDataManager->allConference().first()) {
+        mCurrentConference = (Conference*) mDataManager->allConference().last();
+    } else {
+        mCurrentConference = (Conference*) mDataManager->allConference().first();
+    }
+    return mCurrentConference;
+}
+
 Conference* DataUtil::currentConference() {
     if(!mCurrentConference) {
         // TODO depends from current date
