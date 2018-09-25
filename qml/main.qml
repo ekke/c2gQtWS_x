@@ -48,6 +48,8 @@ ApplicationWindow {
             Screen.orientationUpdateMask = Qt.LandscapeOrientation | Qt.PortraitOrientation | Qt.InvertedLandscapeOrientation
             console.log("First time orientation changes: set the mask to "+Screen.orientationUpdateMask)
             myDevicePixelRatio = Screen.devicePixelRatio
+            // storing the width and height because later when Orientation change was detected,
+            // Screen.width and Screen.height not updated at same time to new values
             if(Screen.height > Screen.width) {
                 // Portrait
                 myPortraitHeight = Screen.height
