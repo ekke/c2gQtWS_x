@@ -18,15 +18,42 @@ import "navigation"
 // learn about this drawer_nav_x app from this article: http://bit.ly/qt-drawer-nav-x
 // ekke (Ekkehard gentz) @ekkescorner
 
+
+// I O S sizes
+// https://stackoverflow.com/questions/46192280/detect-if-the-device-is-iphone-x
+// 1136 iPhone 5, 5S, 5C
+// 1334 iPhone 6/6S/7/8
+// 1920,2208 iPhone 6+/6S+/7+/8+
+// 2436 iPhone X, Xs
+// 2688 iPhone Xs Max
+// 1792 iPhone Xr
+
 ApplicationWindow {
     id: appWindow
     // running on mobiles you don't need width and height
     // ApplicationWindow will always fill entire screen
     // testing also on desktop it makes sense to set values
     width: 410
+    onWidthChanged: {
+        if(width > height) {
+            console.log("W I D T H "+width)
+            hasTopNotch = false
+            hasBottomNotch = (width == 812)
+        }
+    }
     height: 680
+    onHeightChanged: {
+        if(height > width) {
+            console.log("H E I G H T "+height)
+            hasTopNotch = (height == 812)
+            hasBottomNotch = hasTopNotch
+        }
+    }
+
     // visibile must set to true - default is false
     visible: true
+    // fills iPhoneX screen totally
+    flags: Qt.MaximizeUsingFullscreenGeometryHint
 
     signal doAutoVersionCheck()
     signal oldConference()
@@ -57,6 +84,7 @@ ApplicationWindow {
     // TODO check iPhoneX
     property bool hasTopNotch: false
     property bool hasBottomNotch: false
+    property int topNotchArea: hasTopNotch? 24 : 0
     property int bottomNotchArea: hasBottomNotch? 8 : 0
 
     property bool backKeyfreezed: false
