@@ -51,51 +51,56 @@ ScrollView {
             } // translate
 
             RowLayout {
+                visible: currentConference
                 LabelTitle {
                     topPadding: 16
                     leftPadding: 16
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: "QtWS2018 in " + currentConference.conferenceCity
+                    text: currentConference? "QtWS2018 in " + currentConference.conferenceCity : ""
                     color: accentColor
                 }
             }
             RowLayout {
+                visible: currentConference
                 LabelTitle {
                     leftPadding: 16
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: currentConference.address
+                    text: currentConference? currentConference.address : ""
                     color: primaryColor
                 }
             }
             RowLayout {
+                visible: currentConference
                 LabelSubheading {
                     topPadding: 10
                     leftPadding: 16
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: "<a href=\"" + currentConference.homePage + qsTr("\">Conference Homepage") + "</a>"
+                    text: currentConference? "<a href=\"" + currentConference.homePage + qsTr("\">Conference Homepage") + "</a>" : ""
                     onLinkActivated: Qt.openUrlExternally(currentConference.homePage)
                 }
             }
             RowLayout {
+                visible: currentConference
                 LabelSubheading {
                     topPadding: 10
                     leftPadding: 16
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: "<a href=\"" + currentConference.homePage + qsTr("\">See in Google Maps") + "</a>"
+                    text: currentConference? "<a href=\"" + currentConference.homePage + qsTr("\">See in Google Maps") + "</a>" : ""
                     onLinkActivated: Qt.openUrlExternally("https://www.google.com/maps/search/?api=1&query="+currentConference.coordinate+"&query_place_id="+currentConference.placeId)
                 }
             }
             RowLayout {
+                visible: currentConference
                 LabelSubheading {
                     topPadding: 10
                     leftPadding: 16
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: "<a href=\"" + currentConference.homePage + qsTr("\">See in Apple Map") + "</a>"
+                    text: currentConference? "<a href=\"" + currentConference.homePage + qsTr("\">See in Apple Map") + "</a>" : ""
                     onLinkActivated: Qt.openUrlExternally("http://maps.apple.com/maps/?sll="+currentConference.coordinate+"&address="+currentConference.mapAddress)
                 }
             }

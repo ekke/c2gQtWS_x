@@ -48,6 +48,7 @@ Pane {
     }
 
     ButtonRaised {
+        visible: currentConference
         id: conferenceSwitchButton
         anchors.bottom: parent.bottom
         anchors.bottomMargin: isLandscape? 72 : 124
@@ -61,7 +62,7 @@ Pane {
 
 
     FloatingActionButton {
-        visible: !homePage.isAutoVersionCheckMode
+        visible: !homePage.isAutoVersionCheckMode || !currentConference
         property string imageName: "/refresh.png"
         z: 1
         anchors.margins: 20
@@ -71,6 +72,11 @@ Pane {
         imageSource: "qrc:/images/"+iconOnAccentFolder+imageName
         backgroundColor: accentColor
         onClicked: {
+            // check if there's no conference yet
+            if(dataUtil.isNoConference()) {
+                checkVersionExplicitely()
+                return
+            }
             // check if date is OK
             if(dataUtil.isDateTooLate()) {
                 appWindow.showToast(qsTr("Sorry - the Conference is closed.\nNo more Updates available"))

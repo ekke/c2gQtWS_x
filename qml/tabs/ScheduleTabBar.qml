@@ -19,7 +19,7 @@ TabBar {
 
     Repeater {
         id: tabRepeater
-        model: currentConference.daysPropertyList.length
+        model: currentConference? currentConference.daysPropertyList.length : []
         TabButton {
             focusPolicy: Qt.NoFocus
             text: dataUtil.scheduleTabName(index)

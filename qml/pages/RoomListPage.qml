@@ -122,9 +122,14 @@ Page {
     // called immediately after Loader.loaded
     function init() {
         console.log("Init done from RoomListPage")
-        console.log("Tracks # "+currentConference.roomsPropertyList.length)
-        dataUtil.resolveSessionsForRooms()
-        listView.model = currentConference.roomsPropertyList
+        if(currentConference) {
+            console.log("Tracks # "+currentConference.roomsPropertyList.length)
+            dataUtil.resolveSessionsForRooms()
+            listView.model = currentConference.roomsPropertyList
+        } else {
+            console.log("Conference empty")
+            listView.model = []
+        }
     }
     // called from Component.destruction
     function cleanup() {

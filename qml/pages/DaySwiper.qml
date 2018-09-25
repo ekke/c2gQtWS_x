@@ -62,7 +62,7 @@ Page {
         // only less Pages - all preloaded
         Repeater {
             id: dayPagerepeater
-            model: currentConference.daysPropertyList.length
+            model: currentConference? currentConference.daysPropertyList.length : []
             DayPage {
                 dayIndex: index
                 conferenceDay: currentConference.daysPropertyList[index]
@@ -79,8 +79,14 @@ Page {
 
     function init() {
         console.log("INIT day DaySwiperPage")
-        console.log("conference: "+ currentConference.conferenceCity)
-        console.log("days: "+ currentConference.daysPropertyList.length)
+        if(currentConference) {
+            console.log("conference: "+ currentConference.conferenceCity)
+            console.log("days: "+ currentConference.daysPropertyList.length)
+        } else {
+            console.log("Conferences empty")
+        }
+
+
     }
     function cleanup() {
         console.log("CLEANUP DaySwiperPage")

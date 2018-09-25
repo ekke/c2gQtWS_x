@@ -114,9 +114,13 @@ Page {
     // called immediately after Loader.loaded
     function init() {
         console.log("Init done from trackListPage")
-        console.log("Tracks # "+currentConference.tracksPropertyList.length)
-        dataUtil.resolveSessionsForTracks()
-        listView.model = currentConference.tracksPropertyList
+        if(currentConference) {
+            console.log("Tracks # "+currentConference.tracksPropertyList.length)
+            dataUtil.resolveSessionsForTracks()
+            listView.model = currentConference.tracksPropertyList
+        } else {
+            console.log("Conference empty")
+        }
     }
     // called from Component.destruction
     function cleanup() {

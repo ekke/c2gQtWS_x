@@ -62,6 +62,11 @@ QString DataUtil::conferenceDataPath4QML() {
     return "file://"+mConferenceDataPath;
 }
 
+bool DataUtil::isNoConference()
+{
+    return mDataManager->allConference().size() == 0;
+}
+
 bool DataUtil::isOldConference()
 {
     if(mDataManager->allConference().size() > 0) {
@@ -70,8 +75,6 @@ bool DataUtil::isOldConference()
             qDebug() << " we have old conference data";
             return true;
         }
-    } else {
-        return true;
     }
     return false;
 }
@@ -82,7 +85,7 @@ bool DataUtil::isDateTooLate()
         return true;
     }
     QString todayDate = QDate::currentDate().toString(YYYY_MM_DD);
-    QString lastConferenceDay = ((Day*) mDataManager->mAllDay.last())->conferenceDay().toString(YYYY_MM_DD);
+    QString lastConferenceDay = ((Day*) mDataManager->allDay().last())->conferenceDay().toString(YYYY_MM_DD);
     qDebug() << "todayDate" << todayDate << "lastConferenceDay" << lastConferenceDay;
     return todayDate > lastConferenceDay;
 }
@@ -1513,8 +1516,8 @@ void DataUtil::finishUpdate() {
  */
 void DataUtil::setSessionFavorites()
 {
-    for (int i = 0; i < mDataManager->mAllFavorite.size(); ++i) {
-        Favorite* favorite = (Favorite*) mDataManager->mAllFavorite.at(i);
+    for (int i = 0; i < mDataManager->allFavorite().size(); ++i) {
+        Favorite* favorite = (Favorite*) mDataManager->allFavorite().at(i);
         Session* session = mDataManager->findSessionBySessionId(favorite->sessionId());
         if(session != NULL) {
             session->setIsFavorite(true);
@@ -1624,6 +1627,10 @@ Conference* DataUtil::switchConference() {
 }
 
 Conference* DataUtil::currentConference() {
+    if(mDataManager->allConference().size() == 0) {
+        qDebug() << "fresh start - no conferences yet";
+        return mCurrentConference;
+    }
     if(!mCurrentConference) {
         // TODO depends from current date
         // if currentDate > last day of first conference: use the second one

@@ -225,7 +225,7 @@ Page {
         }
     } // FAB
     FloatingActionButton {
-        visible: navPane.depth == 1
+        visible: navPane.depth === 1 && currentConference
         property string imageName: appWindow.myScheduleActive? "/schedule.png" : "/stars.png"
         z: 1
         anchors.margins: 20

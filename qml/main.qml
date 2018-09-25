@@ -27,6 +27,7 @@ ApplicationWindow {
     height: 680
     // visibile must set to true - default is false
     visible: true
+
     signal doAutoVersionCheck()
     signal oldConference()
     signal conferenceSwitched()
@@ -53,6 +54,10 @@ ApplicationWindow {
     property bool isLandscape: width > height
     // Samsung XCover3 has 320
     property bool isSmallDevice: !isLandscape && width < 360
+    // TODO check iPhoneX
+    property bool hasTopNotch: false
+    property bool hasBottomNotch: false
+    property int bottomNotchArea: hasBottomNotch? 8 : 0
 
     property bool backKeyfreezed: false
     property bool modalPopupActive: false
@@ -250,7 +255,7 @@ ApplicationWindow {
 
     // header per Page, footer global in Portrait + perhaps per Page, too
     // header and footer invisible until initDone
-    footer: initDone && !isLandscape &&!isClassicNavigationStyle && drawerLoader.status == Loader.Ready && navigationBar.position === 0 ? favoritesLoader.item : null
+    footer: initDone && !isLandscape && drawerLoader.status == Loader.Ready && navigationBar.position === 0 ? favoritesLoader.item : null
     header: (isLandscape && !useDefaultTitleBarInLandscape) || !initDone ? null : titleBar
     // show TITLE  BARS is delayed until INIT DONE
     property bool useDefaultTitleBarInLandscape: false
@@ -469,7 +474,11 @@ ApplicationWindow {
                 dataManager.resolveReferencesForAllSession()
                 dataUtil.resolveSessionsForSchedule()
                 currentConference = dataUtil.currentConference()
-                console.log("QML Current Conference: "+currentConference.conferenceCity)
+                if(currentConference) {
+                    console.log("QML Current Conference: "+currentConference.conferenceCity)
+                } else {
+                    console.log("No Conference ! - do the first Update now")
+                }
                 initialPlaceholder.item.showInfo("Create Navigation Controls ...")
                 // add navigation model for DEBUG BUILD ?
                 if(myApp.isDebugBuild() && !initialPlaceholder.isUpdate) {
@@ -484,12 +493,16 @@ ApplicationWindow {
                 // show first destination (should always be IMMEDIATELY)
                 rootPane.activateDestination(firstActiveDestination)
                 console.log("startupDelayedTimer DONE")
+                if(dataUtil.isNoConference()) {
+                    console.log("startupDelayedTimer: isNoConference")
+                    appWindow.oldConference()
+                    return
+                }
                 if(dataUtil.isOldConference()) {
                     console.log("startupDelayedTimer: isOldConference")
                     appWindow.oldConference()
                     return
                 }
-
                 if(dataUtil.isDateTooLate()) {
                     console.log("startupDelayedTimer: isDateTooLate")
                     // no version checks anymore - conference closed
@@ -643,7 +656,7 @@ ApplicationWindow {
         id: favoritesLoader
         active: initDone
         // attention: set also footer !
-        visible: initDone && !isLandscape && !isClassicNavigationStyle && drawerLoader.status == Loader.Ready && navigationBar.position == 0
+        visible: initDone && !isLandscape && drawerLoader.status == Loader.Ready && navigationBar.position === 0
         source: "navigation/DrawerFavoritesNavigationBar.qml"
     }
     function openNavigationBar() {
