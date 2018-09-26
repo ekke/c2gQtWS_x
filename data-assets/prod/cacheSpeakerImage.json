@@ -318,5 +318,15 @@
     "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2018/uploads/2018/09/listimages_alan-ezust.jpg",
     "speakerId": 4153,
     "suffix": "jpg"
+  },
+  {
+    "downloadFailed": false,
+    "downloadSuccess": true,
+    "inAssets": true,
+    "inData": true,
+    "maxScaleFactor": 4,
+    "originImageUrl": "https://s3-eu-west-1.amazonaws.com/qt-worldsummit/ws2018/uploads/2018/09/listimages_David-Niewolny.jpg",
+    "speakerId": 4159,
+    "suffix": "jpg"
   }
 ]

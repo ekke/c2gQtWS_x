@@ -158,5 +158,9 @@
         <file>data-assets/conference/roomimages/room_2018105.png</file>
         <file>data-assets/conference/roomimages/no_floorplan.jpg</file>
         <file>data-assets/conference/floorplan/QtWS2018_Berlin.png</file>
+        <file>data-assets/conference/speakerImages/speaker_4159@4x.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4159@3x.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4159@2x.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4159.jpg</file>
     </qresource>
 </RCC>
