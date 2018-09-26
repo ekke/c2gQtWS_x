@@ -10,6 +10,7 @@
 #include "gen/DataManager.hpp"
 #include "dataserver.hpp"
 #include "datautil.hpp"
+#include "unsafearea.hpp"
 
 class ApplicationUI : public QObject
 {
@@ -51,6 +52,7 @@ private:
      DataManager* mDataManager;
      DataUtil* mDataUtil;
      DataServer* mDataServer;
+     UnsafeArea* mUnsafeArea;
 
      SettingsData* mSettingsData;
 

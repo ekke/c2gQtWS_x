@@ -25,7 +25,8 @@ HEADERS += \
     cpp/imageloader.hpp \
     cpp/gen/SessionTrackAPI.hpp \
     cpp/gen/SessionLists.hpp \
-    cpp/dataserver.hpp
+    cpp/dataserver.hpp \
+    cpp/unsafearea.hpp
 
 SOURCES += cpp/main.cpp \
     cpp/applicationui.cpp \
@@ -46,7 +47,8 @@ SOURCES += cpp/main.cpp \
     cpp/imageloader.cpp \
     cpp/gen/SessionTrackAPI.cpp \
     cpp/gen/SessionLists.cpp \
-    cpp/dataserver.cpp
+    cpp/dataserver.cpp \
+    cpp/unsafearea.cpp
 
 lupdate_only {
     SOURCES +=  qml/main.qml \

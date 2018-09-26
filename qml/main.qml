@@ -30,12 +30,6 @@ ApplicationWindow {
     // https://bugreports.qt.io/browse/QTBUG-64574
     // I O S sizes to detect the device type
     // https://stackoverflow.com/questions/46192280/detect-if-the-device-is-iphone-x
-    // 1136 iPhone 5, 5S, 5C
-    // 1334 iPhone 6/6S/7/8
-    // 1920,2208 iPhone 6+/6S+/7+/8+
-    // 2436 iPhone X, Xs
-    // 2688 iPhone Xs Max
-    // 1792 iPhone Xr
     property int myPortraitHeight: 0
     property int myPortraitWidth: 0
     property int myDevicePixelRatio: 0
@@ -47,6 +41,9 @@ ApplicationWindow {
             console.log("My Screen sizes. height: "+Screen.height+" width: "+Screen.width+" ratio: "+Screen.devicePixelRatio )
             Screen.orientationUpdateMask = Qt.LandscapeOrientation | Qt.PortraitOrientation | Qt.InvertedLandscapeOrientation
             console.log("First time orientation changes: set the mask to "+Screen.orientationUpdateMask)
+
+            unsafeArea.configureDevice(Screen.height, Screen.width, Screen.devicePixelRatio)
+
             myDevicePixelRatio = Screen.devicePixelRatio
             // storing the width and height because later when Orientation change was detected,
             // Screen.width and Screen.height not updated at same time to new values
@@ -65,6 +62,9 @@ ApplicationWindow {
             }
         }
         console.log("PRIMARY ORIENTATION CHANGED: "+myOrientation)
+
+        unsafeArea.orientationChanged(myOrientation)
+
         if(myOrientation !== lastOrientation) {
             if(Qt.platform.os === "ios") {
                 manageScreenSize()
