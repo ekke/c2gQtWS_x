@@ -30,78 +30,25 @@ ApplicationWindow {
     // https://bugreports.qt.io/browse/QTBUG-64574
     // I O S sizes to detect the device type
     // https://stackoverflow.com/questions/46192280/detect-if-the-device-is-iphone-x
-    property int myPortraitHeight: 0
-    property int myPortraitWidth: 0
-    property int myDevicePixelRatio: 0
-    property bool isIphoneX: false
+    // TODO HowTo deal with Android - Notch - Devices ?
     property int lastOrientation: 0
-    property int myOrientation: Screen.orientation
+    property int myOrientation: (Qt.platform.os === "ios")? Screen.orientation : 0
     onMyOrientationChanged: {
         if(lastOrientation === 0) {
-            console.log("My Screen sizes. height: "+Screen.height+" width: "+Screen.width+" ratio: "+Screen.devicePixelRatio )
             Screen.orientationUpdateMask = Qt.LandscapeOrientation | Qt.PortraitOrientation | Qt.InvertedLandscapeOrientation
             console.log("First time orientation changes: set the mask to "+Screen.orientationUpdateMask)
-
+            // detect the device to know about unsafe areas
             unsafeArea.configureDevice(Screen.height, Screen.width, Screen.devicePixelRatio)
-
-            myDevicePixelRatio = Screen.devicePixelRatio
-            // storing the width and height because later when Orientation change was detected,
-            // Screen.width and Screen.height not updated at same time to new values
-            if(Screen.height > Screen.width) {
-                // Portrait
-                myPortraitHeight = Screen.height
-                myPortraitWidth = Screen.width
-            } else {
-                // Landscape
-                myPortraitHeight = Screen.width
-                myPortraitWidth = Screen.height
-            }
-            console.log("MyPortrait sizes. height: "+myPortraitHeight+" width: "+myPortraitWidth)
-            if(Qt.platform.os === "ios") {
-                isIphoneX = myPortraitHeight * myDevicePixelRatio == 2436
-            }
         }
-        console.log("PRIMARY ORIENTATION CHANGED: "+myOrientation)
-
+        // triggers unsafe areas and sets margins
         unsafeArea.orientationChanged(myOrientation)
-
-        if(myOrientation !== lastOrientation) {
-            if(Qt.platform.os === "ios") {
-                manageScreenSize()
-                return
-            } else {
-                // TODO HowTo deal with Android - Notch - Devices ?
-                lastOrientation = myOrientation
-            }
-        }
-    }
-
-    function manageScreenSize() {
         lastOrientation = myOrientation
-        if(isIphoneX) {
-            if(myOrientation === Qt.PortraitOrientation) {
-                console.log("PORTRAIT")
-                hasTopNotch = true
-                hasBottomNotch = hasTopNotch
-            }
-            if(myOrientation === Qt.LandscapeOrientation) {
-                console.log("LANDSCAPE LEFT (HomeButton right)")
-                hasTopNotch = false
-                hasBottomNotch = true
-                return
-            }
-            if(myOrientation === Qt.InvertedLandscapeOrientation) {
-                console.log("LANDSCAPE RIGHT (HomeButton left)")
-                hasTopNotch = false
-                hasBottomNotch = true
-                return
-            }
-        }
     }
+
 
     // visibile must set to true - default is false
     visible: true
-    // fills iPhoneX screen totally
+    // fills iPhone devices screen totally
     flags: Qt.MaximizeUsingFullscreenGeometryHint
 
     signal doAutoVersionCheck()
@@ -130,11 +77,6 @@ ApplicationWindow {
     property bool isLandscape: width > height
     // Samsung XCover3 has 320
     property bool isSmallDevice: !isLandscape && width < 360
-    // check iPhoneX
-    property bool hasTopNotch: false
-    property bool hasBottomNotch: false
-    property int topNotchArea: hasTopNotch? 24 : 0
-    property int bottomNotchArea: hasBottomNotch? 8 : 0
 
     property bool backKeyfreezed: false
     property bool modalPopupActive: false

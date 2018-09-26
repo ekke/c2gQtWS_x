@@ -63,12 +63,89 @@ void UnsafeArea::orientationChanged(int orientation)
     qDebug() << "orientationChanged: " << orientation;
     if(orientation == 1) {
         qDebug() << "PORTRAIT";
+        portrait();
     } else if(orientation == 2) {
         qDebug() << "LANDSCAPE LEFT (HomeButton right)";
+        landscapeLeft();
     } else if(orientation == 8) {
         qDebug() << "LANDSCAPE RIGHT (HomeButton left)";
+        landscapeRight();
     } else {
         qWarning() << "unsupported Orientation: " << orientation;
+    }
+}
+
+void UnsafeArea::portrait()
+{
+    switch (mMyDevice) {
+    case MyDevice::IPHONE_X_XS:
+    case MyDevice::IPHONE_XSMAX:
+    case MyDevice::IPHONE_XR:
+        setUnsafeTopMargin(24);
+        setUnsafeBottomMargin(8);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    case MyDevice::IPHONE_5_5S_5C:
+    case MyDevice::IPHONE_6_6S_7_8:
+    case MyDevice::IPHONE_6PLUS_6SPLUS_7PLUS_8PLUS:
+        setUnsafeTopMargin(16);
+        setUnsafeBottomMargin(0);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    default:
+        break;
+    }
+}
+
+// HomeButton right
+void UnsafeArea::landscapeLeft()
+{
+    switch (mMyDevice) {
+    case MyDevice::IPHONE_X_XS:
+    case MyDevice::IPHONE_XSMAX:
+    case MyDevice::IPHONE_XR:
+        setUnsafeTopMargin(0);
+        setUnsafeBottomMargin(8);
+        setUnsafeLeftMargin(24);
+        setUnsafeRightMargin(0);
+        break;
+    case MyDevice::IPHONE_5_5S_5C:
+    case MyDevice::IPHONE_6_6S_7_8:
+    case MyDevice::IPHONE_6PLUS_6SPLUS_7PLUS_8PLUS:
+        setUnsafeTopMargin(10);
+        setUnsafeBottomMargin(0);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    default:
+        break;
+    }
+}
+
+// HomeButton left
+void UnsafeArea::landscapeRight()
+{
+    switch (mMyDevice) {
+    case MyDevice::IPHONE_X_XS:
+    case MyDevice::IPHONE_XSMAX:
+    case MyDevice::IPHONE_XR:
+        setUnsafeTopMargin(0);
+        setUnsafeBottomMargin(8);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(24);
+        break;
+    case MyDevice::IPHONE_5_5S_5C:
+    case MyDevice::IPHONE_6_6S_7_8:
+    case MyDevice::IPHONE_6PLUS_6SPLUS_7PLUS_8PLUS:
+        setUnsafeTopMargin(10);
+        setUnsafeBottomMargin(0);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    default:
+        break;
     }
 }
 

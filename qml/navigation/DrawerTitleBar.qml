@@ -7,7 +7,7 @@ import "../common"
 
 ToolBar {
     id: myTitleBar
-    topPadding: hasTopNotch? topNotchArea : undefined
+    topPadding: unsafeArea.unsafeTopMargin? unsafeArea.unsafeTopMargin : undefined
 
     RowLayout {
         focus: false

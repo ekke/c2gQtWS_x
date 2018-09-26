@@ -57,6 +57,10 @@ private:
     int mUnsafeLeftMargin;
     int mUnsafeRightMargin;
 
+    void portrait();
+    void landscapeLeft();
+    void landscapeRight();
+
     MyDevice mMyDevice;
 
     Q_DISABLE_COPY (UnsafeArea)

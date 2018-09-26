@@ -51,7 +51,7 @@ Pane {
         visible: currentConference
         id: conferenceSwitchButton
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: (isLandscape? 72 : 124) + bottomNotchArea
+        anchors.bottomMargin: (isLandscape? 72 : 124) + unsafeArea.unsafeBottomMargin
         anchors.left: conferenceTitle.left
         text: qsTr("Switch Conference")
         onClicked: {
