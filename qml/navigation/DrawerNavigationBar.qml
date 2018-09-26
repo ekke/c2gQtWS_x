@@ -9,7 +9,9 @@ import "../common"
 Drawer {
     id: myBar
     z: 1
-    leftPadding: 0
+    topMargin: unsafeArea.unsafeTopMargin
+    topPadding: 0
+    leftPadding: unsafeArea.unsafeLeftMargin
     property alias navigationButtons: navigationButtonRepeater
     property real activeOpacity: iconFolder == "black" ?  0.87 : 1.0
     property real inactiveOpacity: iconFolder == "black" ?  0.56 : 0.87 //  0.26 : 0.56
@@ -21,7 +23,6 @@ Drawer {
         contentHeight: myButtons.height
         anchors.fill: parent
         clip: true
-
         ColumnLayout {
             id: myButtons
             focus: false

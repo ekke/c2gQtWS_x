@@ -11,7 +11,9 @@ import "../popups"
 
 Pane {
     id: homePage
-    height: appWindow.height
+    anchors.fill: parent
+    anchors.leftMargin: unsafeArea.unsafeLeftMargin
+    anchors.rightMargin: unsafeArea.unsafeRightMargin
     property string name: "HomePage"
     property Conference conference
     property bool isAutoVersionCheckMode: true
@@ -51,7 +53,7 @@ Pane {
         visible: currentConference
         id: conferenceSwitchButton
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: (isLandscape? 72 : 124) + unsafeArea.unsafeBottomMargin
+        anchors.bottomMargin:  20 + unsafeArea.unsafeBottomMargin
         anchors.left: conferenceTitle.left
         text: qsTr("Switch Conference")
         onClicked: {
@@ -66,7 +68,6 @@ Pane {
         property string imageName: "/refresh.png"
         z: 1
         anchors.margins: 20
-        anchors.bottomMargin: isLandscape? 60 : 112
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         imageSource: "qrc:/images/"+iconOnAccentFolder+imageName

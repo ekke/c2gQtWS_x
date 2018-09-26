@@ -19,6 +19,8 @@ Flickable {
     Pane {
         id: root
         anchors.fill: parent
+        anchors.leftMargin: unsafeArea.unsafeLeftMargin
+        anchors.rightMargin: unsafeArea.unsafeRightMargin
         ColumnLayout {
             anchors.right: parent.right
             anchors.left: parent.left

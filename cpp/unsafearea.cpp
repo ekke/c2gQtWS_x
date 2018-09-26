@@ -108,7 +108,7 @@ void UnsafeArea::landscapeLeft()
     case MyDevice::IPHONE_XR:
         setUnsafeTopMargin(0);
         setUnsafeBottomMargin(8);
-        setUnsafeLeftMargin(24);
+        setUnsafeLeftMargin(30);
         setUnsafeRightMargin(0);
         break;
     case MyDevice::IPHONE_5_5S_5C:
@@ -134,7 +134,7 @@ void UnsafeArea::landscapeRight()
         setUnsafeTopMargin(0);
         setUnsafeBottomMargin(8);
         setUnsafeLeftMargin(0);
-        setUnsafeRightMargin(24);
+        setUnsafeRightMargin(30);
         break;
     case MyDevice::IPHONE_5_5S_5C:
     case MyDevice::IPHONE_6_6S_7_8:

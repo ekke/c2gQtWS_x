@@ -23,6 +23,8 @@ Page {
     StackView {
         id: navPane
         anchors.fill: parent
+        anchors.leftMargin: unsafeArea.unsafeLeftMargin
+        anchors.rightMargin: unsafeArea.unsafeRightMargin
         property string name: "ScheduleNavPane"
         focus: true
 
