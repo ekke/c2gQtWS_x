@@ -44,6 +44,8 @@ ApplicationWindow {
         unsafeArea.orientationChanged(myOrientation)
         lastOrientation = myOrientation
     }
+    property int safeWidth: width - unsafeArea.unsafeLeftMargin - unsafeArea.unsafeRightMargin
+    property int safeHeight: height - unsafeArea.unsafeTopMargin - unsafeArea.unsafeBottomMargin
 
 
     // visibile must set to true - default is false
