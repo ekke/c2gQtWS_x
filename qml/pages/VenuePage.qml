@@ -12,8 +12,8 @@ ScrollView {
     id: flickable
     // index to get access to Loader (Destination)
     property int myIndex: index
-    contentHeight: appWindow.height
-    contentWidth: appWindow.width
+    contentHeight: appWindow.safeHeight
+    contentWidth: appWindow.safeWidth
     // StackView manages this, so please no anchors here
     // anchors.fill: parent
     property string name: "VenuePage"
@@ -114,13 +114,13 @@ ScrollView {
     }
 
     function fitIntoWindow() {
-        var portraitWidth = Math.min(appWindow.width,appWindow.height)
-        var portraitHeight = Math.max(appWindow.width,appWindow.height)-60
+        var portraitWidth = Math.min(appWindow.safeWidth,appWindow.safeHeight)
+        var portraitHeight = Math.max(appWindow.safeWidth,appWindow.safeHeight)-60
         var portraitWidthScale = portraitWidth / conferenceImage.sourceSize.width
         var portraitHeightScale = portraitHeight / conferenceImage.sourceSize.height
         conferenceImage.portraitScale = Math.min(portraitWidthScale, portraitHeightScale)
-        var landscapeWidth = Math.max(appWindow.width,appWindow.height)-300
-        var landscapeHeight = Math.min(appWindow.width,appWindow.height)-80
+        var landscapeWidth = Math.max(appWindow.safeWidth,appWindow.safeHeight)-320
+        var landscapeHeight = Math.min(appWindow.safeWidth,appWindow.safeHeight)-80
         var landscapeWidthScale = landscapeWidth / conferenceImage.sourceSize.width
         var landscapeHeightScale = landscapeHeight / conferenceImage.sourceSize.height
         conferenceImage.landscapeScale = Math.min(landscapeWidthScale, landscapeHeightScale)

@@ -30,8 +30,8 @@ Pane {
         anchors.top: parent
         x: 16
         y: 16
-        width: isLandscape? undefined : appWindow.width - 32
-        height: isLandscape? appWindow.height - 32 : undefined
+        width: isLandscape? undefined : appWindow.safeWidth - 32
+        height: isLandscape? appWindow.safeHeight - 32 : undefined
         fillMode: Image.PreserveAspectFit
         source: "qrc:/images/extra/globe.png"
         horizontalAlignment: isLandscape? Image.AlignLeft : Image.AlignHCenter

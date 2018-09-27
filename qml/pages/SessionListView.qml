@@ -32,8 +32,8 @@ ListView {
 
             ColumnLayout {
                 id: scheduleRow
-                // without this divider not over total width
-                implicitWidth: appWindow.width
+                // without setting impliciWidth divider not over total width
+                implicitWidth: appWindow.safeWidth
                 RowLayout {
                     spacing: 20
                     Layout.leftMargin: 20
@@ -50,8 +50,8 @@ ListView {
                     ColumnLayout {
                         Layout.fillWidth: true
                         // without setting a maximum width, word wrap not working
-                        Layout.maximumWidth: appWindow.width-132
-                        Layout.minimumWidth: appWindow.width-132
+                        Layout.maximumWidth: appWindow.safeWidth-132
+                        Layout.minimumWidth: appWindow.safeWidth-132
                         spacing: 0
                         LabelTitle {
                             rightPadding: 12
@@ -84,7 +84,7 @@ ListView {
             ItemDelegate {
                 id: theItem
                 height: sessionRow.height
-                implicitWidth: appWindow.width
+                implicitWidth: appWindow.safeWidth
                 Rectangle {
                     anchors.top: theItem.top
                     height: sessionRow.height-2
@@ -98,7 +98,7 @@ ListView {
                 ColumnLayout {
                     id: sessionRow
                     // without this divider not over total width
-                    implicitWidth: appWindow.width
+                    implicitWidth: appWindow.safeWidth
                     RowLayout {
                         spacing: 20
                         Layout.leftMargin: 16+12
@@ -113,8 +113,8 @@ ListView {
                         ColumnLayout {
                             Layout.fillWidth: true
                             // without setting a maximum width, word wrap not working
-                            Layout.maximumWidth: appWindow.width-132
-                            Layout.minimumWidth: appWindow.width-132
+                            Layout.maximumWidth: appWindow.safeWidth-132
+                            Layout.minimumWidth: appWindow.safeWidth-132
                             spacing: 0
                             LabelSubheading {
                                 rightPadding: 12
