@@ -12,12 +12,8 @@ import "popups"
 import "tabs"
 import "navigation"
 
-// This app demonstrates HowTo use Qt 5.7 new Qt Quick Controls 2, High DPI and more
-// This app is NOT a production ready app
-// This app's goal is only to help you to understand some concepts
-// see blog http://j.mp/qt-x to learn about Qt 5.7 for Material - styled Android or iOS Apps
-// learn about this drawer_nav_x app from this article: http://bit.ly/qt-drawer-nav-x
 // ekke (Ekkehard gentz) @ekkescorner
+// this App was done in my rare spare time to support Qt community
 
 ApplicationWindow {
     id: appWindow
@@ -52,7 +48,8 @@ ApplicationWindow {
     // visibile must set to true - default is false
     visible: true
     // fills iPhone and iPad devices screen totally
-    flags: Qt.MaximizeUsingFullscreenGeometryHint
+    // ATTENTION: you must check for ios - if not, on Android the BACK key wasn't detected anymore !!
+    flags: Qt.platform.os === "ios"? Qt.MaximizeUsingFullscreenGeometryHint : undefined
 
     signal doAutoVersionCheck()
     signal oldConference()
@@ -359,16 +356,13 @@ ApplicationWindow {
             if(!initDone) {
                 return
             }
+
             if(navigationModel[navigationIndex].canGoBack && destinations.itemAt(navigationIndex).item.depth > 1) {
                 destinations.itemAt(navigationIndex).item.goBack()
                 return
             }
             if(initDone && navigationBar.position == 0) {
                 openNavigationBar()
-                return
-            }
-            if (Qt.platform.os === "winrt") {
-                Qt.quit()
                 return
             }
             if (Qt.platform.os === "android") {
