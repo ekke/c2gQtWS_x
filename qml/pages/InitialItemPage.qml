@@ -6,12 +6,12 @@ import "../common"
 Pane {
     property string name: "InitialItemPage"
     property int myIndex: -1
-    width: appWindow.width
+    width: appWindow.safeWidth
     LabelHeadline {
         id: initLabel
         anchors.left: parent.left
         anchors.right: parent.right
-        topPadding: 12
+        topPadding: 12 + unsafeArea.unsafeTopMargin
         wrapMode: Label.WordWrap
         horizontalAlignment: Qt.AlignHCenter
         text: qsTr("Welcome to\nQt World Summit 2018")
