@@ -39,6 +39,7 @@ ApplicationWindow {
             console.log("First time orientation changes: set the mask to "+Screen.orientationUpdateMask)
             // detect the device to know about unsafe areas
             unsafeArea.configureDevice(Screen.height, Screen.width, Screen.devicePixelRatio)
+            isTablet = unsafeArea.isKnownIPad()
         }
         // triggers unsafe areas and sets margins
         unsafeArea.orientationChanged(myOrientation)
@@ -50,7 +51,7 @@ ApplicationWindow {
 
     // visibile must set to true - default is false
     visible: true
-    // fills iPhone devices screen totally
+    // fills iPhone and iPad devices screen totally
     flags: Qt.MaximizeUsingFullscreenGeometryHint
 
     signal doAutoVersionCheck()
@@ -79,6 +80,8 @@ ApplicationWindow {
     property bool isLandscape: width > height
     // Samsung XCover3 has 320
     property bool isSmallDevice: !isLandscape && width < 360
+    // iOS: set from configure unsafe areas (see above)
+    property bool isTablet: false
 
     property bool backKeyfreezed: false
     property bool modalPopupActive: false
@@ -276,7 +279,7 @@ ApplicationWindow {
 
     // header per Page, footer global in Portrait + perhaps per Page, too
     // header and footer invisible until initDone
-    footer: initDone && !isLandscape && drawerLoader.status == Loader.Ready && navigationBar.position === 0 ? favoritesLoader.item : null
+    footer: initDone && (!isLandscape || isTablet) && drawerLoader.status == Loader.Ready && navigationBar.position === 0 ? favoritesLoader.item : null
     header: (isLandscape && !useDefaultTitleBarInLandscape) || !initDone ? null : titleBar
     // show TITLE  BARS is delayed until INIT DONE
     property bool useDefaultTitleBarInLandscape: false

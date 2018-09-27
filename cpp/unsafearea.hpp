@@ -33,6 +33,12 @@ public:
     Q_INVOKABLE
     void orientationChanged(int orientation);
 
+    Q_INVOKABLE
+    bool isKnownIPhone();
+
+    Q_INVOKABLE
+    bool isKnownIPad();
+
     virtual ~UnsafeArea();
 
     enum MyDevice {
@@ -42,7 +48,10 @@ public:
         IPHONE_6PLUS_6SPLUS_7PLUS_8PLUS,
         IPHONE_X_XS,
         IPHONE_XSMAX,
-        IPHONE_XR
+        IPHONE_XR,
+        IPADPRO_129,
+        IPADPRO_105,
+        IPADPRO_97_AIR_MINI
          };
 
 signals:
