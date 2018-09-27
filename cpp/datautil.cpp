@@ -1959,6 +1959,7 @@ void DataUtil::prepareHighDpiImages(SpeakerImage* speakerImage, int width, int h
             qWarning() << "Cannot construct Image from file: " << originFileName;
             return;
         }
+        originImage.save(fileName+"_origin."+speakerImage->suffix());
         QImage scaledImage;
         if(width >= size1) {
             scaledImage = originImage.scaledToWidth(size1);
@@ -1999,6 +2000,7 @@ void DataUtil::prepareHighDpiImages(SpeakerImage* speakerImage, int width, int h
             qWarning() << "Cannot construct Image from file: " << originFileName;
             return;
         }
+        originImage.save(fileName+"_origin."+speakerImage->suffix());
         QImage scaledImage;
         if(height >= size1) {
             scaledImage = originImage.scaledToHeight(size1);
