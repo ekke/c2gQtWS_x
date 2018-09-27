@@ -18,6 +18,7 @@ UnsafeArea::UnsafeArea(QObject *parent) :
 // 2688 iPhone Xs Max
 // 1792 iPhone Xr
 // https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/Displays/Displays.html
+// attention: all sizes are UIKIT SIZES not NATIVE PIXEL
 void UnsafeArea::configureDevice(int height, int width, int devicePixelRatio)
 {
     qDebug() << "UNSAFE AREAS ? configureDevice - height: " << height << " width: " << width << " devicePixelRatio: " << devicePixelRatio;
