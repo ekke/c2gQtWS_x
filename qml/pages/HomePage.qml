@@ -11,9 +11,8 @@ import "../popups"
 
 Pane {
     id: homePage
-    anchors.fill: parent
-    anchors.leftMargin: unsafeArea.unsafeLeftMargin
-    anchors.rightMargin: unsafeArea.unsafeRightMargin
+    // StackView manages this, so please no anchors here
+    // anchors.fill: parent
     property string name: "HomePage"
     property Conference conference
     property bool isAutoVersionCheckMode: true
@@ -23,11 +22,14 @@ Pane {
     }
 
     //topPadding: 12
-    padding: 0
+    topPadding: 16
+    bottomPadding: 0
+    leftPadding: unsafeArea.unsafeLeftMargin
+    rightPadding: unsafeArea.unsafeRightMargin
 
     Image {
         id: conferenceImage
-        anchors.top: parent
+        anchors.top: parent.top
         x: 16
         y: 16
         width: isLandscape? undefined : appWindow.safeWidth - 32
