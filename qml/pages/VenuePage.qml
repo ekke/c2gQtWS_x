@@ -27,14 +27,10 @@ ScrollView {
         bottomPadding: 0
         Image {
             id: conferenceImage
-            property real portraitScale: 1.0
-            property real landscapeScale: 1.0
-            scale: isLandscape? landscapeScale : portraitScale
             anchors.top: parent.top
             anchors.topMargin: isLandscape? 16 : undefined
             anchors.left: parent.left
-            width: sourceSize.width
-            height: sourceSize.height
+            width: isLandscape? appWindow.safeWidth/2 : appWindow.safeWidth
             fillMode: Image.PreserveAspectFit
             source: currentConference? currentConference.id === 201801? "qrc:/data-assets/conference/floorplan/QtWS2018_Boston.png" : "qrc:/data-assets/conference/floorplan/QtWS2018_Berlin.png" : ""
             horizontalAlignment: Image.AlignLeft
@@ -46,8 +42,8 @@ ScrollView {
             anchors.right: parent.right
             anchors.left: parent.left
             transform: Translate {
-                x: isLandscape ? conferenceImage.width*conferenceImage.scale:0
-                y: isLandscape? 0 : conferenceImage.height*conferenceImage.scale
+                x: isLandscape ? conferenceImage.width:0
+                y: isLandscape? 0 : conferenceImage.height
             } // translate
 
             RowLayout {
@@ -113,26 +109,8 @@ ScrollView {
         cleanup()
     }
 
-    function fitIntoWindow() {
-        var portraitWidth = Math.min(appWindow.safeWidth,appWindow.safeHeight)
-        var portraitHeight = Math.max(appWindow.safeWidth,appWindow.safeHeight)-60
-        var portraitWidthScale = portraitWidth / conferenceImage.sourceSize.width
-        var portraitHeightScale = portraitHeight / conferenceImage.sourceSize.height
-        conferenceImage.portraitScale = Math.min(portraitWidthScale, portraitHeightScale)
-        var landscapeWidth = Math.max(appWindow.safeWidth,appWindow.safeHeight)-320
-        var landscapeHeight = Math.min(appWindow.safeWidth,appWindow.safeHeight)-80
-        var landscapeWidthScale = landscapeWidth / conferenceImage.sourceSize.width
-        var landscapeHeightScale = landscapeHeight / conferenceImage.sourceSize.height
-        conferenceImage.landscapeScale = Math.min(landscapeWidthScale, landscapeHeightScale)
-        //flickable.contentX = 0
-        //flickable.contentY = 0
-        console.log("Portrait HEIGHT "+portraitHeight)
-        console.log("Portrait WIDTH "+portraitWidth)
-    }
-
     // called immediately after Loader.loaded
     function init() {
-        fitIntoWindow()
         console.log("Init done from VenuePage")
     }
     // called from Component.destruction

@@ -38,14 +38,14 @@ Page {
         ItemDelegate {
             id: theItem
             height: speakerRow.height
-            implicitWidth: appWindow.width
+            implicitWidth: appWindow.safeWidth
             onClicked: {
                 navPane.pushSpeakerDetail(model.modelData.speakerId)
             }
             ColumnLayout {
                 id: speakerRow
                 // without this divider not over total width
-                implicitWidth: appWindow.width
+                implicitWidth: appWindow.safeWidth
                 RowLayout {
                     spacing: 20
                     Layout.leftMargin: 16+12
@@ -57,7 +57,7 @@ Page {
                     ColumnLayout {
                         Layout.fillWidth: true
                         // without setting a maximum width, word wrap not working
-                        Layout.maximumWidth: appWindow.width-120
+                        Layout.maximumWidth: appWindow.width-140
                         spacing: 0
                         LabelSubheading {
                             rightPadding: 12

@@ -32,7 +32,8 @@ Pane {
         anchors.top: parent.top
         x: 16
         y: 16
-        width: isLandscape? undefined : appWindow.safeWidth - 32
+        property int reduceWidth: isSmallDevice? appWindow.safeWidth/2 : 0
+        width: isLandscape? undefined : appWindow.safeWidth - 32 - reduceWidth
         height: isLandscape? appWindow.safeHeight - 32 : undefined
         fillMode: Image.PreserveAspectFit
         source: "qrc:/images/extra/globe.png"
