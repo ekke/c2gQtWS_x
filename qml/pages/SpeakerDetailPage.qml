@@ -42,35 +42,33 @@ Page {
                 Layout.fillWidth: true
                 anchors.right: parent.right
                 anchors.left: parent.left
-
                 RowLayout {
                     Layout.leftMargin: 16
                     Layout.rightMargin: 6
-                    Layout.bottomMargin: 12
                     SpeakerImageItem {
                         id: speakerImage
                         anchors.top: parent.top
                     }
-                    ColumnLayout {
-                        LabelHeadline {
-                            leftPadding: 10+6
-                            text: speaker.name.length? speaker.name : qsTr("Unnamed Speaker")
-                            color: accentColor
-                        }
-
-                        LabelSubheading {
-                            leftPadding: 10+6
-                            rightPadding: 10
-                            wrapMode: Text.WordWrap
-                            text: speaker.bio
-                        }
+                    LabelHeadline {
+                        leftPadding: 10+6
+                        text: speaker.name.length? speaker.name : qsTr("Unnamed Speaker")
+                        color: accentColor
                     }
                 } // row
-                LabelBodySecondary {
-                    text: "id "+speaker.speakerId
-                    font.italic: true
-                    transform: Translate{y: -12}
-                }
+//                LabelBodySecondary {
+//                    text: "id "+speaker.speakerId
+//                    font.italic: true
+//                    transform: Translate{y: -12}
+//                }
+                RowLayout {
+                    Layout.leftMargin: 16
+                    Layout.rightMargin: 6
+                    Layout.bottomMargin: 12
+                    LabelSubheading {
+                        wrapMode: Text.WordWrap
+                        text: speaker.bio
+                    }
+                } // row
                 HorizontalDivider{
                     height: 3
                     transform: Translate{y: -8}

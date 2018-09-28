@@ -268,7 +268,7 @@ Page {
                                 ColumnLayout {
                                     Layout.fillWidth: true
                                     // without setting a maximum width, word wrap not working
-                                    Layout.maximumWidth: appWindow.width-120
+                                    Layout.maximumWidth: appWindow.safeWidth-154
                                     spacing: 0
                                     LabelSubheading {
                                         rightPadding: 12

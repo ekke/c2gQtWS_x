@@ -74,12 +74,6 @@ Page {
                             elide: Label.ElideRight
                         }
                     }
-                    //                MouseArea {
-                    //                    anchors.fill: parent
-                    //                    onClicked: {
-                    //                        navPane.pushSpeakerDetail(model.modelData.speakerId)
-                    //                    }
-                    //                } // mouse
                 } // end Row Layout
                 HorizontalListDivider{}
             } // end Col Layout speaker row

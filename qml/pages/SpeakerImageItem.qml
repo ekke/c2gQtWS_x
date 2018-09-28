@@ -13,8 +13,8 @@ Item {
     property string assetsSource: "qrc:/data-assets/conference/speakerImages/speaker_"
     property string dataSource: dataUtil.conferenceDataPath4QML()+"speakerImages/speaker_"
     id: imageItem
-    height: 64
-    width: 64
+    height: 96
+    width: 96
     Image {
         visible: speaker && speaker.hasSpeakerImage()
         anchors.verticalCenter: parent.verticalCenter
