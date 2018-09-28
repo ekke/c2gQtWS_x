@@ -90,7 +90,7 @@ ScrollView {
                 }
             }
             RowLayout {
-                visible: currentConference
+                visible: currentConference && Qt.platform.os === "ios"
                 LabelSubheading {
                     topPadding: 10
                     leftPadding: 16
