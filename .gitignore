@@ -40,3 +40,5 @@ android/local.properties
 
 ios_signature.pri
 
+asset_catalog_compiler.Info.plist
+
