@@ -302,17 +302,28 @@ void DataUtil::prepareEventData() {
     mDataManager->deleteDay();
     mDataManager->deleteSession();
     mDataManager->deleteSessionTrack();
-    mDataManager->deleteSpeaker();
-    // at first we delete current SpeakerImages file
+    // at first we delete current Speaker and SpeakerImages file
     // perhaps from old conferences
+    mDataManager->deleteSpeaker();
     mDataManager->deleteSpeakerImage();
     QString cacheSpeakerImageFilePath = mCacheDataPath + "cacheSpeakerImage.json";
     QFile cacheSpeakerImageFile(cacheSpeakerImageFilePath);
     if(cacheSpeakerImageFile.exists()) {
-        cacheSpeakerImageFile.remove();
+        bool ok = cacheSpeakerImageFile.remove();
+        qDebug() << "old speaker images removed from cache? " << ok;
     }
-    // as next we copy speaker images from assets
+    QString cacheSpeakerFilePath = mCacheDataPath + "cacheSpeaker.json";
+    QFile cacheSpeakerFile(cacheSpeakerFilePath);
+    if(cacheSpeakerFile.exists()) {
+        bool ok = cacheSpeakerFile.remove();
+        qDebug() << "old speakers removed from cache? " << ok;
+    }
+    // as next we copy speaker and speaker images from assets
     mDataManager->initSpeakerImageFromCache();
+    mDataManager->initSpeakerFromCache();
+    qDebug() << "copied speakers: " << mDataManager->allSpeaker().size();
+    qDebug() << "copied speaker images: " << mDataManager->allSpeakerImage().size();
+    mDataManager->resolveReferencesForAllSpeaker();
     // Rooms and Room Images
     prepareRooms();
     // Conference, Days, connect Rooms
@@ -862,6 +873,8 @@ void DataUtil::continueUpdate()
         qWarning() << "Speaker List empty";
         emit updateFailed(tr("Update failed. No Speaker received.\nReloading current Data"));
         return;
+    } else {
+        qDebug() << "we got speakers from server API #" << dataList.size();
     }
     mMultiSession.clear();
     mMultiSpeaker.clear();
@@ -879,12 +892,14 @@ void DataUtil::continueUpdate()
             speaker->setSpeakerId(speakerAPI->id());
         } else {
             // update Speaker
+            qDebug() << "UPDATE SPEAKER";
             mProgressInfotext.append(".");
         }
         emit progressInfo(mProgressInfotext);
         calcSpeakerName(speaker, speakerAPI);
         speaker->setBio(speakerAPI->bio());
         if(speakerAPI->avatar().length() > 0 && speakerAPI->avatar() != DEFAULT_SPEAKER_IMAGE_URL && speakerAPI->avatar() != "false") {
+            qDebug() << "Speaker has Avatar";
             QString avatar = speakerAPI->avatar();
             QStringList sl = avatar.split("?");
             if(sl.size() > 1) {
@@ -924,6 +939,9 @@ void DataUtil::continueUpdate()
                 }
             } // end if valid Avatar URL
         } // end check avatar if URL && not default
+        else {
+            qDebug() << "Speaker has NO Avatar";
+        }
         // using MultiMap to get Speakers sorted
         mMultiSpeaker.insert(speaker->sortKey(), speaker);
     } // for speaker from server
@@ -1936,10 +1954,10 @@ void DataUtil::prepareHighDpiImages(SpeakerImage* speakerImage, int width, int h
     fileName.append(QString::number(speakerImage->speakerId()));
     QString originFileName;
     originFileName = fileName + "." + speakerImage->suffix();
-    const int size1 = 64;
-    const int size2 = 128;
-    const int size3 = 192;
-    const int size4 = 256;
+    const int size1 = 96;
+    const int size2 = 192;
+    const int size3 = 288;
+    const int size4 = 384;
     if(width >= height) {
         if(width < size1) {
             speakerImage->setMaxScaleFactor(0);
