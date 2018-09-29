@@ -94,8 +94,8 @@ Page {
     } // FAB
 
     function fitIntoWindow() {
-        var widthScale = (appWindow.width-20) / roomImage.sourceSize.width
-        var heightScale = (appWindow.height-20) / roomImage.sourceSize.height
+        var widthScale = (appWindow.safeWidth-20) / roomImage.sourceSize.width
+        var heightScale = (appWindow.safeHeight-20) / roomImage.sourceSize.height
         roomImage.scale = Math.min(widthScale, heightScale)
         flickable.contentX = 0
         flickable.contentY = 0
