@@ -977,12 +977,12 @@ Do you want to exit and leave the App ?
 <context>
     <name>ScheduleNavigation</name>
     <message>
-        <location filename="../qml/navigation/ScheduleNavigation.qml" line="251"/>
+        <location filename="../qml/navigation/ScheduleNavigation.qml" line="273"/>
         <source>GoTo Talks @</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/navigation/ScheduleNavigation.qml" line="262"/>
+        <location filename="../qml/navigation/ScheduleNavigation.qml" line="284"/>
         <source>No Time selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1062,43 +1062,43 @@ Do you want to exit and leave the App ?
 <context>
     <name>SpeakerDetailPage</name>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="54"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="62"/>
         <source>Unnamed Speaker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="87"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="95"/>
         <source>Talks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="95"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="103"/>
         <source>Tap on the Talk Icon or Menu Button to get the Details.
 Tap on the Star Icon to add to / remove from your personal schedule.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="138"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="146"/>
         <source> Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="182"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="190"/>
         <source>Session Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="188"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="196"/>
         <source>Room Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="242"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="250"/>
         <source>Added to Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="244"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="252"/>
         <source>Removed from Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1114,7 +1114,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
 <context>
     <name>SpeakerNavigation</name>
     <message>
-        <location filename="../qml/navigation/SpeakerNavigation.qml" line="164"/>
+        <location filename="../qml/navigation/SpeakerNavigation.qml" line="186"/>
         <source>GoTo</source>
         <translation type="unfinished"></translation>
     </message>

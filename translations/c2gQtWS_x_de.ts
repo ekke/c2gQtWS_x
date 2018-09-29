@@ -959,8 +959,8 @@ BOSTON, Massachusetts</translation>
         <location filename="../qml/pages/HomePage.qml" line="51"/>
         <source>December, 05-06
 BERLIN, Germany</source>
-        <translation>05  06. Dezember
-BERLIN, Deutschlland</translation>
+        <translation>05.-06. Dezember
+BERLIN, Deutschland</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="61"/>
@@ -1251,12 +1251,12 @@ Soll die App beendet werden ?
 <context>
     <name>ScheduleNavigation</name>
     <message>
-        <location filename="../qml/navigation/ScheduleNavigation.qml" line="251"/>
+        <location filename="../qml/navigation/ScheduleNavigation.qml" line="273"/>
         <source>GoTo Talks @</source>
         <translation>Zum Talk @</translation>
     </message>
     <message>
-        <location filename="../qml/navigation/ScheduleNavigation.qml" line="262"/>
+        <location filename="../qml/navigation/ScheduleNavigation.qml" line="284"/>
         <source>No Time selected</source>
         <translation>Keine Uhrzeit gewählt</translation>
     </message>
@@ -1470,44 +1470,44 @@ Das verwirrt Sie ? Einfach hier ausschalten.
 <context>
     <name>SpeakerDetailPage</name>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="54"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="62"/>
         <source>Unnamed Speaker</source>
         <translation>Unbekannter Sprecher</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="87"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="95"/>
         <source>Talks</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="95"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="103"/>
         <source>Tap on the Talk Icon or Menu Button to get the Details.
 Tap on the Star Icon to add to / remove from your personal schedule.</source>
         <translation>Auf ein Talk Icon oder den Menu Button klicken für Details.
 Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen oder zu entfernen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="138"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="146"/>
         <source> Minutes</source>
         <translation> Minuten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="182"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="190"/>
         <source>Session Details</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="188"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="196"/>
         <source>Room Info</source>
         <translation>Raum Info</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="242"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="250"/>
         <source>Added to Personal Schedule</source>
         <translation>Zum Persönlichen Zeitplan zugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="244"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="252"/>
         <source>Removed from Personal Schedule</source>
         <translation>Vom Persönlichen Zeitplan entfernt</translation>
     </message>
@@ -1523,7 +1523,7 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
 <context>
     <name>SpeakerNavigation</name>
     <message>
-        <location filename="../qml/navigation/SpeakerNavigation.qml" line="164"/>
+        <location filename="../qml/navigation/SpeakerNavigation.qml" line="186"/>
         <source>GoTo</source>
         <translation>GeheZu</translation>
     </message>
