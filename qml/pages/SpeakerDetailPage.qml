@@ -48,6 +48,14 @@ Page {
                     SpeakerImageItem {
                         id: speakerImage
                         anchors.top: parent.top
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                if(speaker.hasSpeakerImage()) {
+                                    navPane.pushSpeakerImageDetail(speaker.speakerId)
+                                }
+                            }
+                        }
                     }
                     LabelHeadline {
                         leftPadding: 10+6

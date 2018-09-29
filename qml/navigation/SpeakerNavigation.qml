@@ -66,6 +66,19 @@ Page {
             }
         }
 
+        Loader {
+            id: speakerImageDetailPageLoader
+            property int speakerImageId: -1
+            active: false
+            visible: false
+            source: "../pages/SpeakerImageDetailPage.qml"
+            onLoaded: {
+                item.speakerImageId = speakerImageId
+                navPane.push(item)
+                item.init()
+            }
+        }
+
         // only one Speaker Detail in stack allowed to avoid endless growing stacks
         function pushSpeakerDetail(speakerId) {
             if(speakerDetailPageLoader.active) {
@@ -96,6 +109,11 @@ Page {
         function pushRoomDetail(roomId) {
             roomDetailPageLoader.roomId = roomId
             roomDetailPageLoader.active = true
+        }
+
+        function pushSpeakerImageDetail(speakerImageId) {
+            speakerImageDetailPageLoader.speakerImageId = speakerImageId
+            speakerImageDetailPageLoader.active = true
         }
 
         function findPage(pageName) {
@@ -133,6 +151,10 @@ Page {
             }
             if(page.name == "RoomDetailPage") {
                 roomDetailPageLoader.active = false
+                return
+            }
+            if(page.name == "SpeakerImageDetailPage") {
+                speakerImageDetailPageLoader.active = false
                 return
             }
         } // popOnePage

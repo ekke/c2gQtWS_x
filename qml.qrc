@@ -96,5 +96,6 @@
         <file>qml/common/CharButton.qml</file>
         <file>qml/common/ComboBoxButton.qml</file>
         <file>qml/common/ComboBoxModal.qml</file>
+        <file>qml/pages/SpeakerImageDetailPage.qml</file>
     </qresource>
 </RCC>
