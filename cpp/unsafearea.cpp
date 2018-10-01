@@ -110,9 +110,12 @@ void UnsafeArea::orientationChanged(int orientation)
     } else if(orientation == 2) {
         qDebug() << "LANDSCAPE LEFT (HomeButton right)";
         landscapeLeft();
+    } else if(orientation == 4) {
+        qDebug() << "PORTRAIT INVERTED (HomeButton on top)";
+        landscapeRight();
     } else if(orientation == 8) {
         qDebug() << "LANDSCAPE RIGHT (HomeButton left)";
-        landscapeRight();
+        portraitInverted();
     } else {
         qWarning() << "unsupported Orientation: " << orientation;
     }
@@ -126,6 +129,42 @@ void UnsafeArea::portrait()
     case MyDevice::IPHONE_XR:
         setUnsafeTopMargin(24);
         setUnsafeBottomMargin(8);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    case MyDevice::IPHONE_5_5S_5C:
+    case MyDevice::IPHONE_6_6S_7_8:
+    case MyDevice::IPHONE_6PLUS_6SPLUS_7PLUS_8PLUS:
+        setUnsafeTopMargin(16);
+        setUnsafeBottomMargin(0);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    case MyDevice::IPADPRO_97_AIR_MINI:
+    case MyDevice::IPADPRO_105:
+    case MyDevice::IPADPRO_129:
+        setUnsafeTopMargin(16);
+        setUnsafeBottomMargin(0);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    default:
+        break;
+    }
+}
+
+// seems that on iPhoneX there's no portrait inverse rotation
+// https://forums.macrumors.com/threads/no-upside-down-rotation-on-the-iphone-x.2084890/page-2
+// perhaps one day it will work ... I guessed that I only need the safe area at bottom where the notch is in inverse
+// at first I removed portrait inverse from info.plist, but then upload to appstore fails because iPads need this orientation
+void UnsafeArea::portraitInverted()
+{
+    switch (mMyDevice) {
+    case MyDevice::IPHONE_X_XS:
+    case MyDevice::IPHONE_XSMAX:
+    case MyDevice::IPHONE_XR:
+        setUnsafeTopMargin(0);
+        setUnsafeBottomMargin(24);
         setUnsafeLeftMargin(0);
         setUnsafeRightMargin(0);
         break;

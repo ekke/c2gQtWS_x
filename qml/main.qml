@@ -31,7 +31,7 @@ ApplicationWindow {
     property int myOrientation: (Qt.platform.os === "ios")? Screen.orientation : 0
     onMyOrientationChanged: {
         if(lastOrientation === 0) {
-            Screen.orientationUpdateMask = Qt.LandscapeOrientation | Qt.PortraitOrientation | Qt.InvertedLandscapeOrientation
+            Screen.orientationUpdateMask = Qt.LandscapeOrientation | Qt.PortraitOrientation | Qt.InvertedLandscapeOrientation | Qt.InvertedPortraitOrientation
             console.log("First time orientation changes: set the mask to "+Screen.orientationUpdateMask)
             // detect the device to know about unsafe areas
             unsafeArea.configureDevice(Screen.height, Screen.width, Screen.devicePixelRatio)

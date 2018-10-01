@@ -67,6 +67,7 @@ private:
     int mUnsafeRightMargin;
 
     void portrait();
+    void portraitInverted();
     void landscapeLeft();
     void landscapeRight();
 
