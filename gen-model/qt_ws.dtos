@@ -243,6 +243,7 @@ package org.ekkescorner.dsl.qtws {
 		@ForeignPropertyName("abstract")
 		var QString bio;
 		var QString avatar;
+		var QString title;
 	}
 	
 }

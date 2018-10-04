@@ -276,6 +276,14 @@ Page {
                                         font.bold: true
                                         wrapMode: Label.WordWrap
                                     } // label
+                                    LabelSubheading {
+                                        visible: model.modelData.title.length
+                                        rightPadding: 12
+                                        bottomPadding: 6
+                                        text: model.modelData.title
+                                        wrapMode: Text.WordWrap
+                                        font.italic: true
+                                    }
                                     LabelBody {
                                         text: dataUtil.sessionInfoForSpeaker(model.modelData)
                                         rightPadding: 12

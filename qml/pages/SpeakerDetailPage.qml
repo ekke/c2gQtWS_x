@@ -57,11 +57,22 @@ Page {
                             }
                         }
                     }
-                    LabelHeadline {
-                        leftPadding: 10+6
-                        text: speaker.name.length? speaker.name : qsTr("Unnamed Speaker")
-                        color: accentColor
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        Layout.leftMargin: 10+6
+                        LabelHeadline {
+                            text: speaker.name.length? speaker.name : qsTr("Unnamed Speaker")
+                            color: accentColor
+                        }
+                        LabelSubheading {
+                            visible: speaker.title.length
+                            text: speaker.title
+                            wrapMode: Text.WordWrap
+                            font.italic: true
+                        }
                     }
+
+
                 } // row
 //                LabelBodySecondary {
 //                    text: "id "+speaker.speakerId
@@ -138,9 +149,10 @@ Page {
                                     Layout.rightMargin: 6
                                     anchors.top: parent.top
                                     LabelSubheading {
-                                        Layout.topMargin: 2
+                                        Layout.topMargin: 6
                                         text: dataUtil.conferenceCity(modelData.sessionDayAsDataObject.conference)
                                         color: accentColor
+                                        font.bold: true
                                     }
 
                                     CharCircle {

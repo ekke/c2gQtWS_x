@@ -16,6 +16,7 @@ class SpeakerAPI: public QObject
 	Q_PROPERTY(QString lastName READ lastName WRITE setLastName NOTIFY lastNameChanged FINAL)
 	Q_PROPERTY(QString bio READ bio WRITE setBio NOTIFY bioChanged FINAL)
 	Q_PROPERTY(QString avatar READ avatar WRITE setAvatar NOTIFY avatarChanged FINAL)
+	Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged FINAL)
 
 
 public:
@@ -45,6 +46,8 @@ public:
 	void setBio(QString bio);
 	QString avatar() const;
 	void setAvatar(QString avatar);
+	QString title() const;
+	void setTitle(QString title);
 
 
 
@@ -57,6 +60,7 @@ public:
 	void lastNameChanged(QString lastName);
 	void bioChanged(QString bio);
 	void avatarChanged(QString avatar);
+	void titleChanged(QString title);
 	
 
 private:
@@ -66,6 +70,7 @@ private:
 	QString mLastName;
 	QString mBio;
 	QString mAvatar;
+	QString mTitle;
 
 	Q_DISABLE_COPY (SpeakerAPI)
 };

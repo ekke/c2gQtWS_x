@@ -8,6 +8,7 @@ static const QString firstNameKey = "firstName";
 static const QString lastNameKey = "lastName";
 static const QString bioKey = "bio";
 static const QString avatarKey = "avatar";
+static const QString titleKey = "title";
 
 // keys used from Server API etc
 static const QString idForeignKey = "id";
@@ -15,12 +16,13 @@ static const QString firstNameForeignKey = "first_name";
 static const QString lastNameForeignKey = "last_name";
 static const QString bioForeignKey = "abstract";
 static const QString avatarForeignKey = "avatar";
+static const QString titleForeignKey = "title";
 
 /*
  * Default Constructor if SpeakerAPI not initialized from QVariantMap
  */
 SpeakerAPI::SpeakerAPI(QObject *parent) :
-        QObject(parent), mId(-1), mFirstName(""), mLastName(""), mBio(""), mAvatar("")
+        QObject(parent), mId(-1), mFirstName(""), mLastName(""), mBio(""), mAvatar(""), mTitle("")
 {
 }
 
@@ -38,6 +40,7 @@ void SpeakerAPI::fillFromMap(const QVariantMap& speakerAPIMap)
 	mLastName = speakerAPIMap.value(lastNameKey).toString();
 	mBio = speakerAPIMap.value(bioKey).toString();
 	mAvatar = speakerAPIMap.value(avatarKey).toString();
+	mTitle = speakerAPIMap.value(titleKey).toString();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -53,6 +56,7 @@ void SpeakerAPI::fillFromForeignMap(const QVariantMap& speakerAPIMap)
 	mLastName = speakerAPIMap.value(lastNameForeignKey).toString();
 	mBio = speakerAPIMap.value(bioForeignKey).toString();
 	mAvatar = speakerAPIMap.value(avatarForeignKey).toString();
+	mTitle = speakerAPIMap.value(titleForeignKey).toString();
 }
 /*
  * initialize OrderData from QVariantMap
@@ -68,6 +72,7 @@ void SpeakerAPI::fillFromCacheMap(const QVariantMap& speakerAPIMap)
 	mLastName = speakerAPIMap.value(lastNameKey).toString();
 	mBio = speakerAPIMap.value(bioKey).toString();
 	mAvatar = speakerAPIMap.value(avatarKey).toString();
+	mTitle = speakerAPIMap.value(titleKey).toString();
 }
 
 void SpeakerAPI::prepareNew()
@@ -98,6 +103,7 @@ QVariantMap SpeakerAPI::toMap()
 	speakerAPIMap.insert(lastNameKey, mLastName);
 	speakerAPIMap.insert(bioKey, mBio);
 	speakerAPIMap.insert(avatarKey, mAvatar);
+	speakerAPIMap.insert(titleKey, mTitle);
 	return speakerAPIMap;
 }
 
@@ -114,6 +120,7 @@ QVariantMap SpeakerAPI::toForeignMap()
 	speakerAPIMap.insert(lastNameForeignKey, mLastName);
 	speakerAPIMap.insert(bioForeignKey, mBio);
 	speakerAPIMap.insert(avatarForeignKey, mAvatar);
+	speakerAPIMap.insert(titleForeignKey, mTitle);
 	return speakerAPIMap;
 }
 
@@ -198,6 +205,20 @@ void SpeakerAPI::setAvatar(QString avatar)
 	if (avatar != mAvatar) {
 		mAvatar = avatar;
 		emit avatarChanged(avatar);
+	}
+}
+// ATT 
+// Optional: title
+QString SpeakerAPI::title() const
+{
+	return mTitle;
+}
+
+void SpeakerAPI::setTitle(QString title)
+{
+	if (title != mTitle) {
+		mTitle = title;
+		emit titleChanged(title);
 	}
 }
 

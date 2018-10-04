@@ -65,6 +65,16 @@ Page {
                             font.bold: true
                             wrapMode: Label.WordWrap
                         } // label
+                        LabelBody {
+                            visible: model.modelData.title.length > 0
+                            bottomPadding: 6
+                            rightPadding: 12
+                            text: model.modelData.title
+                            wrapMode: Label.WordWrap
+                            maximumLineCount: 2
+                            elide: Label.ElideRight
+                            font.italic: true
+                        }
 
                         LabelBody {
                             rightPadding: 12

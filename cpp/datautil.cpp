@@ -898,6 +898,7 @@ void DataUtil::continueUpdate()
         emit progressInfo(mProgressInfotext);
         calcSpeakerName(speaker, speakerAPI);
         speaker->setBio(speakerAPI->bio());
+        speaker->setTitle(speakerAPI->title());
         if(speakerAPI->avatar().length() > 0 && speakerAPI->avatar() != DEFAULT_SPEAKER_IMAGE_URL && speakerAPI->avatar() != "false") {
             qDebug() << "Speaker has Avatar";
             QString avatar = speakerAPI->avatar();
