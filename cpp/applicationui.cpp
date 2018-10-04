@@ -134,13 +134,18 @@ QStringList ApplicationUI::accentPalette(const int paletteIndex)
 /* Get Default Primary Palette */
 QStringList ApplicationUI::defaultPrimaryPalette()
 {
-    return primaryPalette(mSettingsData->primaryColor());
+    // fix - no settings in this app
+    // mSettingsData->primaryColor()
+    return primaryPalette(9);
 }
 
 /* Get Default Accent Palette */
 QStringList ApplicationUI::defaultAccentPalette()
 {
-    return accentPalette(mSettingsData->accentColor());
+    // fix no settings in this app
+    // mSettingsData->accentColor()
+    // also changed from 15 (Deep orange) to 4 (Indigo)
+    return accentPalette(4);
 }
 
 bool ApplicationUI::isDebugBuild()
