@@ -112,10 +112,10 @@ void UnsafeArea::orientationChanged(int orientation)
         landscapeLeft();
     } else if(orientation == 4) {
         qDebug() << "PORTRAIT INVERTED (HomeButton on top)";
-        landscapeRight();
+        portraitInverted();
     } else if(orientation == 8) {
         qDebug() << "LANDSCAPE RIGHT (HomeButton left)";
-        portraitInverted();
+        landscapeRight();
     } else {
         qWarning() << "unsupported Orientation: " << orientation;
     }
