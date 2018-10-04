@@ -14,7 +14,8 @@ Pane {
     // StackView manages this, so please no anchors here
     // anchors.fill: parent
     property string name: "HomePage"
-    property Conference conference
+    // property Conference conference
+    property string otherConferenceCity: dataUtil.otherConferenceCity()
     property bool isAutoVersionCheckMode: true
     onIsAutoVersionCheckModeChanged: {
         checkVersionPopup.isAutoVersionCheckMode = homePage.isAutoVersionCheckMode
@@ -58,10 +59,11 @@ Pane {
         anchors.bottom: parent.bottom
         anchors.bottomMargin:  20 + unsafeArea.unsafeBottomMargin
         anchors.left: conferenceTitle.left
-        text: qsTr("Switch Conference")
+        text: qsTr("Change to %1").arg(otherConferenceCity)
         onClicked: {
             currentConference = dataUtil.switchConference()
             appWindow.conferenceSwitched()
+            otherConferenceCity = dataUtil.otherConferenceCity()
         }
     }
 

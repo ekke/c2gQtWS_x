@@ -1811,6 +1811,23 @@ QString DataUtil::conferenceCity(const int conferenceId)
     return "";
 }
 
+QString DataUtil::otherConferenceCity()
+{
+    if(!mCurrentConference) {
+        currentConference();
+    }
+    Conference* conference = nullptr;
+    if(mCurrentConference->id() == 201801) {
+        conference = mDataManager->findConferenceById(201802);
+    } else {
+        conference = mDataManager->findConferenceById(201801);
+    }
+    if(conference) {
+        return conference->conferenceCity();
+    }
+    return "";
+}
+
 Conference* DataUtil::currentConference() {
     if(mDataManager->allConference().size() == 0) {
         qDebug() << "fresh start - no conferences yet";

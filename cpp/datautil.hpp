@@ -105,6 +105,9 @@ public:
     Q_INVOKABLE
     QString conferenceCity(const int conferenceId);
 
+    Q_INVOKABLE
+    QString otherConferenceCity();
+
 signals:
     void myScheduleRefreshed();
 

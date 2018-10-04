@@ -608,37 +608,37 @@ Letzte Daten werden wiederhergestellt.</translation>
         <translation>Alles erledigt</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1899"/>
+        <location filename="../cpp/datautil.cpp" line="1930"/>
         <source>API Version </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1901"/>
+        <location filename="../cpp/datautil.cpp" line="1932"/>
         <source>Last Update </source>
         <translation>Letzter Update </translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2063"/>
+        <location filename="../cpp/datautil.cpp" line="2094"/>
         <source>No JSON Object received for Version Check</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2068"/>
+        <location filename="../cpp/datautil.cpp" line="2099"/>
         <source>Version Check: received Version Map is empty</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2072"/>
+        <location filename="../cpp/datautil.cpp" line="2103"/>
         <source>Version Check: received Version Map missed Version Property</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2077"/>
+        <location filename="../cpp/datautil.cpp" line="2108"/>
         <source>Error: Received Map missed &apos;version&apos;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2085"/>
+        <location filename="../cpp/datautil.cpp" line="2116"/>
         <source>Error: &apos;Version&apos; wrong: </source>
         <translation></translation>
     </message>
@@ -936,7 +936,7 @@ San Francisco, USA
 Willkommen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="86"/>
+        <location filename="../qml/pages/HomePage.qml" line="88"/>
         <source>Sorry - the Conference is closed.
 No more Updates available</source>
         <translation>Sorry - die Konferenz ist beendet.
@@ -949,50 +949,54 @@ for new Schedule Data ...</source>
 ob neue Daten verfügbar ...</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="51"/>
+        <location filename="../qml/pages/HomePage.qml" line="52"/>
         <source>October, 29-30
 BOSTON, Massachusetts</source>
         <translation>29.-30. Oktober
 BOSTON, Massachusetts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="51"/>
+        <location filename="../qml/pages/HomePage.qml" line="52"/>
         <source>December, 05-06
 BERLIN, Germany</source>
         <translation>05.-06. Dezember
 BERLIN, Deutschland</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="61"/>
         <source>Switch Conference</source>
-        <translation>Konferenz wechseln</translation>
+        <translation type="vanished">Konferenz wechseln</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="96"/>
+        <location filename="../qml/pages/HomePage.qml" line="62"/>
+        <source>Change to %1</source>
+        <translation>Wechseln zu %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HomePage.qml" line="98"/>
         <source>Checking QtWS Server
 for new Schedule Data ...</source>
         <translation>Anfrage beim QtWS Server
 ob neue Daten verfügbar ...</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="108"/>
+        <location filename="../qml/pages/HomePage.qml" line="110"/>
         <source>New Conference Data available ...</source>
         <translation>Neue Konferenzdaten verfügbar ...</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="144"/>
+        <location filename="../qml/pages/HomePage.qml" line="146"/>
         <source>Update available.
 API Version: </source>
         <translation>Update verfügbar.
 API Version:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="159"/>
+        <location filename="../qml/pages/HomePage.qml" line="161"/>
         <source>No Update required.</source>
         <translation>Kein Update erforderlich.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="169"/>
+        <location filename="../qml/pages/HomePage.qml" line="171"/>
         <source>Version Check failed:
 </source>
         <translation>Versionsprüfung fehlgeschlagen:
@@ -1487,27 +1491,27 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
 Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen oder zu entfernen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="146"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="152"/>
         <source> Minutes</source>
         <translation> Minuten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="190"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="196"/>
         <source>Session Details</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="196"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="202"/>
         <source>Room Info</source>
         <translation>Raum Info</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="250"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="256"/>
         <source>Added to Personal Schedule</source>
         <translation>Zum Persönlichen Zeitplan zugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="252"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="258"/>
         <source>Removed from Personal Schedule</source>
         <translation>Vom Persönlichen Zeitplan entfernt</translation>
     </message>
@@ -1606,22 +1610,22 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
 <context>
     <name>TimePicker</name>
     <message>
-        <location filename="../qml/popups/TimePicker.qml" line="210"/>
+        <location filename="../qml/popups/TimePicker.qml" line="213"/>
         <source>Time (HH:MM)</source>
         <translation>Zeit (HH:MM)</translation>
     </message>
     <message>
-        <location filename="../qml/popups/TimePicker.qml" line="318"/>
+        <location filename="../qml/popups/TimePicker.qml" line="323"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../qml/popups/TimePicker.qml" line="331"/>
+        <location filename="../qml/popups/TimePicker.qml" line="336"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/popups/TimePicker.qml" line="362"/>
+        <location filename="../qml/popups/TimePicker.qml" line="367"/>
         <source>Now</source>
         <translation>Jetzt</translation>
     </message>
