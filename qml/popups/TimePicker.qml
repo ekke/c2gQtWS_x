@@ -13,7 +13,10 @@ Popup {
     property int timePickerWidth: isLandscape? appWindow.width * 0.85 : appWindow.width * 0.80
     property int timePickerHeight: isLandscape? appWindow.height * 0.90 : appWindow.height * 0.85
     x: (appWindow.width - timePickerWidth) / 2
-    y: isLandscape? (appWindow.height - timePickerHeight) / 2 - 24 : (appWindow.height - timePickerHeight) / 2 + 12
+    // y: isLandscape? (appWindow.height - timePickerHeight) / 2 - 24 : (appWindow.height - timePickerHeight) / 2 + 12
+    // adjusted for small devices
+    // also footerPane columnlayout topmargin 8 added
+    y: isLandscape? (appWindow.height - timePickerHeight) / 2 - 48 : (appWindow.height - timePickerHeight) / 2 - 24
     implicitWidth: timePickerWidth
     implicitHeight: timePickerHeight
     z: 2
@@ -309,6 +312,8 @@ Popup {
             anchors.right: parent.right
             anchors.left: parent.left
             anchors.top: parent.top
+            // adjusted to get clicked events better on small devices
+            anchors.topMargin: 8
 
             RowLayout {
                 Layout.fillHeight: true
