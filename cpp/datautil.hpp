@@ -101,6 +101,10 @@ public:
 
     Q_INVOKABLE
     bool isNoConference();
+
+    Q_INVOKABLE
+    QString conferenceCity(const int conferenceId);
+
 signals:
     void myScheduleRefreshed();
 

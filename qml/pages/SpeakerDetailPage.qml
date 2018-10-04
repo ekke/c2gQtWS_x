@@ -137,6 +137,12 @@ Page {
                                     Layout.minimumWidth: speakerImage.width
                                     Layout.rightMargin: 6
                                     anchors.top: parent.top
+                                    LabelSubheading {
+                                        Layout.topMargin: 2
+                                        text: dataUtil.conferenceCity(modelData.sessionDayAsDataObject.conference)
+                                        color: accentColor
+                                    }
+
                                     CharCircle {
                                         Layout.leftMargin: 14
                                         size: 36

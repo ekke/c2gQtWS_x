@@ -1797,6 +1797,20 @@ Conference* DataUtil::switchConference() {
     return mCurrentConference;
 }
 
+QString DataUtil::conferenceCity(const int conferenceId)
+{
+    if(mCurrentConference) {
+        if(mCurrentConference->id() == conferenceId) {
+            return mCurrentConference->conferenceCity();
+        }
+    }
+    Conference* conference = mDataManager->findConferenceById(conferenceId);
+    if(conference) {
+        return conference->conferenceCity();
+    }
+    return "";
+}
+
 Conference* DataUtil::currentConference() {
     if(mDataManager->allConference().size() == 0) {
         qDebug() << "fresh start - no conferences yet";
