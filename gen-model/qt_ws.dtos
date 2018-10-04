@@ -149,6 +149,7 @@ package org.ekkescorner.dsl.qtws {
 		var QString sortGroup;
 		var QString name;
 		var QString publicName;
+		var QString title;
 		var QString bio;
 
 		ref lazy SpeakerImage [0..1] speakerImage;
