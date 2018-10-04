@@ -1662,7 +1662,7 @@ void DataUtil::finishUpdate() {
     // SETTINGS update API
     mDataManager->mSettingsData->setApiVersion(mNewApi);
     mDataManager->mSettingsData->setLastUpdate(QDateTime::currentDateTime());
-    mDataManager->mSettingsData->setVersion(2018002);
+    mDataManager->mSettingsData->setVersion(2018003);
     mDataManager->saveSettings();
 
     // SAVE CONFERENCES
@@ -2081,7 +2081,7 @@ void DataUtil::onServerSuccess()
     qDebug() << "S U C C E S S request Schedule (BOSTON, BERLIN) and Speaker";
 
     // check if conference is prepared
-    if(isOldConference() || mDataManager->allConference().size() == 0 || mDataManager->settingsData()->version() < 2018002) {
+    if(isOldConference() || mDataManager->allConference().size() == 0 || mDataManager->settingsData()->version() < 2018003) {
         prepareConference();
     }
     continueUpdate();

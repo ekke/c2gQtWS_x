@@ -196,5 +196,15 @@
         <file>data-assets/conference/speakerImages/speaker_4159@3x.jpg</file>
         <file>data-assets/conference/speakerImages/speaker_4159@4x.jpg</file>
         <file>data-assets/conference/speakerImages/speaker_4159_origin.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4081@4x.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4081@3x.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4081@2x.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4081.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4081_origin.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4065@4x.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4065@3x.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4065@2x.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4065.jpg</file>
+        <file>data-assets/conference/speakerImages/speaker_4065_origin.jpg</file>
     </qresource>
 </RCC>
