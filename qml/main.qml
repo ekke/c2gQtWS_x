@@ -498,16 +498,12 @@ ApplicationWindow {
                     console.log("No Conference ! - do the first Update now")
                 }
                 initialPlaceholder.item.showInfo("Create Navigation Controls ...")
-                // add navigation model for DEBUG BUILD ?
-                if(myApp.isDebugBuild() && !initialPlaceholder.isUpdate) {
-                    console.log("DEBUG BUILD added as destination")
-                }
                 // inject model into Destinations Repeater
+                console.log("now inject navigation model")
                 destinations.model = navigationModel
                 // show the Navigation Bars (Drawer and Favorites)
                 initDone = true
-                // now NavigationBars available, we can update counters:
-                // rootPane.updateOrderCounter()
+                console.log("init DONE")
                 // show first destination (should always be IMMEDIATELY)
                 rootPane.activateDestination(firstActiveDestination)
                 console.log("startupDelayedTimer DONE")

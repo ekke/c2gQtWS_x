@@ -64,7 +64,12 @@ QString DataUtil::conferenceDataPath4QML() {
 
 bool DataUtil::isNoConference()
 {
-    return mDataManager->allConference().size() == 0;
+    if(mDataManager->allConference().size() == 0) {
+        qDebug() << "cpp: isNoConference true";
+        return true;
+    } else {
+        qDebug() << "cpp: we have conferences: " << mDataManager->allConference().size();
+    }
 }
 
 bool DataUtil::isOldConference()
@@ -244,7 +249,7 @@ QString DataUtil::displayStartToEnd(Session *session)
     } else {
         qWarning() << "uuups displayStartToEnd - end time not valid ";
     }
-    qDebug() << "display fromTo: " << fromTo;
+    // qDebug() << "display fromTo: " << fromTo;
     return fromTo;
 }
 
@@ -1839,21 +1844,23 @@ QString DataUtil::otherConferenceCity()
     if(!mCurrentConference) {
         currentConference();
     }
-    Conference* conference = nullptr;
-    if(mCurrentConference->id() == 201801) {
-        conference = mDataManager->findConferenceById(201802);
-    } else {
-        conference = mDataManager->findConferenceById(201801);
-    }
-    if(conference) {
-        return conference->conferenceCity();
+    if(mCurrentConference) {
+        Conference* conference = nullptr;
+        if(mCurrentConference->id() == 201801) {
+            conference = mDataManager->findConferenceById(201802);
+        } else {
+            conference = mDataManager->findConferenceById(201801);
+        }
+        if(conference) {
+            return conference->conferenceCity();
+        }
     }
     return "";
 }
 
 Conference* DataUtil::currentConference() {
     if(mDataManager->allConference().size() == 0) {
-        qDebug() << "fresh start - no conferences yet";
+        qDebug() << "cpp currentConference() --> fresh start - no conferences yet";
         return mCurrentConference;
     }
     if(!mCurrentConference) {
