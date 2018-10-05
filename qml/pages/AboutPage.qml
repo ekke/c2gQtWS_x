@@ -25,8 +25,16 @@ Flickable {
             anchors.right: parent.right
             anchors.left: parent.left
             RowLayout {
-                Image {
-                    source: "qrc:/images/extra/qtws-app.png"
+                ColumnLayout {
+                    Image {
+                        source: "qrc:/images/extra/qtws-app.png"
+                    }
+                    LabelBodySecondary {
+                        text: "Version: 1.6";
+                    }
+                    LabelBodySecondary {
+                        text: "API: "+dataManager.settingsData().apiVersion;
+                    }
                 }
                 LabelHeadline {
                     visible: Qt.platform.os !== "ios"
@@ -46,6 +54,7 @@ Flickable {
                     color: primaryColor
                 }
             }
+
             HorizontalDivider {}
             RowLayout {
                 Image {
