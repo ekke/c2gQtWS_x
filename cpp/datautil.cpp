@@ -69,6 +69,7 @@ bool DataUtil::isNoConference()
         return true;
     } else {
         qDebug() << "cpp: we have conferences: " << mDataManager->allConference().size();
+        return false;
     }
 }
 
