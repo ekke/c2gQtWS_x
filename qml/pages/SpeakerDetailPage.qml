@@ -239,7 +239,8 @@ Page {
                                                     imageName: "time.png"
                                                 }
                                                 LabelBody {
-                                                    text: modelData.startTime.toLocaleTimeString("HH:mm") + " - " + modelData.endTime.toLocaleTimeString("HH:mm")
+                                                    // text: modelData.startTime.toLocaleTimeString("HH:mm") + " - " + modelData.endTime.toLocaleTimeString("HH:mm")
+                                                    text: dataUtil.displayStartToEnd(modelData)
                                                 }
                                             } // repeater time row
                                             RowLayout {

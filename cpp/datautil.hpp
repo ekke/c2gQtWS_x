@@ -108,6 +108,9 @@ public:
     Q_INVOKABLE
     QString otherConferenceCity();
 
+    Q_INVOKABLE
+    QString displayStartToEnd(Session *session);
+
 signals:
     void myScheduleRefreshed();
 

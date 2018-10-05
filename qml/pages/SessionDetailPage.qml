@@ -152,7 +152,8 @@ Page {
                     }
                     LabelSubheading {
                         Layout.leftMargin: 16
-                        text: session.startTime.toLocaleTimeString("HH:mm") + " - " + session.endTime.toLocaleTimeString("HH:mm")
+                        // text: session.startTime.toLocaleTimeString("HH:mm") + " - " + session.endTime.toLocaleTimeString("HH:mm")
+                        text: session? dataUtil.displayStartToEnd(session) : ""
                     }
                 }
                 RowLayout {

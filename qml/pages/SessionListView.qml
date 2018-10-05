@@ -66,7 +66,8 @@ ListView {
                             rightPadding: 12
                             bottomPadding: 6
                             font.italic: true
-                            text: model.modelData.startTime.toLocaleTimeString("HH:mm") + " - " + model.modelData.endTime.toLocaleTimeString("HH:mm")
+                            // text: model.modelData.startTime.toLocaleTimeString("HH:mm") + " - " + model.modelData.endTime.toLocaleTimeString("HH:mm")
+                            text: dataUtil.displayStartToEnd(model.modelData)
                         }
                     } // middle column
 //                    ListRowButton {
@@ -135,7 +136,8 @@ ListView {
                             RowLayout {
                                 LabelBody {
                                     Layout.fillWidth: false
-                                    text: model.modelData.startTime.toLocaleTimeString("HH:mm") + " - " + model.modelData.endTime.toLocaleTimeString("HH:mm") + ","
+                                    // text: model.modelData.startTime.toLocaleTimeString("HH:mm") + " - " + model.modelData.endTime.toLocaleTimeString("HH:mm") + ","
+                                    text: dataUtil.displayStartToEnd(model.modelData) + ","
                                 }
                                 IconActive{
                                     imageSize: 18

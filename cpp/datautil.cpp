@@ -226,6 +226,28 @@ QString DataUtil::trackColorFirstTrack(Session *session)
     return session->sessionTracks().first()->color();
 }
 
+QString DataUtil::displayStartToEnd(Session *session)
+{
+    QString fromTo = "";
+    if(!session) {
+        qWarning() << "uuups displayStartToEnd - no Session Object ";
+        return fromTo;
+    }
+    if(session->startTime().isValid()) {
+        fromTo = session->startTime().toString(HH_MM);
+    } else {
+        qWarning() << "uuups displayStartToEnd - start time not valid ";
+    }
+    fromTo.append(" - ");
+    if(session->endTime().isValid()) {
+        fromTo.append(session->endTime().toString(HH_MM));
+    } else {
+        qWarning() << "uuups displayStartToEnd - end time not valid ";
+    }
+    qDebug() << "display fromTo: " << fromTo;
+    return fromTo;
+}
+
 // if update failed Data in memory is inconsistent
 // delete all, then do init again
 void DataUtil::reloadData() {
