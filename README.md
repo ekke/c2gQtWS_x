@@ -43,7 +43,7 @@ https://itunes.apple.com/us/app/qt-world-summit-2016-conference/id1156106928
 
 ![alt tag](https://appbus.files.wordpress.com/2018/10/simulator-screen-shot-iphone-8-plus-2018-10-01-at-16-39-45.png  "QtWS 2018 Conference App - Speaker")
 
-![alt tag](https://appbus.files.wordpress.com/2018/10/simulator-screen-shot-iphone-8-plus-2018-10-01-at-16-38-59.png QtWS 2018 Conference App - Schedule Detail")
+![alt tag](https://appbus.files.wordpress.com/2018/10/simulator-screen-shot-iphone-8-plus-2018-10-01-at-16-38-59.png  "QtWS 2018 Conference App - Schedule Detail")
 
 ![alt tag](https://appbus.files.wordpress.com/2018/10/simulator-screen-shot-iphone-x-2018-10-01-at-16-44-31.png  "QtWS 2018 Conference App - Room")
 
