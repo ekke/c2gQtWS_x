@@ -50,4 +50,6 @@ https://itunes.apple.com/us/app/qt-world-summit-2016-conference/id1156106928
 
 ![alt tag](https://appbus.files.wordpress.com/2018/10/simulator-screen-shot-iphone-x-2018-10-01-at-16-44-31.png  "QtWS 2018 Conference App - Room")
 
+![alt tag](https://appbus.files.wordpress.com/2018/10/iphone-x-screenshot-1.jpg  "QtWS 2018 Conference App - iPhoneX")
+
 ekke
