@@ -3,6 +3,12 @@ work in progress !!! I'm just developing the Qt WS 2018 App. wait for blog and t
 # QtWS 2018 Conference App
 ![alt tag](https://appbus.files.wordpress.com/2018/10/icon.png  "QtWS 2018 App Logo")
 
+# QtWS 2018 Boston: 2018 - October 29...30
+
+# QtWs2018 Berlin: 2018 - December 05...06
+
+Hint: at the moment the Sessions for the Training Days and Floorplan for Berlin in December 2018 are missed from server - will follow soon
+
 Conference2Go QtWS for x-platform (Android, iOS)
 
 [AUTHOR ( ekke )](AUTHOR.md)
@@ -22,9 +28,6 @@ Images downloaded from https://design.google.com/icons/ - then renamed to match 
 
 [see /images/LICENSE ( cc-by )](images/LICENSE)
 
-Logos, App Icons, Launch Screens under /android and /ios designed by
-Diana de Sousa (qt.io)
-
 ## Qt Quick Controls 2 and Material Style
 This conference app uses Material Design with UI Controls provided by Qt 5.11.2+ and was designed and tested on Android (4.3+) and iOS (iOS 10.0+).
 
@@ -36,7 +39,7 @@ Don't have a Google Account ? Grab the APK here: https://app.box.com/... TODO
 ## Download from Apple Appstore
 https://itunes.apple.com/us/app/qt-world-summit-2016-conference/id1156106928
 
-## Come to QtWS 2018 and have Fun at Pier 27 in San Francisco
+## Come to QtWS 2018 and have Fun in Boston and Berlin
 ![alt tag](https://appbus.files.wordpress.com/2018/10/screenshot_20181002-081328.png  "QtWS 2018 Conference App in Boston and Berlin")
 
 ![alt tag](https://appbus.files.wordpress.com/2018/10/simulator-screen-shot-iphone-x-2018-10-01-at-16-43-43.png  "QtWS 2018 Conference App - Schedule")
