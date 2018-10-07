@@ -29,12 +29,12 @@ Diana de Sousa (qt.io)
 This conference app uses Material Design with UI Controls provided by Qt 5.11.2+ and was designed and tested on Android (4.3+) and iOS (iOS 10.0+).
 
 ## Download from Google Play
-https://play.google.com/store/apps/details?id=org.ekkescorner.c2g.qtcon
+https://play.google.com/store/apps/details?id=org.ekkescorner.c2g.qtws
 
-Don't have a Google Account ? Grab the APK here: https://app.box.com/s/fgeo14re3hrp47shg915geo1q4gzyxrz
+Don't have a Google Account ? Grab the APK here: https://app.box.com/... TODO
 
 ## Download from Apple Appstore
-https://itunes.apple.com/us/app/qtcon-2016-conference-app/id1144162386
+https://itunes.apple.com/us/app/qt-world-summit-2016-conference/id1156106928
 
 ## Come to QtWS 2018 and have Fun at Pier 27 in San Francisco
 ![alt tag](https://appbus.files.wordpress.com/2018/10/screenshot_20181002-081328.png  "QtWS 2018 Conference App in Boston and Berlin")
