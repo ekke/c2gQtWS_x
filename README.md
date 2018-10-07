@@ -1,7 +1,7 @@
 work in progress !!! I'm just developing the Qt WS 2018 App. wait for blog and tweet before using this repo !!!
 
-# QtWS 2016 Conference App
-![alt tag](https://appbus.files.wordpress.com/2016/10/qtws16appicon-180x180.png  "QtWS 2016 App Logo")
+# QtWS 2018 Conference App
+![alt tag](https://appbus.files.wordpress.com/2018/10/icon.png  "QtWS 2018 App Logo")
 
 Conference2Go QtWS for x-platform (Android, iOS)
 
@@ -12,7 +12,7 @@ ekke's blog series about mobile x-platform development: http://j.mp/qt-x discuss
 Read more about this app here:
 http://bit.ly/qtCon2016App
 
-QtWS 2016 Conference App needs Qt 5.9.1 Release or greater
+QtWS 2018 Conference App needs Qt 5.11.2 Release or greater
 
 ## License Information
 [see LICENSE ( The Unlicense )](LICENSE)
