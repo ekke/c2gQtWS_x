@@ -632,7 +632,7 @@ Day* DataUtil::findDayForServerDate(const QString& dayDate, Conference* conferen
         return day;
     }
     qDebug() << "Day not found for conference " << conference->conferenceCity();
-    return 0;
+    return nullptr;
 }
 
 void DataUtil::adjustTracks(QVariantMap& sessionMap, Conference* conference, const bool isUpdate) {
@@ -688,28 +688,29 @@ void DataUtil::adjustPersons(QVariantMap& sessionMap) {
 }
 
 bool DataUtil::checkIfIgnored(SessionAPI* sessionAPI) {
+    Q_UNUSED(sessionAPI);
     return false;
-    if(sessionAPI->title() == "Registration and Coffee" && sessionAPI->room() != "B02") {
-        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-        return true;
-    }
-    if(sessionAPI->title() == "Lunch" && sessionAPI->room() != "B02") {
-        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-        return true;
-    }
-    if(sessionAPI->title() == "Coffee break" && sessionAPI->room() != "B02") {
-        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-        return true;
-    }
-    if(sessionAPI->title() == "Evening event" && sessionAPI->room() != "B02") {
-        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-        return true;
-    }
-    if(sessionAPI->title() == "Welcome" && sessionAPI->room() != "C01") {
-        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-        return true;
-    }
-    return false;
+//    if(sessionAPI->title() == "Registration and Coffee" && sessionAPI->room() != "B02") {
+//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+//        return true;
+//    }
+//    if(sessionAPI->title() == "Lunch" && sessionAPI->room() != "B02") {
+//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+//        return true;
+//    }
+//    if(sessionAPI->title() == "Coffee break" && sessionAPI->room() != "B02") {
+//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+//        return true;
+//    }
+//    if(sessionAPI->title() == "Evening event" && sessionAPI->room() != "B02") {
+//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+//        return true;
+//    }
+//    if(sessionAPI->title() == "Welcome" && sessionAPI->room() != "C01") {
+//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+//        return true;
+//    }
+//    return false;
 }
 
 void DataUtil::setDuration(SessionAPI* sessionAPI, Session* session) {
@@ -774,13 +775,13 @@ void DataUtil::sortedSessionsIntoRoomDayTrackSpeaker() {
         Session* session = sessionIterator.value();
         mDataManager->insertSession(session);
         Room* room = mDataManager->findRoomByRoomId(session->room());
-        if(room != NULL) {
+        if(room != nullptr) {
             room->addToSessions(session);
         } else {
             qWarning() << "ROOM is NULL for Session " << session->sessionId() << " #:" << session->room();
         }
         Day* day = mDataManager->findDayById(session->sessionDay());
-        if(day != NULL) {
+        if(day != nullptr) {
             day->addToSessions(session);
         } else {
             qWarning() << "DAY is NULL for Session " << session->sessionId() << " #:" << session->sessionDay();
@@ -788,7 +789,7 @@ void DataUtil::sortedSessionsIntoRoomDayTrackSpeaker() {
         for (int i = 0; i < session->sessionTracksKeys().size(); ++i) {
             int tKey = session->sessionTracksKeys().at(i).toInt();
             SessionTrack* sessionTrack = (SessionTrack*) mDataManager->findSessionTrackByTrackId(tKey);
-            if(sessionTrack != NULL) {
+            if(sessionTrack != nullptr) {
                 sessionTrack->addToSessions(session);
             } else {
                 qWarning() << "TRACK is NULL for Session " << session->sessionId() << " #:" << tKey;
@@ -797,7 +798,7 @@ void DataUtil::sortedSessionsIntoRoomDayTrackSpeaker() {
         for (int i = 0; i < session->presenterKeys().size(); ++i) {
             int pKey = session->presenterKeys().at(i).toInt();
             Speaker* speaker = (Speaker*) mDataManager->findSpeakerBySpeakerId(pKey);
-            if(speaker != NULL) {
+            if(speaker != nullptr) {
                 speaker->addToSessions(session);
             } else {
                 qWarning() << "SPEAKER is NULL for Session " << session->sessionId() << " #:" << pKey;
@@ -1123,7 +1124,7 @@ bool DataUtil::updateSessions(const int conferenceId) {
     }
     if(serverDayList.size() > conference->days().size()) {
         qWarning() << "too many 'days' found " << city;
-        emit updateFailed(tr("Error: # of 'days' expected: ")+conference->days().size()+" got: "+QString::number(serverDayList.size()));
+        emit updateFailed(tr("Error: # of 'days' expected: ")+QString::number(conference->days().size())+" got: "+QString::number(serverDayList.size()));
         return false;
     }
     if(serverDayList.size() < conference->days().size()) {
@@ -1724,7 +1725,7 @@ void DataUtil::setSessionFavorites()
     for (int i = 0; i < mDataManager->allFavorite().size(); ++i) {
         Favorite* favorite = (Favorite*) mDataManager->allFavorite().at(i);
         Session* session = mDataManager->findSessionBySessionId(favorite->sessionId());
-        if(session != NULL) {
+        if(session != nullptr) {
             session->setIsFavorite(true);
         }
     }
