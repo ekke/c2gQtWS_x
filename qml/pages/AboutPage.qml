@@ -30,7 +30,7 @@ Flickable {
                         source: "qrc:/images/extra/qtws-app.png"
                     }
                     LabelBodySecondary {
-                        text: "Version: 1.7";
+                        text: "Version: 1.8";
                     }
                     LabelBodySecondary {
                         text: "API: "+dataManager.settingsData().apiVersion;
