@@ -105,17 +105,17 @@ ListView {
                         Layout.leftMargin: 16+12
                         Layout.rightMargin: 6
                         Layout.topMargin: 6
-                        ColumnLayout {
-                            CharCircle {
-                                size: 24
-                                text: dataUtil.letterForButton(model.modelData)
-                            }
-                        } // left column
+//                        ColumnLayout {
+//                            CharCircle {
+//                                size: 24
+//                                text: dataUtil.letterForButton(model.modelData)
+//                            }
+//                        } // left column
                         ColumnLayout {
                             Layout.fillWidth: true
                             // without setting a maximum width, word wrap not working
-                            Layout.maximumWidth: appWindow.safeWidth-132
-                            Layout.minimumWidth: appWindow.safeWidth-132
+                            Layout.maximumWidth: appWindow.safeWidth-132+44
+                            Layout.minimumWidth: appWindow.safeWidth-132+44
                             spacing: 0
                             LabelSubheading {
                                 rightPadding: 12
@@ -125,14 +125,6 @@ ListView {
                                 maximumLineCount: 2
                                 elide: Label.ElideRight
                             } // label
-//                            LabelBody {
-//                                visible: model.modelData.subtitle.length
-//                                rightPadding: 12
-//                                text: model.modelData.subtitle
-//                                wrapMode: Label.WordWrap
-//                                maximumLineCount: 2
-//                                elide: Label.ElideRight
-//                            }
                             RowLayout {
                                 LabelBody {
                                     Layout.fillWidth: false
@@ -158,6 +150,8 @@ ListView {
                                     id: speakerNamesLabel
                                     font.italic: true
                                     text: dataUtil.speakerNamesForSession(model.modelData)
+                                    wrapMode: Label.WordWrap
+                                    maximumLineCount: 3
                                     elide: Label.ElideRight
                                 }
                             }

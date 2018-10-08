@@ -124,11 +124,16 @@ QString DataUtil::speakerNamesForSession(Session *session)
     }
     for (int i = 0; i < session->presenter().size(); ++i) {
         QString name = session->presenter().at(i)->name();
+        QString company = session->presenter().at(i)->title();
         if(name.length()) {
             if(info.length()) {
-                info.append(", ");
+                info.append("; ");
             }
             info.append(name);
+            if(company.length()) {
+                info.append(", ");
+                info.append(company);
+            }
         }
     }
     return info;
@@ -1690,7 +1695,7 @@ void DataUtil::finishUpdate() {
     // SETTINGS update API
     mDataManager->mSettingsData->setApiVersion(mNewApi);
     mDataManager->mSettingsData->setLastUpdate(QDateTime::currentDateTime());
-    mDataManager->mSettingsData->setVersion(2018003);
+    mDataManager->mSettingsData->setVersion(2018004);
     mDataManager->saveSettings();
 
     // SAVE CONFERENCES
@@ -2111,7 +2116,7 @@ void DataUtil::onServerSuccess()
     qDebug() << "S U C C E S S request Schedule (BOSTON, BERLIN) and Speaker";
 
     // check if conference is prepared
-    if(isOldConference() || mDataManager->allConference().size() == 0 || mDataManager->settingsData()->version() < 2018003) {
+    if(isOldConference() || mDataManager->allConference().size() == 0 || mDataManager->settingsData()->version() < 2018004) {
         prepareConference();
     }
     continueUpdate();
