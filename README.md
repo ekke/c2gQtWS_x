@@ -1,5 +1,3 @@
-work in progress !!! I'm just developing the Qt WS 2018 App. wait for blog and tweet before using this repo !!!
-
 # QtWS 2018 Conference App
 ![alt tag](https://appbus.files.wordpress.com/2018/10/icon.png  "QtWS 2018 App Logo")
 
@@ -34,7 +32,7 @@ This conference app uses Material Design with UI Controls provided by Qt 5.11.2+
 ## Download from Google Play
 https://play.google.com/store/apps/details?id=org.ekkescorner.c2g.qtws
 
-Don't have a Google Account ? Grab the APK here: https://app.box.com/... TODO
+Don't have a Google Account ? Grab the APK here: https://app.box.com/s/t5g3kf69vy4fmc8e2qnuhp0t609z93xn
 
 ## Download from Apple Appstore
 https://itunes.apple.com/us/app/qt-world-summit-2016-conference/id1156106928
