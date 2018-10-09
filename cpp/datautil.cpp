@@ -64,19 +64,19 @@ QString DataUtil::conferenceDataPath4QML() {
 
 bool DataUtil::isNoConference()
 {
-    if(mDataManager->allConference().size() == 0) {
+    if(mDataManager->allConference().empty()) {
         qDebug() << "cpp: isNoConference true";
         return true;
-    } else {
-        qDebug() << "cpp: we have conferences: " << mDataManager->allConference().size();
-        return false;
     }
+    qDebug() << "cpp: we have conferences: " << mDataManager->allConference().size();
+    return false;
+    
 }
 
 bool DataUtil::isOldConference()
 {
-    if(mDataManager->allConference().size() > 0) {
-        Conference* conference = (Conference*) mDataManager->allConference().last();
+    if(!mDataManager->allConference().empty()) {
+        Conference* conference = static_cast<Conference*>( mDataManager->allConference().last());
         if(conference->id() < 201801) {
             qDebug() << " we have old conference data";
             return true;
@@ -87,11 +87,11 @@ bool DataUtil::isOldConference()
 
 bool DataUtil::isDateTooLate()
 {
-    if(mDataManager->allDay().size() == 0) {
+    if(mDataManager->allDay().empty()) {
         return true;
     }
     QString todayDate = QDate::currentDate().toString(YYYY_MM_DD);
-    QString lastConferenceDay = ((Day*) mDataManager->allDay().last())->conferenceDay().toString(YYYY_MM_DD);
+    QString lastConferenceDay = (static_cast<Day*>( mDataManager->allDay().last()))->conferenceDay().toString(YYYY_MM_DD);
     qDebug() << "todayDate" << todayDate << "lastConferenceDay" << lastConferenceDay;
     return todayDate > lastConferenceDay;
 }
@@ -231,7 +231,7 @@ QString DataUtil::textForSessionType(Session *session)
 
 QString DataUtil::trackColorFirstTrack(Session *session)
 {
-    if(!session->sessionTracks().size()) {
+    if(session->sessionTracks().empty()) {
         return "transparent";
     }
     return session->sessionTracks().first()->color();
@@ -445,7 +445,7 @@ void DataUtil::prepareSanFrancisco201601() {
     qDebug() << "Last SessionTrack " << conference->lastSessionTrackId() << " last Generic Session ID " << conference->lastGenericSessionId();
     // rooms
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
-        Room* room = (Room*) mDataManager->allRoom().at(i);
+        Room* room = static_cast<Room*>( mDataManager->allRoom().at(i));
         if(room->conference() == 201601) {
             conference->addToRooms(room);
             if(room->roomId() > conference->lastRoomId()) {
@@ -512,7 +512,7 @@ void DataUtil::prepareBoston201801() {
     qDebug() << "Last SessionTrack " << conference->lastSessionTrackId() << " last Generic Session ID " << conference->lastGenericSessionId();
     // rooms
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
-        Room* room = (Room*) mDataManager->allRoom().at(i);
+        Room* room = static_cast<Room*>( mDataManager->allRoom().at(i));
         if(room->conference() == 201801) {
             conference->addToRooms(room);
             if(room->roomId() > conference->lastRoomId()) {
@@ -579,7 +579,7 @@ void DataUtil::prepareBerlin201802() {
     qDebug() << "Last SessionTrack " << conference->lastSessionTrackId() << " last Generic Session ID " << conference->lastGenericSessionId();
     // rooms
     for (int i = 0; i < mDataManager->allRoom().size(); ++i) {
-        Room* room = (Room*) mDataManager->allRoom().at(i);
+        Room* room = static_cast<Room*>( mDataManager->allRoom().at(i));
         if(room->conference() == 201802) {
             conference->addToRooms(room);
             if(room->roomId() > conference->lastRoomId()) {
@@ -621,7 +621,7 @@ Day* DataUtil::findDayForServerDate(const QString& dayDate, Conference* conferen
     Day* day = nullptr;
     bool found = false;
     for (int dl = 0; dl < conference->days().size(); ++dl) {
-        day = (Day*) conference->days().at(dl);
+        day = static_cast<Day*> (conference->days().at(dl));
         if(day->conferenceDay().toString(YYYY_MM_DD) == dayDate) {
             found = true;
             break;
@@ -662,7 +662,7 @@ void DataUtil::adjustTracks(QVariantMap& sessionMap, Conference* conference, con
             sessionTrack->setName(trackName);
             sessionTrack->setConference(conference->id());
             sessionTrack->setColor(trackColor);
-            sessionTrack->setInAssets(isUpdate?false:true);
+            sessionTrack->setInAssets(!isUpdate);
             mDataManager->insertSessionTrack(sessionTrack);
             conference->addToTracks(sessionTrack);
             trackKeys.append(QString::number(sessionTrack->trackId()));
@@ -676,7 +676,7 @@ void DataUtil::adjustPersons(QVariantMap& sessionMap) {
     QStringList personKeys;
     QVariantList personsList;
     personsList = sessionMap.value("persons").toList();
-    if (personsList.size() > 0) {
+    if (!personsList.empty()) {
         for (int pvl = 0; pvl < personsList.size(); ++pvl) {
             QVariantMap map = personsList.at(pvl).toMap();
             if(map.contains("id")) {
@@ -690,27 +690,27 @@ void DataUtil::adjustPersons(QVariantMap& sessionMap) {
 bool DataUtil::checkIfIgnored(SessionAPI* sessionAPI) {
     Q_UNUSED(sessionAPI);
     return false;
-//    if(sessionAPI->title() == "Registration and Coffee" && sessionAPI->room() != "B02") {
-//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-//        return true;
-//    }
-//    if(sessionAPI->title() == "Lunch" && sessionAPI->room() != "B02") {
-//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-//        return true;
-//    }
-//    if(sessionAPI->title() == "Coffee break" && sessionAPI->room() != "B02") {
-//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-//        return true;
-//    }
-//    if(sessionAPI->title() == "Evening event" && sessionAPI->room() != "B02") {
-//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-//        return true;
-//    }
-//    if(sessionAPI->title() == "Welcome" && sessionAPI->room() != "C01") {
-//        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
-//        return true;
-//    }
-//    return false;
+    //    if(sessionAPI->title() == "Registration and Coffee" && sessionAPI->room() != "B02") {
+    //        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+    //        return true;
+    //    }
+    //    if(sessionAPI->title() == "Lunch" && sessionAPI->room() != "B02") {
+    //        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+    //        return true;
+    //    }
+    //    if(sessionAPI->title() == "Coffee break" && sessionAPI->room() != "B02") {
+    //        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+    //        return true;
+    //    }
+    //    if(sessionAPI->title() == "Evening event" && sessionAPI->room() != "B02") {
+    //        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+    //        return true;
+    //    }
+    //    if(sessionAPI->title() == "Welcome" && sessionAPI->room() != "C01") {
+    //        qDebug() << "unwanted session: " << sessionAPI->sessionId() << " " << sessionAPI->title() << " " << sessionAPI->room();
+    //        return true;
+    //    }
+    //    return false;
 }
 
 void DataUtil::setDuration(SessionAPI* sessionAPI, Session* session) {
@@ -788,7 +788,7 @@ void DataUtil::sortedSessionsIntoRoomDayTrackSpeaker() {
         }
         for (int i = 0; i < session->sessionTracksKeys().size(); ++i) {
             int tKey = session->sessionTracksKeys().at(i).toInt();
-            SessionTrack* sessionTrack = (SessionTrack*) mDataManager->findSessionTrackByTrackId(tKey);
+            SessionTrack* sessionTrack = static_cast<SessionTrack*> (mDataManager->findSessionTrackByTrackId(tKey));
             if(sessionTrack != nullptr) {
                 sessionTrack->addToSessions(session);
             } else {
@@ -797,7 +797,7 @@ void DataUtil::sortedSessionsIntoRoomDayTrackSpeaker() {
         }
         for (int i = 0; i < session->presenterKeys().size(); ++i) {
             int pKey = session->presenterKeys().at(i).toInt();
-            Speaker* speaker = (Speaker*) mDataManager->findSpeakerBySpeakerId(pKey);
+            Speaker* speaker = static_cast<Speaker*> (mDataManager->findSpeakerBySpeakerId(pKey));
             if(speaker != nullptr) {
                 speaker->addToSessions(session);
             } else {
@@ -903,13 +903,13 @@ void DataUtil::continueUpdate()
     qDebug() << "PREPARE SPEAKER ";
     QVariantList dataList;
     dataList = readSpeakerFile(speakersPath);
-    if(dataList.size() == 0) {
+    if(dataList.empty()) {
         qWarning() << "Speaker List empty";
         emit updateFailed(tr("Update failed. No Speaker received.\nReloading current Data"));
         return;
-    } else {
-        qDebug() << "we got speakers from server API #" << dataList.size();
     }
+    qDebug() << "we got speakers from server API #" << dataList.size();
+    
     mMultiSession.clear();
     mMultiSpeaker.clear();
     mMultiSpeakerImages.clear();
@@ -989,9 +989,9 @@ void DataUtil::continueUpdate()
 }
 
 void DataUtil::updateSpeakerImages() {
-    if(mMultiSpeakerImages.size() > 0) {
+    if(!mMultiSpeakerImages.empty()) {
         QList<SpeakerImage*> waitingForDownload = mMultiSpeakerImages.values(false);
-        if(waitingForDownload.size() > 0) {
+        if(!waitingForDownload.empty()) {
             mProgressInfotext.append(".");
             emit progressInfo(mProgressInfotext);
             // DO IT
@@ -1044,7 +1044,7 @@ bool DataUtil::updateSessions(const int conferenceId) {
     mProgressInfotext.append("\n").append(tr("Sync Sessions ")).append(city);
 
     Conference* conference;
-    conference = (Conference*) mDataManager->findConferenceById(conferenceId);
+    conference = static_cast<Conference*> (mDataManager->findConferenceById(conferenceId));
     if(!conference) {
         qWarning() << "No 'conference' found in prepared data for " << city;
         emit updateFailed(tr("Error: Data missed 'conference'.")+" "+city);
@@ -1179,7 +1179,7 @@ bool DataUtil::updateSessions(const int conferenceId) {
                 qDebug() << "Room* not found for " << dayDate << " Room: " << roomKeys.at(r);
                 if(roomKeys.at(r).isEmpty()) {
                     // use dummi room
-                    room = (Room*) mDataManager->allRoom().first();
+                    room = static_cast<Room*>( mDataManager->allRoom().first());
                     qDebug() << "Room Name empty - using Room " << room->roomName() << "for " << city;
                 } else {
                     room = mDataManager->createRoom();
@@ -1258,7 +1258,7 @@ bool DataUtil::updateSessions(const int conferenceId) {
 void DataUtil::addGenericSessionsBoston201801() {
     int conferenceId = 201801;
     Conference* conference;
-    conference = (Conference*) mDataManager->findConferenceById(conferenceId);
+    conference = static_cast<Conference*> (mDataManager->findConferenceById(conferenceId));
     if(!conference) {
         qWarning() << "No 'conference' found - cannot add Generic Sessions ";
         emit updateFailed(tr("Error: Data missed 'conference'.")+QString::number(conferenceId));
@@ -1415,7 +1415,7 @@ void DataUtil::addGenericSessionsBoston201801() {
 void DataUtil::addGenericSessionsBerlin201802() {
     int conferenceId = 201802;
     Conference* conference;
-    conference = (Conference*) mDataManager->findConferenceById(conferenceId);
+    conference = static_cast<Conference*> (mDataManager->findConferenceById(conferenceId));
     if(!conference) {
         qWarning() << "No 'conference' found - cannot add Generic Sessions ";
         emit updateFailed(tr("Error: Data missed 'conference'.")+QString::number(conferenceId));
@@ -1575,7 +1575,7 @@ void DataUtil::finishUpdate() {
 
     // Room: clear sessions for update
     for (int r = 0; r < mDataManager->allRoom().size(); ++r) {
-        Room* room = (Room*) mDataManager->allRoom().at(r);
+        Room* room = static_cast<Room*>( mDataManager->allRoom().at(r));
         room->clearSessions();
     }
     // to reset all correct
@@ -1583,7 +1583,7 @@ void DataUtil::finishUpdate() {
     qDebug() << "FINISH: Rooms sessions cleared";
     // SessionTrack: clear sessions for update
     for (int st = 0; st < mDataManager->allSessionTrack().size(); ++st) {
-        SessionTrack* track = (SessionTrack*) mDataManager->allSessionTrack().at(st);
+        SessionTrack* track = static_cast<SessionTrack*>( mDataManager->allSessionTrack().at(st));
         track->clearSessions();
         qDebug() << "clear sessions for Track " << track->name();
     }
@@ -1592,7 +1592,7 @@ void DataUtil::finishUpdate() {
     qDebug() << "FINISH: Tracks sessions cleared";
     // Day: clear sessions for update
     for (int d = 0; d < mDataManager->allDay().size(); ++d) {
-        Day* day = (Day*) mDataManager->allDay().at(d);
+        Day* day = static_cast<Day*>( mDataManager->allDay().at(d));
         day->clearSessions();
     }
     // to reset all correct
@@ -1612,7 +1612,7 @@ void DataUtil::finishUpdate() {
 
     // Check orphans
     for (int i = 0; i < mDataManager->mAllSession.size(); ++i) {
-        Session* session = (Session*) mDataManager->mAllSession.at(i);
+        Session* session = static_cast<Session*>( mDataManager->mAllSession.at(i));
         bool sessionFound = false;
         QMapIterator<QString, Session*> sessionIterator(mMultiSession);
         while (sessionIterator.hasNext()) {
@@ -1666,7 +1666,7 @@ void DataUtil::finishUpdate() {
     // Track sort by Name
     QMultiMap<QString, SessionTrack*> sessionTrackSortMap;
     for (int i = 0; i < mDataManager->allSessionTrack().size(); ++i) {
-        SessionTrack* sessionTrack = (SessionTrack*) mDataManager->allSessionTrack().at(i);
+        SessionTrack* sessionTrack = static_cast<SessionTrack*>( mDataManager->allSessionTrack().at(i));
         sessionTrackSortMap.insert(sessionTrack->name(), sessionTrack);
     }
     qDebug() << "FINISH: Tracks sorted by Name";
@@ -1723,7 +1723,7 @@ void DataUtil::finishUpdate() {
 void DataUtil::setSessionFavorites()
 {
     for (int i = 0; i < mDataManager->allFavorite().size(); ++i) {
-        Favorite* favorite = (Favorite*) mDataManager->allFavorite().at(i);
+        Favorite* favorite = static_cast<Favorite*>( mDataManager->allFavorite().at(i));
         Session* session = mDataManager->findSessionBySessionId(favorite->sessionId());
         if(session != nullptr) {
             session->setIsFavorite(true);
@@ -1740,7 +1740,7 @@ void DataUtil::saveSessionFavorites()
 {
     mDataManager->mAllFavorite.clear();
     for (int i = 0; i < mDataManager->mAllSession.size(); ++i) {
-        Session* session = (Session*) mDataManager->mAllSession.at(i);
+        Session* session = static_cast<Session*>( mDataManager->mAllSession.at(i));
         if(session->isFavorite()) {
             Favorite* favorite = mDataManager->createFavorite();
             favorite->setSessionId(session->sessionId());
@@ -1757,7 +1757,7 @@ void DataUtil::saveSessionFavorites()
  */
 void DataUtil::resolveSessionsForSchedule() {
     for (int i = 0; i < mDataManager->allConference().size(); ++i) {
-        Conference* conference = (Conference*) mDataManager->allConference().at(i);
+        Conference* conference = static_cast<Conference*>( mDataManager->allConference().at(i));
         conference->resolveDaysKeys(mDataManager->listOfDayForKeys(conference->daysKeys()));
         for (int d = 0; d < conference->days().size(); ++d) {
             Day* day = conference->days().at(d);
@@ -1781,7 +1781,7 @@ QList<Session*> DataUtil::listOfSessionForSortedKeys(
         int theSessionId = keyList.at(k).toInt();
         for (int i = 0; i < mDataManager->allSession().size(); ++i) {
             Session* session;
-            session = (Session*) mDataManager->allSession().at(i);
+            session = static_cast<Session*>( mDataManager->allSession().at(i));
             if(session->sessionId() == theSessionId) {
                 listOfData.append(session);
                 break;
@@ -1802,7 +1802,7 @@ QList<Session*> DataUtil::listOfSessionForSortedKeys(
 void DataUtil::resolveSessionsForTracks()
 {
     for (int i = 0; i < mDataManager->mAllSessionTrack.size(); ++i) {
-        SessionTrack* sessionTrack = (SessionTrack*) mDataManager->mAllSessionTrack.at(i);
+        SessionTrack* sessionTrack = static_cast<SessionTrack*>( mDataManager->mAllSessionTrack.at(i));
         sessionTrack->resolveSessionsKeys(mDataManager->listOfSessionForKeys(sessionTrack->sessionsKeys()));
     }
 }
@@ -1810,7 +1810,7 @@ void DataUtil::resolveSessionsForTracks()
 void DataUtil::resolveSessionsForRooms()
 {
     for (int i = 0; i < mDataManager->mAllRoom.size(); ++i) {
-        Room* room = (Room*) mDataManager->mAllRoom.at(i);
+        Room* room = static_cast<Room*>( mDataManager->mAllRoom.at(i));
         room->resolveSessionsKeys(mDataManager->listOfSessionForKeys(room->sessionsKeys()));
     }
 }
@@ -1824,10 +1824,10 @@ Conference* DataUtil::switchConference() {
     if(!mCurrentConference) {
         return currentConference();
     }
-    if(mCurrentConference == (Conference*) mDataManager->allConference().first()) {
-        mCurrentConference = (Conference*) mDataManager->allConference().last();
+    if(mCurrentConference == static_cast<Conference*>( mDataManager->allConference().first())) {
+        mCurrentConference = static_cast<Conference*>( mDataManager->allConference().last());
     } else {
-        mCurrentConference = (Conference*) mDataManager->allConference().first();
+        mCurrentConference = static_cast<Conference*>( mDataManager->allConference().first());
     }
     return mCurrentConference;
 }
@@ -1866,14 +1866,14 @@ QString DataUtil::otherConferenceCity()
 }
 
 Conference* DataUtil::currentConference() {
-    if(mDataManager->allConference().size() == 0) {
+    if(mDataManager->allConference().empty()) {
         qDebug() << "cpp currentConference() --> fresh start - no conferences yet";
         return mCurrentConference;
     }
     if(!mCurrentConference) {
         // TODO depends from current date
         // if currentDate > last day of first conference: use the second one
-        mCurrentConference = (Conference*) mDataManager->allConference().first();
+        mCurrentConference = static_cast<Conference*>( mDataManager->allConference().first());
         qDebug() << "Current Conference is first: " << mCurrentConference->conferenceCity();
     }
     return mCurrentConference;
@@ -1910,7 +1910,7 @@ void DataUtil::refreshMySchedule()
     for (int d = 0; d < mCurrentConference->days().size(); ++d) {
         Day* day = mCurrentConference->days().at(d);
         for (int s = 0; s < day->sessions().size(); ++s) {
-            Session* session = (Session*) day->sessions().at(s);
+            Session* session = static_cast<Session*> (day->sessions().at(s));
             if(!session->isDeprecated() && session->isFavorite()) {
                 mSessionLists->addToScheduledSessions(session);
             }
@@ -1929,7 +1929,7 @@ int DataUtil::findFirstSessionItem(int conferenceDayIndex, QString pickedTime)
         qDebug() << "Day Index wrong: conferenceDayIndex";
         return -1;
     }
-    Day* day = (Day*) mCurrentConference->days().at(conferenceDayIndex);
+    Day* day = static_cast<Day*> (mCurrentConference->days().at(conferenceDayIndex));
     for (int i = 0; i < day->sessions().size(); ++i) {
         Session* session = day->sessions().at(i);
         QString theTime = session->sortKey().right(5);
@@ -1943,7 +1943,7 @@ int DataUtil::findFirstSessionItem(int conferenceDayIndex, QString pickedTime)
 int DataUtil::findFirstSpeakerItem(QString letter)
 {
     for (int i = 0; i < mDataManager->mAllSpeaker.size(); ++i) {
-        Speaker* speaker = (Speaker*) mDataManager->mAllSpeaker.at(i);
+        Speaker* speaker = static_cast<Speaker*>( mDataManager->mAllSpeaker.at(i));
         if(speaker->sortGroup() >= letter) {
             return i;
         }
@@ -1981,7 +1981,7 @@ QString DataUtil::apiInfo()
 void DataUtil::onSpeakerImageUpdateLoaded(QObject *dataObject, int width, int height)
 {
     mImageLoader->deleteLater();
-    SpeakerImage* speakerImage = (SpeakerImage*) dataObject;
+    SpeakerImage* speakerImage = static_cast<SpeakerImage*>( dataObject);
     qDebug() << "onSpeakerImage  L O A D E D ";
     speakerImage->setDownloadSuccess(true);
     speakerImage->setDownloadFailed(false);
@@ -1999,7 +1999,7 @@ void DataUtil::onSpeakerImageUpdateLoaded(QObject *dataObject, int width, int he
 }
 void DataUtil::onSpeakerImageUpdateFailed(QObject *dataObject, QString message) {
     mImageLoader->deleteLater();
-    SpeakerImage* speakerImage = (SpeakerImage*) dataObject;
+    SpeakerImage* speakerImage = static_cast<SpeakerImage*>( dataObject);
     qDebug() << "UPDATE: Cannot load Speaker Image:  " << message << speakerImage->speakerId();
     speakerImage->setDownloadSuccess(false);
     speakerImage->setDownloadFailed(true);
@@ -2117,7 +2117,7 @@ void DataUtil::onServerSuccess()
     qDebug() << "S U C C E S S request Schedule (BOSTON, BERLIN) and Speaker";
 
     // check if conference is prepared
-    if(isOldConference() || mDataManager->allConference().size() == 0 || mDataManager->settingsData()->version() < 2018004) {
+    if(isOldConference() || mDataManager->allConference().empty() || mDataManager->settingsData()->version() < 2018004) {
         prepareConference();
     }
     continueUpdate();
