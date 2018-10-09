@@ -58,12 +58,18 @@ Page {
                     Layout.rightMargin: 16
                     ButtonOneCharUncolored {
                         visible: !isScheduleItem
-                        anchors.verticalCenter: parent.verticalCenter
+                        // anchors.verticalCenter: parent.verticalCenter
+                        Layout.alignment: Qt.AlignVCenter
+                        Layout.minimumHeight: 42
+                        Layout.minimumWidth: 36
+                        Layout.maximumHeight: 42
+                        Layout.maximumWidth: 36
                         text: dataUtil.letterForButton(session)
                     } // button one char
                     IconActive {
                         visible: isScheduleItem
-                        anchors.verticalCenter: parent.verticalCenter
+                        // anchors.verticalCenter: parent.verticalCenter
+                        Layout.alignment: Qt.AlignVCenter
                         //transform: Translate { x: -36 }
                         imageSize: 24
                         imageName: isScheduleItem? dataUtil.scheduleItemImageForSession(session) : ""
@@ -71,7 +77,8 @@ Page {
 
                     LabelSubheading {
                         Layout.leftMargin: 16
-                        anchors.verticalCenter: parent.verticalCenter
+                        // anchors.verticalCenter: parent.verticalCenter
+                        Layout.alignment: Qt.AlignVCenter
                         text: dataUtil.textForSessionType(session)
                         wrapMode: Text.WordWrap
                     }
@@ -80,8 +87,9 @@ Page {
                         imageSize: 36
                         imageName: "stars.png"
                         opacity: session.isFavorite? opacityToggleActive : opacityToggleInactive
-                        anchors.right: parent.right
-                        anchors.top: parent.top
+                        // anchors.right: parent.right
+                        // anchors.top: parent.top
+                        Layout.alignment: Qt.AlignTop | Qt.AlignRight
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
@@ -175,7 +183,8 @@ Page {
                         showShadow: true
                         imageSource: "qrc:/images/"+iconOnAccentFolder+"/directions.png"
                         backgroundColor: accentColor
-                        anchors.right: parent.right
+                        // anchors.right: parent.right
+                        Layout.alignment: Qt.AlignRight
                         onClicked: {
                             navPane.pushRoomDetail(session.roomAsDataObject.roomId)
                         }
@@ -225,7 +234,8 @@ Page {
                     visible: session.presenterPropertyList.length
                     Layout.leftMargin: 16
                     IconActive {
-                        anchors.verticalCenter: parent.verticalCenter
+                        // anchors.verticalCenter: parent.verticalCenter
+                        Layout.alignment: Qt.AlignVCenter
                         //transform: Translate { x: -36 }
                         imageSize: 36
                         imageName: "speaker.png"

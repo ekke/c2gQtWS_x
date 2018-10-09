@@ -24,7 +24,8 @@ Page {
                 bottomPadding: 6
                 leftPadding: 16
                 text: section
-                anchors.verticalCenter: parent.verticalCenter
+                // anchors.verticalCenter: parent.verticalCenter
+                Layout.alignment: Qt.AlignVCenter
                 color: primaryColor
                 font.bold: true
             }

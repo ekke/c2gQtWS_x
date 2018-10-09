@@ -47,7 +47,8 @@ Page {
                     Layout.rightMargin: 6
                     SpeakerImageItem {
                         id: speakerImage
-                        anchors.top: parent.top
+                        // anchors.top: parent.top
+                        Layout.alignment: Qt.AlignTop
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
@@ -96,7 +97,8 @@ Page {
                     visible: speaker.sessionsPropertyList.length
                     Layout.leftMargin: 16
                     IconActive {
-                        anchors.verticalCenter: parent.verticalCenter
+                        // anchors.verticalCenter: parent.verticalCenter
+                        Layout.alignment: Qt.AlignVCenter
                         //transform: Translate { x: -36 }
                         imageSize: 36
                         imageName: "schedule.png"
@@ -147,7 +149,8 @@ Page {
                                     Layout.maximumWidth: speakerImage.width
                                     Layout.minimumWidth: speakerImage.width
                                     Layout.rightMargin: 6
-                                    anchors.top: parent.top
+                                    // anchors.top: parent.top
+                                    Layout.alignment: Qt.AlignTop
                                     LabelSubheading {
                                         Layout.topMargin: 6
                                         text: dataUtil.conferenceCity(modelData.sessionDayAsDataObject.conference)
@@ -189,7 +192,8 @@ Page {
                                             //id: menuIcon
                                             imageSize: 24
                                             imageName: "more_vert.png"
-                                            anchors.right: parent.right
+                                            // anchors.right: parent.right
+                                            Layout.alignment: Qt.AlignRight
                                             // anchors.top: parent.top
                                             MouseArea {
                                                 anchors.fill: parent
@@ -259,8 +263,9 @@ Page {
                                             imageSize: 36
                                             imageName: "stars.png"
                                             opacity: modelData.isFavorite? opacityToggleActive : opacityToggleInactive
-                                            anchors.right: parent.right
-                                            anchors.top: parent.top
+                                            // anchors.right: parent.right
+                                            // anchors.top: parent.top
+                                            Layout.alignment: Qt.AlignTop | Qt.AlignRight
                                             MouseArea {
                                                 anchors.fill: parent
                                                 onClicked: {

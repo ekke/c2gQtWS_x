@@ -42,7 +42,8 @@ Page {
                     }
                     LabelTitle {
                         text: dataUtil.localWeekdayAndTime(section)
-                        anchors.verticalCenter: parent.verticalCenter
+                        // anchors.verticalCenter: parent.verticalCenter
+                        Layout.alignment: Qt.AlignVCenter
                         color: accentColor
                         font.bold: true
                     }

@@ -43,7 +43,7 @@ Page {
             // LIST ROW DELEGTE
             Component {
                 id: trackRowComponent
-                Item {
+                ItemDelegate {
                     id: theItem
                     height: trackRow.height
                     implicitWidth: appWindow.width
@@ -74,7 +74,7 @@ Page {
                                 Layout.minimumWidth: appWindow.width-60
 
                                 LabelHeadline {
-                                    text: model.modelData.name != "*****" ? model.modelData.name : qsTr("* No Track assigned *")
+                                    text: model.modelData.name !== "*****" ? model.modelData.name : qsTr("* No Track assigned *")
                                     color: primaryColor
                                     wrapMode: Label.WordWrap
                                 } // label
@@ -86,19 +86,20 @@ Page {
                                     elide: Label.ElideRight
                                 }
                             }
-                            ListRowButton {
-                                onClicked: {
-                                    navPane.pushTrackSessions(model.modelData.trackId)
-                                }
-                            }
+//                            ListRowButton {
+//                                onClicked: {
+//                                    navPane.pushTrackSessions(model.modelData.trackId)
+//                                }
+//                            }
                         }
                         HorizontalListDivider{}
                     } // end Col Layout speaker row
 
-                } // row item
+                    onClicked: {
+                        navPane.pushTrackSessions(model.modelData.trackId)
+                    }
 
-
-
+                } // row item delegate
             } // trackRowComponent
 
         } // sessionTrackLoader
