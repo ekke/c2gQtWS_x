@@ -23,8 +23,14 @@ ApplicationWindow {
     width: 410
     height: 680
 
+    property int safeWidth: width - unsafeArea.unsafeLeftMargin - unsafeArea.unsafeRightMargin
+    property int safeHeight: height - unsafeArea.unsafeTopMargin - unsafeArea.unsafeBottomMargin
+
+    // fills iPhone and iPad devices screen totally
+    // ATTENTION: you must check for ios - if not, on Android the BACK key wasn't detected anymore !!
+    flags: Qt.platform.os === "ios"? Qt.MaximizeUsingFullscreenGeometryHint : undefined
+
     // https://bugreports.qt.io/browse/QTBUG-64574
-    // I O S sizes to detect the device type
     // https://stackoverflow.com/questions/46192280/detect-if-the-device-is-iphone-x
     // TODO HowTo deal with Android - Notch - Devices ?
     property int lastOrientation: 0
@@ -41,15 +47,9 @@ ApplicationWindow {
         unsafeArea.orientationChanged(myOrientation)
         lastOrientation = myOrientation
     }
-    property int safeWidth: width - unsafeArea.unsafeLeftMargin - unsafeArea.unsafeRightMargin
-    property int safeHeight: height - unsafeArea.unsafeTopMargin - unsafeArea.unsafeBottomMargin
-
 
     // visibile must set to true - default is false
     visible: true
-    // fills iPhone and iPad devices screen totally
-    // ATTENTION: you must check for ios - if not, on Android the BACK key wasn't detected anymore !!
-    flags: Qt.platform.os === "ios"? Qt.MaximizeUsingFullscreenGeometryHint : undefined
 
     signal doAutoVersionCheck()
     signal oldConference()
