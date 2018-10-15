@@ -189,4 +189,8 @@ ios {
 
     # Note for devices: 1=iPhone, 2=iPad, 1,2=Universal.
     QMAKE_APPLE_TARGETED_DEVICE_FAMILY = 1,2
+
+    #workaround see https://forum.qt.io/topic/93969/5-11-1-ios-bundle-identifier-problems
+    load(default_post.prf)
+    xcode_product_bundle_identifier_setting.value = org.ekkescorner.c2g.qtws
 }
