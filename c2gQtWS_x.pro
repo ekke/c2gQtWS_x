@@ -183,14 +183,10 @@ ios {
 
     include(ios_signature.pri)
 
-    MY_BUNDLE_ID.name = PRODUCT_BUNDLE_IDENTIFIER
-    MY_BUNDLE_ID.value = org.ekkescorner.c2g.qtws
-    QMAKE_MAC_XCODE_SETTINGS += MY_BUNDLE_ID
+    # see https://bugreports.qt.io/browse/QTBUG-70072
+    QMAKE_TARGET_BUNDLE_PREFIX = org.ekkescorner
+    QMAKE_BUNDLE = c2g.qtws
 
     # Note for devices: 1=iPhone, 2=iPad, 1,2=Universal.
     QMAKE_APPLE_TARGETED_DEVICE_FAMILY = 1,2
-
-    #workaround see https://forum.qt.io/topic/93969/5-11-1-ios-bundle-identifier-problems
-    load(default_post.prf)
-    xcode_product_bundle_identifier_setting.value = org.ekkescorner.c2g.qtws
 }
