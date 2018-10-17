@@ -9,7 +9,7 @@ import QtQuick.Controls 2.2
 Loader {
     id: pageLoader
     property int pageActivationPolicy: modelData.a_p
-    active: pageActivationPolicy == activationPolicy.IMMEDIATELY
+    active: pageActivationPolicy === activationPolicy.IMMEDIATELY
     // Loader itself is invisible - Item will be pushed on stack
     // or used by SwipeView
     visible: false
@@ -17,7 +17,7 @@ Loader {
     source: modelData.source
     onLoaded: {
         item.init()
-        if(pageActivationPolicy != activationPolicy.IMMEDIATELY) {
+        if(pageActivationPolicy !== activationPolicy.IMMEDIATELY) {
             rootPane.replaceDestination(pageLoader)
         }
     }

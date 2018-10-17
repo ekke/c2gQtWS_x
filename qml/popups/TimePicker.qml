@@ -86,7 +86,7 @@ Popup {
         onlyQuartersAllowed = q
         useWorkTimes = w
         var s = hhmm.split(":")
-        if(s.length == 2) {
+        if(s.length === 2) {
             var hours = s[0]
             var minutes = s[1]
             if(onlyQuartersAllowed) {
@@ -104,14 +104,14 @@ Popup {
         for(var i=0; i < timePickerDisplayModel.length; i++) {
             var h = timePickerDisplayModel[i]
             if(useWorkTimes) {
-                if(h.d == hour) {
+                if(h.d === hour) {
                     pickMinutes = false
                     innerButtonIndex = -1
                     outerButtonIndex = i
                     updateDisplayHour()
                     return
                 }
-                if(h.n == hour) {
+                if(h.n === hour) {
                     pickMinutes = false
                     outerButtonIndex = -1
                     innerButtonIndex = i
@@ -119,14 +119,14 @@ Popup {
                     return
                 }
             } else {
-                if(h.c1 == hour) {
+                if(h.c1 === hour) {
                     pickMinutes = false
                     innerButtonIndex = -1
                     outerButtonIndex = i
                     updateDisplayHour()
                     return
                 }
-                if(h.c2 == hour) {
+                if(h.c2 === hour) {
                     pickMinutes = false
                     outerButtonIndex = -1
                     innerButtonIndex = i
@@ -161,7 +161,7 @@ Popup {
     function showMinutes(minutes) {
         for(var i=0; i < timePickerDisplayModel.length; i++) {
             var m = timePickerDisplayModel[i]
-            if(m.m == minutes) {
+            if(m.m === minutes) {
                 innerButtonIndex = -1
                 outerButtonIndex = i
                 pickMinutes = true
