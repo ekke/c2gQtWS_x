@@ -94,7 +94,7 @@ ToolBar {
         } // isOnlineButton
         ToolButton {
             id: scheduleGoToButton
-            visible: !myScheduleActive && navigationIndex == scheduleNavigationIndex && destinations.itemAt(scheduleNavigationIndex).item.depth == 1
+            visible: !myScheduleActive && navigationIndex == scheduleNavigationIndex && destinations.itemAt(scheduleNavigationIndex).item.depth === 1
             focusPolicy: Qt.NoFocus
             Image {
                 anchors.centerIn: parent
@@ -106,7 +106,7 @@ ToolBar {
         } // scheduleGoToButton
         ToolButton {
             id: speakerGoToButton
-            visible: navigationIndex == speakerNavigationIndex && destinations.itemAt(speakerNavigationIndex).item.depth == 1
+            visible: navigationIndex == speakerNavigationIndex && destinations.itemAt(speakerNavigationIndex).item.depth === 1
             focusPolicy: Qt.NoFocus
             Image {
                 anchors.centerIn: parent
