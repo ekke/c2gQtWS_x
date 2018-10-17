@@ -14,7 +14,8 @@ RowLayout {
     property bool doubleTapIsDefault: true
     Pane {
         id: textPane
-        anchors.top: parent.top
+        // anchors.top: parent.top
+        Layout.alignment: Qt.AlignTop
         Material.elevation: 6
         Layout.fillWidth: true
         Layout.minimumHeight: theTextField.activeFocus? minHeightTextPane : 60
@@ -31,7 +32,8 @@ RowLayout {
     } // text pane
     Column {
         spacing: 0
-        anchors.top: textPane.top
+        // anchors.top: textPane.top
+        Layout.alignment: Qt.AlignTop
         Layout.minimumWidth: textClearButton.visible || textSelectToggleButton.visible || textDoneButton.visible? 48 : 0
         ButtonIconActive {
             id: textDoneButton
