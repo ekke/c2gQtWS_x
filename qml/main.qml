@@ -361,7 +361,7 @@ ApplicationWindow {
                 destinations.itemAt(navigationIndex).item.goBack()
                 return
             }
-            if(initDone && navigationBar.position == 0) {
+            if(initDone && navigationBar.position === 0) {
                 openNavigationBar()
                 return
             }
@@ -566,7 +566,7 @@ ApplicationWindow {
         // switch to new Destination
         // Destinations are lazy loaded via Loader
         function activateDestination(navigationIndex) {
-            if(destinations.itemAt(navigationIndex).status == Loader.Ready) {
+            if(destinations.itemAt(navigationIndex).status === Loader.Ready) {
                 console.log("replace item on root stack: "+navigationIndex)
                 replaceDestination(destinations.itemAt(navigationIndex))
             } else {
@@ -584,14 +584,14 @@ ApplicationWindow {
             // because of https://bugreports.qt.io/browse/QTBUG-54260
             // remember currentIndex before being replaced
             console.log("replace destination for name: "+rootPane.currentItem.name)
-            if(rootPane.currentItem.name == "ScheduleNavPage") {
+            if(rootPane.currentItem.name === "ScheduleNavPage") {
                 if(!appWindow.myScheduleActive) {
                     rootPane.currentItem.lastCurrentIndex = rootPane.currentItem.getCurrentIndex()
                     console.log("dayNavPage remember "+rootPane.currentItem.getCurrentIndex())
                 }
             }
             // reset currentIndex to the last one
-            if(theItemLoader.item.name == "ScheduleNavPage") {
+            if(theItemLoader.item.name === "ScheduleNavPage") {
                 //theItemLoader.item.currentIndex = theItemLoader.item.lastCurrentIndex
                 // the SwipeView is one level deeper, so we delegate this to the next StackView
                 if(!appWindow.myScheduleActive) {
@@ -601,7 +601,7 @@ ApplicationWindow {
 
             // here you can call work to be done if user changes destination
             // should also be called if app will be paused or exit
-            if(rootPane.currentItem.name == "ScheduleNavPage") {
+            if(rootPane.currentItem.name === "ScheduleNavPage") {
                 // TODO do this for all stackViews on top of root StackView
                 rootPane.currentItem.destinationAboutToChange()
             }
@@ -611,7 +611,7 @@ ApplicationWindow {
             // check if previous should be unloaded
 
             if(previousIndex >= 0) {
-                if(destinations.itemAt(previousIndex).pageActivationPolicy == activationPolicy.WHILE_CURRENT) {
+                if(destinations.itemAt(previousIndex).pageActivationPolicy === activationPolicy.WHILE_CURRENT) {
                     destinations.itemAt(previousIndex).active = false
                 }
             } else {
