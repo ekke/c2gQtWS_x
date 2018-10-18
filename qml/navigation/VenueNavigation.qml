@@ -29,7 +29,7 @@ Page {
 
         function findPage(pageName) {
             var targetPage = find(function(item) {
-                return item.name == pageName;
+                return item.name === pageName;
             })
             if(targetPage) {
                 return targetPage.StackView.index

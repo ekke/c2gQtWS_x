@@ -118,7 +118,7 @@ Page {
     } // end listView
 
     function goToItemIndex(theIndex) {
-        if(theIndex == -1) {
+        if(theIndex === -1) {
             return
         }
         if(theIndex > 0) {

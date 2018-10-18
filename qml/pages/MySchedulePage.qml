@@ -93,7 +93,7 @@ Page {
         console.log("myScheduleRefreshed")
         sessionLists = dataUtil.mySchedule()
         listView.model = sessionLists.scheduledSessionsPropertyList
-        if(sessionLists.scheduledSessionsPropertyList.length == 0) {
+        if(sessionLists.scheduledSessionsPropertyList.length === 0) {
             popupScheduleEmpty.open()
         }
     }

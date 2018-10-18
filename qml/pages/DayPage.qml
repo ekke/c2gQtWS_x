@@ -59,12 +59,12 @@ Page {
     }
 
     function goToItemIndex(theIndex) {
-        if(theIndex == -1) {
+        if(theIndex === -1) {
             appWindow.showToast(qsTr("No Session found"))
             return
         }
         if(theIndex > 0) {
-            if(theIndex == listView.model.length) {
+            if(theIndex === listView.model.length) {
                 appWindow.showToast(qsTr("Too late for a Session"))
             }
 

@@ -27,7 +27,7 @@ TabButton {
             visible: true
             anchors.fill: contentImage
             source: contentImage
-            color: index == navPane.currentIndex ? theButtonColor : Qt.lighter(theButtonColor, 1.35)
+            color: index === navPane.currentIndex ? theButtonColor : Qt.lighter(theButtonColor, 1.35)
         }
     } // item
 }

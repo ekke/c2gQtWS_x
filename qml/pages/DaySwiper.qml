@@ -49,7 +49,7 @@ Page {
         }
 
         function goToPage(pageIndex) {
-            if(pageIndex == navSwipePane.currentIndex) {
+            if(pageIndex === navSwipePane.currentIndex) {
                 // it's the current page
                 return
             }

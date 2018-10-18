@@ -118,7 +118,7 @@ Page {
 
         function findPage(pageName) {
             var targetPage = find(function(item) {
-                return item.name == pageName;
+                return item.name === pageName;
             })
             if(targetPage) {
                 return targetPage.StackView.index
@@ -141,19 +141,19 @@ Page {
 
         function popOnePage() {
             var page = pop()
-            if(page.name == "SpeakerDetailPage") {
+            if(page.name === "SpeakerDetailPage") {
                 speakerDetailPageLoader.active = false
                 return
             }
-            if(page.name == "SessionDetailPage") {
+            if(page.name === "SessionDetailPage") {
                 sessionDetailPageLoader.active = false
                 return
             }
-            if(page.name == "RoomDetailPage") {
+            if(page.name === "RoomDetailPage") {
                 roomDetailPageLoader.active = false
                 return
             }
-            if(page.name == "SpeakerImageDetailPage") {
+            if(page.name === "SpeakerImageDetailPage") {
                 speakerImageDetailPageLoader.active = false
                 return
             }
