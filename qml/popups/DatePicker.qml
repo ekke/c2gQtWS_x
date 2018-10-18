@@ -260,7 +260,7 @@ Popup {
                     onClicked: {
                         console.log("mouse as click")
                         // Important: check the month to avoid clicking on days outside where opacity 0
-                        if(date.getMonth() == datePickerRoot.displayMonth) {
+                        if(date.getMonth() === datePickerRoot.displayMonth) {
                             datePickerRoot.selectedDate = date
                             console.log("tapped on a date ")
                         } else {
