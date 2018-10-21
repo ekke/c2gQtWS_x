@@ -4,7 +4,7 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Conference2Go
 QtWS 2018
 Boston + Berlin
@@ -12,7 +12,7 @@ Boston + Berlin
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/pages/AboutPage.qml" line="53"/>
         <source>Conference2Go
 QtWS 2018
 Boston + Berlin
@@ -20,48 +20,48 @@ Boston + Berlin
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="58"/>
+        <location filename="../qml/pages/AboutPage.qml" line="67"/>
         <source>Conference2Go QtWS 2018
 developed by ekke (@ekkescorner)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="67"/>
+        <location filename="../qml/pages/AboutPage.qml" line="76"/>
         <source>This APP is developed with Qt 5.11 and &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="76"/>
+        <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>All work is done in my spare time and complete sourcecode is available at &lt;a href=&quot;https://github.com/ekke/c2gQtWS_x&quot;&gt;Github&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="86"/>
+        <location filename="../qml/pages/AboutPage.qml" line="95"/>
         <source>My blog series about &lt;a href=&quot;http://j.mp/qt-x&quot;&gt;Qt for x-platform Business Apps&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="95"/>
+        <location filename="../qml/pages/AboutPage.qml" line="104"/>
         <source>You want to discuss about this App or Qt for Mobile App Development ? &lt;a href=&quot;http://slackin.qtmob.org/&quot;&gt;Join QtMob&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="106"/>
+        <location filename="../qml/pages/AboutPage.qml" line="115"/>
         <source>Need a Business APP for Android and iOS ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="116"/>
+        <location filename="../qml/pages/AboutPage.qml" line="125"/>
         <source>Need a Business APP for mobile ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="135"/>
+        <location filename="../qml/pages/AboutPage.qml" line="144"/>
         <source>ekke is BlackBerry Elite Developer and QtChampion.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="125"/>
+        <location filename="../qml/pages/AboutPage.qml" line="134"/>
         <source>ekke is doing international development for Enterprise and SMB (Small and Medium Business). Most APPs are &apos;hidden&apos; because they&apos;re running as inhouse APP at customer site.
 This Conference App will give you some impressions what kind of APPs you can expect. Need an APP ? ask ekke</source>
         <translation type="unfinished"></translation>
@@ -293,225 +293,225 @@ This Conference App will give you some impressions what kind of APPs you can exp
 <context>
     <name>DataUtil</name>
     <message>
-        <location filename="../cpp/datautil.cpp" line="187"/>
+        <location filename="../cpp/datautil.cpp" line="198"/>
         <source> Minutes)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="190"/>
+        <location filename="../cpp/datautil.cpp" line="201"/>
         <source>Registration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="193"/>
+        <location filename="../cpp/datautil.cpp" line="204"/>
         <source>Event</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="196"/>
-        <location filename="../cpp/datautil.cpp" line="1257"/>
-        <location filename="../cpp/datautil.cpp" line="1334"/>
-        <location filename="../cpp/datautil.cpp" line="1414"/>
-        <location filename="../cpp/datautil.cpp" line="1491"/>
+        <location filename="../cpp/datautil.cpp" line="207"/>
+        <location filename="../cpp/datautil.cpp" line="1292"/>
+        <location filename="../cpp/datautil.cpp" line="1369"/>
+        <location filename="../cpp/datautil.cpp" line="1449"/>
+        <location filename="../cpp/datautil.cpp" line="1526"/>
         <source>Lunch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="198"/>
-        <location filename="../cpp/datautil.cpp" line="1272"/>
-        <location filename="../cpp/datautil.cpp" line="1349"/>
-        <location filename="../cpp/datautil.cpp" line="1429"/>
-        <location filename="../cpp/datautil.cpp" line="1506"/>
+        <location filename="../cpp/datautil.cpp" line="209"/>
+        <location filename="../cpp/datautil.cpp" line="1307"/>
+        <location filename="../cpp/datautil.cpp" line="1384"/>
+        <location filename="../cpp/datautil.cpp" line="1464"/>
+        <location filename="../cpp/datautil.cpp" line="1541"/>
         <source>Break</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="201"/>
+        <location filename="../cpp/datautil.cpp" line="212"/>
         <source>Training</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="204"/>
+        <location filename="../cpp/datautil.cpp" line="215"/>
         <source>Lightning Talk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="207"/>
+        <location filename="../cpp/datautil.cpp" line="218"/>
         <source>Keynote</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="210"/>
+        <location filename="../cpp/datautil.cpp" line="221"/>
         <source>Community</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="213"/>
+        <location filename="../cpp/datautil.cpp" line="224"/>
         <source>Unconference</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="216"/>
+        <location filename="../cpp/datautil.cpp" line="227"/>
         <source>Meeting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="218"/>
+        <location filename="../cpp/datautil.cpp" line="229"/>
         <source>Session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="233"/>
+        <location filename="../cpp/datautil.cpp" line="266"/>
         <source> Rollback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="237"/>
+        <location filename="../cpp/datautil.cpp" line="270"/>
         <source> Reload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="339"/>
+        <location filename="../cpp/datautil.cpp" line="372"/>
         <source>Room unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="851"/>
+        <location filename="../cpp/datautil.cpp" line="885"/>
         <source>startUpdate - Cannot create Directories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="854"/>
+        <location filename="../cpp/datautil.cpp" line="888"/>
         <source>Request Schedule and Speakers from Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="861"/>
+        <location filename="../cpp/datautil.cpp" line="895"/>
         <source>Save Favorites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="866"/>
+        <location filename="../cpp/datautil.cpp" line="900"/>
         <source>Sync Speaker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="874"/>
+        <location filename="../cpp/datautil.cpp" line="908"/>
         <source>Update failed. No Speaker received.
 Reloading current Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="950"/>
+        <location filename="../cpp/datautil.cpp" line="985"/>
         <source>Sync Speaker Images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1044"/>
+        <location filename="../cpp/datautil.cpp" line="1079"/>
         <source>Error: Received Map is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1050"/>
+        <location filename="../cpp/datautil.cpp" line="1085"/>
         <source>Error: Received Map missed &apos;conference&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1087"/>
+        <location filename="../cpp/datautil.cpp" line="1122"/>
         <source>Error: Received Map missed &apos;days&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="996"/>
+        <location filename="../cpp/datautil.cpp" line="1031"/>
         <source>Schedule and Speaker successfully synchronized :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1009"/>
+        <location filename="../cpp/datautil.cpp" line="1044"/>
         <source>Sync Sessions </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1015"/>
-        <location filename="../cpp/datautil.cpp" line="1229"/>
-        <location filename="../cpp/datautil.cpp" line="1386"/>
+        <location filename="../cpp/datautil.cpp" line="1050"/>
+        <location filename="../cpp/datautil.cpp" line="1264"/>
+        <location filename="../cpp/datautil.cpp" line="1421"/>
         <source>Error: Data missed &apos;conference&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1092"/>
+        <location filename="../cpp/datautil.cpp" line="1127"/>
         <source>Error: # of &apos;days&apos; expected: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1218"/>
+        <location filename="../cpp/datautil.cpp" line="1253"/>
         <source>Schedule successfully synchronized :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1242"/>
-        <location filename="../cpp/datautil.cpp" line="1304"/>
-        <location filename="../cpp/datautil.cpp" line="1399"/>
-        <location filename="../cpp/datautil.cpp" line="1461"/>
+        <location filename="../cpp/datautil.cpp" line="1277"/>
+        <location filename="../cpp/datautil.cpp" line="1339"/>
+        <location filename="../cpp/datautil.cpp" line="1434"/>
+        <location filename="../cpp/datautil.cpp" line="1496"/>
         <source>Registration and Coffee</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1287"/>
-        <location filename="../cpp/datautil.cpp" line="1364"/>
-        <location filename="../cpp/datautil.cpp" line="1444"/>
-        <location filename="../cpp/datautil.cpp" line="1521"/>
+        <location filename="../cpp/datautil.cpp" line="1322"/>
+        <location filename="../cpp/datautil.cpp" line="1399"/>
+        <location filename="../cpp/datautil.cpp" line="1479"/>
+        <location filename="../cpp/datautil.cpp" line="1556"/>
         <source>Networking and Drinks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1319"/>
-        <location filename="../cpp/datautil.cpp" line="1476"/>
+        <location filename="../cpp/datautil.cpp" line="1354"/>
+        <location filename="../cpp/datautil.cpp" line="1511"/>
         <source>Coffee</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1538"/>
+        <location filename="../cpp/datautil.cpp" line="1573"/>
         <source>Now saving Conference Data to Cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1675"/>
+        <location filename="../cpp/datautil.cpp" line="1710"/>
         <source>All done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1930"/>
+        <location filename="../cpp/datautil.cpp" line="1967"/>
         <source>API Version </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1932"/>
+        <location filename="../cpp/datautil.cpp" line="1969"/>
         <source>Last Update </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2094"/>
+        <location filename="../cpp/datautil.cpp" line="2131"/>
         <source>No JSON Object received for Version Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2099"/>
+        <location filename="../cpp/datautil.cpp" line="2136"/>
         <source>Version Check: received Version Map is empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2103"/>
+        <location filename="../cpp/datautil.cpp" line="2140"/>
         <source>Version Check: received Version Map missed Version Property</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2108"/>
+        <location filename="../cpp/datautil.cpp" line="2145"/>
         <source>Error: Received Map missed &apos;version&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2116"/>
+        <location filename="../cpp/datautil.cpp" line="2153"/>
         <source>Error: &apos;Version&apos; wrong: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -537,12 +537,12 @@ Reloading current Data</source>
 <context>
     <name>DayPage</name>
     <message>
-        <location filename="../qml/pages/DayPage.qml" line="62"/>
+        <location filename="../qml/pages/DayPage.qml" line="63"/>
         <source>No Session found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DayPage.qml" line="67"/>
+        <location filename="../qml/pages/DayPage.qml" line="68"/>
         <source>Too late for a Session</source>
         <translation type="unfinished"></translation>
     </message>
@@ -998,27 +998,27 @@ Do you want to exit and leave the App ?
 <context>
     <name>SessionDetailPage</name>
     <message>
-        <location filename="../qml/pages/SessionDetailPage.qml" line="90"/>
+        <location filename="../qml/pages/SessionDetailPage.qml" line="98"/>
         <source>Added to Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionDetailPage.qml" line="92"/>
+        <location filename="../qml/pages/SessionDetailPage.qml" line="100"/>
         <source>Removed from Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionDetailPage.qml" line="234"/>
+        <location filename="../qml/pages/SessionDetailPage.qml" line="245"/>
         <source>Speaker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionDetailPage.qml" line="242"/>
+        <location filename="../qml/pages/SessionDetailPage.qml" line="253"/>
         <source>Tap on the Speaker Data to get the Details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionDetailPage.qml" line="275"/>
+        <location filename="../qml/pages/SessionDetailPage.qml" line="286"/>
         <source>Unnamed Speaker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1026,12 +1026,12 @@ Do you want to exit and leave the App ?
 <context>
     <name>SessionListView</name>
     <message>
-        <location filename="../qml/pages/SessionListView.qml" line="174"/>
+        <location filename="../qml/pages/SessionListView.qml" line="170"/>
         <source>Added to Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionListView.qml" line="176"/>
+        <location filename="../qml/pages/SessionListView.qml" line="172"/>
         <source>Removed from Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1062,43 +1062,43 @@ Do you want to exit and leave the App ?
 <context>
     <name>SpeakerDetailPage</name>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="62"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="65"/>
         <source>Unnamed Speaker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="95"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="108"/>
         <source>Talks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="103"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="116"/>
         <source>Tap on the Talk Icon or Menu Button to get the Details.
 Tap on the Star Icon to add to / remove from your personal schedule.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="152"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="167"/>
         <source> Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="196"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="212"/>
         <source>Session Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="202"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="218"/>
         <source>Room Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="256"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="274"/>
         <source>Added to Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="258"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="276"/>
         <source>Removed from Personal Schedule</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1106,7 +1106,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
 <context>
     <name>SpeakerListPage</name>
     <message>
-        <location filename="../qml/pages/SpeakerListPage.qml" line="64"/>
+        <location filename="../qml/pages/SpeakerListPage.qml" line="65"/>
         <source>Unnamed Speaker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1168,12 +1168,12 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
 <context>
     <name>TextAreaRow</name>
     <message>
-        <location filename="../qml/common/TextAreaRow.qml" line="67"/>
+        <location filename="../qml/common/TextAreaRow.qml" line="69"/>
         <source>Word Selection by Double Tap switched ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/TextAreaRow.qml" line="69"/>
+        <location filename="../qml/common/TextAreaRow.qml" line="71"/>
         <source>Word Selection by Double Tap switched OFF</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1233,7 +1233,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
 <context>
     <name>TrackSessionListPage</name>
     <message>
-        <location filename="../qml/pages/TrackSessionListPage.qml" line="89"/>
+        <location filename="../qml/pages/TrackSessionListPage.qml" line="90"/>
         <source>* no Track assigned *</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1347,7 +1347,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="711"/>
+        <location filename="../qml/main.qml" line="707"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
