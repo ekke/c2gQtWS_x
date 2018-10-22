@@ -116,8 +116,9 @@ QString DataServer::networkInfo()
     case utility::ReachableViaWWAN:
         networkInfo.append(tr("mobile data internet connection"));
         break;
-    default:
-        break;
+//  could be removed because all possible values are covered
+//  default:
+//      break;
     }
 #else
     QString activeNetworkConfigNames;
