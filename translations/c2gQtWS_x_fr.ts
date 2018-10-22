@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="fr_FR">
 <context>
     <name>AboutPage</name>
     <message>
@@ -9,7 +9,10 @@
 QtWS 2018
 Boston + Berlin
 (Qt 5.11 - Android + iOS)</source>
-        <translation type="unfinished"></translation>
+        <translation>Conference2Go
+QtWS 2018
+Boston + Berlin
+(Qt 5.11 - Android + iOS)</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="53"/>
@@ -17,54 +20,56 @@ Boston + Berlin
 QtWS 2018
 Boston + Berlin
 (Qt 5.11 - crossplatform)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="67"/>
         <source>Conference2Go QtWS 2018
 developed by ekke (@ekkescorner)</source>
-        <translation type="unfinished"></translation>
+        <translation>Conference2Go QtWS 2018
+developpé par ekke (@ekkescorner)</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="76"/>
         <source>This APP is developed with Qt 5.11 and &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cette application a été développée avec Qt 5.11 et &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>All work is done in my spare time and complete sourcecode is available at &lt;a href=&quot;https://github.com/ekke/c2gQtWS_x&quot;&gt;Github&lt;/a&gt;</source>
-        <translation></translation>
+        <translation>Ce travail a été entièrement réalisé sur mon temps libre, le code est disponible sur &lt;a href=\&quot;https://github.com/ekke/c2gQtWS_x\&quot;&gt;Github&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="95"/>
         <source>My blog series about &lt;a href=&quot;http://j.mp/qt-x&quot;&gt;Qt for x-platform Business Apps&lt;/a&gt;</source>
-        <translation></translation>
+        <translation>Ma série de blogs au sujet des &lt;a href=&quot;http://j.mp/qt-x&quot;&gt;Applications professionnelles multi-plateformes avec Qt&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="104"/>
         <source>You want to discuss about this App or Qt for Mobile App Development ? &lt;a href=&quot;http://slackin.qtmob.org/&quot;&gt;Join QtMob&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Voulez-vous discuter de cette application ou de développement d&apos;application mobile ? &lt;a href=&quot;http://slackin.qtmob.org/&quot;&gt;Rejoignez QtMob&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="115"/>
         <source>Need a Business APP for Android and iOS ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous avez besoin d&apos;une application métier pour Android ou iOS ?</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="125"/>
         <source>Need a Business APP for mobile ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous avez besoin d&apos;une appli mobile ?</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="144"/>
         <source>ekke is BlackBerry Elite Developer and QtChampion.</source>
-        <translation type="unfinished"></translation>
+        <translation>ekke est BlackBerry Elite Developer ainsi que QtChampion.</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="134"/>
         <source>ekke is doing international development for Enterprise and SMB (Small and Medium Business). Most APPs are &apos;hidden&apos; because they&apos;re running as inhouse APP at customer site.
 This Conference App will give you some impressions what kind of APPs you can expect. Need an APP ? ask ekke</source>
-        <translation></translation>
+        <translation>ekke fait du développement à l&apos;international pour les petites et moyennes entreprises. La plupart des applis ne sont pas visibles publiquement car déployées sur les infrastructures clientes.
+ Cette application permet de démontrer le type d&apos;application que vous obtiendrez. Besoin d&apos;une appli ? consultez ekke</translation>
     </message>
 </context>
 <context>
@@ -72,102 +77,102 @@ This Conference App will give you some impressions what kind of APPs you can exp
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="23"/>
         <source>Select Material Accent Color</source>
-        <translation></translation>
+        <translation>Sélectionnez la couleur Material Accent</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="70"/>
         <source>Material Red</source>
-        <translation type="unfinished"></translation>
+        <translation>Rouge</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="71"/>
         <source>Material Pink</source>
-        <translation type="unfinished"></translation>
+        <translation>Rose</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="72"/>
         <source>Material Purple</source>
-        <translation type="unfinished"></translation>
+        <translation>Violet</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="73"/>
         <source>Material DeepPurple</source>
-        <translation type="unfinished"></translation>
+        <translation>Violet foncé</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="74"/>
         <source>Material Indigo</source>
-        <translation type="unfinished"></translation>
+        <translation>Indigo</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="75"/>
         <source>Material Blue</source>
-        <translation type="unfinished"></translation>
+        <translation>Bleu</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="76"/>
         <source>Material LightBlue</source>
-        <translation type="unfinished"></translation>
+        <translation>Bleu clair</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="77"/>
         <source>Material Cyan</source>
-        <translation type="unfinished"></translation>
+        <translation>Cyan</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="78"/>
         <source>Material Teal</source>
-        <translation type="unfinished"></translation>
+        <translation>Sarcelle</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="79"/>
         <source>Material Green</source>
-        <translation type="unfinished"></translation>
+        <translation>Vert</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="80"/>
         <source>Material LightGreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Vert clair</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="81"/>
         <source>Material Lime</source>
-        <translation type="unfinished"></translation>
+        <translation>Citron</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="82"/>
         <source>Material Yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Jaune</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="83"/>
         <source>Material Amber</source>
-        <translation type="unfinished"></translation>
+        <translation>Ambre</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="84"/>
         <source>Material Orange</source>
-        <translation type="unfinished"></translation>
+        <translation>Orange</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="85"/>
         <source>Material DeepOrange</source>
-        <translation type="unfinished"></translation>
+        <translation>Orange foncé</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="86"/>
         <source>Material Brown</source>
-        <translation type="unfinished"></translation>
+        <translation>Marron</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="87"/>
         <source>Material Grey</source>
-        <translation type="unfinished"></translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <location filename="../qml/pages/AccentColorPage.qml" line="88"/>
         <source>Material BlueGrey</source>
-        <translation type="unfinished"></translation>
+        <translation>Bleu gris</translation>
     </message>
 </context>
 <context>
@@ -175,7 +180,7 @@ This Conference App will give you some impressions what kind of APPs you can exp
     <message>
         <location filename="../qml/common/ComboBoxButton.qml" line="11"/>
         <source>Please select</source>
-        <translation type="unfinished"></translation>
+        <translation>Veuillez sélectionner</translation>
     </message>
 </context>
 <context>
@@ -184,18 +189,18 @@ This Conference App will give you some impressions what kind of APPs you can exp
         <location filename="../qml/common/CommunicationMenu.qml" line="34"/>
         <location filename="../qml/common/CommunicationMenu.qml" line="66"/>
         <source>Phone Call</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléphone</translation>
     </message>
     <message>
         <location filename="../qml/common/CommunicationMenu.qml" line="41"/>
         <location filename="../qml/common/CommunicationMenu.qml" line="73"/>
         <source>SMS</source>
-        <translation type="unfinished"></translation>
+        <translation>SMS</translation>
     </message>
     <message>
         <location filename="../qml/common/CommunicationMenu.qml" line="80"/>
         <source>Facetime</source>
-        <translation type="unfinished"></translation>
+        <translation>Facetime</translation>
     </message>
 </context>
 <context>
@@ -204,33 +209,35 @@ This Conference App will give you some impressions what kind of APPs you can exp
         <location filename="../cpp/dataserver.cpp" line="101"/>
         <source>YES
 </source>
-        <translation type="unfinished"></translation>
+        <translation>OUI
+</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="103"/>
         <source>NO
 </source>
-        <translation type="unfinished"></translation>
+        <translation>NON
+</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="111"/>
         <source>Internet not reachable</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas de connexion Internet</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="114"/>
         <source>WiFi internet connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexion WIFI</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="117"/>
         <source>mobile data internet connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexion données mobiles</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="142"/>
         <source>no network connection - WIFI On ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas de connection réseau - le WIFI est-il activé ?</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="228"/>
@@ -240,54 +247,54 @@ This Conference App will give you some impressions what kind of APPs you can exp
         <location filename="../cpp/dataserver.cpp" line="305"/>
         <location filename="../cpp/dataserver.cpp" line="309"/>
         <source>No Network Access</source>
-        <translation></translation>
+        <translation>Pas d&apos;accès réseau</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="338"/>
         <location filename="../cpp/dataserver.cpp" line="385"/>
         <location filename="../cpp/dataserver.cpp" line="420"/>
         <source>No Network Reply</source>
-        <translation></translation>
+        <translation>Pas de réponse du serveur</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="344"/>
         <source>No Schedule Data received</source>
-        <translation></translation>
+        <translation>Pas de réponse des données Schedule</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="351"/>
         <source>No sucess getting Schedule from Server. Got HTTP Status </source>
-        <translation></translation>
+        <translation>Echec de l&apos;obtention des données Schedule. Reçu l&apos;état HTTP </translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="362"/>
         <source>Schedule Data cannot be written</source>
-        <translation></translation>
+        <translation>Erreur d&apos;écriture des données Schedule</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="391"/>
         <source>No Speaker Data received</source>
-        <translation></translation>
+        <translation>Pas de réponse des données Speaker</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="398"/>
         <source>No sucess getting Speaker from Server. Got HTTP Status </source>
-        <translation></translation>
+        <translation>Echec de l&apos;obtention des données Speaker. Reçu l&apos;état HTTP </translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="405"/>
         <source>Speaker Data cannot be written</source>
-        <translation></translation>
+        <translation>Erreur d&apos;écriture des données Speaker</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="426"/>
         <source>No Version Data received</source>
-        <translation></translation>
+        <translation>Pas de réponse des données Version Data</translation>
     </message>
     <message>
         <location filename="../cpp/dataserver.cpp" line="433"/>
         <source>No sucess getting Version from Server. Got HTTP Status </source>
-        <translation></translation>
+        <translation>Echec de l&apos;obtention des données Version. Reçu l&apos;état HTTP </translation>
     </message>
 </context>
 <context>
@@ -295,17 +302,17 @@ This Conference App will give you some impressions what kind of APPs you can exp
     <message>
         <location filename="../cpp/datautil.cpp" line="198"/>
         <source> Minutes)</source>
-        <translation></translation>
+        <translation> Minutes)</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="201"/>
         <source>Registration</source>
-        <translation></translation>
+        <translation>Enregistrement</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="204"/>
         <source>Event</source>
-        <translation></translation>
+        <translation>Evènement</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="207"/>
@@ -314,7 +321,7 @@ This Conference App will give you some impressions what kind of APPs you can exp
         <location filename="../cpp/datautil.cpp" line="1449"/>
         <location filename="../cpp/datautil.cpp" line="1526"/>
         <source>Lunch</source>
-        <translation></translation>
+        <translation>Déjeuner</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="209"/>
@@ -323,27 +330,27 @@ This Conference App will give you some impressions what kind of APPs you can exp
         <location filename="../cpp/datautil.cpp" line="1464"/>
         <location filename="../cpp/datautil.cpp" line="1541"/>
         <source>Break</source>
-        <translation></translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="212"/>
         <source>Training</source>
-        <translation></translation>
+        <translation>Formation</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="215"/>
         <source>Lightning Talk</source>
-        <translation></translation>
+        <translation>Lightning Talk</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="218"/>
         <source>Keynote</source>
-        <translation></translation>
+        <translation>Keynote</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="221"/>
         <source>Community</source>
-        <translation></translation>
+        <translation>Communauté</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="224"/>
@@ -353,100 +360,100 @@ This Conference App will give you some impressions what kind of APPs you can exp
     <message>
         <location filename="../cpp/datautil.cpp" line="227"/>
         <source>Meeting</source>
-        <translation></translation>
+        <translation>Réunion</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="229"/>
         <source>Session</source>
-        <translation></translation>
+        <translation>Session</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="266"/>
         <source> Rollback</source>
-        <translation></translation>
+        <translation> Annulation</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="270"/>
         <source> Reload</source>
-        <translation></translation>
+        <translation> Rechargement</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="372"/>
         <source>Room unknown</source>
-        <translation></translation>
+        <translation>Salle non connue</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="885"/>
         <source>startUpdate - Cannot create Directories</source>
-        <translation></translation>
+        <translation>début mise à jour - création des répertoires impossible</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="888"/>
         <source>Request Schedule and Speakers from Server</source>
-        <translation></translation>
+        <translation>Demande de la programmation et des conférenciers auprès du serveur</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="895"/>
         <source>Save Favorites</source>
-        <translation></translation>
+        <translation>Enregistrement des favoris</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="900"/>
         <source>Sync Speaker</source>
-        <translation></translation>
+        <translation>Synchronisation des Speakers</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="908"/>
         <source>Update failed. No Speaker received.
 Reloading current Data</source>
-        <translation></translation>
+        <translation>Echec de la mise à jour. Pas de réponse des données Speaker</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="985"/>
         <source>Sync Speaker Images</source>
-        <translation></translation>
+        <translation>Synchronisation des photo Speakers</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1079"/>
         <source>Error: Received Map is empty.</source>
-        <translation></translation>
+        <translation>Erreur : la liste reçue est vide.</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1085"/>
         <source>Error: Received Map missed &apos;conference&apos;.</source>
-        <translation></translation>
+        <translation>Erreur : la Map reçu ne contient pas &apos;conference&apos;.</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1122"/>
         <source>Error: Received Map missed &apos;days&apos;.</source>
-        <translation></translation>
+        <translation>Erreur : la Map reçue ne contient pas &apos;days&apos;.</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1031"/>
         <source>Schedule and Speaker successfully synchronized :)</source>
-        <translation></translation>
+        <translation>La programmation et la liste des conférenciers ont été synchronisés avec succès :)</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1044"/>
         <source>Sync Sessions </source>
-        <translation type="unfinished"></translation>
+        <translation>Synchronisation des sessions </translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1050"/>
         <location filename="../cpp/datautil.cpp" line="1264"/>
         <location filename="../cpp/datautil.cpp" line="1421"/>
         <source>Error: Data missed &apos;conference&apos;.</source>
-        <translation></translation>
+        <translation>Erreur : les données ne contiennent pas &apos;conference&apos;.</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1127"/>
         <source>Error: # of &apos;days&apos; expected: </source>
-        <translation></translation>
+        <translation>Erreur : # de &apos;days&apos; attendu: </translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1253"/>
         <source>Schedule successfully synchronized :)</source>
-        <translation type="unfinished"></translation>
+        <translation>La programmation a été synchronisée avec succès :)</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1277"/>
@@ -454,7 +461,7 @@ Reloading current Data</source>
         <location filename="../cpp/datautil.cpp" line="1434"/>
         <location filename="../cpp/datautil.cpp" line="1496"/>
         <source>Registration and Coffee</source>
-        <translation></translation>
+        <translation>Enregistrement et accueil</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1322"/>
@@ -462,58 +469,58 @@ Reloading current Data</source>
         <location filename="../cpp/datautil.cpp" line="1479"/>
         <location filename="../cpp/datautil.cpp" line="1556"/>
         <source>Networking and Drinks</source>
-        <translation></translation>
+        <translation>Réseautage et raffraichissements</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1354"/>
         <location filename="../cpp/datautil.cpp" line="1511"/>
         <source>Coffee</source>
-        <translation></translation>
+        <translation>Café</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1573"/>
         <source>Now saving Conference Data to Cache</source>
-        <translation></translation>
+        <translation>Enregistrement des données Conference dans le cache</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1710"/>
         <source>All done</source>
-        <translation></translation>
+        <translation>Terminé</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1967"/>
         <source>API Version </source>
-        <translation></translation>
+        <translation>Version API </translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1969"/>
         <source>Last Update </source>
-        <translation></translation>
+        <translation>Dernière mise à jour </translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="2131"/>
         <source>No JSON Object received for Version Check</source>
-        <translation></translation>
+        <translation>Pas d&apos;objet JSON reçu pour la vérification de Version</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="2136"/>
         <source>Version Check: received Version Map is empty</source>
-        <translation></translation>
+        <translation>Vérification de version : la map de Version est vide</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="2140"/>
         <source>Version Check: received Version Map missed Version Property</source>
-        <translation></translation>
+        <translation>Vérification de version : la map de Version ne contient pas la propriété Version</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="2145"/>
         <source>Error: Received Map missed &apos;version&apos;.</source>
-        <translation></translation>
+        <translation>Erreur : la Map reçue ne contient pas &apos;version&apos;.</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="2153"/>
         <source>Error: &apos;Version&apos; wrong: </source>
-        <translation></translation>
+        <translation>Erreur : &apos;Version&apos; incorrect: </translation>
     </message>
 </context>
 <context>
@@ -521,17 +528,17 @@ Reloading current Data</source>
     <message>
         <location filename="../qml/popups/DatePicker.qml" line="284"/>
         <source>Today</source>
-        <translation></translation>
+        <translation>Aujourd&apos;hui</translation>
     </message>
     <message>
         <location filename="../qml/popups/DatePicker.qml" line="295"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/popups/DatePicker.qml" line="304"/>
         <source>OK</source>
-        <translation></translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -539,12 +546,12 @@ Reloading current Data</source>
     <message>
         <location filename="../qml/pages/DayPage.qml" line="63"/>
         <source>No Session found</source>
-        <translation></translation>
+        <translation>Pas de session trouvée</translation>
     </message>
     <message>
         <location filename="../qml/pages/DayPage.qml" line="68"/>
         <source>Too late for a Session</source>
-        <translation></translation>
+        <translation>Trop tard pour une Session</translation>
     </message>
 </context>
 <context>
@@ -552,12 +559,12 @@ Reloading current Data</source>
     <message>
         <location filename="../qml/navigation/DrawerTitleBar.qml" line="138"/>
         <source>Help</source>
-        <translation></translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <location filename="../qml/navigation/DrawerTitleBar.qml" line="144"/>
         <source>About</source>
-        <translation></translation>
+        <translation>A propos</translation>
     </message>
 </context>
 <context>
@@ -565,12 +572,12 @@ Reloading current Data</source>
     <message>
         <location filename="../qml/common/FooterCancelSave.qml" line="28"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/common/FooterCancelSave.qml" line="36"/>
         <source>Save</source>
-        <translation></translation>
+        <translation>Enregistrer</translation>
     </message>
 </context>
 <context>
@@ -581,7 +588,10 @@ Reloading current Data</source>
 QtWS 2018
 Boston + Berlin
 (Qt 5.11 - Android + iOS)</source>
-        <translation type="unfinished"></translation>
+        <translation>Conference2Go
+QtWS 2018
+Boston + Berlin
+(Qt 5.11 - Android + iOS)</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="44"/>
@@ -589,132 +599,135 @@ Boston + Berlin
 QtWS 2018
 Boston + Berlin
 (Qt 5.11 crossplatform)</source>
-        <translation type="unfinished"></translation>
+        <translation>Conference2Go
+QtWS 2018
+Boston + Berlin
+(Qt 5.11 crossplatform)</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="51"/>
         <source>Misc</source>
-        <translation></translation>
+        <translation>Divers</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="56"/>
         <source>Menu Button: Opens the Drawer. Drawer can also be opened with Gestures: swiping from left site.</source>
-        <translation></translation>
+        <translation>Bouton Menu: Ouvre le menu surgissant, peut aussi s&apos;ouvrir en glissant le droit depuis la gauche.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="60"/>
         <source>Options Button: Opens a Menu with some options.</source>
-        <translation></translation>
+        <translation>Bouton Options : ouvre le menu de configuration.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="64"/>
         <source>Back Button: Top/Left from TitleBar goes one Page back. On Android you can also use OS - specific Back Button below the Page.</source>
-        <translation></translation>
+        <translation>Bouton retour arrière: Haut/Gauche depuis la barre de titres retourne à la page précédente. Sur Android on peut aussi utiliser le bouton Retour sous la page.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="68"/>
         <source>Speed Navigation: Back to the List below in the stack without the need to move fingers to Top/Left Back Button.</source>
-        <translation></translation>
+        <translation>Navigation rapide: aller directement à la fin de la liste.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="72"/>
         <source>QtWS 2018</source>
-        <translation type="unfinished"></translation>
+        <translation>QtWS 2018</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="77"/>
         <source>Homepage - the first Page. QtWS 2018 App supports both 2018 conferences in Boston and Berlin. Form this Page you can switch between Conferences.</source>
-        <translation>Homepage - the first Page. QtWS 2018 App supports both 2018 conferences in Boston and Berlin. From this Page you can switch between Conferences.</translation>
+        <translation>Accueil - la page racine. L&apos;application QtWS 2018 gère les 2 conférences de 2018 à Boston et à Berlin. Depuis cette Page vous pouvez basculer entre les conférences.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="81"/>
         <source>QtWS checks automatically if an Update is required. To start Schedule- and Speaker Updates manually please tap on the Refresh Button. This Button is only visible if you rejected Auto - Update</source>
-        <translation type="unfinished"></translation>
+        <translation>QtWS vérifie automatiquement si une mise à jour est nécessaire. Pour déclencher une mise à jour manuelle du programme et des Speaker veuillez appuyer sur le bouton mise à jour. Ce bouton n&apos;est visibile que si vous avez désactivé la mise à jour automatique</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="107"/>
         <source>List of all Speakers sorted by Last Name. This List contains Speakers from both Conferences (Boston, Berlin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste de tous les Speakers triés par leur nom. Cette liste contient les Speakers des deux conférences (Boston, Berlin)</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="129"/>
         <source>Informations and Address of the Venue.</source>
-        <translation></translation>
+        <translation>Informations utiles pour venir.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="137"/>
         <source>Sessions</source>
-        <translation></translation>
+        <translation>Sessions</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="85"/>
         <source>Schedule</source>
-        <translation></translation>
+        <translation>Programme</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="90"/>
         <source>Complete Conference Schedule separated by Days and sorted by Starttime. Switch between Conference Days by Swiping left/right or tapping on a Tab from Tab Bar.</source>
-        <translation></translation>
+        <translation>Le programme complet groupé par jour et triés par heure de démarrage. Changer les heures de conférences en balayant latéralement ou en sélectionnant l&apos;onglet.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="94"/>
         <source>Button to see your Personal Conference Schedule. Mark Sessions for your Personal Schedule by checking the Favorites Button.</source>
-        <translation></translation>
+        <translation>Bouton pour voir votre programme personnel. Ajouter les sessions à votre sélection en utilisant le bouton Favoris.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="98"/>
         <source>There are many Sessions listed for a Day - to make it easier to jump to a specific Timeslot tap on this Button and select the Time.</source>
-        <translation></translation>
+        <translation>Il y a beaucoup de sessions par jour - pour faciliter la sélection vous pouvez définir une heure avec ce bouton.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="102"/>
         <source>Speaker</source>
-        <translation></translation>
+        <translation>Speaker</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="111"/>
         <source>To find a specific Speaker tap on this Button and select the Letter.</source>
-        <translation></translation>
+        <translation>Pour trouver un Speaker en particulier, utiliser ce bouton et sélectionner une lettre.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="115"/>
         <source>Tracks</source>
-        <translation></translation>
+        <translation>Tracks</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="120"/>
         <source>List of all Conference Tracks. Tap on a row to see all Sessions of selected Track.</source>
-        <translation></translation>
+        <translation>Liste de toutes les Tracks de la conférence. Appuyer sur une ligne pour voir les sessions de la Track sélectionnée.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="124"/>
         <source>Venue</source>
-        <translation></translation>
+        <translation>Localisation</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="133"/>
         <source>List of all Rooms. Tap on a Row to see all Sessions running in this Room. Tap on the Thumbnail to see the Floorplan of the selected Room.</source>
-        <translation></translation>
+        <translation>Liste des salles. Appuyer sur une ligne pour voir les sessions de la salle sélectionnée. Appuyer sur l&apos;icone pour voir le plan de la salle.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="142"/>
         <source>The Favorites Button. Tap on it to mark a Session and to add this to your Personal Schedule. Button is a Toggle - tap again to remove from your Personal Schedule.</source>
-        <translation></translation>
+        <translation>La bouton des favoris. Appuyer pour marquer une session et l&apos;ajouter à votre programme personel. Le bouton est une bascule - appuyer de nouveau pour le retirer de votre programme.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="146"/>
         <source>See the Floorplan of the Room where the Session runs.</source>
-        <translation></translation>
+        <translation>Voir le plan de la salle accueillant la session.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="150"/>
         <source>Conference Date.</source>
-        <translation></translation>
+        <translation>Date de conférence.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="154"/>
         <source>Session Time from - to.</source>
-        <translation></translation>
+        <translation>Horaires de la session.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="160"/>
@@ -722,7 +735,10 @@ Boston + Berlin
 Follow @ekkescorner at Twitter
 follow ekkes blogs:
 http://appbus.org and http://ekkes-corner.org</source>
-        <translation></translation>
+        <translation>Besoin d&apos;informations ?
+Suivez @ekkescorner sur Twitter
+ou sur son blog:
+http://appbus.org and http://ekkes-corner.org</translation>
     </message>
 </context>
 <context>
@@ -731,52 +747,58 @@ http://appbus.org and http://ekkes-corner.org</source>
         <location filename="../qml/pages/HomePage.qml" line="52"/>
         <source>October, 29-30
 BOSTON, Massachusetts</source>
-        <translation type="unfinished"></translation>
+        <translation>29-30 octobre
+BOSTON, Massachusetts</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="52"/>
         <source>December, 05-06
 BERLIN, Germany</source>
-        <translation></translation>
+        <translation>05-06 décembre
+BERLIN, Germany</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="62"/>
         <source>Change to %1</source>
-        <translation></translation>
+        <translation>Changer vers %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="88"/>
         <source>Sorry - the Conference is closed.
 No more Updates available</source>
-        <translation></translation>
+        <translation>Désolé la conférence est terminée.
+Il n&apos;y a plus de mise à jour disponible</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="98"/>
         <source>Checking QtWS Server
 for new Schedule Data ...</source>
-        <translation></translation>
+        <translation>Vérification sur le serveur QtWS
+des informations du programme ...</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="110"/>
         <source>New Conference Data available ...</source>
-        <translation></translation>
+        <translation>Nouvelles données sur les conférences ...</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="146"/>
         <source>Update available.
 API Version: </source>
-        <translation></translation>
+        <translation>Mise à jour disponible.
+API Version: </translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="161"/>
         <source>No Update required.</source>
-        <translation></translation>
+        <translation>Pas de mise à jour disponible.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="171"/>
         <source>Version Check failed:
 </source>
-        <translation></translation>
+        <translation>Echec de la vérification de version:
+</translation>
     </message>
 </context>
 <context>
@@ -785,19 +807,22 @@ API Version: </source>
         <location filename="../qml/pages/InitialItemPage.qml" line="17"/>
         <source>Welcome to
 Qt World Summit 2018</source>
-        <translation></translation>
+        <translation>Bienvenue au
+Qt World Summit 2018</translation>
     </message>
     <message>
         <location filename="../qml/pages/InitialItemPage.qml" line="73"/>
         <source>Conference2Go APP
 for
 QtWS 2018</source>
-        <translation></translation>
+        <translation>L&apos;appli Conference2Go
+pour
+QtWS 2018</translation>
     </message>
     <message>
         <location filename="../qml/pages/InitialItemPage.qml" line="74"/>
         <source>Conference Schedule will be updated...</source>
-        <translation></translation>
+        <translation>Le programme des conférences va être mis à jour...</translation>
     </message>
 </context>
 <context>
@@ -805,13 +830,14 @@ QtWS 2018</source>
     <message>
         <location filename="../qml/pages/MySchedulePage.qml" line="29"/>
         <source>My Personal Schedule</source>
-        <translation></translation>
+        <translation>Mon programme</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySchedulePage.qml" line="83"/>
         <source>Your Personal Schedule is empty.
 Tap on the &apos;Star&apos; to add or remove</source>
-        <translation></translation>
+        <translation>Votre programme est vide.
+Appuyer sur l&apos;étoile de favori pour ajouter ou supprimer</translation>
     </message>
 </context>
 <context>
@@ -822,17 +848,20 @@ Tap on the &apos;Star&apos; to add or remove</source>
 Do you want to exit and leave the App ?
 
 </source>
-        <translation></translation>
+        <translation>Plus de pages
+Voulez-vous quitter l&apos;application ?
+
+</translation>
     </message>
     <message>
         <location filename="../qml/popups/PopupExit.qml" line="33"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/popups/PopupExit.qml" line="42"/>
         <source>Exit the App</source>
-        <translation></translation>
+        <translation>Quitter l&apos;application</translation>
     </message>
 </context>
 <context>
@@ -840,27 +869,27 @@ Do you want to exit and leave the App ?
     <message>
         <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
         <source>OK</source>
-        <translation></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
         <source>Later</source>
-        <translation></translation>
+        <translation>Plus tard</translation>
     </message>
     <message>
         <location filename="../qml/popups/PopupUpdate.qml" line="60"/>
         <source>Manually</source>
-        <translation></translation>
+        <translation>Manuel</translation>
     </message>
     <message>
         <location filename="../qml/popups/PopupUpdate.qml" line="71"/>
         <source>Update</source>
-        <translation></translation>
+        <translation>Mise à jour</translation>
     </message>
 </context>
 <context>
@@ -868,102 +897,102 @@ Do you want to exit and leave the App ?
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="23"/>
         <source>Select Material Primary Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection de la couleur principale</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="64"/>
         <source>Material Red</source>
-        <translation type="unfinished"></translation>
+        <translation>Rouge</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="65"/>
         <source>Material Pink</source>
-        <translation type="unfinished"></translation>
+        <translation>Rose</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="66"/>
         <source>Material Purple</source>
-        <translation type="unfinished"></translation>
+        <translation>Violet</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="67"/>
         <source>Material DeepPurple</source>
-        <translation type="unfinished"></translation>
+        <translation>Violet foncé</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="68"/>
         <source>Material Indigo</source>
-        <translation type="unfinished"></translation>
+        <translation>Indigo</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="69"/>
         <source>Material Blue</source>
-        <translation type="unfinished"></translation>
+        <translation>Bleu</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="70"/>
         <source>Material LightBlue</source>
-        <translation type="unfinished"></translation>
+        <translation>Bleu clair</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="71"/>
         <source>Material Cyan</source>
-        <translation type="unfinished"></translation>
+        <translation>Cyan</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="72"/>
         <source>Material Teal</source>
-        <translation type="unfinished"></translation>
+        <translation>Sarcelle</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="73"/>
         <source>Material Green</source>
-        <translation type="unfinished"></translation>
+        <translation>Vert</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="74"/>
         <source>Material LightGreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Vert clair</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="75"/>
         <source>Material Lime</source>
-        <translation type="unfinished"></translation>
+        <translation>Citron</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="76"/>
         <source>Material Yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Jaune</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="77"/>
         <source>Material Amber</source>
-        <translation type="unfinished"></translation>
+        <translation>Ambre</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="78"/>
         <source>Material Orange</source>
-        <translation type="unfinished"></translation>
+        <translation>Orange</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="79"/>
         <source>Material DeepOrange</source>
-        <translation type="unfinished"></translation>
+        <translation>Orange foncé</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="80"/>
         <source>Material Brown</source>
-        <translation type="unfinished"></translation>
+        <translation>Marron</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="81"/>
         <source>Material Grey</source>
-        <translation type="unfinished"></translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <location filename="../qml/pages/PrimaryColorPage.qml" line="82"/>
         <source>Material BlueGrey</source>
-        <translation type="unfinished"></translation>
+        <translation>Bleu gris</translation>
     </message>
 </context>
 <context>
@@ -971,7 +1000,7 @@ Do you want to exit and leave the App ?
     <message>
         <location filename="../qml/pages/RoomListPage.qml" line="70"/>
         <source> Sessions</source>
-        <translation></translation>
+        <translation> Sessions</translation>
     </message>
 </context>
 <context>
@@ -979,12 +1008,12 @@ Do you want to exit and leave the App ?
     <message>
         <location filename="../qml/navigation/ScheduleNavigation.qml" line="273"/>
         <source>GoTo Talks @</source>
-        <translation></translation>
+        <translation>Aller à la session @</translation>
     </message>
     <message>
         <location filename="../qml/navigation/ScheduleNavigation.qml" line="284"/>
         <source>No Time selected</source>
-        <translation></translation>
+        <translation>Pas d&apos;heure sélectionnée</translation>
     </message>
 </context>
 <context>
@@ -992,7 +1021,7 @@ Do you want to exit and leave the App ?
     <message>
         <location filename="../qml/common/SearchTextPane.qml" line="39"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher</translation>
     </message>
 </context>
 <context>
@@ -1000,27 +1029,27 @@ Do you want to exit and leave the App ?
     <message>
         <location filename="../qml/pages/SessionDetailPage.qml" line="98"/>
         <source>Added to Personal Schedule</source>
-        <translation></translation>
+        <translation>Ajouté à votre programme</translation>
     </message>
     <message>
         <location filename="../qml/pages/SessionDetailPage.qml" line="100"/>
         <source>Removed from Personal Schedule</source>
-        <translation></translation>
+        <translation>Retiré de votre programme</translation>
     </message>
     <message>
         <location filename="../qml/pages/SessionDetailPage.qml" line="245"/>
         <source>Speaker</source>
-        <translation></translation>
+        <translation>Speaker</translation>
     </message>
     <message>
         <location filename="../qml/pages/SessionDetailPage.qml" line="253"/>
         <source>Tap on the Speaker Data to get the Details.</source>
-        <translation></translation>
+        <translation>Appuyer sur le informations du Speaker pour voir les détails.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SessionDetailPage.qml" line="286"/>
         <source>Unnamed Speaker</source>
-        <translation></translation>
+        <translation>Speaker à confirmer</translation>
     </message>
 </context>
 <context>
@@ -1028,12 +1057,12 @@ Do you want to exit and leave the App ?
     <message>
         <location filename="../qml/pages/SessionListView.qml" line="170"/>
         <source>Added to Personal Schedule</source>
-        <translation></translation>
+        <translation>Ajouté à votre programme</translation>
     </message>
     <message>
         <location filename="../qml/pages/SessionListView.qml" line="172"/>
         <source>Removed from Personal Schedule</source>
-        <translation></translation>
+        <translation>Retiré de votre programme</translation>
     </message>
 </context>
 <context>
@@ -1041,22 +1070,22 @@ Do you want to exit and leave the App ?
     <message>
         <location filename="../qml/common/SimpleTextTitle.qml" line="42"/>
         <source>Light Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème clair</translation>
     </message>
     <message>
         <location filename="../qml/common/SimpleTextTitle.qml" line="42"/>
         <source>Dark Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème foncé</translation>
     </message>
     <message>
         <location filename="../qml/common/SimpleTextTitle.qml" line="48"/>
         <source>Select Primary Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner la couleur principale</translation>
     </message>
     <message>
         <location filename="../qml/common/SimpleTextTitle.qml" line="55"/>
         <source>Select Accent Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner la couleur de mise en évidence</translation>
     </message>
 </context>
 <context>
@@ -1064,43 +1093,44 @@ Do you want to exit and leave the App ?
     <message>
         <location filename="../qml/pages/SpeakerDetailPage.qml" line="65"/>
         <source>Unnamed Speaker</source>
-        <translation></translation>
+        <translation>Speaker à confirmer</translation>
     </message>
     <message>
         <location filename="../qml/pages/SpeakerDetailPage.qml" line="108"/>
         <source>Talks</source>
-        <translation></translation>
+        <translation>Conférence</translation>
     </message>
     <message>
         <location filename="../qml/pages/SpeakerDetailPage.qml" line="116"/>
         <source>Tap on the Talk Icon or Menu Button to get the Details.
 Tap on the Star Icon to add to / remove from your personal schedule.</source>
-        <translation></translation>
+        <translation>Appuyer sur l&apos;icone d&apos;une conférence ou sur le bouton du menu pour accéder aux détails.
+Cliquer sur l&apos;étoile pour ajouter / supprimer de votre programme.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SpeakerDetailPage.qml" line="167"/>
         <source> Minutes</source>
-        <translation></translation>
+        <translation> Minutes</translation>
     </message>
     <message>
         <location filename="../qml/pages/SpeakerDetailPage.qml" line="212"/>
         <source>Session Details</source>
-        <translation></translation>
+        <translation>Informations supplémentaires</translation>
     </message>
     <message>
         <location filename="../qml/pages/SpeakerDetailPage.qml" line="218"/>
         <source>Room Info</source>
-        <translation></translation>
+        <translation>Informations sur la salle</translation>
     </message>
     <message>
         <location filename="../qml/pages/SpeakerDetailPage.qml" line="274"/>
         <source>Added to Personal Schedule</source>
-        <translation></translation>
+        <translation>Ajouté à votre programme</translation>
     </message>
     <message>
         <location filename="../qml/pages/SpeakerDetailPage.qml" line="276"/>
         <source>Removed from Personal Schedule</source>
-        <translation></translation>
+        <translation>Retiré de votre programme</translation>
     </message>
 </context>
 <context>
@@ -1108,7 +1138,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/pages/SpeakerListPage.qml" line="65"/>
         <source>Unnamed Speaker</source>
-        <translation></translation>
+        <translation>Speaker non confirmé</translation>
     </message>
 </context>
 <context>
@@ -1116,7 +1146,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/navigation/SpeakerNavigation.qml" line="186"/>
         <source>GoTo</source>
-        <translation></translation>
+        <translation>Aller à</translation>
     </message>
 </context>
 <context>
@@ -1124,22 +1154,22 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/common/StackTextTitle.qml" line="55"/>
         <source>Light Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème clair</translation>
     </message>
     <message>
         <location filename="../qml/common/StackTextTitle.qml" line="55"/>
         <source>Dark Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème foncé</translation>
     </message>
     <message>
         <location filename="../qml/common/StackTextTitle.qml" line="61"/>
         <source>Select Primary Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner la couleur principale</translation>
     </message>
     <message>
         <location filename="../qml/common/StackTextTitle.qml" line="68"/>
         <source>Select Accent Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner la couleur de mise en évidence</translation>
     </message>
 </context>
 <context>
@@ -1147,22 +1177,22 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/common/SwipeTextTitle.qml" line="56"/>
         <source>Light Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème clair</translation>
     </message>
     <message>
         <location filename="../qml/common/SwipeTextTitle.qml" line="56"/>
         <source>Dark Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème foncé</translation>
     </message>
     <message>
         <location filename="../qml/common/SwipeTextTitle.qml" line="62"/>
         <source>Select Primary Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner la couleur principale</translation>
     </message>
     <message>
         <location filename="../qml/common/SwipeTextTitle.qml" line="69"/>
         <source>Select Accent Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner la couleur de mise en évidence</translation>
     </message>
 </context>
 <context>
@@ -1170,12 +1200,12 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/common/TextAreaRow.qml" line="69"/>
         <source>Word Selection by Double Tap switched ON</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection d&apos;un mot par double-appui activé</translation>
     </message>
     <message>
         <location filename="../qml/common/TextAreaRow.qml" line="71"/>
         <source>Word Selection by Double Tap switched OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection d&apos;un mot par double-appui désactivé</translation>
     </message>
 </context>
 <context>
@@ -1183,7 +1213,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/common/TextFieldDecimal.qml" line="18"/>
         <source>%1...%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1...%2</translation>
     </message>
 </context>
 <context>
@@ -1191,7 +1221,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/common/TextFieldInt.qml" line="14"/>
         <source>%1...%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1...%2</translation>
     </message>
 </context>
 <context>
@@ -1199,22 +1229,22 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/popups/TimePicker.qml" line="213"/>
         <source>Time (HH:MM)</source>
-        <translation></translation>
+        <translation>Heure (HH:MM)</translation>
     </message>
     <message>
         <location filename="../qml/popups/TimePicker.qml" line="323"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/popups/TimePicker.qml" line="336"/>
         <source>OK</source>
-        <translation></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../qml/popups/TimePicker.qml" line="367"/>
         <source>Now</source>
-        <translation></translation>
+        <translation>Maintenant</translation>
     </message>
 </context>
 <context>
@@ -1222,12 +1252,12 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/pages/TrackListPage.qml" line="77"/>
         <source>* No Track assigned *</source>
-        <translation></translation>
+        <translation>* pas de Track assigné *</translation>
     </message>
     <message>
         <location filename="../qml/pages/TrackListPage.qml" line="83"/>
         <source> Sessions</source>
-        <translation></translation>
+        <translation> Sessions</translation>
     </message>
 </context>
 <context>
@@ -1235,7 +1265,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/pages/TrackSessionListPage.qml" line="90"/>
         <source>* no Track assigned *</source>
-        <translation></translation>
+        <translation>* pas de Track assigné *</translation>
     </message>
 </context>
 <context>
@@ -1243,17 +1273,17 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/pages/VenuePage.qml" line="77"/>
         <source>&quot;&gt;Conference Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;&gt;site de la Conference</translation>
     </message>
     <message>
         <location filename="../qml/pages/VenuePage.qml" line="88"/>
         <source>&quot;&gt;See in Google Maps</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;&gt;Voir dans Google Maps</translation>
     </message>
     <message>
         <location filename="../qml/pages/VenuePage.qml" line="99"/>
         <source>&quot;&gt;See in Apple Map</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;&gt;Voir dans Apple Map</translation>
     </message>
 </context>
 <context>
@@ -1262,94 +1292,94 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
         <location filename="../qml/main.qml" line="92"/>
         <location filename="../qml/main.qml" line="94"/>
         <source>My Schedule</source>
-        <translation></translation>
+        <translation>Mon programme</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="98"/>
         <location filename="../qml/main.qml" line="100"/>
         <location filename="../qml/main.qml" line="212"/>
         <source>Schedule</source>
-        <translation></translation>
+        <translation>Programme</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="218"/>
         <source>Help</source>
-        <translation></translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="219"/>
         <source>About this App</source>
-        <translation></translation>
+        <translation>A propos de cette application</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="372"/>
         <source>No more Pages</source>
-        <translation></translation>
+        <translation>Plus de pages</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="213"/>
         <source>Speakers</source>
-        <translation></translation>
+        <translation>Speakers</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="216"/>
         <source>Rooms</source>
-        <translation></translation>
+        <translation>Salles</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="224"/>
         <source>Qt World Summit 2018</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt World Summit 2018</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="226"/>
         <source>QtWS 2018 Schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>Le programme</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="227"/>
         <source>QtWS 2018 Speakers</source>
-        <translation type="unfinished"></translation>
+        <translation>Les Speakers</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="228"/>
         <source>QtWS 2018 Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>Les tracks</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="229"/>
         <source>QtWS 2018 Venue</source>
-        <translation type="unfinished"></translation>
+        <translation>Se rendre au QtWS 2018</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="230"/>
         <source>QtWS 2018 Rooms</source>
-        <translation type="unfinished"></translation>
+        <translation>Les salles</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="232"/>
         <source>QtWS 2018 Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="233"/>
         <source>QtWS 2018 About</source>
-        <translation type="unfinished"></translation>
+        <translation>A propos de l&apos;application</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="347"/>
         <source>Please wait. Back key not allowed at the moment.</source>
-        <translation type="unfinished"></translation>
+        <translation>Patientez. La touche Back n&apos;est pas autorisée pour le moment.</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="351"/>
         <source>Back key not allowed - please select an option.</source>
-        <translation type="unfinished"></translation>
+        <translation>La touche Back n&apos;est pas autorisée - veuillez sélectionner une option.</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="707"/>
         <source>OK</source>
-        <translation></translation>
+        <translation>OK</translation>
     </message>
 </context>
 </TS>
