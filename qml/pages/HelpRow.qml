@@ -11,7 +11,8 @@ RowLayout {
     property string iconName: ""
     property string helpText: ""
     Item {
-        anchors.top: parent.top
+        // anchors.top: parent.top
+        Layout.alignment: Qt.AlignTop
         width: 24 + 32
         height: 24
         Image {
