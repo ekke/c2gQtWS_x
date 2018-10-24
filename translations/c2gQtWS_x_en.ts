@@ -228,64 +228,64 @@ This Conference App will give you some impressions what kind of APPs you can exp
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="142"/>
+        <location filename="../cpp/dataserver.cpp" line="143"/>
         <source>no network connection - WIFI On ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="228"/>
-        <location filename="../cpp/dataserver.cpp" line="232"/>
-        <location filename="../cpp/dataserver.cpp" line="270"/>
-        <location filename="../cpp/dataserver.cpp" line="274"/>
-        <location filename="../cpp/dataserver.cpp" line="305"/>
-        <location filename="../cpp/dataserver.cpp" line="309"/>
+        <location filename="../cpp/dataserver.cpp" line="229"/>
+        <location filename="../cpp/dataserver.cpp" line="233"/>
+        <location filename="../cpp/dataserver.cpp" line="271"/>
+        <location filename="../cpp/dataserver.cpp" line="275"/>
+        <location filename="../cpp/dataserver.cpp" line="306"/>
+        <location filename="../cpp/dataserver.cpp" line="310"/>
         <source>No Network Access</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="338"/>
-        <location filename="../cpp/dataserver.cpp" line="385"/>
-        <location filename="../cpp/dataserver.cpp" line="420"/>
+        <location filename="../cpp/dataserver.cpp" line="339"/>
+        <location filename="../cpp/dataserver.cpp" line="386"/>
+        <location filename="../cpp/dataserver.cpp" line="421"/>
         <source>No Network Reply</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="344"/>
+        <location filename="../cpp/dataserver.cpp" line="345"/>
         <source>No Schedule Data received</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="351"/>
+        <location filename="../cpp/dataserver.cpp" line="352"/>
         <source>No sucess getting Schedule from Server. Got HTTP Status </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="362"/>
+        <location filename="../cpp/dataserver.cpp" line="363"/>
         <source>Schedule Data cannot be written</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="391"/>
+        <location filename="../cpp/dataserver.cpp" line="392"/>
         <source>No Speaker Data received</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="398"/>
+        <location filename="../cpp/dataserver.cpp" line="399"/>
         <source>No sucess getting Speaker from Server. Got HTTP Status </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="405"/>
+        <location filename="../cpp/dataserver.cpp" line="406"/>
         <source>Speaker Data cannot be written</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="426"/>
+        <location filename="../cpp/dataserver.cpp" line="427"/>
         <source>No Version Data received</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="433"/>
+        <location filename="../cpp/dataserver.cpp" line="434"/>
         <source>No sucess getting Version from Server. Got HTTP Status </source>
         <translation></translation>
     </message>
@@ -838,27 +838,27 @@ Do you want to exit and leave the App ?
 <context>
     <name>PopupUpdate</name>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="50"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="50"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="50"/>
         <source>Later</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="60"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="61"/>
         <source>Manually</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="71"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="72"/>
         <source>Update</source>
         <translation></translation>
     </message>
@@ -1292,6 +1292,11 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="../qml/main.qml" line="215"/>
+        <source>Venue</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="../qml/main.qml" line="216"/>
         <source>Rooms</source>
         <translation></translation>
@@ -1319,7 +1324,7 @@ Tap on the Star Icon to add to / remove from your personal schedule.</source>
     <message>
         <location filename="../qml/main.qml" line="229"/>
         <source>QtWS 2018 Venue</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="230"/>

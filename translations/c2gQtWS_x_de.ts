@@ -334,64 +334,64 @@ Diese Konferenz APP gibt einen kleinen Eindruck, was für APPs Sie erwarten kön
         <translation>Mobile Datenverbindung</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="142"/>
+        <location filename="../cpp/dataserver.cpp" line="143"/>
         <source>no network connection - WIFI On ?</source>
         <translation>keine Netzwerk Verbindung - WIFI An ?</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="228"/>
-        <location filename="../cpp/dataserver.cpp" line="232"/>
-        <location filename="../cpp/dataserver.cpp" line="270"/>
-        <location filename="../cpp/dataserver.cpp" line="274"/>
-        <location filename="../cpp/dataserver.cpp" line="305"/>
-        <location filename="../cpp/dataserver.cpp" line="309"/>
+        <location filename="../cpp/dataserver.cpp" line="229"/>
+        <location filename="../cpp/dataserver.cpp" line="233"/>
+        <location filename="../cpp/dataserver.cpp" line="271"/>
+        <location filename="../cpp/dataserver.cpp" line="275"/>
+        <location filename="../cpp/dataserver.cpp" line="306"/>
+        <location filename="../cpp/dataserver.cpp" line="310"/>
         <source>No Network Access</source>
         <translation>Kein Netzwerk verfügbar</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="338"/>
-        <location filename="../cpp/dataserver.cpp" line="385"/>
-        <location filename="../cpp/dataserver.cpp" line="420"/>
+        <location filename="../cpp/dataserver.cpp" line="339"/>
+        <location filename="../cpp/dataserver.cpp" line="386"/>
+        <location filename="../cpp/dataserver.cpp" line="421"/>
         <source>No Network Reply</source>
         <translation>Keine Antwort vom Netzwerk</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="344"/>
+        <location filename="../cpp/dataserver.cpp" line="345"/>
         <source>No Schedule Data received</source>
         <translation>Keine &apos;Schedule&apos; Daten empfangen</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="351"/>
+        <location filename="../cpp/dataserver.cpp" line="352"/>
         <source>No sucess getting Schedule from Server. Got HTTP Status </source>
         <translation>Kein Erfolg beim Versuch, den Schedule zu bekommen. HTTP Status</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="362"/>
+        <location filename="../cpp/dataserver.cpp" line="363"/>
         <source>Schedule Data cannot be written</source>
         <translation>Die Schedule Daten konnten nicht geschrieben werden</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="391"/>
+        <location filename="../cpp/dataserver.cpp" line="392"/>
         <source>No Speaker Data received</source>
         <translation>Keine Speaker Daten empfangen</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="398"/>
+        <location filename="../cpp/dataserver.cpp" line="399"/>
         <source>No sucess getting Speaker from Server. Got HTTP Status </source>
         <translation>Kein Erfolg, die &apos;Speaker&apos; Daten vom Server zu bekommen. HTTP Status</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="405"/>
+        <location filename="../cpp/dataserver.cpp" line="406"/>
         <source>Speaker Data cannot be written</source>
         <translation>Die Speaker Daten konnten nicht geschrieben werden</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="426"/>
+        <location filename="../cpp/dataserver.cpp" line="427"/>
         <source>No Version Data received</source>
         <translation>Keine Versions Daten empfangen</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="433"/>
+        <location filename="../cpp/dataserver.cpp" line="434"/>
         <source>No sucess getting Version from Server. Got HTTP Status </source>
         <translation>Konnte Versionsdaten nicht abrufen - HTTP Status </translation>
     </message>
@@ -1101,27 +1101,27 @@ Soll die App beendet werden ?
 <context>
     <name>PopupUpdate</name>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="50"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="50"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="49"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="50"/>
         <source>Later</source>
         <translation>Später</translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="60"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="61"/>
         <source>Manually</source>
         <translation>Manuell</translation>
     </message>
     <message>
-        <location filename="../qml/popups/PopupUpdate.qml" line="71"/>
+        <location filename="../qml/popups/PopupUpdate.qml" line="72"/>
         <source>Update</source>
         <translation></translation>
     </message>
@@ -1689,6 +1689,11 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
         <translation>Zeitplan</translation>
     </message>
     <message>
+        <location filename="../qml/main.qml" line="215"/>
+        <source>Venue</source>
+        <translation>Veranstaltungsort</translation>
+    </message>
+    <message>
         <location filename="../qml/main.qml" line="224"/>
         <source>Qt World Summit 2018</source>
         <translation></translation>
@@ -1711,7 +1716,7 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
     <message>
         <location filename="../qml/main.qml" line="229"/>
         <source>QtWS 2018 Venue</source>
-        <translation>QtWS 2018 Ort</translation>
+        <translation>QtWS 2018 Veranstaltungsort</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="230"/>
