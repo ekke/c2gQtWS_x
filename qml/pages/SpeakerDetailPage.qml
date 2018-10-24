@@ -189,7 +189,7 @@ Page {
                                             wrapMode: Text.WordWrap
                                         }
                                         IconActive {
-                                            //id: menuIcon
+                                            id: theMenuIcon
                                             imageSize: 24
                                             imageName: "more_vert.png"
                                             // anchors.right: parent.right
@@ -198,37 +198,12 @@ Page {
                                             MouseArea {
                                                 anchors.fill: parent
                                                 onClicked: {
+                                                    optionsMenu.parent = theMenuIcon
+                                                    optionsMenu.theSessionId = modelData.sessionId
+                                                    optionsMenu.theRoomId = modelData.roomAsDataObject.roomId
                                                     optionsMenu.open()
                                                 }
                                             } // mouse area
-                                            Menu {
-                                                id: optionsMenu
-                                                modal:true
-                                                dim: false
-                                                closePolicy: Popup.CloseOnPressOutside | Popup.CloseOnEscape
-                                                x: parent.width - width
-                                                transformOrigin: Menu.TopRight
-                                                MenuItem {
-                                                    text: qsTr("Session Details")
-                                                    onTriggered: {
-                                                        navPane.pushSessionDetail(modelData.sessionId)
-                                                    }
-                                                }
-                                                MenuItem {
-                                                    text: qsTr("Room Info")
-                                                    // visible: modelData.roomAsDataObject.inAssets
-                                                    onTriggered: {
-                                                        navPane.pushRoomDetail(modelData.roomAsDataObject.roomId)
-                                                    }
-                                                }
-                                                onAboutToShow: {
-                                                    appWindow.modalMenuOpen = true
-                                                }
-                                                onAboutToHide: {
-                                                    appWindow.modalMenuOpen = false
-                                                    appWindow.resetFocus()
-                                                }
-                                            } // end optionsMenu
                                         } // menuIcon
                                     } // // repeater date row
                                     RowLayout {
@@ -371,6 +346,49 @@ Page {
     Component.onDestruction: {
         cleanup()
     }
+
+    // without closing the modal Menu from Timer
+    // there are situations where Android BACK key quits the App
+    // instead to trigger one page back
+    Timer {
+        id: theMenuDelayTimer
+        interval: 300
+        onTriggered: {
+            optionsMenu.close()
+            navPane.pushSessionDetail(optionsMenu.theSessionId)
+        }
+    }
+
+    Menu {
+        id: optionsMenu
+        property int theSessionId: 0
+        property int theRoomId: 0
+        modal:true
+        dim: false
+        closePolicy: Popup.CloseOnPressOutside | Popup.CloseOnEscape
+        x: parent.width - width
+        transformOrigin: Menu.TopRight
+        MenuItem {
+            text: qsTr("Session Details")
+            onTriggered: {
+                theMenuDelayTimer.start()
+            }
+        }
+        MenuItem {
+            text: qsTr("Room Info")
+            // visible: modelData.roomAsDataObject.inAssets
+            onTriggered: {
+                navPane.pushRoomDetail(optionsMenu.theRoomId)
+            }
+        }
+        onAboutToShow: {
+            appWindow.modalMenuOpen = true
+        }
+        onAboutToHide: {
+            appWindow.modalMenuOpen = false
+            appWindow.resetFocus()
+        }
+    } // end optionsMenu
 
     // called immediately after Loader.loaded
     function init() {
