@@ -27,8 +27,12 @@ ApplicationWindow {
     property int safeHeight: height - unsafeArea.unsafeTopMargin - unsafeArea.unsafeBottomMargin
 
     // fills iPhone and iPad devices screen totally
-    // ATTENTION: you must check for ios - if not, on Android the BACK key wasn't detected anymore !!
-    flags: Qt.platform.os === "ios"? Qt.MaximizeUsingFullscreenGeometryHint : undefined
+    // ATTENTION: if only setting flags: Qt.MaximizeUsingFullscreenGeometryHint
+    // it will work on iOS and Android, but on Android the BACK key wasn't detected anymore
+    // so it's important to set both flags
+    // found this in JP Nurmis Statusbar project
+    // https://github.com/jpnurmi/statusbar/blob/master/example/main.qml
+    flags: Qt.Window | Qt.MaximizeUsingFullscreenGeometryHint
 
     // https://bugreports.qt.io/browse/QTBUG-64574
     // https://stackoverflow.com/questions/46192280/detect-if-the-device-is-iphone-x
