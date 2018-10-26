@@ -11,6 +11,7 @@ import "pages"
 import "popups"
 import "tabs"
 import "navigation"
+import StatusBar 0.1
 
 // ekke (Ekkehard gentz) @ekkescorner
 // this App was done in my rare spare time to support Qt community
@@ -22,6 +23,12 @@ ApplicationWindow {
     // testing also on desktop it makes sense to set values
     width: 410
     height: 680
+
+    StatusBar {
+        id: theStatusBar
+        theme: StatusBar.Dark
+        color: primaryDarkColor
+    }
 
     property int safeWidth: width - unsafeArea.unsafeLeftMargin - unsafeArea.unsafeRightMargin
     property int safeHeight: height - unsafeArea.unsafeTopMargin - unsafeArea.unsafeBottomMargin
@@ -50,6 +57,29 @@ ApplicationWindow {
         // triggers unsafe areas and sets margins
         unsafeArea.orientationChanged(myOrientation)
         lastOrientation = myOrientation
+
+        // on iOS StatusBar looses the Theme
+        // workaround: set Theme to another value
+        // start a Timer to set it again correct
+        if(Qt.platform.os === "ios") {
+            toggleStatusBarTheme()
+        }
+    }
+    function toggleStatusBarTheme() {
+        if(theStatusBar.theme === StatusBar.Light) {
+            theStatusBar.theme = StatusBar.Dark
+        } else {
+            theStatusBar.theme = StatusBar.Light
+        }
+        statusBarTimer.start()
+    }
+    Timer {
+        id: statusBarTimer
+        interval: 200
+        repeat: false
+        onTriggered: {
+            theStatusBar.theme = StatusBar.Dark
+        }
     }
 
     // visibile must set to true - default is false

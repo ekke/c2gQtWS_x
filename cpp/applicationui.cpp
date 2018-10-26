@@ -8,8 +8,9 @@
 #include <QJsonObject>
 #include <QFile>
 
-
 #include <QDebug>
+
+#include <statusbar.h>
 
 const QString settingsDataFile = "/settingsData.json";
 
@@ -25,6 +26,8 @@ ApplicationUI::ApplicationUI(QObject *parent) : QObject(parent), mDataManager(ne
 
     mCachingDone = false;
     mCachingInWork = false;
+
+    qmlRegisterType<StatusBar>("StatusBar", 0, 1, "StatusBar");
 
 }
 

@@ -18,6 +18,11 @@ http://bit.ly/QtWS2018
 
 QtWS 2018 Conference App needs Qt 5.11.2 Release or greater
 
+## To make the App run you must include
+openssl for Android
+JP Nurmis StatusBar project https://github.com/jpnurmi/statusbar
+
+
 ## License Information
 [see LICENSE ( The Unlicense )](LICENSE)
 
