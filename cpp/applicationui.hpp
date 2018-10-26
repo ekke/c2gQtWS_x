@@ -17,7 +17,7 @@ class ApplicationUI : public QObject
     Q_OBJECT
 
 public:
-     ApplicationUI(QObject *parent = 0);
+     ApplicationUI(QObject *parent = nullptr);
 
      Q_INVOKABLE
      QStringList swapThemePalette();

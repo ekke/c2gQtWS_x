@@ -27,7 +27,7 @@ class DataServer : public QObject
 {
     Q_OBJECT
 public:
-    explicit DataServer(QObject *parent = 0);
+    explicit DataServer(QObject *parent = nullptr);
     virtual ~DataServer();
 
     void init(DataManager* dataManager);

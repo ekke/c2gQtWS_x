@@ -10,7 +10,7 @@ class DataUtil : public QObject
 {
     Q_OBJECT
 public:
-    explicit DataUtil(QObject *parent = 0);
+    explicit DataUtil(QObject *parent = nullptr);
 
     void init(DataManager *dataManager, DataServer* dataServer);
 

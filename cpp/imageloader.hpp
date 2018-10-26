@@ -20,7 +20,7 @@ public:
      * @param imageUrl The url to load the image from.
      * @param filename The full path with filename to store the image.
      */
-    ImageLoader(const QString &imageUrl, const QString &filename, QObject* parent = 0);
+    ImageLoader(const QString &imageUrl, const QString &filename, QObject* parent = nullptr);
 
     ~ImageLoader();
 

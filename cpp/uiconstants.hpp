@@ -2,6 +2,8 @@
 // ekke (Ekkehard Gentz) @ekkescorner
 #define UICONSTANTS_HPP
 
+#include <QStringList>
+
 namespace ekke {
 namespace constants {
 
