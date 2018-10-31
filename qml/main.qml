@@ -57,29 +57,6 @@ ApplicationWindow {
         // triggers unsafe areas and sets margins
         unsafeArea.orientationChanged(myOrientation)
         lastOrientation = myOrientation
-
-        // on iOS StatusBar looses the Theme
-        // workaround: set Theme to another value
-        // start a Timer to set it again correct
-        if(Qt.platform.os === "ios") {
-            toggleStatusBarTheme()
-        }
-    }
-    function toggleStatusBarTheme() {
-        if(theStatusBar.theme === StatusBar.Light) {
-            theStatusBar.theme = StatusBar.Dark
-        } else {
-            theStatusBar.theme = StatusBar.Light
-        }
-        statusBarTimer.start()
-    }
-    Timer {
-        id: statusBarTimer
-        interval: 200
-        repeat: false
-        onTriggered: {
-            theStatusBar.theme = StatusBar.Dark
-        }
     }
 
     // visibile must set to true - default is false
