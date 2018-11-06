@@ -166,7 +166,7 @@ ios {
     app_launch_screen.files = $$files($$PWD/ios/MyLaunchScreen.xib)
     QMAKE_BUNDLE_DATA += app_launch_screen
 
-    QMAKE_IOS_DEPLOYMENT_TARGET = 10.0
+    QMAKE_IOS_DEPLOYMENT_TARGET = 11.0
 
     disable_warning.name = GCC_WARN_64_TO_32_BIT_CONVERSION
     disable_warning.value = NO
