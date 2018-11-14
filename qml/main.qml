@@ -23,6 +23,7 @@ ApplicationWindow {
     // testing also on desktop it makes sense to set values
     width: 410
     height: 680
+    title: qsTr("Qt World Summit 2018: Boston, Berlin")
 
     StatusBar {
         id: theStatusBar
@@ -39,7 +40,7 @@ ApplicationWindow {
     // so it's important to set both flags
     // found this in JP Nurmis Statusbar project
     // https://github.com/jpnurmi/statusbar/blob/master/example/main.qml
-    flags: Qt.Window | Qt.MaximizeUsingFullscreenGeometryHint
+    flags: Qt.platform.os === "ios"? Qt.Window | Qt.MaximizeUsingFullscreenGeometryHint : Qt.Window
 
     // https://bugreports.qt.io/browse/QTBUG-64574
     // https://stackoverflow.com/questions/46192280/detect-if-the-device-is-iphone-x
@@ -89,7 +90,7 @@ ApplicationWindow {
     // Samsung XCover3 has 320
     property bool isSmallDevice: !isLandscape && width < 360
     // iOS: set from configure unsafe areas (see above)
-    property bool isTablet: false
+    property bool isTablet: Qt.platform.os === "windows"? true : false
 
     property bool backKeyfreezed: false
     property bool modalPopupActive: false
