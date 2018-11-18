@@ -91,6 +91,8 @@ ApplicationWindow {
     property bool isSmallDevice: !isLandscape && width < 360
     // iOS: set from configure unsafe areas (see above)
     property bool isTablet: Qt.platform.os === "windows"? true : false
+    // Android (checked in startupDelayedTimer)
+    property real minTabletSize: 6.9
 
     property bool backKeyfreezed: false
     property bool modalPopupActive: false
@@ -495,6 +497,18 @@ ApplicationWindow {
             repeat: false
             onTriggered: {
                 console.log("startupDelayedTimer START")
+
+                if(Qt.platform.os === "android") {
+                    var screenWidthPixel = Screen.width * Screen.devicePixelRatio
+                    var screenHeightPixel = Screen.height * Screen.devicePixelRatio
+                    var pixelPerInch = Screen.pixelDensity * Screen.devicePixelRatio * 25.4
+                    var screenSizeInch = Math.sqrt(screenWidthPixel*screenWidthPixel+screenHeightPixel*screenHeightPixel)/pixelPerInch;
+                    console.log("SCREEN SIZE in INCH: " + screenSizeInch)
+                    if(screenSizeInch > minTabletSize) {
+                        isTablet = true
+                    }
+                }
+
                 initialPlaceholder.item.showInfo("Initialize Data ...")
                 if(!initialPlaceholder.isUpdate) {
                     dataManager.init()
