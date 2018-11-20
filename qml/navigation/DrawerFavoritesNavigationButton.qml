@@ -14,7 +14,11 @@ ToolButton {
     Layout.alignment: Qt.AlignHCenter
     focusPolicy: Qt.NoFocus
     implicitHeight: 56
-    implicitWidth: (myBar.width - 56 - 6) / (favoritesModel.length)
+    // portrait or landscape without visible Drawer
+    property int normalButtonWidth: (myBar.width - 56 - 6) / (favoritesModel.length)
+    // landscape with visible Drawer
+    property int tabletButtonWidth: 56
+    implicitWidth: isTabletInLandscape? tabletButtonWidth : normalButtonWidth
     Column {
         spacing: 0
         topPadding: 0

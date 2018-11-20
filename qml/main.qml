@@ -31,7 +31,7 @@ ApplicationWindow {
         color: primaryDarkColor
     }
 
-    property int safeWidth: width - unsafeArea.unsafeLeftMargin - unsafeArea.unsafeRightMargin
+    property int safeWidth: width - unsafeArea.unsafeLeftMargin - unsafeArea.unsafeRightMargin - (isTabletInLandscape? drawerWidth : 0)
     property int safeHeight: height - unsafeArea.unsafeTopMargin - unsafeArea.unsafeBottomMargin
 
     // fills iPhone and iPad devices screen totally
@@ -53,7 +53,9 @@ ApplicationWindow {
             console.log("First time orientation changes: set the mask to "+Screen.orientationUpdateMask)
             // detect the device to know about unsafe areas
             unsafeArea.configureDevice(Screen.height, Screen.width, Screen.devicePixelRatio)
-            isTablet = unsafeArea.isKnownIPad()
+            if(unsafeArea.isKnownIPad() ) {
+                isTablet = true
+            }
         }
         // triggers unsafe areas and sets margins
         unsafeArea.orientationChanged(myOrientation)
@@ -91,8 +93,13 @@ ApplicationWindow {
     property bool isSmallDevice: !isLandscape && width < 360
     // iOS: set from configure unsafe areas (see above)
     property bool isTablet: Qt.platform.os === "windows"? true : false
+    property bool isTabletInLandscape: isTablet && isLandscape
     // Android (checked in startupDelayedTimer)
     property real minTabletSize: 6.9
+    property int drawerWidth: Math.min(240,  Math.min(appWindow.width, appWindow.height) / 3 * 2 )
+    // triggers FavoritesLoader and footer visibility
+    property bool showFavoritesMenu: initDone && (!isLandscape || isTabletInLandscape) && !isClassicNavigationStyle && drawerLoader.status == Loader.Ready && (isTabletInLandscape || navigationBar.position === 0)
+
 
     property bool backKeyfreezed: false
     property bool modalPopupActive: false
@@ -290,7 +297,7 @@ ApplicationWindow {
 
     // header per Page, footer global in Portrait + perhaps per Page, too
     // header and footer invisible until initDone
-    footer: initDone && (!isLandscape || isTablet) && drawerLoader.status == Loader.Ready && navigationBar.position === 0 ? favoritesLoader.item : null
+    footer: showFavoritesMenu? favoritesLoader.item : null
     header: (isLandscape && !useDefaultTitleBarInLandscape) || !initDone ? null : titleBar
     // show TITLE  BARS is delayed until INIT DONE
     property bool useDefaultTitleBarInLandscape: false
@@ -329,6 +336,7 @@ ApplicationWindow {
         anchors.topMargin: isLandscape ? 6 : 0
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+        anchors.leftMargin: isTabletInLandscape? drawerWidth : 0
 
         // STACK VIEW TRANSITIONS
         replaceEnter: Transition {
@@ -696,14 +704,16 @@ ApplicationWindow {
         id: favoritesLoader
         active: initDone
         // attention: set also footer !
-        visible: initDone && !isLandscape && drawerLoader.status == Loader.Ready && navigationBar.position === 0
+        visible: showFavoritesMenu
         source: "navigation/DrawerFavoritesNavigationBar.qml"
     }
     function openNavigationBar() {
         navigationBar.open()
     }
     function closeNavigationBar() {
-        navigationBar.close()
+        if(!isTabletInLandscape) {
+            navigationBar.close()
+        }
     }
     // end NAVIGATION BARS
 

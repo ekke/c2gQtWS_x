@@ -8,15 +8,17 @@ import "../common"
 
 Pane {
     id: myBar
-    // Qt 5.8 bug: MENU Button remains visually pressed after drawer was opened
-    // see QTBUG-59293
-    // workaround: toggle between 2 Button instances via Loader
-    property bool favMenuBugfix: false
+
+    // on tablet in landscape: center buttons
+    property int occupiedWidth: favoritesModel.length * (56+36)
+    property int availableMargin: (appWindow.safeWidth - occupiedWidth) / 2
+    property int extraSpace: favBackButton.visible? 56+24 : 0
+
     Material.elevation: 8
     z: 1
     property real activeOpacity: iconFolder == "black" ?  0.87 : 1.0
     property real inactiveOpacity: iconFolder == "black" ? 0.26 : 0.56
-    leftPadding: 0
+    leftPadding: isTabletInLandscape? drawerWidth : 0
     rightPadding: 0
     topPadding: 0
     height: (isDarkTheme? 56 + darkDivider.height : 56) + unsafeArea.unsafeBottomMargin
@@ -30,27 +32,34 @@ Pane {
         focus: false
         anchors.left: parent.left
         anchors.right: parent.right
+        anchors.leftMargin: isTabletInLandscape? availableMargin - extraSpace : 0
+        anchors.rightMargin: isTabletInLandscape? availableMargin : 0
+
         anchors.top: isDarkTheme? darkDivider.bottom : parent.top
         spacing: 0
         // MENU Button
-//        DrawerFavoritesMenuButton {
-//        }
-        // alternate way
-        // see QTBUG-59293
-        Loader {
-            id: favMenuLoader
-            sourceComponent: favMenuBugfix? favMenuComponent1 : favMenuComponent2
+        DrawerFavoritesMenuButton {
         }
-        Component {
-            id: favMenuComponent1
-            DrawerFavoritesMenuButton {
+        // BACK BUTTON (Tablet in Landscape)
+        ToolButton {
+            id: favBackButton
+            focusPolicy: Qt.NoFocus
+            visible: isTabletInLandscape && initDone && navigationModel[navigationIndex].canGoBack && destinations.itemAt(navigationIndex).item.depth > 1
+            Image {
+                id: contentImage
+                anchors.centerIn: parent
+                source: "qrc:/images/"+iconFolder+"/arrow_back.png"
             }
-        }
-        Component {
-            id: favMenuComponent2
-            DrawerFavoritesMenuButton {
+            ColorOverlay {
+                id: colorOverlay
+                anchors.fill: contentImage
+                source: contentImage
+                color: primaryColor
             }
-        }
+            onClicked: {
+                destinations.itemAt(navigationIndex).item.goBack()
+            }
+        } // backButton
         //
         Repeater {
             id: favoritesButtonRepeater

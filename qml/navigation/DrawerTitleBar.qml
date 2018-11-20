@@ -13,12 +13,13 @@ ToolBar {
         focus: false
         spacing: 6
         anchors.fill: parent
+        anchors.leftMargin: isTabletInLandscape? drawerWidth : 0
         Item {
             width: 4
         }
 
         ToolButton {
-            visible: !backButton.visible && (appWindow.isLandscape || !appWindow.hasOnlyOneMenu)
+            visible: !backButton.visible && !appWindow.isTabletInLandscape // (!appWindow.hasOnlyOneMenu)
             focusPolicy: Qt.NoFocus
             Image {
                 anchors.centerIn: parent

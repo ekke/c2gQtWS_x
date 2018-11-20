@@ -9,7 +9,7 @@ ToolButton {
     focusPolicy: Qt.NoFocus
     implicitHeight: 56
     implicitWidth: 56
-    visible: appWindow.isComfortNavigationStyle
+    visible: appWindow.isComfortNavigationStyle && !isTabletInLandscape
     Column {
         spacing: 0
         topPadding: 0
@@ -30,7 +30,5 @@ ToolButton {
     }
     onClicked: {
         openNavigationBar()
-        // see QTBUG-59293
-        favMenuBugfix = !favMenuBugfix
     }
 }
