@@ -57,8 +57,8 @@ Page {
                             Layout.topMargin: 12
                             Layout.bottomMargin: 12
                             // without setting a maximum width, word wrap not working
-                            Layout.maximumWidth: appWindow.width-60-64
-                            Layout.minimumWidth: appWindow.width-60-64
+                            Layout.maximumWidth: appWindow.safeWidth-60-64
+                            Layout.minimumWidth: appWindow.safeWidth-60-64
 
                             LabelHeadline {
                                 text: model.modelData.roomName

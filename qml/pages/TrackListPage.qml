@@ -70,8 +70,8 @@ Page {
                                 Layout.topMargin: 12
                                 Layout.bottomMargin: 12
                                 // without setting a maximum width, word wrap not working
-                                Layout.maximumWidth: appWindow.width-60
-                                Layout.minimumWidth: appWindow.width-60
+                                Layout.maximumWidth: appWindow.safeWidth-60
+                                Layout.minimumWidth: appWindow.safeWidth-60
 
                                 LabelHeadline {
                                     text: model.modelData.name !== "*****" ? model.modelData.name : qsTr("* No Track assigned *")
