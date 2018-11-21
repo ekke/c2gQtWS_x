@@ -14,9 +14,9 @@ Popup {
     property string selectedLetter: "A"
     Material.elevation: 8
 
-    x: appWindow.width - width
-    width: Math.min(120, appWindow.height) / 3 * 2
-    height: appWindow.height - 64
+    x: appWindow.safeWidth - width
+    width: Math.min(120, appWindow.safeHeight) / 3 * 2
+    height: appWindow.safeHeight - 64
     transformOrigin: Popup.TopRight
 
     // Hint: as of Qt 5.7 Beta because of bug in dark theme,
