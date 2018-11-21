@@ -13,7 +13,7 @@ Popup {
     property int displayMonth: selectedDate.getMonth()
     property int displayYear: selectedDate.getFullYear()
     property int calendarWidth: isLandscape? parent.width * 0.70 : parent.width * 0.85
-    property int calendarHeight: isLandscape? appWindow.height * 0.94 : parent.height * 0.85
+    property int calendarHeight: isLandscape? appWindow.safeHeight * 0.94 : parent.height * 0.85
     property bool isOK: false
 
     x: (parent.width - calendarWidth) / 2
