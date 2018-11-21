@@ -760,6 +760,7 @@ ApplicationWindow {
     // APP WINDOW POPUPS
     PopupExit {
         id: popupExitApp
+        parent: rootPane
         onAboutToHide: {
             popupExitApp.stopTimer()
             resetFocus()
@@ -771,6 +772,7 @@ ApplicationWindow {
 
     PopupInfo {
         id: popupInfo
+        parent: rootPane
         onAboutToHide: {
             popupInfo.stopTimer()
             resetFocus()
@@ -779,6 +781,7 @@ ApplicationWindow {
     // PopupToast
     PopupToast {
         id: popupToast
+        parent: rootPane
         onAboutToHide: {
             resetFocus()
         }
@@ -786,6 +789,7 @@ ApplicationWindow {
     // PopupToast
     PopupError {
         id: popupError
+        parent: rootPane
         onAboutToHide: {
             resetFocus()
         }

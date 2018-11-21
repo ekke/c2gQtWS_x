@@ -9,8 +9,8 @@ Popup {
     id: popup
     closePolicy: Popup.NoAutoClose
     bottomMargin: isLandscape? 24 : 80
-    x: (appWindow.width - width) / 2
-    y: (appWindow.height - height)
+    x: (appWindow.safeWidth - width) / 2
+    y: (appWindow.safeHeight - height)
     background: Rectangle{
         color: toastColor
         radius: 24

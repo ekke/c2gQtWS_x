@@ -11,8 +11,8 @@ Popup {
     bottomMargin: isLandscape? 24 : 80
     implicitWidth: isLandscape? parent.width * 0.50 : parent.width * 0.80
 
-    x: (appWindow.width - implicitWidth) / 2
-    y: (appWindow.height - height)
+    x: (appWindow.safeWidth - implicitWidth) / 2
+    y: (appWindow.safeHeight - height)
     background: Rectangle{
         color: Material.color(Material.Red, isDarkTheme? Material.Shade500 : Material.Shade800)
         radius: 24
