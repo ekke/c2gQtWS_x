@@ -59,7 +59,12 @@ void DataUtil::init(DataManager* dataManager, DataServer* dataServer)
 }
 
 QString DataUtil::conferenceDataPath4QML() {
+
+#if defined (Q_OS_WIN)
+    return "file:///"+mConferenceDataPath;
+#else
     return "file://"+mConferenceDataPath;
+#endif
 }
 
 bool DataUtil::isNoConference()
