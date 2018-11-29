@@ -1454,8 +1454,8 @@ void DataUtil::addGenericSessionsBerlin201802() {
             session->setTitle(tr("Lunch"));
             session->setIsGenericScheduleSession(true);
             session->setIsLunch(true);
-            session->setStartTime(QTime::fromString("12:30", HH_MM));
-            session->setEndTime(QTime::fromString("13:30", HH_MM));
+            session->setStartTime(QTime::fromString("12:00", HH_MM));
+            session->setEndTime(QTime::fromString("13:00", HH_MM));
             session->setMinutes(60);
             session->setConference(conferenceId);
             session->setSessionDay(day->id());
