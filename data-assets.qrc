@@ -216,5 +216,11 @@
         <file>data-assets/conference/speakerImages/speaker_4168@2x.jpg</file>
         <file>data-assets/conference/speakerImages/speaker_4168.jpg</file>
         <file>data-assets/conference/speakerImages/speaker_4168_origin.jpg</file>
+        <file>data-assets/conference/roomimages/room_2018106.png</file>
+        <file>data-assets/conference/roomimages/room_2018107.png</file>
+        <file>data-assets/conference/roomimages/room_2018108.png</file>
+        <file>data-assets/conference/roomimages/room_2018109.png</file>
+        <file>data-assets/conference/floorplan/QtWS2018_Berlin_day1.png</file>
+        <file>data-assets/conference/floorplan/QtWS2018_Berlin_day2.png</file>
     </qresource>
 </RCC>

@@ -57,18 +57,34 @@
   },
   {
     "id": 2018102,
-    "name": "Berlin Room 1"
+    "name": "A 03"
   },
   {
     "id": 2018103,
-    "name": "Berlin Room 2"
+    "name": "A 04"
   },
   {
     "id": 2018104,
-    "name": "Berlin Room 3"
+    "name": "A 05"
   },
   {
     "id": 2018105,
-    "name": "Berlin Room 4"
-  }
+    "name": "A 06"
+  },
+  {
+    "id": 2018106,
+    "name": "B 05"
+  },
+{
+  "id": 2018107,
+  "name": "B 07"
+},
+{
+  "id": 2018108,
+  "name": "B 09"
+},
+{
+  "id": 2018109,
+  "name": "C 01"
+}
 ]

@@ -1454,8 +1454,8 @@ void DataUtil::addGenericSessionsBerlin201802() {
             session->setTitle(tr("Lunch"));
             session->setIsGenericScheduleSession(true);
             session->setIsLunch(true);
-            session->setStartTime(QTime::fromString("12:00", HH_MM));
-            session->setEndTime(QTime::fromString("13:00", HH_MM));
+            session->setStartTime(QTime::fromString("12:30", HH_MM));
+            session->setEndTime(QTime::fromString("13:30", HH_MM));
             session->setMinutes(60);
             session->setConference(conferenceId);
             session->setSessionDay(day->id());
@@ -1531,8 +1531,8 @@ void DataUtil::addGenericSessionsBerlin201802() {
             session->setTitle(tr("Lunch"));
             session->setIsGenericScheduleSession(true);
             session->setIsLunch(true);
-            session->setStartTime(QTime::fromString("12:00", HH_MM));
-            session->setEndTime(QTime::fromString("13:00", HH_MM));
+            session->setStartTime(QTime::fromString("12:30", HH_MM));
+            session->setEndTime(QTime::fromString("13:30", HH_MM));
             session->setMinutes(60);
             session->setConference(conferenceId);
             session->setSessionDay(day->id());
@@ -1701,7 +1701,7 @@ void DataUtil::finishUpdate() {
     // SETTINGS update API
     mDataManager->mSettingsData->setApiVersion(mNewApi);
     mDataManager->mSettingsData->setLastUpdate(QDateTime::currentDateTime());
-    mDataManager->mSettingsData->setVersion(2018004);
+    mDataManager->mSettingsData->setVersion(2018005);
     mDataManager->saveSettings();
 
     // SAVE CONFERENCES
@@ -1878,8 +1878,8 @@ Conference* DataUtil::currentConference() {
     if(!mCurrentConference) {
         // TODO depends from current date
         // if currentDate > last day of first conference: use the second one
-        mCurrentConference = static_cast<Conference*>( mDataManager->allConference().first());
-        qDebug() << "Current Conference is first: " << mCurrentConference->conferenceCity();
+        mCurrentConference = static_cast<Conference*>( mDataManager->allConference().last());
+        qDebug() << "Current Conference is last: " << mCurrentConference->conferenceCity();
     }
     return mCurrentConference;
 }
@@ -2122,7 +2122,7 @@ void DataUtil::onServerSuccess()
     qDebug() << "S U C C E S S request Schedule (BOSTON, BERLIN) and Speaker";
 
     // check if conference is prepared
-    if(isOldConference() || mDataManager->allConference().empty() || mDataManager->settingsData()->version() < 2018004) {
+    if(isOldConference() || mDataManager->allConference().empty() || mDataManager->settingsData()->version() < 2018005) {
         prepareConference();
     }
     continueUpdate();
@@ -2163,6 +2163,12 @@ void DataUtil::onVersionSuccess(QByteArray currentVersionBytes)
         emit updateAvailable(mNewApi);
         return;
     }
+
+    if(mDataManager->settingsData()->version() < 2018005) {
+        emit updateAvailable(mNewApi);
+        return;
+    }
+
     QStringList oldVersionList;
     oldVersionList = mDataManager->mSettingsData->apiVersion().split(".");
     if(oldVersionList.size() != 2) {
