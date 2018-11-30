@@ -2,8 +2,6 @@
     <qresource prefix="/">
         <file>data-assets/conference/floorplan/QtWS2018_Berlin.png</file>
         <file>data-assets/conference/floorplan/QtWS2018_Boston.png</file>
-        <file>data-assets/conference/floorplan/QtWS2018_Boston_day1.png</file>
-        <file>data-assets/conference/floorplan/QtWS2018_Boston_day2.png</file>
         <file>data-assets/conference/roomimages/mapping.json</file>
         <file>data-assets/conference/roomimages/no_floorplan.jpg</file>
         <file>data-assets/conference/roomimages/no_floorplan.png</file>
@@ -220,7 +218,5 @@
         <file>data-assets/conference/roomimages/room_2018107.png</file>
         <file>data-assets/conference/roomimages/room_2018108.png</file>
         <file>data-assets/conference/roomimages/room_2018109.png</file>
-        <file>data-assets/conference/floorplan/QtWS2018_Berlin_day1.png</file>
-        <file>data-assets/conference/floorplan/QtWS2018_Berlin_day2.png</file>
     </qresource>
 </RCC>
