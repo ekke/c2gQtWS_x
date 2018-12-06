@@ -16,7 +16,7 @@ ekke's blog series about mobile x-platform development: http://j.mp/qt-x discuss
 Read more about this app here:
 http://bit.ly/QtWS2018
 
-QtWS 2018 Conference App needs Qt 5.11.2 Release or greater
+QtWS 2018 Conference App needs Qt 5.12.0 Release or greater
 
 ## To make the App run you must include
 openssl for Android
@@ -32,12 +32,12 @@ Images downloaded from https://design.google.com/icons/ - then renamed to match 
 [see /images/LICENSE ( cc-by )](images/LICENSE)
 
 ## Qt Quick Controls 2 and Material Style
-This conference app uses Material Design with UI Controls provided by Qt 5.11.2+ and was designed and tested on Android (4.3+) and iOS (iOS 10.0+).
+This conference app uses Material Design with UI Controls provided by Qt 5.12.0+ and was designed and tested on Android (4.3+) and iOS (iOS 11.0+).
 
 ## Download from Google Play
 https://play.google.com/store/apps/details?id=org.ekkescorner.c2g.qtws
 
-Don't have a Google Account ? Grab the APK here: https://app.box.com/s/t5g3kf69vy4fmc8e2qnuhp0t609z93xn
+Don't have a Google Account ? Grab the APK here: https://app.box.com/s/4fsjuh11jd333a17q3kuauvwxwntlwmy
 
 ## Download from Apple Appstore
 https://itunes.apple.com/us/app/qt-world-summit-2016-conference/id1156106928

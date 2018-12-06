@@ -1546,8 +1546,8 @@ void DataUtil::addGenericSessionsBerlin201802() {
             session->setTitle(tr("Break"));
             session->setIsGenericScheduleSession(true);
             session->setIsBreak(true);
-            session->setStartTime(QTime::fromString("14:30", HH_MM));
-            session->setEndTime(QTime::fromString("15:00", HH_MM));
+            session->setStartTime(QTime::fromString("15:00", HH_MM));
+            session->setEndTime(QTime::fromString("15:45", HH_MM));
             session->setMinutes(30);
             session->setConference(conferenceId);
             session->setSessionDay(day->id());
@@ -1701,7 +1701,7 @@ void DataUtil::finishUpdate() {
     // SETTINGS update API
     mDataManager->mSettingsData->setApiVersion(mNewApi);
     mDataManager->mSettingsData->setLastUpdate(QDateTime::currentDateTime());
-    mDataManager->mSettingsData->setVersion(2018005);
+    mDataManager->mSettingsData->setVersion(2018006);
     mDataManager->saveSettings();
 
     // SAVE CONFERENCES
@@ -2164,7 +2164,7 @@ void DataUtil::onVersionSuccess(QByteArray currentVersionBytes)
         return;
     }
 
-    if(mDataManager->settingsData()->version() < 2018005) {
+    if(mDataManager->settingsData()->version() < 2018006) {
         emit updateAvailable(mNewApi);
         return;
     }
