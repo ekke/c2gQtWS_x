@@ -51,7 +51,8 @@ public:
         IPHONE_XR,
         IPADPRO_129,
         IPADPRO_105,
-        IPADPRO_97_AIR_MINI
+        IPADPRO_97_AIR_MINI,
+        IPADPRO_11
          };
 
 signals:

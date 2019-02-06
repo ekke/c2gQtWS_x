@@ -66,6 +66,10 @@ void UnsafeArea::configureDevice(int height, int width, int devicePixelRatio)
         mMyDevice = MyDevice::IPADPRO_97_AIR_MINI;
         qDebug() << "Device detected: " << "IPADPRO 9.7, Air 2, Mini4";
         break;
+    case 2388:
+        mMyDevice = MyDevice::IPADPRO_11;
+        qDebug() << "Device detected: " << "IPADPRO 11";
+        break;
     default:
         mMyDevice = MyDevice::OTHER;
         qDebug() << "Device detected: " << "OTHER";
@@ -93,6 +97,7 @@ bool UnsafeArea::isKnownIPad() {
     case MyDevice::IPADPRO_97_AIR_MINI:
     case MyDevice::IPADPRO_105:
     case MyDevice::IPADPRO_129:
+    case MyDevice::IPADPRO_11:
         qDebug() << "isKnownIPad";
         return true;
     default:
@@ -142,9 +147,16 @@ void UnsafeArea::portrait()
         break;
     case MyDevice::IPADPRO_97_AIR_MINI:
     case MyDevice::IPADPRO_105:
-    case MyDevice::IPADPRO_129:
         setUnsafeTopMargin(16);
         setUnsafeBottomMargin(0);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    case MyDevice::IPADPRO_129:
+        // 3rd gen - we miss the older 12.9, but we have enough space, so it doesnt matter
+    case MyDevice::IPADPRO_11:
+        setUnsafeTopMargin(16);
+        setUnsafeBottomMargin(16);
         setUnsafeLeftMargin(0);
         setUnsafeRightMargin(0);
         break;
@@ -178,9 +190,16 @@ void UnsafeArea::portraitInverted()
         break;
     case MyDevice::IPADPRO_97_AIR_MINI:
     case MyDevice::IPADPRO_105:
-    case MyDevice::IPADPRO_129:
         setUnsafeTopMargin(16);
         setUnsafeBottomMargin(0);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    case MyDevice::IPADPRO_129:
+        // 3rd gen - we miss the older 12.9, but we have enough space, so it doesnt matter
+    case MyDevice::IPADPRO_11:
+        setUnsafeTopMargin(16);
+        setUnsafeBottomMargin(16);
         setUnsafeLeftMargin(0);
         setUnsafeRightMargin(0);
         break;
@@ -211,9 +230,16 @@ void UnsafeArea::landscapeLeft()
         break;
     case MyDevice::IPADPRO_97_AIR_MINI:
     case MyDevice::IPADPRO_105:
-    case MyDevice::IPADPRO_129:
         setUnsafeTopMargin(10);
         setUnsafeBottomMargin(0);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    case MyDevice::IPADPRO_129:
+        // 3rd gen - we miss the older 12.9, but we have enough space, so it doesnt matter
+    case MyDevice::IPADPRO_11:
+        setUnsafeTopMargin(10);
+        setUnsafeBottomMargin(16);
         setUnsafeLeftMargin(0);
         setUnsafeRightMargin(0);
         break;
@@ -244,9 +270,16 @@ void UnsafeArea::landscapeRight()
         break;
     case MyDevice::IPADPRO_97_AIR_MINI:
     case MyDevice::IPADPRO_105:
-    case MyDevice::IPADPRO_129:
         setUnsafeTopMargin(10);
         setUnsafeBottomMargin(0);
+        setUnsafeLeftMargin(0);
+        setUnsafeRightMargin(0);
+        break;
+    case MyDevice::IPADPRO_129:
+        // 3rd gen - we miss the older 12.9, but we have enough space, so it doesnt matter
+    case MyDevice::IPADPRO_11:
+        setUnsafeTopMargin(10);
+        setUnsafeBottomMargin(16);
         setUnsafeLeftMargin(0);
         setUnsafeRightMargin(0);
         break;
