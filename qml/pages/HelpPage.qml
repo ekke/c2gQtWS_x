@@ -33,7 +33,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go\nQtWS 2018\nBoston + Berlin\n(Qt 5.11 - Android + iOS)")
+                    text: qsTr("Conference2Go\nQtWS 2019\nBerlin + Tokyo\n(Qt 5.13.1 - Android + iOS)")
                     color: primaryColor
                 }
                 LabelHeadline {
@@ -41,7 +41,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go\nQtWS 2018\nBoston + Berlin\n(Qt 5.11 crossplatform)")
+                    text: qsTr("Conference2Go\nQtWS 2019\nBerlin + Tokyo\n(Qt 5.13.1 crossplatform)")
                     color: primaryColor
                 }
             }
@@ -69,12 +69,12 @@ Flickable {
             }
             LabelTitle {
                 leftPadding: 10
-                text: qsTr("QtWS 2018")
+                text: qsTr("QtWS 2019")
                 color: accentColor
             }
             HelpRow {
                 iconName: "home.png"
-                helpText: qsTr("Homepage - the first Page. QtWS 2018 App supports both 2018 conferences in Boston and Berlin. Form this Page you can switch between Conferences.")
+                helpText: qsTr("Homepage - the first Page. QtWS 2019 App supports both 2019 conferences in Berlin and Tokyo. Form this Page you can switch between Conferences.")
             }
             HelpRow {
                 iconName: "refresh.png"

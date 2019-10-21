@@ -199,13 +199,13 @@ Page {
                     height: 3
                     transform: Translate{y: -8}
                 }
-//                LabelSubheading {
-//                    visible: session.subtitle.length
-//                    Layout.leftMargin: 16
-//                    Layout.rightMargin: 16
-//                    text: session.subtitle
-//                    wrapMode: Text.WordWrap
-//                }
+                //                LabelSubheading {
+                //                    visible: session.subtitle.length
+                //                    Layout.leftMargin: 16
+                //                    Layout.rightMargin: 16
+                //                    text: session.subtitle
+                //                    wrapMode: Text.WordWrap
+                //                }
                 LabelSubheading {
                     visible: session.description.length
                     Layout.topMargin: 12
@@ -268,48 +268,60 @@ Page {
                         ColumnLayout {
                             id: speakerRow
                             // without this divider not over total width
-                            implicitWidth: appWindow.width
-                            RowLayout {
-                                spacing: 20
-                                Layout.leftMargin: 16
-                                Layout.rightMargin: 6
-                                SpeakerImageItem {
-                                    speaker: model.modelData
+                            Layout.fillWidth: true
+                            implicitWidth: sessionDetailPage.width
+                            ItemDelegate {
+                                implicitWidth: sessionDetailPage.width
+                                Layout.minimumHeight: detailRow.height
+                                RowLayout {
+                                    id: detailRow
+                                    spacing: 20
+                                    anchors.left: parent.left
+                                    anchors.right: parent.right
+                                    anchors.leftMargin: 16
+                                    anchors.rightMargin: 16
+                                    anchors.bottomMargin: 2
+                                    SpeakerImageItem {
+                                        speaker: model.modelData
+                                    }
+                                    ColumnLayout {
+                                        Layout.fillWidth: true
+                                        // without setting a maximum width, word wrap not working
+                                        Layout.maximumWidth: appWindow.safeWidth-154
+                                        spacing: 0
+                                        LabelSubheading {
+                                            rightPadding: 12
+                                            text: model.modelData.name.length? model.modelData.name : qsTr("Unnamed Speaker")
+                                            font.bold: true
+                                            wrapMode: Label.WordWrap
+                                        } // label
+                                        LabelSubheading {
+                                            visible: model.modelData.title.length
+                                            rightPadding: 12
+                                            bottomPadding: 6
+                                            text: model.modelData.title
+                                            wrapMode: Text.WordWrap
+                                            font.italic: true
+                                        }
+                                        LabelBody {
+                                            text: dataUtil.sessionInfoForSpeaker(model.modelData)
+                                            rightPadding: 12
+                                            wrapMode: Label.WordWrap
+                                            maximumLineCount: 3
+                                            elide: Label.ElideRight
+                                        }
+                                    }
+                                    //                                MouseArea {
+                                    //                                    anchors.fill: parent
+                                    //                                    onClicked: {
+                                    //                                        navPane.pushSpeakerDetail(model.modelData.speakerId)
+                                    //                                    }
+                                    //                                } // mouse
+                                } // end Row Layout
+                                onClicked: {
+                                    navPane.pushSpeakerDetail(model.modelData.speakerId)
                                 }
-                                ColumnLayout {
-                                    Layout.fillWidth: true
-                                    // without setting a maximum width, word wrap not working
-                                    Layout.maximumWidth: appWindow.safeWidth-154
-                                    spacing: 0
-                                    LabelSubheading {
-                                        rightPadding: 12
-                                        text: model.modelData.name.length? model.modelData.name : qsTr("Unnamed Speaker")
-                                        font.bold: true
-                                        wrapMode: Label.WordWrap
-                                    } // label
-                                    LabelSubheading {
-                                        visible: model.modelData.title.length
-                                        rightPadding: 12
-                                        bottomPadding: 6
-                                        text: model.modelData.title
-                                        wrapMode: Text.WordWrap
-                                        font.italic: true
-                                    }
-                                    LabelBody {
-                                        text: dataUtil.sessionInfoForSpeaker(model.modelData)
-                                        rightPadding: 12
-                                        wrapMode: Label.WordWrap
-                                        maximumLineCount: 3
-                                        elide: Label.ElideRight
-                                    }
-                                }
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onClicked: {
-                                        navPane.pushSpeakerDetail(model.modelData.speakerId)
-                                    }
-                                } // mouse
-                            } // end Row Layout
+                            } // delegate
                             HorizontalListDivider{}
                         } // end Col Layout speaker row
 

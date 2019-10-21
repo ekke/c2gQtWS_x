@@ -1,4 +1,4 @@
-# c2gQtWS_x for Qt 5.11
+# c2gQtWS_x for Qt 5.13.1+
 If not otherwise mentioned inside source files (*.cpp, *.hpp, *.qml):
 
 ##Author: 
@@ -21,4 +21,4 @@ http://appbus.org
 
 http://j.mp/qt-x
 
-(c) 2016 - 2018 ekke (ekkehard gentz)
+(c) 2016 - 2019 ekke (ekkehard gentz)

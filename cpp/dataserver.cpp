@@ -237,10 +237,10 @@ void DataServer::requestSchedule(const int conferenceId)
     QString uri;
     // uri = "https://conf.qtcon.org/en/qtcon/public/schedule.json";
     // uri = "http://www.qtworldsummit.com/api/schedule/all/";
-    if(conferenceId == 201801) {
-        uri = "https://www.qtworldsummit.com/2018/api/schedule/all/?location=Boston";
+    if(conferenceId == 201901) {
+        uri = "https://www.qtworldsummit.com/2019/api/schedule/all/?location=Berlin";
     } else {
-        uri = "https://www.qtworldsummit.com/2018/api/schedule/all/?location=Berlin";
+        uri = "https://www.qtworldsummit.com/2019/api/schedule/all/?location=Tokyo";
     }
 
     qDebug() << "requestSchedule uri:" << uri;
@@ -279,7 +279,7 @@ void DataServer::requestVersion()
     QString uri;
     // uri = "https://conf.qtcon.org/en/qtcon/public/schedule/version.json";
     // uri = "http://www.qtworldsummit.com/api/version/show/";
-    uri = "https://www.qtworldsummit.com/2018/api/version/show/";
+    uri = "https://www.qtworldsummit.com/2019/api/version/show/";
     qDebug() << "requestVersion uri:" << uri;
 
     QNetworkRequest request(uri);
@@ -314,7 +314,7 @@ void DataServer::requestSpeaker()
     QString uri;
     // uri = "https://conf.qtcon.org/en/qtcon/public/speakers.json";
     // uri = "http://www.qtworldsummit.com/api/speakers/all/";
-    uri = "https://www.qtworldsummit.com/2018/api/speakers/all/";
+    uri = "https://www.qtworldsummit.com/2019/api/speakers/all/";
     qDebug() << "requestSpeaker uri:" << uri;
 
     QNetworkRequest request(uri);
@@ -369,8 +369,8 @@ void DataServer::onFinishedSchedule()
 
     // more schedules this year ?
     int conferenceId = conferenceString.toInt();
-    if(conferenceId == 201801) {
-        requestSchedule(201802);
+    if(conferenceId == 201901) {
+        requestSchedule(201902);
         return;
     }
 

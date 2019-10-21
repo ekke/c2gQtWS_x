@@ -86,32 +86,41 @@ http://bit.ly/qtWS2016App</translation>
         <translation type="vanished">Dies ist auch eine meiner ersten Apps, die ich mit Qt entwickelt habe. Die App basiert auf Qt 5.7 und den brandneuen &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</translation>
     </message>
     <message>
+        <source>Conference2Go QtWS 2018
+developed by ekke (@ekkescorner)</source>
+        <translation type="vanished">Conference2Go QtWS 2018
+entwickelt von ekke (@ekkescorner)</translation>
+    </message>
+    <message>
+        <source>This APP is developed with Qt 5.11 and &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</source>
+        <translation type="vanished">Diese APP wurde entwickelt mit Qt 5.11 und &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Conference2Go
-QtWS 2018
-Boston + Berlin
-(Qt 5.11 - Android + iOS)</source>
-        <translation></translation>
+QtWS 2019Berlin + Tokyo
+(Qt 5.13.1 - Android + iOS)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="53"/>
         <source>Conference2Go
-QtWS 2018
-Boston + Berlin
-(Qt 5.11 - crossplatform)</source>
-        <translation></translation>
+QtWS 2018Berlin + Tokyo
+(Qt 5.13.1 - crossplatform)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="67"/>
-        <source>Conference2Go QtWS 2018
+        <source>Conference2Go QtWS 2019
 developed by ekke (@ekkescorner)</source>
-        <translation>Conference2Go QtWS 2018
-entwickelt von ekke (@ekkescorner)</translation>
+        <translation type="unfinished">Conference2Go QtWS 2018
+entwickelt von ekke (@ekkescorner) {2G?} {2019
+?}</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="76"/>
-        <source>This APP is developed with Qt 5.11 and &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</source>
-        <translation>Diese APP wurde entwickelt mit Qt 5.11 und &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</translation>
+        <source>This APP is developed with Qt 5.13.1 and &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;.</source>
+        <translation type="unfinished">Diese APP wurde entwickelt mit Qt 5.11 und &lt;a href=&quot;http://doc.qt.io/qt-5/qtquickcontrols2-index.html&quot;&gt;QtQuickControls2&lt;/a&gt;. {5.13.1 ?} {5/?} {2-?} {2&lt;?}</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="85"/>
@@ -399,117 +408,118 @@ Diese Konferenz APP gibt einen kleinen Eindruck, was für APPs Sie erwarten kön
 <context>
     <name>DataUtil</name>
     <message>
-        <location filename="../cpp/datautil.cpp" line="198"/>
+        <location filename="../cpp/datautil.cpp" line="203"/>
         <source> Minutes)</source>
         <translation> Minuten)</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="201"/>
+        <location filename="../cpp/datautil.cpp" line="206"/>
         <source>Registration</source>
         <translation>Registrierung</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="204"/>
+        <location filename="../cpp/datautil.cpp" line="209"/>
         <source>Event</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="207"/>
-        <location filename="../cpp/datautil.cpp" line="1292"/>
-        <location filename="../cpp/datautil.cpp" line="1369"/>
-        <location filename="../cpp/datautil.cpp" line="1449"/>
-        <location filename="../cpp/datautil.cpp" line="1526"/>
+        <location filename="../cpp/datautil.cpp" line="212"/>
+        <location filename="../cpp/datautil.cpp" line="1322"/>
+        <location filename="../cpp/datautil.cpp" line="1399"/>
+        <location filename="../cpp/datautil.cpp" line="1461"/>
+        <location filename="../cpp/datautil.cpp" line="1527"/>
         <source>Lunch</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="209"/>
+        <location filename="../cpp/datautil.cpp" line="214"/>
         <location filename="../cpp/datautil.cpp" line="1307"/>
-        <location filename="../cpp/datautil.cpp" line="1384"/>
-        <location filename="../cpp/datautil.cpp" line="1464"/>
-        <location filename="../cpp/datautil.cpp" line="1541"/>
+        <location filename="../cpp/datautil.cpp" line="1337"/>
+        <location filename="../cpp/datautil.cpp" line="1414"/>
+        <location filename="../cpp/datautil.cpp" line="1476"/>
+        <location filename="../cpp/datautil.cpp" line="1542"/>
         <source>Break</source>
         <translation>Pause</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="212"/>
+        <location filename="../cpp/datautil.cpp" line="217"/>
         <source>Training</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="215"/>
+        <location filename="../cpp/datautil.cpp" line="220"/>
         <source>Lightning Talk</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="218"/>
+        <location filename="../cpp/datautil.cpp" line="223"/>
         <source>Keynote</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="221"/>
+        <location filename="../cpp/datautil.cpp" line="226"/>
         <source>Community</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="224"/>
+        <location filename="../cpp/datautil.cpp" line="229"/>
         <source>Unconference</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="227"/>
+        <location filename="../cpp/datautil.cpp" line="232"/>
         <source>Meeting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="229"/>
+        <location filename="../cpp/datautil.cpp" line="234"/>
         <source>Session</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="266"/>
+        <location filename="../cpp/datautil.cpp" line="271"/>
         <source> Rollback</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="270"/>
+        <location filename="../cpp/datautil.cpp" line="275"/>
         <source> Reload</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="372"/>
+        <location filename="../cpp/datautil.cpp" line="378"/>
         <source>Room unknown</source>
         <translation>Raum unbekannt</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="885"/>
+        <location filename="../cpp/datautil.cpp" line="900"/>
         <source>startUpdate - Cannot create Directories</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="888"/>
+        <location filename="../cpp/datautil.cpp" line="903"/>
         <source>Request Schedule and Speakers from Server</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="895"/>
+        <location filename="../cpp/datautil.cpp" line="910"/>
         <source>Save Favorites</source>
         <translation>Favoriten sichern</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="900"/>
+        <location filename="../cpp/datautil.cpp" line="915"/>
         <source>Sync Speaker</source>
         <translation>Sprecher synchronisieren</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="908"/>
+        <location filename="../cpp/datautil.cpp" line="923"/>
         <source>Update failed. No Speaker received.
 Reloading current Data</source>
         <translation>Update fehlgeschlagen. Keine Sprecher empfangen.
 Letzte Daten werden wiederhergestellt.</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="985"/>
+        <location filename="../cpp/datautil.cpp" line="1000"/>
         <source>Sync Speaker Images</source>
         <translation>Sprecher Fotos synchronisieren</translation>
     </message>
@@ -518,7 +528,7 @@ Letzte Daten werden wiederhergestellt.</translation>
         <translation type="vanished">Sessions synchronisieren</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1079"/>
+        <location filename="../cpp/datautil.cpp" line="1094"/>
         <source>Error: Received Map is empty.</source>
         <translation></translation>
     </message>
@@ -527,12 +537,12 @@ Letzte Daten werden wiederhergestellt.</translation>
         <translation type="vanished">Error: 4 Konferenztage erwartet, erhalten  {2 ?}</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1085"/>
+        <location filename="../cpp/datautil.cpp" line="1100"/>
         <source>Error: Received Map missed &apos;conference&apos;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1122"/>
+        <location filename="../cpp/datautil.cpp" line="1137"/>
         <source>Error: Received Map missed &apos;days&apos;.</source>
         <translation></translation>
     </message>
@@ -549,96 +559,97 @@ Letzte Daten werden wiederhergestellt.</translation>
         <translation type="vanished">Keine Räume gefunden für Konferenztag</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1031"/>
+        <location filename="../cpp/datautil.cpp" line="1046"/>
         <source>Schedule and Speaker successfully synchronized :)</source>
         <translation>Schedule und Sprecher erfolgreich synchronisiert :)</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1044"/>
+        <location filename="../cpp/datautil.cpp" line="1059"/>
         <source>Sync Sessions </source>
         <translation>Sessions synchronisieren </translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1050"/>
-        <location filename="../cpp/datautil.cpp" line="1264"/>
-        <location filename="../cpp/datautil.cpp" line="1421"/>
+        <location filename="../cpp/datautil.cpp" line="1065"/>
+        <location filename="../cpp/datautil.cpp" line="1279"/>
+        <location filename="../cpp/datautil.cpp" line="1498"/>
         <source>Error: Data missed &apos;conference&apos;.</source>
         <translation>Fehler: Daten fehlen: &apos;conference&apos;.</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1127"/>
+        <location filename="../cpp/datautil.cpp" line="1142"/>
         <source>Error: # of &apos;days&apos; expected: </source>
         <translation>Fehler: # an Tagen erwartet: </translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1253"/>
+        <location filename="../cpp/datautil.cpp" line="1268"/>
         <source>Schedule successfully synchronized :)</source>
         <translation>Zeitplan erfolgreich synchronisiert :)</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1277"/>
-        <location filename="../cpp/datautil.cpp" line="1339"/>
-        <location filename="../cpp/datautil.cpp" line="1434"/>
-        <location filename="../cpp/datautil.cpp" line="1496"/>
+        <location filename="../cpp/datautil.cpp" line="1292"/>
+        <location filename="../cpp/datautil.cpp" line="1369"/>
+        <location filename="../cpp/datautil.cpp" line="1512"/>
         <source>Registration and Coffee</source>
         <translation>Registrierung und Kaffee</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1322"/>
-        <location filename="../cpp/datautil.cpp" line="1399"/>
-        <location filename="../cpp/datautil.cpp" line="1479"/>
-        <location filename="../cpp/datautil.cpp" line="1556"/>
+        <location filename="../cpp/datautil.cpp" line="1557"/>
         <source>Networking and Drinks</source>
         <translation>Networking und Drinks</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1354"/>
-        <location filename="../cpp/datautil.cpp" line="1511"/>
+        <location filename="../cpp/datautil.cpp" line="1384"/>
+        <location filename="../cpp/datautil.cpp" line="1446"/>
         <source>Coffee</source>
         <translation>Kaffee</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1573"/>
+        <location filename="../cpp/datautil.cpp" line="1429"/>
+        <source>Cocktails and Party, KDAB&apos;s 20th annyversary</source>
+        <translation>Cocktails und Party, 20 Jahre KDAB</translation>
+    </message>
+    <message>
+        <location filename="../cpp/datautil.cpp" line="1574"/>
         <source>Now saving Conference Data to Cache</source>
         <translation>Jetzt Konferenzdaten in Cache schreiben</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1710"/>
+        <location filename="../cpp/datautil.cpp" line="1711"/>
         <source>All done</source>
         <translation>Alles erledigt</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1967"/>
+        <location filename="../cpp/datautil.cpp" line="1968"/>
         <source>API Version </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1969"/>
+        <location filename="../cpp/datautil.cpp" line="1970"/>
         <source>Last Update </source>
         <translation>Letzter Update </translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2131"/>
+        <location filename="../cpp/datautil.cpp" line="2132"/>
         <source>No JSON Object received for Version Check</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2136"/>
+        <location filename="../cpp/datautil.cpp" line="2137"/>
         <source>Version Check: received Version Map is empty</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2140"/>
+        <location filename="../cpp/datautil.cpp" line="2141"/>
         <source>Version Check: received Version Map missed Version Property</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2145"/>
+        <location filename="../cpp/datautil.cpp" line="2146"/>
         <source>Error: Received Map missed &apos;version&apos;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2153"/>
+        <location filename="../cpp/datautil.cpp" line="2154"/>
         <source>Error: &apos;Version&apos; wrong: </source>
         <translation></translation>
     </message>
@@ -677,7 +688,7 @@ Letzte Daten werden wiederhergestellt.</translation>
 <context>
     <name>DrawerTitleBar</name>
     <message>
-        <location filename="../qml/navigation/DrawerTitleBar.qml" line="138"/>
+        <location filename="../qml/navigation/DrawerTitleBar.qml" line="139"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
@@ -686,7 +697,7 @@ Letzte Daten werden wiederhergestellt.</translation>
         <translation type="vanished">Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/navigation/DrawerTitleBar.qml" line="144"/>
+        <location filename="../qml/navigation/DrawerTitleBar.qml" line="145"/>
         <source>About</source>
         <translation>Über diese App</translation>
     </message>
@@ -709,17 +720,17 @@ Letzte Daten werden wiederhergestellt.</translation>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="36"/>
         <source>Conference2Go
-QtWS 2018
-Boston + Berlin
-(Qt 5.11 - Android + iOS)</source>
+QtWS 2019
+Berlin + Tokyo
+(Qt 5.13.1 - Android + iOS)</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="44"/>
         <source>Conference2Go
-QtWS 2018
-Boston + Berlin
-(Qt 5.11 crossplatform)</source>
+QtWS 2019
+Berlin + Tokyo
+(Qt 5.13.1 crossplatform)</source>
         <translation></translation>
     </message>
     <message>
@@ -749,13 +760,17 @@ Boston + Berlin
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="72"/>
-        <source>QtWS 2018</source>
+        <source>QtWS 2019</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="77"/>
+        <source>Homepage - the first Page. QtWS 2019 App supports both 2019 conferences in Berlin and Tokyo. Form this Page you can switch between Conferences.</source>
+        <translation>Homepage - die erste Seite. QtWS 2019 App unterstützt beide 2019 - Konferenzen in Berlin und Tokyo. Auf dieser Seite können Sie zwischen den Konferenzen wechseln.</translation>
+    </message>
+    <message>
         <source>Homepage - the first Page. QtWS 2018 App supports both 2018 conferences in Boston and Berlin. Form this Page you can switch between Conferences.</source>
-        <translation>Homepage - die erste Seite. QtWS2018 App unterstützt beide 2018 - Konferenzen in Boston und Berlin. Auf dieser Seite können Sie zwischen den Konferenzen wechseln.</translation>
+        <translation type="vanished">Homepage - die erste Seite. QtWS2018 App unterstützt beide 2018 - Konferenzen in Boston und Berlin. Auf dieser Seite können Sie zwischen den Konferenzen wechseln.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HelpPage.qml" line="81"/>
@@ -949,22 +964,34 @@ for new Schedule Data ...</source>
 ob neue Daten verfügbar ...</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="52"/>
         <source>October, 29-30
 BOSTON, Massachusetts</source>
-        <translation>29.-30. Oktober
+        <translation type="vanished">29.-30. Oktober
 BOSTON, Massachusetts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="52"/>
         <source>December, 05-06
 BERLIN, Germany</source>
-        <translation>05.-06. Dezember
+        <translation type="vanished">05.-06. Dezember
 BERLIN, Deutschland</translation>
     </message>
     <message>
         <source>Switch Conference</source>
         <translation type="vanished">Konferenz wechseln</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HomePage.qml" line="52"/>
+        <source>November, 04-06
+BERLIN, Germany</source>
+        <translation>04. - 06. November
+BERLIN, Deutschland</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HomePage.qml" line="52"/>
+        <source>November, 29
+TOKYO, Japan</source>
+        <translation>29. November
+TOKYO, Japan</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="62"/>
@@ -1038,20 +1065,34 @@ für
 QtWS 2016</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InitialItemPage.qml" line="17"/>
         <source>Welcome to
 Qt World Summit 2018</source>
-        <translation>Willkommen zum
+        <translation type="vanished">Willkommen zum
 Qt World Summit 2018</translation>
+    </message>
+    <message>
+        <source>Conference2Go APP
+for
+QtWS 2018</source>
+        <translation type="vanished">Conference2Go APP
+für
+QtWS 2018</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/InitialItemPage.qml" line="17"/>
+        <source>Welcome to
+Qt World Summit 2019</source>
+        <translation>Willkommen zum
+Qt World Summit 2019</translation>
     </message>
     <message>
         <location filename="../qml/pages/InitialItemPage.qml" line="73"/>
         <source>Conference2Go APP
 for
-QtWS 2018</source>
+QtWS 2019</source>
         <translation>Conference2Go APP
 für
-QtWS 2018</translation>
+QtWS 2019</translation>
     </message>
     <message>
         <location filename="../qml/pages/InitialItemPage.qml" line="74"/>
@@ -1067,7 +1108,7 @@ QtWS 2018</translation>
         <translation>Mein Persönlicher Zeitplan</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MySchedulePage.qml" line="83"/>
+        <location filename="../qml/pages/MySchedulePage.qml" line="84"/>
         <source>Your Personal Schedule is empty.
 Tap on the &apos;Star&apos; to add or remove</source>
         <translation>Ihr Persönlicher Zeitplan ist noch leer.
@@ -1270,7 +1311,7 @@ Soll die App beendet werden ?
     <message>
         <location filename="../qml/common/SearchTextPane.qml" line="39"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchen</translation>
     </message>
 </context>
 <context>
@@ -1496,22 +1537,22 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
         <translation> Minuten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="212"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="372"/>
         <source>Session Details</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="218"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="378"/>
         <source>Room Info</source>
         <translation>Raum Info</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="274"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="249"/>
         <source>Added to Personal Schedule</source>
         <translation>Zum Persönlichen Zeitplan zugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="276"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="251"/>
         <source>Removed from Personal Schedule</source>
         <translation>Vom Persönlichen Zeitplan entfernt</translation>
     </message>
@@ -1676,70 +1717,99 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="92"/>
-        <location filename="../qml/main.qml" line="94"/>
+        <location filename="../qml/main.qml" line="26"/>
+        <source>Qt World Summit 2019: Berlin, Tokyo</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="113"/>
+        <location filename="../qml/main.qml" line="115"/>
         <source>My Schedule</source>
         <translation>Mein Plan</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="98"/>
-        <location filename="../qml/main.qml" line="100"/>
-        <location filename="../qml/main.qml" line="212"/>
+        <location filename="../qml/main.qml" line="119"/>
+        <location filename="../qml/main.qml" line="121"/>
+        <location filename="../qml/main.qml" line="233"/>
         <source>Schedule</source>
         <translation>Zeitplan</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="215"/>
+        <location filename="../qml/main.qml" line="236"/>
         <source>Venue</source>
         <translation>Veranstaltungsort</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="224"/>
-        <source>Qt World Summit 2018</source>
+        <location filename="../qml/main.qml" line="245"/>
+        <source>Qt World Summit 2019</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="226"/>
+        <location filename="../qml/main.qml" line="247"/>
+        <source>QtWS 2019 Schedule</source>
+        <translation>QtWS 2019 Zeitplan</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="248"/>
+        <source>QtWS 2019 Speakers</source>
+        <translation>QtWS 2019 Sprecher</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="249"/>
+        <source>QtWS 2019 Tracks</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="250"/>
+        <source>QtWS 2019 Venue</source>
+        <translation>QtWS 2019 Veranstaltungsort</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="251"/>
+        <source>QtWS 2019 Rooms</source>
+        <translation>QtWS 2019 Räume</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="253"/>
+        <source>QtWS 2019 Help</source>
+        <translation>QtWS 2019 Hilfe</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="254"/>
+        <source>QtWS 2019 About</source>
+        <translation>QtWS 2019 Über</translation>
+    </message>
+    <message>
         <source>QtWS 2018 Schedule</source>
-        <translation>QtWS 2018 Zeitplan</translation>
+        <translation type="vanished">QtWS 2018 Zeitplan</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="227"/>
         <source>QtWS 2018 Speakers</source>
-        <translation>QtWS 2018 Sprecher</translation>
+        <translation type="vanished">QtWS 2018 Sprecher</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="228"/>
-        <source>QtWS 2018 Tracks</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../qml/main.qml" line="229"/>
         <source>QtWS 2018 Venue</source>
-        <translation>QtWS 2018 Veranstaltungsort</translation>
+        <translation type="vanished">QtWS 2018 Veranstaltungsort</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="230"/>
         <source>QtWS 2018 Rooms</source>
-        <translation>QtWS 2018 Räume</translation>
+        <translation type="vanished">QtWS 2018 Räume</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="232"/>
         <source>QtWS 2018 Help</source>
-        <translation>QtWS 2018 Hilfe</translation>
+        <translation type="vanished">QtWS 2018 Hilfe</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="233"/>
         <source>QtWS 2018 About</source>
-        <translation>QtWS 2018 Über</translation>
+        <translation type="vanished">QtWS 2018 Über</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="347"/>
+        <location filename="../qml/main.qml" line="369"/>
         <source>Please wait. Back key not allowed at the moment.</source>
         <translation>Bitte warten. Die Zurück Taste ist im Moment nicht erlaubt.</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="351"/>
+        <location filename="../qml/main.qml" line="373"/>
         <source>Back key not allowed - please select an option.</source>
         <translation>Die Zurück Taste ist nicht erlaubt - bitte eine Option wählen.</translation>
     </message>
@@ -1752,12 +1822,12 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
         <translation type="vanished">Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="218"/>
+        <location filename="../qml/main.qml" line="239"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="219"/>
+        <location filename="../qml/main.qml" line="240"/>
         <source>About this App</source>
         <translation>Über diese App</translation>
     </message>
@@ -1786,7 +1856,7 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
         <translation type="vanished">QtWS 2016 Über</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="372"/>
+        <location filename="../qml/main.qml" line="394"/>
         <source>No more Pages</source>
         <translation>keine weiteren Seiten</translation>
     </message>
@@ -1799,12 +1869,12 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
         <translation type="vanished">QtCon 2016 Sprecher</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="213"/>
+        <location filename="../qml/main.qml" line="234"/>
         <source>Speakers</source>
         <translation>Sprecher</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="216"/>
+        <location filename="../qml/main.qml" line="237"/>
         <source>Rooms</source>
         <translation>Räume</translation>
     </message>
@@ -1837,7 +1907,7 @@ Bitte den &apos;Android Home Button&apos; nutzen
 um die APP zu verlassen.</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="707"/>
+        <location filename="../qml/main.qml" line="743"/>
         <source>OK</source>
         <translation></translation>
     </message>

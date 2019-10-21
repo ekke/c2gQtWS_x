@@ -150,10 +150,10 @@ private:
     void prepareEventData();
     void prepareRooms();
     void prepareSanFrancisco201601();
-    void prepareBoston201801();
-    void prepareBerlin201802();
-    void addGenericSessionsBoston201801();
-    void addGenericSessionsBerlin201802();
+    void prepareTokyo201902();
+    void prepareBerlin201901();
+    void addGenericSessionsBerlin201901();
+    void addGenericSessionsTokyo201902();
 
     bool checkDirs();
     QString mConferenceDataPath;

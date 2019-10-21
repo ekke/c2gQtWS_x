@@ -32,7 +32,7 @@ ScrollView {
             anchors.left: parent.left
             width: isLandscape? appWindow.safeWidth/2 : appWindow.safeWidth
             fillMode: Image.PreserveAspectFit
-            source: currentConference? currentConference.id === 201801? "qrc:/data-assets/conference/floorplan/QtWS2018_Boston.png" : "qrc:/data-assets/conference/floorplan/QtWS2018_Berlin.png" : ""
+            source: currentConference? currentConference.id === 201902? "qrc:/data-assets/conference/floorplan/QtWS2019_Tokyo.png" : "qrc:/data-assets/conference/floorplan/QtWS2019_Berlin.png" : ""
             horizontalAlignment: Image.AlignLeft
             verticalAlignment: Image.AlignTop
             transformOrigin: Item.TopLeft
@@ -53,7 +53,7 @@ ScrollView {
                     leftPadding: 16
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: currentConference? "QtWS2018 in " + currentConference.conferenceCity : ""
+                    text: currentConference? "QtWS2019 in " + currentConference.conferenceCity : ""
                     color: accentColor
                 }
             }
@@ -79,7 +79,7 @@ ScrollView {
                 }
             }
             RowLayout {
-                visible: currentConference
+                visible: currentConference && currentConference.id === 201901
                 LabelSubheading {
                     topPadding: 10
                     leftPadding: 16
@@ -90,7 +90,7 @@ ScrollView {
                 }
             }
             RowLayout {
-                visible: currentConference && Qt.platform.os === "ios"
+                visible: currentConference && Qt.platform.os === "ios" && currentConference.id === 201901
                 LabelSubheading {
                     topPadding: 10
                     leftPadding: 16

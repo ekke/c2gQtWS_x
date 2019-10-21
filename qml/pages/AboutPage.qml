@@ -30,7 +30,7 @@ Flickable {
                         source: "qrc:/images/extra/qtws-app.png"
                     }
                     LabelBodySecondary {
-                        text: "Version: 1.11";
+                        text: "Version: 2.0.0";
                     }
                     LabelBodySecondary {
                         text: "API: "+dataManager.settingsData().apiVersion;
@@ -41,7 +41,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go\nQtWS 2018\nBoston + Berlin\n(Qt 5.11 - Android + iOS)")
+                    text: qsTr("Conference2Go\nQtWS 2019\Berlin + Tokyo\n(Qt 5.13.1 - Android + iOS)")
                     color: primaryColor
                 }
                 // Hint: I got Apps rejected by apple because I mentioned Android ;-)
@@ -50,7 +50,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go\nQtWS 2018\nBoston + Berlin\n(Qt 5.11 - crossplatform)")
+                    text: qsTr("Conference2Go\nQtWS 2018\Berlin + Tokyo\n(Qt 5.13.1 - crossplatform)")
                     color: primaryColor
                 }
             }
@@ -64,7 +64,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go QtWS 2018\ndeveloped by ekke (@ekkescorner)")
+                    text: qsTr("Conference2Go QtWS 2019\ndeveloped by ekke (@ekkescorner)")
                     color: accentColor
                 }
             }
@@ -73,7 +73,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("This APP is developed with Qt 5.11 and <a href=\"http://doc.qt.io/qt-5/qtquickcontrols2-index.html\">QtQuickControls2</a>.")
+                    text: qsTr("This APP is developed with Qt 5.13.1 and <a href=\"http://doc.qt.io/qt-5/qtquickcontrols2-index.html\">QtQuickControls2</a>.")
                     onLinkActivated: Qt.openUrlExternally("http://doc.qt.io/qt-5/qtquickcontrols2-index.html")
                 }
             }

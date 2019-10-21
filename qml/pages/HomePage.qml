@@ -49,7 +49,7 @@ Pane {
         anchors.topMargin: 10
         anchors.left: isLandscape? conferenceImage.right : parent.left
         anchors.leftMargin: isLandscape? 6 : 24
-        text: currentConference? currentConference.id === 201801? qsTr("October, 29-30\nBOSTON, Massachusetts") : qsTr("December, 05-06\nBERLIN, Germany") : ""
+        text: currentConference? currentConference.id === 201902? qsTr("November, 29\nTOKYO, Japan") : qsTr("November, 04-06\nBERLIN, Germany") : ""
         color: accentColor
     }
 

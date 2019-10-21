@@ -52,7 +52,7 @@ Drawer {
                         leftPadding: 16
                         rightPadding: 16
                         LabelBody {
-                            text: "ekke's Conference2Go APP\nQtWS 2018 Boston Berlin"
+                            text: "ekke's Conference2Go APP\nQtWS 2019 Berlin Tokyo"
                             wrapMode: Text.WordWrap
                             font.weight: Font.Medium
                             color: textOnPrimary

@@ -23,7 +23,7 @@ ApplicationWindow {
     // testing also on desktop it makes sense to set values
     width: 410
     height: 680
-    title: qsTr("Qt World Summit 2018: Boston, Berlin")
+    title: qsTr("Qt World Summit 2019: Berlin, Tokyo")
 
     StatusBar {
         id: theStatusBar
@@ -228,7 +228,7 @@ ApplicationWindow {
     property int helpNavigationIndex: 8
     property int aboutNavigationIndex: 9
     property var navigationModel: [
-        {"type": "../navigation/DrawerNavigationButton.qml", "name": "QtWS18", "icon": "home.png", "source": "../pages/HomePage.qml", "showCounter":false, "showMarker":false, "a_p":1, "canGoBack":false},
+        {"type": "../navigation/DrawerNavigationButton.qml", "name": "QtWS19", "icon": "home.png", "source": "../pages/HomePage.qml", "showCounter":false, "showMarker":false, "a_p":1, "canGoBack":false},
         {"type": "../navigation/DrawerDivider.qml", "name": "", "icon": "", "source": "", "a_p":1, "canGoBack":false},
         {"type": "../navigation/DrawerNavigationButton.qml", "name": qsTr("Schedule"), "icon": "schedule.png", "source": "../navigation/ScheduleNavigation.qml", "showCounter":false, "showMarker":false, "a_p":2, "canGoBack":true},
         {"type": "../navigation/DrawerNavigationButton.qml", "name": qsTr("Speakers"), "icon": "speaker.png", "source": "../navigation/SpeakerNavigation.qml", "showCounter":false, "showMarker":false, "a_p":2, "canGoBack":true},
@@ -242,16 +242,16 @@ ApplicationWindow {
     property bool initDone: false
 
     property var navigationTitles: [
-        qsTr("Qt World Summit 2018"),
+        qsTr("Qt World Summit 2019"),
         "",
-        qsTr("QtWS 2018 Schedule"),
-        qsTr("QtWS 2018 Speakers"),
-        qsTr("QtWS 2018 Tracks"),
-        qsTr("QtWS 2018 Venue"),
-        qsTr("QtWS 2018 Rooms"),
+        qsTr("QtWS 2019 Schedule"),
+        qsTr("QtWS 2019 Speakers"),
+        qsTr("QtWS 2019 Tracks"),
+        qsTr("QtWS 2019 Venue"),
+        qsTr("QtWS 2019 Rooms"),
         "",
-        qsTr("QtWS 2018 Help"),
-        qsTr("QtWS 2018 About")
+        qsTr("QtWS 2019 Help"),
+        qsTr("QtWS 2019 About")
     ]
     property string currentTitle: navigationTitles[navigationIndex]
     // Counter: orders

@@ -143,11 +143,13 @@ DISTFILES += \
 
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-}
+    QT += androidextras
 
-# you must provide openssl libs
-# see my repo: https://github.com/ekke/android-openssl-qt
-include(android-openssl.pri)
+    # provide openssl 1.1.1 libs
+    # see https://github.com/KDAB/android_openssl
+    include($$PWD/../../android_openssl/openssl.pri)
+
+}
 
 ios {
     # framework needed for Reachability classes

@@ -75,11 +75,6 @@ Page {
 
 
                 } // row
-//                LabelBodySecondary {
-//                    text: "id "+speaker.speakerId
-//                    font.italic: true
-//                    transform: Translate{y: -12}
-//                }
                 RowLayout {
                     Layout.leftMargin: 16
                     Layout.rightMargin: 6
@@ -137,203 +132,200 @@ Page {
                         ColumnLayout {
                             id: sessionRow
                             Layout.fillWidth: true
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            RowLayout {
-                                // base row
-                                Layout.leftMargin: 16
-                                Layout.rightMargin: 6
-                                Layout.bottomMargin: 2
-                                ColumnLayout {
-                                    // repeater left column
-                                    Layout.maximumWidth: speakerImage.width
-                                    Layout.minimumWidth: speakerImage.width
-                                    Layout.rightMargin: 6
-                                    // anchors.top: parent.top
-                                    Layout.alignment: Qt.AlignTop
-                                    LabelSubheading {
-                                        Layout.topMargin: 6
-                                        text: dataUtil.conferenceCity(modelData.sessionDayAsDataObject.conference)
-                                        color: accentColor
-                                        font.bold: true
-                                    }
-
-                                    CharCircle {
-                                        Layout.leftMargin: 14
-                                        size: 36
-                                        text: dataUtil.letterForButton(modelData)
-                                    }
-                                    LabelBody {
-                                        text: modelData.minutes + qsTr(" Minutes")
-                                    }
-                                    ListRowButton {
-                                        onClicked: {
-                                            navPane.pushSessionDetail(modelData.sessionId)
+                            implicitWidth: speakerDetailPage.width
+                            ItemDelegate {
+                                implicitWidth: speakerDetailPage.width
+                                Layout.minimumHeight: detailRow.height
+                                RowLayout {
+                                    id: detailRow
+                                    // base row
+                                    anchors.left: parent.left
+                                    anchors.right: parent.right
+                                    anchors.leftMargin: 16
+                                    anchors.rightMargin: 16
+                                    anchors.bottomMargin: 2
+                                    ColumnLayout {
+                                        // repeater left column
+                                        Layout.maximumWidth: speakerImage.width
+                                        Layout.minimumWidth: speakerImage.width
+                                        Layout.rightMargin: 6
+                                        Layout.alignment: Qt.AlignTop
+                                        LabelSubheading {
+                                            Layout.topMargin: 6
+                                            text: dataUtil.conferenceCity(modelData.sessionDayAsDataObject.conference)
+                                            color: accentColor
+                                            font.bold: true
                                         }
-                                    }
-                                } // repeater left column
 
-                                ColumnLayout {
-                                    // repeater right column
-                                    Layout.fillWidth: true
-                                    Layout.leftMargin: 10
-                                    Layout.rightMargin: 10
-                                    RowLayout {
-                                        // repeater date row
-                                        IconActive{
-                                            imageSize: 18
-                                            imageName: "calendar.png"
+                                        CharCircle {
+                                            Layout.leftMargin: 14
+                                            size: 36
+                                            text: dataUtil.letterForButton(modelData)
                                         }
                                         LabelBody {
-                                            text: modelData.sessionDayAsDataObject.conferenceDay.toLocaleDateString()
-                                            wrapMode: Text.WordWrap
+                                            text: modelData.minutes + qsTr(" Minutes")
                                         }
-                                        IconActive {
-                                            id: theMenuIcon
-                                            imageSize: 24
-                                            imageName: "more_vert.png"
-                                            // anchors.right: parent.right
-                                            Layout.alignment: Qt.AlignRight
-                                            // anchors.top: parent.top
-                                            MouseArea {
-                                                anchors.fill: parent
-                                                onClicked: {
-                                                    optionsMenu.parent = theMenuIcon
-                                                    optionsMenu.theSessionId = modelData.sessionId
-                                                    optionsMenu.theRoomId = modelData.roomAsDataObject.roomId
-                                                    optionsMenu.open()
-                                                }
-                                            } // mouse area
-                                        } // menuIcon
-                                    } // // repeater date row
-                                    RowLayout {
-                                        // repeater time and room besides favorite button
-                                        ColumnLayout {
-                                            // time room column
-                                            Layout.fillWidth: true
-                                            RowLayout {
-                                                // repeater time row
-                                                IconActive{
-                                                    imageSize: 18
-                                                    imageName: "time.png"
-                                                }
-                                                LabelBody {
-                                                    // text: modelData.startTime.toLocaleTimeString("HH:mm") + " - " + modelData.endTime.toLocaleTimeString("HH:mm")
-                                                    text: dataUtil.displayStartToEnd(modelData)
-                                                }
-                                            } // repeater time row
-                                            RowLayout {
-                                                // repeater room row
-                                                IconActive{
-                                                    imageSize: 18
-                                                    imageName: "directions.png"
-                                                }
-                                                LabelBody {
-                                                    text: modelData.roomAsDataObject.roomName
-                                                }
-                                            } // repeater room row
-                                        } // // time room column
-                                        IconActive {
-                                            transform: Translate { x: 6; y: 8 }
-                                            imageSize: 36
-                                            imageName: "stars.png"
-                                            opacity: modelData.isFavorite? opacityToggleActive : opacityToggleInactive
-                                            // anchors.right: parent.right
-                                            // anchors.top: parent.top
-                                            Layout.alignment: Qt.AlignTop | Qt.AlignRight
-                                            MouseArea {
-                                                anchors.fill: parent
-                                                onClicked: {
-                                                    modelData.isFavorite = !modelData.isFavorite
-                                                    if(modelData.isFavorite) {
-                                                        appWindow.showToast(qsTr("Added to Personal Schedule"))
-                                                    } else {
-                                                        appWindow.showToast(qsTr("Removed from Personal Schedule"))
-                                                    }
-                                                    if(appWindow.myScheduleActive) {
-                                                        dataUtil.refreshMySchedule()
-                                                    }
-                                                }
-                                            }
-                                        } // favoritesIcon
-                                    } // repeater time and room besides favorite button
+                                    } // repeater left column
 
-                                    // INNER REPEATER for Tracks
-                                    Repeater {
-                                        id: innerTrackRepeater
-                                        model: speakerSessionPane.theSpeakerSession.sessionTracksPropertyList
+                                    ColumnLayout {
+                                        // repeater right column
+                                        Layout.fillWidth: true
+                                        Layout.leftMargin: 10
+                                        Layout.rightMargin: 10
                                         RowLayout {
-                                            // repeater track row
-                                            //visible: trackLabel.text.length
+                                            // repeater date row
                                             IconActive{
-                                                visible: index == 0
                                                 imageSize: 18
-                                                imageName: "tag.png"
-                                            }
-                                            Item {
-                                                visible: index > 0
-                                                width: 18
-                                            }
-                                            Rectangle {
-                                                width: 16
-                                                height: 16
-                                                color: modelData.color
-                                                radius: width / 2
+                                                imageName: "calendar.png"
                                             }
                                             LabelBody {
-                                                id: trackLabel
-                                                text: dataUtil.textForSessionTrack(modelData)
-                                                rightPadding: 16
+                                                text: modelData.sessionDayAsDataObject.conferenceDay.toLocaleDateString()
                                                 wrapMode: Text.WordWrap
                                             }
+                                            IconActive {
+                                                id: theMenuIcon
+                                                imageSize: 24
+                                                imageName: "more_vert.png"
+                                                // anchors.right: parent.right
+                                                Layout.alignment: Qt.AlignRight
+                                                // anchors.top: parent.top
+                                                MouseArea {
+                                                    anchors.fill: parent
+                                                    onClicked: {
+                                                        optionsMenu.parent = theMenuIcon
+                                                        optionsMenu.theSessionId = modelData.sessionId
+                                                        optionsMenu.theRoomId = modelData.roomAsDataObject.roomId
+                                                        optionsMenu.open()
+                                                    }
+                                                } // mouse area
+                                            } // menuIcon
+                                        } // // repeater date row
+                                        RowLayout {
+                                            // repeater time and room besides favorite button
+                                            ColumnLayout {
+                                                // time room column
+                                                Layout.fillWidth: true
+                                                RowLayout {
+                                                    // repeater time row
+                                                    IconActive{
+                                                        imageSize: 18
+                                                        imageName: "time.png"
+                                                    }
+                                                    LabelBody {
+                                                        // text: modelData.startTime.toLocaleTimeString("HH:mm") + " - " + modelData.endTime.toLocaleTimeString("HH:mm")
+                                                        text: dataUtil.displayStartToEnd(modelData)
+                                                    }
+                                                } // repeater time row
+                                                RowLayout {
+                                                    // repeater room row
+                                                    IconActive{
+                                                        imageSize: 18
+                                                        imageName: "directions.png"
+                                                    }
+                                                    LabelBody {
+                                                        text: modelData.roomAsDataObject.roomName
+                                                    }
+                                                } // repeater room row
+                                            } // // time room column
+                                            IconActive {
+                                                transform: Translate { x: 6; y: 8 }
+                                                imageSize: 36
+                                                imageName: "stars.png"
+                                                opacity: modelData.isFavorite? opacityToggleActive : opacityToggleInactive
+                                                // anchors.right: parent.right
+                                                // anchors.top: parent.top
+                                                Layout.alignment: Qt.AlignTop | Qt.AlignRight
+                                                MouseArea {
+                                                    anchors.fill: parent
+                                                    onClicked: {
+                                                        modelData.isFavorite = !modelData.isFavorite
+                                                        if(modelData.isFavorite) {
+                                                            appWindow.showToast(qsTr("Added to Personal Schedule"))
+                                                        } else {
+                                                            appWindow.showToast(qsTr("Removed from Personal Schedule"))
+                                                        }
+                                                        if(appWindow.myScheduleActive) {
+                                                            dataUtil.refreshMySchedule()
+                                                        }
+                                                    }
+                                                }
+                                            } // favoritesIcon
+                                        } // repeater time and room besides favorite button
+
+                                        // INNER REPEATER for Tracks
+                                        Repeater {
+                                            id: innerTrackRepeater
+                                            model: speakerSessionPane.theSpeakerSession.sessionTracksPropertyList
+                                            RowLayout {
+                                                // repeater track row
+                                                //visible: trackLabel.text.length
+                                                IconActive{
+                                                    visible: index == 0
+                                                    imageSize: 18
+                                                    imageName: "tag.png"
+                                                }
+                                                Item {
+                                                    visible: index > 0
+                                                    width: 18
+                                                }
+                                                Rectangle {
+                                                    width: 16
+                                                    height: 16
+                                                    color: modelData.color
+                                                    radius: width / 2
+                                                }
+                                                LabelBody {
+                                                    id: trackLabel
+                                                    text: dataUtil.textForSessionTrack(modelData)
+                                                    rightPadding: 16
+                                                    wrapMode: Text.WordWrap
+                                                }
+                                            } // repeater track row
+
+                                        } // innerTrackRepeater
+
+                                        LabelSubheading {
+                                            text: modelData.title
+                                            font.bold: true
+                                            wrapMode: Label.WordWrap
+                                            ListRowButton {
+                                                onClicked: {
+                                                    navPane.pushSessionDetail(modelData.sessionId)
+                                                }
+                                            }
+                                        } // title
+                                        RowLayout {
+                                            id: presenterRow
+                                            visible: modelData.presenterPropertyList.length > 1
+                                            property var presenter: modelData.presenterPropertyList
+                                            // speakers row
+                                            IconActive{
+                                                Layout.alignment: Qt.AlignTop
+                                                imageSize: 18
+                                                imageName: "speaker.png"
+                                            }
+                                            ColumnLayout {
+                                                Repeater {
+                                                    id: presenterRepeater
+                                                    model: presenterRow.presenter
+                                                    LabelBody {
+                                                        text: modelData.name
+                                                    }
+                                                } // presenterRepeater
+                                            } // presenter Column
                                         } // repeater track row
 
-                                    } // innerTrackRepeater
+                                    } // // repeater right column
+                                } // repeater base row
 
-                                    LabelSubheading {
-                                        text: modelData.title
-                                        font.bold: true
-                                        wrapMode: Label.WordWrap
-                                        ListRowButton {
-                                            onClicked: {
-                                                navPane.pushSessionDetail(modelData.sessionId)
-                                            }
-                                        }
-                                    } // title
-//                                    LabelBody {
-//                                        visible: modelData.subtitle.length
-//                                        text: modelData.subtitle
-//                                        wrapMode: Label.WordWrap
-//                                        ListRowButton {
-//                                            onClicked: {
-//                                                navPane.pushSessionDetail(modelData.sessionId)
-//                                            }
-//                                        }
-//                                    } // subtitle
-                                    RowLayout {
-                                        id: presenterRow
-                                        visible: modelData.presenterPropertyList.length > 1
-                                        property var presenter: modelData.presenterPropertyList
-                                        // speakers row
-                                        IconActive{
-                                            Layout.alignment: Qt.AlignTop
-                                            imageSize: 18
-                                            imageName: "speaker.png"
-                                        }
-                                        ColumnLayout {
-                                            Repeater {
-                                                id: presenterRepeater
-                                                model: presenterRow.presenter
-                                                LabelBody {
-                                                    text: modelData.name
-                                                }
-                                            } // presenterRepeater
-                                        } // presenter Column
-                                    } // repeater track row
+                                onClicked: {
+                                    navPane.pushSessionDetail(modelData.sessionId)
+                                }
 
-                                } // // repeater right column
-                            } // repeater base row
+
+                            } // delegate
                             HorizontalListDivider{}
+
                         } // repeater sessionRow
                     } // session pane
                 } // session repeater
