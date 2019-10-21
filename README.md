@@ -3,7 +3,7 @@
 
 # QtWS 2019 Berlin: 2019 - November 04...06
 
-# QtWs2019 Tokyo: 2018 - November 29
+# QtWs2019 Tokyo: 2019 - November 29
 
 Conference2Go QtWS for x-platform (Android, iOS)
 
@@ -48,7 +48,7 @@ https://itunes.apple.com/us/app/qt-world-summit-2016-conference/id1156106928
 
 ## Come to QtWS 2019 and have Fun in Berlin and Tokyo
 
-TBD - old from 2018:
+some screenshots below - see more: https://appbus.wordpress.com/2019/10/21/qt-world-summit-2019-conference-app
 
 ![alt tag](https://appbus.files.wordpress.com/2019/10/01_home_android.png  "QtWS 2019 Conference App in Berlin and Tokyo")
 
