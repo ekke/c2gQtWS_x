@@ -240,7 +240,7 @@ void DataServer::requestSchedule(const int conferenceId)
     if(conferenceId == 201901) {
         uri = "https://www.qtworldsummit.com/2019/api/schedule/all/?location=Berlin";
     } else {
-        uri = "https://www.qtworldsummit.com/2019/api/schedule/all/?location=Tokyo";
+        uri = "https://www.qtworldsummit.com/2019/api/schedule/all/?location=Tokyo_en";
     }
 
     qDebug() << "requestSchedule uri:" << uri;
