@@ -74,7 +74,7 @@ void DataServer::init(DataManager *dataManager)
         Q_ASSERT(connectResult);
     }
 
-    Q_UNUSED(connectResult);
+    Q_UNUSED(connectResult)
 
 
     qDebug() << "Data Server INIT done";
@@ -257,7 +257,7 @@ void DataServer::requestSchedule(const int conferenceId)
     QNetworkReply* reply = networkAccessManager->get(request);
     bool connectResult = connect(reply, SIGNAL(finished()), this, SLOT(onFinishedSchedule()));
     Q_ASSERT(connectResult);
-    Q_UNUSED(connectResult);
+    Q_UNUSED(connectResult)
 }
 
 void DataServer::requestVersion()
@@ -292,7 +292,7 @@ void DataServer::requestVersion()
     QNetworkReply* reply = networkAccessManager->get(request);
     bool connectResult = connect(reply, SIGNAL(finished()), this, SLOT(onFinishedVersion()));
     Q_ASSERT(connectResult);
-    Q_UNUSED(connectResult);
+    Q_UNUSED(connectResult)
 }
 
 void DataServer::requestSpeaker()
@@ -327,7 +327,7 @@ void DataServer::requestSpeaker()
     QNetworkReply* reply = networkAccessManager->get(request);
     bool connectResult = connect(reply, SIGNAL(finished()), this, SLOT(onFinishedSpeaker()));
     Q_ASSERT(connectResult);
-    Q_UNUSED(connectResult);
+    Q_UNUSED(connectResult)
 }
 
 // SLOTS
