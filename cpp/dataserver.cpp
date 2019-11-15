@@ -19,9 +19,7 @@ void DataServer::init(DataManager *dataManager)
 {
     mDataManager = dataManager;
 
-    // workaround bug iOS - cannot reuse QNetworkAccessManager QTBUG-49751
-    // otherwise accessibility not detected if switch off and on again
-    // mNetworkAccessManager = new QNetworkAccessManager(this);
+    mNetworkAccessManager = new QNetworkAccessManager(this);
 
     // ONLINE, OFFLINE, HUNGRY
     // get this from settings:
@@ -220,11 +218,8 @@ void DataServer::setConferenceDataPath(const QString &conferenceDataPath)
 
 void DataServer::requestSchedule(const int conferenceId)
 {
-    // workaround bug iOS - cannot reuse QNetworkAccessManager QTBUG-49751
-    // otherwise accessibility not detected if switch off and on again
-    QNetworkAccessManager* networkAccessManager = new QNetworkAccessManager(this);
-    if(networkAccessManager->networkAccessible() != QNetworkAccessManager::Accessible) {
-        if(networkAccessManager->networkAccessible() == QNetworkAccessManager::NotAccessible) {
+    if(mNetworkAccessManager->networkAccessible() != QNetworkAccessManager::Accessible) {
+        if(mNetworkAccessManager->networkAccessible() == QNetworkAccessManager::NotAccessible) {
             qDebug() << "requestSchedule NO ACCESS TO NETWORK";
             emit serverFailed(tr("No Network Access"));
             return;
@@ -254,7 +249,7 @@ void DataServer::requestSchedule(const int conferenceId)
     conf.setPeerVerifyMode(QSslSocket::VerifyNone);
     request.setSslConfiguration(conf);
 
-    QNetworkReply* reply = networkAccessManager->get(request);
+    QNetworkReply* reply = mNetworkAccessManager->get(request);
     bool connectResult = connect(reply, SIGNAL(finished()), this, SLOT(onFinishedSchedule()));
     Q_ASSERT(connectResult);
     Q_UNUSED(connectResult)
@@ -262,11 +257,8 @@ void DataServer::requestSchedule(const int conferenceId)
 
 void DataServer::requestVersion()
 {
-    // workaround bug iOS - cannot reuse QNetworkAccessManager QTBUG-49751
-    // otherwise accessibility not detected if switch off and on again
-    QNetworkAccessManager* networkAccessManager = new QNetworkAccessManager(this);
-    if(networkAccessManager->networkAccessible() != QNetworkAccessManager::Accessible) {
-        if(networkAccessManager->networkAccessible() == QNetworkAccessManager::NotAccessible) {
+    if(mNetworkAccessManager->networkAccessible() != QNetworkAccessManager::Accessible) {
+        if(mNetworkAccessManager->networkAccessible() == QNetworkAccessManager::NotAccessible) {
             qDebug() << "requestVersion NO ACCESS TO NETWORK";
             emit versionFailed(tr("No Network Access"));
             return;
@@ -289,7 +281,7 @@ void DataServer::requestVersion()
 //    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
 //    request.setSslConfiguration(conf);
 
-    QNetworkReply* reply = networkAccessManager->get(request);
+    QNetworkReply* reply = mNetworkAccessManager->get(request);
     bool connectResult = connect(reply, SIGNAL(finished()), this, SLOT(onFinishedVersion()));
     Q_ASSERT(connectResult);
     Q_UNUSED(connectResult)
@@ -297,11 +289,8 @@ void DataServer::requestVersion()
 
 void DataServer::requestSpeaker()
 {
-    // workaround bug iOS - cannot reuse QNetworkAccessManager QTBUG-49751
-    // otherwise accessibility not detected if switch off and on again
-    QNetworkAccessManager* networkAccessManager = new QNetworkAccessManager(this);
-    if(networkAccessManager->networkAccessible() != QNetworkAccessManager::Accessible) {
-        if(networkAccessManager->networkAccessible() == QNetworkAccessManager::NotAccessible) {
+    if(mNetworkAccessManager->networkAccessible() != QNetworkAccessManager::Accessible) {
+        if(mNetworkAccessManager->networkAccessible() == QNetworkAccessManager::NotAccessible) {
             qDebug() << "requestSpeaker NO ACCESS TO NETWORK";
             emit serverFailed(tr("No Network Access"));
             return;
@@ -324,7 +313,7 @@ void DataServer::requestSpeaker()
     conf.setPeerVerifyMode(QSslSocket::VerifyNone);
     request.setSslConfiguration(conf);
 
-    QNetworkReply* reply = networkAccessManager->get(request);
+    QNetworkReply* reply = mNetworkAccessManager->get(request);
     bool connectResult = connect(reply, SIGNAL(finished()), this, SLOT(onFinishedSpeaker()));
     Q_ASSERT(connectResult);
     Q_UNUSED(connectResult)
@@ -343,6 +332,7 @@ void DataServer::onFinishedSchedule()
     if(available == 0) {
         qWarning() << "Schedule: No Bytes received";
         emit serverFailed(tr("No Schedule Data received"));
+        reply->deleteLater();
         return;
     }
     int httpStatusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
@@ -350,6 +340,7 @@ void DataServer::onFinishedSchedule()
     if(httpStatusCode != 200) {
         qDebug() << "Schedule Status Code not 200";
         emit serverFailed(tr("No sucess getting Schedule from Server. Got HTTP Status ")+QString::number(httpStatusCode));
+        reply->deleteLater();
         return;
     }
     // more schedules this year ?
@@ -361,6 +352,7 @@ void DataServer::onFinishedSchedule()
     if (!saveFile.open(QIODevice::WriteOnly)) {
         qWarning() << "Couldn't open file to write " << scheduleFilePath;
         emit serverFailed(tr("Schedule Data cannot be written"));
+        reply->deleteLater();
         return;
     }
     qint64 bytesWritten = saveFile.write(reply->readAll());
@@ -371,11 +363,13 @@ void DataServer::onFinishedSchedule()
     int conferenceId = conferenceString.toInt();
     if(conferenceId == 201901) {
         requestSchedule(201902);
+        reply->deleteLater();
         return;
     }
 
     // now getting the speaker data
     requestSpeaker();
+    reply->deleteLater();
 }
 
 void DataServer::onFinishedSpeaker()
@@ -390,6 +384,7 @@ void DataServer::onFinishedSpeaker()
     if(available == 0) {
         qWarning() << "Speaker No Bytes received";
         emit serverFailed(tr("No Speaker Data received"));
+        reply->deleteLater();
         return;
     }
     int httpStatusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
@@ -397,6 +392,7 @@ void DataServer::onFinishedSpeaker()
     if(httpStatusCode != 200) {
         qDebug() << "Speaker Status Code not 200";
         emit serverFailed(tr("No sucess getting Speaker from Server. Got HTTP Status ")+QString::number(httpStatusCode));
+        reply->deleteLater();
         return;
     }
     QString speakerFilePath = mConferenceDataPath+"speaker.json";
@@ -404,6 +400,7 @@ void DataServer::onFinishedSpeaker()
     if (!saveFile.open(QIODevice::WriteOnly)) {
         qWarning() << "Couldn't open file to write " << speakerFilePath;
         emit serverFailed(tr("Speaker Data cannot be written"));
+        reply->deleteLater();
         return;
     }
     qint64 bytesWritten = saveFile.write(reply->readAll());
@@ -411,6 +408,7 @@ void DataServer::onFinishedSpeaker()
     qDebug() << "Data Bytes written: " << bytesWritten << " to: " << speakerFilePath;
 
     emit serverSuccess();
+    reply->deleteLater();
 }
 
 void DataServer::onFinishedVersion()
@@ -425,6 +423,7 @@ void DataServer::onFinishedVersion()
     if(available == 0) {
         qWarning() << "Version No Bytes received";
         emit versionFailed(tr("No Version Data received"));
+        reply->deleteLater();
         return;
     }
     int httpStatusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
@@ -432,9 +431,11 @@ void DataServer::onFinishedVersion()
     if(httpStatusCode != 200) {
         qDebug() << "Version Status Code not 200";
         emit versionFailed(tr("No sucess getting Version from Server. Got HTTP Status ")+QString::number(httpStatusCode));
+        reply->deleteLater();
         return;
     }
     emit versionSuccess(reply->readAll());
+    reply->deleteLater();
 }
 
 
