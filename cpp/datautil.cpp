@@ -1888,8 +1888,8 @@ Conference* DataUtil::currentConference() {
     if(!mCurrentConference) {
         // TODO depends from current date
         // if currentDate > last day of first conference: use the second one
-        mCurrentConference = static_cast<Conference*>( mDataManager->allConference().first());
-        qDebug() << "Current Conference is first: " << mCurrentConference->conferenceCity();
+        mCurrentConference = static_cast<Conference*>( mDataManager->allConference().last());
+        qDebug() << "Current Conference is last: " << mCurrentConference->conferenceCity();
     }
     return mCurrentConference;
 }
