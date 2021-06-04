@@ -144,11 +144,6 @@ DISTFILES += \
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
     QT += androidextras
-
-    # provide openssl 1.1.1 libs
-    # see https://github.com/KDAB/android_openssl
-    include($$PWD/../../android_openssl/openssl.pri)
-
 }
 
 ios {
@@ -194,3 +189,6 @@ ios {
     # Note for devices: 1=iPhone, 2=iPad, 1,2=Universal.
     QMAKE_APPLE_TARGETED_DEVICE_FAMILY = 1,2
 }
+# do not move to other location in .pro
+# otherwise build settings can loose the info
+android: include(/Applications/daten/_android/android_openssl/openssl.pri)
