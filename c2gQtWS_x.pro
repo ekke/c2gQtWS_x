@@ -7,6 +7,12 @@ CONFIG += c++11
 
 include(../../_qt_ws/statusbar/src/statusbar.pri)
 
+# QT_NO_DEPRECATED_WARNINGS will show no deprecated warnings
+# comment out and build-clean-project to see them all
+# should be done from time to time
+# while preparing src for Qt6
+DEFINES += QT_NO_DEPRECATED_WARNINGS
+
 HEADERS += \
     cpp/applicationui.hpp \
     cpp/uiconstants.hpp \
@@ -163,7 +169,7 @@ ios {
     app_launch_screen.files = $$files($$PWD/ios/MyLaunchScreen.xib)
     QMAKE_BUNDLE_DATA += app_launch_screen
 
-    QMAKE_IOS_DEPLOYMENT_TARGET = 11.0
+    QMAKE_IOS_DEPLOYMENT_TARGET = 12.0
 
     disable_warning.name = GCC_WARN_64_TO_32_BIT_CONVERSION
     disable_warning.value = NO
