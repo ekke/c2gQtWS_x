@@ -197,4 +197,4 @@ ios {
 }
 # do not move to other location in .pro
 # otherwise build settings can loose the info
-android: include(/Applications/daten/_android/android_openssl/openssl.pri)
+android: include(/Applications/daten/_android/android-sdk-26_1_1/android_openssl/openssl.pri)
