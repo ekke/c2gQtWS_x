@@ -314,93 +314,93 @@ Diese Konferenz APP gibt einen kleinen Eindruck, was für APPs Sie erwarten kön
 <context>
     <name>DataServer</name>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="101"/>
+        <location filename="../cpp/dataserver.cpp" line="99"/>
         <source>YES
 </source>
         <translation>JA
 </translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="103"/>
+        <location filename="../cpp/dataserver.cpp" line="101"/>
         <source>NO
 </source>
         <translation>NEIN
 </translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="111"/>
+        <location filename="../cpp/dataserver.cpp" line="109"/>
         <source>Internet not reachable</source>
         <translation>Internet nicht erreichbar</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="114"/>
+        <location filename="../cpp/dataserver.cpp" line="112"/>
         <source>WiFi internet connection</source>
         <translation>WIFI Internet Verbindung</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="117"/>
+        <location filename="../cpp/dataserver.cpp" line="115"/>
         <source>mobile data internet connection</source>
         <translation>Mobile Datenverbindung</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="143"/>
+        <location filename="../cpp/dataserver.cpp" line="141"/>
         <source>no network connection - WIFI On ?</source>
         <translation>keine Netzwerk Verbindung - WIFI An ?</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="229"/>
-        <location filename="../cpp/dataserver.cpp" line="233"/>
-        <location filename="../cpp/dataserver.cpp" line="271"/>
-        <location filename="../cpp/dataserver.cpp" line="275"/>
-        <location filename="../cpp/dataserver.cpp" line="306"/>
-        <location filename="../cpp/dataserver.cpp" line="310"/>
+        <location filename="../cpp/dataserver.cpp" line="224"/>
+        <location filename="../cpp/dataserver.cpp" line="228"/>
+        <location filename="../cpp/dataserver.cpp" line="263"/>
+        <location filename="../cpp/dataserver.cpp" line="267"/>
+        <location filename="../cpp/dataserver.cpp" line="295"/>
+        <location filename="../cpp/dataserver.cpp" line="299"/>
         <source>No Network Access</source>
         <translation>Kein Netzwerk verfügbar</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="339"/>
-        <location filename="../cpp/dataserver.cpp" line="386"/>
-        <location filename="../cpp/dataserver.cpp" line="421"/>
+        <location filename="../cpp/dataserver.cpp" line="328"/>
+        <location filename="../cpp/dataserver.cpp" line="380"/>
+        <location filename="../cpp/dataserver.cpp" line="419"/>
         <source>No Network Reply</source>
         <translation>Keine Antwort vom Netzwerk</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="345"/>
+        <location filename="../cpp/dataserver.cpp" line="334"/>
         <source>No Schedule Data received</source>
         <translation>Keine &apos;Schedule&apos; Daten empfangen</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="352"/>
+        <location filename="../cpp/dataserver.cpp" line="342"/>
         <source>No sucess getting Schedule from Server. Got HTTP Status </source>
         <translation>Kein Erfolg beim Versuch, den Schedule zu bekommen. HTTP Status</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="363"/>
+        <location filename="../cpp/dataserver.cpp" line="354"/>
         <source>Schedule Data cannot be written</source>
         <translation>Die Schedule Daten konnten nicht geschrieben werden</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="392"/>
+        <location filename="../cpp/dataserver.cpp" line="386"/>
         <source>No Speaker Data received</source>
         <translation>Keine Speaker Daten empfangen</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="399"/>
+        <location filename="../cpp/dataserver.cpp" line="394"/>
         <source>No sucess getting Speaker from Server. Got HTTP Status </source>
         <translation>Kein Erfolg, die &apos;Speaker&apos; Daten vom Server zu bekommen. HTTP Status</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="406"/>
+        <location filename="../cpp/dataserver.cpp" line="402"/>
         <source>Speaker Data cannot be written</source>
         <translation>Die Speaker Daten konnten nicht geschrieben werden</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="427"/>
+        <location filename="../cpp/dataserver.cpp" line="425"/>
         <source>No Version Data received</source>
         <translation>Keine Versions Daten empfangen</translation>
     </message>
     <message>
-        <location filename="../cpp/dataserver.cpp" line="434"/>
+        <location filename="../cpp/dataserver.cpp" line="433"/>
         <source>No sucess getting Version from Server. Got HTTP Status </source>
         <translation>Konnte Versionsdaten nicht abrufen - HTTP Status </translation>
     </message>
@@ -427,7 +427,7 @@ Diese Konferenz APP gibt einen kleinen Eindruck, was für APPs Sie erwarten kön
         <location filename="../cpp/datautil.cpp" line="1322"/>
         <location filename="../cpp/datautil.cpp" line="1399"/>
         <location filename="../cpp/datautil.cpp" line="1461"/>
-        <location filename="../cpp/datautil.cpp" line="1527"/>
+        <location filename="../cpp/datautil.cpp" line="1526"/>
         <source>Lunch</source>
         <translation></translation>
     </message>
@@ -437,7 +437,9 @@ Diese Konferenz APP gibt einen kleinen Eindruck, was für APPs Sie erwarten kön
         <location filename="../cpp/datautil.cpp" line="1337"/>
         <location filename="../cpp/datautil.cpp" line="1414"/>
         <location filename="../cpp/datautil.cpp" line="1476"/>
-        <location filename="../cpp/datautil.cpp" line="1542"/>
+        <location filename="../cpp/datautil.cpp" line="1541"/>
+        <location filename="../cpp/datautil.cpp" line="1556"/>
+        <location filename="../cpp/datautil.cpp" line="1571"/>
         <source>Break</source>
         <translation>Pause</translation>
     </message>
@@ -588,14 +590,13 @@ Letzte Daten werden wiederhergestellt.</translation>
     <message>
         <location filename="../cpp/datautil.cpp" line="1292"/>
         <location filename="../cpp/datautil.cpp" line="1369"/>
-        <location filename="../cpp/datautil.cpp" line="1512"/>
+        <location filename="../cpp/datautil.cpp" line="1511"/>
         <source>Registration and Coffee</source>
         <translation>Registrierung und Kaffee</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1557"/>
         <source>Networking and Drinks</source>
-        <translation>Networking und Drinks</translation>
+        <translation type="vanished">Networking und Drinks</translation>
     </message>
     <message>
         <location filename="../cpp/datautil.cpp" line="1384"/>
@@ -609,47 +610,47 @@ Letzte Daten werden wiederhergestellt.</translation>
         <translation>Cocktails und Party, 20 Jahre KDAB</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1574"/>
+        <location filename="../cpp/datautil.cpp" line="1588"/>
         <source>Now saving Conference Data to Cache</source>
         <translation>Jetzt Konferenzdaten in Cache schreiben</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1711"/>
+        <location filename="../cpp/datautil.cpp" line="1725"/>
         <source>All done</source>
         <translation>Alles erledigt</translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1968"/>
+        <location filename="../cpp/datautil.cpp" line="1985"/>
         <source>API Version </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="1970"/>
+        <location filename="../cpp/datautil.cpp" line="1987"/>
         <source>Last Update </source>
         <translation>Letzter Update </translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2132"/>
+        <location filename="../cpp/datautil.cpp" line="2149"/>
         <source>No JSON Object received for Version Check</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2137"/>
+        <location filename="../cpp/datautil.cpp" line="2154"/>
         <source>Version Check: received Version Map is empty</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2141"/>
+        <location filename="../cpp/datautil.cpp" line="2158"/>
         <source>Version Check: received Version Map missed Version Property</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2146"/>
+        <location filename="../cpp/datautil.cpp" line="2163"/>
         <source>Error: Received Map missed &apos;version&apos;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cpp/datautil.cpp" line="2154"/>
+        <location filename="../cpp/datautil.cpp" line="2171"/>
         <source>Error: &apos;Version&apos; wrong: </source>
         <translation></translation>
     </message>
@@ -1341,7 +1342,7 @@ Soll die App beendet werden ?
         <translation>Auf Sprecher Daten tippen, um Details zu sehen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionDetailPage.qml" line="286"/>
+        <location filename="../qml/pages/SessionDetailPage.qml" line="294"/>
         <source>Unnamed Speaker</source>
         <translation>Unbekannter Sprecher</translation>
     </message>
@@ -1520,39 +1521,39 @@ Das verwirrt Sie ? Einfach hier ausschalten.
         <translation>Unbekannter Sprecher</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="108"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="103"/>
         <source>Talks</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="116"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="111"/>
         <source>Tap on the Talk Icon or Menu Button to get the Details.
 Tap on the Star Icon to add to / remove from your personal schedule.</source>
         <translation>Auf ein Talk Icon oder den Menu Button klicken für Details.
 Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen oder zu entfernen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="167"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="166"/>
         <source> Minutes</source>
         <translation> Minuten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="372"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="364"/>
         <source>Session Details</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="378"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="370"/>
         <source>Room Info</source>
         <translation>Raum Info</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="249"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="243"/>
         <source>Added to Personal Schedule</source>
         <translation>Zum Persönlichen Zeitplan zugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SpeakerDetailPage.qml" line="251"/>
+        <location filename="../qml/pages/SpeakerDetailPage.qml" line="245"/>
         <source>Removed from Personal Schedule</source>
         <translation>Vom Persönlichen Zeitplan entfernt</translation>
     </message>
@@ -1560,7 +1561,7 @@ Auf das &apos;Stern&apos; Icon klicken um zum Persönlichen Zeitplan zuzufügen 
 <context>
     <name>SpeakerListPage</name>
     <message>
-        <location filename="../qml/pages/SpeakerListPage.qml" line="65"/>
+        <location filename="../qml/pages/SpeakerListPage.qml" line="96"/>
         <source>Unnamed Speaker</source>
         <translation>Unbekannter Sprecher</translation>
     </message>
