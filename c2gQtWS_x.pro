@@ -67,6 +67,15 @@ lupdate_only {
     qml/tabs/*.qml
 }
 
+# displays qml files in QML node in project tree
+# easier to access vs Resources
+OTHER_FILES +=  qml/main.qml \
+    qml/common/*.qml \
+    qml/navigation/*.qml \
+    qml/pages/*.qml \
+    qml/popups/*.qml \
+    qml/tabs/*.qml
+
 OTHER_FILES += images/black/*.png \
     images/black/x18/*.png \
     images/black/x36/*.png \
