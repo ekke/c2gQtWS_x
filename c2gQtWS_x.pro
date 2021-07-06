@@ -58,15 +58,6 @@ SOURCES += cpp/main.cpp \
     cpp/dataserver.cpp \
     cpp/unsafearea.cpp
 
-lupdate_only {
-    SOURCES +=  qml/main.qml \
-    qml/common/*.qml \
-    qml/navigation/*.qml \
-    qml/pages/*.qml \
-    qml/popups/*.qml \
-    qml/tabs/*.qml
-}
-
 # displays qml files in QML node in project tree
 # easier to access vs Resources
 OTHER_FILES +=  qml/main.qml \
