@@ -52,7 +52,12 @@ public:
         IPADPRO_129,
         IPADPRO_105,
         IPADPRO_97_AIR_MINI,
-        IPADPRO_11
+        IPADPRO_11,
+        IPHONE_12_MINI,
+        IPHONE_12_12PRO,
+        IPHONE_12PRO_MAX,
+        IPAD_AIR_4G,
+        IPAD_8G
          };
 
 signals:
