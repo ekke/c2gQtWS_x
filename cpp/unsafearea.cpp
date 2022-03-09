@@ -12,18 +12,18 @@ UnsafeArea::UnsafeArea(QObject *parent) :
 // I O S sizes to detect the device type
 // https://stackoverflow.com/questions/46192280/detect-if-the-device-is-iphone-x
 // 1136 iPhone 5, 5S, 5C
-// 1334 iPhone 6/6S/7/8 --- iPhone SE 2Gen (2021-08-30)
+// 1334 iPhone 6/6S/7/8 --- iPhone SE 2Gen (2021-08-30) --- iPhone 13 SE (2022-03-09)
 // 1920,2208 iPhone 6+/6S+/7+/8+
-// 2340 iPhone 12 Mini (2021-08-30)
+// 2340 iPhone 12 Mini (2021-08-30) --- iPhone 13 Mini (2022-03-09)
 // 2436 iPhone X, Xs  ---  iPhone 11 Pro (2021-08-30)
-// 2532 iPhone 12, iPhone 12 Pro (2021-08-30)
+// 2532 iPhone 12, iPhone 12 Pro (2021-08-30) --- iPhone 13, iPhone 13 Pro (2022-03-09)
 // 2688 iPhone Xs Max  ---  iPhone 11 Pro Max (2021-08-30)
-// 2778 iPhone 12 Pro Max (2021-08-30)
+// 2778 iPhone 12 Pro Max (2021-08-30) --- iPhone 13 Pro Max (2022-03-09)
 // 1792 iPhone XR  ---  iPhone 11 (2021-08-30)
 // 2732 iPadPro 12.9
 // 2224 iPadPro 10.5
 // 2048 iPadPro 9.7 iPadAir iPadMini
-// 2360 iPad Air 4Gen (2021-08-30)
+// 2360 iPad Air 4Gen (2021-08-30) --- iPad Air 5G (2022-03-09)
 // 2160 iPad 8Gen (2021-08-30)
 // 2388 iPadPro 11
 // https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/Displays/Displays.html
@@ -52,7 +52,7 @@ void UnsafeArea::configureDevice(int height, int width, int devicePixelRatio)
         break;
     case 1334:
         mMyDevice = MyDevice::IPHONE_6_6S_7_8;
-        qDebug() << "Device detected: " << "IPHONE_6_6S_7_8 or iPhone SE 2Gen";
+        qDebug() << "Device detected: " << "IPHONE_6_6S_7_8 or iPhone SE 2Gen or iPhone 13 SE";
         break;
     case 1920:
     case 2208:
@@ -63,15 +63,15 @@ void UnsafeArea::configureDevice(int height, int width, int devicePixelRatio)
         break;
     case 2778:
         mMyDevice = MyDevice::IPHONE_12PRO_MAX;
-        qDebug() << "Device detected: " << "IPHONE_12PRO_MAX";
+        qDebug() << "Device detected: " << "IPHONE_12PRO_MAX or iPhone 13 Pro Max";
         break;
     case 2340:
         mMyDevice = MyDevice::IPHONE_12_MINI;
-        qDebug() << "Device detected: " << "IPHONE_12_MINI";
+        qDebug() << "Device detected: " << "IPHONE_12_MINI or iPhone 13 Mini";
         break;
     case 2532:
         mMyDevice = MyDevice::IPHONE_12_12PRO;
-        qDebug() << "Device detected: " << "IPHONE_12_12PRO";
+        qDebug() << "Device detected: " << "IPHONE_12_12PRO or iPhone 13 or iPhone 13Pro";
         break;
     case 2436:
         mMyDevice = MyDevice::IPHONE_X_XS;
@@ -105,7 +105,7 @@ void UnsafeArea::configureDevice(int height, int width, int devicePixelRatio)
         break;
     case 2360:
         mMyDevice = MyDevice::IPAD_AIR_4G;
-        qDebug() << "Device detected: " << "IPAD_AIR_4G";
+        qDebug() << "Device detected: " << "IPAD_AIR_4G or iPad Air 5G";
         break;
     case 2388:
         mMyDevice = MyDevice::IPADPRO_11;
@@ -181,7 +181,7 @@ void UnsafeArea::portrait()
     case MyDevice::IPHONE_X_XS:
     case MyDevice::IPHONE_XSMAX:
     case MyDevice::IPHONE_XR:
-        setUnsafeTopMargin(24);
+        setUnsafeTopMargin(32);
         setUnsafeBottomMargin(8);
         setUnsafeLeftMargin(0);
         setUnsafeRightMargin(0);
