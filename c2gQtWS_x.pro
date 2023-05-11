@@ -11,7 +11,7 @@ include(../../_qt_ws/statusbar/src/statusbar.pri)
 # comment out and build-clean-project to see them all
 # should be done from time to time
 # while preparing src for Qt6
-DEFINES += QT_NO_DEPRECATED_WARNINGS
+# DEFINES += QT_NO_DEPRECATED_WARNINGS
 
 HEADERS += \
     cpp/applicationui.hpp \
@@ -178,7 +178,7 @@ android {
 
     # find this in shadow build android-build gradle.properties
     ANDROID_MIN_SDK_VERSION = "21"
-    ANDROID_TARGET_SDK_VERSION = "30"
+    ANDROID_TARGET_SDK_VERSION = "31"
 }
 
 ios {
