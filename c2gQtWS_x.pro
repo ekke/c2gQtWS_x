@@ -11,7 +11,7 @@ include(../../_qt_ws/statusbar/src/statusbar.pri)
 # comment out and build-clean-project to see them all
 # should be done from time to time
 # while preparing src for Qt6
-# DEFINES += QT_NO_DEPRECATED_WARNINGS
+DEFINES += QT_NO_DEPRECATED_WARNINGS
 
 HEADERS += \
     cpp/applicationui.hpp \
