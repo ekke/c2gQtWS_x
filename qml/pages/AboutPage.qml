@@ -41,7 +41,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go\nQtWS 2019\Berlin + Tokyo\n(Qt 5.13.1 - Android + iOS)")
+                    text: qsTr("Conference2Go\nQtWS 2019\Berlin + Tokyo\n(Qt 5.15.15 - Android + iOS)")
                     color: primaryColor
                 }
                 // Hint: I got Apps rejected by apple because I mentioned Android ;-)
@@ -50,7 +50,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go\nQtWS 2018\Berlin + Tokyo\n(Qt 5.13.1 - crossplatform)")
+                    text: qsTr("Conference2Go\nQtWS 2019\Berlin + Tokyo\n(Qt 5.15.15 - crossplatform)")
                     color: primaryColor
                 }
             }
@@ -64,7 +64,7 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("Conference2Go QtWS 2019\ndeveloped by ekke (@ekkescorner)")
+                    text: qsTr("Conference2Go QtWS 2019\ndeveloped by ekke\n@ekkescorner")
                     color: accentColor
                 }
             }
@@ -73,8 +73,8 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("This APP is developed with Qt 5.13.1 and <a href=\"http://doc.qt.io/qt-5/qtquickcontrols2-index.html\">QtQuickControls2</a>.")
-                    onLinkActivated: Qt.openUrlExternally("http://doc.qt.io/qt-5/qtquickcontrols2-index.html")
+                    text: qsTr("This APP is developed with Qt 5.15.1 and <a href=\"https://doc.qt.io/qt-5.15/qtquickcontrols-index.html\">QtQuickControls2</a>.")
+                    onLinkActivated: Qt.openUrlExternally("https://doc.qt.io/qt-5.15/qtquickcontrols-index.html")
                 }
             }
             RowLayout {
@@ -101,8 +101,8 @@ Flickable {
                     leftPadding: 10
                     rightPadding: 10
                     wrapMode: Text.WordWrap
-                    text: qsTr("You want to discuss about this App or Qt for Mobile App Development ? <a href=\"http://slackin.qtmob.org/\">Join QtMob</a>")
-                    onLinkActivated: Qt.openUrlExternally("http://slackin.qtmob.org/")
+                    text: qsTr("You want to discuss about this App or Qt for Mobile App Development ? <a href=\"https://discord.gg/bBkZnp9m\">Join QtDiscord Server</a>")
+                    onLinkActivated: Qt.openUrlExternally("https://discord.gg/bBkZnp9m")
                 }
             }
             HorizontalDivider {}
