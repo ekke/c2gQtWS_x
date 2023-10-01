@@ -170,7 +170,7 @@ android {
         # add more cases as needed
         return($$first(prefix)0$$first(vCode))
     }
-    MY_VERSION = 2.3
+    MY_VERSION = 2.4
     MY_PATCH_VERSION = 0
     MY_MIN_API = 21
     ANDROID_VERSION_NAME = $$MY_VERSION"."$$MY_PATCH_VERSION
