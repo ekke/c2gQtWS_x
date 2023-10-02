@@ -170,15 +170,14 @@ android {
         # add more cases as needed
         return($$first(prefix)0$$first(vCode))
     }
-    MY_VERSION = 2.4
+    MY_VERSION = 2.6
     MY_PATCH_VERSION = 0
     MY_MIN_API = 21
     ANDROID_VERSION_NAME = $$MY_VERSION"."$$MY_PATCH_VERSION
     ANDROID_VERSION_CODE = $$MY_MIN_API$$droidVersionCode($$MY_VERSION)$$MY_PATCH_VERSION
-
     # find this in shadow build android-build gradle.properties
     ANDROID_MIN_SDK_VERSION = "21"
-    ANDROID_TARGET_SDK_VERSION = "31"
+    ANDROID_TARGET_SDK_VERSION = "33"
 }
 
 ios {
